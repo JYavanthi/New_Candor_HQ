@@ -1,0 +1,241 @@
+
+<div class="text-center pageHeadingCss">
+  <p class="pageHeadingparaCss">FTP-Access</p>
+</div>
+<div class="issue-btn">
+  <button style="margin-left:12%;" class="btn-back" [routerLink]="'/service'" type="button">Back</button>&nbsp;
+</div>
+
+
+
+<!--div class="service_header_h1tag">
+  <h1>FTP-Access</h1>
+  <div class="issue-btn">
+    <button style="margin-right:72%;" class="btn-back" [routerLink]="'/service'" type="button">Back </button>&nbsp;
+  </div>
+</div>-->
+
+<div class="service_container">
+  <div class="card service_card" style="border-top: 6px solid #113bf7;">
+    <div class="card-body">
+      <div class="card">
+        <div class="card-body">
+          <div class="software">
+            <div class="row">
+              <!-- <div class="col">
+                <label>Choose Asset</label>
+                <select>
+                  <option disabled selected>Choose-Asset</option>
+                  <option>Server</option>
+                  <option>Network</option>
+                  <option>Security</option>
+                  <option>Inhouse Development</option>
+                  <option>SAP</option>
+                  <option>Software</option>
+                  <option>Desktop/Laptop</option>
+                  <option>Printers</option>
+                </select>
+              </div>-->
+              <div style="width:30%; margin-left: 0%">
+                <label>Request Type </label>
+                <select [(ngModel)]="RequestFor" (ngModelChange)="RequestForFunc()">
+                  <option>Provide New Access</option>
+                  <option>Remove Access</option>
+                </select>
+              </div>
+              <div [hidden]="!showProvideNewAccess">
+                <div class="row">
+                  <div class="col">
+                    <label>Required Folder Access/Path: <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Access Type<span style="color:red"> *</span></label>
+                    <select value="Select Type">
+                      <option>Permanent</option>
+                      <option>Temporary</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label>Duration Access Require(Days) <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Owner Email of Drive <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <label>Owner Plant <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Employee Type<span style="color:red"> *</span></label>
+                    <select value="Select Type">
+                      <option>Office</option>
+                      <option>Field</option>
+                      <option>Consultant</option>
+                    </select>
+                  </div>
+
+                  <div class="col">
+                    <label>Purpose/Justification <span style="color:red"> *</span></label>
+                    <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div [hidden]="!showRemoveAccess">
+                <div class="row">
+                  <div class="col">
+                    <label>Required Folder Access/Path: <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Access Type<span style="color:red"> *</span></label>
+                    <select value="Select Type">
+                      <option>Permanent</option>
+                      <option>Temporary</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label>Duration Access Require(Days) <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Owner Email of Drive <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <label>Owner Plant <span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Employee Type<span style="color:red"> *</span></label>
+                    <select value="Select Type">
+                      <option>Office</option>
+                      <option>Field</option>
+                      <option>Consultant</option>
+                    </select>
+                  </div>
+
+                  <div class="col">
+                    <label>Purpose/Justification <span style="color:red"> *</span></label>
+                    <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <label>Attachment</label>
+                <input type="file" style="width: 98%; margin-left: 1%;" />
+              </div>
+              <div class="row">
+                <label>Description</label>
+                <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span style="margin-left: 3%;" class="btn-sub software_submit" [routerLink]="'/service'">Submit</span>
+              </div>
+              <div class="col">
+                <span style="margin-left: -54%;" class="btn-sub" [routerLink]="'/service'">Cancel</span>
+              </div>
+              <div class="col"></div>
+              <div class="col"></div>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-rfc-heading">
+    <ul class="breadcrumbs" id="myTab" role="tablist">
+
+      <li class="breadcrumbs__item" style="background-color: blue;color:white ;">
+        <button class="approverbtns">Approver 1</button>
+      </li>
+      <li class="breadcrumbs__item" style="background-color: blue;color:white ;">
+        <button class="approverbtns">Approver 2</button>
+      </li>
+      <li class="breadcrumbs__item" style="background-color: blue;color:white ;">
+        <button class="approverbtns">Approver 3</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="approver1" role="tabpanel" aria-labelledby="approver1-tab">
+        <div>
+          <div class="container-field-approve">
+            <b> Service Initiate </b>l
+            <div class="border-rfc-heading">
+              <div class="row">
+                <div class="col-3">
+                  <label>Approver Name</label>
+                </div>
+
+                <div>
+                  <p>Senthil</p>
+                  <p>Rakesh</p>
+                  <p>Manthan</p>
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+              </div>
+              <br />
+              <div class="row mt-3">
+                <div class="col ate">
+                  <label>Date</label>
+                  <input type="date" [(ngModel)]="today" />
+                </div>
+                <div class="">
+                  <label>Remarks</label>
+                  <textarea class="textarea-implement"></textarea>
+                </div>
+                <div class="col">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-field-implement">
+
+              <div>
+                <label class="label-approve">Attach Document</label>
+                <input class="input-approve" type="File" placeholder="" />
+              </div>
+            </div>
+            <div class="btn-sub-reset">
+              <button class="btn-sub-approve">
+                Approve
+              </button>
+              <button class="btn-sub-reject" type="submit">Reject</button>
+              <button class="btn-sub" type="submit">Seek Clarification</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="border-rfc-heading">
+    <div class="container-field-implement">
+
+      <div class="row">
+        <label>Resolution</label>
+        <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+      </div>
+    </div>
+    <button style="margin-top: 1%" class="btn-sub" type="submit">Submit</button>
+  </div>
+</div>

@@ -1,0 +1,418 @@
+''
+
+<div style="margin-left: 6%;">
+  <button class="btn-back" [routerLink]="'/change-request'">Back</button>
+</div>
+
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>Change Request</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-3">
+        <div class="col">
+          <label>RFC Date <span style="color:red">*</span></label>
+          <input type="date" [(ngModel)]="today" required [min]="todaysDate"/>
+        </div>
+        <div class="col">
+          <label>Change Owner</label>
+          <input type="text" [(ngModel)]="supportpersonname" value="{{supportid}}" placeholder="Change Owner"
+            readonly />
+        </div>
+        <div class="col">
+          <label>Initiator <span style="color:red">*</span></label>
+          <input [disabled]="sameinitator!" class="searchinput" type="text" placeholder="Enter Initiator Name"
+            [(ngModel)]="crinitiatedFor" (input)="filterItems()" />
+          <ul class="dropdowns-list" *ngIf="dropdownItems.length > 0">
+            <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">{{item}}</li>
+          </ul>
+        </div>
+        <div class="col SameChangeOwner ">
+          <span><input type="checkbox" [(ngModel)]="sameinitator" (click)="setinitator()"></span>
+          <span>&nbsp;Same Change Owner</span>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Plant <span style="color:red">*</span></label>
+          <select [(ngModel)]="plantId">
+            <option value="" disabled hidden selected>Select Plant</option>
+            <option *ngFor="let pltdata of plantcode " value="{{pltdata.id}}">{{pltdata.code}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Priority <span style="color:red">*</span></label>
+          <select [(ngModel)]="crpriority">
+            <option value="" disabled hidden selected>Select Priority</option>
+            <option *ngFor="let item of this.priorityType" [value]="item.priorityId">{{item.priorityName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label style="display: flex; justify-content: flex-start;align-items:center">
+            Change Requested By<span style="color:red;">&nbsp;*</span>
+          </label>
+          <input class="searchinput" type="text" placeholder="Enter Change Requestor Name"
+            [(ngModel)]="changerequestedby" (input)="filterItemscr()" (ngModelChange)="ClearPlant()" />
+          <ul class="dropdowns-list" *ngIf="dropdownItemscr.length > 0">
+            <li class="drop-list" value="" *ngFor="let item of dropdownItemscr | slice:0:30"
+              (click)="selectItemcr(item)">
+              {{ item.employeeId + '-' + item.employeeName }}
+            </li>
+          </ul>
+        </div>
+        <div class="col">
+          <label>Requestor Plant <span style="color:red">*</span></label>
+          <input type="text" disabled [(ngModel)]="RequestorPlant" />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Classifications <span style="color:red">*</span></label>
+          <select aria-placeholder="select" (change)="categoryfunctions()" [(ngModel)]="classificationId"
+            ngModelChange="classificationType()">
+            <option value="" disabled hidden selected>Select Classifications</option>
+            <option *ngFor="let cldata of classifications " value="{{cldata.itclassificationId}}">
+              {{cldata.classificationName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Category <span style="color:red">*</span></label>
+          <select (change)="categoryfunctions()" [(ngModel)]="selectedCategory">
+            <option value="" disabled hidden selected>Select Category</option>
+            <option *ngFor="let value of categorydata" value="{{value.itcategoryId}}">{{value.categoryName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Sub-Category<span style="color:red">*</span></label>
+          <select [(ngModel)]="categoryTypeId">
+            <option value="" disabled hidden selected>Select Sub-Category</option>
+            <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">
+              {{valueCtype.categoryType}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Nature of Change <span style="color:red">*</span></label>
+          <select [(ngModel)]="natureOfChange">
+            <option value="" disabled hidden selected>Select Nature of Change</option>
+            <option *ngFor="let valueN of Natureofchange " value="{{valueN.natureofChangeId}}">
+              {{valueN.natureofChange1}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Reference <span style="color:red">*</span></label>
+          <select [(ngModel)]="referenceid">
+            <option value="" disabled hidden selected>Select Reference</option>
+            <option *ngFor="let refdata of refer " value="{{refdata.referenceId}}">{{refdata.referenceName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Reference Type <span style="color:red">*</span></label>
+          <select [(ngModel)]="referencetype">
+            <option value="" disabled hidden selected>Select Reference Type</option>
+            <option *ngFor="let refdata of reftype " value="{{refdata.referenceTypeId}}">{{refdata.referenceType}}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Change Requested On <span style="color:red">*</span></label>
+          <input [(ngModel)]="crrequestedDt" type="date" placeholder="" />
+        </div>
+        <div class="col">
+          <label>Change Triggered By <span style="color:red">*</span></label>
+          <select [(ngModel)]="triggeredBy">
+            <option value="" disabled hidden selected>Select Change Triggered By</option>
+            <option>Compliance</option>
+            <option>Commercial</option>
+            <option>Statutory</option>
+            <option>Legal</option>
+            <option>SAP</option>
+            <option>Business Requirements</option>
+            <option>Efficiency/Productivity</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6" style="display:flex;justify-content:flex-start;">
+          <span><input type="checkbox" [(ngModel)]="EmailNotification"></span>
+          <span>&nbsp;<b class="emailcheckbox">Send Notification to Change Requestor</b></span>
+        </div>
+        <div class="col-md-6">
+        </div>
+
+      </div>
+    </div>
+    <div *ngIf="!vflag">
+      <p><br /><b style="font-size:16px;color:brown">{{this.wrkflow}}</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- System landscape -->
+
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>System Landscape</h3>
+    <div class="row">
+      <div class="col" *ngFor="let item of systemlandscape" style="display: flex; justify-content: flex-start; ">
+        <input type="checkbox" id="checkbox" [(ngModel)]="item['isChcked']">&nbsp;
+        <label style="margin-right:2%;" for="checkbox"> {{item.sysLandscape1}}</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- System landscape radio btn -->
+
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>Change Overview</h3>
+    <div class="border-rfc-heading">
+      <div>
+        <label>Change Description<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="changeDesc" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <label>Reason For Change<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="reasonForChange" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <label>Alternate Consideration<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="alternateConsidetation" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <label>Impact of not doing change<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="impactNotDoing" class="textarea-implement" cols="160" rows="4" id="area4"></textarea>
+      </div>
+      <div>
+        <label>Benefits of doing change<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="benefits" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <label>Business Impact if Change is implemented<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="businessImpact" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <label>Roll Back Plan<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="rollbackPlan" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <label>Back out plan<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="backoutPlan" class="textarea-implement" cols="160" rows="4"></textarea>
+      </div>
+      <div>
+        <div>
+          <label>Attachement</label>
+          <div class="attachmentList" style="width: fit-content;">
+            <div class="d-flex">
+              <input type="file" [(ngModel)]="attach" (change)="getattach($event)" />
+
+              <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()"
+                style="margin: 0px 10px;height: 33px;">
+                Add File</button>
+            </div>
+            <div *ngFor="let attachment of attachmentsList;index i">
+              <div>
+                {{attachment.attachedFile}}
+                <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+                <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                  (click)="downFile(attachment)"></i>
+                <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                  style="margin-left: 10px;"></i>
+              </div>
+            </div>
+          </div>
+
+          <!--<input type="file" [(ngModel)]="attach" (change)="getattach($event)" / >
+  <div *ngIf="attach">
+    <p>Attachment: {{ attach }}<button style="padding: 1%; border: none; background: none;" (click)="viewFile(attach)"><i class="fa fa-download" aria-hidden="true"></i></button></p>
+  </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-implement">
+    <div class="container-field-line">
+      <h3>Effort & Estimate</h3>
+      <div class="border-rfc-heading">
+        <div class="row">
+          <div class="col">
+            <label>Approx Cost</label>
+            <input [(ngModel)]="estimatedCost" type="text" placeholder="" />
+          </div>
+          <div class="col">
+            <label>Currency </label>
+            <input [(ngModel)]="estimatedCostCurr" type="text" placeholder="INR" />
+          </div>
+          <div class="col">
+            <label>Estimated Effort <span style="color:red">*</span></label>
+            <input [(ngModel)]="estimatedEffort" type="number" min="0" />
+          </div>
+          <div class="col">
+            <label>Effort Day(s)/Hour(s) <span style="color:red">*</span></label>
+            <select [(ngModel)]="estimatedEffortUnit">
+              <option value="" selected hidden disabled>Select Effort Day(s)/Hour(s)</option>
+              <option value="Days">Days</option>
+              <option value="Hours">Hours</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label>Expected Date of Completion <span style="color:red">*</span></label>
+            <input [(ngModel)]="estimatedDateCompletion" type="date" placeholder="1" [min]="todaysDate"/>
+          </div>
+          <div class="col">
+
+          </div>
+          <div class="col">
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="notification-confirm" *ngIf="radioconfirmation">
+            <p style="font-size:17px;">Unchecking will clear all your datas. Click 'Yes' to Clear.</p>
+            <div style="text-align:center;">
+              <button class="confirombtn" (click)="Yes()">Yes</button>
+              <button class="confirombtn" (click)="No()">No</button>
+            </div>
+          </div>
+          <div class="col" style="display:flex;justify-content:flex-start;">
+            <span><input type="checkbox" [(ngModel)]="CheckDowntimeReq" (change)="toggleField($event)"></span>
+            <span>&nbsp;&nbsp;<b>Is Downtime Required?</b></span>
+          </div>
+          <div class="col">
+
+          </div>
+          <div class="col">
+
+          </div>
+          <div class="col">
+
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col" *ngIf="showRiskQ">
+            <label>From Date <span style="color:red">*</span></label>
+            <input type="datetime-local" [(ngModel)]="downTimeFromDate" placeholder="" (change)="datetimefunction()" />
+          </div>
+          <div class="col" *ngIf="showRiskQ">
+            <label>End Date<span style="color:red;font-size:x-small"> (*End Date Can't be less than
+                start)</span></label>
+            <input type="datetime-local" [(ngModel)]="downTimeToDate" placeholder="" [min]="minEndDate"
+              (change)="validateEndDate()" />
+          </div>
+          <div class="col" *ngIf="showRiskQ">
+          </div>
+          <div class="col" *ngIf="showRiskQ">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col" *ngIf="showRiskQ" style="width:50%">
+            <label>Impacted Location <span style="color:red">*</span></label>
+
+            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList"
+              [(ngModel)]="selectedlocationNames" (ngModelChange)="onSelectedItemsChange()">
+            </ng-multiselect-dropdown>
+
+            <!--<label>Impacted Location</label>
+          <input type="text" placeholder="" />-->
+          </div>
+          <div class="col" *ngIf="showRiskQ">
+            <label>Impacted Department <span style="color:red">*</span></label>
+            <!--<input type="text" [(ngModel)]="impactedDept" placeholder="" />-->
+            <ng-multiselect-dropdown [settings]="dropdownDepartmentSettings" [data]="dropdownListDepartment"
+              [(ngModel)]="selecteddepartmentNames" (ngModelChange)="onSelecteddepartmentItemsChange()">
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="col" *ngIf="showRiskQ">
+            <label>Impacted Function <span style="color:red">*</span></label>
+            <input type="text" [(ngModel)]="imactedFunc" placeholder="" />
+          </div>
+          <div class="col" *ngIf="showRiskQ">
+          </div>
+        </div>
+        <div class="row downtime_checklist" *ngIf="showRiskQ">
+          <h3>CheckList</h3>
+          <div style="width:75%;" class="container-field-line">
+            <!--<div class="container">-->
+            <table width="70%">
+              <thead>
+                <tr>
+                  <th width="10%">Sl.no</th>
+                  <th width="30%">Title</th>
+                  <th width="50%">Description</th>
+                  <th width="10%">Mandatory</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of checklist; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ item.checklistTitle }}</td>
+                  <td>{{ item.checklistDesc }}</td>
+                  <td>{{ item.mandatoryFlag ? 'True' : 'False' }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- G*P Classification -->
+  <div class="container-implement">
+    <div class="container-field-line">
+      <h3>GxP Classification</h3>
+      <div class="notification-confirm" *ngIf="gxpradioconfirmation">
+        <p style="font-size:17px;">Unchecking will clear all your datas. Click 'Yes' to Clear.</p>
+        <div style="text-align:center;">
+          <button class="confirombtn" (click)="gxpYes()">Yes</button>
+          <button class="confirombtn" (click)="gxpNo()">No</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="display:flex;justify-content:flex-start;">
+          <span><input type="checkbox" [(ngModel)]="CheckGxPClassification" (change)="toggleField2($event)"></span>
+          <span>&nbsp;&nbsp;<b>Is GxP Classification Available?</b></span>
+        </div>
+      </div>
+      <br />
+      <div *ngIf="showRiskQ2" class="border-inline border-rfc-heading">
+        <div class="container-line">
+          <div class="row g_p_classification">
+            <div class="col">Select-Plant <span style="color:red">*</span></div>
+            <div class="col">Change Control # <span style="color:red">*</span></div>
+            <div class="col">Change Control Date <span style="color:red">*</span></div>
+          </div>
+
+          <div class="row g_p_classification">
+            <div class="col">
+              <select [(ngModel)]="gxpplantId">
+                <option value="" disabled hidden selected>Select Plant</option>
+                <option *ngFor="let pltdata of plantcode " value="{{pltdata.id}}">{{pltdata.code}}</option>
+              </select>
+            </div>
+            <div class="col">
+              <input [(ngModel)]="changeControlNo" type="text" class="g_p_input">
+            </div>
+            <div class="col">
+              <input [(ngModel)]="changeControlDt" type="date" class="g_p_input" [min]="todaysDate">
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="vflag" class="submit_change">
+      <button class="btn-sub" type="submit" value="Submit" (click)="submitApprove('Draft')">Draft</button>
+      <button class="btn-sub" type="submit" value="Submit" (click)="submitApprove('Pending Approval')">Submit for
+        approval</button>
+      <button class="btn-sub" type="submit" [routerLink]="'/change-request'">Close</button>
+    </div>
+
+  </div>

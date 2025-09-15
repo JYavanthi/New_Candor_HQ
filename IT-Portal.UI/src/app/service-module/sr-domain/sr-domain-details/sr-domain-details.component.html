@@ -1,0 +1,203 @@
+<form [formGroup]="domainForm">
+  <div class="card service_card br-top-blue">
+    <div class="card-body">
+      <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+      <div class="card">
+        <div class="card-body">
+          <div class="software">
+            <div class="row">
+              <div class="requestTypeClass">
+               <div >
+                  <label class="asteriskrequired">Request Type</label>
+                  <select formControlName="domainRequestType" name="domainRequestType" (change)="changeRequestTypeValue()">
+                    <option selected disabled hidden value="">Select Request Type</option>
+                    <option *ngFor="let requestType of requestTypeList" [value]="requestType.supportId">
+                      {{requestType.supportName}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- New Domain Starts -->
+            <div class="row" *ngIf="domainForm.value.domainRequestType == 31">
+              <div class="inputFields">
+                <div>
+                  <label class="asteriskrequired" for="requiredDomainName" customLabelAlert="Domain Name is Required">Required Domain Name</label>
+                  <input type="text" formControlName="requiredDomainName" name="requiredDomainName" />
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="selectLocationName" customLabelAlert="Location is Required">Used in which location?</label>
+                  <ng-multiselect-dropdown [settings]="dropdownLocationSettings" [data]="dropdownListLocation" [disabled]="domainForm.controls['selectLocationName'].disabled"
+                    formControlName="selectLocationName">
+                  </ng-multiselect-dropdown>
+
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="department" customLabelAlert="Department is Required">Used in which department?</label>
+                  <ng-multiselect-dropdown formControlName="department" name="department" [disabled]="domainForm.controls['department'].disabled"
+                    [settings]="dropdownDepartmentSettings" [data]="dropdownListDepartment">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="noOfUsers" >How many users?</label>
+                  <input type="number" min="0" formControlName="noOfUsers" name="noOfUsers">
+                </div>
+                <div  class="textAreaDiv">
+                  <label class="asteriskrequired" for="purposeOfDomain">Purpose of the Domain</label>
+                  <textarea class="textAreaClass" formControlName="purposeOfDomain" name="purposeOfDomain"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!--New Domain Ends -->
+
+            <!-- Renewal of Domain Starts -->
+            <div class="row" *ngIf=" this.domainForm.value.domainRequestType == 32">
+              <div class="inputFields">
+                <div>
+                  <label class="asteriskrequired" for="domainName">Domain Name</label>
+                  <input type="text" formControlName="domainName" name="domainName">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="dueDate">Due Date</label>
+                  <input type="date" [min]="formVal.todaysDate" [max]="formVal.maxDate" formControlName="dueDate" name="dueDate">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="selectLocationName" customLabelAlert="Location is Required">Used in which location?</label>
+                  <ng-multiselect-dropdown [settings]="dropdownLocationSettings" [data]="dropdownListLocation" [disabled]="domainForm.controls['selectLocationName'].disabled"
+                    formControlName="selectLocationName">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="department" customLabelAlert="Department is Required">Used in which department?</label>
+                  <ng-multiselect-dropdown formControlName="department" name="department" [disabled]="domainForm.controls['department'].disabled"
+                    [settings]="dropdownDepartmentSettings" [data]="dropdownListDepartment">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="noOfUsers">How many users?</label>
+                  <input type="number" min="0"  formControlName="noOfUsers" name="noOfUsers">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="renewalYearsRequired"> Renewal required for what period?(in Years)</label>
+                  <input type="number" min="0" formControlName="renewalYearsRequired" name="renewalYearsRequired">
+                </div>
+                <div class="textAreaDiv">
+                  <label class="asteriskrequired" for="justification">Justification</label>
+                  <textarea class="textAreaClass" formControlName="justification" name="justification"></textarea>
+                </div>
+              </div>
+            </div>
+            <!-- Renewal of Domain Ends -->
+
+
+            <!-- New SSL Certificate Start -->
+            <div class="row" *ngIf="this.domainForm.value.domainRequestType== 33">
+              <div class="inputFields">
+                <div>
+                  <label class="asteriskrequired" for="domainName">Domain name</label>
+                  <input type="text" formControlName="domainName" name="domainName">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="sslType">Type of SSL</label>
+                  <select formControlName="sslType" name="sslType">
+                    <option selected disabled hidden value="">Select SSL type</option>
+                    <option value="Extended Validation(EV SSL)">Extended Validation(EV SSL)</option>
+                    <option value="Organizational Validated(OV SSL)">Organizational Validated(OV SSL)</option>
+                    <option value="Domain Validated">Domain Validated</option>
+                  </select>
+                </div>
+                <div class="textAreaDiv">
+                  <label class="asteriskrequired" for="justification">Justification</label>
+                  <textarea class="textAreaClass" formControlName="justification" name="justification"></textarea>
+                </div>
+              </div>
+            </div>
+            <!-- New SSL Certificate Start -->
+
+
+
+
+            <!-- Renewal of SSL Certificate Starts -->
+            <div class="row" *ngIf="this.domainForm.value.domainRequestType == 34">
+              <div class="inputFields">
+                <div>
+                  <label class="asteriskrequired" for="domainName">Domain name</label>
+                  <input type="text" formControlName="domainName" name="domainName">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="sslType">Type of SSL</label>
+                  <select formControlName="sslType" name="sslType">
+                    <option selected disabled hidden value="">Select SSL type</option>
+                    <option value="Extended Validation(EV SSL)">Extended Validation(EV SSL)</option>
+                    <option value="Organizational Validated(OV SSL)">Organizational Validated(OV SSL)</option>
+                    <option value="Domain Validated">Domain Validated</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="dueDate">Due Date</label>
+                  <input type="date" [min]="formVal.todaysDate" [max]="formVal.maxDate" formControlName="dueDate" name="dueDate">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="renewalYearsRequired"> Renewal required for what period?(in Years)</label>
+                  <input type="number" min="0" formControlName="renewalYearsRequired" name="renewalYearsRequired">
+                </div>
+                <div class="textAreaDiv">
+                  <label class="asteriskrequired" for="justification">Justification</label>
+                  <textarea class="textAreaClass" formControlName="justification" name="justification"></textarea>
+                </div>
+              </div>
+            </div>
+            <!-- Renewal of SSL Certificate  Ends -->
+
+
+            <!-- Discontinuatiob of SSL Starts -->
+            <div class="row" *ngIf="this.domainForm.value.domainRequestType == 35">
+              <div class="inputFields">
+                <div>
+                  <label class="asteriskrequired" for="domainName">Domain name</label>
+                  <input type="text" formControlName="domainName" name="domainName">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="discontinuationDate">Discontinuation Date</label>
+                  <input type="date" [min]="formVal.todaysDate" [max]="formVal.maxDate" formControlName="discontinuationDate"
+                   name="discontinuationDate">
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="selectLocationName" customLabelAlert="Location is Required">Used in which location?</label>
+                  <ng-multiselect-dropdown [settings]="dropdownLocationSettings" [data]="dropdownListLocation" [disabled]="domainForm.controls['selectLocationName'].disabled"
+                    formControlName="selectLocationName">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="department" customLabelAlert="Department is Required">Used in which department?</label>
+                  <ng-multiselect-dropdown formControlName="department" name="department" [disabled]="domainForm.controls['department'].disabled"
+                    [settings]="dropdownDepartmentSettings" [data]="dropdownListDepartment">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div>
+                  <label class="asteriskrequired" for="noOfUsers">How many users?</label>
+                  <input type="number" min="0" formControlName="noOfUsers" name="noOfUsers">
+                </div>
+                <div class="textAreaDiv">
+                  <label class="asteriskrequired" for="justification">Justification</label>
+                  <textarea class="textAreaClass" formControlName="justification" name="justification"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+                        <div class="mainBtnsDiv"
+                        *ngIf="domainForm.get('domainRequestType')?.value && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+
+            <button class="actionBtn" (click)="submit('Draft')">Draft</button>
+            <button class="actionBtn" (click)="submit('Pending Approval')">Submit</button>
+            <button class="actionBtn" (click)="clearAll()">Clear</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

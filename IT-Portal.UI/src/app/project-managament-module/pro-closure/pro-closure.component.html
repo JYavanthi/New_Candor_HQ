@@ -1,0 +1,57 @@
+<form [formGroup]="closureForm">
+    <div class="card service_card br-top-blue">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="inputFields">
+                        <div class="textAreaDiv">
+                            <label class="asteriskrequired">Remarks</label>
+                            <textarea class="textAreaClass" formControlName="remarks" name="remarks"
+                                id="remarks"></textarea>
+                        </div>  
+                        <div>
+                            <label class="asteriskrequired">Status</label>
+                            <select formControlName="status" name="status" id="status">
+                                <option value="" selected>Select Milestone...</option>
+                                <option value="Discontinue">Discontinue</option>
+                                <option value="Cancel">Cancel</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="textAreaDiv">
+                            <label>Attachment</label>
+                            <div class="attachmentList" style="width: fit-content;">
+                                <div class="d-flex" *ngIf="this.projectdetails?.projectStatus=='In Progress'">
+                                    <input type="file" [(ngModel)]="attach" (change)="getattach($event)"
+                                        [ngModelOptions]="{standalone: true}" style="width: 52%;" #fileInput />
+                                    <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()"
+                                    *ngIf="this.projectdetails?.projectStatus=='In Progress'" style="margin: 0px 10px;height: 33px;">
+                                        Add File</button>
+                                </div>
+                                <span class="red-alert">Only Jpg, Jpeg, Png and Pdf is allowed.</span>
+                                <div *ngFor="let attachment of attachmentsList;let i=index">
+                                    <div>
+                                        {{attachment.fileName}}
+                                        <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
+                                            (click)="viewFile(attachment)"></i>
+                                        <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true"
+                                            style="margin-left: 10px;" (click)="downFile(attachment)"></i>
+                                        <i class="fa fa-times cursor-pointer" aria-hidden="true" *ngIf="this.projectdetails?.projectStatus=='In Progress'"
+                                            (click)="deleteDoc(attachment)" style="margin-left: 10px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button class="actionBtn" (click)="openLessonLearn()">Add Lesson Learn</button> -->
+
+                </div>
+                <div class="mainBtnsDiv">
+                    <button class="actionBtn" (click)="submitClosuer()"
+                    *ngIf="projectdetails?.projectStatus=='In Progress'">Submit</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="projectdetails?.projectStatus=='In Progress'">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

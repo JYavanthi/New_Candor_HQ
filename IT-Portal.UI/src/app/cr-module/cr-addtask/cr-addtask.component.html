@@ -1,0 +1,195 @@
+  <div class="topBack">
+    <button class="btn-back" (click)="Back()">Back</button>
+  </div>
+
+  <form [formGroup]="taskForm">
+    <div class="card common_card">
+      <div class="card-body" style="box-shadow: 3px 3px rgb(128 128 128);">
+        <span *ngIf="crrData">
+          <span style="font-weight:bold;">
+            RFC # : {{crrData.crcode}} &nbsp;|&nbsp;&nbsp; RFC Date: {{crrData.crdate | date:'dd-MM-yyyy'}}
+          </span>
+        </span>
+        <span *ngIf="!crrData" style="font-weight:200;">
+          Loading data...
+        </span>
+      </div>
+    </div>
+    <br />
+
+    <nav style="width:39%;" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a (click)="Back()" style="cursor:pointer;">Implementation Plan</a></li>
+        <!-- <li class="breadcrumb-item active" aria-current="page" *ngFor="let pltdata of taskname">{{pltdata.sysLandscape1}}</li> -->
+        <li class="breadcrumb-item active" aria-current="page">{{NewUpdateTask}}</li>
+      </ol>
+    </nav>
+    <br>
+
+    <div class="container-field1">
+
+      <div class="row">
+        <div class="col">
+          <label>Planned Start Date</label>
+          <input type="datetime-local" formControlName="plannedStartDate" />
+        </div>
+        <div class="col">
+          <label>Planned End Date</label>
+          <input type="datetime-local" formControlName="plannedEndDate" />
+        </div>
+        <div class="col">
+          <label>Status</label>
+          <select formControlName="status" (change)="changeStatus()">
+            <option value="" selected disabled hidden>Select Status</option>
+            <option value="Assigned">Assigned</option>
+            <option value="Unassigned">Unassigned</option>
+            <option value="Onhold">Onhold</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Assigned To</label>
+          <input class="searchinput" type="text" formControlName="assignedTo" (input)="filterSupportTeamAssign()" placeholder="Enter Employee Name" />
+          <ul class="dropdowns-list">
+            <li class="drop-list" *ngFor="let item of suppDropdownAssign" (click)="selectAssignTo(item)">{{item}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Forward Status</label>
+          <select formControlName="forwardStatus">
+            <option value="" selected disabled hidden>Select Forwarded Status</option>
+            <option value="Forwarded">Forwarded</option>
+            <option value="Not Forwarded">Not Forwarded</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Forwarded To</label>
+          <input class="searchinput" type="text" formControlName="forwardedTo" (input)="filterSupportTeam()"
+            placeholder="Enter Forwarded To" (ngModelChange)="forwardedToChange()" />
+          <ul class="dropdowns-list">
+            <li class="drop-list" *ngFor="let item of suppDropdown" (click)="selectForwardTo(item)">{{item}}</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <label>Forwarded Date</label>
+          <input type="datetime-local" formControlName="forwardedDate" />
+        </div>
+        <div class="col">
+          <label>Reason For Forwarding</label>
+          <select formControlName="reasonForForwarding">
+            <option value="" selected disabled hidden>Select Reason</option>
+            <option value="Not Related">Not Related</option>
+            <option value="Require Help">Require Help</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Picked Status</label>
+          <select formControlName="pickedStatus" (change)="pickedStatusChange()">
+            <option value="" selected disabled hidden>Select Picked Status</option>
+            <option value="Picked">Picked</option>
+            <option value="Not Picked">Not Picked</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Picked Date</label>
+          <input type="datetime-local" formControlName="pickedDate" />
+        </div>
+        <div class="col">
+          <label>Actual Start Date</label>
+          <input type="datetime-local" formControlName="actualStartDate" />
+        </div>
+        <div class="col">
+          <label>Actual End Date</label>
+          <input type="datetime-local" formControlName="actualEndDate" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Depend SysLandscape</label>
+          <select formControlName="dependSysLandscape" (ngModelChange)="getdependtask()">
+            <option value="" selected disabled hidden>Select Depend SysLandscape</option>
+            <option *ngFor="let data of systemlandscape" value="{{data.sysLandscapeId}}">{{data.sysLandscape1}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Depend Task</label>
+          <select formControlName="dependTask">
+            <option value="" selected disabled hidden>Select the task</option>
+            <option *ngFor="let pltdata of depdendTaskList" [value]="pltdata.itcrexecId">{{pltdata.itcrexecId + ' ' + '-' + ' ' + pltdata.executionStepName}}</option>
+          </select>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+    <!-- end here  -->
+    <div class="container-field1 mt-5">
+      <div>
+        <label>Execution Step Name <span style="color:red">*</span></label>
+        <input type="text" formControlName="executionStepName" />
+      </div> <br />
+      <div>
+        <label>Execution Step Desc <span style="color:red">*</span></label>
+        <textarea class="textarea-implement" formControlName="executionStepDesc"></textarea>
+      </div>
+      <div>
+        <label for="">Remarks</label>
+        <textarea class="textarea-implement" formControlName="remarks" cols="160" rows="4"></textarea>
+      </div>
+
+      <div>
+        <button class="btn-task" type="submit" (click)="SubmitTaskFunc()">Submit</button>
+        <button class="btn-task" (click)="clearForm()">Clear</button>
+        <button class="btn-task" (click)="Back()">Back</button>
+      </div>
+
+    </div>
+    <br />
+    <br />
+
+    <div class="mt-3 updatehistory" *ngIf="taskID != undefined">
+      <div>
+        <p style="font-weight:600">Execution Plan History</p>
+      </div>
+      <div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>CR History Date</th>
+              <th>RFC#</th>
+              <th>Task #</th>
+              <th>Task Name</th>
+              <th>Task Description</th>
+              <th>Remarks</th>
+              <th>Assigned To</th>
+              <th>Forwarded To</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of getUpdateCRHistoryList">
+              <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.itcrid}}</td>
+              <td>{{row.itcrexecId}}</td>
+              <td>{{row.executionStepName}}</td>
+              <td>{{row.executionStepDesc}}</td>
+              <td>{{row.remarks}}</td>
+              <td>
+                {{ row.assignedTo ? (row.assignedTo + ' - ' + (row.assignedToName || '')) : (row.assignedToName || '') }}
+              </td>
+              <td>{{row.forwardedToName}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </form>
+
+  

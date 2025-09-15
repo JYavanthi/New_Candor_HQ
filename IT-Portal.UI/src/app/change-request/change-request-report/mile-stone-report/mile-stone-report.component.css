@@ -1,0 +1,89 @@
+td,th{
+    padding: 2px;
+}
+
+
+
+.approval-clm{
+    text-align: center;
+}
+
+
+table,th,td{
+    border: 1px solid #cdc7c7;
+
+}
+
+.n-b{
+  border: unset !important;
+}
+
+
+th,
+td {
+  padding: 3px 14px;
+  text-align: center;
+}
+
+.filter_button {
+  background-color: #3c8dbc;
+  color: white;
+  margin-top: 17px;
+}
+
+.search-crnum {
+  margin-left: -195%;
+  margin-top: 5%;
+  width: 75%;
+}
+.multiselect-dropdown .dropdown-btn {
+  display: inline-block;
+  border-bottom: 1px solid #adadad !important;
+  width: 100%;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.52857143;
+  text-align: left;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border-radius: 4px;
+}
+
+.export_pdf {
+  justify-content: end;
+  display: flex;
+  margin-right: 10%;
+}
+
+.change_request_header {
+  margin-left: 0;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+
+.tableClass {
+  width: 98%;    
+  overflow: auto;
+  height: 500px;
+}
+
+.access-checkbox {
+  margin-left: 25%;
+}
+td,th{
+  min-width: 110px !important;
+}
+
+.scroller {
+  position: fixed; /* Fix to the viewport */
+  bottom: 0; /* Align to the bottom */
+  left: 0; /* Start from the left */
+  width: 100%; /* Full width */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of content */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+}

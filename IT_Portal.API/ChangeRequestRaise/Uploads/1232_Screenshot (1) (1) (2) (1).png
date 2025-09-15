@@ -1,0 +1,450 @@
+<!DOCTYPE html><html lang="en"><head>
+  <script type="module" src="/@vite/client"></script>
+
+  <meta charset="utf-8">
+  <title>IT Portal</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...your-integrity-code-here..." crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/theme-default.css">
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- overlay dropdown with checkbox -->
+  <link rel="stylesheet" type="text/css" href="assets/css/virtual-select.min.css">
+  <!-- dark theme -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="styles.css"><style ng-app-id="ng">
+
+.loader[_ngcontent-ng-c3832130615] {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 1001;
+}
+/*# sourceMappingURL=app.component.css.map */</style><style ng-app-id="ng">
+
+*[_ngcontent-ng-c3008884966] {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.sidebar[_ngcontent-ng-c3008884966] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background: #11101d;
+  z-index: 100;
+  transition: all 0.5s ease;
+  overflow-y: auto;
+}
+.sidebar.close[_ngcontent-ng-c3008884966] {
+  width: 78px;
+  overflow-y: inherit;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .logo-details[_ngcontent-ng-c3008884966] {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .logo-details[_ngcontent-ng-c3008884966]   i[_ngcontent-ng-c3008884966] {
+  font-size: 30px;
+  color: #fff;
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .logo-details[_ngcontent-ng-c3008884966]   .logo_name[_ngcontent-ng-c3008884966] {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+  transition-delay: 0.1s;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .logo-details[_ngcontent-ng-c3008884966]   .logo_name[_ngcontent-ng-c3008884966] {
+  transition-delay: 0s;
+  opacity: 0;
+  pointer-events: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966] {
+  min-height: calc(100% - 200px);
+  height: auto;
+  padding: 30px 0;
+  overflow: hidden;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966] {
+  overflow: visible;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]::-webkit-scrollbar {
+  display: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966] {
+  position: relative;
+  list-style: none;
+  transition: all 0.4s ease;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]:hover {
+  background: #3c8dbc;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .iocn-link[_ngcontent-ng-c3008884966] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .iocn-link[_ngcontent-ng-c3008884966] {
+  display: block;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   i[_ngcontent-ng-c3008884966] {
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li.showMenu[_ngcontent-ng-c3008884966]   i.arrow[_ngcontent-ng-c3008884966] {
+  transform: rotate(-180deg);
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   i.arrow[_ngcontent-ng-c3008884966] {
+  display: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966] {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966]   .link_name[_ngcontent-ng-c3008884966] {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966]   .link_name[_ngcontent-ng-c3008884966] {
+  opacity: 0;
+  pointer-events: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966] {
+  padding: 6px 6px 14px 80px;
+  margin-top: -10px;
+  background: #1d1b31;
+  display: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li.showMenu[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966] {
+  display: block;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966] {
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 0;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966]:hover {
+  opacity: 1;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966] {
+  position: absolute;
+  left: 100%;
+  top: -10px;
+  margin-top: 0;
+  padding: 10px 20px;
+  border-radius: 0 6px 6px 0;
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]:hover   .sub-menu[_ngcontent-ng-c3008884966] {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966]   .link_name[_ngcontent-ng-c3008884966] {
+  display: none;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966]   .link_name[_ngcontent-ng-c3008884966] {
+  font-size: 18px;
+  opacity: 1;
+  display: block;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   .sub-menu.blank[_ngcontent-ng-c3008884966] {
+  opacity: 1;
+  pointer-events: auto;
+  padding: 3px 20px 6px 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .nav-links[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]:hover   .sub-menu.blank[_ngcontent-ng-c3008884966] {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966] {
+  position: fixed;
+  bottom: 0;
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1d1b31;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966] {
+  background: none;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966] {
+  width: 78px;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   .profile-content[_ngcontent-ng-c3008884966] {
+  display: flex;
+  align-items: center;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   img[_ngcontent-ng-c3008884966] {
+  height: 52px;
+  width: 52px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  background: #1d1b31;
+  transition: all 0.5s ease;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   img[_ngcontent-ng-c3008884966] {
+  padding: 10px;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   .profile_name[_ngcontent-ng-c3008884966], .sidebar[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   .job[_ngcontent-ng-c3008884966] {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   i[_ngcontent-ng-c3008884966], .sidebar.close[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   .profile_name[_ngcontent-ng-c3008884966], .sidebar.close[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   .job[_ngcontent-ng-c3008884966] {
+  display: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .profile-details[_ngcontent-ng-c3008884966]   .job[_ngcontent-ng-c3008884966] {
+  font-size: 12px;
+}
+.issue-submenu[_ngcontent-ng-c3008884966] {
+  display: none !important;
+}
+.issue-menu[_ngcontent-ng-c3008884966]:hover   .issue-submenu[_ngcontent-ng-c3008884966] {
+  display: block !important;
+}
+.sub-items[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966] {
+  text-decoration: none;
+  color: white;
+  background: #1d1b31;
+}
+@keyframes _ngcontent-ng-c3008884966_slideIn {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 200px;
+    opacity: 1;
+  }
+}
+.sidebar[_ngcontent-ng-c3008884966]   .sub-menu[_ngcontent-ng-c3008884966] {
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 6px 6px 14px 80px;
+  background: #1d1b31;
+  display: none;
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #1d1b31;
+}
+.sub-menu[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966] {
+  background-color: #1d1b31 !important;
+}
+.sub-menu[_ngcontent-ng-c3008884966]   li[_ngcontent-ng-c3008884966]   a[_ngcontent-ng-c3008884966]:hover {
+  background-color: #1d1b31 !important;
+}
+.sidebar.close[_ngcontent-ng-c3008884966]   .sub-items[_ngcontent-ng-c3008884966] {
+  display: none;
+}
+.sidebar[_ngcontent-ng-c3008884966]   .sub-items[_ngcontent-ng-c3008884966] {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.sidebar[_ngcontent-ng-c3008884966]::-webkit-scrollbar {
+  width: 8px;
+}
+.sidebar[_ngcontent-ng-c3008884966]::-webkit-scrollbar-track {
+  background: #1d1b31;
+  border-radius: 10px;
+}
+.sidebar[_ngcontent-ng-c3008884966]::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border-radius: 10px;
+  border: 2px solid #1d1b31;
+}
+.sidebar[_ngcontent-ng-c3008884966]::-webkit-scrollbar-thumb:hover {
+  background-color: #555555;
+}
+.sidebar[_ngcontent-ng-c3008884966] {
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #1d1b31;
+}
+/*# sourceMappingURL=side-bar.component.css.map */</style><style ng-app-id="ng">
+
+.dropdown-content[_ngcontent-ng-c413615626] {
+  display: none;
+  min-width: 100px;
+  position: absolute;
+  padding: 8px 10px;
+  border: 2px solid #3c8dbc;
+  border-radius: 20px;
+  background-color: #3c8dbc;
+  z-index: 1;
+  margin-top: 25%;
+  margin-left: -75%;
+}
+.dropdown-content[_ngcontent-ng-c413615626]   a[_ngcontent-ng-c413615626] {
+  color: white;
+  margin-left: 3px;
+  padding: 1px;
+  text-decoration: none;
+  display: block;
+}
+.show[_ngcontent-ng-c413615626] {
+  display: block;
+}
+.profile-content[_ngcontent-ng-c413615626] {
+  display: inline-block;
+}
+.navbar-brand[_ngcontent-ng-c413615626] {
+  margin-left: -13%;
+}
+.profile-img[_ngcontent-ng-c413615626] {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: -28%;
+}
+.navbar[_ngcontent-ng-c413615626] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3c8dbc;
+  padding: 10px;
+  z-index: 1000;
+}
+.header-it[_ngcontent-ng-c413615626] {
+  color: white;
+  font-weight: normal;
+}
+.microlab_symbol[_ngcontent-ng-c413615626] {
+  height: 50px;
+  margin-left: 80%;
+  margin-top: -7%;
+}
+.unnati_symbol[_ngcontent-ng-c413615626] {
+  margin-left: 2%;
+  margin-top: -7%;
+}
+.itportal_symbol[_ngcontent-ng-c413615626] {
+  color: white;
+  font-weight: 300;
+  white-space: nowrap;
+  font-size: xx-large;
+}
+.container[_ngcontent-ng-c413615626] {
+  display: flex;
+  align-items: center;
+  margin-top: 1%;
+  margin-left: -22%;
+}
+.img[_ngcontent-ng-c413615626] {
+  max-width: 100%;
+  height: auto;
+  margin-right: 10px;
+}
+.container[_ngcontent-ng-c413615626]   h1[_ngcontent-ng-c413615626] {
+  margin: 0;
+}
+.user-profile[_ngcontent-ng-c413615626] {
+  margin-right: -55%;
+  display: block;
+}
+.user-profile[_ngcontent-ng-c413615626]   p[_ngcontent-ng-c413615626] {
+  color: white;
+  display: block;
+  margin: 5px 0;
+}
+/*# sourceMappingURL=headers.component.css.map */</style></head>
+<body><!--nghm-->
+  <app-root _nghost-ng-c3832130615="" ng-version="17.3.9" ngh="2" ng-server-context="ssr"><app-side-bar _ngcontent-ng-c3832130615="" _nghost-ng-c3008884966="" class="ng-tns-c3008884966-0" ngh="0"><div _ngcontent-ng-c3008884966="" class="sidebar close ng-tns-c3008884966-0" ng-reflect-ng-class="[object Object]"><div _ngcontent-ng-c3008884966="" class="logo-details ng-tns-c3008884966-0"><i _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 bx bxs-right-arrow-circle"></i><span _ngcontent-ng-c3008884966="" class="logo_name ng-tns-c3008884966-0">IT Portal</span></div><ul _ngcontent-ng-c3008884966="" class="nav-links ng-tns-c3008884966-0"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><i _ngcontent-ng-c3008884966="" class="bx bx-home-alt ng-tns-c3008884966-0"></i><span _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0" tabindex="0" ng-reflect-router-link="/dashboard">Home</span></a><ul _ngcontent-ng-c3008884966="" class="sub-menu blank ng-tns-c3008884966-0"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" href="/dashboard" class="link_name ng-tns-c3008884966-0">Home</a></li></ul></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><div _ngcontent-ng-c3008884966="" class="iocn-link ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><i _ngcontent-ng-c3008884966="" class="bx bx-git-pull-request ng-tns-c3008884966-0"></i><span _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0">Change Request</span></a><i _ngcontent-ng-c3008884966="" class="arrow ng-tns-c3008884966-0 bx bxs-chevron-down"></i></div><ul _ngcontent-ng-c3008884966="" class="sub-items ng-tns-c3008884966-0 ng-trigger ng-trigger-slideInOut" style="max-height: 0; opacity: 0;"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/change-request" href="/change-request"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>View Change Request</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/new-change" href="/new-change"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>New Change Request</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/change_request_report" href="/change_request_report"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>Report</a></li><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></ul><ul _ngcontent-ng-c3008884966="" class="sub-menu ng-tns-c3008884966-0"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0">Change Request</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/change-request" href="/change-request">View Change Request</a></li><!--bindings={}--><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/change_request_report" href="/change_request_report">Report</a></li></ul></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><div _ngcontent-ng-c3008884966="" class="iocn-link ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><i _ngcontent-ng-c3008884966="" class="bx bx-support ng-tns-c3008884966-0"></i><span _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0">Help Desk</span></a><i _ngcontent-ng-c3008884966="" class="arrow ng-tns-c3008884966-0 bx bxs-chevron-down"></i></div><ul _ngcontent-ng-c3008884966="" class="sub-items ng-tns-c3008884966-0 ng-trigger ng-trigger-slideInOut" style="max-height: 0; opacity: 0;"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/report_issue" href="/report_issue"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>Issue</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/services/servicemaster" href="/services/servicemaster"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>Service</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/assets/assetmaster" href="/assets/assetmaster"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>Assets</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0 ng-star-inserted" style=""><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/reports" href="/reports"><i _ngcontent-ng-c3008884966="" class="bx bxs-circle ng-tns-c3008884966-0" style="font-size: 5px;"></i>Knowledge Base</a></li><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></ul><ul _ngcontent-ng-c3008884966="" class="sub-menu ng-tns-c3008884966-0"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0" ng-reflect-router-link="/help-desk" href="/help-desk">Help Desk</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/report_issue" href="/report_issue">Issue</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/services/servicemaster" href="/services/servicemaster">Service</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0" ng-reflect-router-link="/assets/viewassets" href="/assets/viewassets">Assets</a></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0">Knowledge Base</a></li></ul></li><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><i _ngcontent-ng-c3008884966="" class="bx bx-line-chart ng-tns-c3008884966-0"></i><span _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0">Project Management</span></a><ul _ngcontent-ng-c3008884966="" class="sub-menu blank ng-tns-c3008884966-0"><li _ngcontent-ng-c3008884966="" class="ng-tns-c3008884966-0"><a _ngcontent-ng-c3008884966="" class="link_name ng-tns-c3008884966-0" ng-reflect-router-link="/projectmaster" href="/projectmaster">Project Management</a></li></ul></li><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></ul></div></app-side-bar><app-headers _ngcontent-ng-c3832130615="" _nghost-ng-c413615626="" ngh="1"><header _ngcontent-ng-c413615626="" class="navbar navbar-expand-lg"><div _ngcontent-ng-c413615626="" class="container-fluid"><a _ngcontent-ng-c413615626="" href="#" class="navbar-brand"><img _ngcontent-ng-c413615626="" src="assets/image/microlabs.png" alt="Microlabs Logo" class="microlab_symbol"><img _ngcontent-ng-c413615626="" src="assets/image/unnati.png" alt="Unnati Logo" class="unnati_symbol"><span _ngcontent-ng-c413615626="" class="itportal_symbol">| IT Portal</span></a><div _ngcontent-ng-c413615626="" class="user-profile"><p _ngcontent-ng-c413615626=""><b _ngcontent-ng-c413615626="">NAME :      </b></p><p _ngcontent-ng-c413615626=""><b _ngcontent-ng-c413615626="">ID : </b></p><p _ngcontent-ng-c413615626=""><b _ngcontent-ng-c413615626="">ROLE : </b></p></div><div _ngcontent-ng-c413615626="" class="dropdown"><div _ngcontent-ng-c413615626="" class="profile-content"><img _ngcontent-ng-c413615626="" src="assets/image/profile.png" alt="Profile" class="profile-img"></div><div _ngcontent-ng-c413615626="" class="dropdown-content" ng-reflect-ng-class="[object Object]"><a _ngcontent-ng-c413615626="" href=""><i _ngcontent-ng-c413615626="" class="fas fa-sign-out-alt" style="font-size: 17px; color: white;">Logout</i></a></div></div></div></header></app-headers><router-outlet _ngcontent-ng-c3832130615=""></router-outlet><!--container--></app-root>
+  <!--<script type="text/javascript" src="assets/js/text.js"></script> 
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
+  <script type="text/javascript" src="https://js.nicedit.com/nicEdit-latest.js"></script>
+-->
+
+   <!--Dashboard plugins--> 
+ <!-- <script type="text/javascript" src="assets/carousel/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/bootstrap/bootstrap.min.js"></script>-->
+     <!--END PLUGINS -->
+
+     <!--START THIS PAGE PLUGINS-->
+    <!--<script type='text/javascript' src='assets/carousel/plugins/icheck/icheck.min.js'></script>
+    <script type="text/javascript" src="assets/carousel/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/scrolltotop/scrolltopcontrol.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/morris/raphael-min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/morris/morris.min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/rickshaw/d3.v3.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/rickshaw/rickshaw.min.js"></script>
+    <script type='text/javascript' src='assets/carousel/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+    <script type='text/javascript' src='assets/carousel/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+    <script type='text/javascript' src='assets/carousel/plugins/bootstrap/bootstrap-datepicker.js'></script>
+    <script type="text/javascript" src="assets/carousel/plugins/owl/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/moment.min.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins/daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="assets/carousel/settings.js"></script>
+    <script type="text/javascript" src="assets/carousel/plugins.js"></script>
+    <script type="text/javascript" src="assets/carousel/actions.js"></script>
+    <script type="text/javascript" src="assets/carousel/demo_dashboard.js"></script>-->
+     <!--Font Awesome--> 
+          <!--overlay dropdown with checkbox--> 
+    <script type="text/javascript" src="assets/js/virtual-select.min.js"></script>
+    <script type="text/javascript">
+      VirtualSelect.init({ 
+        ele: '#multi_option' 
+      });
+    </script>
+<script src="polyfills.js" type="module"></script><script src="scripts.js" defer=""></script><script src="main.js" type="module"></script>
+
+<script id="ng-state" type="application/json">{"284254193":{"b":[{"supportTeamId":1,"email":"sureshs@microlabs.in","firstName":"ML00","middleName":"Approver","lastName":"1","dol":null,"dob":null,"empId":133813,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":1},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":2},{"supportTeamId":3,"email":" .micro","firstName":"Senthil","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":135044,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":3,"categoryName":"Network","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":1,"supportName":"Change Request","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Super Admin","imgUrl":"","isActive":true,"supportTeamAssgnId":3},{"supportTeamId":4,"email":"rajashekara.bm@microlabs.in","firstName":"Rajashekara  B M","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":130161,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"Senior Manager - IT","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":4},{"supportTeamId":1,"email":"sureshs@microlabs.in","firstName":"ML00","middleName":"Approver","lastName":"1","dol":null,"dob":null,"empId":133813,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":6,"categoryName":"SAP","classificationId":1,"classificationName":"Standard","categoryTypeId":12,"categoryType":"SAP MM","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":5},{"supportTeamId":1,"email":"sureshs@microlabs.in","firstName":"ML00","middleName":"Approver","lastName":"1","dol":null,"dob":null,"empId":133813,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":6,"categoryName":"SAP","classificationId":2,"classificationName":"Normal ( Infra )","categoryTypeId":14,"categoryType":"SAP BASIS","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":12},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":6,"categoryName":"SAP","classificationId":2,"classificationName":"Normal ( Infra )","categoryTypeId":14,"categoryType":"SAP BASIS","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":13},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":6,"categoryName":"SAP","classificationId":1,"classificationName":"Standard","categoryTypeId":14,"categoryType":"SAP BASIS","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":14},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":2,"categoryName":"Infra","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":15},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":3,"categoryName":"Network","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":16},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":17},{"supportTeamId":2,"email":"sundeep@microlabs.in","firstName":"Sundeep  Y","middleName":null,"lastName":null,"dol":null,"dob":null,"empId":118474,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":6,"code":"ML01","designation":"12","role":"Super Admin","imgUrl":null,"isActive":true,"supportTeamAssgnId":18},{"supportTeamId":5,"email":"unnati@microlabs.in","firstName":"ML00","middleName":"Approver","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":85457,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":false,"categoryId":2,"categoryName":"Infra","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"Associate Vice President - IT","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":19},{"supportTeamId":3,"email":" .micro","firstName":"Senthil","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":135044,"isApprover":true,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":true,"issupportengineer":true,"categoryId":2,"categoryName":"Infra","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"Assistant - Accounts","role":"Super Admin","imgUrl":"","isActive":true,"supportTeamAssgnId":20},{"supportTeamId":6,"email":"","firstName":"Rajesh Bhatta","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":66898,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":3,"categoryName":"Network","classificationId":2,"classificationName":"Normal ( Infra )","categoryTypeId":5,"categoryType":"WiFi","supportId":1,"supportName":"Change Request","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":21},{"supportTeamId":7,"email":" .micro","firstName":"Vadivel  Subburaj","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":109771,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":false,"categoryId":3,"categoryName":"Network","classificationId":2,"classificationName":"Normal ( Infra )","categoryTypeId":5,"categoryType":"WiFi","supportId":1,"supportName":"Change Request","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":22},{"supportTeamId":8,"email":"","firstName":"Veerendra K.V","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":65871,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":false,"categoryId":3,"categoryName":"Network","classificationId":2,"classificationName":"Normal ( Infra )","categoryTypeId":4,"categoryType":"Switch             ","supportId":1,"supportName":"Change Request","plantId":15,"code":"ML02","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":23},{"supportTeamId":9,"email":"","firstName":"Jagrit  Toppo","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":126391,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":2,"categoryName":"Infra","classificationId":1,"classificationName":"Standard","categoryTypeId":2,"categoryType":"Storage","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"Assistant - Caretaker","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":24},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":7,"supportName":"Project Management","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":25},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":2,"supportName":"Helpdesk","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":26},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":5,"supportName":"Asset/Spare","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":27},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":3,"supportName":"Issue","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":28},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":29,"supportName":"Pro Management","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":29},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":93,"supportName":"It Spare","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":30},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":92,"supportName":"It Asset","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":31},{"supportTeamId":10,"email":" .micro","firstName":"Veerabhadraswamy H. M.","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":100680,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":4,"categoryName":"Security","classificationId":1,"classificationName":"Standard","categoryTypeId":4,"categoryType":"Switch             ","supportId":1,"supportName":"Change Request","plantId":6,"code":"ML01","designation":"Assistant - Accounts","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":32},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":33},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":2,"supportName":"Helpdesk","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":34},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":7,"supportName":"Project Management","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":35},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":3,"supportName":"Issue","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":36},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":5,"supportName":"Asset/Spare","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":37},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":92,"supportName":"It Asset","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":38},{"supportTeamId":11,"email":"","firstName":"Gopal V.C","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":61938,"isApprover":false,"ischangeanalyst":true,"isadmin":true,"isSuperAdmin":false,"issupportengineer":true,"categoryId":1,"categoryName":"IT Portal Support","classificationId":1,"classificationName":"Standard","categoryTypeId":1,"categoryType":"Server","supportId":93,"supportName":"It Spare","plantId":5,"code":"ML00","designation":"Assistant - Guest Relation","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":39},{"supportTeamId":12,"email":"sarathkumard@microlabs.in","firstName":"D Sarathkumar  .","middleName":"","lastName":"","dol":"2024-10-17T11:08:50.007","dob":"2024-10-17","empId":118335,"isApprover":false,"ischangeanalyst":false,"isadmin":true,"isSuperAdmin":false,"issupportengineer":false,"categoryId":6,"categoryName":"SAP","classificationId":1,"classificationName":"Standard","categoryTypeId":12,"categoryType":"SAP MM","supportId":1,"supportName":"Change Request","plantId":5,"code":"ML00","designation":"Executive - IT","role":"Test","imgUrl":"","isActive":true,"supportTeamAssgnId":40}],"h":{},"s":200,"st":"OK","u":"http://localhost:5014/api/SupportTeam","rt":"json"},"__nghData__":[{"t":{"23":"t28","31":"t29","43":"t30","69":"t31"},"c":{"23":[{"i":"t28","r":1,"x":3}],"31":[],"43":[{"i":"t30","r":1,"x":4}],"69":[]}},{},{"c":{"2":[]}}]}</script></body></html>

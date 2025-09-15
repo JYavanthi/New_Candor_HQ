@@ -1,0 +1,42 @@
+
+<div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap -->
+    <h3>Update Reference Type</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>ReferenceType ID</label>
+          <input type="text" readonly [(ngModel)]="updatevalue[0].referenceTypeId" />
+        </div>
+        <div class="col">
+          <label>Reference Type</label>
+          <input type="text"  [(ngModel)]="updatevalue[0].referenceType"/>
+        </div>
+        <div class="col">
+          <label>Is Active</label>
+
+          <select [(ngModel)]="updatevalue[0].isActive">
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <button (click)="postReferenceType()" class="btn btn-primary">Submit</button>
+      </div>
+      <div class="col">
+        <button [routerLink]="'/Refrencetype'" style="margin-left: -87%;" class="btn btn-primary">Back</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+

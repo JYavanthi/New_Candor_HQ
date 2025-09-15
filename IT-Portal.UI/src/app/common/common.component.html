@@ -1,0 +1,64 @@
+<!-- <div class="actions">
+    <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+        <strong class="d-block h6 my-2 pb-2 border-bottom">Actions</strong>
+        <nav id="TableOfContents">
+            <ul>
+                <li style="cursor:pointer;" (click)="goToTab('contact')">Execution Plan History</li>
+                <li style="cursor:pointer;" (click)="goToapprover('profile')">Approval History</li>
+                <li style="cursor:pointer;">Execution Plan History</li>
+                <li style="cursor:pointer;">Approval History</li>
+                <li>Template</li>
+                <li>Documents</li>
+                <li>Quick Link</li>
+                <li>Linkage</li>
+            </ul>
+        </nav>
+    </div>
+</div> -->
+
+<div class="card common_card">
+  <div class="card-body" style="box-shadow: 3px 3px rgb(128 128 128);">
+    <p style="font-weight:bold;">RFC # : {{crid.crcode}} &nbsp;|&nbsp;&nbsp; RFC Date : {{crid.crdate| date:'dd-MM-yyyy'}}</p> 
+  </div>
+</div>
+
+<div>
+    <div class="container">
+      <article>
+        <div>
+          <div class="track">
+            <div class="step" [ngClass]="{'active': draftgreen}">
+              <span class="icon"> <i class="fa fa-check"></i> </span>
+              <span class="text">Drafts</span>
+              <span></span>
+            </div>
+            <div *ngIf="pendingapprove" class="step" [ngClass]="{'active': submitactive,'inactive': submitinactive}">
+              <span class="icon"> <i class="fa fa-check"></i> </span>
+              <span class="text">Pending Approval</span>
+              <span class="date-status"></span>
+            </div>
+            <div *ngIf="rejectedcr" class="step" [ngClass]="{'rejected': rejectedcr}">
+              <span class="icon"><i class="fa fa-check"></i></span>
+              <span class="text">Rejected</span>
+            </div>
+              <div *ngIf="!rejectedcr" class="step" [ngClass]="{'active': approveactive,'inactive': approveinactive}">
+                <span class="icon"><i class="fa fa-check"></i></span>
+                <span class="text">Approved</span>
+              </div>
+              <div *ngIf="!rejectedcr" class="step" [ngClass]="{'active': executeactive,'inactive': executeinactive}">
+                <span class="icon"><i class="fa fa-check"></i></span>
+                <span class="text">Implemented</span>
+              </div>
+              <div *ngIf="!rejectedcr" class="step" [ngClass]="{'active': releaseactive,'inactive': releaseinactive}">
+                <span class="icon"><i class="fa fa-check"></i></span>
+                <span class="text">Released</span>
+              </div>
+              <div *ngIf="!rejectedcr" class="step" [ngClass]="{'active': completactive,'inactive': completinactive}">
+                <span class="icon"><i class="fa fa-check"></i></span>
+                <span class="text">Completed</span>
+              </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>

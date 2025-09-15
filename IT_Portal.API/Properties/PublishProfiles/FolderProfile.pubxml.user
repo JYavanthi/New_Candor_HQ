@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <History>True|2025-06-20T12:59:35.2519906Z;True|2025-06-18T23:09:33.3777357+05:30;True|2025-06-18T23:03:15.8471197+05:30;True|2025-06-18T19:51:24.7966107+05:30;True|2025-06-18T19:26:29.9301093+05:30;False|2025-06-18T19:25:13.8087939+05:30;False|2025-06-18T19:14:08.2464059+05:30;True|2025-06-18T19:06:13.6889414+05:30;True|2025-06-18T18:56:43.3556950+05:30;True|2025-06-18T18:09:25.5267271+05:30;False|2025-06-12T12:22:50.2470849+05:30;False|2025-06-12T12:20:16.5407243+05:30;</History>
+    <LastFailureDetails />
+    <_PublishTargetUrl>D:\build</_PublishTargetUrl>
+  </PropertyGroup>
+</Project>

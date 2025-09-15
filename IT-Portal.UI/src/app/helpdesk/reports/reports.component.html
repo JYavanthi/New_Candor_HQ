@@ -1,0 +1,29 @@
+''
+
+<div class="container-home">
+  <div class="text-center pageHeadingCss">
+    <p class="pageHeadingparaCss">Issue Reports</p>
+  </div>
+  <br />
+  <div style="margin-left: 6%;">
+    <button class="btn-back" [routerLink]="'/report_issue'">Back</button>
+  </div>
+  <div class="row generate_row">
+    <div class="col selector">
+      <label for="selector">Selector :</label>&nbsp;
+      <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)" class="select_change_report">
+        <option selected  disabled value="Select Report">Select Report</option>
+        <option>Issue Report</option>
+        <option>Issue Resolution</option>
+        <!-- <option>SLA Summary</option> -->
+      </select>
+    </div>
+    <!--<div class="col generate_report">
+        <label>Generate Report :</label>&nbsp;
+        <button class="generate_button">generate</button>
+    </div>-->
+    <div [ngSwitch]="selectedOption">
+      
+    </div>
+  </div>
+</div>

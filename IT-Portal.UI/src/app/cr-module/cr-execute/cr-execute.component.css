@@ -1,0 +1,141 @@
+.execute_container_implement {
+    width: 88rem;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    margin-left: -10px;
+  }
+
+  .fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    width:50rem;
+    border: none;
+    border-collapse: collapse;
+    background-color: white;
+  }
+
+  .table-head th {
+    white-space: nowrap;
+  }
+
+
+  /* .table-headImplementation{
+    width: 5rem;
+  } */
+
+  .execute_container_implement .row .row-cols-md-5 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .preDefinedCont{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 12%;
+  }
+
+  .preDefinedCont input{
+    margin-left: -3%;
+    width: 10%;
+  }
+
+  .preDefinedCont span{
+    margin: 6px 0px 0px 6px;
+  }
+
+  .landscapeClass {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .PreDefinedTask{
+    display: flex;
+    align-items: center;
+  }
+
+.PreDefinedTaskDiv {
+  gap: 10px;
+  display: flex;
+  align-items:center;
+  width:100%;
+}
+
+.executeTopBtns {
+  background-color: #3c8dbc;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  padding: 7px 0;
+}
+
+button[disabled] {
+  background-color: #76bbe3;
+  pointer-events: none;
+}
+
+.viewall-task {
+  background-color: wheat;
+  padding: 9px 1px 1px 1px;
+  border-radius: 5px;
+  width: 17%;
+  text-align: center;
+  color: black;
+}
+
+.confirmbtn{
+  background-color:blue;
+  border:none;
+  padding:2%;
+  color:white;
+  margin-right:5px;
+  border-radius:5px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  color: white;
+}
+
+.notification-success {
+  position: fixed;
+  top: 15% !important;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  background-color: green;
+  border-radius: 5px;
+  color: white;
+  width: 350px;
+  padding: 15px 15px 0px 15px;
+  animation: slideDown 0.5s ease forwards !important;
+  z-index: 100000 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes slideDown {
+  from {
+    top: 100px;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+.successNotificationAlign{
+  display: flex;
+  align-items: center;
+}

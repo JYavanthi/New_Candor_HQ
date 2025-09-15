@@ -1,0 +1,72 @@
+<div class="text-center">
+  <h1>Task Report</h1>
+</div>
+<div class="container-home">
+  <div class="row" align="right">
+    <div class="col export_pdf">
+      <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
+          aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+    </div>
+    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
+
+    </div>
+  </div>
+</div>
+
+<div class="row generate_row">
+  <div class="col-3">
+    <label for="selector">Select Project</label>&nbsp;
+    <select (change)="onOptionSelected($event)">
+      <option value="" disabled selected hidden>Select-Project</option>
+      <option *ngFor="let ptoject of projectManagementList" [value]="ptoject.projectMgmtId">
+        {{ptoject.projectCode + '-' + ptoject.projectName}}
+      </option>
+    </select>
+
+  </div>
+</div>
+<div class="tableDesign">
+  <div class="table-container">
+    <table #tableRef id="excel-table">
+      <thead>
+        <tr>
+          <th>SL.No.</th>
+          <th>Task Code</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Schedule Start Date</th>
+          <th>Schedule End Date</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of paginatedData; let i=index;">
+          <td>{{i+1}}</td>
+          <td>{{task.taskCode}}</td>
+          <td>{{task.taskTitle}}</td>
+          <td>{{task.status}}</td>
+          <td>{{task.startDt|date:'dd-MM-yyyy'}}</td>
+          <td>{{task.endDt|date:'dd-MM-yyyy'}}</td>
+          <td>{{task.taskPriority}}</td>
+        </tr>
+        <tr *ngIf="paginatedData?.length === 0">
+          <td colspan="15" style="text-align: center;">
+            <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+            No Data Available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mb-5" *ngIf="paginatedData?.length > 0">
+
+      <div class="mb-5">
+        <div *ngIf="paginatedData?.length > 0">
+          <mat-paginator [length]="paginatedData?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+            [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page"
+            style="margin-right:34%">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

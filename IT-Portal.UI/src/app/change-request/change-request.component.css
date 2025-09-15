@@ -1,0 +1,116 @@
+/*.table-wrapper {
+  display: flex;
+  justify-content: center;
+  font-size: small;
+  margin-top: -1%;
+}
+
+td,
+th {
+  font-size: small;
+}*/
+
+/* .filter_cr {
+  margin-left: 10%;
+} */
+
+/*.cr_date {
+  margin-top: 8px;
+  padding-top: 9px;
+}
+
+
+.description {
+  padding: 5px;
+  width: 70px;
+  height: 15px;
+}
+
+.inside_description {
+  padding: 5px;
+  position: relative;
+  left: 75px;
+  top: 5px;
+  background: #bebebe;
+  width: 100px;
+  height: 15px;
+  color: black;
+  display: none;
+}
+
+.description:hover .inside_description{
+    display: block;
+}
+
+.cr_filter_checkbox{
+  margin-top: 2%;
+  margin-right: 2px;
+}
+
+.cr_filter_label{
+  margin-top: 23px;
+  margin-right: 3%;
+
+}
+
+.access-checkbox {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.filter_button{
+  background-color: #3c8dbc;
+  color: white;
+  margin-top: 17px;
+}
+
+.card_filter{
+  width: 82%;
+  margin-left: 11%;
+}
+
+.filter{
+  display: flex;
+  justify-content: end;
+  margin-right: 5%;
+  cursor: pointer;
+}
+
+.btn-approve {
+  display: flex;
+  justify-content: center;
+  margin-top: -7%;*/
+  /* margin-right: 2%; */
+/*}
+
+.text-center {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.release_text{
+  color: rgb(154, 235, 73);
+}*/
+
+td,
+th {
+  font-size: small;
+  width: auto;
+}
+
+.filter_button {
+  background-color: #3c8dbc;
+  color: white;
+  margin-top: 17px;
+}
+
+.search-crnum {
+  margin-left: -81%;
+  margin-top: 5%;
+  width: 75%;
+}
+
+td,th{
+  text-align: left;
+}

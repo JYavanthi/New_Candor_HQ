@@ -1,0 +1,42 @@
+<div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap -->
+    <h3>New Category</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>Category Name </label>
+          <input class="searchinput" type="text" placeholder="Category Name" [(ngModel)]="categoryName" />
+        </div>
+        <div class="col">
+          <label>Module Name</label>
+          <!-- <input type="text" placeholder="Module Name" [(ngModel)]="crsupportID" />-->
+          <!--<select [(ngModel)]="crsupportID">
+
+    <option value="1">Change Request</option>
+    <option value="2">Help Disk</option>
+    <option value="3">Project Management</option>
+  </select>-->
+          <select aria-placeholder="select" [(ngModel)]="crsupportID">
+            <option value="">Select Module Name</option>
+            <option *ngFor="let supportdata of itsupportid" value="{{supportdata.supportId}}">
+              {{supportdata.supportName}}</option>
+          </select>
+
+        </div>
+        <div class="col">
+          <label>Is Active</label>
+          <select [(ngModel)]="isActive">
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <button (click)="postcategorytyp()" class="btn btn-primary">Submit</button>
+  <button [routerLink]="'/ChageRequest-Masters'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
+</div>

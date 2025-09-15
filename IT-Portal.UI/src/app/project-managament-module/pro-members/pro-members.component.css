@@ -1,0 +1,9 @@
+.subHeading {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.radioBtns {
+    display: flex;
+    align-items: center;
+}

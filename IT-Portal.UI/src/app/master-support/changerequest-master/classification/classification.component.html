@@ -1,0 +1,51 @@
+<div class="container-implement">
+  <div class="notification-confirm" *ngIf="deleteconfirmation">
+    <p style="font-size:17px;">Are you sure you want to delete this</p>
+    <div style="text-align:center;">
+      <button class="confirombtn" (click)="deleteyes()">Yes</button>
+      <button class="confirombtn" (click)="deleteno()">No</button>
+    </div>
+  </div>
+  <div class="notification-sucess" *ngIf="deleteinprogress">
+    <p>{{deleteinmessage}}</p>
+    <span class="close-btn" (click)="navigateinprogress()">Ok</span>
+  </div>
+  <div class="notification-sucess" *ngIf="deletesuccess">
+    <p>{{deletemessage}}</p>
+    <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+  </div>
+  <div class="container-field-line">
+    <h3>Classification</h3>
+    <div class="search-hero">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()" autocomplete="off" placeholder="Search Classification Name ">
+    </div>
+    <button class="btn btn-primary" style="margin-top:-5%;margin-left:92%;width:7%;" [routerLink]="'/newclassification'">New</button>
+
+    <div class="border-rfc-heading">
+      <div class="table-wrapper" style="overflow-x: auto">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <th>Classification ID</th>
+              <th>Classification Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let classic of filteredData ? filteredData : classification" class="tr-body">
+              <td>{{ classic.itclassificationId }}</td>
+              <td>{{ classic.classificationName }}</td>
+              <td>
+                <a href="" routerLink="/updateclassification/{{classic.itclassificationId}}/edit">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>&nbsp;&nbsp;
+                <i (click)="deleteRow(classic.itclassificationId,classic.classificationName)" class="fa fa-trash" aria-hidden="true"></i>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

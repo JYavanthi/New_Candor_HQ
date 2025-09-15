@@ -1,0 +1,51 @@
+.container-field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 10px;
+  border-top: 5px solid #113bf7;
+  margin-bottom: 3%;
+}
+
+.container-implement {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  margin-left: 8%;
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  margin-top: 1vh;
+}
+
+.button {
+  margin-top: 1%;
+  margin-left: 8%;
+}
+
+
+.search-hero {
+  max-width: 401px;
+  padding-bottom: 26px;
+  margin-left: 28%;
+  margin-top: -3%;
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid black; /* Add underline style */
+  outline: none; /* Removes the default focus outline */
+
+  padding-left: 2%;
+}
+
+  .form-control::placeholder {
+    font-family: FontAwesome;
+  }

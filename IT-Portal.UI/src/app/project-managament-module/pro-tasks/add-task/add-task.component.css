@@ -1,0 +1,24 @@
+.mainBtnsDiv div {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  margin-left: 4px;
+}
+
+.disabledEditor{
+  pointer-events: none;
+}
+
+.mainBtnsDiv div select{
+  margin-left: 12px;
+}
+
+
+.mainBtnsDiv div button{
+  margin-left: 10px;
+}
+
+.subHeading {
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -1,0 +1,47 @@
+<div>
+    <button class="addNewBtn" (click)="navigateTo()" *ngIf="!(this.projectdetails?.projectStatus == 'Cancel' || this.projectdetails?.projectStatus == 'Discontinue' || this.projectdetails?.projectStatus == 'Completed'
+        || this.projectdetails?.projectStatus == 'Approved')">Add New</button>
+    <button class="addNewBtn ms-4" (click)="navigateToTemp()" *ngIf="!(this.projectdetails?.projectStatus == 'Cancel' || this.projectdetails?.projectStatus == 'Discontinue' || this.projectdetails?.projectStatus == 'Completed'
+        || this.projectdetails?.projectStatus == 'Approved')">Add Template</button>
+    <!-- <button class="addNewBtn" (click)="navigateTo()">Select From Predeined Template</button> -->
+</div>
+
+<div *ngIf="taskForm.disabled" class="tableDesign">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>SL. No.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Milestone</th>
+                    <th>Task</th>
+                    <th>Sub Task</th>
+                    <th>Project Status</th>
+                    <!-- <th>Priority</th> -->
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let task of checkList; let i=index;">
+                    <td>{{i+1}}</td>
+                    <td>{{task.checkListTitle}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.milestoneTitle}}</td>
+                    <td>{{task.taskTitle}}</td>
+                    <td>{{task.subTaskTitle}}</td>
+                    <td>{{task.projectLevel}}</td>
+                    <!-- <td>{{task.taskPriority}}</td> -->
+                    <td>
+                        <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
+                            (click)="navigateTo(task.checkListId)"></i>
+                        <i class="fa-solid fa-trash cursor-pointer" (click)="deleteChecklist(task.checkListId)"
+                            style="margin-left: 10px;"></i>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.dropdowns-list {
+  position: absolute;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  /*border: 1px solid #ccc;*/
+  background-color: #fff;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.drop-list {
+  cursor: pointer;
+  border-bottom: 0.5px solid;
+  border-color: #b3b3bf;
+  padding: 5px;
+}
+
+  .drop-list:hover {
+    background-color: azure;
+  }

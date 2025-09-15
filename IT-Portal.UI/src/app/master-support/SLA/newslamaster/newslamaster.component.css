@@ -1,0 +1,40 @@
+.container-field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 10px;
+  border-top: 5px solid #113bf7;
+  margin-bottom: 3%;
+}
+
+.field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 56%;
+  margin-left: 2%;
+  margin-top: 14px;
+}
+
+.container-implement {
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.border-rfc-heading {
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: rgb(155, 158, 158);
+  padding: 10px;
+}
+.col-4 {
+  margin: 10px 0px;
+}
+.required {
+  color: red;
+  font-size: 14px;
+  font-weight: 900;
+}

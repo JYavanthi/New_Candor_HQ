@@ -1,0 +1,99 @@
+
+
+.container-implement {
+  width: 92%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.container-field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #0000001a;
+  width: 100%;
+  margin-top: 10px;
+  border-top: 5px solid #113bf7;
+  margin-bottom: 3%;
+}
+
+.filterIconClass {
+  margin-left: auto;
+  width: 0;
+  background-color: #3c8dbc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .container-field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 10px;
+  border-top: 5px solid #113bf7;
+  margin-bottom: 3%;
+} */
+
+.field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 56%;
+  margin-left: 2%;
+  margin-top: 14px;
+}
+
+/* .container-implement {
+  width: 77%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  margin-left: 15%;
+} */
+
+.border-rfc-heading {
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: rgb(155, 158, 158);
+  padding: 10px;
+}
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  margin-top: 1vh;
+}
+
+.search-hero {
+  max-width: 401px;
+  padding-bottom: 26px;
+  margin-left: 28%;
+  margin-top: -3%;
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+  .form-control::placeholder {
+    font-family: FontAwesome;
+  }
+
+  .newWithFilter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }

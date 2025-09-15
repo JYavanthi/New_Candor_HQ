@@ -1,0 +1,338 @@
+/* The entire scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* The draggable part of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: darkgray;
+  border-radius: 10px;
+}
+
+/* The scrollbar track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+/* Hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: darkgray;
+}
+
+.disableEditor{
+  pointer-events: none;
+}
+
+.pageHeadingCss {
+  height: 49px;
+  margin-left: 35% !important
+}
+
+.backBtn {
+  background-color: #3c8dbc;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 0.5rem;
+  margin-left: 12%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.actionBtn {
+  background-color: #113bf7;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actionBtn:hover {
+  background-color: #0f31ca;
+}
+
+::ng-deep .mdc-tab--active {
+  background-color: #113bf7 !important;
+}
+
+::ng-deep .mdc-tab--active .mdc-tab__text-label {
+  color: white !important;
+}
+
+::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
+  flex-grow: unset !important;
+}
+
+.br-top-blue {
+  /* border-top: 6px solid #113bf7; */
+  margin-top: 5px;
+}
+
+label.asteriskrequired::after {
+  content: ' *';
+  color: red;
+}
+
+.textAreaClass {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 70px;
+}
+
+.inputFields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  padding: 10px;
+  gap: 10px;
+}
+
+.inputFields {
+  select {
+    padding: 9.5px 8px;
+  }
+
+  input[type="file"] {
+    padding: 4.7px 8px !important;
+  }
+}
+
+.textAreaDiv {
+  grid-column: 1 / -1;
+}
+
+.mainBtnsDiv {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 10px 0 25px;
+}
+
+.requestTypeClass {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 10px;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.requestTypeClass::after {
+  content: "";
+  grid-column: span 3;
+}
+
+.dropdowns-list {
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.proManagementContainer {
+  position: relative;
+  width: 90%;
+  margin-left: 8%;
+  margin-bottom: 3%;
+}
+
+.proManagementHeadingDiv {
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  display: flex;
+}
+
+.proManagementTitle {
+  text-align: center;
+  width: 100%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.proManagementButtonContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.proManagementBackBtn {
+  background-color: #3c8dbc;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.proManagementMainModuleBox {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+}
+
+.proManagementContent {
+  background-color: #f2f2f2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* .projectDetails {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.projectName {
+  border: 1px solid #3e8cba;
+  padding: 5px 10px;
+  border-radius: 50px 0 0 50px;
+  background-color: #3e8cba;
+  color: white;
+}
+
+.projectNameVal {
+  border: 1px solid lightgray;
+  padding: 5px 10px;
+  border-radius: 0 50px 50px 0;
+  font-weight: 600;
+  background-color: white;
+} */
+
+.projectDetails {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.projectName {
+  padding: 5px 10px;
+  color: black;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.projectNameVal {
+  padding: 5px 10px;
+  background-color: white;
+}
+
+.backIcon {
+  position: fixed;
+  bottom: calc(145px + 2vh);
+  background-color: #3c8dbc;
+  color: white;
+  border-radius: 50%;
+  font-size: 15px;
+  padding: 7px 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 98;
+  transition: all 0.3s ease;
+}
+
+.proCheckboxSection {
+  display: flex;
+  gap: 15px;
+}
+
+.proCheckboxLabel {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.proDetails {
+  text-align: right;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 70px;
+}
+
+.green-tab {
+  background-color: green;
+  color: white;
+  padding: 8px 19px;
+  height: 30px;
+  border-radius: 5px 5px 0 0;
+}
+
+.addNewBtn {
+  background-color: #3c8dbc;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.tableDesign {
+  .table-container {
+    max-width: 100%;
+    overflow: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    background-color: white;
+    margin: 2px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #cde9f7;
+    color: black;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+}

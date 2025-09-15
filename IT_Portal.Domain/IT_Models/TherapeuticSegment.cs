@@ -1,0 +1,20 @@
+﻿namespace IT_Portal.Domain.IT_Models;
+
+public partial class TherapeuticSegment
+{
+    public int Id { get; set; }
+
+    public string? TherSegCode { get; set; }
+
+    public string? TherSegDesc { get; set; }
+
+    public string? CreatedBy { get; set; }
+
+    public DateTime? CreatedOn { get; set; }
+
+    public string? LastModifiedBy { get; set; }
+
+    public DateTime? LastModifiedOn { get; set; }
+
+    public bool? IsActive { get; set; }
+}

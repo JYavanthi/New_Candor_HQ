@@ -1,0 +1,15 @@
+C:\IT_Portal\IT-Portal\IT_Portal.Application\bin\Release\net8.0\IT_Portal.Application.deps.json
+C:\IT_Portal\IT-Portal\IT_Portal.Application\bin\Release\net8.0\IT_Portal.Application.dll
+C:\IT_Portal\IT-Portal\IT_Portal.Application\bin\Release\net8.0\IT_Portal.Application.pdb
+C:\IT_Portal\IT-Portal\IT_Portal.Application\bin\Release\net8.0\IT_Portal.Domain.dll
+C:\IT_Portal\IT-Portal\IT_Portal.Application\bin\Release\net8.0\IT_Portal.Domain.pdb
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.csproj.AssemblyReference.cache
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.AssemblyInfoInputs.cache
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.AssemblyInfo.cs
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.csproj.CoreCompileInputs.cache
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Porta.0597C6E5.Up2Date
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.dll
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\refint\IT_Portal.Application.dll
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\IT_Portal.Application.pdb
+C:\IT_Portal\IT-Portal\IT_Portal.Application\obj\Release\net8.0\ref\IT_Portal.Application.dll

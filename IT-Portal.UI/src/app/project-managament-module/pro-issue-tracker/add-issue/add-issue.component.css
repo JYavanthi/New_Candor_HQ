@@ -1,0 +1,19 @@
+.mainBtnsDiv div {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  margin-left: 4px;
+}
+
+.mainBtnsDiv div select{
+  margin-left: 12px;
+}
+
+.disabledEditor
+{
+  pointer-events: none;
+}
+
+.mainBtnsDiv div button{
+  margin-left: 10px;
+}

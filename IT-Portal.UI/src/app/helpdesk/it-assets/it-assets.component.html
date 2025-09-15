@@ -1,0 +1,241 @@
+''
+
+<div class="container-home">
+  <div class="text-center">
+    <h1>New Asset</h1>
+  </div>
+  <div class="it_asset_line">
+    <div class="row">
+      <div class="col">
+        <div class="card it_asset_card_1" [routerLink]="'/it_spare'">
+          <div class="card-body">
+            <h5 class="it_asset_icons"><i class="fa fa-desktop" aria-hidden="true"></i></h5>
+            <h6 class="it_asset_header">IT Spare</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card it_asset_card_2" [routerLink]="'/it_consumeable'">
+          <div class="card-body">
+            <h5 class="it_asset_icons"><i class="fa fa-desktop" aria-hidden="true"></i></h5>
+            <h6 class="it_asset_header">IT Consumable</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card it_asset_card_3" [routerLink]="'/it_asset'">
+          <div class="card-body">
+            <h5 class="it_asset_icons"><i class="fa fa-desktop" aria-hidden="true"></i></h5>
+            <h6 class="it_asset_header">IT Asset</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card it_asset_card_filter">
+    <div class="card-body card_body_filter">
+      <div class="row filter_cr">
+        <div class="col">
+          <label>Plant</label><br />
+          <select class="input-change">
+            <option value="1" disabled selected>Select-plant</option>
+            <option value="1">ML 1</option>
+            <option value="2">ML 2</option>
+            <option value="3">ML 3</option>
+            <option value="4">ML 4</option>
+            <option value="5">ML 5</option>
+            <option value="6">ML 6</option>
+            <option value="6">ML 7</option>
+            <option value="6">ML 8</option>
+            <option value="6">ML 9</option>
+            <option value="6">ML 10</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Category</label><br />
+          <select class="input-change">
+            <option value="1" disabled selected>Select-category</option>
+            <option value="1">Servers</option>
+            <option value="2">Network</option>
+            <option value="3">Security</option>
+            <option value="4">Inhouse Development</option>
+            <option value="5">SAP</option>
+            <option value="6">Software</option>
+            <option value="6">Desktop/Laptop</option>
+            <option value="6">Printers</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Classifications</label><br />
+          <select class="input-change">
+            <option value="1" disabled selected>Select-classifications</option>
+            <option value="1">Major</option>
+            <option value="2">Standard</option>
+            <option value="3">Minor</option>
+            <option value="4">Emergency</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Stage</label><br />
+          <select class="input-change">
+            <option value="1" disabled selected>Select-stage</option>
+            <option value="1">Initiate</option>
+            <option value="2">Approve</option>
+            <option value="3">Implementation</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Start Date:</label><br />
+          <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" required />
+        </div>
+        <div class="col">
+          <label>End Date:</label><br />
+          <input class="input-change cr_date" type="date" id="toDate" name="toDate" required />
+        </div>
+      </div>
+      <div class="access-checkbox">
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-success">All</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-success">Approved</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-danger">Rejected</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-primary">New/Intiated</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-info">Implementation</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-warning">Pending</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label release_text">Released</label>
+        <input class="cr_filter_checkbox" type="checkbox"><label class="cr_filter_label text-success">Closure</label>
+        <button class="btn btn-rounded filter_button">Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="fl-table">
+      <thead class="table-head">
+        <tr class="border-bottom">
+          <th>Select</th>
+          <th>Asset ID</th>
+          <th>Requestor</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Type</th>
+          <th>Classifications</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Attachments</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tr-body">
+          <td><input type="checkbox" name="one" id="one" /></td>
+          <td>CR1000012</td>
+          <td>Nilesh Kapse</td>
+          <div class="description">
+          <td>SAP HAN upgrade</td>
+          <!-- <div class="inside_description">
+            There are many variations of passages of Lorem Ipsum available,
+            but the majority have suffered alteration in some form, by
+            injected humour, or randomised words which don't look even
+            slightly believable. If you are going to use a passage of Lorem
+            Ipsum, you need to be sure there isn't anything embarrassing
+            hidden in the middle of text. All the Lorem Ipsum generators on
+            the Internet tend to repeat predefined chunks as necessary,
+            making this the first true generator on the Internet. It uses a
+            dictionary of over 200 Latin words, combined with a handful of
+            model sentence structures, to generate Lorem Ipsum which looks
+            reasonable. The generated Lorem Ipsum is therefore always free
+            from repetition, injected humour, or non-characteristic words
+            etc.
+          </div> -->
+  </div>
+  <td>Pending approval</td>
+  <td>Standard Change</td>
+  <td>Business application</td>
+  <td>20-1-2024</td>
+  <td>25-1-2024</td>
+  <td><i class="fa fa-download" aria-hidden="true"></i></td>
+  <td>
+    <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+  </td>
+  <td>
+    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+  </td>
+  </tr>
+  <tr class="tr-body">
+    <td><input type="checkbox" name="one" id="one" /></td>
+    <td>CR1000012</td>
+    <td>Nilesh Kapse</td>
+    <td>SAP HAN upgrade</td>
+    <td>Pending approval</td>
+    <td>Standard Change</td>
+    <td>Business application</td>
+    <td>20-1-2024</td>
+    <td>25-1-2024</td>
+    <td><i class="fa fa-download" aria-hidden="true"></i></td>
+    <td>
+      <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    </td>
+    <td>
+      <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+    </td>
+  </tr>
+  <tr class="tr-body">
+    <td><input type="checkbox" name="one" id="one" /></td>
+    <td>CR1000012</td>
+    <td>Nilesh Kapse</td>
+    <td>SAP HAN upgrade</td>
+    <td>Pending approval</td>
+    <td>Standard Change</td>
+    <td>Business application</td>
+    <td>20-1-2024</td>
+    <td>25-1-2024</td>
+    <td><i class="fa fa-download" aria-hidden="true"></i></td>
+    <td>
+      <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    </td>
+    <td>
+      <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+    </td>
+  </tr>
+  <tr class="tr-body">
+    <td><input type="checkbox" name="one" id="one" /></td>
+    <td>CR1000012</td>
+    <td>Nilesh Kapse</td>
+    <td>SAP HAN upgrade</td>
+    <td>Pending approval</td>
+    <td>Standard Change</td>
+    <td>Business application</td>
+    <td>20-1-2024</td>
+    <td>25-1-2024</td>
+    <td><i class="fa fa-download" aria-hidden="true"></i></td>
+    <td>
+      <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    </td>
+    <td>
+      <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+    </td>
+  </tr>
+  <tr class="tr-body">
+    <td><input type="checkbox" name="one" id="one" /></td>
+    <td>CR1000012</td>
+    <td>Nilesh Kapse</td>
+    <td>SAP HAN upgrade</td>
+    <td>Pending approval</td>
+    <td>Standard Change</td>
+    <td>Business application</td>
+    <td>20-1-2024</td>
+    <td>25-1-2024</td>
+    <td><i class="fa fa-download" aria-hidden="true"></i></td>
+    <td>
+      <a href="" [routerLink]="'/newcrpage'">
+        <i class="fa fa-pencil-square-o"
+           aria-hidden="true"></i>
+      </a>
+    </td>
+    <td><a><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+  </tr>
+  </tbody>
+  </table>
+</div>
+</div>

@@ -1,0 +1,267 @@
+.filterIcon {
+  display: flex;
+  justify-content: end;
+  margin-right: 1%;
+  margin-top: 1%;
+  position: fixed;
+}
+
+.fa-filter:before {
+  cursor: pointer;
+  margin-left: -100%;
+  font-size: large;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  float: right;
+  margin-top: 1%;
+  top: 10rem;
+  right: 0;
+  justify-content: center;
+  margin-right: 1.2%;
+}
+
+overlay .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ddd;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  margin-left: 5.8%;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #646262;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.select-btn {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.select-btn .btn-text {
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+}
+
+.select-btn .arrow-dwn {
+  display: flex;
+  height: 21px;
+  width: 21px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 50%;
+  background: #6e93f7;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.select-btn.open .arrow-dwn {
+  transform: rotate(-180deg);
+}
+
+.list-items {
+  position: relative;
+  margin-top: 15px;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.select-btn.open~.list-items {
+  display: block;
+}
+
+.list-items .item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0 15px;
+  border-radius: 8px;
+}
+
+.list-items .item:hover {
+  background-color: #e7edfe;
+}
+
+.item .item-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.item .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+  border-radius: 4px;
+  margin-right: 12px;
+  border: 1.5px solid #c0c0c0;
+  transition: all 0.3s ease-in-out;
+}
+
+.item.checked .checkbox {
+  background-color: #4070f4;
+  border-color: #4070f4;
+}
+
+.checkbox .check-icon {
+  color: #fff;
+  font-size: 11px;
+  transform: scale(0);
+  transition: all 0.2s ease-in-out;
+}
+
+.item.checked .check-icon {
+  transform: scale(1);
+}
+
+another overlay .overlay {
+  margin-left: 13%;
+  margin-top: 3%;
+  height: 15vh;
+}
+
+.plant_select {
+  margin-top: 4%;
+}
+
+.plant_tag {
+  margin-bottom: 3.5%;
+}
+
+filter finialzing .card_filter_dashboard {
+  width: 60%;
+  margin-left: 28%;
+  height: 10vh;
+  margin-top: 2%;
+  border: none;
+}
+
+.input-change-plant {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #ccc;
+  padding-top: 6%;
+}
+
+/*chart css*/
+.chart-graph {
+  margin-left: 7%;
+  margin-top: -30%;
+  width: 107%;
+  height: 5%;
+  padding: 7%;
+  background-color: white;
+  box-shadow: 0px 7px 28px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+/*donut*/
+.dount-chart {
+  background-color: white;
+  box-shadow: 0px 7px 28px rgba(0, 0, 0, 0.4);
+  width: 107%;
+  padding: 4%;
+  margin-left: 9.5%;
+  margin-top: -30%;
+  position: relative;
+  border-radius: 4px;
+}
+
+.table {
+  background-color: white;
+  box-shadow: 0px 7px 28px rgba(0, 0, 0, 0.4);
+  padding: 0%;
+  display: block;
+  width: 107%;
+  margin-left: 11%;
+  margin-top: -30.2%;
+  position: relative;
+  border-radius: 4px;
+}
+
+.custom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.custom-item {
+  flex-basis: calc(33.33% - 20px);
+
+}
+
+
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+
+.multi {
+  margin-left: -6%;
+  margin-top: 5%;
+}
+
+@media (min-width: 1200px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1090px !important;
+  }
+}

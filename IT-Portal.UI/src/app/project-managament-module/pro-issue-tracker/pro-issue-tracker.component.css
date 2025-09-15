@@ -1,0 +1,42 @@
+.subHeading {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.toggle-wrapper1 {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 250px;
+}
+
+.toggle-button1 {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.toggle-button1.active {
+    background-color: #3c8dbc;
+    color: white;
+}
+
+.toggle-button1:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.toggle-button1:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+button.button-approve:disabled {
+    opacity: 0.6;
+}

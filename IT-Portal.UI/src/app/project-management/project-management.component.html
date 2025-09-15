@@ -1,0 +1,119 @@
+''
+
+<div class="container-home">
+    <div class="text-center">
+        <h1>Project Management</h1>
+    </div>
+
+    <div class="project-btn">
+        <button class="btn-back" type="button">My Task </button>&nbsp;
+        <button class="btn-back" [routerLink]="'/new-project'" type="button">Add New Project </button>&nbsp;
+    </div>
+    <!-- Search box container -->
+    <!-- <div class="search-container">
+    <form action="/search" method="get">
+      <input style="width: 16%;" type="text" placeholder="Search Project..." name="search">
+      <button class="btn-back" style="margin-left: 1%;">Search</button>&nbsp;
+    </form><br><br> -->
+
+    <!-- search start -->
+    <div class="search_helpdesk">
+        <input type="text" class="input-change-helpdesk" placeholder="Search Project" />
+        <h5 style="margin-top:1%; ">Search</h5>
+    </div>
+    <!-- Tab buttons -->
+    <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="Details-tab" data-bs-toggle="tab" data-bs-target="#Details"
+                    type="button" role="tab" aria-controls="Details" aria-selected="true">
+                    Details
+                </button>
+            </li>
+            <li role="presentation">
+                <button class="nav-link" id="Milestones-tab" data-bs-toggle="tab" data-bs-target="#Milestones"
+                    type="button" role="tab" aria-controls="Milestones" aria-selected="false">
+                    Milestones
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="Members-tab" data-bs-toggle="tab" data-bs-target="#Members" type="button"
+                    role="tab" aria-controls="Members" aria-selected="false">
+                    Members
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="Task-tab" data-bs-toggle="tab" data-bs-target="#Task" type="button"
+                    role="tab" aria-controls="Task" aria-selected="false">
+                    Task
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="IssueTracker-tab" data-bs-toggle="tab" data-bs-target="#IssueTracker"
+                    type="button" role="tab" aria-controls="IssueTracker" aria-selected="false">
+                    Issue Tracker
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="CheckList-tab" data-bs-toggle="tab" data-bs-target="#CheckList"
+                    type="button" role="tab" aria-controls="CheckList" aria-selected="false">
+                    Check List
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="Documents-tab" data-bs-toggle="tab" data-bs-target="#Documents"
+                    type="button" role="tab" aria-controls="Documents" aria-selected="false">
+                    Documents
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="History-tab" data-bs-toggle="tab" data-bs-target="#History" type="button"
+                    role="tab" aria-controls="History" aria-selected="false">
+                    History
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <!-- Tab 1 -->
+            <div class="tab-pane fade show active" id="Details" role="tabpanel" aria-labelledby="Details-tab">
+                <app-details-tab></app-details-tab>
+            </div>
+            <!-- Tab 2 -->
+            <div class="tab-pane fade" id="Milestones" role="tabpanel" aria-labelledby="Milestones-tab">
+                <app-milestone-tab></app-milestone-tab>
+            </div>
+            <br />
+            <br />
+            <br />
+            <!-- Tab 3-->
+            <!--<app-changetab></app-changetab>-->
+            <div class="tab-pane fade" id="Members" role="tabpanel" aria-labelledby="Members-tab">
+                <app-members-tab></app-members-tab>
+            </div>
+            <!-- Tab 4 -->
+            <div class="tab-pane fade" id="Task" role="tabpanel" aria-labelledby="Task-tab">
+                <app-tasks-tab></app-tasks-tab>
+            </div>
+            <!-- Tab 5 -->
+            <div class="tab-pane fade" id="IssueTracker" role="tabpanel" aria-labelledby="IssueTracker-tab">
+                <app-issue-tracker-tab></app-issue-tracker-tab>
+            </div>
+            <!-- Tab 6 -->
+            <div class="tab-pane fade" id="CheckList" role="tabpanel" aria-labelledby="CheckList-tab">
+                6
+            </div>
+            <!-- Tab 7 -->
+            <div class="tab-pane fade" id="Documents" role="tabpanel" aria-labelledby="Documents-tab">
+                7
+            </div>
+            <!-- Tab 8 -->
+            <div class="tab-pane fade" id="History" role="tabpanel" aria-labelledby="History-tab">
+                8
+            </div>
+
+        </div>
+    </div>
+
+</div>

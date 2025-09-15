@@ -1,0 +1,197 @@
+<div class="text-center pageHeadingCss">
+  <p class="pageHeadingparaCss">Service Request</p>
+</div>
+
+<div class="row mt-5" style="width: 100%;">
+
+  <div class="toggle-wrapper d-flex justify-content-center">
+    <button class="toggle-button" [ngClass]="{ 'active': isServiceActive=='S' }" (click)="toggleMyServiceTable('S')"
+      *ngIf="serviceListShow">
+      SERVICE LIST
+    </button>
+    <button class="toggle-button" [ngClass]="{ 'active': isServiceActive=='P' }" (click)="toggleMyServiceTable('P')"
+      *ngIf="pendingServiceListShow">
+      PENDING APPROVALS
+    </button>
+    <button class="toggle-button" [ngClass]="{ 'active': isServiceActive=='M' }" (click)="toggleMyServiceTable('M')">
+      MY SERVICES
+    </button>
+  </div>
+
+  <div class="d-flex p-absulate">
+    <span class="filterIconClass" (click)="toggleVisibility()"><i class="fa fa-filter" aria-hidden="true"></i></span>
+    &nbsp;
+    <button class="button-approve" style="margin-top:0;" [routerLink]="['/services/viewservices']">View
+      Services</button>
+  </div>
+
+</div>
+
+<div class="d-flex justify-content-center">
+
+  <div class="col-md-4" style="display: flex !important; justify-content: center !important;">
+    <div class="toggle-wrapper1" *ngIf="isServiceActive=='M'">
+      <button class="toggle-button1" [ngClass]="{ 'active': isOpenService }"
+        (click)="toggleMyServiceTable(isServiceActive,false,true)">
+        Open
+      </button>
+      <button class="toggle-button1" [ngClass]="{ 'active': !isOpenService }"
+        (click)="toggleMyServiceTable(isServiceActive,false,false)">
+        Resolved
+      </button>
+    </div>
+  </div>
+</div>
+<div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
+  <div class="card-body card_body_filter" [formGroup]="filterForm">
+    <div class="row filter_cr">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Service</mat-label>
+          <mat-select formControlName="service" (ngModelChange)="getServicesData()">
+            @for (state of serviceModuleList; track state) {
+            <mat-option value={{state.supportId}}>{{state.supportName}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Request Type</mat-label>
+          <mat-select formControlName="requestType">
+            <mat-option *ngFor="let requestType of requestTypeList"
+              value={{requestType.supportId}}>{{requestType.supportName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="Draft">Draft</mat-option>
+            <mat-option value="Pending Approval">Pending Approval</mat-option>
+            <mat-option value="Approved">Approved</mat-option>
+            <mat-option value="Open">Open</mat-option>
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Seek Clarification">Seek Clarification</mat-option>
+            <mat-option value="Submit Clarification">Submit Clarification</mat-option>
+            <mat-option value="On Hold">On Hold</mat-option>
+            <mat-option value="Resolved">Resolved</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <label>Start Date:</label><br />
+        <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" required
+          formControlName="StartDate" />
+      </div>
+      <div class="col">
+        <label>End Date:</label><br />
+        <input class="input-change cr_date" type="date" id="toDate" name="toDate"
+          [min]="this.filterForm.value['StartDate']" formControlName="EndDate">
+      </div>
+    </div>
+    <div class="justify-content-end d-flex">
+      <div>
+        <button class="btn btn-rounded filter_button" (click)="filetSerList()">Filter</button>&nbsp;&nbsp;&nbsp;
+      </div>
+      <div>
+        <button type="reset" class="btn btn-rounded filter_button" (click)="reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex">
+  <button class="button-approve" style="margin: 1% 0% 1% 8%;" [disabled]="disableAssign"
+    (click)="onButtonClick($event, 'true')">Assign To</button>
+  <div class="d-flex field" *ngIf="assignToDropDown">
+    <select required [(ngModel)]="assign" class="onHoldDropDown">
+      <option value="" selected disabled hidden>Select Assign to</option>
+      <option *ngFor="let assign of assignToList" value="{{assign.empId}}">{{assign.empId+' '+'-'+'
+        '+assign.firstName+' '+assign.middleName+' '+assign.lastName }}
+      </option>
+    </select>
+    &nbsp;&nbsp;&nbsp;<button type="submit" class="resolutionBtns"
+      (click)="onButtonClick($event, 'false')">Submit</button>
+  </div>
+
+  <!-- Re-Assign -->
+  <button class="button-approve" style="margin: 1% 0% 1% 1%;" [disabled]="disableReAssign"
+    (click)="onButtonClick($event, 'reAssign')">Re-Assign To</button>
+  <div class="d-flex field" *ngIf="reAssignToDropDown">
+    <select required [(ngModel)]="reAssign" class="onHoldDropDown">
+      <option value="" selected disabled hidden>Select Re-Assign to</option>
+      <option *ngFor="let assign of reAssignToList" value="{{assign.empId}}">{{assign.empId+' '+'-'+'
+        '+assign.firstName+' '+assign.middleName+' '+assign.lastName }}
+      </option>
+    </select>
+    &nbsp;&nbsp;&nbsp;<button type="submit" class="resolutionBtns"
+      (click)="onButtonClick($event, 'reAssignSubmit')">Submit</button>
+  </div>
+</div>
+
+<div class="tableBox">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr class="tableHeadings">
+          <th style="text-align: center;">
+            <input type="checkbox" [(ngModel)]="Allselected" style="width: 20px;" (change)="selectAll($event)">Select
+          </th>
+          <th>Service ID</th>
+          <th>Service</th>
+          <th>Request Type</th>
+          <th>Requestor</th>
+          <th>Requested For</th>
+          <th>Status</th>
+          <th>Approval Pending With?</th>
+          <th>Assigned To</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of paginatedData">
+          <td style="text-align: center;"><input type="checkbox" [(ngModel)]="service.selected" [value]="service"
+              (change)="toggleRowSelection(service)" name="one" id="one" style="width: 40px;" /></td>
+          <td>{{service?.srcode}}</td>
+          <td>{{service?.parentSupportName}}</td>
+          <td>{{service?.supportName}}</td>
+          <td>{{service?.srraiseBy}}</td>
+          <!-- {{service?.srselectedfor=='guest'?service?.guestName:''}} -->
+          <td>{{service?.srselectedfor=='guest'?service?.guestName:''}}{{service?.srraiseFor}}</td>
+          <td>{{service?.status}}<span *ngIf="service?.status?.trim()=='On Hold'"> ({{service.onholdReason}})</span>
+          </td>
+          <td>{{service?.status?.trim()!='Pending Approval'&&service?.status?.trim()!='Pending HOD
+            Approval'?'-':(service?.srselectedfor?.trim()=='guest'?service.guestReportingManagerName:
+            (service?.status?.trim()=='Pending Approval'?service?.rpmToName:service?.hodToName))}}</td>
+          <td [ngStyle]="{'color': (service?.assignedTo==0) ? 'red': ''}">{{service?.assignedTo==0?'Not Assigned':service?.assignToName}}</td>
+          <td>
+            <a><i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
+                (click)="navigateToEdit(service?.url,service?.srid)"></i></a>
+            <i class="fa-solid fa-trash cursor-pointer" (click)="delete(service.srid)"
+              *ngIf="service?.status?.trim()=='Draft'"></i>
+          </td>
+        </tr>
+
+        <tr *ngIf="formFilteredList?.length === 0">
+          <td colspan="8" style="text-align: center;">
+            <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+            No Data Available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mb-5">
+      <div *ngIf="formFilteredList?.length > 0">
+        <mat-paginator [length]="formFilteredList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event,false)" aria-label="Select page"
+          style="margin-right:34%">
+        </mat-paginator>
+      </div>
+    </div>
+
+  </div>
+</div>

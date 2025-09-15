@@ -1,0 +1,39 @@
+<!--1.Category-->
+<div class="container-implement">
+    <div class="container-field-line">
+      <h3>Category</h3>
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()" autocomplete="off" placeholder="Search Category Name">
+      </div>
+      <button class="btn btn-primary" [routerLink]="'/newsoftwaremaster'" style="margin-left: 92%; margin-top: -5%; width: 7%;">New</button>
+      <div class="border-rfc-heading">
+        <div class="table-wrapper" style="overflow-x: auto">
+          <table class="fl-table">
+            <thead class="table-head">
+              <tr class="border-bottom">
+                <th>SR. NO.</th>
+                <th>Software Name</th>
+                <th>Is Active</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of softwareList;let i=index" class="tr-body">
+                <td>{{ i + 1}}</td>
+                <td>{{ data.softwareName }}</td>
+                <td>{{ data.isActive }}</td>
+                <td>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="navigateTo(data.softwareLibraryId)"></i>
+                  <i (click)="deleteRow(data.softwareLibraryId)" class="fa fa-trash" aria-hidden="true"></i>
+  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  

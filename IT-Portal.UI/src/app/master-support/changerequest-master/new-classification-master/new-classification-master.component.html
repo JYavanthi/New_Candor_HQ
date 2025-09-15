@@ -1,0 +1,41 @@
+<div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap -->
+    <h3>New Classification</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>Classification ID</label>
+          <input type="text" placeholder="ClassificationID" [(ngModel)]="classificationid" />
+        </div>
+        <div class="col">
+          <label>Classification Name</label>
+          <input type="text" placeholder="ClassificationName" [(ngModel)]="classificationname" />
+        </div>
+
+
+      </div>
+        <!-- <div class="col">
+          <label>Is Active</label>
+
+          <select >
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>-->
+
+
+     
+
+    </div>
+
+
+
+  </div>
+  <button (click)="postClassification()" class="btn btn-primary">Submit</button>
+  <button [routerLink]="'/categorytype'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
+</div>
+
+

@@ -1,0 +1,30 @@
+<div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap -->
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>Priority Name</label>
+          <input class="searchinput" type="text" placeholder="Priority Name" [(ngModel)]="priorityName" />
+        </div>
+
+        <div class="col">
+          <label>Is Active</label>
+
+          <select [(ngModel)]="isActive">
+            <option selected>Select</option>
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+
+
+      </div>
+      <button (click)="postPriority()" class="btn btn-primary">Submit</button>
+      <button [routerLink]="'/Priority'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.deliverables input{
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 33%;
+}
+
+.deliverables{
+    grid-column: 1 / -1;
+}
+
+.deliverables label{
+    width: 100%;
+}
+
+.disabledEditor{
+    pointer-events: none;
+}
+
+.fa-circle-plus{
+    color: #3c8dbc;
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.fa-circle-minus{
+    
+    color: #3c8dbc;
+    margin-left: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.deliverables-list{
+
+}

@@ -1,0 +1,161 @@
+<form [formGroup]="issueForm">
+    <div class="card service_card br-top-blue">
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="row">
+                    <div class="inputFields">
+                      <div>
+                            <label class="asteriskrequired" for="milestone">Milestone</label>
+                            <select formControlName="milestone" name="milestone" id="milestone"
+                                (change)="getmilestonetask($event)">
+                                <option value="" selected hidden disabled>Select Milestone...</option>
+                                <option *ngFor="let mileStone of mileStoneList" [value]="mileStone.projMilestoneId">
+                                    {{mileStone.milestoneTitle}}</option>
+                            </select>
+                        </div>
+                        
+                        <div style="position: relative;">
+                            <label class="asteriskrequired" for="owner">Issue Owner</label>
+
+                            <input type="text" formControlName="owner" name="owner" id="owner"
+                                placeholder="Enter Employee ID" (input)="filterItem(true);">
+                            <ul class="dropdowns-list" *ngIf="employeeList?.length > 0">
+                                <li class="drop-list" value="" *ngFor="let item of employeeList"
+                                    (click)="selectItem(item)">
+                                    {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="ProjectPhase"
+                                customLabelAlert="Project Phase is Required">Project phase</label>
+                            <select formControlName="ProjectPhase" name="ProjectPhase" id="ProjectPhase">
+                                <option value="" selected hidden disabled>Project phase</option>
+                                <option>Initiation Phase</option>
+                                <option>Planning Phase</option>
+                                <option>Execution Phase</option>
+                                <option>Testing Phase</option>
+                                <option>Close Phase</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="asteriskrequired" for="Task">Task</label>
+                            <select formControlName="Task" name="Task" id="Task" (change)="getChildTask($event)">
+                                <option value="" selected hidden disabled>Select Parent Task</option>
+                                <option *ngFor="let task of tasklist" [value]="task.taskId">
+                                    {{ task.taskTitle }}
+                                </option>
+                            </select>
+                        </div>
+                        <!-- <div>
+                            <label for="SubTask">Sub Task</label>
+                            <select formControlName="SubTask" name="SubTask" id="SubTask">
+                                <option value="" selected hidden disabled>Select Parent Task</option>
+                                <option *ngFor="let task of childTaskList" [value]="task.taskId">{{ task.taskTitle }}
+                                </option>
+                            </select>
+                        </div> -->
+
+                        <div>
+                            <label class="asteriskrequired" for="SubTask">Sub Task</label>
+                            <select formControlName="SubTask" id="SubTask">
+                                <option value="" selected hidden disabled>Select Parent Task</option>
+                                <option *ngFor="let task of childTaskList" [value]="task.taskId">{{ task.taskTitle }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="assignedTo">Assigned to</label>
+                            <select formControlName="assignedTo" name="assignedTo" id="assignedTo">
+                                <option value="" selected hidden disabled>Select Assigned to</option>
+                                <option *ngFor="let member of MemberList" [value]="member.prMemberId">
+                                    {{member.empId}} - {{member.memberName}}</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="DateOpen">Date Open</label>
+                            <input type="date" formControlName="DateOpen" name="DateOpen" id="DateOpen"
+                                [min]="formValidationService.todaysDate"
+                                [max]="this.projectdetails?.endDt?.split('T')[0]" />
+                        </div>
+                        <div>
+                            <label for="completionDate">Completion Date</label>
+                            <input type="date" formControlName="completionDate" name="completionDate"
+                                id="completionDate" [min]="formValidationService.todaysDate"
+                                [max]="this.projectdetails?.endDt?.split('T')[0]" />
+                        </div>
+
+                        <div>
+                            <label for="dueDate" for="DateClosed" customLabelAlert="Date Closed is Required">Date
+                                Closed</label>
+                            <input type="date" formControlName="DateClosed" name="DateClosed" id="DateClosed"
+                                [min]="formValidationService.todaysDate"
+                                [max]="this.projectdetails?.endDt?.split('T')[0]" />
+                        </div>
+                        <div>
+                            <label for="duration">Duration</label>
+                            <input type="number" formControlName="duration" name="duration" id="duration" />
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="status">Status</label>
+                            <select formControlName="status" name="status" id="status">
+                                <option value="" selected hidden disabled>Select Status</option>
+                                Open, In Progress, In Review, To be tested
+                                <option>Open</option>
+                                <option>In Progress</option>
+                                <option>In Review</option>
+                                <option>Completed</option>
+                                <option>To be tested</option>
+                            </select>
+                        </div>
+
+
+                        <div>
+                            <label for="Dependency">Dependency</label>
+                            <input type="text" formControlName="Dependency" name="Dependency" id="Dependency" />
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="priority">Priority</label>
+                            <select formControlName="priority" name="priority" id="priority">
+                                <option value="" selected hidden disabled>Select Priority</option>
+                                <option>High</option>
+                                <option>Medium</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+
+                        <div class="textAreaDiv">
+                            <!-- <label class="asteriskrequired" for="duration">Attachment</label> -->
+                            <app-pr-attachment [title]="'Attachment'" (attachMentListEvent)="getAttchmentList($event)"
+                                (removeAttchment)="removeAttchment($event)"></app-pr-attachment>
+                        </div>
+
+
+                        <div class="textAreaDiv">
+                            <label  class="asteriskrequired"  for="Discription">Description</label>
+                            <angular-editor #editor [config]="editorConfig"
+                                formControlName="Discription"></angular-editor>
+                        </div>
+                        <div class="textAreaDiv">
+                            <label for="AdditionalNotes">Notes</label>
+                            <angular-editor #editor [config]="editorConfig"
+                                formControlName="AdditionalNotes"></angular-editor>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mainBtnsDiv">
+                    <button class="actionBtn" (click)="submitIssue('Open')"
+                        *ngIf="this.issueData?.status!='Completed'&&!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed')">{{issueId?
+                        'Update' : 'Submit'}}</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="!issueId">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

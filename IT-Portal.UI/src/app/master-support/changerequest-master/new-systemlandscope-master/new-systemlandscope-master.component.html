@@ -1,0 +1,67 @@
+<div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap-->
+    <h3>New System Landscape</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+
+        <div class="col">
+          <label>Module Name</label>
+          <!--<input type="text" placeholder="supportID" [(ngModel)]="supportsId" />-->
+          <select [(ngModel)]="supportsId">
+            <option value="">Select Module Name</option>
+            <option *ngFor="let cldata of support" value="{{cldata.supportId}}">{{cldata.supportName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Category Name</label>
+          <!--<input type="text" placeholder="categoryId" [(ngModel)]="categoryId" />-->
+          <select [(ngModel)]="categoryId">
+            <option value="" >Select category Name</option>
+            <option *ngFor="let cldata of category" value="{{cldata.itcategoryId}}">{{cldata.categoryName}}</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label>Classification Name</label>
+          <!--<input type="text" placeholder="classificationId" [(ngModel)]="classificationId" />-->
+          <select [(ngModel)]="classificationId">
+            <option value="" >Select classification Name</option>
+            <option *ngFor="let cldata of classification" value="{{cldata.itclassificationId}}">{{cldata.classificationName}}</option>
+          </select>
+        </div>
+        <div class="row mt-2">
+          <div class="col">
+            <label>Priority Name</label>
+            <!--<input type="text" placeholder="priorityNumber" [(ngModel)]="priorityNumber" />-->
+            <select [(ngModel)]="priorityNumber">
+              <option value="" >Select Priority Name</option>
+              <option *ngFor="let cldata of priority" value="{{cldata.priorityId}}">{{cldata.priorityName}}</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label>System Landscape</label>
+            <input type="text" placeholder="system Landscape" [(ngModel)]="sysLandscape" />
+          </div>
+
+          <div class="col">
+            <label>Is Active</label>
+
+            <select [(ngModel)]="isactive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <button (click)="PostSystemLandscapeSp()" [routerLink]="'/systemlandscape'" class="btn btn-primary">Submit</button>
+  <button [routerLink]="'/systemlandscape'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
+</div>

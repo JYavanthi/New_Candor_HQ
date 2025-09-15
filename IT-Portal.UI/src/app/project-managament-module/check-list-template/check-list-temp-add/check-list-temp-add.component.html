@@ -1,0 +1,63 @@
+<form [formGroup]="checkListTemForm">
+    <div class="card service_card br-top-blue">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="inputFields">
+                        <div>
+                            <label class="asteriskrequired" for="templateName"
+                                customLabelAlert="Template Name is Required">Template Name</label>
+                            <input type="text" class="templateName" formControlName="templateName" name="templateName"
+                                id="templateName" />
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="checklistSelected"
+                                customLabelAlert="CheckList is Required">CheckList</label>
+
+                            <ng-multiselect-dropdown formControlName="checklistSelected" name="checklistSelected"
+                                [settings]="dropdownDepartmentSettings" [data]="dropdownListCHecklist">
+                            </ng-multiselect-dropdown>
+                        </div>
+                    </div>
+                    <!-- <button class="actionBtn" (click)="openLessonLearn()">Add Lesson Learn</button> -->
+                </div>
+
+
+                <div class="mainBtnsDiv">
+                    <button class="actionBtn" (click)="submitTemplate()">Submit</button>
+                    <button class="actionBtn" (click)="clearForm()">Clear</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SR NO.</th>
+                            <th>Template Name</th>
+                            <th>Created By</th>
+                            <th>Created Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let h of checkListTemplate;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{h.templateName}}</td>
+                            <td>{{h.createdBy}}</td>
+                            <td>{{h.createdDt| date:'dd/MM/yyyy'}}</td>
+
+                            <td>
+                                <a><i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
+                                        (click)="navigateToEdit(h)"></i></a>
+
+                                <i class="fa-solid fa-trash cursor-pointer" (click)="deleteTemplate(h)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>

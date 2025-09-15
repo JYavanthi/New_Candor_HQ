@@ -1,0 +1,32 @@
+<div class="container-implement">
+    <!-- <div class="notification-sucess" *ngIf="messagesuccess">
+      <p>Saved Successfully!</p>
+      <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+    </div>
+    <div class="notification" *ngIf="messageerror">
+      <span class="close-btn" (click)="closeNotification()">&times;</span>
+      <p>Not Saved</p>
+    </div> -->
+    <div class="container-field-line" [formGroup]="myForm">
+
+        <h3>Software</h3>
+        <div class="border-rfc-heading">
+            <div class="row mt-2">
+                <div class="col">
+                    <label>Software Name</label>
+                    <input formControlName="softwareName">
+                </div>
+
+                <div class="col">
+                    <label>
+                        <input type="checkbox" formControlName="active" /> Active
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <Div class="mt-4">
+        <button (click)="saveSoftware()" class="btn btn-primary">Submit</button>
+        <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
+    </Div>

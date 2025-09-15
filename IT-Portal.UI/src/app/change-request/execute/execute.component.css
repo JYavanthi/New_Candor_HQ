@@ -1,0 +1,115 @@
+/* Radio button styles */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Select and button styles */
+h4 select,
+h4 button {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+h4,
+p,
+input,
+select,
+exectable {
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: -3%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type="date"] {
+  width: calc(100% - 2px);
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+td {
+  font-size: small;
+}
+
+li.active {
+  color:white;
+}
+
+.txt-style {
+  font-size: 18px;
+  transform: skew(21deg);
+}
+
+.not-authorized-message {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+  border-radius: 5px;
+  background-color: aliceblue;
+  padding: 8%;
+  width: 70%;
+  margin-left: 13%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.breadcrumb__item.active {
+  color: white;
+}
+
+.nav-link {
+  background-color: green;
+  color: white;
+}
+
+.status-approved {
+  background-color: green;
+}
+
+.isstatustrue{
+    background-color:green;
+    color:white;
+}
+
+.isstatusfalse {
+  background-color: blue;
+  color: white;
+}

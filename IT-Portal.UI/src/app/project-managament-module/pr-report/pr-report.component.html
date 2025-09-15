@@ -1,0 +1,27 @@
+<div class="card service_card br-top-blue">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="container-home">
+                    <div class="text-center">
+                        <h1>Reports</h1>
+                    </div>
+                    <div class="row generate_row">
+                        <div class="col selector">
+                            <label for="selector">Selector :</label>&nbsp;
+                            <select class="select_change_report" [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)">
+                                <option value="" disabled selected hidden>Select-Report</option>
+                                <option value="/projectmanagement/report/projectreport">Project Report</option>
+                                <option value="/projectmanagement/report/taskreport">Task Report</option>
+                                <option value="/projectmanagement/report/issuereport">Issue Report</option>
+                                <!-- <option value="/projectmanagement/report/racireport">Time Sheet Report</option> -->
+                                <option value="/projectmanagement/report/racireport">RACI Matrix Report</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

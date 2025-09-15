@@ -1,0 +1,40 @@
+<!--1.Category-->
+<div class="container-implement">
+    <div class="container-field-line">
+      <h3>Project Group</h3>
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()" autocomplete="off" placeholder="Search Group Name">
+      </div>
+      <button class="btn btn-primary" style="margin-left: 92%; margin-top: -5%; width: 7%;"
+      (click)="navigateTo()">New</button>
+      <div class="border-rfc-heading">
+        <div class="table-wrapper" style="overflow-x: auto">
+          <table class="fl-table">
+            <thead class="table-head">
+              <tr class="border-bottom">
+                <th>SR. NO.</th>
+                <th>Group Name</th>
+                <th>Is Active</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr *ngFor="let data of filterData ? filterData : groupList;let i=index" class="tr-body"> -->
+                <tr *ngFor="let data of groupvalue ? groupvalue : groupList;let i=index" class="tr-body">
+                <td>{{ i + 1}}</td>
+                <td>{{ data.projectGroupName }}</td>
+                <td>{{ data.isActive }}</td>
+                <td>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="navigateTo(data.projectGroupId)"></i>
+                  <i (click)="deleteRow(data.projectGroupId)" class="fa fa-trash" aria-hidden="true"></i>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+

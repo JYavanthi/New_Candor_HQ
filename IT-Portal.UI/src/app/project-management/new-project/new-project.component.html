@@ -1,0 +1,46 @@
+
+<div style="margin-left: 6%;">
+    <button class="btn-back" [routerLink]="'/projectmanagement'" >Back</button>
+</div>
+<div class="text-center"> 
+    <h1>Create New Project </h1>
+</div>
+<form id="projectForm">
+    <label for="projectId">Project ID:</label>
+    <input type="text" id="projectId" name="projectId" required>
+    
+    <label for="projectName">Project Name:</label>
+    <input type="text" id="projectName" name="projectName" required>
+    
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required>
+    
+    <label for="endDate">End Date:<span style="color:red;font-size:x-small"> (*End Date Can't be less than start)</span></label>
+    <input type="date" id="endDate" name="endDate" required>
+    <!-- <label>Project End Date<span style="color:red;font-size:x-small"> (*End Date Can't be less than start)</span></label>
+    <input type="datetime-local"  placeholder="" /> -->
+    
+    <label for="priority">Priority:</label>
+    <select id="priority" name="priority" required>
+        <option value="" disabled selected>Select Priority</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+
+    <!-- <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="" disabled selected>Select Status</option>
+        <option value="Active">Active</option>
+        <option value="Inprogress">Inprogress</option>
+        <option value="Delayed">Delayed</option>
+        <option value="On Track">On Track</option>
+        <option value="On Hold">On Hold</option>
+        <option value="Approved">Approved</option>
+        <option value="Cancelled">Cancelled</option>
+        <option value="Completed">Completed</option>
+    </select> -->
+    
+    <button class="btn-back" style="margin-left: 38%;">Submit</button>
+
+</form>

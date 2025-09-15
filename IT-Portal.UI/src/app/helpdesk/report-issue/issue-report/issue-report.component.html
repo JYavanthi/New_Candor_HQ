@@ -1,0 +1,182 @@
+<div class="text-center">
+  <div class="text-center pageHeadingCss">
+    <p class="pageHeadingparaCss">Issue Report</p>
+  </div>
+  <button style="margin-right:78%" class="btn-back" [routerLink]="'/reports'" type="button">Back </button>&nbsp;
+</div>
+<div class="container-home">
+  <div class="row" align="right">
+    <div class="col export_pdf">
+      <button  class="excel_button" (click)="toggleVisibility()"><span class="filterIconClass" ><i class="fa fa-filter" aria-hidden="true"></i></span></button>&nbsp;&nbsp;
+      <!-- <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp; -->
+      <button  (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+    </div>
+    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
+
+    </div>
+  </div>
+  <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
+    <div class="card-body card_body_filter" [formGroup]="filterForm">
+      <div class="row filter_cr">
+        <div class="col">
+          <label>Plant</label><br />
+          <div>
+            <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings"
+                                     [data]="dropdownList"
+                                     formControlName="plantId"
+                                     (ngModelChange)="mapedplantdatas()">
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="col">
+          <label>Service Category</label><br />
+          <ng-multiselect-dropdown [settings]="dropdownSettings"
+                                   [data]="dropdowncategroy"
+                                   formControlName="Category"
+                                   (ngModelChange)="mapedcategoryatas($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col">
+          <label>Sub-Category</label><br />
+          <select class="input-change" formControlName="subCategory">
+            <option selected disabled hidden value="">Select Sub-Category</option>
+            <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">{{valueCtype.categoryType}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Priority</label><br />
+          <select formControlName="Priority" class="input-change">
+            <option selected disabled hidden value="">Select Priority</option>
+            <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Start Date:</label><br />
+          <input class="input-change cr_date" [max]="currentDate" type="date" id="fromDate" name="fromDate" required formControlName="StartDate" />
+        </div>
+        <div class="col">
+          <label>End Date:</label><br />
+          <input class="input-change cr_date"  [max]="currentDate" [min]="this.filterForm.value['StartDate']" type="date" id="toDate" name="toDate" required formControlName="EndDate" />
+        </div>
+        <div class="col">
+          <label>Status</label><br />
+          <select class="input-change" formControlName="Status">
+            <option selected disabled hidden value="">Select Status</option>
+            <option value="">All</option>
+            <option>Draft</option>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Seek Clarification</option>
+            <option>On Hold</option>
+            <option>Cancelled</option>
+            <option>Resolved</option>
+            <option>Closed</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Assign To</label><br />
+          <!-- <input type="text" formControlName="assignTo" (ngModelChange)="ClearOtherInputs()"/> -->
+          <span>
+            <input type="text" class="dropdownslistinput" #EnterIssueID placeholder="Enter Issue For"
+               formControlName="assignTo" (input)="filterItems()"/>
+            <ul class="dropdowns-list" *ngIf="dropdownItems?.length > 0">
+              <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="setFormControl(item)">
+                {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+      <div class="access-checkbox">
+        <div>
+          <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div>
+          <button (click)="resetfn()" type="reset" class="btn btn-rounded filter_button">Reset</button>&nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <div class="tableClass sizetable">
+    <table id="excel-table">
+      <thead style="border-bottom: 2px solid;">
+        <tr class="border-bottom">
+          <th>Issue Ticket No</th>
+          <th class="min-width-100 ">Descriptions</th>
+          <th>Priority</th>
+          <th class="max-width-100">Assigned Date</th>
+          <th>Status</th>
+          <th>Initial Category</th>
+          <th>Initial Category Type</th>
+          <th>RaisedBy</th>
+          <th>Issue Raised For</th>
+          <th>Plant Name</th>
+          <th>Paygroup</th>
+          <th>Empoyee Category</th>
+          <th>Assigned To</th>
+          <th>Last Update By</th>
+          <th>Last Update Dt</th>
+          <th>Resolved by</th>
+          <th>Resolution Dt</th>
+          <th>Resolution Remarks</th>
+          <th>Closure Dt</th>
+          <th>Closure By</th>
+          <th>Closure Remarks</th>
+          <th>Response SLA Dt</th>
+          <th>Response SLA Update Engineer</th>
+          <th>Response SLA Met/Not Met</th>
+          <th>Response SLA Breached Reson</th>
+          <th>Response SLA Delayed By</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="tr-body" *ngFor="let row of issuelistvalue">
+            <td>{{row.issueCode}}</td>
+            <td class="min-width-100 reportDescription" title="{{row.issueDesc}}">{{row.issueDesc}}</td>
+            <td>{{row.priorityName}}</td>
+            <td>{{row.assignedOn | date:'dd-MM-yyyy'}}</td>
+            <td>{{row.status}}</td>
+            <td>{{row.categoryName}}</td>
+            <td>{{row.categoryType}}</td>
+            <td>{{(row.raisedByEmp)? row.raisedByEmp + ' (' + row.raisedById + ')':  row.createdBy }}</td>
+            <td>{{row.issuerisedForId !== 0 ? (row.issuerisedfor +' ('+row.issuerisedForId+')') : '' }}</td>
+            <td>{{row.plantName}}</td>
+            <td>{{row.paygroup}}</td>
+            <td>{{row.empcategory}}</td>
+            <td>{{(row.assignedTo && row.assignedToId)? row.assignedTo + ' (' + row.assignedToId + ')': ' '}}</td>
+            <td>{{row.updateBy ? (row.updateBy !== '' ? row.updateBy : ' ') :' '}}</td>
+            <td>{{row.updateDt ? (row.updateDt !== '' ? (row.updateDt|date:'dd-MM-yyyy') :' '): ' '}}</td>
+            <!-- {{CRreport.rfcapproverLevel1Dt? (CRreport.rfcapproverLevel1Dt.trim() !=='' ? (CRreport.rfcapproverLevel1Dt|date:'dd-MM-yyyy') : 'NA') : 'NA'  }} -->
+            <td>{{row.resolveBy}}</td>
+            <td>{{row.resolveDt ? (row.resolveDt !== '' ? (row.resolveDt|date:'dd-MM-yyyy') :' '): ' '}}</td>
+            <td>{{row.resolveRemarks ? (row.resolveRemarks !=='' ? row.resolveRemarks : ' '): ''}}</td>
+            <td>{{row.closedBY ? (row.closedBY !=='' ? row.closedBY : ' '): ' '}}</td>
+            <td>{{row.closedRemark ? (row.closedRemark !=='' ? row.closedRemark : ' '): ' '}}</td>
+            <td>{{row.closedDate ? (row.closedDate !=='' ? (row.closedDate|date:'dd-MM-yyyy') : ' '): ' '}}</td>
+            <td>{{row.slaDate? (row.slaDate !=='' ? (row.slaDate | date: 'dd-MM-yyyy'): ' '): ' '}}</td>
+            <td></td>
+            <td> </td>
+            <td> </td>
+            <td></td>
+          </tr>
+      </tbody>
+    <!-- <ng-template #noData>
+      <tr>
+        <td colspan="13">There are no RFCs</td>
+      </tr>
+    </ng-template> -->
+    </table>
+  </div>
+  <div *ngIf="issuelist?.length > 0">
+    <mat-paginator [length]="totalItems"
+                  [pageSize]="pageSize"
+                  [pageIndex]="pageIndex"
+                  [pageSizeOptions]="[10,25,50,100]"
+                  (page)="onPageChange($event)"
+                  aria-label="Select page" style="margin-right:34%">
+    </mat-paginator>
+  </div>
+</div>

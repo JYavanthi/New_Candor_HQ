@@ -1,0 +1,61 @@
+''
+
+<div class="service_header_h1tag">
+  <h1>IT Consumable</h1>
+</div>
+
+<div class="service_container">
+  <div class="card service_card" style="border-top: 6px solid #113bf7;">
+    <div class="card-body">
+      <div class="card">
+        <div class="card-body">
+          <div class="software">
+            <div class="row">
+              <div class="col">
+                <label>Choose Asset</label>
+                <select>
+                  <option disabled selected>Choose-Asset</option>
+                  <option>Server</option>
+                  <option>Network</option>
+                  <option>Security</option>
+                  <option>Inhouse Development</option>
+                  <option>SAP</option>
+                  <option>Software</option>
+                  <option>Desktop/Laptop</option>
+                  <option>Printers</option>
+                </select>
+              </div>
+              <div class="col">
+                <label>Request For</label>
+                <select>
+                  <option>Replace</option>
+                  <option>New</option>
+                </select>
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="row">
+              <label>Attachment</label>
+              <input type="file" style="width: 98%; margin-left: 1%;" />
+            </div>
+            <div class="row">
+              <label>Description</label>
+              <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="btn-sub software_submit">Submit</span>
+            </div>
+            <div class="col">
+              <span class="btn-sub" [routerLink]="'/service'">Cancel</span>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<button class="addNewBtn" *ngIf="(!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
+||this.projectdetails?.projectStatus=='Approved'
+))" (click)="navigateToEdit()">
+    Add New</button>
+
+<button class="addNewBtn m-2" (click)="showTemplate()">Template</button>
+<ng-container *ngIf="!showLessonLearned">
+    <div class="tableDesign">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SL.No</th>
+                        <th>Milestone</th>
+                        <th>Category</th>
+                        <th>Lesson Type</th>
+                        <th>Recommendation</th>
+                        <th>Created Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of paginatedData; let i=index;">
+                        <td>{{i+1}}</td>
+                        <td>{{task.milestoneTitle}}</td>
+                        <td>{{task.category}}</td>
+                        <td>{{task.lessonsType}}</td>
+                        <td>{{task.recommendation}}</td>
+                        <td>{{task.createdDt | date:'dd/MM/yyyy HH:mm'}}</td>
+                        <td>
+                            <i class="fa fa-pencil-square-o cursor-pointer" (click)="navigateToEdit(task)"></i>
+                            <i class="fa-solid fa-trash cursor-pointer" (click)="delete(task.prlessonsId)"></i>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mb-5">
+                <div *ngIf="lessonListData?.length > 0">
+                    <mat-paginator [length]="lessonListData?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+                        [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event,false)"
+                        aria-label="Select page" style="margin-right:34%">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="showLessonLearned">
+    <app-projectlesson (isAddTemplate)="getAddTemplate($event)" [proLessonData]="proLessonData"></app-projectlesson>
+</ng-container>

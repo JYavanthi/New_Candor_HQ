@@ -1,0 +1,252 @@
+.filterAndViewButtons {
+    display: flex;
+    justify-content: end;
+    margin-top: -53px;
+    margin-right: -7rem;
+}
+
+.button-approve{
+  padding: 5px 10px;
+}
+
+.filterButton {
+    display: inline-block;
+    background-color: #3c8dbc;
+    width: 41px;
+    height: 40px;
+    border-radius: 46px;
+    align-content: center;
+    padding-left: 10px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.viewServicesButton {
+    display: inline-block;
+    background-color: #3c8dbc;
+    height: 40px;
+    border-radius: 6px;
+    align-content: center;
+    padding: 6px;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+    border-color: #3c8dbc;
+    margin: 0px 138px 0px 0px;
+}
+
+/* .table {
+    text-align: -webkit-center;
+    margin-top: 32px;
+}
+
+.tableHeadings {
+    background-color: #f8f8f8;
+    text-align: center;
+    height: 50px;
+    border-bottom: 2px solid black;
+
+}
+
+tbody tr {
+    text-align: center;
+    color: #46a3ca;
+    height: 3rem;
+}
+
+table {
+    width: 90%;
+    margin-left: 5%;
+} */
+
+
+.toggle-wrapper {
+    /* display: flex;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 250px;
+    margin-left: 8%; */
+}
+.p-absulate{
+    position: absolute;
+    width: 20%;
+    right: 20px;
+}
+.toggle-button {
+    padding: 5px;
+    border-radius: 70px;
+    min-width: 160px;
+    /* flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer; */
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.toggle-button.active {
+    background-color: #3c8dbc;
+    color: white;
+}
+.table {
+    margin-top: 20px !important;
+}
+.filterIconClass {
+    margin-left: auto;
+    width: 0;
+    background-color: #3c8dbc;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* tbody, td, tfoot, th, thead, tr{
+  border-style: none;
+}
+
+td,th{
+    text-align: left;
+} */
+.update {
+    margin-left: 3rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+.onHoldDropDown {
+  margin: 1rem;
+  width: auto;
+}
+
+.onHoldDropDown{
+    margin: 1rem;
+      width: auto;
+  }
+
+.resolutionBtns {
+    margin: 1rem 0rem 1rem -1rem;
+  background-color:  #4693c0;
+  color: white;
+  border: none;
+  padding: 0px 8px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.btn {
+    background: #3c8dbc;
+    color: white;
+    border-radius: 5px;
+}
+
+.mat-form-field .mat-input-element {
+    height: 30px !important;
+}
+
+.mat-mdc-text-field-wrapper {
+    height: auto !important;
+}
+
+.table-container {
+    max-width: 100%;
+    overflow: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 8px 8px;
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableBox {
+    position: relative;
+    width: 90%;
+    margin-left: 8%;
+    margin-bottom: 3%;
+}
+
+th,
+td {
+    padding: 2px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #cde9f7;
+    color: black;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.toggle-wrapper1 {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 250px;
+  }
+
+  .toggle-button1 {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
+    .toggle-button1.active {
+      background-color: #3c8dbc;
+      color: white;
+    }
+
+    .toggle-button1:first-child {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .toggle-button1:last-child {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    button.button-approve:disabled{
+      opacity: 0.6;
+    }

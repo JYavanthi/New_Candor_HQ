@@ -1,0 +1,56 @@
+<style>
+  table, th, td {
+    border: 1px solid !important;
+  }
+
+  table {
+    width: 100% !important;
+  }
+</style>
+
+<div style="border: 1px solid black; margin: 10px; padding: 10px;">
+  <span>Dear Approvers,</span><br />
+  <p>Please find the details of the Change Request Submitted by ${CrRequest} approved by ${approvedby}.</p>
+  <p><b>CR ID</b>: {{this.Cremailvalue[0].changeDesc}}</p>
+  <p><b>Requestor Name</b>: {{this.Cremailvalue[0].crrequestedBy}}</p>
+  <p><b>Requested Date</b>: {{this.Cremailvalue[0].crrequestedBy}}</p>
+  <p><b>Phase</b>: Closure</p>
+  <p><b>Status</b>: Closure Approval</p>
+  <p><b>Change description</b>: {{this.Cremailvalue[0].crrequestedBy}}</p>
+  <span style="border-bottom:1.5px solid black;width:100%;display:inline-block;"></span>
+  <br />
+  <br />
+
+  <p><b>CLOSURE APPROVER</b></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Approver Level</th>
+        <th>${response[0].crapprover11C} (${response[0].crapprover11CempId}</th>
+        <th>Status</th>
+        <!--<th>Remarks with Dates</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Approval 1</td>
+        <td>${response[0].crapprover12C} (${response[0].crapprover12CempId}</td>
+        <td>Pending</td>
+        <!--<td></td>-->
+      </tr>
+      <tr>
+        <td>Approval 2</td>
+        <td>${response[0].crapprover13C} (${response[0].crapprover13CempId}</td>
+        <td>Queued</td>
+        <!--<td></td>-->
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a href=${loginUrl} target=${loginUrl}>Click here</a> to Log into Unnati and view / update your status.</p>
+  <p>Regards,</p>
+  <p>IT Team</p>
+  <p>Micro Labs Ltd</p>
+  <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+</div>

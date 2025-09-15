@@ -1,0 +1,172 @@
+/*table, th, td {
+  border: 1px solid;
+}*/
+
+.checkbox-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+  /* Style for checkbox */
+  .checkbox-container input[type="checkbox"] {
+    margin-bottom:5px;
+    margin-right:-15px; /* Adjust spacing between checkbox and label */
+  }
+
+  /* Style for label */
+  .checkbox-container label {
+    margin: 0; /* Remove default margin */
+  }
+.container-implement{
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  margin-left: 0%;
+}
+.container-field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 10px;
+  border-top: 5px solid #113bf7;
+  margin-bottom: 3%;
+}
+
+.addmore_button {
+  background-color: #113bf7;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top:5%;
+  
+}
+
+.container-line {
+  padding: 15px;
+}
+
+.border-rfc-heading {
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: rgb(155, 158, 158);
+  padding: 10px;
+  
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.g_p_input {
+  height: 4.5vh;
+  margin-bottom: 5%;
+}
+.fa-edit, .fa-trash-o {
+  font-size: 21px;
+  margin-top: 7%;
+}
+
+.g_p_classification {
+  white-space: nowrap;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  width: 450%;
+  margin-top: 2%;
+  justify-content: space-around;
+}
+
+.container-field-line-gp {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 104%;
+  margin-top: 5%;
+  border-top: 5px solid #113bf7;
+  margin-left: -2%;
+}
+
+.notification-confirm {
+  width: 50%;
+  text-align: center;
+}
+
+.confirombtn {
+  height: 10%;
+  width: 10%;
+}
+
+.message-txt {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.success {
+  animation: Down 0.5s ease forwards;
+  width: 25%;
+  background-color: green;
+  color: white;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes Down {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: Background;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  opacity: 0;
+  animation: slideDown 0.5s ease forwards;
+  width: 25%;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.emailcheckbox {
+  color: blue;
+  font-size: 14px;
+}
+
+.dropdowns-list {
+  min-width: 297px;
+}

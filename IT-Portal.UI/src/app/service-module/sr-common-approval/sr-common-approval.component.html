@@ -1,0 +1,38 @@
+<mat-tab-group [(selectedIndex)]="approveTabIndex" class="approveTabs">
+  <mat-tab *ngIf="srData?.isRpmreq && (srData?.rpmEmpNo != srData?.hodEmpNo)">
+    <ng-template mat-tab-label>
+      <div
+        [ngClass]="{'green-tab': srData?.status?.trim() != 'Pending Approval' || srData?.status?.trim() != 'Pending HOD Approval'}">
+        <span>Approve 1</span>
+      </div>
+    </ng-template>
+    <app-sr-common-approvetab [data]="approverData" [apprName]="this.srData?.rpmToName?.split(splitConst)[0]"
+      [apprId]="srData?.rpmEmpNo" Status="Pending Approval" [srData]="srData" [isAsset]="isAsset"
+      [isSpare]="isSpare">
+    </app-sr-common-approvetab>
+  </mat-tab>
+
+  <mat-tab *ngIf="srData?.isHodreq">
+    <ng-template mat-tab-label>
+      <div [ngClass]="{'green-tab': (
+        this.srData?.status?.trim() === 'Resolved' ||
+        this.srData?.status?.trim() === 'Approved' ||
+        this.srData?.status?.trim() === 'Seek Clarification' ||
+        this.srData?.status?.trim() === 'Open' ||
+        this.srData?.status?.trim() === 'In Progress' ||
+        this.srData?.status?.trim() === 'On Hold' ||
+        this.srData?.status?.trim() === 'Submit Clarification'
+      )}">
+        <span>
+          {{ (srData?.isRpmreq&&srData?.hodEmpNo&&(srData?.rpmEmpNo!=srData?.hodEmpNo)) ? 'Approve 2' : 'Approve 1' }} 
+          <!-- {{srData?.hodEmpNo}} -->
+        </span>
+      </div>
+    </ng-template>
+    <app-sr-common-approvetab [srData]="srData" [data]="approverData"
+    [apprName]="this.srData?.hodToName?.split(splitConst)[0]" [isSpare]="isSpare"
+      [sameRpmNhod]="srData?.rpmEmpNo==srData?.hodEmpNo" Status="Pending HOD Approval"
+       [apprId]="srData?.hodEmpNo" [isAsset]="isAsset">
+    </app-sr-common-approvetab>
+  </mat-tab>
+</mat-tab-group>

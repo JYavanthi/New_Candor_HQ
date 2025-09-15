@@ -1,0 +1,146 @@
+.service_container {
+    margin-top: 2%;
+}
+
+/* .radioBtns {
+    display: flex;
+    align-items: center;
+    width: 100%;
+} */
+
+.radioBtns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.empClass {
+    display: flex;
+    width: 350px;
+    align-items: center;
+}
+
+.requestedClass {
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    background: black;
+    padding: 3px;
+}
+
+.insideCardBody {
+    background-color: #f8f8f8;
+}
+
+label.asteriskrequired::after {
+    content: ' *';
+    color: red;
+}
+
+.radioBG {
+    border-radius: 3px;
+    background-color: #67b1db;
+    padding: 5px;
+    margin-top: -10px;
+}
+
+.radioTitle {
+    font-weight: bold;
+    color: white;
+}
+
+.userConfigFlexStart {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 15px;
+    margin: 0px 10px 10px 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 98.5%;
+}
+
+.insideCardBody input[type="checkbox"],
+.userConfigFlexStart input[type="checkbox"] {
+    margin-top: 3.5px;
+}
+
+.wrapChilds {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 1%;
+    position: relative;
+}
+
+.spanPosition {
+    position: relative;
+}
+
+.parentSupportName {
+    position: absolute;
+    top: -30px;
+    font-weight: bold;
+    background-color: #cde9f7;
+    padding: 3px 10px;
+    border-radius: 5px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.userRoleClass {
+    display: flex;
+    gap: 10px;
+    /* margin-left: 5%; */
+    color: white;
+    font-weight: bold;
+    width: 320px;
+}
+
+.userRoleCheckbox {
+    display: flex;
+    gap: 20px;
+}
+
+.userConfigInputFields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 15px;
+    gap: 10px;
+    margin: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 98.5%;
+    background-color: #cde9f7;
+}
+
+button {
+    cursor: pointer;
+}
+
+.backBtn {
+    margin-left: 7% !important;
+    position: fixed;
+    z-index: 99 !important;
+    margin-top: -3% !important;
+}
+
+.copy {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+
+.copyEmpID {
+    display: flex;
+    gap: 0px;
+    color: white;
+    font-weight: bold;
+    width: 454px;
+    align-items: center;
+}

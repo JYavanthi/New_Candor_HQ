@@ -1,0 +1,298 @@
+''
+
+
+<div class="text-center">
+  <h1>Assign</h1>
+</div>
+
+<div style="margin-top:-2%"  class="container">
+  <div class="issue-btn">
+    <button class="btn-back" [routerLink]="'/report_issue'" type="button">Back </button>&nbsp;
+  </div>
+  <br />
+
+
+  <div >
+    <div class="container-home container-implement">
+      <div class="text-center">
+        <h3>Issue Table</h3>
+      </div><br />
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <!-- <th>Select</th> -->
+              <th>Issue Code</th>
+              <th>Requestor</th>
+              <th>Status</th>
+              <th>Service Category</th>
+              <th>Sub-Category</th>
+              <th>Priority</th>
+              <!-- <th>Assigned To</th> -->
+              <th>Assign To</th>
+              <th>Resolution</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr-body">
+              <!-- <td><input type="radio" name="one" id="one" /></td> -->
+              <td>001</td>
+              <td>Michael</td>
+              <td>Open</td>
+              <td>Server</td>
+              <td>Network</td>
+              <td>High</td>
+              <!-- <td></td> -->
+              <td>Assign To</td>
+              <td>Resolution</td>
+              
+              <!-- <td><a style="cursor:pointer;"><i class='fas fa-male' aria-hidden="true"></i></a></td> -->
+              <!--<td><a href="" routerLink="/issueassign/{{issuedata.issueId}}"><i style="color:black;" class='fas fa-male' aria-hidden="true"></i></a></td>-->
+              <!--<td><i class="fa fa-download" aria-hidden="true"></i></td>-->
+              <!--<td>-->
+                <!-- <a routerLink="/issuelist/{{issuedata.issueId}}/tab"><i style="color:black;" class="fa fa-file-o" aria-hidden="true"></i></a>
+              
+              </td>-->
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+    </div>
+    <div class="container-field-line container-implement">
+      <div>
+        <div class="row">
+          <div class="col">
+            <label>Status</label>
+            <input readonly placeholder="Status" />
+            <!-- <select>
+              <option disabled selected>Select Status</option>
+              <option>Open</option>
+              <option>Progress</option>
+              <option>Seek Clarification</option>
+              <option>On Hold</option>
+              <option>Cancelled</option>
+              <option>Waiting for Spare</option>
+              <option>Waiting for Vendor</option>
+              <option>Resolved</option>
+              <option>Closed</option>
+            </select> -->
+          </div>
+          <div class="col">
+            <label>Category</label>
+            <input readonly placeholder="Category" />
+            <!--<select>
+    <option value="" disabled selected>Select Category</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>-->
+          </div>
+          <div class="col">
+            <label>Type</label>
+            <input readonly placeholder="Type" type="text" />
+          </div>
+          <div class="col">
+            <label>Asset</label>
+            <input readonly placeholder="Asset"/>
+            <!-- <select>
+              <option value="" disabled selected>Select Asset</option>
+              <option value="1">Wifi</option>
+              <option value="2">Internet</option>
+              <option value="3">Hard Disk</option>
+              <option value="4">Pen Drive</option>
+            </select> -->
+
+          </div>
+          <div class="row">
+            <!--<div class="col">
+            <label>Guest Company</label>
+            <input readonly [(ngModel)]="updatevalue[0].guestCompany" type="text" />
+          </div>-->
+            <!--<div class="col">
+            <label>Location</label>
+            <input readonly [(ngModel)]="updatevalue[0].plantname" type="text" />
+          </div>-->
+            <div class="col">
+              <label>From Date:</label>
+              <input readonly type="date" />
+            </div>
+
+            <div class="col">
+              <label>To Date:</label>
+              <input readonly type="date" />
+            </div>
+            <div class="col">
+              <label>Plant</label>
+              <input readonly placeholder="Plant" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label>Priority</label>
+              <input readonly placeholder="Priority" />
+            </div>
+            <div class="col">
+              <label>Source</label>
+              <input readonly placeholder="Source" />
+            </div>
+            <div class="col">
+              <label>Impacted Asset(optional)</label>
+              <input readonly placeholder="Impacted Asset" />
+            </div>
+
+          </div>
+          <!--<div>
+          <div>
+            <label>Subject</label>
+            <input readonly [(ngModel)]="updatevalue[0].issueShotDesc" />
+          </div>
+          <div class="report_description">
+            <label>Description</label>
+            <textarea readonly [(ngModel)]="updatevalue[0].issueDesc" class="textarea-implement" cols="160" rows="4" id="area7"></textarea>
+          </div>
+          <div class="report_attachment">
+            <label>Remarks</label>
+            <textarea readonly [(ngModel)]="updatevalue[0].remarks" class="textarea-implement"></textarea>
+          </div>
+        </div>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Proposed Resolution On</label>
+          <input [(ngModel)]="proposedResolutionOn" type="date" />
+        </div>
+        <div class="col">
+          <label>Resolution Date</label>
+          <input [(ngModel)]="resolutionDt" type="date" />
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Resolution Remarks</label><br />
+          <textarea [(ngModel)]="resolutionRemarks" style="width:100%; height:100%;"></textarea>
+        </div>
+      </div>
+      <br />
+      <br />
+
+
+      <!-- <div style="margin-left: -8%;" class="row">
+        <div class="col assign mb-5">
+          <button (click)="issueresolution()" class="button-assign">Submit</button>&nbsp;
+          <button class="button-clarification">Seek Clarification</button>
+        </div> 
+      </div>-->
+      <div class="border-rfc-heading">
+
+        <div class="col">
+          <label>Details <span style="color:red">*</span></label>
+          <textarea class="textarea-implement" cols="160" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label> Start Date<span style="color:red">*</span> </label>
+            <input type="date" required />
+          </div>
+  
+          <div class="col">
+            <label> Start Time<span style="color:red;font-size:x-small"> (Optional)</span> </label>
+            <input type="datetime-local" required />
+          </div>
+  
+          <div class="col">
+            <label> Completion Date <span style="color:red">*</span></label>
+            <input type="date" required />
+          </div>
+  
+          <div class="col">
+            <label> Completion Time<span style="color:red;font-size:x-small"> (Optional)</span> </label>
+            <input type="datetime-local" required />
+          </div>
+  
+          <div>
+            <label class="label-approve">Attachments</label>
+            <input type="File" placeholder="">
+  
+            <button class="btn-back" style="margin-left:3%;">Submit</button>&nbsp;
+            <!-- <button class="button-assign">Reject</button>&nbsp;
+            <button class="button-clarification">Seek Clarification</button> -->
+          </div>
+  
+  
+  
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+ <!-- <div class="container-implement">
+  <div class="container-field-line" style="margin-left:3%;">
+
+
+    
+    <div class="border-rfc-heading">
+
+      <div class="col">
+        <label>Details <span style="color:red">*</span></label>
+        <textarea class="textarea-implement" cols="160" rows="2"></textarea>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label> Start Date<span style="color:red">*</span> </label>
+          <input type="date" required />
+        </div>
+
+        <div class="col">
+          <label> Start Time<span style="color:red;font-size:x-small"> (Optional)</span> </label>
+          <input type="datetime-local" required />
+        </div>
+
+        <div class="col">
+          <label> Completion Date <span style="color:red">*</span></label>
+          <input type="date" required />
+        </div>
+
+        <div class="col">
+          <label> Completion Time<span style="color:red;font-size:x-small"> (Optional)</span> </label>
+          <input type="datetime-local" required />
+        </div>
+
+        <div>
+          <label class="label-approve">Attachments</label>
+          <input type="File" placeholder="">
+
+          <button class="btn-back" style="margin-left:3%;">Submit</button>&nbsp;
+          <button class="button-assign">Reject</button>&nbsp;
+          <button class="button-clarification">Seek Clarification</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div> -->
+</div>

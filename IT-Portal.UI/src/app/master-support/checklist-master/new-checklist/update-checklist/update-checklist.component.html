@@ -1,0 +1,89 @@
+<div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap -->
+    <h3>Update CheckList</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>Check List ID</label>
+          <input type="text" placeholder="checkList ID" [(ngModel)]="updatevalue[0].itchecklistId" readonly />
+          <!-- <select [(ngModel)]="update[0].supportID">
+            <option value="">Select Module Name</option>
+            <option *ngFor="let cldata of support" [value]="cldata.supportId">{{cldata.supportName}}</option>
+          </select>-->
+        </div>
+        <div class="col">
+          <label>Module Name</label>
+         <!-- <select [(ngModel)]="updatevalue[0].supportId">
+            <option value="">Select Module Name</option>
+            <option *ngFor="let cldata of support" [value]="cldata.supportId">{{cldata.supportName}}</option>
+          </select>-->
+          <select [(ngModel)]="updatevalue[0].supportId">
+            <option value="1">Change Request</option>
+            <option value="2">Help Disk</option>
+            <option value="3">Project Management</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label>Plant Name</label>
+          <select [(ngModel)]="updatevalue[0].plantId">
+            <option value="">Select Plant code</option>
+            <option *ngFor="let cldata of plantcode" [value]="cldata.id">{{cldata.code}}</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label>Classification Name</label>
+          <select [(ngModel)]="updatevalue[0].classificationId">
+            <option value="">Select classification Name</option>
+            <option *ngFor="let cldata of caclasification" [value]="cldata.itclassificationId">{{cldata.classificationName}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col">
+          <label>Category Name</label>
+          <select [(ngModel)]="updatevalue[0].categoryId">
+            <option value="">Select categoryName</option>
+            <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">{{cldata.categoryName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>CheckList Title</label>
+          <input type="text" placeholder="checkList Title" [(ngModel)]="updatevalue[0].checklistTitle" />
+        </div>
+        <div class="col">
+          <label>CheckList Desc</label>
+          <input type="text" placeholder="checkList Desc" [(ngModel)]="updatevalue[0].checklistDesc" />
+        </div>
+        <div class="col">
+          <label>Mandatory Flag</label>
+
+          <select [(ngModel)]="updatevalue[0].mandatoryFlag">
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <button (click)="postCheckList()" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="col">
+      <button [routerLink]="'/viewcheklist'" style="margin-left: -87%;" class="btn btn-primary">Back</button>
+
+    </div>
+
+  </div>
+ 
+
+  </div>
+

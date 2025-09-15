@@ -1,0 +1,112 @@
+<form [formGroup]="membersForm">
+  <div class="card service_card br-top-blue">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="row">
+          <div class="inputFields">
+            <div style="position: relative;">
+              <label for="inputEmployeeId" class="asteriskrequired">Employee ID</label>
+              <input type="text" formControlName="inputEmployeeId" name="inputEmployeeId" id="inputEmployeeId"
+                placeholder="Enter Employee ID" (input)="filterItem()" (keyup.backspace)="clear()">
+              <ul class="dropdowns-list" *ngIf="employeeList.length > 0">
+                <li class="drop-list" value="" *ngFor="let item of employeeList" (click)="selectItem(item)">
+                  {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <label class="asteriskrequired" for="participants">Participants and Followers</label>
+              <select formControlName="participants" name="participants" id="participants">
+                <option value="" selected hidden disabled>Select Participants</option>
+                <option>Project Participant</option>
+                <option>Project Follower</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="asteriskrequired" for="type" customLabelAlert="Select Type">Type</label>
+              <select formControlName="type" name="type" id="type">
+                <option value="" selected hidden disabled>Select Type</option>
+                <option>Internal</option>
+                <option>External</option>
+              </select>
+            </div>
+
+
+            <div>
+              <label for="department" customLabelAlert="Department is Required">Used in which
+                department?</label>
+              <!-- <select   formControlName="department"  name="type" id="department">
+                <option *ngFor="let item of ASCI"  value=""> {{item}}</option>
+              </select> -->
+              <ng-multiselect-dropdown formControlName="department" name="department"
+                [disabled]="membersForm.controls['department'].disabled" [settings]="dropdownDepartmentSettings"
+                [data]="dropdownListDepartment">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="inputFields">
+
+            <ng-container *ngIf="selectedEmployeeDetails">
+              <div>
+                <label>Employee ID: <span class="horinputDatas">{{selectedEmployeeDetails?.employeeId}}</span></label>
+              </div>
+
+              <div>
+                <label>Name: <span class="horinputDatas">{{selectedEmployeeDetails?.employeeName}}</span></label>
+              </div>
+              <div>
+                <label>Email: <span class="horinputDatas">{{selectedEmployeeDetails?.officialEmailId}}</span></label>
+              </div>
+
+              <div>
+                <label>Contact No: <span class="horinputDatas">{{selectedEmployeeDetails?.mobileNo}}</span></label>
+              </div>
+              <div>
+                <label>Reporting Manager: <span
+                    class="horinputDatas">{{selectedEmployeeDetails?.reportManagerName}}</span></label>
+              </div>
+
+              <div>
+                <label>Staff Category: <span
+                    class="horinputDatas">{{selectedEmployeeDetails?.staffCategory}}</span></label>
+              </div>
+
+              <div>
+                <label>Plant: <span class="horinputDatas">{{selectedEmployeeDetails?.plantcode}}</span></label>
+              </div>
+
+              <div>
+                <label>Paygroup: <span class="horinputDatas">{{selectedEmployeeDetails?.payGroup}}</span></label>
+              </div>
+
+              <div>
+                <label>Department: <span class="horinputDatas">{{selectedEmployeeDetails?.department}}</span></label>
+              </div>
+
+              <div>
+                <label>Designation: <span class="horinputDatas">{{selectedEmployeeDetails?.designation}}</span></label>
+              </div>
+
+              <div>
+                <label>Role: <span class="horinputDatas"></span>{{selectedEmployeeDetails?.role}}</label>
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+
+        <div class="mainBtnsDiv" *ngIf="!memberId">
+          <button class="actionBtn" (click)="submitMember()">Submit</button>
+          <button class="actionBtn" (click)="clearForm()">Clear</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

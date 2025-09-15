@@ -1,0 +1,16 @@
+﻿namespace IT_Portal.Domain.IT_Models;
+
+public partial class TypeOfGuest
+{
+    public int Id { get; set; }
+
+    public string TypeOfGuest1 { get; set; } = null!;
+
+    public string? CreatedBy { get; set; }
+
+    public DateTime? CreatedOn { get; set; }
+
+    public string? ModifiedBy { get; set; }
+
+    public DateTime? ModifiedOn { get; set; }
+}

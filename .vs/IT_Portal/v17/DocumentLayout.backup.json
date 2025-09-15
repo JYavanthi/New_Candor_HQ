@@ -1,0 +1,281 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\IT_Portal\\IT-Portal\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\issuelistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\issuelistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\changerequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\changerequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\issusehistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\issusehistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|c:\\it_portal\\it-portal\\it_portal.domain\\it_models\\vwissuelisthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|solutionrelative:it_portal.domain\\it_models\\vwissuelisthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D453DB1-4D5F-4277-86A3-E543484E3E55}|IT_Portal.Persistence\\IT_Portal.Persistence.csproj|c:\\it_portal\\it-portal\\it_portal.persistence\\databasecontext\\microlabsdevcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D453DB1-4D5F-4277-86A3-E543484E3E55}|IT_Portal.Persistence\\IT_Portal.Persistence.csproj|solutionrelative:it_portal.persistence\\databasecontext\\microlabsdevcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\projectmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\projectmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D453DB1-4D5F-4277-86A3-E543484E3E55}|IT_Portal.Persistence\\IT_Portal.Persistence.csproj|c:\\it_portal\\it-portal\\it_portal.persistence\\repositories\\rptissue\\getissusereportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D453DB1-4D5F-4277-86A3-E543484E3E55}|IT_Portal.Persistence\\IT_Portal.Persistence.csproj|solutionrelative:it_portal.persistence\\repositories\\rptissue\\getissusereportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D453DB1-4D5F-4277-86A3-E543484E3E55}|IT_Portal.Persistence\\IT_Portal.Persistence.csproj|c:\\it_portal\\it-portal\\it_portal.persistence\\repositories\\issuelistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D453DB1-4D5F-4277-86A3-E543484E3E55}|IT_Portal.Persistence\\IT_Portal.Persistence.csproj|solutionrelative:it_portal.persistence\\repositories\\issuelistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|c:\\it_portal\\it-portal\\it_portal.domain\\it_models\\attachfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|solutionrelative:it_portal.domain\\it_models\\attachfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\uservalidate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\uservalidate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|c:\\it_portal\\it-portal\\it_portal.domain\\it_models\\issuelisthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|solutionrelative:it_portal.domain\\it_models\\issuelisthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|c:\\it_portal\\it-portal\\it_portal.domain\\it_models\\vwrptcrmilestone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DF4A93D-AF05-4E5D-B9CD-43CF5B4D14DB}|IT_Portal.Domain\\IT_Portal.Domain.csproj|solutionrelative:it_portal.domain\\it_models\\vwrptcrmilestone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\issuechatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\issuechatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\classificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\classificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\categorytypcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\categorytypcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|c:\\it_portal\\it-portal\\it_portal.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F2D6A26-33B4-4C10-A254-C353A56546D5}|IT_Portal.API\\IT_Portal.API.csproj|solutionrelative:it_portal.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChangeRequestController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\ChangeRequestController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\ChangeRequestController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\ChangeRequestController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\ChangeRequestController.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAmwJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T12:14:07.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MicroLabsDevContext.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Persistence\\DatabaseContext\\MicroLabsDevContext.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Persistence\\DatabaseContext\\MicroLabsDevContext.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Persistence\\DatabaseContext\\MicroLabsDevContext.cs",
+              "RelativeToolTip": "IT_Portal.Persistence\\DatabaseContext\\MicroLabsDevContext.cs",
+              "ViewState": "AgIAAOwiAAAAAAAAAAAmwPgiAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T08:46:35.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IssueListController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\IssueListController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\IssueListController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\IssueListController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\IssueListController.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAmwLcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T18:57:57.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "projectManagement.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\projectManagement.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\projectManagement.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\projectManagement.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\projectManagement.cs",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAmwGUBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T09:18:40.991Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IssuseHistoryController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\IssuseHistoryController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\IssuseHistoryController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\IssuseHistoryController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\IssuseHistoryController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAABUAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T14:26:15.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VwIssueListHistory.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\VwIssueListHistory.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Domain\\IT_Models\\VwIssueListHistory.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\VwIssueListHistory.cs",
+              "RelativeToolTip": "IT_Portal.Domain\\IT_Models\\VwIssueListHistory.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T16:06:22.921Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetIssuseReportRepository.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Persistence\\Repositories\\RptIssue\\GetIssuseReportRepository.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Persistence\\Repositories\\RptIssue\\GetIssuseReportRepository.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Persistence\\Repositories\\RptIssue\\GetIssuseReportRepository.cs",
+              "RelativeToolTip": "IT_Portal.Persistence\\Repositories\\RptIssue\\GetIssuseReportRepository.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAuwJQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T16:36:56.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IssueListRepository.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Persistence\\Repositories\\IssueListRepository.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Persistence\\Repositories\\IssueListRepository.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Persistence\\Repositories\\IssueListRepository.cs",
+              "RelativeToolTip": "IT_Portal.Persistence\\Repositories\\IssueListRepository.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAqwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T08:16:46.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AttachFile.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\AttachFile.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Domain\\IT_Models\\AttachFile.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\AttachFile.cs",
+              "RelativeToolTip": "IT_Portal.Domain\\IT_Models\\AttachFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-05T10:03:57.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "userValidate.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\userValidate.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\userValidate.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\userValidate.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\userValidate.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T19:24:28.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IssueListHistory.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\IssueListHistory.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Domain\\IT_Models\\IssueListHistory.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\IssueListHistory.cs",
+              "RelativeToolTip": "IT_Portal.Domain\\IT_Models\\IssueListHistory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T14:23:54.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "VwRptcrmilestone.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\VwRptcrmilestone.cs",
+              "RelativeDocumentMoniker": "IT_Portal.Domain\\IT_Models\\VwRptcrmilestone.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Models\\VwRptcrmilestone.cs",
+              "RelativeToolTip": "IT_Portal.Domain\\IT_Models\\VwRptcrmilestone.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T13:04:27.84Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "issueChatController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\issueChatController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\issueChatController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\issueChatController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\issueChatController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T11:08:45.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ClassificationController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\ClassificationController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\ClassificationController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\ClassificationController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\ClassificationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T11:08:31.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CategoryTypController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\CategoryTypController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\CategoryTypController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\CategoryTypController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\CategoryTypController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAcwCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T11:07:42.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "IT_Portal.API\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\IT_Portal\\IT-Portal\\IT_Portal.API\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "IT_Portal.API\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T11:07:19.407Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

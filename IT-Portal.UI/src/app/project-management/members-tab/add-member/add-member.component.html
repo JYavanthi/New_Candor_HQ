@@ -1,0 +1,100 @@
+''
+<div style="margin-left: 6%;">
+  <button class="btn-back" [routerLink]="'/projectmanagement'">Back</button>
+</div>
+
+<div class="container-implement">
+
+
+  <h2>Participants and Followers</h2>
+  <div class="container-field-line">
+
+
+    <div class="participant">
+      <label>Project Participant :</label>
+      <input style=" margin-left: -45.5%;" type="radio">
+    </div>
+    <div>
+
+      <div class="participant">
+        <label>Project Followers  :</label>
+        <input style=" margin-left: -45%;" type="radio">
+      </div>
+
+      <div class="border-rfc-heading">
+        <div class="section">
+          <div class="participant-follower-wrapper">
+            <div class="participant">
+              <!--<h3>Project Participants:</h3>-->
+              <div class="field">
+                <label for="participantType">Type:</label>
+                <select style="width: 12%; margin-left: 4%; margin-top: 2%;" id="participantType" [(ngModel)]="participantType" (change)="onParticipantTypeChange()">
+                  <option value="" disabled selected>Select the type</option>
+                  <option value="internal">Internal</option>
+                  <option value="external">External</option>
+                </select>
+              </div>
+              <div class="field" id="participantDetails">
+                <!-- Participant Fields -->
+                <div *ngIf="participant" style="margin-top: -2%;">
+                  <div class="row mt-3">
+                    <label for="employeeID" style="margin-top:3%;">Employee ID:</label>
+                    <input style="width: 20%; margin-left: 8%; margin-top: -35px; " type="text" id="employeeID" name="employeeID" [(ngModel)]="employeeID">
+                  </div>
+                  <div class="row mt-3">
+                    <label for="department">Department:</label>
+                    <input style=" width: 20%; margin-left: 8%; margin-top: -31px;" type="text" id="department" name="department" [(ngModel)]="department">
+                  </div>
+                  <div class="row mt-3">
+                    <label for="designation">Designation:</label>
+                    <input style=" width: 20%; margin-left: 8%; margin-top: -32px;" type="text" id="designation" name="designation" [(ngModel)]="designation">
+                  </div>
+                  <div class="row mt-3">
+                    <label for="Plant">Plant:</label>
+                    <select style="width: 20%; margin-left: 8%; margin-top: -30px;" id="plant" [(ngModel)]="plant">
+                      <option value="" disabled selected>Select Plant</option>
+                      <option>ML00</option>
+                      <option>ML24</option>
+                      <option>ML06</option>
+                      <option>ML08</option>
+                    </select>
+
+                  </div>
+
+                </div>
+                <div *ngIf="external">
+                  <div class="row mt-3">
+                    <label for="name">Name:</label>
+                    <input style=" width: 20%; margin-left: 8%; margin-top: -32px;" type="text" id="name" name="name" [(ngModel)]="name">
+                  </div>
+                  <div class="row mt-3">
+                    <label for="company">Company:</label>
+                    <input style=" width: 20%; margin-left: 8%; margin-top: -32px;" type="text" id="company" name="company" [(ngModel)]="company">
+                  </div>
+                  <div class="row mt-3">
+                    <label for="email">Email:</label>
+                    <input style=" width: 20%; margin-left: 8%; margin-top: -32px;" type="email" id="email" name="email" [(ngModel)]="email">
+                  </div>
+                  <div class="row mt-3">
+                    <label for="mobile">Mobile No:</label>
+                    <input style=" width: 20%; margin-left: 8%; margin-top: -32px;" type="tel" id="mobile" name="mobile" [(ngModel)]="mobile">
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <button class="btn-back" style="margin-left: 38%;">Submit</button>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+<form action="" [formGroup]="approveTabGroup">
+    <span class="approvalNote"> Please Click On Approver Level to Approve.</span>
+  
+    <div class="container-field-approve">
+      <b> RFC Initiate </b>
+      <div class="border-rfc-heading">
+        <label>Approver Name</label>
+        <div>
+          <p></p>
+        </div>
+        <br />
+        <label>Date</label>
+        <input type="datetime" formControlName="approvalDate" />
+        <label>Remarks</label>
+        <textarea class="textarea-implement" formControlName="approvalTextArea"
+        ></textarea>
+      </div>
+    </div>
+    <div>
+      <div class="container-field-implement">
+        <div>
+          <label>Attach Document</label>
+          <input type="File"  formControlName="approvalAttachDocument"/>
+          <p>Attachment: <button class="attachmentButton"><i class="fa fa-download"
+                aria-hidden="true"></i></button></p>
+        </div>
+      </div>
+      <!-- @if((this.user.empData.employeeNo == this.approverEmpId) && this.crData.stage == getRequiredStage()  && this.crData.status == getRequiredStatus()){ -->
+        <div class="btn-sub-reset">
+          <button class="btn-sub-approve">Approve</button>
+          <button class="btn-sub-reject">Reject</button>
+          <button class="btn-sub">Seek Clarification</button>
+        </div>
+      <!-- } -->
+  
+    </div>
+  </form>

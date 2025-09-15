@@ -1,0 +1,170 @@
+<div class="proManagementContainer">
+
+    <div class="proManagementHeadingDiv">
+        <div class="proManagementTitle">Project Management</div>
+        <div class="proManagementButtonContainer">
+            <button class="proManagementBackBtn" (click)="navigateToBack()">Back</button>
+        </div>
+    </div>
+
+    <div class="proManagementMainModuleBox">
+        <div class="proManagementContent">
+            <div class="projectDetails" *ngIf="projectID">
+                <section>
+                    <span>
+                        <span class="projectName">
+                            Project Name: <span>{{projectdetails?.projectName}}</span>
+                        </span>
+                    </span>
+                </section>
+                <section style="display: flex; gap: 5px;">
+                    <span>
+                        <span class="projectName">Due Date: <span>{{projectdetails?.endDt | date:
+                                "dd/MM/yyyy"}}</span></span>
+                    </span>
+                    <span>
+                        <span class="projectName">Ahead: <span>{{projectdetails?.projectDurationDays}} Days</span></span>
+                    </span>
+                    <span>
+                        <span class="projectName">Milestones:
+                            <span>
+                                <span><i class="fa fa-clock-o" style="color: #efa91e;
+                                    font-size: 16px;
+                                    position: relative;
+                                    top: 1px;"></i>&nbsp;{{projectdetails?.numberOfPendingMilestones== null? '0':projectdetails?.numberOfPendingMilestones}}</span>
+                                &nbsp;
+                                <span><i class="fa-solid fa-check"
+                                        style="color: white;background-color: #04c150; border-radius: 50px; padding: 1px;"></i>
+                                        {{projectdetails?.numberOfCompletedMilestones== null? '0':projectdetails?.numberOfCompletedMilestones}}</span>
+                            </span>
+                        </span>
+                    </span>
+                    <span>
+                        <span class="projectName">Tasks:
+                            <span>
+                                <span><i class="fa fa-clock-o" style="color: #efa91e;
+                                    font-size: 16px;
+                                    position: relative;
+                                    /* top: 1px;"></i> {{projectdetails?.numberOfPendingTask== null? '0':projectdetails?.numberOfPendingTask}}</span>
+                                &nbsp;
+                                <span><i class="fa-solid fa-check"
+                                        style="color: white;background-color: #04c150; border-radius: 50px; padding: 1px;"></i>
+                                        {{projectdetails?.numberOfCompletedTask== null? '0' : projectdetails?.numberOfCompletedTask}}</span>
+                            </span>
+                        </span>
+                    </span>
+
+                </section>
+            </div>
+            <ng-container>
+                <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedTabChange)="onTabChange($event)">
+                    <mat-tab routerLink="/projectdetails" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Details</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/projectmembers" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Members</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+                    
+                    <mat-tab routerLink="/projectmilestone" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Milestones</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/projecttask" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Tasks</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/issuetracker" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Issue Tracker</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/projecttask" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Checklist</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+
+                    <mat-tab routerLink="/closure" routerLinkActive="active-tab"
+                  
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Closure</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    
+                    <mat-tab routerLink="/approval" routerLinkActive="active-tab"
+                    [disabled]="this.projectdetails?.projectStatus=='In Progress'"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Approval</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/projectdetails" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Documents</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/projectdetails" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>History</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab routerLink="/lessonlearned" routerLinkActive="active-tab"
+                        [routerLinkActiveOptions]="{ exact: true }" *ngIf="projectID">
+                        <ng-template mat-tab-label>
+                            <div>
+                                <span>Lesson Learned</span>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                </mat-tab-group>
+                <router-outlet></router-outlet>
+            </ng-container>
+        </div>
+    </div>
+
+</div>

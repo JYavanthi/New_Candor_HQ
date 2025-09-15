@@ -1,0 +1,12 @@
+.container-field-line {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 10px;
+    border-top: 5px solid #113bf7;
+    margin-bottom: 3%;
+  }
+
+

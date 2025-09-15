@@ -1,0 +1,267 @@
+<div class="assetContainer">
+
+    <div class="assetHeadingDiv">
+        <div class="assetTitle">IT Spare</div>
+        <div class="assetButtonContainer">
+            <button class="assetBackBtn" (click)="navigateToBack()">Back</button>
+        </div>
+    </div>
+
+    <div class="assetMainModuleBox">
+
+        <div class="assetContent">
+            <div *ngIf="spareId" class="assetDetails">
+                <span>Spare Code: {{spareData?.itspareCode}} | Status: {{spareData?.status}} | Raised Date:
+                    {{spareData?.createdDt
+                    |date:'dd/MM/yyyy'}} | Asset Health: <i style="color:green" class='bx bxs-circle'></i></span>
+            </div>
+
+            <ng-container *ngIf="spareId!=undefined && spareData?.status?.trim() != 'Draft'; else elseBlock">
+                <mat-tab-group [selectedIndex]="selectedTabIndex">
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': true}">
+                                <span>Details</span>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+                    </mat-tab>
+
+                    <mat-tab *ngIf="spareData?.isRpmreq || spareData?.isHodreq">
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': (
+                      this.spareData?.status?.trim() === 'Resolved' ||
+                      this.spareData?.status?.trim() === 'Approved' ||
+                      this.spareData?.status?.trim() === 'Seek Clarification' ||
+                      this.spareData?.status?.trim() === 'Open' ||
+                      this.spareData?.status?.trim() === 'In Progress' ||
+                      this.spareData?.status?.trim() === 'On Hold' ||
+                      this.spareData?.status?.trim() === 'Submit Clarification'
+                    )}">
+                                <span>Approval</span>
+                            </div>
+                        </ng-template>
+                        <app-sr-common-approval [srData]="spareData"
+                        [isAsset]="true" [isSpare]="true"/>
+                    </mat-tab>
+
+                    <mat-tab *ngIf="spareId" [disabled]="disableResolution">
+
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': spareData?.status?.trim() === 'Resolved'}">
+                                <span>Resolution</span>
+                            </div>
+                        </ng-template>
+                        <app-sr-resolution [srData]="spareData" [isAsset]="true"
+                        [isSpare]="true"/>
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': true}">
+                                <span>History</span>
+                            </div>
+                        </ng-template>
+                        <app-common-asset-history />
+                    </mat-tab>
+
+                </mat-tab-group>
+            </ng-container>
+
+            <ng-template #elseBlock>
+                <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+            </ng-template>
+
+        </div>
+    </div>
+    <!-- <span *ngIf="showBackIcon" (click)="navigateToBack()" class="backIcon"><i class="fa fa-angle-left"></i>
+    </span> -->
+</div>
+
+<ng-template #formTemplate>
+    <form [formGroup]="ITSpareForm">
+        <div class="card service_card br-top-blue">
+            <div class="card-body">
+                <app-sr-details-self-others-guest [srData]="spareData" (radioBtnValues)="getDatafromRadios($event)" />
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="requestTypeClass">
+                                <div>
+                                    <label class="asteriskrequired">Request Type</label>
+                                    <select formControlName="requestType" name="requestType"
+                                        (change)="changeRequestTypeValue()">
+                                        <option selected disabled hidden value="">Select Request Type</option>
+                                        <option>New</option>
+                                        <option>Replace</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="ITSpareForm.get('requestType')?.value == 'New'">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="employeeType"
+                                        customLabelAlert="Select Employee Type">Employee Type</label>
+                                    <select formControlName="employeeType" name="employeeType" id="employeeType">
+                                        <option selected disabled hidden value="">Select Employee Type</option>
+                                        <option>Office</option>
+                                        <option>Plant</option>
+                                        <option>Field</option>
+                                        <option>Consultant</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpImpactValidation"
+                                        customLabelAlert="Is GxP Impact Validation Required?">Is GxP Impact Validation
+                                        Required?</label>
+                                    <select formControlName="isGxpImpactValidation" name="isGxpImpactValidation"
+                                        id="isGxpImpactValidation">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetType"
+                                        customLabelAlert="Select Asset Type">Asset Type</label>
+                                    <select formControlName="assetType" name="assetType" id="assetType">
+                                        <option selected disabled hidden value="">Select Asset Type</option>
+                                        <option value="Desktop">Desktop</option>
+                                        <option value="Laptop">Laptop</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="spareType"
+                                        customLabelAlert="Select Spare Type">Spare Type</label>
+                                    <select formControlName="spareType" name="spareType" id="spareType">
+                                        <option selected disabled hidden value="">Select Spare Type</option>
+                                        <option>Keyboard/Mouse</option>
+                                        <option>Tonner / Ink</option>
+                                        <option>Cartridges</option>
+                                        <option>Hard Disk - External</option>
+                                        <option>Hard Disk - Internal</option>
+                                        <option>Hard Disk - Pendrive</option>
+                                        <option>Monitor</option>
+                                        <option>Headphone/Headset</option>
+                                        <option>Other's - Mouse Pad</option>
+                                        <option>Other's - Laptop Charger</option>
+                                        <option>Other's - Speaker</option>
+                                        <option>Other's - Telephone</option>
+                                        <option>Other's - CD / DVD</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="specification">Specification</label>
+                                    <input type="text" formControlName="specification" name="specification"
+                                        id="specification" />
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired"
+                                        for="purposeOrJustification">Purpose/Justification</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification" id="purposeOrJustification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="ITSpareForm.get('requestType')?.value == 'Replace'">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="employeeType"
+                                        customLabelAlert="Select Employee Type">Employee Type</label>
+                                    <select formControlName="employeeType" name="employeeType" id="employeeType">
+                                        <option selected disabled hidden value="">Select Employee Type</option>
+                                        <option>Office</option>
+                                        <option>Plant</option>
+                                        <option>Field</option>
+                                        <option>Consultant</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpImpactValidation"
+                                        customLabelAlert="Is GxP Impact Validation Required?">Is GxP Impact Validation
+                                        Required?</label>
+                                    <select formControlName="isGxpImpactValidation" name="isGxpImpactValidation"
+                                        id="isGxpImpactValidation">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetType"
+                                        customLabelAlert="Select Asset Type">Asset Type</label>
+                                    <select formControlName="assetType" name="assetType" id="assetType">
+                                        <option selected disabled hidden value="">Select Asset Type</option>
+                                        <option>Desktop</option>
+                                        <option>Laptop</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="spareType"
+                                        customLabelAlert="Select Spare Type">Spare Type</label>
+                                    <select formControlName="spareType" name="spareType" id="spareType">
+                                        <option selected disabled hidden value="">Select Spare Type</option>
+                                        <option>Keyboard/Mouse</option>
+                                        <option>Tonner / Ink</option>
+                                        <option>Cartridges</option>
+                                        <option>Hard Disk - External</option>
+                                        <option>Hard Disk - Internal</option>
+                                        <option>Hard Disk - Pendrive</option>
+                                        <option>Monitor</option>
+                                        <option>Headphone/Headset</option>
+                                        <option>Other's - Mouse Pad</option>
+                                        <option>Other's - Laptop Charger</option>
+                                        <option>Other's - Speaker</option>
+                                        <option>Other's - Telephone</option>
+                                        <option>Other's - CD / DVD</option>
+                                    </select>
+                                </div>
+                                <!-- <div>
+                                    <label class="asteriskrequired" for="replacementSpareType">Replacement Spare
+                                        Type</label>
+                                    <input type="text" formControlName="replacementSpareType"
+                                        name="replacementSpareType" id="replacementSpareType" />
+                                </div> -->
+                                <div>
+                                    <label class="asteriskrequired" for="replacementSpareModel">Existing Spare
+                                        Model</label>
+                                    <input type="text" formControlName="replacementSpareModel"
+                                        name="replacementSpareModel" id="replacementSpareModel" />
+                                </div>
+                                <div >
+                                    <label class="asteriskrequired" for="replacementSpareSerialNo">Existing Spare Serial No.</label>
+                                    <input type="text" formControlName="replacementSpareSerialNo"
+                                        name="replacementSpareSerialNo" id="replacementSpareSerialNo" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="specsRequirements">If Any
+                                        Specs/Requirements</label>
+                                    <input type="text" formControlName="specsRequirements" name="specsRequirements"
+                                        id="specsRequirements" />
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired"
+                                        for="purposeOrJustification">Purpose/Justification</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification" id="purposeOrJustification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mainBtnsDiv"
+                            *ngIf="ITSpareForm.value?.requestType && ((spareId==undefined||spareId==null)||this.spareData?.status?.trim() == 'Draft')">
+                            <button class="actionBtn" (click)="Submit('Draft')">Draft</button>
+                            <button class="actionBtn" (click)="Submit('Pending Approval')">Submit</button>
+                            <button class="actionBtn" (click)="clearAll()">Clear</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>

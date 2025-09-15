@@ -1,0 +1,72 @@
+ <div>
+              <label class="asteriskrequired" for="milestone">Milestone</label>
+              <select formControlName="milestone" name="milestone" id="milestone" (change)="onMilestoneChange()" (change)="getmilestonetask($event)">
+                <option value="" selected hidden disabled>Select Milestone...</option>
+                <option *ngFor="let mileStone of mileStoneList" [value]="mileStone.projMilestoneId">
+                  {{ mileStone.milestoneTitle }}
+                </option>
+              </select>
+            </div>
+
+
+getMileStoneList() {
+    this.httpSer.httpGet('/projectMilestone/getMilestoneByProjectId?id=' + this.projectId).subscribe((response: any) => {
+      // Filter out milestones where the status is "Completed"
+      this.mileStoneList = response.data.filter((milestone: any) => milestone.milestoneStatus !== 'Completed');
+    });
+  }   
+
+
+
+async patchFormValues() {
+    await this.getMileStoneList();
+    if (this.taskData?.startDt?.split('T')[0] == '2025-03-08') {
+      this.taskData['startDt'] = ''
+    }
+
+
+    if (this.taskData?.endDt?.split('T')[0] == '2025-03-08') {
+      this.taskData['endDt'] = ''
+    }
+    this.taskForm.patchValue({
+      milestone: this.taskData?.milestoneId,
+      ProjectPhase: this.taskData?.projectphase,
+      isThisSubtask: this.taskData?.isSubtask,
+      assignedTo: this.taskData?.assignTo,
+      taskTitle: this.taskData?.taskTitle,
+      plannedCost: this.taskData?.plannedCost,
+      actualCost: this.taskData?.actualCost == 0 ? '' : this.taskData?.actualCost,
+      Discription: this.taskData?.taskDesc,
+      workHours: this.taskData?.workHours,
+      status: this.taskData?.status,
+      // completionDate: this.taskData?.completionDate.slice(0, 10),
+      startDate: this.taskData?.startDt?.split('T')[0],
+      dueDate: this.taskData?.endDt?.split('T')[0],
+      actualStartDate: this.taskData?.actualStartDate,
+      actualDueDate: this.taskData?.actualDueDate,
+      duration: this.taskData?.duration,
+      attachment: this.taskData?.attachment,
+      Dependency: this.taskData?.dependency,
+      AdditionalNotes: this.taskData?.additionalNotes,
+      priority: this.taskData?.taskPriority,
+      ActualStartDate: this.taskData?.actualStartDt?.split('T')[0],
+      ActualDueDate: this.taskData?.actualEndDt?.split('T')[0],
+      parentTask: this.taskData?.parentTaskId || 0
+    });
+    this.getmilestonetask({ target: { value: this.taskData.milestoneId } })
+    this.taskData ? this.disabledAngularEditor = true : this.disabledAngularEditor = false
+
+    if (this.taskId) {
+      this.taskForm.disable();
+      this.taskForm.controls['reAssignTo'].enable();
+      this.taskForm.controls['status'].enable();
+      this.taskForm.controls['ActualStartDate'].enable();
+      this.taskForm.controls['ActualDueDate'].enable();
+      this.taskForm.controls['assignedTo'].enable();
+      this.taskForm.controls['Discription'].enable();
+      this.taskForm.controls['AdditionalNotes'].enable();
+    }
+    if (this.taskData?.status == 'Resolved') {
+      this.taskForm.disable()
+    }
+  }

@@ -1,0 +1,18 @@
+.viewall-task {
+  background-color: wheat;
+  padding: 1px;
+  border-radius: 5px;
+  width: 17%;
+  text-align: center;
+  color: black;
+}
+
+button[disabled] {
+  background-color: #76bbe3;
+  pointer-events: none;
+}
+
+.landscapeClass {
+  display: flex !important;
+  justify-content: center !important;
+}

@@ -1,0 +1,69 @@
+<div style="display: flex">
+  <button class="addNewBtn" (click)="navigateTo()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
+        ||this.projectdetails?.projectStatus=='Approved'
+      )">Add
+    New</button>
+
+  <div style="display: flex !important; justify-content: center !important;" class="capsule">
+    <div class="toggle-wrapper">
+      <button class="toggle-button" [ngClass]="{ 'active': isOpenIssues }" (click)="filterMilestoneList('Pending')">
+        Open
+      </button>
+      <button class="toggle-button" [ngClass]="{ 'active': !isOpenIssues }" (click)="filterMilestoneList('Closed')">
+        Closed
+      </button>
+    </div>
+  </div>
+  <button class="addNewBtn" (click)="goBack()" style="margin-left: 370px;" *ngIf="isSubtaskView">Go Back</button>
+</div>
+
+<div class="tableDesign">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>SL.No.</th>
+          <th>Task Code</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Scheduled Start Date</th>
+          <th>Scheduled End Date</th>
+          <th>Priority</th>
+          <th>View Subtask</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of paginatedData; let i=index;">
+          <td>{{i+1}}</td>
+          <td>{{task.taskCode}}</td>
+          <td>{{task.taskTitle}}</td>
+          <td>{{task.status}}</td>
+          <td>{{task.startDt?.split('T')[0] | date:'dd/MM/yyyy'}}</td>
+          <td>{{task.endDt?.split('T')[0] | date:'dd/MM/yyyy'}}</td>
+          <td>{{task.taskPriority}}</td>
+          <!-- <td>
+              <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewSubtask(task.taskId)"></i>
+            </td> -->
+          <td>
+            <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" *ngIf="hasSubtasks(task.taskId)"
+              (click)="viewSubtask(task.taskId)"></i>
+          </td>
+          <td>
+            <i class="fa fa-pencil-square-o cursor-pointer" (click)="navigateTo(task.taskId)"></i>
+            <i class="fa-solid fa-trash cursor-pointer" (click)="deleteTask(task.taskId)" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
+                || this.projectdetails?.projectStatus == 'Approved')"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mb-5">
+      <div *ngIf="taskList?.length > 0">
+        <mat-paginator [length]="taskList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event,false)" aria-label="Select page"
+          style="margin-right:34%">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

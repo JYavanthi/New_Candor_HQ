@@ -1,0 +1,102 @@
+.panel-content {
+    display: none;
+    overflow: hidden;
+  }
+  
+    .panel-content.open {
+      display: block;
+      animation: slideDown 0.5s ease;
+    }
+  
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  /*ChatBox CSS*/
+  .chatContainer {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    height: auto;
+    margin: 15px;
+    padding: 20px;
+  }
+  
+  /*Admin*/
+  .EnterAdminChat {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .adminIcon {
+    text-align: center;
+    background: #edebe6;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .adminChat {
+    color: black;
+    background: #edebe6;
+    border-radius: 0 25px 25px 25px;
+    border: 1.5px solid #96948f;
+    width: 40%;
+    height: auto;
+    padding: 15px;
+  }
+  
+  .adminchatClass {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .admintime {
+    width: 40%;
+    color: #96948f;
+    text-align: right;
+  }
+  
+  /*Users*/
+  .EnterUserChat {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .userIcon {
+    text-align: center;
+    background: #edebe6;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .UserChat {
+    color: white;
+    background: #3c8dbc;
+    border-radius: 25px 0 25px 25px;
+    border: 1.5px solid #3c8dbc;
+    width: 40%;
+    height: auto;
+    padding: 15px;
+  }
+  
+  .UserchatClass {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .usertime {
+    width: 100%;
+    color: #96948f;
+    text-align:right;
+  }

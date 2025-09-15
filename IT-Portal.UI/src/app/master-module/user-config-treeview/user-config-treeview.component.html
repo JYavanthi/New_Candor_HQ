@@ -1,0 +1,27 @@
+<div class="treeview">
+  <span class="parentSupportName">Service Request</span>
+  <div class="parent-container">
+    <ng-container *ngFor="let item of treeData">
+      <div class="item-container"
+        [ngStyle]="{'background-color': getBackgroundColor(item.parentSupportId), 'color':getTextColor(item.parentSupportId)}">
+        <span class="plusMinusClass">
+          <span class="toggle-icon" *ngIf="item.children && item.children.length > 0" (click)="toggle(item)">
+            <i class="fas" [ngClass]="item.expanded ? 'fa fa-angle-down' : 'fa fa-angle-right'"></i>
+          </span>
+          <label>
+            <input type="checkbox" [(ngModel)]="item.checked" (change)="onParentCheckChange(item)" /> <b>{{ item.name}}</b>
+          </label>
+        </span>
+        <ul *ngIf="item.expanded" [@expandCollapse] class="child-list">
+          <ng-container *ngFor="let child of item.children">
+            <li>
+              <label [ngStyle]="{'margin-left': child.children && child.children.length > 0 ? '0px' : '20px'}">
+                <input type="checkbox" [(ngModel)]="child.checked" (change)="onChildCheckChange(item)" /> {{ child.name}}
+              </label>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</div>

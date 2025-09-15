@@ -1,0 +1,160 @@
+<form [formGroup]="detailsForm">
+    <div class="card service_card br-top-blue">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="inputFields">
+                        <div *ngIf="projectID">
+                            <label class="asteriskrequired" for="projectNumber">Project Code</label>
+                            <input type="text" min="0" formControlName="projectNumber" name="projectNumber"
+                                id="projectNumber" />
+                        </div>
+
+                        <div>
+                            <label class="asteriskrequired" for="projectLocation">Project Location</label>
+                            <!-- <input type="text" formControlName="projectLocation" name="projectLocation"
+                                id="projectLocation" /> -->
+                            <select name="projectLocation" id="projectLocation" formControlName="projectLocation">
+                                <option value="" selected hidden disabled>Select Project Location</option>
+                                <option *ngFor="let plant of plantList" [value]="plant.id">{{plant.code}}</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="asteriskrequired" for="projectName">Project Name/Title</label>
+                            <input type="text" formControlName="projectName" name="projectName" id="projectName" />
+                        </div>
+
+                        <div style="position:relative">
+                            <label class="asteriskrequired" for="projectOwner">Project Owner</label>
+                            <input type="text" formControlName="projectOwner" name="inputEmployeeId" id="projectOwner"
+                                placeholder="Enter Employee ID" (input)="filterItem()">
+                            <ul class="dropdowns-list" *ngIf="employeeList?.length > 0">
+                                <li class="drop-list" value="" *ngFor="let item of employeeList"
+                                    (click)="selectItem(item)">
+                                    {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="position:relative">
+                            <label class="asteriskrequired" customLabelAlert="Enter Employee Id"
+                                for="projectSponsor">Project Sponsor</label>
+                            <!-- <input type="text" formControlName="projectSponsor" name="projectSponsor"
+                                id="projectSponsor" /> -->
+
+                            <input type="text" formControlName="projectSponsor" name="projectSponsor"
+                                id="projectSponsor" placeholder="Enter Employee ID" (input)="filterItemSponser()">
+                            <ul class="dropdowns-list" *ngIf="employeeList1?.length > 0">
+                                <li class="drop-list" value="" *ngFor="let item of employeeList1"
+                                    (click)="selectSponser(item)">
+                                    {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <label class="asteriskrequired" for="projectStartDate">Project Start Date</label>
+                            <input type="date" formControlName="projectStartDate" name="projectStartDate"
+                                (change)="onDateChange()" id="projectStartDate" [min]="todayDate"
+                                [max]="detailsForm.value.projectEndDate" />
+                        </div>
+
+                        <div>
+                            <label class="asteriskrequired" for="projectEndDate">Project End Date</label>
+                            <input type="date" formControlName="projectEndDate" name="projectEndDate"
+                                id="projectEndDate" [min]="detailsForm.value.projectStartDate" />
+                        </div>
+
+                        <div>
+                            <label class="asteriskrequired" for="projectGroup">Project Group</label>
+                            <select formControlName="projectGroup" name="projectGroup" id="projectGroup">
+                                <option selected hidden disabled value="">Select Project Group</option>
+                                <option *ngFor="let group of groupList" [value]="group.projectGroupId">
+                                    {{group.projectGroupName}}</option>
+                            </select>
+                        </div>
+
+
+                        <div>
+                            <label for="EstimatedCost" class="asteriskrequired">Estimated Cost</label>
+                            <input type="number" formControlName="EstimatedCost" name="EstimatedCost" id="EstimatedCost"
+                                step="0.01" />
+                        </div>
+
+
+                        <div>
+                            <label for="EstimatedHrs" class="asteriskrequired">Estimated Hrs</label>
+                            <input type="number" formControlName="EstimatedHrs" name="EstimatedHrs" id="EstimatedHrs"
+                                step="0.01" />
+                        </div>
+
+                        <div>
+                            <label for="ActualCost">Actual Cost</label>
+                            <input type="number" formControlName="ActualCost" name="ActualCost" id="EstimatedCost" />
+                        </div>
+
+
+                        <div>
+                            <label for="ActualHrs">Actual Hrs</label>
+
+                            <input type="number" formControlName="ActualHrs" name="ActualHrs" id="ActualHrs" />
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="projectAccess">Project Access</label>
+                            <select formControlName="projectAccess" name="projectAccess" id="projectAccess">
+                                <option value="" selected hidden disabled>Select Project Access</option>
+                                <option>Private</option>
+                                <option>Public</option>
+                            </select>
+                        </div>
+
+                        <div class="deliverables">
+                            <label class="asteriskrequired" for="deliverables">Deliverables</label>
+                            <div class="in-deliverables">
+                                <input type="text" formControlName="deliverables" name="deliverables"
+                                    id="deliverables" />
+                                <i class="fa-solid fa-circle-plus" (click)="addDeliverables()"></i>
+                            </div>
+                            <div class="deliverables-list mt-2">
+                                <div *ngFor="let d of deliverablesList;let i=index">{{d}} <i
+                                        class="fa-solid fa-circle-minus" (click)="minusDeliverables(i)"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="textAreaDiv">
+                            <div class="textAreaDiv">
+                                <app-pr-attachment [title]="'Attachment'"
+                                    (attachMentListEvent)="getAttchmentList($event)"
+                                    (removeAttchment)="removeAttchment($event)"></app-pr-attachment>
+                            </div>
+                        </div>
+
+                        <div class="textAreaDiv">
+                            <label class="asteriskrequired" for="description">Brief Description of the
+                                Project</label>
+                            <angular-editor #editor [config]="editorConfig"
+                                formControlName="description"></angular-editor>
+                        </div>
+
+                        <div class="textAreaDiv">
+                            <label for="additionalNotes">Additional Notes</label>
+                            <angular-editor #editor [config]="editorConfig"
+                                formControlName="additionalNotes"></angular-editor>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mainBtnsDiv">
+                    <button class="actionBtn" (click)="submitDeatails('I')" *ngIf="!projectID">Submit</button>
+                    <button class="actionBtn" (click)="submitDeatails('U')" *ngIf="projectID &&!(this.projectDetails?.projectStatus == 'Cancel' || this.projectDetails?.projectStatus == 'Discontinue' || this.projectDetails?.projectStatus == 'Completed'
+            || this.projectDetails?.projectStatus == 'Approved')">Update</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="!projectID">Clear</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
