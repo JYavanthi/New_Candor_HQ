@@ -1,12 +1,18 @@
-<!--1.Category-->
-<div class="container-implement">
+<!-- <div class="projectMastermainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-sidebsr></app-sidebsr>
+  </div>
+
+  <div class="container-implement">
     <div class="container-field-line">
       <h3>Project Group</h3>
       <div class="search-hero">
-        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()" autocomplete="off" placeholder="Search Group Name">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()"
+          autocomplete="off" placeholder="Search Group Name">
       </div>
       <button class="btn btn-primary" style="margin-left: 92%; margin-top: -5%; width: 7%;"
-      (click)="navigateTo()">New</button>
+        (click)="navigateTo()">New</button>
       <div class="border-rfc-heading">
         <div class="table-wrapper" style="overflow-x: auto">
           <table class="fl-table">
@@ -19,13 +25,12 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr *ngFor="let data of filterData ? filterData : groupList;let i=index" class="tr-body"> -->
-                <tr *ngFor="let data of groupvalue ? groupvalue : groupList;let i=index" class="tr-body">
+              <tr *ngFor="let data of groupvalue ? groupvalue : groupList;let i=index" class="tr-body">
                 <td>{{ i + 1}}</td>
                 <td>{{ data.projectGroupName }}</td>
                 <td>{{ data.isActive }}</td>
                 <td>
-                    <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="navigateTo(data.projectGroupId)"></i>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="navigateTo(data.projectGroupId)"></i>
                   <i (click)="deleteRow(data.projectGroupId)" class="fa fa-trash" aria-hidden="true"></i>
 
                 </td>
@@ -37,4 +42,74 @@
       </div>
     </div>
   </div>
+</div> -->
 
+<div class="projectMastermainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-sidebsr></app-sidebsr>
+  </div>
+
+  <div class="contentSection">
+
+    <!-- Header -->
+    <div class="topHeader">
+      <div class="title">PROJECT GROUP</div>
+
+      <div class="searchBox">
+        <i class="fa fa-search"></i>
+        <input type="text" [(ngModel)]="searchText" (input)="filterData()" placeholder="Search Group Name">
+      </div>
+
+      <div class="newBtn" (click)="navigateTo()">
+        <i class="fa fa-plus-circle"></i>
+        NEW
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="tableCard">
+      <table>
+        <thead>
+          <tr>
+            <th>SR. NO.</th>
+            <th>Group Name</th>
+            <th>Is Active</th>
+            <th style="text-align:center;">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let data of groupvalue ? groupvalue : groupList; let i = index">
+            <td class="blueText">{{ i + 1 }}</td>
+            <td class="blueText">{{ data.projectGroupName }}</td>
+
+            <td>
+              <span [ngClass]="data.isActive ? 'active' : 'inactive'">
+                {{ data.isActive ? 'True' : 'False' }}
+              </span>
+            </td>
+
+            <td class="actionCell">
+              <span class="editIcon" (click)="navigateTo(data.projectGroupId)">
+                <i class="fa fa-pencil"></i>
+              </span>
+
+              <span class="deleteIcon" (click)="deleteRow(data.projectGroupId)">
+                <i class="fa fa-trash"></i>
+              </span>
+            </td>
+          </tr>
+
+          <tr *ngIf="groupList?.length === 0">
+            <td colspan="4" class="noData">
+              <i class="fa fa-search"></i> No Data Available
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

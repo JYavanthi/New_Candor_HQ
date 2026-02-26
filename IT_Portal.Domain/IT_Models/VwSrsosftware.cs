@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwSrsosftware
 {
@@ -8,9 +11,9 @@ public partial class VwSrsosftware
 
     public string? SoftwareType { get; set; }
 
-    public string? SoftwareName { get; set; }
+    public int? SoftwareName { get; set; }
 
-    public string? SoftwareVersionName { get; set; }
+    public int? SoftwareVersionName { get; set; }
 
     public string? VendorName { get; set; }
 
@@ -22,17 +25,17 @@ public partial class VwSrsosftware
 
     public string? Department { get; set; }
 
-    public string? NoOfUers { get; set; }
+    public int? NoOfUers { get; set; }
 
-    public string? NoOfLicence { get; set; }
+    public int? NoOfLicence { get; set; }
 
-    public string? CostPerLicence { get; set; }
+    public decimal? CostPerLicence { get; set; }
 
-    public int? TotalCost { get; set; }
+    public decimal? TotalCost { get; set; }
 
     public bool? Amcappilcable { get; set; }
 
-    public string? CostForAmc { get; set; }
+    public decimal? CostForAmc { get; set; }
 
     public string? ScopeOfAmc { get; set; }
 
@@ -164,9 +167,9 @@ public partial class VwSrsosftware
 
     public string? HodToName { get; set; }
 
-    public string? HodEmpNo { get; set; }
+    public int? HodEmpNo { get; set; }
 
-    public string? RpmEmpNo { get; set; }
+    public int? RpmEmpNo { get; set; }
 
     public string? RpmToName { get; set; }
 

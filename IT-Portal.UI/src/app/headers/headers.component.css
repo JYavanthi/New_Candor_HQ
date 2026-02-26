@@ -1,6 +1,4 @@
-
-
-.dropdown-content {
+/* .dropdown-content {
   display: none;
   min-width: 100px;
   position: absolute;
@@ -19,10 +17,10 @@
    padding:1px;
     text-decoration: none;
     display: block;
-  }
+  } */
 
 .show {
-  display: block; 
+  display: block;
 }
 
 
@@ -39,7 +37,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-left:-28%;
+  margin-left: -28%;
 }
 
 .navbar {
@@ -47,8 +45,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #3c8dbc;
-  padding: 10px;
+  background-color: #daecff;
+  padding: 5px;
   z-index: 1000;
 }
 
@@ -58,13 +56,13 @@
 }
 
 .microlab_symbol {
-  height: 50px;
+  height: 80px;
   margin-left: 80%;
-  margin-top: -7%;
+  margin-top: -3%;
 }
 
 .unnati_symbol {
-  margin-left: 2%;
+  margin-left: 5%;
   margin-top: -7%;
 }
 
@@ -92,7 +90,7 @@
   margin: 0;
 }
 
-.user-profile {
+/* .user-profile {
   margin-right: -55%;
   display: block;
 }
@@ -101,4 +99,65 @@
   color: white;
   display: block;
   margin: 5px 0;
+} */
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  border: 1px solid white;
+  border-radius: 35px;
+  background-color: white;
+  width: fit-content;
+  position: relative;
+  margin-right: 25px;
 }
+
+/* User text */
+.user-profile p {
+  color: white;
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+/* Profile image */
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  margin-left: 10px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+/* .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  min-width: 110px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #3c8dbc;
+  z-index: 10;
+} */
+
+/* .dropdown-content.show {
+  display: block;
+} */
+
+/* .dropdown-content a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-content i {
+  margin-right: 6px;
+} */

@@ -9,7 +9,7 @@
 
         public int? PlantID { get; set; }
 
-        public string status { get; set; }
+        public string Status { get; set; }
 
         public int? SupportID { get; set; }
 

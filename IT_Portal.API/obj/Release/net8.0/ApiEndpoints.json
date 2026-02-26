@@ -672,7 +672,7 @@
     "Parameters": [
       {
         "Name": "reason",
-        "Type": "IT_Portal.Domain.IT_Models.IssueOnholdCat",
+        "Type": "IT_Portal.Persistence.IT_Models.IssueOnholdCat",
         "IsRequired": true
       }
     ],
@@ -1307,7 +1307,7 @@
     "Parameters": [
       {
         "Name": "issuChat",
-        "Type": "IT_Portal.Domain.IT_Models.IssueCommentsBox",
+        "Type": "IT_Portal.Persistence.IT_Models.IssueCommentsBox",
         "IsRequired": true
       }
     ],

@@ -1,58 +1,149 @@
-<div class="container-implement">
-  <div class="container-field-line">
-    <div class="d-flex just-cont-centre">
-      <h3>Module Master</h3>
-    </div>
-    <button class="btn btn-primary" [routerLink]="'/mastermodule/newsupportmaster'"
-      style="margin-left:92%;margin-top:-5%;width:7%;">New</button>
+<!-- <div style="background: white; width: 95%; margin-left: 2.5%; display : flex; border-radius: 40px;">
+  <div style="margin-left: 3%;">
+    <app-master-sidebar></app-master-sidebar>
+  </div>
+  <div class="container-implement">
+    <div class="container-field-line">
+      <div class="d-flex just-cont-centre">
+        <h3>Module Master</h3>
+      </div>
+      <button class="btn btn-primary" [routerLink]="'/mastermodule/newsupportmaster'"
+        style="margin-left:92%;margin-top:-5%;width:7%;">New</button>
       <div class="col-4 pb-">
         <label>Search By Module Name</label>
-        <input type="text" placeholder="Search..." (input)="serach($event.target)"/>
+        <input type="text" placeholder="Search..." (input)="serach($event.target)" />
       </div>
-    <div class="border-rfc-headi3ng">
-      <div class="table-wrapper" style="overflow-x: auto">
-        <table class="fl-table" style="width: 100%;">
-          <thead class="table-head">
-            <tr class="border-bottom">
-              <!-- <th>Sl.No</th> -->
-              <th>ID</th>
-              <th>Module Name</th>
-              <th>Parent ID</th>
-              <th>IsActive</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of supportvalue;let i=index">
-              <!-- <td>{{i+1}}</td> -->
-              <td>{{data.supportId}}</td>
-              <td>{{data.supportName}}</td>
-              <td>{{data.parentId}}</td>
-              <td>{{data.isActive.toString() | titlecase}}</td>
-              <td>
-                <a><i class="fa fa-pencil-square-o" style="cursor: pointer;" aria-hidden="true"
-                    (click)="update(data.supportId)"></i></a>
-                <a><i (click)="deleteRow(data.supportId)" style="cursor: pointer;" class="fa fa-trash"
-                    aria-hidden="true"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="border-rfc-headi3ng">
+        <div class="table-wrapper" style="overflow-x: auto">
+          <table class="fl-table" style="width: 100%;">
+            <thead class="table-head">
+              <tr class="border-bottom">
+                <th>ID</th>
+                <th>Module Name</th>
+                <th>Parent ID</th>
+                <th>IsActive</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of supportvalue;let i=index">
+                <td>{{data.supportId}}</td>
+                <td>{{data.supportName}}</td>
+                <td>{{data.parentId}}</td>
+                <td>{{data.isActive.toString() | titlecase}}</td>
+                <td>
+                  <a><i class="fa fa-pencil-square-o" style="cursor: pointer;" aria-hidden="true"
+                      (click)="update(data.supportId)"></i></a>
+                  <a><i (click)="deleteRow(data.supportId)" style="cursor: pointer;" class="fa fa-trash"
+                      aria-hidden="true"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf=" supportvalue.length > 0">
+          <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex"
+            [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page"
+            style="margin-right:34%">
+          </mat-paginator>
+        </div>
       </div>
-      <div *ngIf=" supportvalue.length > 0">
+    </div>
+  </div>
+
+  <div class="notification-confirm" *ngIf="deleteconfirmation">
+    <p style="font-size:17px;text-align:center;">Are you sure you want to delete this?</p>
+    <div style="text-align:center;">
+      <button class="confirombtn" (click)="deleteYes()">Yes</button>
+      <button class="confirombtn" (click)="deleteNo()">No</button>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="main-layout">
+
+  <!-- Sidebar (UNCHANGED) -->
+  <div class="sidebar-section">
+    <app-master-sidebar></app-master-sidebar>
+  </div>
+
+  <!-- Right Content -->
+  <div class="content-section">
+
+    <!-- Header -->
+    <div class="module-header">
+      <div class="title-section">
+        <img src="assets/image/master_log.png" alt="masterModeule" class="masterModeuleImg">
+        <h2>Module Master</h2>
+      </div>
+
+      <button class="new-btn" [routerLink]="'/mastermodule/newsupportmaster'">
+        New <i class="fa fa-plus-circle"></i>
+      </button>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section">
+      <label class="labelcss">Search By Module Name:</label>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search..." (input)="serach($event.target)" />
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Module Name</th>
+            <th>Parent ID</th>
+            <th>Is Active</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let data of supportvalue">
+            <td>{{data.supportId}}</td>
+            <td class="module-name">{{data.supportName}}</td>
+            <td>{{data.parentId}}</td>
+
+            <td>
+              <span [ngClass]="data.isActive ? 'active-true' : 'active-false'">
+                {{data.isActive.toString() | titlecase}}
+              </span>
+            </td>
+
+            <td class="action-icons">
+              <i class="fa fa-pencil edit-icon" (click)="update(data.supportId)"></i>
+
+              <i class="fa fa-trash delete-icon" (click)="deleteRow(data.supportId)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Paginator -->
+      <div *ngIf="supportvalue.length > 0" class="paginator">
         <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex"
-          [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page"
-          style="margin-right:34%">
+          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)">
         </mat-paginator>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="notification-confirm" *ngIf="deleteconfirmation">
-  <p style="font-size:17px;text-align:center;">Are you sure you want to delete this?</p>
-  <div style="text-align:center;">
-    <button class="confirombtn" (click)="deleteYes()">Yes</button>
-    <button class="confirombtn" (click)="deleteNo()">No</button>
   </div>
+
+  <!-- Delete Confirmation -->
+  <div class="notification-confirm" *ngIf="deleteconfirmation">
+    <p>Are you sure you want to delete this?</p>
+    <div>
+      <button class="confirm-btn" (click)="deleteYes()">Yes</button>
+      <button class="confirm-btn" (click)="deleteNo()">No</button>
+    </div>
+  </div>
+
 </div>

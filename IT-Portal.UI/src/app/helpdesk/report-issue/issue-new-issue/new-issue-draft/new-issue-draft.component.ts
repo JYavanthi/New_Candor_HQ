@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { PasscrdataService } from '../../../../change-request/passcrdata.service';
@@ -11,6 +11,7 @@ import { UserInfoSerService } from '../../../../services/user-info-ser.service';
 import { HttpServiceService } from 'shared/services/http-service.service';
 import { TaskTracker } from 'app/master-support/SLA/slamaster/trackSlaCal';
 import { DatePipe } from '@angular/common';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-new-issue-draft',

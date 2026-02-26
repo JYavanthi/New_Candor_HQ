@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class ChangeRequest
 {
@@ -8,7 +11,7 @@ public partial class ChangeRequest
 
     public int SupportId { get; set; }
 
-    public int ClassifcationId { get; set; }
+    public int ClassificationId { get; set; }
 
     public int CategoryId { get; set; }
 
@@ -20,9 +23,9 @@ public partial class ChangeRequest
 
     public DateTime? CrrequestedDt { get; set; }
 
-    public bool? CrremailNotification { get; set; }
-
     public int? CrinitiatedFor { get; set; }
+
+    public bool? CrremailNotification { get; set; }
 
     public string? Stage { get; set; }
 
@@ -128,7 +131,7 @@ public partial class ChangeRequest
 
     public virtual Category Category { get; set; } = null!;
 
-    public virtual Classification Classifcation { get; set; } = null!;
+    public virtual Classification Classification { get; set; } = null!;
 
     public virtual ICollection<CrexecutionPlan> CrexecutionPlans { get; set; } = new List<CrexecutionPlan>();
 

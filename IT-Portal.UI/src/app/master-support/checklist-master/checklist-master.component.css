@@ -1,3 +1,11 @@
+/* .checklistmastermainDiv {
+  background: white;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;
@@ -10,7 +18,7 @@
 }
 
 .container-implement {
-  width: 90%;
+  width: 85%;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -23,4 +31,117 @@
   justify-content: center;
   font-family: sans-serif;
   margin-top: 1vh;
+} */
+
+
+
+/* Main layout */
+.checklistmastermainDiv {
+  background: #ffffff;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
+.container-implement {
+  width: 88%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 8%;
+}
+
+/* Header */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border-bottom: 3px solid #3b82f6;
+}
+
+.page-title {
+  color: #ff7a00;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* NEW button */
+.new-btn {
+  background: transparent;
+  border: none;
+  color: #0aa2c0;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  margin-right: 3%;
+
+}
+
+.new-btn i {
+  margin-right: 6px;
+  margin-top: 3px;
+}
+
+/* Table card */
+.table-card {
+  background: #f2f2f2;
+  border-radius: 18px;
+  padding: 15px;
+  border: 1px solid #e0d5c8;
+}
+
+/* Table */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.custom-table thead th {
+  color: #0aa2c0;
+  font-weight: 700;
+  padding: 10px;
+  border-bottom: 2px solid #0aa2c0;
+  white-space: nowrap;
+}
+
+/* Row separator like screenshot */
+.custom-table tbody tr {
+  border-bottom: 1px solid #f1c27d;
+}
+
+.custom-table td {
+  padding: 14px;
+  white-space: nowrap;
+}
+
+/* Blue text */
+.id {
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+.name {
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* Action icons */
+.action i {
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+/* Edit circle icon */
+.edit {
+  color: #0aa2c0;
+  background: #e6f7fb;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* Delete icon */
+.delete {
+  color: #ff4d4f;
 }

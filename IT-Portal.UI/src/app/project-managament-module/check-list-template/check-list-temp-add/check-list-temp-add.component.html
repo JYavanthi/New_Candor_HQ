@@ -15,17 +15,16 @@
                                 customLabelAlert="CheckList is Required">CheckList</label>
 
                             <ng-multiselect-dropdown formControlName="checklistSelected" name="checklistSelected"
-                                [settings]="dropdownDepartmentSettings" [data]="dropdownListCHecklist">
+                                [settings]="dropdownDepartmentSettings" [data]="dropdownListCHecklist" style="border-color: #6aa9ff; border-radius: 5px; border: 2.5px solid #b8d4f3;">
                             </ng-multiselect-dropdown>
                         </div>
                     </div>
-                    <!-- <button class="actionBtn" (click)="openLessonLearn()">Add Lesson Learn</button> -->
                 </div>
 
 
                 <div class="mainBtnsDiv">
                     <button class="actionBtn" (click)="submitTemplate()">Submit</button>
-                    <button class="actionBtn" (click)="clearForm()">Clear</button>
+                    <button class="actionBtn" (click)="clearForm()" style="background-color: #ff2e5a">Clear</button>
                 </div>
             </div>
 

@@ -1,9 +1,10 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
+using IT_Portal.Application.Contracts.Persistence.SR;
 using IT_Portal.Application.Features;
 using IT_Portal.Application.Features.SR.Domain;
 using IT_Portal.Application.Features.SR.Email;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -26,20 +27,20 @@ namespace IT_Portal.Persistence.Repositories
             CommonRsult result = new CommonRsult();
             try
             {
-                if (request.srId != 0)
-                {
-                    var data = new VwSrsoftware();
-                    data = await _context.VwSrsoftwares.Where(m => request.srId == m.Srid).FirstOrDefaultAsync();
+                //if (request.srId != 0)
+                //{
+                //    var data = new VwSrsoftware();
+                //    data = await _context.VwSrsoftwares.Where(m => request.srId == m.Srid).FirstOrDefaultAsync();
 
-                    result.Data = data;
-                }
-                else
-                {
-                    var data = new List<VwSrsosftware>();
-                    data = await _context.VwSrsosftwares.ToListAsync();
+                //    result.Data = data;
+                //}
+                //else
+                //{
+                //    var data = new List<VwSrsosftware>();
+                //    data = await _context.VwSrsoftwares.ToListAsync();
 
-                    result.Data = data;
-                }
+                //    result.Data = data;
+                //}
             }
             catch (Exception ex)
             {
@@ -418,17 +419,16 @@ namespace IT_Portal.Persistence.Repositories
 
                                 foreach (var a in newArray)
                                 {
-                                    var grpMember = new EmailGroupMember
+                                    var grpMember = new EmailGroup
                                     {
                                         EmailGroupId = data.EmailGroupId,
-                                        EmpNo = int.Parse(a),
                                         CreatedBy = model.CreatedBy,
                                         CreatedDt = DateTime.Now,
                                         ModifiedBy = model.CreatedBy,
                                         MidifiedDt = DateTime.Now
                                     };
 
-                                    _context.EmailGroupMembers.Add(grpMember);
+                                    _context.EmailGroups.Add(grpMember);
                                     await _context.SaveChangesAsync();
                                 }
                             }
@@ -550,21 +550,21 @@ namespace IT_Portal.Persistence.Repositories
         }
 
 
-        public async Task<CommonRsult> getApprover(string empId)
-        {
-            CommonRsult result = new CommonRsult();
-            try
-            {
-                var data = await _context.VwGetSrapprovers.Where(m => m.EmployeeNo == empId).ToListAsync();
-                result.Data = data;
-                return result;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-                return result;
-            }
-        }
+        //public async Task<CommonRsult> getApprover(string empId)
+        //{
+        //    CommonRsult result = new CommonRsult();
+        //    try
+        //    {
+        //        var data = await _context.VwGetSrapprovers.Where(m => m.EmployeeNo == empId).ToListAsync();
+        //        result.Data = data;
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result.Message = ex.Message;
+        //        return result;
+        //    }
+        //}
 
         public async Task<CommonRsult> getSRApproved(int id)
         {
@@ -580,6 +580,11 @@ namespace IT_Portal.Persistence.Repositories
                 result.Message = ex.Message;
                 return result;
             }
+        }
+
+        public Task<CommonRsult> getApprover(string suppId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

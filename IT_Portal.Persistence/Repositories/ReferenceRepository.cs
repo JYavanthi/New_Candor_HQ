@@ -1,7 +1,7 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
 using IT_Portal.Application.Features;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
@@ -57,10 +57,15 @@ namespace IT_Portal.Persistence.Repositories
             return result;
         }
 
+        //public async Task<List<ReferenceTyp>> Getreference()
+        //{
+        //    var data = await _context.References.ToListAsync();
+        //    return data;
+        //}
         public async Task<List<Reference>> Getreference()
         {
-            var data = await _context.References.ToListAsync();
-            return data;
+            return await _context.References.ToListAsync();
         }
+
     }
 }

@@ -28,7 +28,6 @@
 
             <div style="position: relative;">
               <label class="asteriskrequired" for="owner">Owner</label>
-              <!-- <input type="text" formControlName="owner" name="owner" id="owner" /> -->
               <input type="text" formControlName="owner" name="owner" id="owner" placeholder="Enter Employee ID"
                 (input)="filterItem()">
               <ul class="dropdowns-list" *ngIf="employeeList?.length > 0">
@@ -53,13 +52,11 @@
 
         <div class="row">
 
-          <span class="subHeading">Schedule</span>
+          <span class="subHeading" style="color: #15455c">Schedule</span>
           <div class="inputFields">
 
             <div>
               <label class="asteriskrequired" for="scheduleStartDateFrom">Start Date</label>
-              <!-- <input type="date" formControlName="scheduleStartDateFrom" name="scheduleStartDateFrom"
-                (change)="SOnDateChange()" id="scheduleStartDateFrom" [max]="milestoneForm.value.scheduleToDate" /> -->
               <input type="date" formControlName="scheduleStartDateFrom" name="scheduleStartDateFrom"
                 (change)="SOnDateChange()" id="scheduleStartDateFrom"
                 [min]="this.projectdetails?.startDt?.split('T')[0]"
@@ -74,26 +71,9 @@
             </div>
           </div>
         </div>
-        <!-- <div class="row">
-          <span class="subHeading">Actual</span>
-          <div class="inputFields">
-            <div>
-              <label for="actualStartDTFromDate">Start Date</label>
-              <input type="date" formControlName="actualStartDTFromDate" name="actualStartDTFromDate"
-                (change)="aOnDateChange()" id="actualStartDTFromDate" 
-                [min]="milestoneForm.value.actualStartDTFromDate" />
-            </div>
-            <div>
-              <label for="actualStartDTToDate">End Date</label>
-              <input type="date" formControlName="actualStartDTToDate" name="actualStartDTToDate"
-                id="actualStartDTToDate" [min]="milestoneForm.value.actualStartDTFromDate"
-                />
-            </div>
-          </div>
-        </div> -->
-
+  
         <div class="row">
-          <span class="subHeading">Actual</span>
+          <span class="subHeading" style="color: #15455c">Actual</span>
           <div class="inputFields">
             <div>
               <label for="actualStartDTFromDate">Start Date</label>
@@ -111,16 +91,14 @@
 
 
         <div>
-          <label class="asteriskrequired" for="description">Description</label>
-          <textarea class="textAreaClass" formControlName="description" name="description" id="description"></textarea>
-          <!-- <angular-editor #editor [config]="editorConfig" formControlName="description"
-            [disabled]="milestoneId"></angular-editor> -->
+          <label class="asteriskrequired" for="description" style="font-size : larger; color : #15455c">Description</label>
+          <textarea class="textAreaClass" formControlName="description" name="description" id="description" style="border: 2.5px solid #b8d4f3"></textarea>
         </div>
 
         <div class="mainBtnsDiv">
           <button class="actionBtn" (click)="submitMilestone()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
         || this.projectdetails?.projectStatus == 'Approved')">{{milestoneId? 'Update' : 'Submit'}}</button>
-          <button class="actionBtn" *ngIf="!milestoneId" (click)="clearForm()">Clear</button>
+          <button class="actionBtn" *ngIf="!milestoneId" (click)="clearForm()" style="background-color: #ff2e5a">Clear</button>
         </div>
       </div>
     </div>

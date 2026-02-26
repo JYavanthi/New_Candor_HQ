@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class ProjectMgmtHistory
 {
@@ -34,7 +37,7 @@ public partial class ProjectMgmtHistory
 
     public decimal? ActualCost { get; set; }
 
-    public int? PlanId { get; set; }
+    public int? PlantId { get; set; }
 
     public string? Sponser { get; set; }
 

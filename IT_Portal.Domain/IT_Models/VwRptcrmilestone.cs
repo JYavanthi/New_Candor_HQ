@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwRptcrmilestone
 {
@@ -97,7 +100,9 @@ public partial class VwRptcrmilestone
     public DateTime Crdate { get; set; }
 
     public string? Status { get; set; }
+
     public string? Stage { get; set; }
+
     public string? NatureofChange { get; set; }
 
     public decimal? EstimatedCost { get; set; }
@@ -114,7 +119,7 @@ public partial class VwRptcrmilestone
 
     public int ChangeRequestor { get; set; }
 
-    public string? PlantId { get; set; }
+    public string PlantId { get; set; } = null!;
 
     public int? Plantcode { get; set; }
 

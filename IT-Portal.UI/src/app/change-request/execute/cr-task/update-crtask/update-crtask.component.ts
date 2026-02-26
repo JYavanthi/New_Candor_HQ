@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PasscrdataService } from '../../../passcrdata.service';import { environment } from '@environments/environment';
+import { PasscrdataService } from '../../../passcrdata.service'; import { environment } from '@environments/environment';
 import { GetEmployeeInfoService } from '../../../../services/get-employee-info.service';
 import { DatePipe } from '@angular/common';
 
@@ -140,7 +140,7 @@ export class UpdateCrtaskComponent {
           this.assignedtoid = this.updatevalue[0].assignedtoid;
           this.updatestatus = this.updatevalue[0].status?.trim();
           this.forwardtoid = this.updatevalue[0].forwardedtoid;
-          
+
           if (!this.forwardtoid) {
             this.forwardstatus = 'Not Forwarded'
           }
@@ -246,10 +246,10 @@ export class UpdateCrtaskComponent {
   FirstsubmitExexute() {
     if (this.updatestatus == 'Completed' && this.crid?.dependSysLandscapeid != '' && this.Selectthetask != '') {
       const getSelectthetaskrow = this.depdenttask.filter((item: any) => item.itcrexecId == parseInt(this.Selectthetask));
-     
+
       if (getSelectthetaskrow?.[0]?.status?.trim() != "Completed") {
         alert(`Please complete task ${getSelectthetaskrow[0].executionStepName} to complete this task!`);
-       // this.crid['dependSysLandscapeid'] = '';
+        // this.crid['dependSysLandscapeid'] = '';
         //this.Selectthetask = '';
       } else {
         this.submitExexute()
@@ -333,7 +333,7 @@ export class UpdateCrtaskComponent {
 
     else if (this.updatestatus == 'Onhold') {
       if (this.updatevalue[0].pickedStatus?.trim() == 'Picked') {
-       
+
         if (!this.updatevalue[0].startDt || this.updatevalue[0].startDt == '' || this.updatevalue[0].startDt == null) {
           alert('Select Planned Start Date');
         }
@@ -432,7 +432,7 @@ export class UpdateCrtaskComponent {
 
 
     else if (this.updatestatus == 'Unassigned') {
-      
+
       if (this.updatevalue[0].executionStepName == '' || this.updatevalue[0].executionStepName == null) {
         alert('Enter Execution Step Name');
       }
@@ -513,9 +513,9 @@ export class UpdateCrtaskComponent {
     const apiUrl = this.apiurl + '/Crexecute/executeplan'
     const assignedtosupport = parseInt(this.setassignedname.split("-")[0]);
     const forwardedtosupport = parseInt(this.setforwardedto.split("-")[0]);
-    this.dependSysLandscape=this.crid?.dependSysLandscapeid;
-    if (this.Selectthetask===null) this.dependSysLandscape=null;
-    
+    this.dependSysLandscape = this.crid?.dependSysLandscapeid;
+    if (this.Selectthetask === null) this.dependSysLandscape = null;
+
     const requestBody = {
       "flag": "U",
       "itcrExecID": this.itcrexecId,
@@ -586,7 +586,7 @@ export class UpdateCrtaskComponent {
 
   Cremailvalue: any[] = [];
   viewemail(status: any) {
-    //debugger//api/Crtaskemail/GetCrTaskEmail
+    //api/Crtaskemail/GetCrTaskEmail
     //const apiUrl = this.apiurl + '/Crtaskemail/GetCrTaskEmail'
     //const requestBody = {
 
@@ -824,7 +824,7 @@ export class UpdateCrtaskComponent {
         console.error('POST request failed', error);
       });
   }
-  
+
   systemlandscape: any[] = [];
 
   async getsystemlandscape() {
@@ -911,8 +911,8 @@ export class UpdateCrtaskComponent {
     if (this.updatestatus?.trim() == "Unassigned") {
       this.setassignedname = '';
     }
-    else if (this.updatevalue[0].pickedStatus){
-      if (this.updatevalue[0].pickedStatus == "Not Picked" && this.updatestatus?.trim() == "Completed"){
+    else if (this.updatevalue[0].pickedStatus) {
+      if (this.updatevalue[0].pickedStatus == "Not Picked" && this.updatestatus?.trim() == "Completed") {
         this.updatestatus = '';
         alert('Please pick task to change to complete!');
       }

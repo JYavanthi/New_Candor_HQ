@@ -105,7 +105,6 @@ export class ProTasksComponent {
     return this.isSubtaskView;
   }
 
-  // ✅ This method was missing
   hasSubtasks(taskId: number): boolean {
     return this.childtaskList?.some((task: any) => task.parentTaskId === taskId);
   }

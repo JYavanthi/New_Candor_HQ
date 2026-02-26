@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class RiskPlan
 {
@@ -21,6 +24,4 @@ public partial class RiskPlan
     public string? CommunicationDays { get; set; }
 
     public virtual Category Category { get; set; } = null!;
-
-    public virtual Support Support { get; set; } = null!;
 }

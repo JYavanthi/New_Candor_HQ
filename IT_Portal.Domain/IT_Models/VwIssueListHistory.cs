@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwIssueListHistory
 {
@@ -10,7 +13,7 @@ public partial class VwIssueListHistory
 
     public string? IssueRaiseBy { get; set; }
 
-    public DateTime? IssueDate { get; set; } = null!;
+    public DateTime IssueDate { get; set; }
 
     public string IssueShotDesc { get; set; } = null!;
 
@@ -42,21 +45,21 @@ public partial class VwIssueListHistory
 
     public int? AssignedToid { get; set; }
 
-    public string? AssignedTo { get; set; } = null!;
+    public string AssignedTo { get; set; } = null!;
 
     public int? Assignedbyid { get; set; }
 
-    public string? AssignedBy { get; set; } = null!;
+    public string AssignedBy { get; set; } = null!;
 
     public string? Remarks { get; set; }
 
-    public int? CreatedBy { get; set; } = null!;
+    public int? CreatedBy { get; set; }
 
-    public DateTime? CreatedDt { get; set; } = null!;
+    public DateTime? CreatedDt { get; set; }
 
-    public int? ModifiedBy { get; set; } = null!;
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? ModifiedDt { get; set; } = null!;
+    public DateTime? ModifiedDt { get; set; }
 
     public string? CategoryName { get; set; }
 
@@ -70,11 +73,11 @@ public partial class VwIssueListHistory
 
     public string? Slastatus { get; set; }
 
-    public DateTime? AssignedOn { get; set; } = null!;
+    public DateTime? AssignedOn { get; set; }
 
     public string? ResolvedBy { get; set; }
 
-    public DateTime? ResolvedOn { get; set; } = null!;
+    public DateTime? ResolvedOn { get; set; }
 
     public string? ResolveRemarks { get; set; }
 
@@ -82,5 +85,5 @@ public partial class VwIssueListHistory
 
     public string? ClosedRemark { get; set; }
 
-    public DateTime? ClosedDate { get; set; } = null!;
+    public DateTime? ClosedDate { get; set; }
 }

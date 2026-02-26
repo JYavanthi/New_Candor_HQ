@@ -174,7 +174,9 @@ namespace IT_Portal.Persistence.Repositories
 
                     using (var da = new SqlDataAdapter(command))
                     {
-                        var pridNew = (int)(_context.Prtemplates.OrderByDescending(m => m.PrtemplateId).FirstOrDefault()?.PrtemplateId) + 1;
+                        var pridNew = (_context.Prtemplates.OrderByDescending(m => m.PrtemplateId).FirstOrDefault()?.PrtemplateId) ?? 0;
+
+                        ++pridNew;
 
                         foreach (var item in templateObj.templateDetailsList)
                         {

@@ -503,8 +503,8 @@ export class UserConfigurationComponent {
     this.httpSer.httpGet(apiUrls).subscribe(res => {
       // this.plantList = res;
       this.plantList = res?.map((item: any) => ({
-        itemPlant_id: item.id,
-        itemPlant_text: item.code
+        itemPlant_id: item.plantId,
+        itemPlant_text: item.plantCode
       }));
     })
   }
@@ -597,7 +597,6 @@ export class UserConfigurationComponent {
   }
 
   // handleCheckedItems(checkedItems: number[]) {
-  //   debugger
   //   if (this.showSRTree) {
   //     // Update the checkedItemList first
   //     this.checkedItemList = checkedItems;
@@ -718,21 +717,91 @@ export class UserConfigurationComponent {
     });
   }
 
+  // async ExecuteSubmit() {
+  //   const apiUrl = '/SupportTeam/PostSupportTeam';
+  //   let lastSuccessful = false;
+  //   for (const m of this.allSupportIDs) {
+  //     const param = {
+  //       "flag": "I",
+  //       "supportTeamId": 0,
+  //       "supportTeamAssgnID": 0,
+  //       "email": this.filteredEmpList[0].officialEmailId ? this.filteredEmpList[0].officialEmailId : '',
+  //       "firstName": this.filteredEmpList[0].firstName ? this.filteredEmpList[0].firstName : '',
+  //       "middleName": this.filteredEmpList[0].middleName ? this.filteredEmpList[0].middleName : '',
+  //       "lastName": this.filteredEmpList[0].lastName ? this.filteredEmpList[0].lastName : '',
+  //       "imgUrl": "",
+  //       "designation": this.filteredEmpList[0].designation ? this.filteredEmpList[0].designation : '',
+  //       "role": this.filteredEmpList[0].role ? this.filteredEmpList[0].role : '',
+  //       "empId": Number(this.empID),
+  //       "isActive": true,
+  //       "dol": "2024-10-17T11:08:50.005Z",
+  //       "dob": "2024-10-17T11:08:50.005Z",
+  //       "isAdmin": this.userForm.get('Admin')?.value,
+  //       "isSuperAdmin": this.userForm.get('superAdmin')?.value,
+  //       "isApprover": this.userForm.get('isApprove')?.value,
+  //       "isChangeAnalyst": this.userForm.get('isAnalyst')?.value,
+  //       "isSupportEngineer": this.userForm.get('isExecutive')?.value,
+  //       "plantId": this.userForm.get('userConfigPlant')?.value[0].itemPlant_id,
+  //       "supportId": 1,
+  //       "categoryId": this.userForm.get('userConfigCategory')?.value[0].itemCategory_id,
+  //       "categoryTypID": this.userForm.get('userConfigCategoryType')?.value[0].itemCategoryType_id,
+  //       "classificationId": this.userForm.get('userConfigClassification')?.value[0].itemClassification_id,
+  //       "approverstageCR": this.userForm.get('CRApproverLevel1')?.value ? 'N' : '',
+  //       "approverstageR": this.userForm.get('releaseApproverLevel1')?.value ? 'R' : '',
+  //       "approverstageC": this.userForm.get('closureApproverLevel1')?.value ? 'C' : '',
+  //       "level": this.userForm.get('approverLevel1')?.value == true ? 1 : 0,
+  //       "approverstage2CR": this.userForm.get('CRApproverLevel2')?.value ? 'N' : '',
+  //       "approverstage2R": this.userForm.get('releaseApproverLevel2')?.value ? 'R' : '',
+  //       "approverstage2C": this.userForm.get('closureApproverLevel2')?.value ? 'C' : '',
+  //       "level2": this.userForm.get('approverLevel2')?.value == true ? 2 : 0,
+  //       "approverstage3CR": this.userForm.get('CRApproverLevel3')?.value ? 'N' : '',
+  //       "approverstage3R": this.userForm.get('releaseApproverLevel3')?.value ? 'R' : '',
+  //       "approverstage3C": this.userForm.get('closureApproverLevel3')?.value ? 'C' : '',
+  //       "level3": this.userForm.get('approverLevel3')?.value == true ? 3 : 0,
+  //       "createdBy": parseInt(this.user.empData.employeeNo),
+  //       "createdDate": new Date().toISOString(),
+  //       "supportIds": []
+  //     }
+  //     try {
+  //       const res = await this.httpSer.httpPost(apiUrl, param).toPromise();
+  //       const response = res as unknown as { type: string; message: string; data: any; count: number };
+
+  //       if (m === this.allSupportIDs[this.allSupportIDs.length - 1]) {
+  //         lastSuccessful = response && response.type !== "E";
+  //       }
+  //     } catch (error) {
+  //       console.error('API error:', error);
+  //     }
+
+  //     console.log('param', param)
+  //   }
+
+  //   if (lastSuccessful) {
+  //     alert('Successfully Submitted!');
+  //     this.router.navigate(['/support_view']);
+  //   } else {
+  //     alert('The last submission failed. Please check the details.');
+  //   }
+  // }
+
   async ExecuteSubmit() {
     const apiUrl = '/SupportTeam/PostSupportTeam';
-    let lastSuccessful = false;
+    let backendErrors: string[] = [];
+    let apiFailed = false;
+
     for (const m of this.allSupportIDs) {
+
       const param = {
         "flag": "I",
         "supportTeamId": 0,
         "supportTeamAssgnID": 0,
-        "email": this.filteredEmpList[0].officialEmailId ? this.filteredEmpList[0].officialEmailId : '',
-        "firstName": this.filteredEmpList[0].firstName ? this.filteredEmpList[0].firstName : '',
-        "middleName": this.filteredEmpList[0].middleName ? this.filteredEmpList[0].middleName : '',
-        "lastName": this.filteredEmpList[0].lastName ? this.filteredEmpList[0].lastName : '',
+        "email": this.filteredEmpList[0].officialEmailId || '',
+        "firstName": this.filteredEmpList[0].firstName || '',
+        "middleName": this.filteredEmpList[0].middleName || '',
+        "lastName": this.filteredEmpList[0].lastName || '',
         "imgUrl": "",
-        "designation": this.filteredEmpList[0].designation ? this.filteredEmpList[0].designation : '',
-        "role": this.filteredEmpList[0].role ? this.filteredEmpList[0].role : '',
+        "designation": this.filteredEmpList[0].designation || '',
+        "role": this.filteredEmpList[0].role || '',
         "empId": Number(this.empID),
         "isActive": true,
         "dol": "2024-10-17T11:08:50.005Z",
@@ -750,40 +819,52 @@ export class UserConfigurationComponent {
         "approverstageCR": this.userForm.get('CRApproverLevel1')?.value ? 'N' : '',
         "approverstageR": this.userForm.get('releaseApproverLevel1')?.value ? 'R' : '',
         "approverstageC": this.userForm.get('closureApproverLevel1')?.value ? 'C' : '',
-        "level": this.userForm.get('approverLevel1')?.value == true ? 1 : 0,
+        "level": this.userForm.get('approverLevel1')?.value ? 1 : 0,
         "approverstage2CR": this.userForm.get('CRApproverLevel2')?.value ? 'N' : '',
         "approverstage2R": this.userForm.get('releaseApproverLevel2')?.value ? 'R' : '',
         "approverstage2C": this.userForm.get('closureApproverLevel2')?.value ? 'C' : '',
-        "level2": this.userForm.get('approverLevel2')?.value == true ? 2 : 0,
+        "level2": this.userForm.get('approverLevel2')?.value ? 2 : 0,
         "approverstage3CR": this.userForm.get('CRApproverLevel3')?.value ? 'N' : '',
         "approverstage3R": this.userForm.get('releaseApproverLevel3')?.value ? 'R' : '',
         "approverstage3C": this.userForm.get('closureApproverLevel3')?.value ? 'C' : '',
-        "level3": this.userForm.get('approverLevel3')?.value == true ? 3 : 0,
+        "level3": this.userForm.get('approverLevel3')?.value ? 3 : 0,
         "createdBy": parseInt(this.user.empData.employeeNo),
         "createdDate": new Date().toISOString(),
-        "supportIds": []
-      }
+        "supportIds": [1]
+      };
+
       try {
         const res = await this.httpSer.httpPost(apiUrl, param).toPromise();
-        const response = res as unknown as { type: string; message: string; data: any; count: number };
 
-        if (m === this.allSupportIDs[this.allSupportIDs.length - 1]) {
-          lastSuccessful = response && response.type !== "E";
+        const response = res as unknown as {
+          type: string;
+          message: string;
+        };
+
+        if (response?.type === 'E') {
+          const match = response.message.match(/Approver.*$/);
+          backendErrors.push(match ? match[0] : response.message);
         }
-      } catch (error) {
-        console.error('API error:', error);
-      }
 
-      console.log('param', param)
+      } catch (err) {
+        apiFailed = true;
+        backendErrors.push('Technical error occurred while submitting.');
+      }
     }
 
-    if (lastSuccessful) {
+    if (apiFailed) {
+      alert('Submission completed with technical issues.');
+    }
+    else if (backendErrors.length > 0) {
+      alert(backendErrors.join('\n'));
+      this.router.navigate(['/support_view']); 
+    }
+    else {
       alert('Successfully Submitted!');
       this.router.navigate(['/support_view']);
-    } else {
-      alert('The last submission failed. Please check the details.');
     }
   }
+
 
   onChangeCheckBox() {
     if (this.userForm.get('Admin')?.value == false && this.userForm.get('superAdmin')?.value == true) {

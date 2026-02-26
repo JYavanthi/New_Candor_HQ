@@ -1,22 +1,13 @@
 <div style="display: flex;align-items: center;">
     <div>
-        <button class="addNewBtn" (click)="navigateTo()"
-        *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
+        <button class="addNewBtn-addNew" (click)="navigateTo()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
             ||this.projectdetails?.projectStatus=='Approved'
         )">Add New</button>
     </div>
 
-    <!-- <div class="d-flex justify-content-center" style="width: 85%;" *ngIf="issueTrackerForm.disabled">
-        <div class="col-md-4" style="display: flex !important; justify-content: center !important;">
-            <div class="toggle-wrapper1">
-                <button class="toggle-button1" [ngClass]="{ 'active': true }">Open Issues</button>
-                <button class="toggle-button1" [ngClass]="{ 'active': false }">My Issues</button>
-            </div>
-        </div>
-    </div> -->
 </div>
 
-<div  class="tableDesign">
+<!-- <div  class="tableDesign">
     <div class="table-container">
         <table>
             <thead>
@@ -66,6 +57,69 @@
             </tbody>
         </table>
     </div>
+</div> -->
+
+
+<div class="tableDesign">
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>SL NO.</th>
+                    <th>ISSUE CODE</th>
+                    <th>SHORT DESCRIPTION</th>
+                    <th>MILESTONE</th>
+                    <th>TASK</th>
+                    <th>SUB TASK</th>
+                    <th>CREATED DATE</th>
+                    <th>ASSIGNED BY</th>
+                    <th>ASSIGNED TO</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let issue of issueList; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ issue.issueCode }}</td>
+                    <td>{{ issue.description }}</td>
+                    <td>{{ issue.milestoneTitle }}</td>
+                    <td>{{ issue.taskTitle }}</td>
+                    <td>{{ issue.subTaskTitle }}</td>
+                    <td>{{ issue.createdDt | date: 'dd/MM/yy HH:mm' }}</td>
+                    <td>{{ issue.assignByName }}</td>
+                    <td>{{ issue.assignToName }}</td>
+
+                    <td>
+                        <span class="status-pill" [ngClass]="{
+                'completed': issue.status === 'Completed',
+                'in-progress': issue.status === 'In Progress',
+                'inreview': issue.status === 'In Review',
+                'tobetested': issue.status === 'To be tested',
+                'open': issue.status === 'Open'
+              }">
+                            {{ issue.status }}
+                        </span>
+                    </td>
+
+                    <td class="action-icons">
+                        <i class="fa fa-pencil-square-o" (click)="navigateTo(issue.issueId)"></i>
+
+                        <i class="fa fa-trash" *ngIf="!(projectdetails?.projectStatus=='Cancel'
+               || projectdetails?.projectStatus=='Discontinue'
+               || projectdetails?.projectStatus=='Completed'
+               || projectdetails?.projectStatus=='Approved')" (click)="deleteIssue(issue.issueId)">
+                        </i>
+                    </td>
+                </tr>
+
+                <tr *ngIf="issueList?.length === 0">
+                    <td colspan="11" class="no-data">
+                        <i class="fa fa-search"></i> No Data Available
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-

@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Srusbaccess
 {
@@ -16,9 +19,9 @@ public partial class Srusbaccess
 
     public string? DeviceType { get; set; }
 
-    public DateTime? DurationFrom { get; set; }
+    public DateOnly? DurationFrom { get; set; }
 
-    public DateTime? DurationTo { get; set; }
+    public DateOnly? DurationTo { get; set; }
 
     public string? AccessType { get; set; }
 
@@ -30,11 +33,11 @@ public partial class Srusbaccess
 
     public bool? IsActive { get; set; }
 
-    public int? CreatedBy { get; set; }
-
-    public DateTime? CreatedDt { get; set; }
-
     public int? ModifiedBy { get; set; }
 
-    public DateTime? ModifiedDt { get; set; }
+    public DateOnly? ModifiedDt { get; set; }
+
+    public int? CreatedBy { get; set; }
+
+    public DateOnly? CreatedDt { get; set; }
 }

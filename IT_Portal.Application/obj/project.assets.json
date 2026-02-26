@@ -405,19 +405,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\itproject1\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Application\\IT_Portal.Application.csproj",
+      "projectUniqueName": "D:\\IT-Portal\\IT_Portal\\IT_Portal\\IT-Portal\\IT_Portal.Application\\IT_Portal.Application.csproj",
       "projectName": "IT_Portal.Application",
-      "projectPath": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Application\\IT_Portal.Application.csproj",
-      "packagesPath": "C:\\Users\\itproject1\\.nuget\\packages\\",
-      "outputPath": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Application\\obj\\",
+      "projectPath": "D:\\IT-Portal\\IT_Portal\\IT_Portal\\IT-Portal\\IT_Portal.Application\\IT_Portal.Application.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\IT-Portal\\IT_Portal\\IT_Portal\\IT-Portal\\IT_Portal.Application\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\itproject1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -425,15 +430,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Portal.Domain.csproj": {
-              "projectPath": "C:\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Portal.Domain.csproj"
+            "D:\\IT-Portal\\IT_Portal\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Portal.Domain.csproj": {
+              "projectPath": "D:\\IT-Portal\\IT_Portal\\IT_Portal\\IT-Portal\\IT_Portal.Domain\\IT_Portal.Domain.csproj"
             }
           }
         }
@@ -447,7 +451,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -482,7 +487,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,41 +1,79 @@
-<div class="container-implement">
-  <div class="container-field-line">
+<!-- <div style="display : flex; width : 95%; background : white; border-radius : 40px; margin-left : 2.5%;">
 
-    <!-- bootstrap -->
-    <h3>New Classification</h3>
-    <div class="border-rfc-heading">
-      <div class="row mt-2">
-        <div class="col">
-          <label>Classification ID</label>
-          <input type="text" placeholder="ClassificationID" [(ngModel)]="classificationid" />
-        </div>
-        <div class="col">
-          <label>Classification Name</label>
-          <input type="text" placeholder="ClassificationName" [(ngModel)]="classificationname" />
-        </div>
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
 
+  <div class="container-implement">
+    <div class="container-field-line">
+
+      <h3>New Classification</h3>
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+          <div class="col">
+            <label>Classification ID</label>
+            <input type="text" placeholder="ClassificationID" [(ngModel)]="classificationid" />
+          </div>
+          <div class="col">
+            <label>Classification Name</label>
+            <input type="text" placeholder="ClassificationName" [(ngModel)]="classificationname" />
+          </div>
+
+
+        </div>
 
       </div>
-        <!-- <div class="col">
-          <label>Is Active</label>
-
-          <select >
-            <option [ngValue]="true">True</option>
-            <option [ngValue]="false">False</option>
-          </select>
-        </div>-->
 
 
-     
 
     </div>
-
-
+    <button (click)="postClassification()" class="btn btn-primary">Submit</button>
+    <button [routerLink]="'/categorytype'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
 
   </div>
-  <button (click)="postClassification()" class="btn btn-primary">Submit</button>
-  <button [routerLink]="'/categorytype'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
 
+
+
+</div> -->
+
+
+<div style="display:flex; width:95%; background:white; border-radius:40px; margin-left:2.5%;">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <!-- Heading -->
+    <h3 class="page-heading">NEW CLASSIFICATION</h3>
+
+    <!-- Cream Card -->
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Classification ID</label>
+            <input class="form-control-custom" type="text" placeholder="ClassificationID"
+              [(ngModel)]="classificationid" />
+          </div>
+
+          <div class="col form-group">
+            <label>Classification Name</label>
+            <input class="form-control-custom" type="text" placeholder="ClassificationName"
+              [(ngModel)]="classificationname" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-section">
+      <button (click)="postClassification()" class="btn submit-btn">SUBMIT</button>
+      <button [routerLink]="'/categorytype'" class="btn back-btn">BACK</button>
+    </div>
+
+  </div>
 </div>
-
-

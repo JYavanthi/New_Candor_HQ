@@ -56,6 +56,13 @@ export class HomeComponent {
       }
       return;
     }
+    //  else {
+    //   localStorage.setItem('isLoggedin', 'ture');
+    //   if (confirm("You're Not Authenticated!")) {
+    //     window.location.href = this.loginurls + '#' + '/slogin';
+    //   }
+    //   return;
+    // }
   }
 
 }

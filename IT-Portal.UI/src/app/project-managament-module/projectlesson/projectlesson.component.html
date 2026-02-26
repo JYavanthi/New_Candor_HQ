@@ -1,4 +1,4 @@
-<button class="proManagementBackBtn" (click)="navigateToLesonLearned()">Go Back</button>
+<button class="proManagementBackBtn" (click)="navigateToLesonLearned()"><span>&#8249;</span>Go Back</button>
 
 <ng-container *ngIf="!showTemplateView && !showAppTemplate">
   <form [formGroup]="lessonForm">
@@ -7,7 +7,7 @@
         <div class="card-body">
           <div class="row">
             <div class="inputFields">
-              <div>
+              <!-- <div>
                 <label class="asteriskrequired" for="milestone">Milestone</label>
                 <select formControlName="milestone" (change)="getTaskList($event)">
                   <option value="" selected disabled>Select Milestone Code </option>
@@ -23,16 +23,6 @@
                   <option value="" *ngFor="let task of taskList" [value]="task.taskId"> {{task.taskTitle}}</option>
                 </select>
               </div>
-
-              <!-- <div *ngIf="lessonForm.value.milestone">
-                <label class="asteriskrequired" for="task">Task</label>
-                <select formControlName="task">
-                  <option value="" selected hidden disabled>Select Task Code</option>
-                  <option *ngFor="let task of parenttask" [value]="task.taskId">
-                    {{task.taskCode}} - {{task.taskTitle}}
-                  </option>
-                </select>
-              </div> -->
 
               <div>
                 <label class="asteriskrequired" for="category">Category</label>
@@ -64,6 +54,58 @@
                   <option>Yes</option>
                   <option>No</option>
                 </select>
+              </div> -->
+
+              <div>
+                <label class="asteriskrequired" for="milestone">Milestone</label>
+                <select formControlName="milestone" (change)="getTaskList($event)">
+                  <option value="" selected disabled>Select Milestone Code</option>
+                  <option *ngFor="let milestone of milestoneList" [value]="milestone.projMilestoneId">
+                    {{ milestone.milestoneTitle }}
+                  </option>
+                </select>
+              </div>
+
+              <div *ngIf="lessonForm.value.milestone">
+                <label class="asteriskrequired" for="task">Task</label>
+                <select formControlName="task">
+                  <option value="" selected hidden disabled>Select Task Code</option>
+                  <option *ngFor="let task of taskList" [value]="task.taskId">
+                    {{ task.taskTitle }}
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="category">Category</label>
+                <select formControlName="category">
+                  <option value="" selected disabled>Select Category</option>
+                  <option>Requirement Gathering</option>
+                  <option>Design</option>
+                  <option>Coding And Unit Testing</option>
+                  <option>Testing</option>
+                  <option>User Acceptance Testing</option>
+                  <option>Project Management</option>
+                  <option>Others</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="lessonType">Lesson Type</label>
+                <select formControlName="lessonType">
+                  <option value="" selected disabled>Select Lesson Type</option>
+                  <option>Problems Statement</option>
+                  <option>Success Summary</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="Closer">Project Closure Acceptance</label>
+                <select formControlName="Closer">
+                  <option value="" selected hidden disabled>Select Project Closure Acceptance</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
               </div>
 
               <div class="textAreaDiv">
@@ -79,10 +121,10 @@
                 <angular-editor #editor [config]="editorConfig" id="recommendationDescription"
                   formControlName="recommendationDescription"></angular-editor>
               </div>
-              
+
             </div>
           </div>
-          <div>
+          <!-- <div>
             <div class="col-3">
               <label>Select Predefined Template</label>
               <select formControlName="predefinedTemplate" (change)="getTmeplateDetailsList()">
@@ -91,7 +133,23 @@
                 </option>
               </select>
             </div>
+          </div> -->
+          <div class="row">
+            <div class="inputFields">
+
+              <div>
+                <label for="predefinedTemplate">Select Predefined Template</label>
+                <select formControlName="predefinedTemplate" (change)="getTmeplateDetailsList()" style="width: 25%;">
+                  <option value="" selected hidden disabled>Select Predefined Template</option>
+                  <option *ngFor="let template of templateList" [value]="template.prtemplateId">
+                    {{ template.templateName }}
+                  </option>
+                </select>
+              </div>
+
+            </div>
           </div>
+
 
           <div class="row">
             <div class="inputFields">
@@ -122,7 +180,7 @@
         </div>
         <div class="mainBtnsDiv">
           <button class="actionBtn" style="margin-left: 2%;" (click)="submitLesson()">Submit</button>
-          <button class="actionBtn" (click)="clearAllFields()" *ngIf="showClear">Clear</button>
+          <button class="actionBtn" (click)="clearAllFields()" *ngIf="showClear" style="background-color: #ff2e5a">Clear</button>
         </div>
       </div>
     </div>

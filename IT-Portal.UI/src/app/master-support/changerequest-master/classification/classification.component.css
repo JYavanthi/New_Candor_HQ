@@ -1,4 +1,4 @@
-.container-field-line {
+/* .container-field-line {
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -9,13 +9,21 @@
   margin-bottom: 3%;
 }
 
+.classificationMainDiv {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
 .container-implement {
-  width: 90%;
+  width: 80%;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
-  margin-left: 8%;
+  margin-left: 11%;
 }
 
 .table-wrapper {
@@ -40,12 +48,170 @@
 
 .form-control {
   border: none;
-  border-bottom: 1px solid black; /* Add underline style */
-  outline: none; /* Removes the default focus outline */
+  border-bottom: 1px solid black;
+  outline: none;
 
   padding-left: 2%;
 }
 
-  .form-control::placeholder {
-    font-family: FontAwesome;
-  }
+.form-control::placeholder {
+  font-family: FontAwesome;
+} */
+
+
+/* Main Layout */
+.classificationMainDiv {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 30px;
+  margin-left: 2.5%;
+}
+
+/* Right Side Container */
+.container-implement {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 11%;
+  border: none;
+}
+
+/* White Card */
+.container-field-line {
+  padding: 25px;
+  background-color: #ffffff;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 20px;
+
+}
+
+/* Title */
+.container-field-line h3 {
+  color: #f97316;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Search Box */
+.search-hero {
+  position: relative;
+  width: 350px;
+  margin-top: -35px;
+  margin-left: 180px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px 8px 35px;
+  border-radius: 10px;
+  border: 1px solid #b6d4e3;
+  outline: none;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+}
+
+.bottomCss {
+  border-bottom: 3px solid #3b82f6;
+}
+
+/* Search Icon */
+.search-hero::before {
+  content: "\f002";
+  font-family: FontAwesome;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  color: #3b82f6;
+}
+
+/* NEW Button */
+.btn-primary {
+  background-color: #17a2b8 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 6px 18px !important;
+  font-weight: 500;
+}
+
+/* Table Card */
+.border-rfc-heading {
+  margin-top: 30px;
+  border: 1px solid #f1d9c7;
+  border-radius: 15px;
+  padding: 15px;
+  background: #fff;
+}
+
+/* Table */
+.table-wrapper {
+  display: block;
+  font-family: sans-serif;
+}
+
+.fl-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+.fl-table thead {
+  background-color: #f4f8fb;
+}
+
+.fl-table th {
+  padding: 14px;
+  text-align: left;
+  color: #0e7490;
+  font-weight: 600;
+  border-bottom: 2px solid #0e7490;
+}
+
+/* Rows */
+.fl-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.tr-body:hover {
+  background-color: #f9fcff;
+}
+
+/* First Column Blue */
+.fl-table td:first-child {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+/* Second Column Blue */
+.fl-table td:nth-child(2) {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* Action Icons */
+.fl-table i.fa-pencil-square-o {
+  background-color: #0ea5a5;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.fl-table i.fa-trash {
+  background-color: #ef4444;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.fl-table td i {
+  margin-right: 8px;
+}

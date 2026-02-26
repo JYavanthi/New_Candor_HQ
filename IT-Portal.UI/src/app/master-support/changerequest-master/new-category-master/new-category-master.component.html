@@ -1,51 +1,102 @@
-<div class="container-implement">
-  <div class="container-field-line">
+<!-- <div class="mainDiv">
 
-    <!-- bootstrap -->
-    <h3>New Category Type</h3>
-    <div class="border-rfc-heading">
-      <div class="row mt-2">
-        <!--<div class="col">
-          <label>Category Name</label>
-          <select [(ngModel)]="categoryID">
-            <option value="" disabled selected>Select categoryName</option>
-            <option *ngFor="let cldata of categoryName" value="{{cldata.categoryId}}">{{cldata.categoryName}}</option>
-          </select>
-        </div>-->
-        <!--<div class="col">
-          <label>Category Type</label>
-          <input type="text" placeholder="CategoryType" [(ngModel)]="categoryType" />
-        </div>-->
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
 
-        <div class="col">
-          <label>Category Name</label>
-          <select [(ngModel)]="categoryID">
-            <option value="">Select category Name</option>
-            <option *ngFor="let cldata of categoryName" value="{{cldata.itcategoryId}}">{{cldata.categoryName}}</option>
-          </select>
+  <div class="container-implement">
+    <div class="container-field-line">
+
+      <h3>New Category Type</h3>
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col">
+            <label>Category Name</label>
+            <select [(ngModel)]="categoryID">
+              <option value="">Select category Name</option>
+              <option *ngFor="let cldata of categoryName" value="{{cldata.itcategoryId}}">{{cldata.categoryName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label>Category Type</label>
+            <input type="text" placeholder="Category Type" [(ngModel)]="categoryType" />
+          </div>
+
+          <div class="col">
+            <label>Is Active</label>
+
+            <select [(ngModel)]="isActive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+
         </div>
-
-        <div class="col">
-          <label>Category Type</label>
-          <input type="text" placeholder="Category Type" [(ngModel)]="categoryType"  />
-        </div>
-
-        <div class="col">
-          <label>Is Active</label>
-
-          <select [(ngModel)]="isActive">
-            <option [ngValue]="true">True</option>
-            <option [ngValue]="false">False</option>
-          </select>
-        </div>
-
 
       </div>
-
     </div>
+    <button (click)="postcategorytype()" [routerLink]="'/categorytypes'" class="btn btn-primary">Submit</button>
+    <button [routerLink]="'/categorytype'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
   </div>
-  <button (click)="postcategorytype()" [routerLink]="'/categorytypes'" class="btn btn-primary">Submit</button>
-  <button [routerLink]="'/categorytype'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
 
+
+</div> -->
+
+
+<div class="mainDiv">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <!-- Heading -->
+    <h3 class="page-heading">NEW CATEGORY TYPE</h3>
+
+    <!-- Cream Card -->
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Category Name</label>
+            <select class="form-control-custom" [(ngModel)]="categoryID">
+              <option value="">Select category Name</option>
+              <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">
+                {{cldata.categoryName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label>Category Type</label>
+            <input class="form-control-custom" type="text" placeholder="Category Type" [(ngModel)]="categoryType" />
+          </div>
+
+          <div class="col form-group">
+            <label>Is Active</label>
+            <select class="form-control-custom" [(ngModel)]="isActive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-section">
+      <button (click)="postcategorytype()" [routerLink]="'/categorytypes'" class="btn submit-btn">SUBMIT</button>
+
+      <button [routerLink]="'/categorytype'" class="btn back-btn">BACK</button>
+    </div>
+
+  </div>
 </div>
-

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { PasscrdataService } from '../change-request/passcrdata.service';
-import { ActivatedRoute, Router } from '@angular/router';import { environment } from '@environments/environment';
+import { ActivatedRoute, Router } from '@angular/router'; import { environment } from '@environments/environment';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { UserInfoSerService } from 'app/services/user-info-ser.service';
 
@@ -27,6 +27,8 @@ import { UserInfoSerService } from 'app/services/user-info-ser.service';
 export class SideBarComponent {
   ShowAdminSupData: boolean = false;
   private apiurl = environment.apiurls
+  private loginurls = environment.loginurl
+
   showCRSubItems: boolean = false;
   showHDSubItems: boolean = false;
   showMSSubItems: boolean = false;
@@ -82,7 +84,7 @@ export class SideBarComponent {
   }
   supportid: any;
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
-    private userInfo : UserInfoSerService) {
+    private userInfo: UserInfoSerService) {
     // this.routeservice.getsupportteam();
     // this.supportid = this.routeservice.supporterID;
 
@@ -93,6 +95,15 @@ export class SideBarComponent {
 
   ngOnInit(): void {
     this.getsupportteams();
+  }
+  idofemployee: any;
+  urls: string = '';
+  async logout() {
+    this.idofemployee = '';
+    localStorage.removeItem('token');
+    localStorage.setItem('isLoggedin', 'false');
+    this.urls = this.loginurls + '#' + '/login'
+    window.location.href = this.urls
   }
 
   isSidebarClosed: boolean = true;
@@ -156,7 +167,7 @@ export class SideBarComponent {
         this.supportteamassign = response.filter((row: any) => row.supportTeamId === this.getsupportid);
         this.isapprover = this.supportteamassign[0]?.isApprover
         this.issupportegineer = this.supportteamassign[0]?.isSupportEngineer
-         this.ischangeanalyst = this.supportteamassign[0]?.isChangeAnalyst
+        this.ischangeanalyst = this.supportteamassign[0]?.isChangeAnalyst
         this.isadmin = this.supportteamassign[0]?.isAdmin
         this.issuperadmin = this.supportteamassign[0]?.isSuperAdmin
       },

@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class CrapproverHistory
 {
@@ -32,7 +35,7 @@ public partial class CrapproverHistory
 
     public int? CreatedBy { get; set; }
 
-    public DateTime? CreatedDt { get; set; }
+    public DateTime CreatedDt { get; set; }
 
     public int? ModifiedBy { get; set; }
 

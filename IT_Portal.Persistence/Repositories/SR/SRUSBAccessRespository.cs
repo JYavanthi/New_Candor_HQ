@@ -21,7 +21,9 @@ namespace IT_Portal.Persistence.Repositories.SR
             var result = new CommonRsult();
             try
             {
-                var value = _context.VwAssetDetails.Where(m => m.EmpNo == Empno);
+                var value = _context.VwAssetDetails
+                     .Where(m => m.EmpNo.ToString() == Empno)
+                     .ToList();
                 result.Data = value;
                 result.Count = value.Count();
                 return result;

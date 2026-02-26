@@ -51,7 +51,6 @@
                         </div>
 
 
-
                         <div *ngIf="!prdefinedTemplate">
                             <label for="status">Project Status</label>
                             <select formControlName="status" name="status" id="status">
@@ -67,14 +66,13 @@
                         </div>
 
                         <div class="textAreaDiv" *ngIf="!prdefinedTemplate">
-                            <!-- <label class="asteriskrequired" for="duration">Attachment</label> -->
                             <app-pr-attachment [title]="'Attachment'" (attachMentListEvent)="getAttchmentList($event)"
                                 (removeAttchment)="removeAttchment($event)"></app-pr-attachment>
                         </div>
                         <div class="textAreaDiv" *ngIf="!prdefinedTemplate">
                             <label class="asteriskrequired" for="Discription">Description</label>
                             <textarea formControlName="Discription" name="Discription" class="textAreaClass"
-                                id="Discription"></textarea>
+                                id="Discription" style="border: 2.5px solid #b8d4f3"></textarea>
                         </div>
                     </div>
                 </div>
@@ -111,7 +109,7 @@
                     <button class="actionBtn" (click)="submitTask()" *ngIf="!checkListId">Submit</button>
                     <button class="actionBtn" (click)="addFromPredefined()" *ngIf="!checkListId&&!prdefinedTemplate">Add
                         From Predefined Template</button>
-                    <button class="actionBtn" (click)="clearForm()" *ngIf="!checkListId">Clear</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="!checkListId" style="background-color: #ff2e5a">Clear</button>
                 </div>
             </div>
         </div>

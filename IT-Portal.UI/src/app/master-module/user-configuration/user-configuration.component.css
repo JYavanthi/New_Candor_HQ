@@ -1,19 +1,15 @@
 .service_container {
     margin-top: 2%;
+    margin-left: 10%;
 }
 
-/* .radioBtns {
-    display: flex;
-    align-items: center;
-    width: 100%;
-} */
-
-.radioBtns {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    width: 100%;
+.HeadingparaCss {
+    margin-right: 70%;
+    font-size: xx-large;
+    font-weight: 900;
+    white-space: nowrap;
 }
+
 
 .empClass {
     display: flex;
@@ -29,26 +25,12 @@
     padding: 3px;
 }
 
-.insideCardBody {
-    background-color: #f8f8f8;
-}
 
 label.asteriskrequired::after {
     content: ' *';
     color: red;
 }
 
-.radioBG {
-    border-radius: 3px;
-    background-color: #67b1db;
-    padding: 5px;
-    margin-top: -10px;
-}
-
-.radioTitle {
-    font-weight: bold;
-    color: white;
-}
 
 .userConfigFlexStart {
     display: flex;
@@ -90,19 +72,6 @@ label.asteriskrequired::after {
     white-space: nowrap;
 }
 
-.userRoleClass {
-    display: flex;
-    gap: 10px;
-    /* margin-left: 5%; */
-    color: white;
-    font-weight: bold;
-    width: 320px;
-}
-
-.userRoleCheckbox {
-    display: flex;
-    gap: 20px;
-}
 
 .userConfigInputFields {
     display: grid;
@@ -113,34 +82,216 @@ label.asteriskrequired::after {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     width: 98.5%;
-    background-color: #cde9f7;
+    background-color: #5fa8b5;
 }
 
 button {
     cursor: pointer;
 }
 
+
+.flexStart {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+/* Top Button Container */
+.topActionBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+    padding: 0 0px;
+    margin-right: 2%;
+}
+
+/* BACK Button (Yellow Rounded with Shadow) */
 .backBtn {
-    margin-left: 7% !important;
-    position: fixed;
-    z-index: 99 !important;
-    margin-top: -3% !important;
-}
-
-.copy {
+    background: linear-gradient(to bottom, #ffd65a, #f4b942);
     border: none;
-    padding: 5px;
-    border-radius: 5px;
-    font-weight: 500;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    background: white;
+    padding: 10px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 16px;
+    color: #1c2b5a;
+    box-shadow: 0 5px 0 #d89c2c;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
+/* Click Effect */
+.backBtn:active {
+    box-shadow: 0 2px 0 #d89c2c;
+    transform: translateY(2px);
+}
+
+/* COPY USER Button */
+.copyUserBtn {
+    background: #f4efe5;
+    border: 2px solid #6ec1c2;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: #f28c38;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.copyUserBtn:hover {
+    background: #fff7ea;
+}
+
+
+/* Top Teal Header Section */
+.radioBG {
+    background: #5fa8b5;
+    /* soft teal like image */
+    padding: 18px 25px;
+    border-radius: 8px 8px 0 0;
+    margin-top: -10px;
+}
+
+/* Layout Alignment */
+.radioBtns {
+    display: flex;
+    align-items: center;
+    gap: 15%;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* Label Text */
+.radioTitle {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Employee Input Styling */
+.empClass input,
+.copyEmpID input {
+    width: 260px !important;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: #eaf3f6;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Placeholder */
+.empClass input::placeholder,
+.copyEmpID input::placeholder {
+    color: #8aaeb5;
+    font-weight: 600;
+}
+
+/* User Role Section */
+.userRoleClass {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Checkbox Group */
+.userRoleCheckbox {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+/* Custom Checkbox Look */
+.userRoleCheckbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: white;
+    cursor: pointer;
+}
+
+/* Copy Employee Section */
 .copyEmpID {
     display: flex;
-    gap: 0px;
-    color: white;
-    font-weight: bold;
-    width: 454px;
     align-items: center;
+    gap: 12px;
+    color: white;
+    font-weight: 600;
+}
+
+/* Dropdown List */
+.dropdowns-list {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 1000;
+}
+
+.drop-list {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.drop-list:hover {
+    background-color: #f0f6f8;
+}
+
+
+/* Employee Details Container Rows */
+.row {
+    padding: 12px 0;
+    border-bottom: 2px solid #d7e6ea;
+}
+
+/* Remove border from last row */
+.row:last-child {
+    border-bottom: none;
+}
+
+/* Label Styling (Teal Text) */
+label {
+    font-weight: 700;
+    color: #0f8fa1;
+    font-size: 18px;
+}
+
+/* Value Styling */
+.horinputDatas {
+    display: block;
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #3a3a3a;
+    /* dark grey */
+}
+
+/* Spacing Adjustment */
+.col-md-3 {
+    padding: 8px 15px;
+}
+
+/* Responsive improvement */
+@media (max-width: 768px) {
+    .col-md-3 {
+        margin-bottom: 10px;
+    }
 }

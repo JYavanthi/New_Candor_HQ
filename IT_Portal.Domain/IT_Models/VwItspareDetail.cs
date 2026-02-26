@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwItspareDetail
 {
@@ -94,9 +97,9 @@ public partial class VwItspareDetail
 
     public string? EmployeeNo { get; set; }
 
-    public string? RpmEmpNo { get; set; }
+    public int? RpmEmpNo { get; set; }
 
-    public string? HodEmpNo { get; set; }
+    public int? HodEmpNo { get; set; }
 
     public string? OnholdReason { get; set; }
 

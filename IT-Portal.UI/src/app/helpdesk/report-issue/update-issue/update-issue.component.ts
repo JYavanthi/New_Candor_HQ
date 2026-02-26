@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-update-issue',

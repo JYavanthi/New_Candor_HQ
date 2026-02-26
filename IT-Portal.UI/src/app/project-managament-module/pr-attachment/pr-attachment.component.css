@@ -1,10 +1,85 @@
-.input-btn{
-    padding: 2px;
-    border: 1px solid black;
-    border-radius: 3px;
+.attachment-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.red-alert{
+.attachment-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.attachment-pill {
+    display: flex;
+    align-items: center;
+    height: 55px;
+    min-width: 380px;
+    border: 2px solid #9ec3e6;
+    border-radius: 28px;
+    padding: 4px 8px;
+    background: #fff;
+}
+
+.choose-file-btn {
+    background: #0fa4a9;
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.file-name {
+    margin-left: 20px;
+    font-size: 20px;
+    color: #7a8a93;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add-file-btn {
+    background: #5bbd7a;
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 10px 26px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-file-btn:hover {
+    background: #4aac6b;
+}
+
+.uploaded-list {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.doc-name {
+    font-weight: 500;
+    margin-right: 12px;
+}
+
+.icon {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #3c8dbc;
+}
+
+.icon.delete {
+    color: #e04b4b;
+}
+
+/* keep your existing alert */
+.red-alert {
     font-size: 10px;
     color: #e04b4b;
     font-weight: 600;

@@ -1,20 +1,23 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwItspareHistory
 {
-    public string? ItspareCode { get; set; }
+    public int ItspareHid { get; set; }
 
     public int? ItspareId { get; set; }
+
+    public string? ItspareCode { get; set; }
+
+    public int? SupportId { get; set; }
 
     public string? Requesttype { get; set; }
 
     public int? RequestedBy { get; set; }
 
-    public string RequestedByName { get; set; } = null!;
-
     public int? RequestedFor { get; set; }
-
-    public string RequestedForName { get; set; } = null!;
 
     public string? SelectedFor { get; set; }
 
@@ -25,8 +28,6 @@ public partial class VwItspareHistory
     public string? GuestEmail { get; set; }
 
     public int? GuestRmanagerId { get; set; }
-
-    public string GuestRmanagerName { get; set; } = null!;
 
     public int? GuestContactNo { get; set; }
 
@@ -52,15 +53,7 @@ public partial class VwItspareHistory
 
     public string? HodApproval { get; set; }
 
-    public string? Status { get; set; }
-
-    public int? AssignedTo { get; set; }
-
-    public string AssignedToName { get; set; } = null!;
-
-    public int? AssignedBy { get; set; }
-
-    public string AssignedByName { get; set; } = null!;
+    public bool? IsActive { get; set; }
 
     public int? HodApproverId { get; set; }
 
@@ -86,35 +79,17 @@ public partial class VwItspareHistory
 
     public int? OnHoldReason { get; set; }
 
-    public string? SupportName { get; set; }
+    public string? Status { get; set; }
 
-    public bool? IsHodreq { get; set; }
+    public int? AssignedBy { get; set; }
 
-    public bool? IsRpmreq { get; set; }
+    public int? AssignedTo { get; set; }
 
-    public int? SupportId { get; set; }
-
-    public string? EmployeeNo { get; set; }
-
-    public string? RpmEmpNo { get; set; }
-
-    public string? HodEmpNo { get; set; }
-
-    public string? HodToName { get; set; }
-
-    public string? HodEmail { get; set; }
-
-    public string? RpmToName { get; set; }
-
-    public string? RpmEmail { get; set; }
-
-    public bool? IsActive { get; set; }
-
-    public string CreatedBy { get; set; } = null!;
+    public int? CreatedBy { get; set; }
 
     public DateTime? CreatedDt { get; set; }
 
-    public string ModifiedBy { get; set; } = null!;
+    public int? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDt { get; set; }
 }

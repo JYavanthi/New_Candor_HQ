@@ -54,7 +54,7 @@ export class AddProChecklistComponent {
     this.getMileStoneList();
     this.getParentTaskList(() => {
       if (this.checkListId) {
-        this.getCheckListData();  // this will internally patch form values after tasks are ready
+        this.getCheckListData(); 
       }
     });
 

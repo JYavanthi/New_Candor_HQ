@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwProjectIssue
 {
@@ -30,6 +33,8 @@ public partial class VwProjectIssue
 
     public int? IssueOwner { get; set; }
 
+    public string? IssueOwnerName { get; set; }
+
     public string? Department { get; set; }
 
     public string? Status { get; set; }
@@ -56,7 +61,7 @@ public partial class VwProjectIssue
 
     public string? TaskTitle { get; set; }
 
-    public string AssignToName { get; set; } = null!;
+    public string? AssignToName { get; set; }
 
     public string? AssignByName { get; set; }
 

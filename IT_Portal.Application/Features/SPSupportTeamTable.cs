@@ -79,7 +79,7 @@
         public int? CreatedBy { get; set; }
 
         public DateTime? CreatedDate { get; set; }
-        public List<int> supportIds { get; set; }
+        public List<int>? supportIds { get; set; }
     }
 
 

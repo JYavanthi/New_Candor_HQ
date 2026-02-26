@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class SrrestorationAccess
 {
@@ -14,9 +17,9 @@ public partial class SrrestorationAccess
 
     public string? Descriptions { get; set; }
 
-    public DateTime? Date { get; set; }
-
     public DateTime? StartDate { get; set; }
+
+    public DateTime? Date { get; set; }
 
     public DateTime? EndDate { get; set; }
 

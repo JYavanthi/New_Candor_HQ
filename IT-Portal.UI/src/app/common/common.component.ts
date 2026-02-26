@@ -3,7 +3,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PasscrdataService } from '../change-request/passcrdata.service';
 import { ActiveDataPoint } from 'chart.js';
 import { ActivatedRoute,Router } from '@angular/router';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+import { environment } from '@environments/environment';
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 
 
 

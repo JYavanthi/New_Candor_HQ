@@ -1,10 +1,10 @@
-<button class="addNewBtn" *ngIf="(!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
-||this.projectdetails?.projectStatus=='Approved'
+<button class="addNewBtn-addNew" *ngIf="(!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed' ||this.projectdetails?.projectStatus=='Approved'
 ))" (click)="navigateToEdit()">
     Add New</button>
 
-<button class="addNewBtn m-2" (click)="showTemplate()">Template</button>
-<ng-container *ngIf="!showLessonLearned">
+<button class="addNewBtn-template m-2" (click)="showTemplate()">Template</button>
+
+<!-- <ng-container *ngIf="!showLessonLearned">
     <div class="tableDesign">
         <div class="table-container">
             <table>
@@ -40,6 +40,44 @@
                         aria-label="Select page" style="margin-right:34%">
                     </mat-paginator>
                 </div>
+            </div>
+        </div>
+    </div>
+</ng-container> -->
+
+<ng-container *ngIf="!showLessonLearned">
+    <div class="tableDesign">
+        <div class="table-container">
+            <div class="header-row">
+                <div class="col-sm">SL.No</div>
+                <div class="col-lg">Milestone</div>
+                <div class="col-md">Category</div>
+                <div class="col-md">Lesson Type</div>
+                <div class="col-lg">Recommendation</div>
+                <div class="col-md" style="padding-right: 30px;">Created Date</div>
+                <div class="col-sm">Action</div>
+            </div>
+
+            <div class="row-card" *ngFor="let task of paginatedData; let i=index;">
+                <div class="col-sm drag-handle">
+                    <i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i>
+                    <span class="sl-no">{{i + 1 + (pageIndex * pageSize)}}</span>
+                </div>
+                <div class="col-lg bold-text">{{task.milestoneTitle}}</div>
+                <div class="col-md">{{task.category}}</div>
+                <div class="col-md">{{task.lessonsType}}</div>
+                <div class="col-lg">{{task.recommendation}}</div>
+                <div class="col-md">{{task.createdDt | date:'dd/MMM/yyyy'}}</div>
+                <div class="col-sm actions">
+                    <i class="fa fa-pencil-square-o edit-icon" (click)="navigateToEdit(task)"></i>
+                    <i class="fa-solid fa-trash delete-icon" (click)="delete(task.prlessonsId)"></i>
+                </div>
+            </div>
+
+            <div class="pagination-wrapper" *ngIf="lessonListData?.length > 0">
+                <mat-paginator [length]="lessonListData?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+                    [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event,false)" aria-label="Select page">
+                </mat-paginator>
             </div>
         </div>
     </div>

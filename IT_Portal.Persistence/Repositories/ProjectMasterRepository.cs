@@ -44,7 +44,7 @@ namespace IT_Portal.Persistence.Repositories
                     cmd.Parameters.AddWithValue("@ActualHrs", spProjectMaster.ActualHrs);
                     cmd.Parameters.AddWithValue("@ActualCost", spProjectMaster.ActualCost);
                     cmd.Parameters.AddWithValue("@CreatedBy", spProjectMaster.CreatedBy);
-                    cmd.Parameters.AddWithValue("@PlantID", spProjectMaster.PlanId);
+                    cmd.Parameters.AddWithValue("@PlantID", spProjectMaster.PlantId);
                     cmd.Parameters.AddWithValue("@Sponser", spProjectMaster.Sponser);
                     cmd.Parameters.AddWithValue("@ProjectGroupId", spProjectMaster.ProjectGroupId);
                     cmd.Parameters.AddWithValue("@ProjectAccess", spProjectMaster.ProjectAccess);

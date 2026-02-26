@@ -164,6 +164,9 @@ import { SoftwareVersionMasterComponent } from './software-version-master/softwa
 import { NewSoftwareMasterComponent } from './new-software-master/new-software-master.component';
 import { NewSoftwareVersionMasterComponent } from './new-software-version-master/new-software-version-master.component';
 import { CdkDrag, CdkDropList, DragDropModule } from '@angular/cdk/drag-drop';
+import { SidebarissueComponent } from './helpdesk/sidebarissue/sidebarissue.component';
+import { SupportSidebarComponent } from './master-support/support-view/support-sidebar/support-sidebar.component';
+import { DashboardSideBarComponent } from './dashboard/dashboard-side-bar/dashboard-side-bar.component';
 
 @NgModule({
   declarations: [
@@ -301,7 +304,10 @@ import { CdkDrag, CdkDropList, DragDropModule } from '@angular/cdk/drag-drop';
     SoftwaremasterComponent,
     SoftwareVersionMasterComponent,
     NewSoftwareMasterComponent,
-    NewSoftwareVersionMasterComponent
+    NewSoftwareVersionMasterComponent,
+    SidebarissueComponent,
+    SupportSidebarComponent,
+    DashboardSideBarComponent
     ],
   imports: [
     BrowserModule,

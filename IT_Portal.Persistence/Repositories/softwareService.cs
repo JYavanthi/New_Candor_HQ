@@ -1,7 +1,7 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
 using IT_Portal.Application.Features;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace IT_Portal.Persistence.Repositories
@@ -14,9 +14,9 @@ namespace IT_Portal.Persistence.Repositories
         {
             this._context = context;
         }
-        public List<ServiceMaster1> GetServicelist()
+        public List<ServiceMaster> GetServicelist()
         {
-            List<ServiceMaster1> serviceMasters = _context.ServiceMasters1.ToList();
+            List<ServiceMaster> serviceMasters = _context.ServiceMasters.ToList();
             ; return serviceMasters;
         }
 

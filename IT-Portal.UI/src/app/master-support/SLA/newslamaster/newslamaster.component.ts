@@ -220,7 +220,7 @@ export class NewslamasterComponent {
       this.supportteammemid = this.routeservice.supporterID;
       let param = {
         "flag": "I",
-        "itslaid": this.SlaId,
+        "itslaid": Number(this.SlaId ?? 0),
         "categoryID": parseInt(this.slaForm.controls['category'].value),
         "classificationID": parseInt(this.slaForm.controls['Classification'].value),
         "categoryTypID": parseInt(this.slaForm.controls['categoryType'].value),
@@ -228,7 +228,8 @@ export class NewslamasterComponent {
         "waitTime": parseInt(this.slaForm.controls['WaitTime'].value),
         "waitTimeUnit": this.slaForm.controls['WaitTimeUnit'].value,
         "assignedTo": parseInt(this.slaForm.controls['AssignedTo'].value),
-        "plantID": parseInt(this.slaForm.controls['PlantId'].value),
+        // "plantID": parseInt(this.slaForm.controls['PlantId'].value),
+        "plantID" : 2,
         "escalation1": parseInt(this.slaForm.controls['Escalation1'].value),
         "waitTimeEscal1": parseInt(this.slaForm.controls['WaitTimeEscal1'].value),
         "waitTimeUnitEscal1": this.slaForm.controls['WaitTimeUnitEscal1'].value,

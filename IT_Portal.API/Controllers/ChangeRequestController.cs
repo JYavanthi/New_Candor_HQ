@@ -4,8 +4,8 @@ using IT_Portal.Application.Features.changerequest;
 using IT_Portal.Persistence.DatabaseContext;
 using Microsoft.AspNetCore.Mvc;
 using IT_Portal.API.Controllers;
-using IT_Portal.Domain.IT_Models;
 using Microsoft.EntityFrameworkCore;
+using IT_Portal.Persistence.IT_Models;
 
 
 namespace IT_Portal.API.Controllers

@@ -18,7 +18,7 @@ namespace IT_Portal.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetEmployee()
         {
-            var employeedata = await _context.VwEmployeeMasters.ToListAsync();
+            var employeedata = await _context.VwEmployeeDetails.ToListAsync();
             return Ok(employeedata);
         }
 

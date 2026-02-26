@@ -6,28 +6,31 @@
                 <div class="row">
                     <div class="inputFields">
                         <div *ngIf="projectID">
-                            <label class="asteriskrequired" for="projectNumber">Project Code</label>
+                            <label class="asteriskrequired" for="projectNumber"
+                                style="color:#15455c; font-size: large;">Project Code</label>
                             <input type="text" min="0" formControlName="projectNumber" name="projectNumber"
                                 id="projectNumber" />
                         </div>
 
                         <div>
-                            <label class="asteriskrequired" for="projectLocation">Project Location</label>
-                            <!-- <input type="text" formControlName="projectLocation" name="projectLocation"
-                                id="projectLocation" /> -->
+                            <label class="asteriskrequired" for="projectLocation"
+                                style="color:#15455c; font-size: large;">Project Location</label>
+
                             <select name="projectLocation" id="projectLocation" formControlName="projectLocation">
                                 <option value="" selected hidden disabled>Select Project Location</option>
-                                <option *ngFor="let plant of plantList" [value]="plant.id">{{plant.code}}</option>
+                                <option *ngFor="let plant of plantList" [value]="plant.id">{{plant.plantCode}}</option>
                             </select>
                         </div>
 
                         <div>
-                            <label class="asteriskrequired" for="projectName">Project Name/Title</label>
+                            <label class="asteriskrequired" for="projectName"
+                                style="color:#15455c; font-size: large;">Project Name/Title</label>
                             <input type="text" formControlName="projectName" name="projectName" id="projectName" />
                         </div>
 
                         <div style="position:relative">
-                            <label class="asteriskrequired" for="projectOwner">Project Owner</label>
+                            <label class="asteriskrequired" for="projectOwner"
+                                style="color:#15455c; font-size: large;">Project Owner</label>
                             <input type="text" formControlName="projectOwner" name="inputEmployeeId" id="projectOwner"
                                 placeholder="Enter Employee ID" (input)="filterItem()">
                             <ul class="dropdowns-list" *ngIf="employeeList?.length > 0">
@@ -39,10 +42,8 @@
                         </div>
 
                         <div style="position:relative">
-                            <label class="asteriskrequired" customLabelAlert="Enter Employee Id"
-                                for="projectSponsor">Project Sponsor</label>
-                            <!-- <input type="text" formControlName="projectSponsor" name="projectSponsor"
-                                id="projectSponsor" /> -->
+                            <label class="asteriskrequired" customLabelAlert="Enter Employee Id" for="projectSponsor"
+                                style="color:#15455c; font-size: large;">Project Sponsor</label>
 
                             <input type="text" formControlName="projectSponsor" name="projectSponsor"
                                 id="projectSponsor" placeholder="Enter Employee ID" (input)="filterItemSponser()">
@@ -55,20 +56,22 @@
                         </div>
 
                         <div>
-                            <label class="asteriskrequired" for="projectStartDate">Project Start Date</label>
+                            <label class="asteriskrequired" for="projectStartDate"
+                                style="color:#15455c; font-size: large;">Project Start Date</label>
                             <input type="date" formControlName="projectStartDate" name="projectStartDate"
                                 (change)="onDateChange()" id="projectStartDate" [min]="todayDate"
                                 [max]="detailsForm.value.projectEndDate" />
                         </div>
-
                         <div>
-                            <label class="asteriskrequired" for="projectEndDate">Project End Date</label>
+                            <label class="asteriskrequired" for="projectEndDate"
+                                style="color:#15455c; font-size: large;">Project End Date</label>
                             <input type="date" formControlName="projectEndDate" name="projectEndDate"
                                 id="projectEndDate" [min]="detailsForm.value.projectStartDate" />
                         </div>
 
                         <div>
-                            <label class="asteriskrequired" for="projectGroup">Project Group</label>
+                            <label class="asteriskrequired" for="projectGroup"
+                                style="color:#15455c; font-size: large;">Project Group</label>
                             <select formControlName="projectGroup" name="projectGroup" id="projectGroup">
                                 <option selected hidden disabled value="">Select Project Group</option>
                                 <option *ngFor="let group of groupList" [value]="group.projectGroupId">
@@ -76,33 +79,64 @@
                             </select>
                         </div>
 
+                        <div class="cost-field">
+                            <label for="EstimatedCost" class="asteriskrequired"
+                                style="color:#15455c; font-size: large;">Estimated Cost</label>
 
-                        <div>
-                            <label for="EstimatedCost" class="asteriskrequired">Estimated Cost</label>
-                            <input type="number" formControlName="EstimatedCost" name="EstimatedCost" id="EstimatedCost"
-                                step="0.01" />
+                            <div class="cost-input-wrapper">
+                                <input type="number" formControlName="EstimatedCost" name="EstimatedCost"
+                                    id="EstimatedCost" placeholder="₹ 0000" step="0.01" />
+
+                                <span class="cost-icon">
+                                    ₹
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="est-field">
+                            <label for="EstimatedCost" class="asteriskrequired"
+                                style="color:#15455c; font-size: large;">
+                                Estimated Hrs
+                            </label>
+
+                            <div class="est-input-wrapper">
+                                <input type="number" formControlName="EstimatedCost" name="EstimatedCost"
+                                    id="EstimatedCost" step="0.01" placeholder="00:00:00" />
+                                <span class="est-icon">
+                                    <i class="fa fa-hourglass-half"></i>
+                                </span>
+                            </div>
                         </div>
 
 
-                        <div>
-                            <label for="EstimatedHrs" class="asteriskrequired">Estimated Hrs</label>
-                            <input type="number" formControlName="EstimatedHrs" name="EstimatedHrs" id="EstimatedHrs"
-                                step="0.01" />
+                        <div class="cost-field">
+                            <label for="ActualCost" style="color:#15455c; font-size: large;">Actual Cost</label>
+
+                            <div class="cost-input-wrapper">
+                                <input type="number" formControlName="ActualCost" name="ActualCost" id="ActualCost"
+                                    placeholder="₹ 0000" />
+
+                                <span class="cost-icon">
+                                    ₹
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="est-field">
+                            <label for="ActualHrs" style="color:#15455c; font-size: large;">Actual Hrs</label>
+
+                            <div class="est-input-wrapper">
+                                <input type="number" formControlName="ActualHrs" name="ActualHrs" id="ActualHrs"
+                                    placeholder="00:00:00" />
+                                <span class="est-icon">
+                                    <i class="fa fa-hourglass-half"></i>
+                                </span>
+                            </div>
                         </div>
 
                         <div>
-                            <label for="ActualCost">Actual Cost</label>
-                            <input type="number" formControlName="ActualCost" name="ActualCost" id="EstimatedCost" />
-                        </div>
-
-
-                        <div>
-                            <label for="ActualHrs">Actual Hrs</label>
-
-                            <input type="number" formControlName="ActualHrs" name="ActualHrs" id="ActualHrs" />
-                        </div>
-                        <div>
-                            <label class="asteriskrequired" for="projectAccess">Project Access</label>
+                            <label class="asteriskrequired" for="projectAccess"
+                                style="color:#15455c; font-size: large;">Project Access</label>
                             <select formControlName="projectAccess" name="projectAccess" id="projectAccess">
                                 <option value="" selected hidden disabled>Select Project Access</option>
                                 <option>Private</option>
@@ -111,8 +145,9 @@
                         </div>
 
                         <div class="deliverables">
-                            <label class="asteriskrequired" for="deliverables">Deliverables</label>
-                            <div class="in-deliverables">
+                            <label class="asteriskrequired" for="deliverables"
+                                style="color:#15455c; font-size: large;">Deliverables</label>
+                            <div class="in-deliverables" style="width: 60%;">
                                 <input type="text" formControlName="deliverables" name="deliverables"
                                     id="deliverables" />
                                 <i class="fa-solid fa-circle-plus" (click)="addDeliverables()"></i>
@@ -132,18 +167,18 @@
                         </div>
 
                         <div class="textAreaDiv">
-                            <label class="asteriskrequired" for="description">Brief Description of the
+                            <label class="asteriskrequired" for="description"
+                                style="color:#15455c; font-size: large;">Brief Description of the
                                 Project</label>
                             <angular-editor #editor [config]="editorConfig"
-                                formControlName="description"></angular-editor>
+                                formControlName="description"  ></angular-editor>
                         </div>
-
                         <div class="textAreaDiv">
-                            <label for="additionalNotes">Additional Notes</label>
+                            <label for="additionalNotes" style="color:#15455c; font-size: large;">Additional
+                                Notes</label>
                             <angular-editor #editor [config]="editorConfig"
                                 formControlName="additionalNotes"></angular-editor>
                         </div>
-
                     </div>
                 </div>
 
@@ -151,9 +186,8 @@
                     <button class="actionBtn" (click)="submitDeatails('I')" *ngIf="!projectID">Submit</button>
                     <button class="actionBtn" (click)="submitDeatails('U')" *ngIf="projectID &&!(this.projectDetails?.projectStatus == 'Cancel' || this.projectDetails?.projectStatus == 'Discontinue' || this.projectDetails?.projectStatus == 'Completed'
             || this.projectDetails?.projectStatus == 'Approved')">Update</button>
-                    <button class="actionBtn" (click)="clearForm()" *ngIf="!projectID">Clear</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="!projectID" style="background-color: #ff2e5a">Clear</button>
                 </div>
-
             </div>
         </div>
     </div>

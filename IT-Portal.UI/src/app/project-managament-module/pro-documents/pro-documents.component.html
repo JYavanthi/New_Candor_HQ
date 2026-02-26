@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <div class="fit-right">
     <div class="attachmentList" style="width: fit-content;">
       <div class="d-flex">
@@ -10,9 +10,41 @@
       <span class="red-alert">Only Jpg, Jpeg, Png and Pdf is allowed.</span>
     </div>
   </div>
+</div> -->
+
+<div>
+  <div class="fit-right">
+    <div class="attachmentList">
+
+      <label class="attachment-label">Attachment</label>
+
+      <div class="attachment-wrapper">
+
+        <input type="file" [(ngModel)]="attach" (change)="getattach($event)" #fileInput class="file-input-hidden" />
+
+        <div class="custom-file-box" (click)="fileInput.click()">
+          <span class="choose-btn">Choose File</span>
+          <span class="file-name">
+            {{ selectedFiles?.name || 'No file chosen' }}
+          </span>
+        </div>
+
+        <button class="add-file-btn" type="button" (click)="addFile()">
+          ADD FILE
+        </button>
+
+      </div>
+
+      <span class="red-alert">
+        Only Jpg, Jpeg, Png and Pdf is allowed.
+      </span>
+
+    </div>
+  </div>
 </div>
 
-<div class="table-container">
+
+<!-- <div class="table-container">
   <table>
     <thead>
       <tr>
@@ -43,4 +75,38 @@
       </tr>
     </tbody>
   </table>
+</div> -->
+
+
+<div class="custom-table-wrapper">
+  <div class="header-row">
+    <div class="col-sr">SL. NO.</div>
+    <div class="col-file">FILE NAME</div>
+    <div class="col-user">UPLOADED BY</div>
+    <div class="col-date">UPLOADED DATE</div>
+    <div class="col-action">ACTION</div>
+  </div>
+
+  <div class="row-container">
+    <div class="data-row" *ngFor="let fileName of attachmentsList; let i=index">
+      <div class="col-sr">
+        <span class="drag-icon">:::</span>
+        <span class="index-number">{{i + 1 | number:'2.0'}}</span>
+      </div>
+      <div class="col-file file-name">{{fileName.fileName}}</div>
+      <div class="col-user">{{fileName.createdByName}}</div>
+      <div class="col-date">{{fileName.createdDt | date: 'dd/MMM/yyyy'}}</div>
+      <div class="col-action">
+        <div class="action-buttons">
+          <i class="fa fa-eye view-icon" (click)="viewFile(fileName)"></i>
+          <i class="fa fa-download download-icon" (click)="downFile(fileName)"></i>
+          <i class="fa-solid fa-trash delete-icon" (click)="deleteDoc(fileName)"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-data" *ngIf="!(attachmentsList?.length > 0)">
+      <i class="fa fa-search"></i> No Data Available
+    </div>
+  </div>
 </div>

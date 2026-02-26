@@ -1,41 +1,99 @@
-<div class="container-implement">
-  <div class="container-field-line">
+<!-- <div class="naturemainDiv">
 
-    <!-- bootstrap -->
-    <h3>New Nature Of Change</h3>
-    <div class="border-rfc-heading">
-      <div class="row mt-2">
-       <!-- <div class="col">
-          <label>Nature Of ChangeID</label>
-          <input type="text" placeholder="NatureOfChangeID" [(ngModel)]="natureofchangeid" />
-        </div>-->
-        <div class="col">
-          <label>Category Name</label>
-         <!-- <input type="text" placeholder="CategoryID" [(ngModel)]="CategoryID" />-->
-          <select [(ngModel)]="categoryId">
-            <option value="" >Select category Name</option>
-            <option *ngFor="let cldata of categoryName" value="{{cldata.itcategoryId}}">{{cldata.categoryName}}</option>
-          </select>
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+    <div class="container-field-line">
+
+      <h3>New Nature Of Change</h3>
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col">
+            <label>Category Name</label>
+            <select [(ngModel)]="categoryId">
+              <option value="">Select category Name</option>
+              <option *ngFor="let cldata of categoryName" value="{{cldata.itcategoryId}}">{{cldata.categoryName}}
+              </option>
+            </select>
+          </div>
+          <div class="col">
+            <label> Nature Of Change</label>
+            <input type="text" placeholder="Nature Of Change" [(ngModel)]="natureofchange" [disabled]="!categoryId" />
+          </div>
+          <div class="col">
+            <label>Is Active</label>
+
+            <select [(ngModel)]="isactive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+
         </div>
-        <div class="col">
-          <label>	Nature Of Change</label>
-          <input type="text" placeholder="Nature Of Change" [(ngModel)]="natureofchange"  [disabled]="!categoryId" />
+      </div>
+
+    </div>
+    <button (click)="postnatureofchange()" class="btn btn-primary">Submit</button>
+    <button [routerLink]="'/natureofchange'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
+  </div>
+
+</div> -->
+
+
+<div class="naturemainDiv">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <!-- Heading -->
+    <h3 class="page-heading">NEW NATURE OF CHANGE</h3>
+
+    <!-- Cream Card -->
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Category Name</label>
+            <select class="form-control-custom" [(ngModel)]="categoryId">
+              <option value="">Select category Name</option>
+              <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">
+                {{cldata.categoryName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label>Nature Of Change</label>
+            <input class="form-control-custom" type="text" placeholder="Nature Of Change" [(ngModel)]="natureofchange"
+              [disabled]="!categoryId" />
+          </div>
+
+          <div class="col form-group">
+            <label>Is Active</label>
+            <select class="form-control-custom" [(ngModel)]="isactive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
         </div>
-        <div class="col">
-          <label>Is Active</label>
-
-          <select [(ngModel)]="isactive">
-            <option [ngValue]="true">True</option>
-            <option [ngValue]="false">False</option>
-          </select>
-        </div>
-
-
       </div>
     </div>
 
-  </div>
-  <button (click)="postnatureofchange()" class="btn btn-primary">Submit</button>
-  <button [routerLink]="'/natureofchange'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+    <!-- Buttons -->
+    <div class="btn-section">
+      <button (click)="postnatureofchange()" class="btn submit-btn">SUBMIT</button>
+      <button [routerLink]="'/natureofchange'" class="btn back-btn">BACK</button>
+    </div>
 
+  </div>
 </div>

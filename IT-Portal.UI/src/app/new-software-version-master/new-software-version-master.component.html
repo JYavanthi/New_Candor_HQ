@@ -1,41 +1,90 @@
-<div class="container-implement">
-    <!-- <div class="notification-sucess" *ngIf="messagesuccess">
-      <p>Saved Successfully!</p>
-      <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+<!-- <div class="newsoftwareVersionmainDiv">
+    <div style="margin-left: 3%;">
+        <app-support-sidebar></app-support-sidebar>
     </div>
-    <div class="notification" *ngIf="messageerror">
-      <span class="close-btn" (click)="closeNotification()">&times;</span>
-      <p>Not Saved</p>
+
+    <div class="container-implement">
+        <div class="container-field-line" [formGroup]="myForm">
+
+            <h3>Software Version</h3>
+            <div class="border-rfc-heading">
+                <div class="row mt-2">
+                    <div class="col">
+                        <label>Software Name</label>
+                        <select formControlName="softwareName">
+                            <option *ngFor="let software of softwareList" [value]="software.softwareLibraryId">
+                                {{software.softwareName}}</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col">
+                        <label>Software Version</label>
+                        <input type="text" formControlName="softwareVersion" />
+                    </div>
+
+                    <div class="col">
+                        <label>
+                            <input type="checkbox" formControlName="active" /> Active
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <Div class="mt-4">
+            <button (click)="saveSoftware()" class="btn btn-primary">Submit</button>
+            <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
+        </Div>
     </div> -->
-    <div class="container-field-line" [formGroup]="myForm">
 
-        <h3>Software Version</h3>
-        <div class="border-rfc-heading">
-            <div class="row mt-2">
-                <div class="col">
-                    <label>Software Name</label>
-                     <select formControlName="softwareName">
-                        <option *ngFor="let software of softwareList"
-                        [value]="software.softwareLibraryId">{{software.softwareName}}</option>
-                     </select>
+
+<div class="newsoftwareVersionmainDiv">
+
+    <div style="margin-left: 3%;">
+        <app-support-sidebar></app-support-sidebar>
+    </div>
+
+    <div class="container-implement">
+
+        <!-- Heading -->
+        <h3 class="page-heading">Software Version</h3>
+
+        <div class="container-field-line" [formGroup]="myForm">
+            <div class="border-rfc-heading">
+                <div class="row">
+
+                    <div class="col form-group">
+                        <label>Software Name</label>
+                        <select class="form-control-custom" formControlName="softwareName">
+                            <option value="">Select Software</option>
+                            <option *ngFor="let software of softwareList" [value]="software.softwareLibraryId">
+                                {{software.softwareName}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col form-group">
+                        <label>Software Version</label>
+                        <input class="form-control-custom" type="text" formControlName="softwareVersion" />
+                    </div>
+
+                    <div class="col checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="active" /> Active
+                        </label>
+                    </div>
+
                 </div>
 
-                
-                <div class="col">
-                    <label>Software Version</label>
-                    <input type="text" formControlName="softwareVersion"/>
+                <!-- Buttons -->
+                <div class="btn-section">
+                    <button (click)="back()" class="btn back-btn">BACK</button>
+                    <button (click)="saveSoftware()" class="btn submit-btn">SUBMIT</button>
                 </div>
 
-                <div class="col">
-                    <label>
-                        <input type="checkbox" formControlName="active" /> Active
-                    </label>
-                </div>
             </div>
         </div>
 
     </div>
-    <Div class="mt-4">
-        <button (click)="saveSoftware()" class="btn btn-primary">Submit</button>
-        <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
-    </Div>
+</div>

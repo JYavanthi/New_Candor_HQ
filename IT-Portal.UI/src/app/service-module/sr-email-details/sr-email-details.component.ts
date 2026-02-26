@@ -14,7 +14,7 @@ import { Console } from 'console';
   selector: 'app-sr-email-details',
   templateUrl: './sr-email-details.component.html',
   styleUrls: ['./sr-email-details.component.css', '../servicemodule.css'],
-  changeDetection:ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SrEmailDetailsComponent {
   @ViewChild(SrDetailsSelfOthersGuestComponent) selfOthersGuest!: SrDetailsSelfOthersGuestComponent;
@@ -32,9 +32,9 @@ export class SrEmailDetailsComponent {
   addedMembers: any[] = [];
   searchText: any;
   emailGrpList: any;
-  isFieldDisabled : boolean = false;
-  subimited:any
-  emailList:any
+  isFieldDisabled: boolean = false;
+  subimited: any
+  emailList: any
   API_URLS = {
     SAVE_SUPPORT: '/SRSoftware/SaveSupport',
     GET_PARENT_VALUE: '/SupportMaster/GetParentValue',
@@ -52,10 +52,10 @@ export class SrEmailDetailsComponent {
     this.formInIt();
   }
 
- async getEmailList(){
+  async getEmailList() {
     await this.employeeInfo.empList()
     let list = this.employeeInfo.EmpList
-    this.emailList=list.map(m=>m.officialEmailId?.toLocaleLowerCase()).filter(a=>a!='')
+    this.emailList = list.map(m => m.officialEmailId?.toLocaleLowerCase()).filter(a => a != '')
   }
   formInIt() {
     this.emailForm = this.fb.group({
@@ -74,10 +74,10 @@ export class SrEmailDetailsComponent {
       members: [''],
       domain: ['', Validators.required],
       gbIncrease: ['', Validators.required],
-      employeeType : ['',Validators.required],
-      dateOfJoining :['', Validators.required],
-      membersAdded : ['', Validators.required],
-      membersTobeAdded : ['']
+      employeeType: ['', Validators.required],
+      dateOfJoining: ['', Validators.required],
+      membersAdded: ['', Validators.required],
+      membersTobeAdded: ['']
     });
     if (!this.srId) {
       this.getRequestType();
@@ -112,7 +112,7 @@ export class SrEmailDetailsComponent {
     })
   }
 
- ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes['srData']) {
       if (this.srData != undefined) {
 
@@ -122,11 +122,11 @@ export class SrEmailDetailsComponent {
     }
   }
 
- async patchMembersAdded(){
-  await this.employeeInfo.empList()
-  let a=this.srData.memberAdded.split(',');
-  this.addedMembers=this.employeeInfo.EmpList.filter(m=> a.includes(m.employeeId));
-  this.isFieldDisabled = true;
+  async patchMembersAdded() {
+    await this.employeeInfo.empList()
+    let a = this.srData.memberAdded.split(',');
+    this.addedMembers = this.employeeInfo.EmpList.filter(m => a.includes(m.employeeId));
+    this.isFieldDisabled = true;
   }
 
   patchFormValues(data: any) {
@@ -157,26 +157,27 @@ export class SrEmailDetailsComponent {
     }
   }
 
-  filterItem(field : string) {
-      var filter = this.emailForm.value.members.toUpperCase().trim();
+  filterItem(field: string) {
+    var filter = this.emailForm.value.members.toUpperCase().trim();
 
-      this.dropdownItems = this.employeeInfo?.EmpList?.filter((item: any) =>
-      (item.employeeId.toUpperCase().toString().includes(filter) || item.employeeName.toUpperCase().toString().includes(filter))&&
-      !this.addedMembers.map(m=>m.employeeId).includes(item.employeeId)
-      );
-      if (this.dropdownItems.length === 0 && filter === '') {
-        this.dropdownItems.push('');
-      } else if (filter === '') {
-        this.dropdownItems.length = 0;
-      }
+    this.dropdownItems = this.employeeInfo?.EmpList?.filter((item: any) =>
+      (item.employeeId.toUpperCase().toString().includes(filter) || item.employeeName.toUpperCase().toString().includes(filter)) &&
+      !this.addedMembers.map(m => m.employeeId).includes(item.employeeId)
+    );
+    if (this.dropdownItems.length === 0 && filter === '') {
+      this.dropdownItems.push('');
+    } else if (filter === '') {
+      this.dropdownItems.length = 0;
+    }
   }
 
   getDatafromRadios(updatedData: any) {
     this.radioDataList = updatedData;
     // this.bindePreferedEmail(updatedData)
-    this.emailForm.patchValue({ dateOfJoining: this.radioDataList.formValues.userType == 'self' ? this.radioDataList?.selfDateOfJoining?.slice(0, 10) : this.radioDataList?.othersDateOfJoining?.slice(0, 10)
-     })
-     this.bindePreferedEmail()
+    this.emailForm.patchValue({
+      dateOfJoining: this.radioDataList.formValues.userType == 'self' ? this.radioDataList?.selfDateOfJoining?.slice(0, 10) : this.radioDataList?.othersDateOfJoining?.slice(0, 10)
+    })
+    this.bindePreferedEmail()
     this.emailForm.controls['dateOfJoining'].disable();
   }
 
@@ -194,12 +195,12 @@ export class SrEmailDetailsComponent {
     domain: '',
     gbIncrease: '',
     employeeType: '',
-    preferredEmailId : ''
+    preferredEmailId: ''
   }
 
   changeRequestTypeValue() {
     this.emailForm.patchValue(this.allFieldValues);
-    this.addedMembers=[];
+    this.addedMembers = [];
     this.bindePreferedEmail();
 
     // if (this.radioDataList?.formValues?.userType == 'self') {
@@ -223,13 +224,12 @@ export class SrEmailDetailsComponent {
   }
 
   submitEmail(status: any) {
-    debugger
-    if (this.emailForm.value.mobileNumber.toString().length<10 && (this.emailForm.value.requestType == '37' || this.emailForm.value.requestType == '38')) {
+    if (this.emailForm.value.mobileNumber.toString().length < 10 && (this.emailForm.value.requestType == '37' || this.emailForm.value.requestType == '38')) {
       alert("Please Enter 10-digit Mobile Number!");
-      return 
+      return
     }
-    if( this.emailList.includes(this.emailForm.value.preferredEmailId.toLocaleLowerCase())&&
-  (this.emailForm.value.requestType == 37||this.emailForm.value.requestType == 38)){
+    if (this.emailList.includes(this.emailForm.value.preferredEmailId.toLocaleLowerCase()) &&
+      (this.emailForm.value.requestType == 37 || this.emailForm.value.requestType == 38)) {
       alert('Email id already exists.')
       return
     }
@@ -254,7 +254,7 @@ export class SrEmailDetailsComponent {
           "designation": "",
           "department": "",
           "location": 0,
-          "intercom": this.emailForm.value.intercomVoipNo?.toString().slice(0,16) || '',
+          "intercom": this.emailForm.value.intercomVoipNo?.toString().slice(0, 16) || '',
           "moblieNo": this.emailForm.value.mobileNumber?.toString(),
           "reportManager": "",
           "hod": "",
@@ -269,7 +269,7 @@ export class SrEmailDetailsComponent {
           "empType": this.emailForm.value.employeeType,
           "gb": this.emailForm.value.gbIncrease?.toString(),
           "memberAdded": "",
-          "empNo": this.addedMembers.map(m=>m.employeeId).join(','),
+          "empNo": this.addedMembers.map(m => m.employeeId).join(','),
           "groupName": this.emailForm.value.groupName,
           "isActive": true,
           "srVariable": {
@@ -354,19 +354,19 @@ export class SrEmailDetailsComponent {
 
 
   async bindePreferedEmail() {
-    if(this.srId){
+    if (this.srId) {
       return
     }
-  await this.radioDataList;
-    if(this.subimited){
+    await this.radioDataList;
+    if (this.subimited) {
       return
     }
-    if((this.emailForm.controls['requestType'].value == '37' || this.emailForm.controls['requestType'].value == '38' ||
+    if ((this.emailForm.controls['requestType'].value == '37' || this.emailForm.controls['requestType'].value == '38' ||
       this.emailForm.controls['requestType'].value == '40' || this.emailForm.controls['requestType'].value == '94'
     )
-      && (this.emailForm.controls['isCommonId'].value =='Common' || this.emailForm.controls['isCommonId'].value =='')){
+      && (this.emailForm.controls['isCommonId'].value == 'Common' || this.emailForm.controls['isCommonId'].value == '')) {
       this.emailForm.patchValue({
-        preferredEmailId: '', emailId : ''
+        preferredEmailId: '', emailId: ''
       })
       return
     }
@@ -375,7 +375,7 @@ export class SrEmailDetailsComponent {
       this.emailForm.patchValue({
         emailId: (this.radioDataList.selfEmail)
       })
-    } else if(this.radioDataList?.formValues?.userType == 'others'){
+    } else if (this.radioDataList?.formValues?.userType == 'others') {
       this.emailForm.patchValue({
         emailId: (this.radioDataList.othersEmail)
       })
@@ -389,17 +389,17 @@ export class SrEmailDetailsComponent {
     //   return
     // }
 
-    if (this.radioDataList?.formValues?.userType == 'others' ) {
+    if (this.radioDataList?.formValues?.userType == 'others') {
       let nameParts = [...this.radioDataList?.othersName?.split(' ').filter(Boolean)].join('.')
       this.emailForm.patchValue({
-        preferredEmailId: ( `${nameParts.toLowerCase()}@microlabs.in`)
+        preferredEmailId: (`${nameParts.toLowerCase()}@microlabs.in`)
       })
     }
     if (this.radioDataList?.formValues?.userType == 'self') {
       let nameParts = [...this.radioDataList.selfName?.split(' ').filter(Boolean)].join('.')
       this.emailForm.patchValue({
         preferredEmailId: `${nameParts.toLowerCase()}@microlabs.in`
-          
+
       })
     }
     if (this.radioDataList?.formValues?.userType == 'guest') {

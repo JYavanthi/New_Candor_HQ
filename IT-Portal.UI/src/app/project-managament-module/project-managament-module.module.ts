@@ -45,6 +45,7 @@ import { PrTemplateComponent } from './pr-template/pr-template.component';
 import { CheckListTemplateComponent } from './check-list-template/check-list-template.component';
 import { CheckListTempAddComponent } from './check-list-template/check-list-temp-add/check-list-temp-add.component';
 import { ProLessonComponent } from './projectlesson/pro-lesson/pro-lesson.component';
+import { SidebsrComponent } from './sidebsr/sidebsr.component';
 
 @NgModule({
   declarations: [
@@ -57,11 +58,11 @@ import { ProLessonComponent } from './projectlesson/pro-lesson/pro-lesson.compon
     ProHistoryComponent,
     ProjectlessonComponent,
     ProIssueTrackerComponent,
-    ProChecklistComponent,ProClosureComponent,
-    ProDocumentsComponent,ProjectGroupMasterComponent,ProLessonComponent,
-    AddTaskComponent,ProMilestoneDetailsComponent,ProjectMasterComponent,ProMemberDetailsComponent, AddIssueComponent, AddProChecklistComponent, PrAttachmentComponent, ProjectlessonComponent,
-    FilterPipe, CreateProjectGroupComponent,PrReportComponent,ProjectreportComponent,ProjectlessonComponent,taskreportComponent
-        ,PrTemplateComponent, IssuereportComponent, RaciReportComponent, ProTemplateViewComponent, ProApproverComponent, CheckListTemplateComponent, CheckListTempAddComponent,
+    ProChecklistComponent, ProClosureComponent,
+    ProDocumentsComponent, ProjectGroupMasterComponent, ProLessonComponent,
+    AddTaskComponent, ProMilestoneDetailsComponent, ProjectMasterComponent, ProMemberDetailsComponent, AddIssueComponent, AddProChecklistComponent, PrAttachmentComponent, ProjectlessonComponent,
+    FilterPipe, CreateProjectGroupComponent, PrReportComponent, ProjectreportComponent, ProjectlessonComponent, taskreportComponent
+    , PrTemplateComponent, IssuereportComponent, RaciReportComponent, ProTemplateViewComponent, ProApproverComponent, CheckListTemplateComponent, CheckListTempAddComponent, SidebsrComponent,
   ],
   imports: [
     CommonModule,

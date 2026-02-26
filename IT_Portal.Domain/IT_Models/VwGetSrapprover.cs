@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwGetSrapprover
 {
@@ -8,15 +11,11 @@ public partial class VwGetSrapprover
 
     public int ApprovingManagerId { get; set; }
 
-    public string? RpmEmpId { get; set; }
+    public int? RpmEmpId { get; set; }
 
-    public string? HodEmpId { get; set; }
+    public int? HodEmpId { get; set; }
 
     public string ReportingManagerName { get; set; } = null!;
 
-    public string? ReportingManagerEmail { get; set; }
-
     public string Hodname { get; set; } = null!;
-
-    public string? HodEmail { get; set; }
 }

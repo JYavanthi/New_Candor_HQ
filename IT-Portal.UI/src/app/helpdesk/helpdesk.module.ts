@@ -5,13 +5,15 @@ import { HelpdeskRoutingModule } from './helpdesk-routing.module';
 import { IssuListComponent } from './Issue/issu-list/issu-list.component';
 import { NewIssueComponent } from './Issue/new-issue/new-issue.component';
 import { IssueResolutionComponent } from './report-issue/issue-resolution/issue-resolution.component';
+import { SidebarissueComponent } from './sidebarissue/sidebarissue.component';
 
 
 @NgModule({
   declarations: [
     IssuListComponent,
     NewIssueComponent,
-    IssueResolutionComponent
+    IssueResolutionComponent,
+    SidebarissueComponent
   ],
   imports: [
     CommonModule,

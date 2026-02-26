@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Approver
 {
@@ -12,7 +15,7 @@ public partial class Approver
 
     public int? ClassificationId { get; set; }
 
-    public int? CategoryTypId { get; set; }
+    public string? CategoryTypId { get; set; }
 
     public string? Approverstage { get; set; }
 
@@ -26,7 +29,7 @@ public partial class Approver
 
     public int? CreatedBy { get; set; }
 
-    public DateTime CreatedDt { get; set; }
+    public DateTime? CreatedDt { get; set; }
 
     public int? ModifiedBy { get; set; }
 
@@ -37,6 +40,4 @@ public partial class Approver
     public virtual SupportTeam? Approver2Navigation { get; set; }
 
     public virtual SupportTeam? Approver3Navigation { get; set; }
-
-    public virtual Support Support { get; set; } = null!;
 }

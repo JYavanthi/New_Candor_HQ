@@ -2,11 +2,12 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PasscrdataService } from '../../passcrdata.service';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { environment } from '@environments/environment';
 
 interface DropdownItem {
   item_id: number;

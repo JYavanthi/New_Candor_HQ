@@ -1,26 +1,32 @@
 <header class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img class="microlab_symbol" src="assets/image/microlabs.png" alt="Microlabs Logo">
-      <img class="unnati_symbol" src="assets/image/unnati.png" alt="Unnati Logo">
-      <span class="itportal_symbol">| IT Portal</span>
+      <img class="microlab_symbol" src="assets/image/4.png" alt="Microlabs Logo">
+      <img class="unnati_symbol" src="assets/image/7.png" alt="Unnati Logo" style="margin-bottom: -26px; width: 175px;">
     </a>
-    <div class="user-profile">
-      <p><b>NAME        : {{(logedInUser?.empData?.firstName??' ') +' '+(logedInUser?.empData?.middleName??' ') +' '+(logedInUser?.empData?.lastName??' ')}}</b></p>
-      <p><b>ID          : {{logedInUser?.empData?.employeeNo}}</b></p>
-      <p><b>ROLE : {{logedInUser?.role}}</b></p>
-    </div>
-    <div class="dropdown" (click)="toggleDropdown()">
-      <div class="profile-content">
-        <img src="assets/image/profile.png" alt="Profile" class="profile-img">
+ 
+
+    <div class="profile-wrapper">
+
+      <div class="user-profile">
+        <p><b> <span style="color : #fdb956">NAME : </span> <span style="color: #424242">
+              {{(logedInUser?.empData?.firstName ?? '') + ' ' +
+              (logedInUser?.empData?.middleName ?? '') + ' ' +
+              (logedInUser?.empData?.lastName ?? '')}}
+            </span></b></p>
+        <p><b><span style="color: #fdb956">ROLE : </span> <span style=" color : #424242"> {{logedInUser?.role}}</span></b>
+        </p>
+        <p><b><span style="color: #fdb956">ID : </span> <span style="color : #424242">
+              {{logedInUser?.empData?.employeeNo}}</span></b></p>
       </div>
 
-      <div class="dropdown-content" [ngClass]="{'show': showDropdown}">
-        <a href="{{urls}}">
-          <i class='fas fa-sign-out-alt' style='font-size:17px; color:white;' (click)="logout()">Logout</i>
-        </a>
+      <div class="dropdown" (click)="toggleDropdown()">
+        <img src="assets/image/6.jpeg" alt="Profile" class="profile-img">
+
       </div>
+
     </div>
+
 
 
   </div>

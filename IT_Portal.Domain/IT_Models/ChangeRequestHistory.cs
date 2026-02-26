@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class ChangeRequestHistory
 {
@@ -98,7 +101,7 @@ public partial class ChangeRequestHistory
 
     public int? ApprovedBy { get; set; }
 
-    public string? ApprovedDt { get; set; }
+    public DateTime? ApprovedDt { get; set; }
 
     public bool? IsSubmitted { get; set; }
 

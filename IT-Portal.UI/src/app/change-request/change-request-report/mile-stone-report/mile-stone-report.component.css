@@ -48,7 +48,8 @@ td {
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
-  border-radius: 4px;
+  border-radius: 20px;
+  background-color: #b8d4f3;
 }
 
 .export_pdf {

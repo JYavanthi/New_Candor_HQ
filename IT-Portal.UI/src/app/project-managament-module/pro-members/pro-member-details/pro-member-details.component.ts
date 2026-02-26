@@ -62,7 +62,7 @@ export class ProMemberDetailsComponent {
 
   formInit() {
     this.membersForm = this.fb.group({
-      participants: ['',Validators.required],
+      participants: ['', Validators.required],
       type: ['', Validators.required],
       inputEmployeeId: ['', Validators.required],
       empId: ['', Validators.required],
@@ -95,6 +95,7 @@ export class ProMemberDetailsComponent {
 
   async getMemberData(memberId: any) {
     await this.employeeInfo.empList();
+
     this.httpSer.httpGet('/projectManagement/getMemberByMemberId', { id: memberId }).subscribe((response: any) => {
       let departMents = []
       if (response?.data?.responsible) departMents.push('Responsibility')

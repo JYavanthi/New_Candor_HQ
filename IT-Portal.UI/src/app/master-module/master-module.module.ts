@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from 'app/dialog/dialog.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MasterSidebarComponent } from './master-sidebar/master-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     UserConfigTreeviewComponent,
     SupportMasterComponent,
     NewsupportmasterComponent,
-    DialogComponent
+    DialogComponent,
+    MasterSidebarComponent
   ],
   imports: [
     CommonModule,

@@ -38,7 +38,7 @@ namespace IT_Portal.API.Controllers
         }
 
         [HttpPost("PostSupportTeam")]
-        public async Task<IActionResult> InsertChangeRequest(SPSupportTeamTable obj)
+        public async Task<IActionResult> InsertChangeRequest([FromBody]SPSupportTeamTable obj)
         {
             var spObj = await _suportcontext.InsertSupportTeam(obj);
             return Ok(spObj);

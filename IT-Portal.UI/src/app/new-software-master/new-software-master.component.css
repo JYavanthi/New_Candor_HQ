@@ -1,0 +1,97 @@
+/* .newsoftwaremasterMainDiv {
+    background: white;
+    width: 95%;
+    display: flex;
+    margin-left: 2.5%;
+    border-radius: 40px;
+}
+
+.container-implement {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: rgb(248, 248, 248);
+    margin-left: 11%;
+} */
+
+.newsoftwaremasterMainDiv {
+    background: white;
+    width: 95%;
+    display: flex;
+    margin-left: 2.5%;
+    border-radius: 40px;
+}
+
+/* wrapper */
+.container-implement {
+    width: 80%;
+    padding: 20px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    margin-left: 11%;
+}
+
+/* heading */
+.page-heading {
+    color: #e67e22;
+    font-weight: 700;
+    border-bottom: 3px solid #6fa8dc;
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+}
+
+/* cream card */
+.container-field-line {
+    background: #efe7d6;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #c9bfae;
+}
+
+/* labels */
+.form-group label {
+    color: #0c7a7a;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* input */
+.form-control-custom {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #7fb8c4;
+    background: #f5f5f5;
+    outline: none;
+}
+
+/* checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+
+/* buttons */
+.btn-section {
+    margin-top: 20px;
+}
+
+.submit-btn {
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 18px;
+    margin-left: 10px;
+}
+
+.back-btn {
+    background: #f39c12;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 18px;
+}

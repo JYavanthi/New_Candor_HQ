@@ -1,7 +1,7 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
 using IT_Portal.Application.Features;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
@@ -35,9 +35,9 @@ namespace IT_Portal.Persistence.Repositories
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Flag", checklist.Flag);
-                    cmd.Parameters.AddWithValue("@ITChecklistIDs", checklist.ITChecklistID);
+                    cmd.Parameters.AddWithValue("@ITChecklistID", checklist.ITChecklistID);
                     cmd.Parameters.AddWithValue("@PlantID", checklist.PlantID);
-                    cmd.Parameters.AddWithValue("@status", checklist.status);
+                    cmd.Parameters.AddWithValue("@status", checklist.Status);
                     cmd.Parameters.AddWithValue("@SupportID", checklist.SupportID);
                     cmd.Parameters.AddWithValue("@CategoryID", checklist.CategoryID);
                     cmd.Parameters.AddWithValue("@ClassificationID", checklist.ClassificationID);

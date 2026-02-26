@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { SpareMasterComponent } from './spare-master/spare-master.component';
 import { CommonApproverComponent } from './common-approver/common-approver.component';
 import { ApprovalTabComponent } from './approval-tab/approval-tab.component';
+import { AssetSidebarComponent } from './asset-sidebar/asset-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ApprovalTabComponent } from './approval-tab/approval-tab.component';
     CommonAssetHistoryComponent,
     SpareMasterComponent,
     CommonApproverComponent,
-    ApprovalTabComponent
+    ApprovalTabComponent,
+    AssetSidebarComponent
   ],
   imports: [
     CommonModule,

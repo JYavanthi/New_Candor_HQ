@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Sla
 {
@@ -43,8 +46,4 @@ public partial class Sla
     public virtual Category Category { get; set; } = null!;
 
     public virtual Classification Classification { get; set; } = null!;
-
-    public virtual PlantMaster? Plant { get; set; }
-
-    public virtual Support Support { get; set; } = null!;
 }

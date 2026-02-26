@@ -1,5 +1,5 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
-using IT_Portal.Domain.IT_Models;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

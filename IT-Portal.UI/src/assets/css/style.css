@@ -61,8 +61,8 @@
 }
 
 .button-approve {
-  background-color: #3c8dbc;
-  color: white;
+  /* background-color: #3c8dbc; */
+  /* color: white; */
   padding: 8px 20px;
   border: none;
   border-radius: 10px;
@@ -1100,12 +1100,12 @@ input[type="date"] {
   margin-left: -93px;
 }
 
-.border-rfc-heading {
+/* .border-rfc-heading {
   border: 1px solid;
   border-radius: 5px;
   border-color: rgb(155, 158, 158);
   padding: 10px;
-}
+} */
 
 .breadcrumb-top {
   float: left;

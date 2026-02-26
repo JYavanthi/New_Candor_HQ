@@ -33,15 +33,5 @@ toggleDropdown() {
 ngOnInit(): void {
 }
   private apiurl = environment.apiurls
-  private loginurls = environment.loginurl
-  idofemployee: any;
-  urls: string = '';
 
-  async logout() {
-    this.idofemployee = '';
-    localStorage.removeItem('token');
-    localStorage.setItem('isLoggedin', 'false');
-    this.urls = this.loginurls + '#' + '/login'
-    window.location.href = this.urls
-  }
 }

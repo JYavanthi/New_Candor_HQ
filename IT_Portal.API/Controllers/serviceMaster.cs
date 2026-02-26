@@ -1,8 +1,8 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
 using IT_Portal.Application.Features;
 using IT_Portal.Application.Features.SR.Domain;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_Portal.API.Controllers

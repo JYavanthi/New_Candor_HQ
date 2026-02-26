@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';import { environment } from '@environments/environment';
+import { ActivatedRoute, Router } from '@angular/router'; import { environment } from '@environments/environment';
 import { UserInfoSerService } from 'app/services/user-info-ser.service';
 import { HttpServiceService } from 'shared/services/http-service.service';
 
@@ -17,8 +17,8 @@ export class PrAttachmentComponent {
   private apiurl = environment.apiurls
   user: any
   prId: any
-  issueId:any
-  checkListId:any
+  issueId: any
+  checkListId: any
   @Input() title: any
   @Input() srData: any
   @Input() tabID: any
@@ -31,7 +31,7 @@ export class PrAttachmentComponent {
     public userInfo: UserInfoSerService, public router: Router) {
     this.activeRoute.queryParams.subscribe((m: any) => {
       this.prId = m.projectId
-      this.taskId = m.taskId    
+      this.taskId = m.taskId
       this.issueId = m.issueId
       this.checkListId = m.checklistId
       if (this.router.url.includes('task')) {
@@ -40,7 +40,7 @@ export class PrAttachmentComponent {
       if (this.router.url.includes('issue')) {
         this.prTypeFlag = 'I'
       }
-      if(this.router.url.includes('checklist')){
+      if (this.router.url.includes('checklist')) {
         this.prTypeFlag = 'C'
       }
     });
@@ -51,23 +51,56 @@ export class PrAttachmentComponent {
   ngOnInit(): void {
     this.getFileData()
   }
+
+  // getattach(event: any): void {
+  //   this.selectedFiles = event.target.files[0];
+  //   if (this.selectedFiles?.type != "application/pdf" && this.selectedFiles?.type != "image/jpg" && this.selectedFiles?.type != "image/jpeg"
+  //     && this.selectedFiles?.type != "image/png") {
+  //     alert('Only Jpg, Jpeg, Png and Pdf is allowed.')
+  //     return;
+  //   }
+  //   if (this.attachmentsList.map((m: any) => m.fileName).includes(this.selectedFiles?.name)) {
+  //     alert('Documnet is already present.')
+  //     this.attach = ''
+  //     this.selectedFiles = undefined
+  //     return;
+  //   }
+
+  // }
+
+  selectedFileName: string | null = null;
+
   getattach(event: any): void {
-    this.selectedFiles = event.target.files[0];
-    if (this.selectedFiles?.type != "application/pdf" && this.selectedFiles?.type != "image/jpg" && this.selectedFiles?.type != "image/jpeg"
-      && this.selectedFiles?.type != "image/png") {
-      alert('Only Jpg, Jpeg, Png and Pdf is allowed.')
+    const file = event.target.files[0];
+    this.selectedFiles = file;
+
+    if (!file) return;
+
+    if (
+      file.type !== 'application/pdf' &&
+      file.type !== 'image/jpg' &&
+      file.type !== 'image/jpeg' &&
+      file.type !== 'image/png'
+    ) {
+      alert('Only Jpg, Jpeg, Png and Pdf is allowed.');
+      this.resetFile();
       return;
     }
-    if (this.attachmentsList.map((m: any) => m.fileName).includes(this.selectedFiles?.name)) {
-      alert('Documnet is already present.')
-      this.attach = ''
-      this.selectedFiles = undefined
+
+    if (this.attachmentsList.map((m: any) => m.fileName).includes(file.name)) {
+      alert('Document is already present.');
+      this.resetFile();
       return;
     }
-    // if (this.attachmentsList?.length == 0) {
-    //   this.addFile()
-    // }getattach
+
+    this.selectedFileName = file.name;
   }
+
+  resetFile() {
+    this.selectedFiles = undefined;
+    this.selectedFileName = null;
+  }
+
 
   addFile(): void {
     if (!this.selectedFiles) {
@@ -113,9 +146,9 @@ export class PrAttachmentComponent {
     let param = {
       prId: this.prId,
       prTypeFlag: this.prTypeFlag,
-      taskId: this.taskId||0,
-      prCheckListId:this.checkListId||0,
-      prIssueId:this.issueId||0
+      taskId: this.taskId || 0,
+      prCheckListId: this.checkListId || 0,
+      prIssueId: this.issueId || 0
     }
     this.httpSer.httpGet(url, param).subscribe((res: any) => {
       this.attachmentsList = res.data

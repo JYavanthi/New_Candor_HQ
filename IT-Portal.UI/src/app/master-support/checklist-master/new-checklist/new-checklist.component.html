@@ -1,4 +1,4 @@
-<div class="container-implement">
+<!-- <div class="container-implement">
   <div class="notification-sucess" *ngIf="messagesuccess">
     <p>Saved Successfully!</p>
     <span class="close-btn" (click)="navigatesuccess()">Ok</span>
@@ -9,7 +9,6 @@
   </div>
   <div class="container-field-line">
 
-    <!-- bootstrap -->
     <h3>New CheckList</h3>
     <div class="border-rfc-heading">
       <div class="row mt-2">
@@ -23,22 +22,17 @@
 
         <div class="col">
           <label>Plant Name</label>
-          <ng-multiselect-dropdown [settings]="dropdownSettings"
-                                   [data]="dropdownList"
-                                   [(ngModel)]="selectedlocationNames"
-                                   (ngModelChange)="onSelectedItemsChange()">
+          <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList"
+            [(ngModel)]="selectedlocationNames" (ngModelChange)="onSelectedItemsChange()">
           </ng-multiselect-dropdown>
-          <!--<select [(ngModel)]="plantID">
-            <option value="">Select Plant code</option>
-            <option *ngFor="let cldata of plantcode" [value]="cldata.id">{{cldata.code}}</option>
-          </select>-->
         </div>
 
         <div class="col">
           <label>Classification Name</label>
           <select [(ngModel)]="classificationID">
             <option value="">Select classification Name</option>
-            <option *ngFor="let cldata of caclasification" [value]="cldata.itclassificationId">{{cldata.classificationName}}</option>
+            <option *ngFor="let cldata of caclasification" [value]="cldata.itclassificationId">
+              {{cldata.classificationName}}</option>
           </select>
         </div>
 
@@ -58,7 +52,7 @@
             <label>Mandatory Flag</label><br />
 
             <select style="width:22%" [(ngModel)]="mandatoryFlags">
-              <option value="">Select Flag</option>
+              <option value="" placeholder="status">Select Flag</option>
               <option [ngValue]="true">True</option>
               <option [ngValue]="false">False</option>
             </select>
@@ -68,9 +62,9 @@
         <div>
           <div>
             <label>CheckList Desc</label>
-            <textarea class="textarea-implement" [(ngModel)]="checklistDesc" matInput rows="2" cols="10" placeholder="checkList Desc"> </textarea>
-            <!--          <input type="text" placeholder="checkList Desc" [(ngModel)]="checklistDesc" />
-            -->
+            <textarea class="textarea-implement" [(ngModel)]="checklistDesc" matInput rows="2" cols="10"
+              placeholder="checkList Desc"> </textarea>
+
           </div>
         </div>
       </div>
@@ -82,5 +76,105 @@
   <button (click)="postCheckList()" class="btn btn-primary">Submit</button>
   <button [routerLink]="'/viewcheklist'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
 
-</div>
+</div> -->
 
+
+<div class="checklistmainDiv">
+
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+  <div class="container-implement">
+
+    <!-- Success / Error (unchanged) -->
+    <div class="notification-sucess" *ngIf="messagesuccess">
+      <p>Saved Successfully!</p>
+      <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+    </div>
+
+    <div class="notification" *ngIf="messageerror">
+      <span class="close-btn" (click)="closeNotification()">&times;</span>
+      <p>Not Saved</p>
+    </div>
+
+    <!-- Heading -->
+    <h3 class="page-heading">NEW CHECKLIST</h3>
+
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Module Name</label>
+            <select class="form-control-custom" [(ngModel)]="supportID">
+              <option value="">Select Module Name</option>
+              <option *ngFor="let cldata of support" [value]="cldata.supportId">
+                {{cldata.supportName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label>Plant Name</label>
+            <ng-multiselect-dropdown class="multi-custom" [settings]="dropdownSettings" [data]="dropdownList"
+              [(ngModel)]="selectedlocationNames" (ngModelChange)="onSelectedItemsChange()">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <div class="col form-group">
+            <label>Classification Name</label>
+            <select class="form-control-custom" [(ngModel)]="classificationID">
+              <option value="">Select classification Name</option>
+              <option *ngFor="let cldata of caclasification" [value]="cldata.itclassificationId">
+                {{cldata.classificationName}}
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Category Name</label>
+            <select class="form-control-custom" [(ngModel)]="categoryID">
+              <option value="">Select categoryName</option>
+              <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">
+                {{cldata.categoryName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label>CheckList Title</label>
+            <input class="form-control-custom" type="text" placeholder="checkList Title" [(ngModel)]="checklistTitle" />
+          </div>
+
+          <div class="col form-group">
+            <label>Mandatory Flag</label>
+            <select class="form-control-custom" [(ngModel)]="mandatoryFlags">
+              <option value="">Select Flag</option>
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form-group mt-2">
+          <label>CheckList Desc</label>
+          <textarea class="form-control-custom textarea-custom" [(ngModel)]="checklistDesc" rows="2"
+            placeholder="checkList Desc"></textarea>
+        </div>
+
+        <!-- Buttons inside card -->
+        <div class="btn-section">
+          <button (click)="postCheckList()" class="btn submit-btn">SUBMIT</button>
+          <button [routerLink]="'/viewcheklist'" class="btn back-btn">BACK</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

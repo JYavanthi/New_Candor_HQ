@@ -1,145 +1,204 @@
-<div style="display: flex;">
-  <div class="text-center pageHeadingCss">
-    <p class="pageHeadingparaCss" style="position: relative;top: 10px;">Project Management</p>
+<div
+  style="padding: 31px; background: white; width: 95%; margin-bottom: 69px; margin-left: 40px; border-radius: 50px; display: flex;">
+  <div>
+    <app-sidebsr></app-sidebsr>
   </div>
 
-  <div class="filterAndNewProject">
-    <span class="filterIconClass" (click)="isVisible=!isVisible"><i class="fa fa-filter" aria-hidden="true"></i></span>
-    <button class="button-approve" [routerLink]="['/projectmanagement']">New Project</button>
-    <button class="button-approve" (click)="exportexcel()"><i class="fa fa-file-excel-o"
-        aria-hidden="true"></i>&nbsp;&nbsp;Export To Excel</button>
-    <button class="button-approve" [routerLink]="['/projectmanagement/report']">View Report</button>
-    <!-- <button class="button-approve" (click)="exportexcel()"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;Excel</button> -->
-  </div>
+  <div>
+    <div class="pm-header">
 
-</div>
-<br>
-
-<div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
-  <div class="card-body card_body_filter" [formGroup]="filterForm">
-    <div class="row filter_cr">
-      <div class="col">
-        <label class="asteriskrequired" for="projectOwner">Project Owner</label>
-        <input type="text" formControlName="projectOwner" name="inputEmployeeId" id="projectOwner"
-          placeholder="Enter Employee ID" (input)="filterItem()">
-        <ul class="dropdowns-list" *ngIf="employeeList?.length > 0">
-          <li class="drop-list" value="" *ngFor="let item of employeeList" (click)="selectItem(item)">
-            {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
-          </li>
-        </ul>
+      <div class="pm-title">
+        <img src="assets/image/project_management.png" class="pm-icon">
+        <span class="project-text">PROJECT MANAGEMENT</span>
       </div>
-      <div class="col">
-        <label>Sponsor</label>
-        <div>
-          <input type="text" formControlName="projectSponsor" name="projectSponsor" id="projectSponsor"
-            placeholder="Enter Employee ID" (input)="filterItemSponser()">
-          <ul class="dropdowns-list" *ngIf="employeeList1?.length > 0">
-            <li class="drop-list" value="" *ngFor="let item of employeeList1" (click)="selectSponser(item)">
-              {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
-            </li>
-          </ul>
+
+      <div class="pm-actions">
+        <button class="circle-btn"><i class="fa-solid fa-plus"></i></button>
+
+        <div class="avatar-group">
+          <img src="assets/image/newProject.png">
+          <img src="assets/image/export_to_excel.png">
+          <img src="assets/image/report.png">
         </div>
+
+        <button class="search-btn">
+          SEARCH <i class="fa fa-search"></i>
+        </button>
       </div>
 
-      <div class="col">
-        <label>Project Status</label>
-        <select formControlName="status" name="status" id="status">
-          <option value="" selected hidden disabled>Select Project Status</option>
-          <option>Discontinue</option>
-          <option>In Progress</option>
-          <option>Cancel</option>
-          <option>Completed</option>
-          <option>Pending Sponsor Approval </option>
-          <option>Approved</option>
-        </select>
+    </div>
+
+    <div class="pm-toolbar">
+
+      <button class="toolbar-btn" [routerLink]="['/projectmanagement']">
+        <img src="assets/image/newProject.png"> <span>NEW PROJECT</span>
+      </button>
+
+      <button class="toolbar-btn" (click)="exportexcel()">
+        <img src="assets/image/export_to_excel.png"> <span>EXPORT TO EXCEL</span>
+      </button>
+
+      <button class="toolbar-btn" [routerLink]="['/projectmanagement/report']">
+        <img src="assets/image/report.png"> <span>VIEW REPORT</span>
+      </button>
+
+      <div class="filter-block" (click)="isVisible=!isVisible">
+        <img src="assets/image/filter.png">
+        <span>FILTER</span>
       </div>
 
-      <div class="col">
-        <label>Project Group</label>
-        <select formControlName="projectGroup" name="projectGroup" id="projectGroup">
-          <option selected hidden disabled value="">Select Project Group...</option>
-          <option *ngFor="let group of groupList" [value]="group.projectGroupId">{{group.projectGroupName}}</option>
-        </select>
-      </div>
-      <div class="col">
-        <label>Start Date:</label><br />
-        <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" formControlName="StartDate" />
-      </div>
-      <div class="col">
-        <label>End Date:</label><br />
-        <input class="input-change cr_date" type="date" id="toDate" name="toDate" formControlName="EndDate">
+    </div>
+
+    <hr class="pm-divider">
+
+
+    <br>
+    <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
+
+      <div class="card-body card_body_filter" [formGroup]="filterForm">
+
+        <div class="filter-row">
+
+          <div class="filter-col">
+            <label class="asteriskrequired">Project Owner</label>
+            <input class="filter-input" type="text" formControlName="projectOwner" placeholder="Enter Employee ID"
+              (input)="filterItem()">
+            <ul class="dropdowns-list" *ngIf="employeeList?.length">
+              <li class="drop-list" *ngFor="let item of employeeList" (click)="selectItem(item)">
+                {{ item.employeeId }} - {{ item.employeeName }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="filter-col">
+            <label>Sponsor</label>
+            <input class="filter-input" type="text" formControlName="projectSponsor" placeholder="Enter Employee ID"
+              (input)="filterItemSponser()">
+            <ul class="dropdowns-list" *ngIf="employeeList1?.length">
+              <li class="drop-list" *ngFor="let item of employeeList1" (click)="selectSponser(item)">
+                {{ item.employeeId }} - {{ item.employeeName }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="filter-col">
+            <label>Project Status</label>
+            <select class="filter-input" formControlName="status">
+              <option hidden value="">Select Status</option>
+              <option>Discontinue</option>
+              <option>In Progress</option>
+              <option>Cancel</option>
+              <option>Completed</option>
+              <option>Pending Sponsor Approval</option>
+              <option>Approved</option>
+            </select>
+          </div>
+
+          <div class="filter-col">
+            <label>Project Group</label>
+            <select class="filter-input" formControlName="projectGroup">
+              <option hidden value="">Select Project</option>
+              <option *ngFor="let group of groupList" [value]="group.projectGroupId">
+                {{ group.projectGroupName }}
+              </option>
+            </select>
+          </div>
+
+          <div class="filter-col date-col">
+            <label>Start Date</label>
+            <input class="filter-input date-input" type="date" formControlName="StartDate">
+          </div>
+
+          <div class="filter-col date-col">
+            <label>End Date</label>
+            <input class="filter-input date-input" type="date" formControlName="EndDate">
+          </div>
+
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn-filter" (click)="filetSerList()">FILTER</button>
+          <button class="btn-cancel" type="reset" (click)="reset()">Clear</button>
+        </div>
+
       </div>
     </div>
-    <div class="justify-content-end d-flex">
-      <div>
-        <button class="btn btn-rounded filter_button" (click)="filetSerList()">Filter</button>&nbsp;&nbsp;&nbsp;
-      </div>
-      <div>
-        <button type="reset" class="btn btn-rounded filter_button" (click)="reset()">Reset</button>&nbsp;&nbsp;&nbsp;
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="tableBox">
-  <div class="table-container">
-    <table #tableRef id="excel-table">
-      <thead>
-        <tr class="tableHeadings">
-          <th>SL No</th>
-          <th>Project Name</th>
-          <th>Project Code</th>
-          <th>Project Group</th>
-          <th>Owner</th>
-          <th>Sponsor</th>
-          <th>Status</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Description</th>
-          <!-- <th>Status</th> -->
-          <th>Task Count</th>
-          <!-- <th>No of task</th> -->
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor=" let projectData of paginatedData,let i = index">
-          <td>{{i+1}}</td>
-          <td>{{projectData.projectName}}</td>
-          <td>{{projectData.projectCode}}</td>
-          <td>{{projectData.projectGroupName}}</td>
-          <td>{{projectData.projectOwnerName}}</td>
-          <td>{{projectData.sponserName}}</td>
-          <td>{{projectData.projectStatus}}</td>
-          <td>{{projectData.startDt | date:'dd/MM/yyyy'}}</td>
-          <td>{{projectData.endDt | date:'dd/MM/yyyy'}}</td>
-          <td>{{projectData.projectDesc}}</td>
-          <!-- <td>{{projectData.projectStatus}}</td> -->
-          <td>{{projectData.numberOfTask}}</td>
-          <td>
-            <a><i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
-                (click)="navigateToEdit(projectData.projectMgmtId)"></i></a>
-          </td>
-        </tr>
 
-        <tr *ngIf="paginatedData?.length === 0">
-          <td colspan="15" style="text-align: center;">
-            <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
-            No Data Available
-          </td>
-        </tr>
+    <div>
+      <div class="tableBox">
+        <div class="table-container">
+          <table table #tableRef id="excel-table" class="project-table">
+            <thead>
+              <tr class="tableHeadings">
+                <th>SL No</th>
+                <th>Project Name</th>
+                <th>Project Code</th>
+                <th>Project Group</th>
+                <th>Owner</th>
+                <th>Sponsor</th>
+                <th>Status</th>
+                <!-- <th>Start Date</th>
+              <th>End Date</th> -->
+                <!-- <th>Description</th> -->
+                <!-- <th>Status</th> -->
+                <th>Task Count</th>
+                <!-- <th>No of task</th> -->
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor=" let projectData of paginatedData,let i = index">
+                <td>{{i+1}}</td>
+                <td>{{projectData.projectName}}</td>
+                <td>{{projectData.projectCode}}</td>
+                <td>{{projectData.projectGroupName}}</td>
+                <td>{{projectData.projectOwnerName}}</td>
+                <td>{{projectData.sponserName}}</td>
+                <!-- <td>{{projectData.projectStatus}}</td> -->
+                <td>
+                  <span class="status-pill" [ngClass]="{
+      'completed': projectData.projectStatus === 'Completed',
+      'inprogress': projectData.projectStatus === 'In Progress',
+      'cancel': projectData.projectStatus === 'Cancel',
+      'pending': projectData.projectStatus === 'Pending Approval',
+      'approved': projectData.projectStatus === 'Approved'
+    }">
+                    {{ projectData.projectStatus }}
+                  </span>
+                </td>
 
-      </tbody>
-    </table>
+                <!-- <td>{{projectData.startDt | date:'dd/MM/yyyy'}}</td>
+              <td>{{projectData.endDt | date:'dd/MM/yyyy'}}</td> -->
+                <!-- <td>{{projectData.projectDesc}}</td> -->
+                <td>{{projectData.numberOfTask}}</td>
+                <td>
+                  <a><i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
+                      (click)="navigateToEdit(projectData.projectMgmtId)"></i></a>
+                </td>
+              </tr>
 
-    <div class="mb-5">
+              <tr *ngIf="paginatedData?.length === 0">
+                <td colspan="15" style="text-align: center;">
+                  <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+                  No Data Available
+                </td>
+              </tr>
 
-      <div class="mb-5">
-        <div *ngIf="filterVal?.length > 0">
-          <mat-paginator [length]="filterVal?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
-            [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page"
-            style="margin-right:34%">
-          </mat-paginator>
+            </tbody>
+          </table>
+
+          <div class="mb-5" style="background: white;">
+
+            <div class="mb-5" style="width: 75%;">
+              <div *ngIf="filterVal?.length > 0">
+                <mat-paginator [length]="filterVal?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+                  [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page">
+                </mat-paginator>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

@@ -1,3 +1,11 @@
+/* .maindiv {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;
@@ -24,7 +32,7 @@
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
-  margin-left: 15%;
+  margin-left: 13%;
 }
 
 .border-rfc-heading {
@@ -32,4 +40,91 @@
   border-radius: 5px;
   border-color: rgb(155, 158, 158);
   padding: 10px;
+} */
+
+
+
+/* main white rounded layout */
+.maindiv {
+  display: flex;
+  width: 95%;
+  background: #fff;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
+/* page container grey bg */
+.container-implement {
+  width: 77%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f3f3f3;
+  margin-left: 13%;
+  border-radius: 10px;
+}
+
+/* heading style + blue underline */
+.page-heading {
+  color: #e67e22;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #6fa8dc;
+  padding-bottom: 6px;
+  margin-bottom: 15px;
+}
+
+/* cream rounded card */
+.container-field-line {
+  background: #efe7d6;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #c9bfae;
+}
+
+/* remove double border */
+.border-rfc-heading {
+  border: none;
+  padding: 5px;
+}
+
+/* label teal color */
+.form-group label {
+  color: #0c7a7a;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* rounded input style */
+.searchinput {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #7fb8c4;
+  background: #f5f5f5;
+  outline: none;
+}
+
+/* button section */
+.btn-section {
+  margin-top: 15px;
+}
+
+/* back button */
+.back-btn {
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
+  margin-right: 10px;
+}
+
+/* submit button */
+.submit-btn {
+  background: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
 }

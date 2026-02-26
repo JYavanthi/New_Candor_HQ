@@ -43,8 +43,8 @@ export class NewChecklistComponent {
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.dropdownList = data.map(item => ({
-          item_id: item.id,
-          item_text: item.code // Assuming your API response has 'id' and 'name' fields
+          item_id: item.plantId,
+          item_text: item.plantCode // Assuming your API response has 'id' and 'name' fields
         }));
       },
       (error) => {
@@ -83,7 +83,8 @@ export class NewChecklistComponent {
         const requestBody = {
           "flag": "I",
           "itChecklistID": 0,
-          "plantID": plantId,
+          "plantID": 1,
+          "status": "1",
           "supportID": this.supportID,
           "categoryID": this.categoryID,
           "classificationID": this.classificationID,

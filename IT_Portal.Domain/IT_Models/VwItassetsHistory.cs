@@ -1,10 +1,13 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwItassetsHistory
 {
-    public string? AssetCode { get; set; }
-
     public int ItahistoryId { get; set; }
+
+    public string? AssetCode { get; set; }
 
     public int? ItassetId { get; set; }
 

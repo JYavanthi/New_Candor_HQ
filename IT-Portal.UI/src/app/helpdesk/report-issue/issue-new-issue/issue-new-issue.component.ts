@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, SecurityContext, ViewChild } from '@angular/core';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { Router } from '@angular/router';
 import { PasscrdataService } from '../../../change-request/passcrdata.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -10,6 +10,7 @@ import { UserInfoSerService } from '../../../services/user-info-ser.service';
 import { HttpServiceService } from 'shared/services/http-service.service';
 import { TaskTracker } from 'app/master-support/SLA/slamaster/trackSlaCal';
 import { DatePipe } from '@angular/common';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-issue-new-issue',
@@ -348,7 +349,7 @@ export class IssueNewIssueComponent {
 
       (response: any) => {
         const empPlant = this.user.empData.plantId;
-        this.plantcode = response.filter((item: any) => parseInt(item.id) == parseInt(empPlant));
+        this.plantcode = response.filter((item: any) => parseInt(item.plantId) == parseInt(empPlant));
       },
       (error) => {
         console.error("Post failed", error)

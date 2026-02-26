@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Sremail
 {
@@ -36,11 +39,7 @@ public partial class Sremail
 
     public string? OutsideComm { get; set; }
 
-    public string? EmailId { get; set; }
-
     public string? MailAccess { get; set; }
-
-    public string? MailGroup { get; set; }
 
     public string? Justification { get; set; }
 
@@ -65,4 +64,8 @@ public partial class Sremail
     public int? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDt { get; set; }
+
+    public string? MailGroup { get; set; }
+
+    public string? EmailId { get; set; }
 }

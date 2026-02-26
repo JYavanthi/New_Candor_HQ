@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Srvpnaccess
 {
@@ -32,13 +35,13 @@ public partial class Srvpnaccess
 
     public bool? IsActive { get; set; }
 
-    public int? CreatedBy { get; set; }
-
-    public DateTime? CreatedDt { get; set; }
-
     public int? ModifiedBy { get; set; }
 
-    public DateTime? ModifiedDt { get; set; }
+    public DateOnly? ModifiedDt { get; set; }
+
+    public int? CreatedBy { get; set; }
+
+    public DateOnly? CreatedDt { get; set; }
 
     public string? Location { get; set; }
 }

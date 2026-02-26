@@ -15,14 +15,14 @@ export class ProjectGroupMasterComponent {
   groupList: any[] = []
   groupvalue: any
   getprojectgroup: any[] = []
-  projectdata: any[] =[]
+  projectdata: any[] = []
   searchText: any
   constructor(public httpser: HttpServiceService, public route: Router, public userInfoSer: UserInfoSerService) {
     this.getGroupList()
     this.getProjectManagementList()
   }
   getProjectManagementList() {
-    this.httpser.httpGet('/projectManagement/getProject').subscribe((response : any)=>{
+    this.httpser.httpGet('/projectManagement/getProject').subscribe((response: any) => {
       this.projectdata = response.data
       // this.paginatedData = this.projectManagementList?.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize)
     })
@@ -36,20 +36,19 @@ export class ProjectGroupMasterComponent {
       "createdBy": this.id ? this.user?.empData?.employeeNo : 0,
       "modifiedBy": this.id ? this.user?.empData?.employeeNo : 0
     }
-    if(this.projectdata.filter((m:any)=>m.projectGroupId==id)?.length>0){
+    if (this.projectdata.filter((m: any) => m.projectGroupId == id)?.length > 0) {
       alert('Cannot delete this project group because it is associated with existing projects.')
       return
     }
-    else{
+    else {
       this.httpser.httpPost('/projectGroup/saveProject', param).subscribe((res: any) => {
         alert('Project Group Deleted Succesfully.')
         this.getGroupList()
-  
+
       })
     }
   }
   filterData() {
-    debugger
     this.groupvalue = this.groupList.filter(item =>
       item.projectGroupName.toLowerCase().includes(this.searchText.toLowerCase())
     );

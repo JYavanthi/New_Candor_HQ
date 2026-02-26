@@ -1,7 +1,7 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
 using IT_Portal.Application.Features;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.AspNetCore.Mvc;
 //using Microsoft.EntityFrameworkCore;
 //using Microsoft.IdentityModel.Tokens;
@@ -53,7 +53,7 @@ namespace IT_Portal.API.Controllers
         //}
 
         [HttpGet("getProjectById")]
-        public async Task<CommonRsult> getProjectById(int id)
+        public async Task<CommonRsult> getProjectById([FromQuery]int id)
         {
             return await _projectManagmentRepoObj.getProjectById(id);
         }

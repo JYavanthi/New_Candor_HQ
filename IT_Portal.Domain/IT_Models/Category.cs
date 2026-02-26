@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Category
 {
@@ -23,8 +26,6 @@ public partial class Category
     public virtual ICollection<RiskPlan> RiskPlans { get; set; } = new List<RiskPlan>();
 
     public virtual ICollection<Sla> Slas { get; set; } = new List<Sla>();
-
-    public virtual Support? Support { get; set; }
 
     public virtual ICollection<SysLandscape> SysLandscapes { get; set; } = new List<SysLandscape>();
 }

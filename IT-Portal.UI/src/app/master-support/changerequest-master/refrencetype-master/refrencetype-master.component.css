@@ -1,3 +1,11 @@
+/* .referncetypeMainDiv {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;
@@ -10,12 +18,12 @@
 }
 
 .container-implement {
-  width: 90%;
+  width: 80%;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
-  margin-left: 8%;
+  margin-left: 11%;
 }
 
 .table-wrapper {
@@ -40,12 +48,171 @@
 
 .form-control {
   border: none;
-  border-bottom: 1px solid black; /* Add underline style */
-  outline: none; /* Removes the default focus outline */
-
+  border-bottom: 1px solid black;
+  outline: none;
   padding-left: 2%;
 }
 
-  .form-control::placeholder {
-    font-family: FontAwesome;
-  }
+.form-control::placeholder {
+  font-family: FontAwesome;
+}
+
+ */
+
+
+
+/* Main Layout */
+.referncetypeMainDiv {
+  display: flex;
+  width: 95%;
+  background: #f4f6fb;
+  border-radius: 25px;
+  margin-left: 2.5%;
+}
+
+/* Container */
+.container-implement {
+  width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f4f6fb;
+}
+
+/* Card */
+.container-field-line {
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header Section */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-title {
+  color: #f47c20;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Search + New Section */
+.search-add-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cfd8dc;
+  border-radius: 20px;
+  padding: 6px 12px;
+  background-color: #f9fbfd;
+}
+
+.search-box i {
+  color: #6c757d;
+  margin-right: 8px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 200px;
+}
+
+/* New Button */
+.new-btn {
+  background-color: #0ea5a4;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+}
+
+.new-btn:hover {
+  background-color: #0b8f8e;
+}
+
+/* Table Card */
+.table-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Table */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+}
+
+.custom-table thead {
+  background-color: #f4f6fb;
+}
+
+.custom-table th {
+  padding: 15px;
+  text-align: left;
+  color: #0ea5a4;
+  font-weight: 600;
+  border-bottom: 2px solid #0ea5a4;
+}
+
+.custom-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+/* ID Style */
+.id {
+  color: #2979ff;
+  font-weight: 600;
+}
+
+/* Name */
+.name {
+  color: #2979ff;
+  font-weight: 500;
+}
+
+/* Status */
+.status {
+  font-weight: 600;
+}
+
+.active {
+  color: #22c55e;
+}
+
+.inactive {
+  color: #ef4444;
+}
+
+/* Action Icons */
+.action-icons i {
+  margin-right: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-icon {
+  color: #0ea5a4;
+}
+
+.delete-icon {
+  color: #ef4444;
+}

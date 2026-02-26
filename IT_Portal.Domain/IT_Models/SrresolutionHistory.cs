@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class SrresolutionHistory
 {
@@ -16,7 +19,9 @@ public partial class SrresolutionHistory
 
     public string? Description { get; set; }
 
-    public int? OnHoldReason { get; set; }
+    public string? OnHoldReason { get; set; }
+
+    public string? Status { get; set; }
 
     public int? CreatedBy { get; set; }
 

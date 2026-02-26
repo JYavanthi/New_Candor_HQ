@@ -22,13 +22,13 @@ export class ProjectManagementDetailsComponent {
   projectID: any;
   projectDetails: any;
   plantList: any;
-  employeeList: any=[]
-  employeeList1: any=[]
+  employeeList: any = []
+  employeeList1: any = []
   attachMentList: any
   deliverablesList: any = []
   groupList: any
   user: any;
-  orgEmpList : any
+  orgEmpList: any
   @ViewChild(PrAttachmentComponent) attachent!: PrAttachmentComponent
   todayDate: any = new Date().toISOString().split('T')[0];
 
@@ -99,7 +99,7 @@ export class ProjectManagementDetailsComponent {
     this.activeRoute.queryParams.subscribe((m: any) => {
       this.projectID = m.projectId;
       if (this.projectID) {
-        
+
       }
     });
     this.formInit();
@@ -107,7 +107,7 @@ export class ProjectManagementDetailsComponent {
     this.employeeInfo.empList()
   }
 
-  onProjectChange(){
+  onProjectChange() {
     this.httpSer.httpGet('/projectManagement/getProjectById', { id: this.projectID }).subscribe((response: any) => {
       this.projectDetails = response.data;
       this.dataTranSer.Data = this.projectDetails
@@ -120,10 +120,10 @@ export class ProjectManagementDetailsComponent {
       this.patchFormValues(this.projectDetails);
     })
   }
-  onDateChange(){
+  onDateChange() {
     this.detailsForm.controls['projectEndDate'].enable()
   }
-  
+
   formInit() {
     this.getGroupList()
     this.detailsForm = this.fb.group({
@@ -133,7 +133,7 @@ export class ProjectManagementDetailsComponent {
       projectOwner: ['', Validators.required],
       projectSponsor: ['', Validators.required],
       projectStartDate: ['', Validators.required],
-      projectEndDate: [{value:'',disabled:true}, Validators.required],
+      projectEndDate: [{ value: '', disabled: true }, Validators.required],
       projectGroup: ['', Validators.required],
       projectAccess: ['', Validators.required],
       deliverables: [''],
@@ -182,7 +182,7 @@ export class ProjectManagementDetailsComponent {
     this.deliverablesList = data?.deliverables?.split(','),
       // this.detailsForm.disable();
 
-    this.detailsForm.controls['projectNumber'].disable()
+      this.detailsForm.controls['projectNumber'].disable()
     this.detailsForm.controls['projectLocation'].disable()
     this.filterItem(true)
     this.filterItemSponser(true)
@@ -265,16 +265,16 @@ export class ProjectManagementDetailsComponent {
   }
 
   submitDeatails(flag: any) {
-    if(!this.orgEmpList?.map((m:any)=>m.employeeId).includes(this.detailsForm.controls['projectOwner'].value.split('-')[0]?.toString())){
+    if (!this.orgEmpList?.map((m: any) => m.employeeId).includes(this.detailsForm.controls['projectOwner'].value.split('-')[0]?.toString())) {
       alert('For Project Owner select valid employee.');
-      return  
+      return
     }
 
-    if(!this.orgEmpList?.map((m:any)=>m.employeeId).includes(this.detailsForm.controls['projectSponsor'].value.split('-')[0]?.toString())){
+    if (!this.orgEmpList?.map((m: any) => m.employeeId).includes(this.detailsForm.controls['projectSponsor'].value.split('-')[0]?.toString())) {
       alert('For Project Sponsor select valid employee.');
       return
     }
-    if(!this.deliverablesList||this.deliverablesList?.length==0){
+    if (!this.deliverablesList || this.deliverablesList?.length == 0) {
       alert('Add deliverables.');
       return
     }
@@ -306,7 +306,8 @@ export class ProjectManagementDetailsComponent {
         "createdDt": "2025-01-04T09:53:03.941Z",
         "modifiedBy": parseInt(this.loggedInUserDetails.empData.employeeNo),
         "modifiedDt": "2025-01-04T09:53:03.941Z",
-        "planId": this.projectID ? this.projectDetails?.planId : parseInt(this.detailsForm?.value.projectLocation),
+        // "plantId": this.projectID ? this.projectDetails?.PlantId : parseInt(this.detailsForm?.value.projectLocation),
+        "plantId" : 3,
         "sponser": parseInt(this.detailsForm?.value.projectSponsor),
         "projectGroupId": Number(this.detailsForm?.value.projectGroup),
         "projectAccess": this.detailsForm?.value.projectAccess,
@@ -322,8 +323,8 @@ export class ProjectManagementDetailsComponent {
         if (response.type == 'S') {
           alert('Submitted Successfully!');
           this.router.navigate(['/projectmaster'])
-        } 
-        else if(response.type == "E"){
+        }
+        else if (response.type == "E") {
           var error = response.message
           alert(error)
         }
@@ -334,13 +335,13 @@ export class ProjectManagementDetailsComponent {
     }
   }
 
-  clearForm(){
+  clearForm() {
     this.detailsForm.patchValue(this.allFieldValues)
     this.attachMentList = []
     this.attachent.attach = ''
     this.attachent.selectedFiles = undefined
     this.attachent.attachmentsList = []
-    this.deliverablesList=[]
+    this.deliverablesList = []
   }
   addDeliverables() {
     if (!this.detailsForm.controls['deliverables'].value) {
@@ -356,15 +357,15 @@ export class ProjectManagementDetailsComponent {
       this.employeeList = this.employeeInfo?.EmpList?.filter((item: any) =>
         item.employeeId.toUpperCase().toString().includes(filter) || item.employeeName.toUpperCase().toString().includes(filter)
       );
-      
-    this.orgEmpList = this.employeeInfo?.EmpList
+
+      this.orgEmpList = this.employeeInfo?.EmpList
       if (this.employeeList.length === 0) {
         this.detailsForm.get('projectOwner')?.setValue('');
-         alert('Enter Valid Project Owner');
-         this.employeeList.push('');
-          this.employeeList = [];
-         return;
-       
+        alert('Enter Valid Project Owner');
+        this.employeeList.push('');
+        this.employeeList = [];
+        return;
+
       } else if (filter === '') {
         this.employeeList.length = 0;
       }
@@ -373,32 +374,68 @@ export class ProjectManagementDetailsComponent {
       await this.employeeInfo.empList()
       this.selectItem(this.employeeInfo?.EmpList?.filter((item: any) =>
         item.employeeId == this.projectDetails.projectOwner)[0])
-      
-    this.orgEmpList = this.employeeInfo?.EmpList
+
+      this.orgEmpList = this.employeeInfo?.EmpList
     }
   }
 
+  // async filterItemSponser(editable = false) {
+  //   if (!editable) {
+  //     var filter = this.detailsForm.value.projectSponsor.toUpperCase().trim();
+  //     this.employeeList1 = this.employeeInfo?.EmpList?.filter((item: any) =>
+  //       item.employeeId.toUpperCase().toString().includes(filter) || item.employeeName.toUpperCase().toString().includes(filter)
+  //     );
+  //     if (this.employeeList1.length === 0) {
+  //        this.detailsForm.get('projectSponsor')?.setValue('');
+  //        alert('Enter Valid Project Sponsorer');
+  //        this.employeeList.push('');
+  //         this.employeeList = [];
+  //        return;
+
+  //     } else if (filter === '') {
+  //       this.employeeList1.length = 0;
+  //     }
+  //   }
+  //   else {
+  //     await this.employeeInfo.empList()
+  //     this.selectSponser(this.employeeInfo?.EmpList?.filter((item: any) =>
+  //       item.employeeId == this.projectDetails.sponser)[0])
+  //   }
+  // }
+
   async filterItemSponser(editable = false) {
+
     if (!editable) {
-      var filter = this.detailsForm.value.projectSponsor.toUpperCase().trim();
-      this.employeeList1 = this.employeeInfo?.EmpList?.filter((item: any) =>
-        item.employeeId.toUpperCase().toString().includes(filter) || item.employeeName.toUpperCase().toString().includes(filter)
-      );
-      if (this.employeeList1.length === 0) {
-         this.detailsForm.get('projectSponsor')?.setValue('');
-         alert('Enter Valid Project Sponsorer');
-         this.employeeList.push('');
-          this.employeeList = [];
-         return;
-        
-      } else if (filter === '') {
-        this.employeeList1.length = 0;
+
+      const value = this.detailsForm.get('projectSponsor')?.value || '';
+      const filter = value.toString().trim();
+
+      if (filter.length < 2) {
+        this.employeeList1 = [];
+        return;
       }
-    }
-    else {
-      await this.employeeInfo.empList()
-      this.selectSponser(this.employeeInfo?.EmpList?.filter((item: any) =>
-        item.employeeId == this.projectDetails.sponser)[0])
+
+      this.employeeList1 = this.employeeInfo?.EmpList?.filter((item: any) =>
+        item.employeeId.toString().toUpperCase().includes(filter.toUpperCase()) ||
+        item.employeeName.toUpperCase().includes(filter.toUpperCase())
+      );
+
+      if (this.employeeList1.length === 0) {
+        alert('Enter Valid Project Sponsor');
+        this.detailsForm.get('projectSponsor')?.setValue('');
+        return;
+      }
+
+    } else {
+
+      await this.employeeInfo.empList();
+      const sponsor = this.employeeInfo?.EmpList?.find(
+        (item: any) => item.employeeId == this.projectDetails.sponser
+      );
+
+      if (sponsor) {
+        this.selectSponser(sponsor);
+      }
     }
   }
 

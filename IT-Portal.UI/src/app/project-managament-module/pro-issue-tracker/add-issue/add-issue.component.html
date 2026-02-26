@@ -6,7 +6,7 @@
 
                 <div class="row">
                     <div class="inputFields">
-                      <div>
+                        <div>
                             <label class="asteriskrequired" for="milestone">Milestone</label>
                             <select formControlName="milestone" name="milestone" id="milestone"
                                 (change)="getmilestonetask($event)">
@@ -15,7 +15,7 @@
                                     {{mileStone.milestoneTitle}}</option>
                             </select>
                         </div>
-                        
+
                         <div style="position: relative;">
                             <label class="asteriskrequired" for="owner">Issue Owner</label>
 
@@ -40,7 +40,7 @@
                                 <option>Close Phase</option>
                             </select>
                         </div>
-                        
+
                         <div>
                             <label class="asteriskrequired" for="Task">Task</label>
                             <select formControlName="Task" name="Task" id="Task" (change)="getChildTask($event)">
@@ -50,14 +50,6 @@
                                 </option>
                             </select>
                         </div>
-                        <!-- <div>
-                            <label for="SubTask">Sub Task</label>
-                            <select formControlName="SubTask" name="SubTask" id="SubTask">
-                                <option value="" selected hidden disabled>Select Parent Task</option>
-                                <option *ngFor="let task of childTaskList" [value]="task.taskId">{{ task.taskTitle }}
-                                </option>
-                            </select>
-                        </div> -->
 
                         <div>
                             <label class="asteriskrequired" for="SubTask">Sub Task</label>
@@ -126,18 +118,16 @@
                                 <option>High</option>
                                 <option>Medium</option>
                                 <option>Low</option>
-                            </select>
+                            </select>   
                         </div>
 
                         <div class="textAreaDiv">
-                            <!-- <label class="asteriskrequired" for="duration">Attachment</label> -->
                             <app-pr-attachment [title]="'Attachment'" (attachMentListEvent)="getAttchmentList($event)"
                                 (removeAttchment)="removeAttchment($event)"></app-pr-attachment>
                         </div>
 
-
                         <div class="textAreaDiv">
-                            <label  class="asteriskrequired"  for="Discription">Description</label>
+                            <label class="asteriskrequired" for="Discription">Description</label>
                             <angular-editor #editor [config]="editorConfig"
                                 formControlName="Discription"></angular-editor>
                         </div>
@@ -146,6 +136,7 @@
                             <angular-editor #editor [config]="editorConfig"
                                 formControlName="AdditionalNotes"></angular-editor>
                         </div>
+
                     </div>
                 </div>
 
@@ -153,7 +144,7 @@
                     <button class="actionBtn" (click)="submitIssue('Open')"
                         *ngIf="this.issueData?.status!='Completed'&&!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed')">{{issueId?
                         'Update' : 'Submit'}}</button>
-                    <button class="actionBtn" (click)="clearForm()" *ngIf="!issueId">Clear</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="!issueId" style="background-color: #ff2e5a">Clear</button>
                 </div>
             </div>
         </div>

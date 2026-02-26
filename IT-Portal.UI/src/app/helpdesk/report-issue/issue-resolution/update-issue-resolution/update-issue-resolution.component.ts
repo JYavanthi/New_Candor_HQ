@@ -3,13 +3,14 @@ import { HelpdeskserviceService } from '../../../helpdeskservice.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { PasscrdataService } from '../../../../change-request/passcrdata.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HttpServiceService } from 'shared/services/http-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoSerService } from 'app/services/user-info-ser.service';
 import { DatePipe } from '@angular/common';
 import { GetEmployeeInfoService } from 'app/services/get-employee-info.service';
+import { environment } from '@environments/environment';
 
 interface Message {
   text: string;
@@ -483,11 +484,11 @@ export class UpdateIssueResolutionComponent {
         //   this.submitClarification = true;
         //   this.ForwardTextOpen = false;
         // }
-        if(status == "Seek Clarification" && this.issueData.raisedbyid==this.user.empData.employeeNo){
+        if (status == "Seek Clarification" && this.issueData.raisedbyid == this.user.empData.employeeNo) {
           this.submitClarification = true;
           this.ForwardTextOpen = false;
-          this.forward =false;
-          
+          this.forward = false;
+
         }
         if (this.issueData && this.onEdit == "false") {
           // your existing logic to set flags
@@ -523,7 +524,7 @@ export class UpdateIssueResolutionComponent {
             this.onHold = false;
             this.closeIssue = true;
             this.unResolved = true;
-            
+
           }
           else if (this.issueData.assignedToid == 0) {
             this.assign = true;
@@ -554,9 +555,9 @@ export class UpdateIssueResolutionComponent {
           if (status == "Open") {
             this.resolutionDateField = false;
           }
-          else if (status == "Seek Clarification" ) {
+          else if (status == "Seek Clarification") {
             this.submitClarification = true;
-            this.forward=false;
+            this.forward = false;
           }
           else if (status == "Resolved") {
             this.closeIssue = true;
@@ -566,7 +567,7 @@ export class UpdateIssueResolutionComponent {
       })
       .catch((error: any) => {
         console.error('Error in getIssueData:', error);
-        throw error; 
+        throw error;
       });
   }
 
@@ -609,7 +610,7 @@ export class UpdateIssueResolutionComponent {
     this.http.get(apiUrls).subscribe(
       (response: any) => {
         this.historytableData = response.filter((row: any) => row.issueId == this.issueData?.issueId);
-      console.log('issue history datat',this.historytableData)
+        console.log('issue history datat', this.historytableData)
       },
       (error) => {
         console.error("Post failed", error)
@@ -938,17 +939,17 @@ export class UpdateIssueResolutionComponent {
     })
   }
   getInputDatas() {
-    if(this.getSelfData){
-    this.EmployeeID = this.getSelfData[0]?.employeeId;
-    this.Name = this.getSelfData[0]?.employeeName;
-    this.Email = this.getSelfData[0]?.officialEmailId;
-    this.ContactNo = this.getSelfData[0]?.mobileNo;
-    this.ReportingManager = this.getSelfData[0]?.reportManagerName;
-    this.StaffCategory = this.getSelfData[0]?.staffCategory;
-    this.Plant = this.getSelfData[0]?.plantcode;
-    this.Paygroup = this.getSelfData[0]?.payGroup;
-    this.Department = this.getSelfData[0]?.department;
-    this.Designation = this.getSelfData[0]?.designation;
+    if (this.getSelfData) {
+      this.EmployeeID = this.getSelfData[0]?.employeeId;
+      this.Name = this.getSelfData[0]?.employeeName;
+      this.Email = this.getSelfData[0]?.officialEmailId;
+      this.ContactNo = this.getSelfData[0]?.mobileNo;
+      this.ReportingManager = this.getSelfData[0]?.reportManagerName;
+      this.StaffCategory = this.getSelfData[0]?.staffCategory;
+      this.Plant = this.getSelfData[0]?.plantcode;
+      this.Paygroup = this.getSelfData[0]?.payGroup;
+      this.Department = this.getSelfData[0]?.department;
+      this.Designation = this.getSelfData[0]?.designation;
     }
   }
 
@@ -1010,15 +1011,11 @@ export class UpdateIssueResolutionComponent {
     }
   }
 
-  ShowUserButtons() {
-
-  }
-
   getUpdatedinputs() {
     this.description = this.issueData?.issueDesc;
-    this.ProposedResolution = this.issueData?.proposedResolutionOn;
+    this.ProposedResolution = new Date(this.issueData?.proposedResolutionOn).toISOString().split('.')[0].replace('T', ' ')
     if (this.issueData?.status != "Open") {
-      this.resolutionDate = this.issueData?.resolutionDt;
+      this.resolutionDate = new Date(this.issueData?.resolutionDt).toISOString().split('.')[0].replace('T', ' ')
       this.resolutionDtDisabled = true;
     }
   }

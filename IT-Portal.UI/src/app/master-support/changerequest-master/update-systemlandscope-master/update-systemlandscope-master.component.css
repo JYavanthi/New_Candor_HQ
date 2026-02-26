@@ -1,3 +1,11 @@
+.updateSystemscopemasterMainDiv  {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;

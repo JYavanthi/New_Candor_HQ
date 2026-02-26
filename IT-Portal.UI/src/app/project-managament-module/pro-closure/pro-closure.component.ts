@@ -42,7 +42,7 @@ export class ProClosureComponent {
     this.getFileData();
     this.getClosueDetails(this.prId);
     this.getProjectDetails()
-    
+
   }
 
   clearForm() {
@@ -56,10 +56,10 @@ export class ProClosureComponent {
 
   formInit() {
     this.closureForm = this.fb.group({
-      
+
       status: [this.projectdetails?.projectStatus || '', Validators.required],
       remarks: ['', Validators.required],
-     // status: ['', Validators.required],
+      // status: ['', Validators.required],
     });
   }
 
@@ -157,7 +157,6 @@ export class ProClosureComponent {
     const apiUrl = this.apiurl + '/projectManagement/addFile';
     this.http.post(apiUrl, formData).subscribe(
       (response: any) => {
-        debugger
         this.attachmentsList.push({
           attachId: response?.attachId,
           fileName: this.selectedFiles?.name,
@@ -244,10 +243,10 @@ export class ProClosureComponent {
     this.closureForm.patchValue({
       remarks: data?.remarks,
       status: data?.status,
-      
-    
+
+
     })
-      
+
     this.closureForm.disable();
   }
 

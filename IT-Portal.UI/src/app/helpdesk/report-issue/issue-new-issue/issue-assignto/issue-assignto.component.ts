@@ -1,10 +1,11 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReportIssueComponent } from '../../report-issue.component';
 import { PasscrdataService } from '../../../../change-request/passcrdata.service';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-issue-assignto',

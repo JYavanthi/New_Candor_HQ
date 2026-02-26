@@ -1,21 +1,135 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th,
-  td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+/* OUTER CONTAINER */
+.tableDesign {
+  background: #e6f0ff;
+  padding: 18px;
+  border-radius: 20px;
+}
 
-  }
-  
-  th {
-    background-color: #cde9f7;
-    color: black;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    text-wrap: none;
-  }
+/* INNER WHITE CARD */
+.table-container {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 20px;
+}
+
+/* TABLE */
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 14px;
+  /* gap between rows */
+  font-size: 13px;
+}
+
+/* HEADER */
+.custom-table thead tr {
+  background: #4fa6b8;
+  color: #ffffff;
+}
+
+.custom-table thead th {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.custom-table thead th:first-child {
+  border-radius: 14px 0 0 14px;
+}
+
+.custom-table thead th:last-child {
+  border-radius: 0 14px 14px 0;
+}
+
+/* ROW CARD */
+.custom-table tbody tr {
+  background: #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.custom-table tbody td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+}
+
+.custom-table tbody tr td:first-child {
+  border-radius: 14px 0 0 14px;
+}
+
+.custom-table tbody tr td:last-child {
+  border-radius: 0 14px 14px 0;
+}
+
+/* STATUS BADGE */
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 18px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* STATUS COLORS — SAME AS IMAGE */
+.completed {
+  background: #4caf50;
+}
+
+.inprogress {
+  background: #fbc02d;
+  color: #000;
+}
+
+.canceled {
+  background: #f44336;
+}
+
+.sponsorapprovalpending {
+  background: #ff9800;
+}
+
+.approved {
+  background: #26a69a;
+}
+
+.discontinues {
+  background: brown;
+}
+
+.open {
+   background: #26a69a;
+}
+
+/* ACTION ICONS */
+.action-icons i {
+  margin: 0 6px;
+  font-size: 16px;
+  color: #4fa6b8;
+  cursor: pointer;
+}
+
+.action-icons i:hover {
+  color: #2c6f7a;
+}
+
+
+.addNewBtn-addNew {
+  background: #62c28c;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 15px;
+  color: white;
+  font-weight: 700;
+}
+
+.addNewBtn-addTemplate {
+  background: #62c28c;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 15px;
+  color: white;
+  font-weight: 700;
+}

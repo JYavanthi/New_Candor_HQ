@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwChangeRequestSummary
 {
@@ -44,7 +47,7 @@ public partial class VwChangeRequestSummary
 
     public int ChangeRequestor { get; set; }
 
-    public string? PlantId { get; set; }
+    public string PlantId { get; set; } = null!;
 
     public int? Plantcode { get; set; }
 
@@ -97,4 +100,6 @@ public partial class VwChangeRequestSummary
     public int? EstimatedEffort { get; set; }
 
     public string? EstimatedEffortUnit { get; set; }
+
+    public string? Attachment { get; set; }
 }

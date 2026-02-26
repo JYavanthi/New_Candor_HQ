@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { HttpServiceService } from 'shared/services/http-service.service';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import { GetEmployeeInfoService } from 'app/services/get-employee-info.service';
+import { environment } from '@environments/environment';
 
 interface DropdownItem {
   item_id: number;

@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwProjectMgmt
 {
@@ -44,7 +47,7 @@ public partial class VwProjectMgmt
 
     public DateTime? ModifiedDt { get; set; }
 
-    public int? PlanId { get; set; }
+    public int? PlantId { get; set; }
 
     public int? Sponser { get; set; }
 

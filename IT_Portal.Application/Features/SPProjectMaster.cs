@@ -22,7 +22,7 @@
         public DateTime? CreatedDt { get; set; }
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedDt { get; set; }
-        public int? PlanId { get; set; }
+        public int? PlantId { get; set; }
         public int? Sponser { get; set; }
         public int ProjectGroupId { get; set; }
         public string ProjectAccess { get; set; }

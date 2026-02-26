@@ -1,30 +1,30 @@
-<div class="assetContainer">
-
-    <div class="viewAssetHeadingDiv">
-        <div class="assetTitle">Assets</div>
-        <!-- <div class="assetButtonContainer">
-            <button class="assetBackBtn" (click)="navigateToBack()">Back</button>
-        </div> -->
+<div style="background: white; width: 95%; margin-left: 2.5%; display: flex; border-radius: 40px;">
+    <div style="margin-left: 3%">
+        <app-asset-sidebar></app-asset-sidebar>
     </div>
 
-    <div class="viewAssetMainModuleBox">
-        <div class="viewAssetModules">
+    <div class="assetContainer">
 
-            <div class="assetModuleCard" [routerLink]="'/assets/sparemaster'">
-                <span class="assetIcon"><i style="color:#555;" class="fa fa-tools"></i></span>
-                <span class="assetIconTitle">IT Spare</span>
-            </div>
-
-            <!-- <div class="assetModuleCard" [routerLink]="'/assets/itconsumable'">
-                <span class="assetIcon"><i style="color:#ff7f50;" class="fa fa-usb"></i></span>
-                <span class="assetIconTitle">IT Consumable</span>
-            </div> -->
-
-            <div class="assetModuleCard" [routerLink]="'/assets/assetmaster'">
-                <span class="assetIcon"><i style="color:#28a745;" class="fa fa-laptop"></i></span>
-                <span class="assetIconTitle">IT Asset</span>
-            </div>
+        <div class="viewAssetHeadingDiv">
+            <div class="assetTitle">Assets</div>
 
         </div>
+
+        <div class="viewAssetMainModuleBox">
+            <div class="viewAssetModules">
+
+                <div class="assetModuleCard" [routerLink]="'/assets/sparemaster'">
+                    <span class="assetIcon"><i style="color:#555;" class="fa fa-tools"></i></span>
+                    <span class="assetIconTitle">IT Spare</span>
+                </div>
+
+                <div class="assetModuleCard" [routerLink]="'/assets/assetmaster'">
+                    <span class="assetIcon"><i style="color:#28a745;" class="fa fa-laptop"></i></span>
+                    <span class="assetIconTitle">IT Asset</span>
+                </div>
+
+            </div>
+        </div>
     </div>
+
 </div>

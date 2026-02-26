@@ -1,7 +1,7 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PasscrdataService } from '../../passcrdata.service';
-import { ActivatedRoute, Router } from '@angular/router';import { environment } from '@environments/environment';
+import { ActivatedRoute, Router } from '@angular/router'; import { environment } from '@environments/environment';
 import { GetEmployeeInfoService } from '../../../services/get-employee-info.service';
 import { UserInfoSerService } from '../../../services/user-info-ser.service';
 
@@ -10,9 +10,9 @@ import { UserInfoSerService } from '../../../services/user-info-ser.service';
   templateUrl: './implemet.component.html',
   styleUrl: './implemet.component.css'
 })
-export class ImplemetComponent implements OnChanges{
+export class ImplemetComponent implements OnChanges {
 
-  selectoption:any;
+  selectoption: any;
   showInitiator: boolean = false;
   showRiskQ: boolean = false;
   tabs: any[] = [];
@@ -25,8 +25,8 @@ export class ImplemetComponent implements OnChanges{
   remark: any = '';
   comment: any = '';
   @Input() crid: any;
-  sysid:any;
-  selecttask:any[]=[];
+  sysid: any;
+  selecttask: any[] = [];
   itcrExecID: any = '';
   sysLandscape: any = '';
   executionStepName: any = '';
@@ -38,7 +38,7 @@ export class ImplemetComponent implements OnChanges{
   statusece: any = '';
   forwardStatus: any = '';
   forwardedTo: string = '';
-  forwardedDt:any ='';
+  forwardedDt: any = '';
   reasonForwarded: any = '';
   remarks: any = '';
   pickedStatus: any = '';
@@ -70,7 +70,7 @@ export class ImplemetComponent implements OnChanges{
   user: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private userinfoSer: UserInfoSerService,
-     private employeeInfo: GetEmployeeInfoService, private routeservice: PasscrdataService, private router: Router) {
+    private employeeInfo: GetEmployeeInfoService, private routeservice: PasscrdataService, private router: Router) {
     this.user = userinfoSer.getUser();
 
     this.employeeInfo.empList().then(() => {
@@ -82,17 +82,17 @@ export class ImplemetComponent implements OnChanges{
     });
 
     // this.routeservice.crdata.subscribe(data => {
-      // this.crid = data.report.value;
-      this.itcrid = this.route.snapshot.paramMap.get('id');
-      /*if (this.crid){
-      this.appstatus = this.crid.status.trim();
-      this.crownername = this.crid.crowner;
-      this.isImplemented = this.crid.isImplemented;
-      this.plantidforapp = this.crid.plantcode;
-      this.categoryId = this.crid.itcategoryId;
-      this.categorytypeId = this.crid.categoryTypeId;
-      this.classificationId = this.crid.itclassificationId;
-      }*/
+    // this.crid = data.report.value;
+    this.itcrid = this.route.snapshot.paramMap.get('id');
+    /*if (this.crid){
+    this.appstatus = this.crid.status.trim();
+    this.crownername = this.crid.crowner;
+    this.isImplemented = this.crid.isImplemented;
+    this.plantidforapp = this.crid.plantcode;
+    this.categoryId = this.crid.itcategoryId;
+    this.categorytypeId = this.crid.categoryTypeId;
+    this.classificationId = this.crid.itclassificationId;
+    }*/
     // })
     this.routeservice.sysdata.subscribe(data => {
       this.sysid = data?.report;
@@ -121,7 +121,7 @@ export class ImplemetComponent implements OnChanges{
     this.routeservice.syslandscapedata({ report })
   }
 
-  Update(val:any){
+  Update(val: any) {
     this.selectoption = val;
     const report = {
       value: this.selectoption
@@ -129,11 +129,11 @@ export class ImplemetComponent implements OnChanges{
     this.routeservice.syslandscapedata({ report })
   }
 
-  navigateToUpdate(row:any){
-    this.router.navigate(['/updatetask/'+row.itcrexecId+'/edit'], {
+  navigateToUpdate(row: any) {
+    this.router.navigate(['/updatetask/' + row.itcrexecId + '/edit'], {
       queryParams: { crId: this.itcrid }
     })
-    
+
 
     // PPPPPPPPPPPPPPPPPPPPP
   }
@@ -167,7 +167,7 @@ export class ImplemetComponent implements OnChanges{
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['crid']) {
-      if(!this.crid){
+      if (!this.crid) {
         return
       }
       this.appstatus = this.crid.status.trim();
@@ -194,18 +194,18 @@ export class ImplemetComponent implements OnChanges{
   asignandviewtasks() {
     if (Object.keys(this.landscapeTasks).length === 0) {
       this.asignandviewtask = true
-      }
-      else{
+    }
+    else {
       this.asignandviewtask = false
-      }
+    }
   }
 
 
-  fnTask(task:any){
+  fnTask(task: any) {
   }
 
-  predefindtaskradio:boolean = false;
-  manualtaskradio:boolean = false;
+  predefindtaskradio: boolean = false;
+  manualtaskradio: boolean = false;
 
   updateCheckbox(checkboxNumber: number) {
   }
@@ -220,7 +220,7 @@ export class ImplemetComponent implements OnChanges{
       this.filteredData = this.value;
       this.releaseforapprove = false;
     }
-   this.UpdateCR();
+    this.UpdateCR();
   }
 
   systemlandscape: any[] = [];
@@ -228,7 +228,7 @@ export class ImplemetComponent implements OnChanges{
   filteredsystemlandscape: any[] = [];
 
   async getsystemlandscape() {
-    if(!this.crid){
+    if (!this.crid) {
       return
     }
     const apiUrl = this.apiurl + '/SystemLandscape/Getsystems';
@@ -294,10 +294,10 @@ export class ImplemetComponent implements OnChanges{
           alert(response.message);
           return;
         }
-        else{
-        alert("RFC Code" + " " + this.crid.crcode+" "+": Release successfully submitted for Approval");
-        this.emailapproversinfo('Submitted for Approval');
-        this.router.navigate(['/change-request']);
+        else {
+          alert("RFC Code" + " " + this.crid.crcode + " " + ": Release successfully submitted for Approval");
+          this.emailapproversinfo('Submitted for Approval');
+          this.router.navigate(['/change-request']);
         }
       },
       (error: any) => {
@@ -353,13 +353,13 @@ export class ImplemetComponent implements OnChanges{
     //   const response: any = await this.http.get(apiUrls).toPromise();
 
     //   if (response) {
-        // this.valuereq = response
-        this.valuereq = [this.crid]
-        this.updatevalue = [this.crid]
-        this.crownerid = this.updatevalue[0]?.crowner;
-        this.getsupportteams();
-        this.getCrOwnerfromsupteam();
-        this.getsystemlandscape();
+    // this.valuereq = response
+    this.valuereq = [this.crid]
+    this.updatevalue = [this.crid]
+    this.crownerid = this.updatevalue[0]?.crowner;
+    this.getsupportteams();
+    this.getCrOwnerfromsupteam();
+    this.getsystemlandscape();
     //   } else {
     //     console.error('Response is undefined or null');
     //   }
@@ -441,28 +441,28 @@ export class ImplemetComponent implements OnChanges{
     //   const response: any = await this.http.get(apiUrls).toPromise();
 
     //   if (response) {
-        this.emailCR = [this.crid]
-        this.crrempid = this.emailCR[0].crrequestedBy
-        this.croempid = this.emailCR[0].crowner
-        this.crdate = this.emailCR[0].crdate
-        this.crrdate = this.emailCR[0].crrequestedDt
-        this.crdesc = this.emailCR[0].changeDesc
-        this.plantid = this.emailCR[0].plantId
-        this.EmailNotification = this.emailCR[0].crremailNotification;
-        this.taskOwner = [this.crid]
-        if (this.taskOwner.length > 0) {
-          this.addtaskflag = true;
-        }
-        else {
-          if (this.croempid == this.supportid) {
-            this.addtaskflag = true;
-          }
-          else {
-            this.addtaskflag = false;
-          }
-        }
-        this.crrequestors();
-        this.getcrinfo(this.croempid);
+    this.emailCR = [this.crid]
+    this.crrempid = this.emailCR[0].crrequestedBy
+    this.croempid = this.emailCR[0].crowner
+    this.crdate = this.emailCR[0].crdate
+    this.crrdate = this.emailCR[0].crrequestedDt
+    this.crdesc = this.emailCR[0].changeDesc
+    this.plantid = this.emailCR[0].plantId
+    this.EmailNotification = this.emailCR[0].crremailNotification;
+    this.taskOwner = [this.crid]
+    if (this.taskOwner.length > 0) {
+      this.addtaskflag = true;
+    }
+    else {
+      if (this.croempid == this.supportid) {
+        this.addtaskflag = true;
+      }
+      else {
+        this.addtaskflag = false;
+      }
+    }
+    this.crrequestors();
+    this.getcrinfo(this.croempid);
 
   }
 
@@ -584,7 +584,6 @@ export class ImplemetComponent implements OnChanges{
   setcreniatorname: any;
 
   sendemailfrom(emailreq: string, appv: any[]) {
-    debugger
     const apiUrl = this.apiurl + '/Email'
     this.approver11 = appv[0]?.approver1;
     this.approver11Name = appv[0]?.approver1Name;
@@ -714,10 +713,10 @@ export class ImplemetComponent implements OnChanges{
 
       var cc1pluscc1 = cc1pluscc.replace(',,', ',');
 
-      if (this.to1 == "" || this.to1 == null ) {
+      if (this.to1 == "" || this.to1 == null) {
         this.to1 = '';
       }
-      if (To == "" || To == null){
+      if (To == "" || To == null) {
         if (this.to1 != '' || this.to1 != null) {
           To = ',' + '';
         } else {
@@ -764,7 +763,7 @@ export class ImplemetComponent implements OnChanges{
   }
 
 
-  templateName:any;
+  templateName: any;
 
   predefindtask() {
     if (this.templateName == "") {
@@ -797,12 +796,12 @@ export class ImplemetComponent implements OnChanges{
       this.http.post(apiUrl, requestBody, httpOptions).subscribe(
         (response: any) => {
           if (response.type == "E") {
-          alert(response.message);
-          return;
-        }else{
-          alert("Saved as predefined task");
-          this.router.navigate(['/change-request']);
-        }
+            alert(response.message);
+            return;
+          } else {
+            alert("Saved as predefined task");
+            this.router.navigate(['/change-request']);
+          }
         },
         (error: any) => {
           console.log('Post request failed', error);
@@ -829,9 +828,9 @@ export class ImplemetComponent implements OnChanges{
         if (response.type == "E") {
           alert(response.message);
           return;
-        }else{
-        alert("Saved Template Successfully");
-        this.router.navigate(['/change-request']);
+        } else {
+          alert("Saved Template Successfully");
+          this.router.navigate(['/change-request']);
         }
       },
       (error: any) => {
@@ -841,9 +840,9 @@ export class ImplemetComponent implements OnChanges{
   }
 
   predefindtemplate: any[] = [];
-  templatenames:any[]=[];
+  templatenames: any[] = [];
   emailofreciver: any;
-  DisableSelectTemplate:boolean=false;
+  DisableSelectTemplate: boolean = false;
   getfilteredTemplates: any[] = [];
   predefinedList: any[] = [];
   filteredRows: any[] = [];
@@ -946,60 +945,60 @@ export class ImplemetComponent implements OnChanges{
     );
   }
 
-/*  getpredefinedtemplates() {
-  const apiUrl = this.apiurl + '/CRTemplate/GetCRTemplate';
-
-  this.http.get(apiUrl).subscribe(
-    (response: any) => {
-      console.log('response',response)
-      console.log('this.crid.categoryId',this.crid.categoryId)
-      console.log('this.crid.categoryTypeId', this.crid.categoryTypeId)
-      this.templatenames = response.filter((item: any) =>
-        item.categoryId == this.crid?.categoryId &&
-        item.categoryTypId == this.crid?.categoryTypeId
-      );
-      console.log('this.templatenames',this.templatenames)
-      const groupedTemplates = this.templatenames.reduce((acc: any, item: any) => {
-        if (!acc[item.crtemplateId]) {
-          acc[item.crtemplateId] = [];
-        }
-        acc[item.crtemplateId].push(item.sysLandscapeId);
-        return acc;
-      }, {});
-      console.log('groupedTemplates',groupedTemplates)
-      const checkedValuesSet = new Set(this.getcheckedVlues.map((id: any) => parseInt(id, 10)));
-      console.log('checkedValuesSet',checkedValuesSet)
-      const qualifyingTemplateIds = Object.keys(groupedTemplates).filter(crtemplateId => {
-        const landscapeIds = groupedTemplates[crtemplateId].map((id: any) => parseInt(id, 10));
-        const landscapeIdsSet = new Set(landscapeIds);
-        return [...checkedValuesSet].every(val => landscapeIdsSet.has(val));
-      });
-      console.log('qualifyingTemplateIds',qualifyingTemplateIds)
-      const filteringpredefindtemplate = this.templatenames.filter(item => qualifyingTemplateIds.includes(item.crtemplateId.toString()));
-      console.log('filteringpredefindtemplate',filteringpredefindtemplate)
-      this.predefindtemplate = this.removeDuplicates(filteringpredefindtemplate, 'crtemplateId');
-      console.log('this.predefindtemplate',this.predefindtemplate)
-      if (this.predefindtemplate.length == 0) {
-          this.DisableSelectTemplate = true;
-        } else {
-          this.DisableSelectTemplate = false;
-        }
-    },
-    (error: any) => {
-      console.error('GET request failed', error);
-    }
-  );
-}
-*/
+  /*  getpredefinedtemplates() {
+    const apiUrl = this.apiurl + '/CRTemplate/GetCRTemplate';
+  
+    this.http.get(apiUrl).subscribe(
+      (response: any) => {
+        console.log('response',response)
+        console.log('this.crid.categoryId',this.crid.categoryId)
+        console.log('this.crid.categoryTypeId', this.crid.categoryTypeId)
+        this.templatenames = response.filter((item: any) =>
+          item.categoryId == this.crid?.categoryId &&
+          item.categoryTypId == this.crid?.categoryTypeId
+        );
+        console.log('this.templatenames',this.templatenames)
+        const groupedTemplates = this.templatenames.reduce((acc: any, item: any) => {
+          if (!acc[item.crtemplateId]) {
+            acc[item.crtemplateId] = [];
+          }
+          acc[item.crtemplateId].push(item.sysLandscapeId);
+          return acc;
+        }, {});
+        console.log('groupedTemplates',groupedTemplates)
+        const checkedValuesSet = new Set(this.getcheckedVlues.map((id: any) => parseInt(id, 10)));
+        console.log('checkedValuesSet',checkedValuesSet)
+        const qualifyingTemplateIds = Object.keys(groupedTemplates).filter(crtemplateId => {
+          const landscapeIds = groupedTemplates[crtemplateId].map((id: any) => parseInt(id, 10));
+          const landscapeIdsSet = new Set(landscapeIds);
+          return [...checkedValuesSet].every(val => landscapeIdsSet.has(val));
+        });
+        console.log('qualifyingTemplateIds',qualifyingTemplateIds)
+        const filteringpredefindtemplate = this.templatenames.filter(item => qualifyingTemplateIds.includes(item.crtemplateId.toString()));
+        console.log('filteringpredefindtemplate',filteringpredefindtemplate)
+        this.predefindtemplate = this.removeDuplicates(filteringpredefindtemplate, 'crtemplateId');
+        console.log('this.predefindtemplate',this.predefindtemplate)
+        if (this.predefindtemplate.length == 0) {
+            this.DisableSelectTemplate = true;
+          } else {
+            this.DisableSelectTemplate = false;
+          }
+      },
+      (error: any) => {
+        console.error('GET request failed', error);
+      }
+    );
+  }
+  */
   showtasktable: boolean = false;
-  showpredefindtasks:any[]=[];
+  showpredefindtasks: any[] = [];
   showpredefindtask() {
-    if (this.showpredefindtasks.length > 0){
+    if (this.showpredefindtasks.length > 0) {
       alert('Cannot add template, as task exists for the change!')
     }
-    else{
-     this.showtasktable = true;
-     this.showpredefindtasks = this.templatenames.filter((item: any) => item.crtemplateId === parseInt(this.templateid))
+    else {
+      this.showtasktable = true;
+      this.showpredefindtasks = this.templatenames.filter((item: any) => item.crtemplateId === parseInt(this.templateid))
     }
   }
 
@@ -1011,8 +1010,8 @@ export class ImplemetComponent implements OnChanges{
     );
   }
 
- executethepart:any[]=[]
- releaseforapprove: boolean = false;
+  executethepart: any[] = []
+  releaseforapprove: boolean = false;
   getreleaseforapprove() {
 
     const apiUrl = this.apiurl + '/Crexecute/GetExecute';
@@ -1028,7 +1027,7 @@ export class ImplemetComponent implements OnChanges{
   }
 
 
-  nameinimplement:any[]=[];
+  nameinimplement: any[] = [];
   gettheusername: any;
 
   /*async getimplementname() {
@@ -1101,7 +1100,7 @@ export class ImplemetComponent implements OnChanges{
     this.implementbtn = false;
   }
 
-  assingntome:any[]=[] ;
+  assingntome: any[] = [];
   getassigntome() {
     const apiUrl = this.apiurl + '/Crexecute/GetExecute';
     this.http.get(apiUrl).subscribe(
@@ -1203,29 +1202,29 @@ export class ImplemetComponent implements OnChanges{
       })
     };
     const requestBody = {
-        "flag": "D",
-        "itcrExecID": this.deleteitcrexecId,
-        "itcrid": 0,
-        "sysLandscape": 0,
-        "executionStepName": "string",
-        "executionStepDesc": "string",
-        "assignedTo": 0,
-        "startDt": "2024-05-27T13:04:04.576Z",
-        "endDT": "2024-05-27T13:04:04.576Z",
-        "attachments": "string",
-        "status": "string",
-        "forwardStatus": "string",
-        "forwardedTo": 0,
-        "forwardedDt": "2024-05-27T13:04:04.576Z",
-        "reasonForwarded": "string",
-        "remarks": "string",
-        "pickedStatus": "string",
-        "pickedDt": "2024-05-27T13:04:04.576Z",
-        "actualStartDt": "2024-05-27T13:04:04.576Z",
-        "actualEndDt": "2024-05-27T13:04:04.576Z",
-        "dependSysLandscape": 0,
-        "dependTaskId": 0,
-        "createdBy": 0
+      "flag": "D",
+      "itcrExecID": this.deleteitcrexecId,
+      "itcrid": 0,
+      "sysLandscape": 0,
+      "executionStepName": "string",
+      "executionStepDesc": "string",
+      "assignedTo": 0,
+      "startDt": "2024-05-27T13:04:04.576Z",
+      "endDT": "2024-05-27T13:04:04.576Z",
+      "attachments": "string",
+      "status": "string",
+      "forwardStatus": "string",
+      "forwardedTo": 0,
+      "forwardedDt": "2024-05-27T13:04:04.576Z",
+      "reasonForwarded": "string",
+      "remarks": "string",
+      "pickedStatus": "string",
+      "pickedDt": "2024-05-27T13:04:04.576Z",
+      "actualStartDt": "2024-05-27T13:04:04.576Z",
+      "actualEndDt": "2024-05-27T13:04:04.576Z",
+      "dependSysLandscape": 0,
+      "dependTaskId": 0,
+      "createdBy": 0
 
     }
     setTimeout(() => {
@@ -1237,7 +1236,7 @@ export class ImplemetComponent implements OnChanges{
             this.deleteinmessage = "There are open items it Can't be deleted"
           } else if (this.errorresponse == "S") {
             this.deletesuccess = true;
-            this.deletemessage = "Deleted Task ID :"+this.deleteitcrexecId+" Successfully"
+            this.deletemessage = "Deleted Task ID :" + this.deleteitcrexecId + " Successfully"
           }
         },
         (error: any) => {

@@ -1,7 +1,6 @@
 ﻿using IT_Portal.Persistence.DatabaseContext;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using IT_Portal.Domain.IT_Models;
 namespace IT_Portal.API.Controllers
 {
     [Route("api/[controller]")]

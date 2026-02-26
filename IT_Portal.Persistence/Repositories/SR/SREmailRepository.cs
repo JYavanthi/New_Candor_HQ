@@ -1,7 +1,6 @@
 ﻿using IT_Portal.Application.Contracts.Persistence.SR;
 using IT_Portal.Application.Features;
 using IT_Portal.Application.Features.SR;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -269,21 +268,21 @@ namespace IT_Portal.Persistence.Repositories.SR
                             }
                             var newArray = sREmail.empNo.Split(',');
 
-                            foreach (var a in newArray)
-                            {
-                                var grpMember = new EmailGroupMember
-                                {
-                                    EmailGroupId = 0,
-                                    EmpNo = int.Parse(a),
-                                    CreatedBy = sREmail.SRVariable.CreatedBy,
-                                    CreatedDt = DateTime.Now,
-                                    ModifiedBy = sREmail.SRVariable.CreatedBy,
-                                    MidifiedDt = DateTime.Now
-                                };
+                            //foreach (var a in newArray)
+                            //{
+                            //    var grpMember = new EmailGroupMember
+                            //    {
+                            //        EmailGroupId = 0,
+                            //        EmpNo = int.Parse(a),
+                            //        CreatedBy = sREmail.SRVariable.CreatedBy,
+                            //        CreatedDt = DateTime.Now,
+                            //        ModifiedBy = sREmail.SRVariable.CreatedBy,
+                            //        MidifiedDt = DateTime.Now
+                            //    };
 
-                                _context.EmailGroupMembers.Add(grpMember);
-                                await _context.SaveChangesAsync();
-                            }
+                            //    _context.EmailGroupMembers.Add(grpMember);
+                            //    await _context.SaveChangesAsync();
+                            //}
                         }
                         result.Message = "Insert Successfully";
                     }

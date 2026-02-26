@@ -1,3 +1,11 @@
+/* .SlaMainDiv {
+  background: white;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;
@@ -15,7 +23,7 @@
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
-  margin-left: 8%;
+  margin-left: 7%;
 }
 
 .table-wrapper {
@@ -40,20 +48,141 @@
 
 .form-control {
   border: none;
-  border-bottom: 1px solid black; /* Add underline style */
-  outline: none; /* Removes the default focus outline */
+  border-bottom: 1px solid black;
+  outline: none;
 
   padding-left: 2%;
 }
 
-  .form-control::placeholder {
-    font-family: FontAwesome;
-  }
+.form-control::placeholder {
+  font-family: FontAwesome;
+}
 
-  .d-flex{
-    display: flex;
-  }
+.d-flex {
+  display: flex;
+}
 
-  .just-cont-centre{
-    justify-content: center;
-  }
+.just-cont-centre {
+  justify-content: center;
+} */
+
+
+/* MAIN OUTER WHITE ROUNDED PANEL */
+.SlaMainDiv {
+  background: #ffffff;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
+/* GREY CONTENT AREA */
+.container-implement {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 7%;
+  background: #f3f4f6;
+  border-radius: 25px;
+  border: none;
+}
+
+/* REMOVE OLD CARD LOOK */
+.container-field-line {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* ORANGE TITLE LIKE CATEGORY */
+h3 {
+  color: #ff7a00;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* NEW BUTTON (TOP RIGHT) */
+.btn.btn-primary {
+  background: transparent;
+  border: none;
+  color: #0aa2c0;
+  font-weight: 600;
+  float: right;
+  margin-top: -30px;
+}
+
+/* ROUNDED TABLE CARD */
+.border-rfc-heading {
+  background: #f6f6f6;
+  border-radius: 18px;
+  padding: 15px;
+  border: 1px solid #e3d5c7;
+  margin-top: 15px;
+}
+
+/* TABLE */
+.fl-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* HEADER TEAL */
+.fl-table thead th {
+  color: #0aa2c0;
+  font-weight: 700;
+  padding: 14px;
+  border-bottom: 2px solid #0aa2c0;
+  white-space: nowrap;
+}
+
+/* GOLD ROW DIVIDER */
+.fl-table tbody tr {
+  border-bottom: 1px solid #f1c27d;
+}
+
+/* CELL STYLE */
+.fl-table td {
+  padding: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* BLUE DATA TEXT */
+.fl-table td:nth-child(1),
+.fl-table td:nth-child(2),
+.fl-table td:nth-child(3),
+.fl-table td:nth-child(4),
+.fl-table td:nth-child(5),
+.fl-table td:nth-child(7),
+.fl-table td:nth-child(9) {
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* EDIT ICON (CIRCLE TEAL) */
+.fa-pencil-square-o {
+  background: #e6f7fb;
+  color: #0aa2c0;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* DELETE ICON */
+.fa-trash {
+  color: #ff4d4f;
+  cursor: pointer;
+}
+
+/* TABLE WRAPPER */
+.table-wrapper {
+  display: block;
+  margin-top: 10px;
+}
+
+/* TITLE ALIGN LEFT (LIKE CATEGORY) */
+.d-flex.just-cont-centre {
+  justify-content: flex-start;
+}

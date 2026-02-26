@@ -1,63 +1,114 @@
-.container-field-line {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.newsupportmasterMainDiv {
+  background: #fff;
   width: 95%;
-  margin-left: 2%;
-  margin-top: 10px;
-  border-top: 5px solid #113bf7;
-  margin-bottom: 3%;
-  border-radius: 5px;
-}
-
-.field-line {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 56%;
-  margin-left: 2%;
-  margin-top: 14px;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 30px;
+  padding-bottom: 20px;
 }
 
 .container-implement {
+  width: 85%;
+  margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f8f8f8;
+  margin-left: 115px;
 }
 
-.border-rfc-heading {
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+.pageHeadingparaCss {
+  font-size: 28px;
+  font-weight: 600;
+  color: #444;
 }
 
-.btnsDiv {
+.container-field-line {
+  padding: 20px;
+  background-color: #ffffff;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dropdownSection {
+  background-color: #f5e6d8;
+  border-radius: 10px;
+  padding: 15px;
   display: flex;
-  gap: 10px;
-  margin: 15px 0 20px 0;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #3aa6b9;
 }
 
-.actionBtn {
-  background-color: #113bf7;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
+label {
+  font-weight: 600;
+  color: #2aa5a0;
+}
+
+.newMasterImg {
+  width: 8%;
+  margin-top: -3%;
+  height: 65px;
+}
+
+input[type="text"],
+input[type="file"] {
+  border: 1px solid #3aa6b9;
+  border-radius: 8px;
+  padding: 8px 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #2c7da0;
+  box-shadow: 0 0 4px rgba(44, 125, 160, 0.4);
+}
+
+.searchButton {
+  background-color: #fff;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
   cursor: pointer;
-  font-size: 16px;
+  font-weight: 500;
 }
 
-.actionBtn:hover {
-  background-color: #0f31ca;
+.searchButton:hover {
+  background-color: #c4c4c4;
+}
+
+.inputFieldsDiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.checkboxSection {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3aa6b9;
 }
 
 .dropdowns-list {
   position: absolute;
   width: 100%;
   padding: 0;
-  margin: 0;
+  margin-top: 5px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   background-color: #fff;
   z-index: 1000;
@@ -66,52 +117,43 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.checkboxLabel {
-  display: flex;
-  justify-content: flex-start;
-  gap: 5px;
-  align-items: center;
-  padding-top: 25px;
-}
-
-.inputFields {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 10px;
-  gap: 10px;
-}
-
-input[type="file"] {
-  width: 100%;
-  padding: 5px;
-}
-
-.inputFieldsDiv {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
-}
-
-.searchButton {
-  background-color: black;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
+.drop-list {
+  padding: 8px 10px;
   cursor: pointer;
 }
 
-.dropdownSection {
-  background-color: #cde9f7;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
+.drop-list:hover {
+  background-color: #f0f0f0;
 }
 
-.checkboxSection {
+.btnsDiv {
   display: flex;
   gap: 15px;
+  margin: 30px 0 10px 0;
+}
+
+.actionBtn:first-child {
+  background-color: #e48b2c;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+}
+
+.actionBtn:last-child {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+}
+
+.actionBtn:first-child:hover {
+  background-color: #cf761f;
+}
+
+.actionBtn:last-child:hover {
+  background-color: #3e9442;
 }

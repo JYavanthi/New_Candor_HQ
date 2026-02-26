@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { MatDialog } from '@angular/material/dialog';
 import { IssueAssigntoComponent } from './issue-new-issue/issue-assignto/issue-assignto.component';
 import { PasscrdataService } from '../../change-request/passcrdata.service';
@@ -20,6 +20,7 @@ import { DatePipe } from '@angular/common';
 import { waitForDebugger } from 'node:inspector';
 import { GetEmployeeInfoService } from 'app/services/get-employee-info.service';
 import { Params } from '@angular/router';
+import { environment } from '@environments/environment';
 
 interface DropdownItem {
   item_id: number;

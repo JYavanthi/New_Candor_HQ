@@ -1,14 +1,12 @@
-<div class="container-implement">
-    <!-- <div class="notification-sucess" *ngIf="messagesuccess">
-      <p>Saved Successfully!</p>
-      <span class="close-btn" (click)="navigatesuccess()">Ok</span>
-    </div>
-    <div class="notification" *ngIf="messageerror">
-      <span class="close-btn" (click)="closeNotification()">&times;</span>
-      <p>Not Saved</p>
-    </div> -->
-    <div class="container-field-line" [formGroup] = "myForm">
+<!-- <div class="newOnHoldReasonMainDiv">
   
+  <div style="margin-left: 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+    <div class="container-field-line" [formGroup]="myForm">
+
       <h3>Hold Reason</h3>
       <div class="border-rfc-heading">
         <div class="row mt-2">
@@ -16,34 +14,21 @@
             <label>Module Name</label>
             <select formControlName="supportId" (change)="onModuleChange($event.target)">
               <option value="" disable>Select Module Name</option>
-              <option *ngFor="let cldata of support;let i=index" [value]="cldata.supportId">{{cldata.supportName}}<span *ngIf="parentArray[i]!='No Parent'"></span>(<span>{{parentArray[i]}}</span>)</option>
+              <option *ngFor="let cldata of support;let i=index" [value]="cldata.supportId">{{cldata.supportName}}<span
+                  *ngIf="parentArray[i]!='No Parent'"></span>(<span>{{parentArray[i]}}</span>)</option>
             </select>
           </div>
-          <!-- <div class="col" *ngIf="this.myForm.get('serviceModule')">
-            <label>Service Name</label>
-            <select formControlName="serviceModule" (change)="onModuleChange($event.target)">
-              <option value="">Select Module Name</option>
-              <option *ngFor="let cldata of support" [value]="cldata.supportId">{{cldata.supportName}}</option>
-            </select>
-          </div>
-          <div class="col" *ngIf="this.myForm.get('serviceModule')">
-            <label>request Name</label>
-            <select formControlName="requestType" (change)="onModuleChange($event.target)">
-              <option value="">Select Module Name</option>
-              <option *ngFor="let cldata of support" [value]="cldata.supportId">{{cldata.supportName}}</option>
-            </select>
-          </div> -->
-          <div class="col"  *ngIf="this.myForm.get('category')">
+  
+          <div class="col" *ngIf="this.myForm.get('category')">
             <label>Category</label>
-            <select formControlName="category" (change)="getCategoryType()"
-            name="category">
+            <select formControlName="category" (change)="getCategoryType()" name="category">
               <option value="">Select categoryName</option>
               <option *ngFor="let cldata of cateGoryList" [value]="cldata.itcategoryId">{{cldata.categoryName}}</option>
             </select>
           </div>
 
-          
-        <div class="col"  *ngIf="this.myForm.get('category')">
+
+          <div class="col" *ngIf="this.myForm.get('category')">
             <label>Sub-Category<span style="color:red">*</span></label>
             <select formControlName="subCategory" name="subCategory">
               <option value="" disabled hidden selected>Select Sub-Category</option>
@@ -51,27 +36,27 @@
                 {{valueCtype.categoryType}}</option>
             </select>
           </div>
-          <div class="col" >
-              <label>Hold On Reson<span style="color:red">*</span></label>
-              <input formControlName="hold_reason" type="text" name="hold_reason"/>
-          </div>
-          
           <div class="col">
-              <label>
-                <input type="checkbox" formControlName="active" /> Active
-              </label>
+            <label>Hold On Reson<span style="color:red">*</span></label>
+            <input formControlName="hold_reason" type="text" name="hold_reason" />
+          </div>
+
+          <div class="col">
+            <label>
+              <input type="checkbox" formControlName="active" /> Active
+            </label>
           </div>
         </div>
       </div>
-  
-    </div>
-<Div class="mt-4">
-  <button (click)="saveResaon()" class="btn btn-primary">Submit</button>
-  <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
-</Div>
-  
 
-    
+    </div>
+    <Div class="mt-4">
+      <button (click)="saveResaon()" class="btn btn-primary">Submit</button>
+      <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
+    </Div>
+
+
+
     <div class="border-rfc-heading mt-4">
       <div class="table-wrapperm mt-4" style="overflow-x: auto">
         <table class="fl-table" style="width: 100%;">
@@ -81,7 +66,6 @@
               <th>On Hold Reason</th>
               <th>Category Name</th>
               <th>Category Type Name</th>
-              <!-- <th>Is Active</th> -->
             </tr>
           </thead>
           <tbody>
@@ -90,11 +74,105 @@
               <td>{{ reason.onholdReason }}</td>
               <td>{{ reason.categoryName }}</td>
               <td>{{ reason.typeName }}</td>
-              <!-- <td>{{ reason.isActive }}</td> -->
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </div> -->
+
+
+<div class="newOnHoldReasonMainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-support-sidebar></app-support-sidebar>
   </div>
-  
-  
+
+  <div class="container-implement">
+
+    <!-- Heading -->
+    <h3 class="page-heading">Hold Reason</h3>
+
+    <!-- FORM CARD -->
+    <div class="container-field-line" [formGroup]="myForm">
+      <div class="border-rfc-heading">
+        <div class="row">
+
+          <div class="col form-group">
+            <label>Module Name</label>
+            <select class="form-control-custom" formControlName="supportId" (change)="onModuleChange($event.target)">
+              <option value="">Select Module Name</option>
+              <option *ngFor="let cldata of support;let i=index" [value]="cldata.supportId">
+                {{cldata.supportName}} ({{parentArray[i]}})
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group" *ngIf="this.myForm.get('category')">
+            <label>Category</label>
+            <select class="form-control-custom" formControlName="category" (change)="getCategoryType()">
+              <option value="">Select Category</option>
+              <option *ngFor="let cldata of cateGoryList" [value]="cldata.itcategoryId">
+                {{cldata.categoryName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group" *ngIf="this.myForm.get('category')">
+            <label>Sub-Category<span class="required">*</span></label>
+            <select class="form-control-custom" formControlName="subCategory">
+              <option value="" disabled selected>Select Sub-Category</option>
+              <option *ngFor="let valueCtype of categoryTypeList" [value]="valueCtype.categoryTypeId">
+                {{valueCtype.categoryType}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label>Hold On Reason<span class="required">*</span></label>
+            <input class="form-control-custom" formControlName="hold_reason" type="text" />
+          </div>
+
+          <div class="col form-group checkbox-group">
+            <label>
+              <input type="checkbox" formControlName="active" /> Active
+            </label>
+          </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-section">
+          <button (click)="back()" class="btn back-btn">BACK</button>
+          <button (click)="saveResaon()" class="btn submit-btn">SUBMIT</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="table-card">
+      <div class="table-wrapperm" style="overflow-x:auto">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th>Module Name</th>
+              <th>On Hold Reason</th>
+              <th>Category Name</th>
+              <th>Category Type Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reason of reasonList">
+              <td>{{reason.supportName}}</td>
+              <td>{{ reason.onholdReason }}</td>
+              <td>{{ reason.categoryName }}</td>
+              <td>{{ reason.typeName }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

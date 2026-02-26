@@ -1,9 +1,9 @@
 <div>
-    <button class="addNewBtn" (click)="navigateTo()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
+    <button class="addNewBtn-addNew" (click)="navigateTo()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
         || this.projectdetails?.projectStatus == 'Approved')">Add New</button>
 </div>
 
-<div *ngIf="membersForm.disabled" class="tableDesign">
+<!-- <div *ngIf="membersForm.disabled" class="tableDesign">
     <div class="table-container">
         <table>
             <thead>
@@ -48,4 +48,55 @@
             </tbody>
         </table>
     </div>
+</div> -->
+
+<div *ngIf="membersForm.disabled" class="pm-table-wrapper">
+
+    <!-- Header -->
+    <div class="pm-table-header">
+        <div>Employee Name</div>
+        <div>Employee ID</div>
+        <div>Role</div>
+        <div>Type</div>
+        <div>Department</div>
+        <div>Designation</div>
+        <div>Is Responsible</div>
+        <div>Is Accountable</div>
+        <div>Is Consulted</div>
+        <div>Is Informed</div>
+        <div>Action</div>
+    </div>
+
+    <!-- Rows -->
+    <div class="pm-table-row" *ngFor="let member of memberList">
+
+        <div>{{ member.memberName }}</div>
+        <div>{{ member.empId }}</div>
+        <div>{{ member.role }}</div>
+        <div>{{ member.type }}</div>
+        <div>{{ member.department }}</div>
+        <div>{{ member.designation }}</div>
+
+        <div><input type="checkbox" [ngModel]="member.responsible" disabled /></div>
+        <div><input type="checkbox" [ngModel]="member.accountable" disabled /></div>
+        <div><input type="checkbox" [ngModel]="member.consulted" disabled /></div>
+        <div><input type="checkbox" [ngModel]="member.informed" disabled /></div>
+
+        <div class="pm-actions">
+            <i class="fa fa-eye" (click)="navigateToView(member.prMemberId, member.projectMgmtId)"></i>
+
+            <i class="fa-solid fa-trash" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'
+              || this.projectdetails?.projectStatus=='Discontinue'
+              || this.projectdetails?.projectStatus=='Completed'
+              || this.projectdetails?.projectStatus=='Approved')" (click)="deleteMembers(member.prMemberId)"></i>
+        </div>
+
+    </div>
+
+    <!-- No Data -->
+    <div class="pm-no-data" *ngIf="memberList?.length === 0">
+        <i class="fa fa-search"></i>
+        No Data Available
+    </div>
+
 </div>

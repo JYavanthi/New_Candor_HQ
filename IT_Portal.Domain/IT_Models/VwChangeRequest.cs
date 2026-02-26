@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwChangeRequest
 {
@@ -52,7 +55,7 @@ public partial class VwChangeRequest
 
     public int ChangeRequestor { get; set; }
 
-    public string? PlantId { get; set; }
+    public string PlantId { get; set; } = null!;
 
     public int? Plantcode { get; set; }
 
@@ -70,7 +73,7 @@ public partial class VwChangeRequest
 
     public int? CrrequestedBy { get; set; }
 
-    public string? RequestorPlant { get; set; }
+    public string RequestorPlant { get; set; } = null!;
 
     public string CrrequestorName { get; set; } = null!;
 

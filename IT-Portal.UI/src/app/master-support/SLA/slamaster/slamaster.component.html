@@ -1,52 +1,58 @@
-<div class="container-implement">
-  <div class="container-field-line">
-    <div class="d-flex just-cont-centre">
-      <h3>SLA</h3>
-    </div>
-    <!-- <div class="search-hero">
+<div class="SlaMainDiv">
+
+  <div style="margin-left: 1%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+    <div class="container-field-line">
+      <div class="d-flex just-cont-centre">
+        <h3>SLA</h3>
+      </div>
+      <!-- <div class="search-hero">
       <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()" autocomplete="off" placeholder="Search Category Type">
     </div> -->
-    <button class="btn btn-primary" [routerLink]="'/newSlaMaster'" style="margin-left:92%;margin-top:-5%;width:7%;">New</button>
+      <button class="btn btn-primary" [routerLink]="'/newSlaMaster'">New</button>
 
-    <div class="border-rfc-heading">
-      <div class="table-wrapper" style="overflow-x: auto">
-        <table class="fl-table" style="width: 100%;">
-          <thead class="table-head">
-            <tr class="border-bottom">
-              <th>SLA ID</th>
-              <th>Category</th>
-              <th>Sub Category</th>
-              <th>Classification</th>
-              <th>AssignTo</th>
-              <th>Weight Time(Hr's)</th>
-              <th>Escalation1</th>
-              <th>Weight Time(Hr's)</th>
-              <th>Escalation2</th>
-              <th>Weight Time(Hr's)</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of slaList;" class="tr-body">
-              <td>{{ item.itslaid }}</td>
-              <td>{{ item.categoryName }}</td>
-              <td>{{ item.categoryType }}</td>
-              <td>{{ item.classificationName }}</td>
-              <td>{{ item.assignedEmployee }}</td>
-              <td>{{ item.waitTime }}</td>
-              <td>{{ item.escalation1Name }}</td>
-              <td>{{ item.waitTimeEscal1 }}</td>
-              <td>{{ item.escalation2 }}</td>
-              <td>{{ item.escalation2Name }}</td>
-              <td>
-                  <i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true" 
-                  [routerLink]="'/updateSlaMaster'" [queryParams]="{ id: item.itslaid }"></i>&nbsp;&nbsp;
-                <i class="fa fa-trash cursor-pointer" aria-hidden="true"
-                (click)="deleteSLA(item.itslaid)"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="border-rfc-heading">
+        <div class="table-wrapper" style="overflow-x: auto">
+          <table class="fl-table" style="width: 100%;">
+            <thead class="table-head">
+              <tr class="border-bottom">
+                <th>SLA ID</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>Classification</th>
+                <th>AssignTo</th>
+                <th>Weight Time(Hr's)</th>
+                <th>Escalation1</th>
+                <th>Weight Time(Hr's)</th>
+                <th>Escalation2</th>
+                <th>Weight Time(Hr's)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of slaList;" class="tr-body">
+                <td>{{ item.itslaid }}</td>
+                <td>{{ item.categoryName }}</td>
+                <td>{{ item.categoryType }}</td>
+                <td>{{ item.classificationName }}</td>
+                <td>{{ item.assignedEmployee }}</td>
+                <td>{{ item.waitTime }}</td>
+                <td>{{ item.escalation1Name }}</td>
+                <td>{{ item.waitTimeEscal1 }}</td>
+                <td>{{ item.escalation2 }}</td>
+                <td>{{ item.escalation2Name }}</td>
+                <td style="display: flex;">
+                  <i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true" [routerLink]="'/updateSlaMaster'"
+                    [queryParams]="{ id: item.itslaid }"></i>&nbsp;&nbsp;
+                  <i class="fa fa-trash cursor-pointer" aria-hidden="true" (click)="deleteSLA(item.itslaid)"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

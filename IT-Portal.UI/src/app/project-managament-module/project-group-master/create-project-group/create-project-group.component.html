@@ -1,32 +1,78 @@
-<div class="container-implement">
-    <!-- <div class="notification-sucess" *ngIf="messagesuccess">
-      <p>Saved Successfully!</p>
-      <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+<!-- <div class="createprojectGroupMainDiv">
+    <div style="margin-left: 3%;">
+        <app-sidebsr></app-sidebsr>
     </div>
-    <div class="notification" *ngIf="messageerror">
-      <span class="close-btn" (click)="closeNotification()">&times;</span>
-      <p>Not Saved</p>
-    </div> -->
-    <div class="container-field-line" [formGroup]="myForm">
 
-        <h3>Project Group</h3>
-        <div class="border-rfc-heading">
-            <div class="row mt-2">
-                <div class="col">
-                    <label for="groupName" customLabelAlert="Group Name is Required">Group Name</label>
-                    <input formControlName="groupName">
-                </div>
+    <div class="container-implement">
+    
+        <div class="container-field-line" [formGroup]="myForm">
 
-                <div class="col">
-                    <label>
-                        <input type="checkbox" formControlName="active" /> Active
-                    </label>
+            <h3>Project Group</h3>
+            <div class="border-rfc-heading">
+                <div class="row mt-2">
+                    <div class="col">
+                        <label for="groupName" customLabelAlert="Group Name is Required">Group Name</label>
+                        <input formControlName="groupName">
+                    </div>
+
+                    <div class="col">
+                        <label>
+                            <input type="checkbox" formControlName="active" /> Active
+                        </label>
+                    </div>
                 </div>
             </div>
+
+        </div>
+        <Div class="mt-4">
+            <button (click)="saveSoftware()" class="btn btn-primary">Submit</button>
+            <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
+        </Div>
+    </div> -->
+
+
+
+<div class="createprojectGroupMainDiv">
+
+    <div style="margin-left: 3%;">
+        <app-sidebsr></app-sidebsr>
+    </div>
+
+    <div class="container-implement">
+
+        <!-- Heading -->
+        <h3 class="page-heading">Project Group</h3>
+
+        <div class="container-field-line" [formGroup]="myForm">
+
+            <div class="border-rfc-heading">
+                <div class="row">
+
+                    <div class="col form-group">
+                        <label for="groupName" customLabelAlert="Group Name is Required">
+                            Group Name
+                        </label>
+                        <input class="form-control-custom" formControlName="groupName">
+                    </div>
+
+                    <div class="col checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="active" />
+                            Active
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- Buttons Inside Card -->
+                <div class="btn-section">
+                    <button (click)="back()" class="btn back-btn">BACK</button>
+                    <button (click)="saveSoftware()" class="btn submit-btn">SUBMIT</button>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
-    <Div class="mt-4">
-        <button (click)="saveSoftware()" class="btn btn-primary">Submit</button>
-        <button style="margin-left: 2%;" class="btn btn-primary" (click)="back()">Back</button>
-    </Div>
+</div>

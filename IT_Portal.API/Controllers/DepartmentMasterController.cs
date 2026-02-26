@@ -18,7 +18,7 @@ namespace IT_Portal.API.Controllers
         [HttpGet("GetDepartment")]
         public async Task<IActionResult> GetDepartmentMaster()
         {
-            var data = await _context.VwDepartmentMasters.ToListAsync();
+            var data = await _context.DepartmentMasters.ToListAsync();
             return Ok(data);
         }
     }

@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwSystemlandscape
 {
@@ -14,13 +17,13 @@ public partial class VwSystemlandscape
 
     public string? ClassificationName { get; set; }
 
-    public string? SysLandscape { get; set; }
+    public string SysLandscape { get; set; } = null!;
 
     public int? PriorityNum { get; set; }
 
     public string? PriorityName { get; set; }
 
-    public bool? IsActive { get; set; }
+    public bool IsActive { get; set; }
 
     public int CreatedBy { get; set; }
 

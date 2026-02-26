@@ -1,18 +1,28 @@
-h1{
-    text-align:center;
-    margin-top:10px;
+.container-home {
+  background: white;
+  width: 95%;
+  padding: 0%;
+  margin-left: 35px;
+  border-radius: 40px;
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
 }
 
 .subHeadingCss {
-    margin-left:3%;
+  margin-left: 3%;
 }
 
 .issuesubmitbtns {
-    margin:20px  10px;
+  margin: 20px 10px;
 
 }
 
-.report_resolution, .row {
+.report_resolution,
+.row {
   margin-left: 10px;
 }
 
@@ -24,7 +34,7 @@ h1{
 
 .textarea-implement {
   margin-left: 1px;
-  width:100%;
+  width: 100%;
 }
 
 .report_attachment {
@@ -34,7 +44,7 @@ h1{
 }
 
 .forwardto {
-    margin:5px;
+  margin: 5px;
 }
 
 .card {
@@ -65,11 +75,11 @@ h1{
   overflow: hidden;
 }
 
-  .panel-content.open {
-    display: block;
-    padding:10px;
-    animation: slideDown 0.5s ease;
-  }
+.panel-content.open {
+  display: block;
+  padding: 10px;
+  animation: slideDown 0.5s ease;
+}
 
 @keyframes slideDown {
   0% {
@@ -143,18 +153,20 @@ h1{
   margin-left: calc(-10% + 6rem)
 }
 
-.pageHeadingCss{
-    margin: 0 auto !important;
+.pageHeadingCss {
+  margin: 0 auto !important;
 }
 
 .containerClass {
   margin: 0 auto !important;
   overflow: hidden;
   position: relative;
+  padding: 40px;
+
 }
 
 .topDatas {
-  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #67b1db;
   padding: 10px;
@@ -164,7 +176,7 @@ h1{
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
   padding: 10px;
-  margin-right:0;
+  margin-right: 0;
 }
 
 .commentClass {
@@ -173,7 +185,7 @@ h1{
   border: 1px solid white;
   padding: 5px;
   border-radius: 3px;
-  display:flex;
+  display: flex;
 }
 
 .btnsTop {
@@ -185,7 +197,7 @@ h1{
   font-size: 14px;
   height: auto;
   letter-spacing: 0.5px;
-  margin-left:5px;
+  margin-left: 5px;
 }
 
 .MainCont {
@@ -211,20 +223,20 @@ h1{
   max-height: 0;
 }
 
-  .updatesidebar.show {
-    flex: 0 0 25%;
-    height: max-content;
-    max-height: 795px;
-  }
-
-.main-content.full-width {
-  margin-right:0;
+.updatesidebar.show {
+  flex: 0 0 25%;
+  height: max-content;
+  max-height: 795px;
 }
 
-.insidesecondtopDatas{
-    margin-top:1%;
-    display:flex;
-    align-items:center;
+.main-content.full-width {
+  margin-right: 0;
+}
+
+.insidesecondtopDatas {
+  margin-top: 1%;
+  display: flex;
+  align-items: center;
 }
 
 .insidesecondtopDatas2 {
@@ -265,13 +277,13 @@ h1{
   cursor: pointer;
 }
 
-.inside_card{
-    width:100%;
-    margin-left:0;
+.inside_card {
+  width: 100%;
+  margin-left: 0;
 }
 
 .onHold {
-    margin:7px;
+  margin: 7px;
 }
 
 

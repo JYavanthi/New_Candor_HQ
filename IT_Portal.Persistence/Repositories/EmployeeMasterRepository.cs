@@ -1,6 +1,6 @@
 ﻿using IT_Portal.Application.Contracts.Persistence;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace IT_Portal.Persistence.Repositories
@@ -16,7 +16,7 @@ namespace IT_Portal.Persistence.Repositories
 
         public async Task<IEnumerable<object>> Getemplaoyedata()
         {
-            var users = await _context.EmployeeMasters.OrderBy(u => u.EmployeeId).Select(u => new EmployeeMaster { EmployeeId = u.EmployeeId, FirstName = u.FirstName }).Take(100).ToListAsync();
+            var users = await _context.Employees.OrderBy(u => u.EmployeeId).Select(u => new Employee { EmployeeId = u.EmployeeId, FirstName = u.FirstName }).Take(100).ToListAsync();
             return users.Select(u => new Dictionary<string, object>
             { { "EmployeeId", u.EmployeeId },
             { "FirstName", u.FirstName }

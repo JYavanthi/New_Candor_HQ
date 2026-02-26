@@ -1,3 +1,11 @@
+/* .projectMastermainDiv {
+  background: white;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;
@@ -10,12 +18,12 @@
 }
 
 .container-implement {
-  width: 90%;
+  width: 80%;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
-  margin-left: 8%;
+  margin-left: 5%;
 }
 
 .table-wrapper {
@@ -40,10 +48,7 @@
 .form-control {
   border: none;
   border-bottom: 1px solid black;
-  /* Add underline style */
   outline: none;
-  /* Removes the default focus outline */
-
   padding-left: 2%;
 }
 
@@ -51,6 +56,156 @@
   font-family: FontAwesome;
 }
 
-.fa-pencil-square-o, .fa-trash{
+.fa-pencil-square-o,
+.fa-trash {
   cursor: pointer;
+} */
+
+
+/* Page Background */
+.projectMastermainDiv {
+  background-color: white;
+  width: 95%;
+  min-height: 100vh;
+  display: flex;
+  padding: 20px;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
+/* Content Area */
+.contentSection {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* Header */
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #5aa6d6;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f07f2f;
+  letter-spacing: 1px;
+}
+
+/* Search Box */
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: #e8f3f8;
+  padding: 6px 12px;
+  border-radius: 10px;
+  width: 280px;
+}
+
+.searchBox i {
+  color: #3e8cb9;
+  margin-right: 8px;
+}
+
+.searchBox input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+/* NEW Button */
+.newBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0a8f8f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newBtn i {
+  font-size: 18px;
+}
+
+/* Table Card */
+.tableCard {
+  background: #f2efe9;
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid #e0cfc2;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  color: #008c9e;
+  font-weight: 600;
+  border-bottom: 2px solid #1fa3b5;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e6d8cc;
+}
+
+/* Blue Text */
+.blueText {
+  color: #2a74d6;
+  font-weight: 600;
+}
+
+/* Status */
+.active {
+  color: #2eaf4a;
+  font-weight: 600;
+}
+
+.inactive {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Actions */
+.actionCell {
+  text-align: center;
+}
+
+.editIcon,
+.deleteIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.editIcon {
+  background-color: #0f9d9d;
+  color: white;
+}
+
+.deleteIcon {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* No Data */
+.noData {
+  text-align: center;
+  padding: 20px;
+  color: #3e8cb9;
 }

@@ -41,6 +41,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CdkDrag, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { FilterPipe } from './filter.pipe';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SidebrservicemoduleComponent } from './sidebrservicemodule/sidebrservicemodule.component';
 // import { SoftwareComponent } from './software/softwar e.component';
 
 
@@ -76,6 +77,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ChatBoxComponent,
     SrAttachMentComponent,
     FilterPipe,
+    SidebrservicemoduleComponent,
     // SoftwareComponent
   ],
   imports: [

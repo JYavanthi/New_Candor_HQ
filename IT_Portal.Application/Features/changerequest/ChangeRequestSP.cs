@@ -8,7 +8,7 @@
 
         public int SupportId { get; set; }
 
-        public int ClassifcationId { get; set; }
+        public int ClassificationId { get; set; }
 
         public int CategoryId { get; set; }
 

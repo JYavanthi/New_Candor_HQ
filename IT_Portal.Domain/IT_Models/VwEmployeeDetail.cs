@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwEmployeeDetail
 {
@@ -12,14 +15,6 @@ public partial class VwEmployeeDetail
 
     public string? LastName { get; set; }
 
-    public string? TelephoneNo { get; set; }
-
-    public string? MobileNo { get; set; }
-
-    public string? OfficialEmailId { get; set; }
-
-    public string? Department { get; set; }
-
     public DateTime DateOfJoining { get; set; }
 
     public int DesignationId { get; set; }
@@ -31,14 +26,6 @@ public partial class VwEmployeeDetail
     public DateTime? DateOfBirth { get; set; }
 
     public int ReportingManagerId { get; set; }
-
-    public string? ReportManagerName { get; set; }
-
-    public string? PayGroup { get; set; }
-
-    public string? Role { get; set; }
-
-    public string? StaffCategory { get; set; }
 
     public string? Plantcode { get; set; }
 }

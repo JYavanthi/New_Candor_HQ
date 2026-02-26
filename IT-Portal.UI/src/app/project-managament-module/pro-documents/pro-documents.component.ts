@@ -32,6 +32,7 @@ export class ProDocumentsComponent {
   ngOnInit(): void {
     this.getFileData()
   }
+  
   getattach(event: any): void {
     this.selectedFiles = event.target.files[0];
     if (this.selectedFiles?.type != "application/pdf" && this.selectedFiles?.type != "image/jpg" && this.selectedFiles?.type != "image/jpeg"

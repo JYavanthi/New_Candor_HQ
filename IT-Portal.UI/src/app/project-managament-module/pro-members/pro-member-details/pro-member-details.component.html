@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="inputFields">
             <div style="position: relative;">
               <label for="inputEmployeeId" class="asteriskrequired">Employee ID</label>
@@ -38,16 +38,55 @@
             <div>
               <label for="department" customLabelAlert="Department is Required">Used in which
                 department?</label>
-              <!-- <select   formControlName="department"  name="type" id="department">
-                <option *ngFor="let item of ASCI"  value=""> {{item}}</option>
-              </select> -->
               <ng-multiselect-dropdown formControlName="department" name="department"
                 [disabled]="membersForm.controls['department'].disabled" [settings]="dropdownDepartmentSettings"
                 [data]="dropdownListDepartment">
               </ng-multiselect-dropdown>
             </div>
           </div>
+        </div> -->
+
+        <div class="project-form-grid">
+
+          <div class="form-field">
+            <label class="asteriskrequired">Employee ID</label>
+            <input type="text" formControlName="inputEmployeeId" placeholder="Enter Employee ID" (input)="filterItem()"
+              (keyup.backspace)="clear()" />
+
+            <ul class="dropdowns-list" *ngIf="employeeList.length > 0">
+              <li class="drop-list" *ngFor="let item of employeeList" (click)="selectItem(item)">
+                {{ item.employeeId }} - {{ item.employeeName }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="form-field">
+            <label class="asteriskrequired">Participants and Followers</label>
+            <select formControlName="participants">
+              <option value="" hidden>Select Participants</option>
+              <option>Project Participant</option>
+              <option>Project Follower</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label class="asteriskrequired">Type</label>
+            <select formControlName="type">
+              <option value="" hidden>Select Type</option>
+              <option>Internal</option>
+              <option>External</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Used in which department?</label>
+            <ng-multiselect-dropdown formControlName="department" [settings]="dropdownDepartmentSettings"
+              [data]="dropdownListDepartment" style="background-color: #6aa9ff; border-radius: 5px; border: 2.5px solid #b8d4f3;">
+            </ng-multiselect-dropdown>
+          </div>
+
         </div>
+
 
         <div class="row">
           <div class="inputFields">
@@ -103,7 +142,7 @@
 
         <div class="mainBtnsDiv" *ngIf="!memberId">
           <button class="actionBtn" (click)="submitMember()">Submit</button>
-          <button class="actionBtn" (click)="clearForm()">Clear</button>
+          <button class="actionBtn" (click)="clearForm()" style="background-color: #ff2e5a">Clear</button>
         </div>
 
       </div>

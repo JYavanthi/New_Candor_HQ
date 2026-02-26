@@ -30,7 +30,7 @@ export class SpareMasterComponent {
   isAssetActive = 'S';
   isVisible: boolean = false;
   paginatedData: any
-  formFilteredList: any=[];
+  formFilteredList: any = [];
   paginatedTableData: any
   pageSize = 10
   pageIndex = 0
@@ -39,7 +39,7 @@ export class SpareMasterComponent {
   assign: any = '';
   reAssign: any = '';
   assignToList: any;
-  reAssignToList : any;
+  reAssignToList: any;
   disableAssign: boolean = true;
   user: any
   asetListShow: any;
@@ -110,7 +110,7 @@ export class SpareMasterComponent {
   }
 
   navigateToBack() {
-   this.route.navigate(['/assets/viewassets'])
+    this.route.navigate(['/assets/viewassets'])
   }
 
 
@@ -178,7 +178,7 @@ export class SpareMasterComponent {
 
 
   delete(srId: any) {
-    this.httpSer.httpGet('/ITSpareRequest/deleteSpareById', { ID:  srId}).subscribe((res: any) => {
+    this.httpSer.httpGet('/ITSpareRequest/deleteSpareById', { ID: srId }).subscribe((res: any) => {
       alert('Service Deleted Successfully.')
       this.spareList = this.spareList.filter((m: any) => m.itspareId != srId)
       this.toggleMyServiceTable(this.isAssetActive)
@@ -199,7 +199,7 @@ export class SpareMasterComponent {
 
   onButtonClick(event: MouseEvent, visible: string) {
     event.stopPropagation();
-    if (visible == 'true'  || visible == 'reAssign') {
+    if (visible == 'true' || visible == 'reAssign') {
       if (visible == 'true') {
         this.assignToDropDown = !this.assignToDropDown
       }
@@ -212,7 +212,7 @@ export class SpareMasterComponent {
         this.httpSer.httpGet('/SupportTeam').subscribe((response: any) => {
           let a = response.filter((m: any) => m.supportId == 9 || m.isSuperAdmin)
           this.assignToList = a.filter((m: any, i: any) => a.map((x: any) => x.empId).indexOf(m.empId) == i);
-          this.reAssignToList =  this.assignToList.filter((a: any)=> !this.selectedRow.some( (b: any)=> b.assignedTo == a.empId))
+          this.reAssignToList = this.assignToList.filter((a: any) => !this.selectedRow.some((b: any) => b.assignedTo == a.empId))
         })
       }
     }
@@ -232,7 +232,7 @@ export class SpareMasterComponent {
   assignSubmit() {
     if (this.selectedRow.length === 0) {
       alert('No items selected for resolution.');
-      return  Promise.resolve();
+      return Promise.resolve();
     }
     const apiPromises: any = [];
 
@@ -298,14 +298,14 @@ export class SpareMasterComponent {
     }
 
     const enableReAssign = this.selectedRow.filter(m => m.status?.trim() == "Pending Approval" || m.status?.trim() == "Draft" ||
-    m.status?.trim() == "Rejected" || m.status?.trim() == "Resolved" || m.status?.trim() == "Approved" ||
-    m.status?.trim() == "Approval not required" || m.status?.trim() == "Pending HOD Approval").length == 0
-  if (this.selectedRow.length > 0 && Array.from(new Set(this.selectedRow.map(m => m.supportId))).length == 1 &&
-    this.selectedRow.every(m => m.assignedTo != 0) && enableReAssign) {
-    this.disableReAssign = false;
-  } else {
-    this.disableReAssign = true;
-  }
+      m.status?.trim() == "Rejected" || m.status?.trim() == "Resolved" || m.status?.trim() == "Approved" ||
+      m.status?.trim() == "Approval not required" || m.status?.trim() == "Pending HOD Approval").length == 0
+    if (this.selectedRow.length > 0 && Array.from(new Set(this.selectedRow.map(m => m.supportId))).length == 1 &&
+      this.selectedRow.every(m => m.assignedTo != 0) && enableReAssign) {
+      this.disableReAssign = false;
+    } else {
+      this.disableReAssign = true;
+    }
   }
 
   navigateToEdit(spareID: any) {

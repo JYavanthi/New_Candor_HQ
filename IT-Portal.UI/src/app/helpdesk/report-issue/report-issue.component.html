@@ -1,22 +1,42 @@
-''
-
 <div class="container-home">
 
-  <div class="text-center pageHeadingCss">
-    <p class="pageHeadingparaCss">Issue Management</p>
+  <div style="margin-left: 15px;">
+    <app-sidebarissue></app-sidebarissue>
   </div>
+
+  <!-- <div class="text-center pageHeadingCss1 " style="margin-left : -30%; display : flex; justify-content : center">
+    <img src="assets/image/issue_management.png" style="width: 150px; height: 95px">
+    <p class="pageHeadingparaCss1"
+      style="position: sticky; top: 0; z-index: 100; margin-left: 305%; white-space: nowrap; font-size: xx-large; font-weight: 900;">ISSUE MANAGEMENT
+    </p>
+  </div> -->
+
+
   <div class="row" align="right" *ngIf="(fromSupportTeam)&&ToggleIssueList">
     <div class="col export_pdf">
       <button class="excel_button" [routerLink]="'/reports'">View Report</button>&nbsp;&nbsp;
-      <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
-      <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+      <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o"
+          aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
+      <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
+          aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
     </div>
   </div>
 
 
   <div class="table-wrapper mt-5">
+
+    <div class="text-center pageHeadingCss1 "
+      style="margin-left: 5%; display: flex; justify-content: center; gap: 1%; border-bottom: 3px solid #3aa6b9; width: 95%; padding-right: 5%;">
+      <img src="assets/image/issue_management.png"
+        style="width: 14%; height: 50px; margin-top: -2px; padding-left: 8%;">
+      <p class="pageHeadingparaCss1"
+        style="position: sticky; top: 0; z-index: 100; white-space: nowrap; font-size: xx-large; font-weight: 900;">
+        ISSUE MANAGEMENT
+      </p>
+    </div>
+
     <div class="row">
-      <div class="col-md-12" style="display:flex;justify-content:space-between">
+      <div class="col-md-12" style="padding-top: 5%">
 
         <div class="col-md-4">
 
@@ -24,55 +44,68 @@
             <ng-container *ngIf="ShowIssueList">
               <div class="AssgnBtns">
                 <div class="issue-btn">
-                  <button class="btn-back" type="button" [disabled]="DisableAssign" (click)="AssignTo('Assign')">Assign</button>
+                  <button class="btn-back" type="button" [disabled]="DisableAssign"
+                    (click)="AssignTo('Assign')">Assign</button>
                 </div>
                 <div class="issue-btn">
-                  <button class="btn-back" type="button" [disabled]="DisableForward" (click)="AssignTo('Open')">Re-Assign</button>
+                  <button class="btn-back" type="button" [disabled]="DisableForward"
+                    (click)="AssignTo('Open')">Re-Assign</button>
                 </div>
                 <div class="issue-btn">
-                  <button class="btn-back" type="button" [disabled]="DisableResolve" (click)="Resolve()">Resolved</button>
+                  <button class="btn-back" type="button" [disabled]="DisableResolve"
+                    (click)="Resolve()">Resolved</button>
                 </div>
               </div>
             </ng-container>
           </ng-container>
         </div>
 
-        <div class="col-md-4" style="display: flex !important; justify-content: center !important;"
-             *ngIf="(fromSupportTeam)">
-          <!--<p class="tableHClass">{{MyIssues}}</p>-->
-          <div class="toggle-wrapper">
-            <button class="toggle-button" [ngClass]="{ 'active': isMyIssuesActive }" (click)="toggleMyIssues()">
+        <div class="toggle-container" *ngIf="!fromSupportTeam">
+          <div class="custom-toggle">
+
+            <button class="toggle-btn open" [ngClass]="{ 'active-open': isOpenIssues }" (click)="openIssue()">
+
+              <i class="fa-solid fa-door-open"></i>
+              OPEN
+            </button>
+
+
+            <button class="toggle-btn closed" [ngClass]="{ 'active-closed': !isOpenIssues }" (click)="closeIssue()">
+
+              <i class="fa-solid fa-door-closed" style="margin-right: 6px;"></i>
+              CLOSED
+            </button>
+
+          </div>
+        </div>
+
+
+        <div class="toggle-container" *ngIf="fromSupportTeam">
+          <div class="custom-toggle">
+
+            <button class="toggle-btn open" [ngClass]="{ 'active-open': isMyIssuesActive }" (click)="toggleMyIssues()">
               ISSUE LIST
             </button>
-            <button class="toggle-button" [ngClass]="{ 'active': !isMyIssuesActive }" (click)="toggleMyIssuesList()">
+
+            <button class="toggle-btn closed" [ngClass]="{ 'active-closed': !isMyIssuesActive }"
+              (click)="toggleMyIssuesList()">
               MY ISSUES
             </button>
+
           </div>
         </div>
-
-        <div class="col-md-4" style="display: flex !important; justify-content: center !important;"
-             *ngIf="!fromSupportTeam">
-          <!--<p class="tableHClass">{{MyIssues}}</p>-->
-          <div class="toggle-wrapper">
-            <button class="toggle-button" [ngClass]="{ 'active': isOpenIssues }" (click)="openIssue()">
-              Open
-            </button>
-            <button class="toggle-button" [ngClass]="{ 'active': !isOpenIssues }" (click)="closeIssue()">
-              Closed
-            </button>
-          </div>
-
-
-        </div>
-
 
 
         <div class="col-md-4">
           <div class="row">
-            <div class="col-md-12" style="display: flex; justify-content: flex-end;">
-              <span class="filterIconClass" (click)="toggleVisibility()"><i class="fa fa-filter" aria-hidden="true"></i></span>
+            <div class="col-md-12">
+              <span class="filterIconClass" (click)="toggleVisibility()"><i class="fa-sharp fa-solid fa-filter"
+                  style="font-size: xx-large;"></i></span>
               &nbsp;
-              <button class="button-approve" style="margin-top:0;" [routerLink]="['/issue_new_issue']"><i style="font-size:20px;vertical-align:middle" class='bx bx-plus-circle'></i> New Issue</button>
+              <button class="button-approve" style="margin-top:0; border-radius: 20px; width: 45%; color: #2aa3ad"
+                [routerLink]="['/issue_new_issue']"><i
+                  style="font-size:20px;vertical-align:middle; background-color: #f75b72; border-radius: 100px; color: white; margin-left: -30px;"
+                  class='bx bx-plus-circle'></i> &nbsp;&nbsp; New Issue</button>
             </div>
           </div>
         </div>
@@ -85,26 +118,23 @@
           <div class="col">
             <label>Plant</label><br />
             <div>
-              <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings"
-                                       [data]="dropdownList"
-                                       formControlName="plantId"
-                                       (ngModelChange)="mapedplantdatas()">
+              <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings" [data]="dropdownList"
+                formControlName="plantId" (ngModelChange)="mapedplantdatas()">
               </ng-multiselect-dropdown>
             </div>
           </div>
           <div class="col">
             <label>Service Category</label><br />
-            <ng-multiselect-dropdown [settings]="dropdownSettings"
-                                     [data]="dropdowncategroy"
-                                     formControlName="Category"
-                                     (ngModelChange)="mapedcategoryatas($event)">
+            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdowncategroy" formControlName="Category"
+              (ngModelChange)="mapedcategoryatas($event)">
             </ng-multiselect-dropdown>
           </div>
           <div class="col">
             <label>Sub-Category</label><br />
             <select class="input-change" formControlName="subCategory">
               <option selected disabled hidden value="">Select Sub-Category</option>
-              <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">{{valueCtype.categoryType}}</option>
+              <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">
+                {{valueCtype.categoryType}}</option>
             </select>
           </div>
           <div class="col">
@@ -116,116 +146,152 @@
           </div>
           <div class="col">
             <label>Start Date:</label><br />
-            <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" [max]="currentDate" required formControlName="StartDate" />
+            <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" [max]="currentDate" required
+              formControlName="StartDate" />
           </div>
           <div class="col">
             <label>End Date:</label><br />
-            <input class="input-change cr_date" type="date" id="toDate" name="toDate" [min]="this.filterForm.value['StartDate']" [max]="currentDate" required formControlName="EndDate"/>
+            <input class="input-change cr_date" type="date" id="toDate" name="toDate"
+              [min]="this.filterForm.value['StartDate']" [max]="currentDate" required formControlName="EndDate" />
           </div>
           <div class="col">
             <label>Status</label><br />
             <select class="input-change" formControlName="Status">
-              <option selected disabled hidden value="">Select Status</option>
-              <option value="">All</option>
-              <option>Draft</option>
-              <option>Open</option>
-              <option>In Progress</option>
-              <option>Seek Clarification</option>
-              <option>On Hold</option>
-              <option>Cancelled</option>
-              <option>Resolved</option>
-              <option>Closed</option>
+              <option disabled hidden value="">Select Status</option>
+              <option value="All">All</option>
+              <option value="Draft">Draft</option>
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Seek Clarification">Seek Clarification</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
             </select>
+
           </div>
         </div>
         <div class="access-checkbox">
-          <div>
-            <button class="btn btn-rounded filter_button" (click)="onclickfilter()">Filter</button>&nbsp;&nbsp;&nbsp;
-          </div>
-          <div>
-            <button (click)="resetfn()" type="reset" class="btn btn-rounded filter_button">Reset</button>&nbsp;&nbsp;&nbsp;
-          </div>
+          <button class="btn btn-rounded filter_button" (click)="onclickfilter()">Filter</button>&nbsp;&nbsp;&nbsp;
+          <button (click)="resetfn()" type="reset"
+            class="btn btn-rounded filter_button">Reset</button>&nbsp;&nbsp;&nbsp;
         </div>
       </div>
     </div>
     <br />
 
     <ng-container *ngIf="ShowMyIssue">
-      <table class="fl-table">
-        <thead class="table-head">
-          <tr class="border-bottom">
-            <!--<th>Select</th>-->
-            <th>Action</th>
-            <th>Issue Code</th>
-            <th>Raised On</th>
-            <th>Requested By</th>
-            <th>Requested For</th>
-            <th>Status</th>
-            <th>Service Category</th>
-            <th>Sub-Category</th>
-            <th>Priority</th>
-            <th>Assigned By</th>
-            <th>Assign To</th>
-            <th>Resolution</th>
-            <!-- <th>Task Health</th> -->
 
-          </tr>
-        </thead>
-        <tbody *ngIf="paginatedTableData.length > 0; else noData">
-          <tr class="tr-body" *ngFor="let row of paginatedTableData;let i=index;">
-            <td>
-              <div class="icon-container">
-                <i class="fa fa-pencil-square-o" (click)="OnEdit(i)" ></i>
-                <i *ngIf="row.status?.trim() == 'Draft'" (click)="OnDelete(i)" class="fa fa-close"></i>
-              </div>
-            </td>
-            <td>{{row.issueCode}}</td>
-            <td>{{row.issueDate | date:'dd-MM-yyyy'}}</td>
-            <td style="white-space:pre-line">{{row.issuerisedby}}</td>
-            <td style="white-space:pre-line" *ngIf="row.issueSelectedfor != 'guest' && row.issueSelectedfor != 'self' ; else ShowIssueRaised">{{row.issuerisedfor}}</td>
-            <ng-template #ShowIssueRaised>
-              <td>{{row.issueSelectedfor == 'guest'?row.guestName:'Self'}}</td>
-            </ng-template>
-            <td>{{row.status+' ' +(row.status=='On Hold'?row.onHoldReason:'')}}</td>
-            <td>{{row.categoryName}}</td>
-            <td>{{row.categoryType}}</td>
-            <td>{{row.priorityName}}</td>
-            <td *ngIf="row.assignedBy != 0; else ShowAssignedTo" style="white-space:pre-line">{{row.assignedBy}}</td>
-            <td *ngIf="row.assignedTo != 0; else ShowAssignedTo">{{row.assignedTo}}</td>
-            <ng-template #ShowAssignedTo>
-              <td style="color:red;">{{OrAssignTo}}</td>
-            </ng-template>
-            <td class="resolution-cell" title="{{row.resolutionRemarks}}">{{row.resolutionRemarks}}</td>
-            <!-- <td [style]="(row.slastatus == 'R') ? 'color:red':((row.slastatus == 'Y')  ? 'color:yellow':'color:green') ">
-              <i class='bx bxs-circle'></i>
-            </td> -->
-          </tr>
-        </tbody>
-        <ng-template #noData>
-          <tr>
-            <td colspan="13">There are no Issues</td>
-          </tr>
-        </ng-template>
-      </table>
+      <div class="issue-table-wrapper">
 
-      <div class="mb-5">
-        <div *ngIf=" paginatedTableData.length > 0">
-          <mat-paginator [length]="totalItems"
-                         [pageSize]="pageSize"
-                         [pageIndex]="pageIndex"
-                         [pageSizeOptions]="[10, 25, 50, 100]"
-                         (page)="onPageChange($event)"
-                         aria-label="Select page" style="margin-right:34%">
-          </mat-paginator>
-        </div>
+        <table class="issue-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Issue Code</th>
+              <th>Raised On</th>
+              <th>Requested By</th>
+              <th>Requested For</th>
+              <th>Status</th>
+              <th>Service Category</th>
+              <th>Sub-Category</th>
+              <th>Priority</th>
+              <th>Assigned By</th>
+              <th>Assign To</th>
+              <th>Resolution</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="paginatedTableData.length > 0; else noData">
+
+            <tr *ngFor="let row of paginatedTableData; let i = index">
+
+              <td>
+                <div class="action-icons">
+                  <i class="fa-solid fa-user-pen" (click)="OnEdit(i)"></i>
+                  <i *ngIf="row.status?.trim() == 'Draft'" class="fa fa-close delete-icon" (click)="OnDelete(i)">
+                  </i>
+                </div>
+              </td>
+
+              <td>{{row.issueCode}}</td>
+              <td>{{row.issueDate | date:'dd-MM-yyyy'}}</td>
+
+              <td class="wrap-text">{{row.issuerisedby}}</td>
+
+              <td class="wrap-text"
+                *ngIf="row.issueSelectedfor != 'guest' && row.issueSelectedfor != 'self'; else ShowIssueRaised">
+                {{row.issuerisedfor}}
+              </td>
+
+              <ng-template #ShowIssueRaised>
+                <td>{{row.issueSelectedfor == 'guest' ? row.guestName : 'Self'}}</td>
+              </ng-template>
+
+              <td>
+                <span class="status-badge" [ngClass]="{
+    'status-open': row.status?.trim() === 'Open',
+    'status-progress': row.status?.trim() === 'In Progress',
+    'status-resolved': row.status?.trim() === 'Resolved',
+    'status-cancelled': row.status?.trim() === 'Cancelled',
+    'status-draft': row.status?.trim() === 'Draft',
+    'status-seekClarification': row.status?.trim() === 'Seek Clarification',
+    'status-onHold': row.status?.trim() === 'On Hold',
+    'status-all': row.status?.trim() === 'All',
+    'status-closed': row.status?.trim() === 'Closed'
+  }">
+                  {{row.status}}
+                </span>
+
+              </td>
+
+              <td>{{row.categoryName}}</td>
+              <td>{{row.categoryType}}</td>
+              <td>{{row.priorityName}}</td>
+
+              <td *ngIf="row.assignedBy != 0; else ShowAssignedTo" class="wrap-text">
+                {{row.assignedBy}}
+              </td>
+
+              <td *ngIf="row.assignedTo != 0; else ShowAssignedTo">
+                {{row.assignedTo}}
+              </td>
+
+              <ng-template #ShowAssignedTo>
+                <td class="not-assigned">{{OrAssignTo}}</td>
+              </ng-template>
+
+              <td class="resolution" [title]="row.resolutionRemarks">
+                {{row.resolutionRemarks}}
+              </td>
+
+            </tr>
+
+          </tbody>
+
+          <ng-template #noData>
+            <tr>
+              <td colspan="12" class="no-data">
+                There are no Issues
+              </td>
+            </tr>
+          </ng-template>
+
+        </table>
+
       </div>
+
+      <div class="paginator-wrapper" *ngIf="paginatedTableData.length > 0">
+        <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+
     </ng-container>
+
 
   </div>
 
-
-
-  <!-------------------------Issue List for Support Engineer/Admin- start--------------------------------->
   <ng-container *ngIf="ToggleIssueList">
     <div class="IssueList" *ngIf="ShowIssueList">
       <div class="forwardto" [hidden]="!ShowAssignTo">
@@ -246,19 +312,18 @@
 
 
           <div class="col" style="display:flex; align-items:center; margin-top:22px">
-            <button class="btn-back" type="button" style="margin-left:-8px;" (click)="bulkResolution('Open')">Submit</button>&nbsp;
+            <button class="btn-back" type="button" style="margin-left:-8px;"
+              (click)="bulkResolution('Open')">Submit</button>&nbsp;
           </div>
 
-          <div class="reAssignTextbox mt-3" *ngIf="isForwardReason" >
-            <label>Re-Assign Remarks<span >*</span></label><br />
+          <div class="reAssignTextbox mt-3" *ngIf="isForwardReason">
+            <label>Re-Assign Remarks<span>*</span></label><br />
             <div>
               <textarea [(ngModel)]="BulkResolutionRemarks"></textarea>&nbsp;
             </div>
           </div>
         </div>
-        <!--<div class="remarks" [(ngModel)]="AssignRemarks">
-          <input type="text" placeholder=" remarks" />
-        </div>-->
+
       </div>
       <div class="report_description" style="width:88%; margin-left:80px;" [hidden]="!ShowResolveDescription">
         <label>Resolution Remarks<span style="color:red">*</span></label><br />
@@ -272,23 +337,15 @@
 
       <br />
       <br />
-      <!--    <div>
-        <button class="btn btn-rounded filter_button" style="margin-top:-4px; margin-left:-40px;">Assign</button>&nbsp;&nbsp;
-      </div>-->
-      <!--  <br />-->
-
 
       <div class="table-wrapper">
         <table class="fl-table" #tableRef id="excel-table">
           <thead class="table-head">
             <tr class="border-bottom">
-              <!--<th>
-                <input type="checkbox" [(ngModel)]="Allselected">Select
-              </th>-->
+
               <th>
                 <input type="checkbox" [(ngModel)]="Allselected" (change)="selectAll($event)">Select
               </th>
-              <!-- (change)="selectAll($event.target)" -->
               <th>Issue Code</th>
               <th>Raised On</th>
               <th>Requested By</th>
@@ -300,7 +357,6 @@
               <th>Assigned By</th>
               <th>Assign To</th>
               <th>Resolution</th>
-              <!-- <th>Task health</th> -->
             </tr>
           </thead>
           <tbody *ngIf="paginatedTableDataforIssue.length > 0; else noData">
@@ -311,7 +367,9 @@
               <td> <a (click)="Next(i)" style="cursor:pointer">{{row.issueCode}}</a> </td>
               <td>{{row.issueDate | date:'dd-MM-yyyy'}}</td>
               <td style="white-space:pre-line">{{row.issuerisedby}}</td>
-              <td style="white-space:pre-line" *ngIf="row.issueSelectedfor != 'guest'  && row.issueSelectedfor != 'self' ; else ShowIssueRaised">{{row.issuerisedfor}}</td>
+              <td style="white-space:pre-line"
+                *ngIf="row.issueSelectedfor != 'guest'  && row.issueSelectedfor != 'self' ; else ShowIssueRaised">
+                {{row.issuerisedfor}}</td>
               <ng-template #ShowIssueRaised>
                 <td>{{row.issueSelectedfor == 'guest'?row.guestName:"Self"}}</td>
               </ng-template>
@@ -325,9 +383,7 @@
                 <td style="color:red;">{{OrAssignTo}}</td>
               </ng-template>
               <td class="resolution-cell" title="{{row.resolutionRemarks}}">{{row.resolutionRemarks}}</td>
-              <!-- <td [style]="(row.slastatus == 'R') ? 'color:red':((row.slastatus == 'Y')  ? 'color:yellow':'color:green') ">
-                <i class='bx bxs-circle'></i>
-              </td> -->
+
             </tr>
           </tbody>
           <ng-template #noData>
@@ -339,28 +395,20 @@
 
         <div class="mb-2">
           <div *ngIf=" paginatedTableDataforIssue.length > 0">
-            <mat-paginator [length]="supportIssuetotalItems"
-                           [pageSize]="supportIssuepageSize"
-                           [pageIndex]="supportIssuepageIndex"
-                           [pageSizeOptions]="[10, 25, 50, 100]"
-                           (page)="supportIssueonPageChange($event)"
-                           aria-label="Select page" style="margin-right:34%">
+            <mat-paginator [length]="supportIssuetotalItems" [pageSize]="supportIssuepageSize"
+              [pageIndex]="supportIssuepageIndex" [pageSizeOptions]="[10, 25, 50, 100]"
+              (page)="supportIssueonPageChange($event)" aria-label="Select page" style="margin-right:34%">
             </mat-paginator>
           </div>
         </div>
 
-        <!--<div class="row text-center">
-          <div class="col">
-            <button class="button-clarification" [disabled]="ClickUpdate">Update</button>
-          </div>
-        </div>-->
+
 
       </div>
     </div>
 
- </ng-container>
+  </ng-container>
 </div>
-<!-------------------------Issue List for Support Engineer- end--------------------------------->
 
 
 <div class="notification-confirm" *ngIf="deleteconfirmation">

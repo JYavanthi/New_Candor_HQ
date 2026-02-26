@@ -188,8 +188,8 @@ export class ChangeRequestComponent {
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.dropdownList = data.map(item => ({
-          item_id: item.id,
-          item_text: item.code
+          item_id: item.plantId,
+          item_text: item.plantCode
         }));
       },
       (error) => {

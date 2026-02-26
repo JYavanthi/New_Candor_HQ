@@ -1,22 +1,18 @@
-/* The entire scrollbar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-/* The draggable part of the scrollbar */
 ::-webkit-scrollbar-thumb {
   background: darkgray;
   border-radius: 10px;
 }
 
-/* The scrollbar track */
 ::-webkit-scrollbar-track {
   background: #e0e0e0;
   border-radius: 10px;
 }
 
-/* Hover effect for the thumb */
 ::-webkit-scrollbar-thumb:hover {
   background: darkgray;
 }
@@ -74,7 +70,6 @@ select {
 }
 
 .br-top-blue {
-  /* border-top: 6px solid #113bf7; */
   margin-top: 5px;
 }
 
@@ -262,8 +257,6 @@ label.asteriskrequired::after {
 }
 
 .viewAssetModules {
-  /* display: grid;
-    grid-template-columns: repeat(8, 1fr); */
   width: 100%;
   gap: 20px;
   text-align: center;
@@ -292,12 +285,9 @@ label.asteriskrequired::after {
 .assetModules {
   display: flex;
   justify-content: center;
-  /* grid-template-columns: repeat(8, 1fr); */
   width: 100%;
   gap: 20px;
   text-align: center;
-  /* justify-content: center;
-  display: flex; */
 }
 
 .assetModuleCard {
@@ -310,14 +300,13 @@ label.asteriskrequired::after {
   padding: 15px;
   background-color: white;
   height: 120px;
-  /* height: calc(10vh + 20px); */
   width: 120px;
   cursor: pointer;
 }
 
 .assetModuleCard:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  border: none;
+  border: none;..
   transition: box-shadow 0.3s ease, color 0.3s ease;
 }
 
@@ -327,4 +316,4 @@ label.asteriskrequired::after {
 
 .assetIconTitle {
   font-size: 16px;
-}
+} */

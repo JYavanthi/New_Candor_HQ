@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using IT_Portal.Application.Contracts.Persistence;
-using IT_Portal.Domain.IT_Models;
 using IT_Portal.Persistence.DatabaseContext;
+using IT_Portal.Persistence.IT_Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace IT_Portal.Persistence.Repositories

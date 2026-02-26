@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwProjectMember
 {
@@ -27,10 +30,4 @@ public partial class VwProjectMember
     public int? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDt { get; set; }
-
-    public string MemberName { get; set; } = null!;
-
-    public string? Department { get; set; }
-
-    public string? Designation { get; set; }
 }

@@ -1,8 +1,9 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
+// import { environment } from '/IT_Portal/IT-Portal/IT-Portal.UI/src/environments/environment'
 import { PasscrdataService } from '../passcrdata.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-history',

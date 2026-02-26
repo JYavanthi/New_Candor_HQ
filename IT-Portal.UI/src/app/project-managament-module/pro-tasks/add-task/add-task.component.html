@@ -7,12 +7,12 @@
           <div class="inputFields">
 
             <div>
-              <label class="asteriskrequired" for="taskTitle">Task Title</label>
+              <label class="asteriskrequired" for="taskTitle" style="color: #15455c; font-size: larger;">Task Title</label>
               <input type="text" formControlName="taskTitle" name="taskTitle" id="taskTitle" />
             </div>
 
             <div>
-              <label class="asteriskrequired" for="milestone">Milestone</label>
+              <label class="asteriskrequired" for="milestone" style="color: #15455c; font-size: larger;">Milestone</label>
               <select formControlName="milestone" name="milestone" id="milestone" (change)="onMilestoneChange()"
                 (change)="getmilestonetask($event)">
                 <option value="" selected hidden disabled>Select Milestone...</option>
@@ -23,7 +23,7 @@
             </div>
 
             <div>
-              <label class="asteriskrequired" for="ProjectPhase">Project phase</label>
+              <label class="asteriskrequired" for="ProjectPhase" style="color: #15455c; font-size: larger;">Project phase</label>
               <select formControlName="ProjectPhase" name="ProjectPhase" id="ProjectPhase">
                 <option value="" selected disabled hidden>Select Project phase...</option>
                 <option value="Initiation Phase">Initiation Phase</option>
@@ -35,7 +35,7 @@
             </div>
 
             <div>
-              <label class="asteriskrequired" for="isThisSubtask" customLabelAlert="Confirm Subtask">Is This
+              <label class="asteriskrequired" for="isThisSubtask" customLabelAlert="Confirm Subtask" style="color: #15455c; font-size: larger;">Is This
                 Subtask</label>
               <select formControlName="isThisSubtask" name="isThisSubtask" id="isThisSubtask">
                 <option disabled value="" selected hidden>Select Yes/No...</option>
@@ -45,24 +45,24 @@
             </div>
 
             <div [hidden]="!this.taskForm.get('isThisSubtask')?.value">
-              <label for="parentTask">Parent Task</label>
+              <label for="parentTask" style="color: #15455c; font-size: larger;">Parent Task</label>
               <select formControlName="parentTask" name="parentTask" id="parentTask" (change)="changeParenttask()">
                 <option value="" selected hidden disabled>Select Parent Task...</option>
                 <option *ngFor="let task of tasklist" [value]="task.taskId">{{ task.taskTitle }}</option>
               </select>
             </div>
             <div>
-              <label for="plannedCost">Planned Cost</label>
+              <label for="plannedCost" style="color: #15455c; font-size: larger;">Planned Cost</label>
               <input type="number" formControlName="plannedCost" name="plannedCost" id="plannedCost" />
             </div>
 
             <div>
-              <label for="actualCost">Actual Cost</label>
+              <label for="actualCost" style="color: #15455c; font-size: larger;">Actual Cost</label>
               <input type="number" formControlName="actualCost" name="actualCost" id="actualCost" />
             </div>
 
             <div>
-              <label for="assignedTo">Assigned to</label>
+              <label for="assignedTo" style="color: #15455c; font-size: larger;">Assigned to</label>
               <select formControlName="assignedTo" name="assignedTo" id="assignedTo">
                 <option value="" selected disabled hidden>Select Assigned to</option>
                 <option *ngFor="let member of MemberList" [value]="member.prMemberId">{{member.empId}} -
@@ -71,12 +71,12 @@
             </div>
 
             <div>
-              <label for="workHours">Work Hours</label>
+              <label for="workHours" style="color: #15455c; font-size: larger;">Work Hours</label>
               <input type="time" formControlName="workHours" name="workHours" id="workHours" />
             </div>
 
             <div>
-              <label class="asteriskrequired" for="status">Status</label>
+              <label class="asteriskrequired" for="status" style="color: #15455c; font-size: larger;">Status</label>
               <select formControlName="status" name="status" id="status">
                 <option value="" selected hidden disabled>Select Status</option>
                 <option>Open</option>
@@ -88,13 +88,13 @@
             </div>
 
             <div>
-              <label for="Dependency">Dependency</label>
+              <label for="Dependency" style="color: #15455c; font-size: larger;">Dependency</label>
               <input type="text" formControlName="Dependency" name="Dependency" id="Dependency" />
             </div>
 
 
             <div>
-              <label class="asteriskrequired" for="priority">Priority</label>
+              <label class="asteriskrequired" for="priority" style="color: #15455c; font-size: larger;">Priority</label>
               <select formControlName="priority" name="priority" id="priority">
                 <option value="" selected hidden disabled>Select Priority</option>
                 <option>None</option>
@@ -105,18 +105,18 @@
             </div>
           </div>
           <div class="row">
-            <span class="subHeading">Schedule</span>
+            <span class="subHeading" style="color: #15455c; font-size: larger;">Schedule</span>
             <div class="row">
               <div class="inputFields">
 
 
                 <div>
-                  <label class="asteriskrequired" for="startDate">Start Date</label>
+                  <label class="asteriskrequired" for="startDate" style="color: #15455c; font-size: larger;">Start Date</label>
                   <input type="date" formControlName="startDate" name="startDate" id="startDate" 
                     (change)="onDateChange()" [min]="this.milestonestartDt" [max]="milestoneendDt" />
                 </div>
                 <div>
-                  <label class="asteriskrequired" for="dueDate">Due Date</label>
+                  <label class="asteriskrequired" for="dueDate" style="color: #15455c; font-size: larger;">Due Date</label>
                   <input type="date" formControlName="dueDate" name="dueDate" id="dueDate"
                     [min]="this.taskForm.value['startDate']" [max]="milestoneendDt"
                     [min]="parentTaskData?.startDt.split('T')[0]" [max]="parentTaskData?.endDt.split('T')[0]"  />
@@ -125,17 +125,17 @@
             </div>
           </div>
           <div class="row">
-            <span class="subHeading">Actual</span>
+            <span class="subHeading" style="color: #15455c; font-size: larger;">Actual</span>
             <div class="inputFields">
 
               <div>
-                <label for="ActualStartDate">Start Date</label>
+                <label for="ActualStartDate" style="color: #15455c; font-size: larger;">Start Date</label>
                 <input type="date" formControlName="ActualStartDate" name="ActualStartDate" id="ActualStartDate"
                   (change)="onDateChangeA()" />
               </div>
 
               <div>
-                <label for="ActualDueDate">Due Date</label>
+                <label for="ActualDueDate" style="color: #15455c; font-size: larger;">Due Date</label>
                 <input type="date" formControlName="ActualDueDate" name="ActualDueDate" id="ActualDueDate"
                   [min]="this.taskForm.value.ActualStartDate" />
               </div>
@@ -143,23 +143,22 @@
           </div>
 
           <div class="textAreaDiv">
-            <!-- <label class="asteriskrequired" for="duration">Attachment</label> -->
             <app-pr-attachment [tabID]="taskId" [title]="'Attachment'" (attachMentListEvent)="getAttchmentList($event)"
               (removeAttchment)="removeAttchment($event)"></app-pr-attachment>
           </div>
 
           <div class="textAreaDiv">
-            <label class="asteriskrequired" for="Discription">Description</label>
+            <label class="asteriskrequired" for="Discription" style="color: #15455c; font-size: larger;">Description</label>
             <textarea formControlName="Discription" name="Discription" class="textAreaClass"
-              id="Discription"></textarea>
+              id="Discription" style="border: 2.5px solid #b8d4f3"></textarea>
             <!-- <angular-editor [ngClass]="{'disabledEditor':disabledAngularEditor}" #editor [config]="editorConfig"
               formControlName="Discription"></angular-editor> -->
           </div>
 
           <div class="textAreaDiv">
-            <label for="AdditionalNotes">Additional Notes</label>
+            <label for="AdditionalNotes" style="color: #15455c; font-size: larger;">Additional Notes</label>
             <textarea class="textAreaClass" formControlName="AdditionalNotes" name="AdditionalNotes"
-              id="AdditionalNotes"></textarea>
+              id="AdditionalNotes" style="border: 2.5px solid #b8d4f3"></textarea>
             <!-- <angular-editor [ngClass]="{'disabledEditor':disabledAngularEditor}" #editor [config]="editorConfig"
               formControlName="AdditionalNotes"></angular-editor> -->
           </div>
@@ -172,9 +171,7 @@
         <button class="actionBtn" (click)="submitTask()" *ngIf="(taskId&&this.taskData?.status!='Resolved')&&
           !(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
         || this.projectdetails?.projectStatus == 'Approved')">Update</button>
-        <button class="actionBtn" (click)="clearForm()" *ngIf="!taskId">Clear</button>
-        <!-- <button class="actionBtn" (click)="submitTask('Open')">Submit</button>
-          <button class="actionBtn" *ngIf="!projectId" (click)="clearForm()">Clear</button> -->
+        <button class="actionBtn" (click)="clearForm()" *ngIf="!taskId" style="background-color: #ff2e5a">Clear</button>
       </div>
     </div>
   </div>

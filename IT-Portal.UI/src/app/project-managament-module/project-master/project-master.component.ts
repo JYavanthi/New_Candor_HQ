@@ -11,7 +11,9 @@ import { GetEmployeeInfoService } from 'app/services/get-employee-info.service';
 
 @Component({
   selector: 'app-project-master',
+  
   templateUrl: './project-master.component.html',
+  
   styleUrl: './project-master.component.css',
   animations: [
     trigger('expandCollapseAnimation', [

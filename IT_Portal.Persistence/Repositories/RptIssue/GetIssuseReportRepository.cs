@@ -34,8 +34,8 @@ namespace IT_Portal.Persistence.Repositories.RptIssue
                             //join ClosedBy in _context.Employees on m.ClosedBY.ToString() equals ClosedBy.EmployeeNo
 
                             //
-                        join payGroup in _context.PaygroupMasters on employee.PaygroupId equals payGroup.Paygroup into pg
-                        from payGroup in pg.DefaultIfEmpty()
+                        //join payGroup in _context.PaygroupMasters on employee.PaygroupId equals payGroup.Paygroup into pg
+                        //from payGroup in pg.DefaultIfEmpty()
                         join category in _context.EmpCategoryMasters on employee.EmployeeCategoryid equals category.Staffcat into cat
                         from category in cat.DefaultIfEmpty()
                         select new
@@ -53,7 +53,7 @@ namespace IT_Portal.Persistence.Repositories.RptIssue
                             Type = m.Type,
                             PlantId = m.PlantId,
                             PlantName = m.Plantname,
-                            Paygroup = payGroup.ShortDesc,
+                            //Paygroup = payGroup.ShortDesc,
                             empcategory = category.Catltxt,
                             AssignedToId = m.AssignedToid,
                             AssignedTo = m.AssignedTo,
@@ -118,8 +118,8 @@ namespace IT_Portal.Persistence.Repositories.RptIssue
                         join UpdateEmp in _context.Employees on m.ModifiedBy.ToString() equals UpdateEmp.EmployeeNo
                         /*join ResolveEmp in _context.Employees on m.ResolvedBy.ToString() equals ResolveEmp.EmployeeNo*/
 
-                        join payGroup in _context.PaygroupMasters on employee.PaygroupId equals payGroup.Paygroup into pg
-                        from payGroup in pg.DefaultIfEmpty()
+                        //join payGroup in _context.PaygroupMasters on employee.PaygroupId equals payGroup.Paygroup into pg
+                        //from payGroup in pg.DefaultIfEmpty()
                         join category in _context.EmpCategoryMasters on employee.EmployeeCategoryid equals category.Staffcat into cat
                         from category in cat.DefaultIfEmpty()
 
@@ -140,7 +140,7 @@ namespace IT_Portal.Persistence.Repositories.RptIssue
                             Type = m.Type,
                             PlantId = m.PlantId,
                             PlantName = m.Plantname,
-                            Paygroup = payGroup.ShortDesc,
+                            //Paygroup = payGroup.ShortDesc,
                             empcategory = category.Catltxt,
                             AssignedToId = m.AssignedToid,
                             AssignedTo = m.AssignedTo,

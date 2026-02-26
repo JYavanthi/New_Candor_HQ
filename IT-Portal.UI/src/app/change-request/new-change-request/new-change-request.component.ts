@@ -489,12 +489,13 @@ export class NewChangeRequestComponent {
       "crrEmailNotification": this.EmailNotification,
       "crrequestedDt": this.crrequestedDt,
       "crinitiatedFor": this.crinitiate,
-      "Status": status,
+      "status": status,
       "referenceId": this.referenceid,
       "referenceTyp": this.referencetype,
       "natureOfChange": this.natureOfChange,
       "priorityType": this.crpriority,
-      "plantId": this.plantId,
+      // "plantId": this.plantId,
+      "plantId" : 1,
       "sysLandscapeID": this.sysLandscapeID,
       "gxpclassification": this.CheckGxPClassification,
       "gxpplantId": this.gxpplantId ? this.gxpplantId : null,
@@ -571,7 +572,7 @@ export class NewChangeRequestComponent {
   getattach(event: any): void {
     this.selectedFiles = event.target.files[0];
   }
-  
+
 
   openAddFile(crid: any) {
     const dialogRef = this.dialog.open(AddFilePopUpComponent, {
@@ -601,7 +602,7 @@ export class NewChangeRequestComponent {
     }
 
     const formData = new FormData();
-    formData.append('Itcrid','99999');
+    formData.append('Itcrid', '99999');
     formData.append('file', this.selectedFiles, this.selectedFiles.name);
     formData.append('FileName', this.selectedFiles.name);
     formData.append('Stage', 'CR');
@@ -625,7 +626,7 @@ export class NewChangeRequestComponent {
     );
   }
 
-    
+
 
 
   downFile(fileName: any): void {
@@ -648,7 +649,7 @@ export class NewChangeRequestComponent {
     );
   }
 
- 
+
   viewFile(fileName: any): void {
     const apiUrl = `${this.apiurl}/ChangeRequest/View/${fileName.attachId}`;
 
@@ -802,8 +803,9 @@ export class NewChangeRequestComponent {
     )
   }
 
-  referenceapi: any[] = [];
+  // referenceapi: any[] = [];
   refer: any[] = [];
+
   getreference() {
     const apiUrls = this.apiurl + '/Reference'
     this.http.get(apiUrls).subscribe(
@@ -975,7 +977,7 @@ export class NewChangeRequestComponent {
         this.approverC = this.approver.filter((item: any) => item.approverstage === 'C' && item.level === 1)
 
         if ((this.approverN.length === 0) || (this.approverR.length === 0) || (this.approverC.length === 0)) {
-          this.showSavebtn(0);
+          this.showSavebtn(1);
           this.wrkflowmsg = "Workflow is not defined for Approvers. Please reach Admin to complete RFC!";
         }
         else {
@@ -1087,16 +1089,34 @@ export class NewChangeRequestComponent {
     )
   }
 
+  // getplant() {
+  //   const apiUrls = this.apiurl + '/Plantid'
+  //   this.http.get(apiUrls).subscribe(
+  //     (response: any) => {
+  //       this.plantcode = response.filter((item: any) => this.assignedplant.includes(item.id));
+  //     },
+  //     (error) => {
+  //       console.error("Post failed", error)
+  //     }
+  //   )
+  // }
+
   getplant() {
-    const apiUrls = this.apiurl + '/Plantid'
+    const apiUrls = this.apiurl + '/Plantid';
+
     this.http.get(apiUrls).subscribe(
-      (response: any) => {
-        this.plantcode = response.filter((item: any) => this.assignedplant.includes(item.id));
+      (response: any[]) => {
+
+        const empPlant = this.user.empData.plantId;
+        this.plantcode = response.filter(
+          (item: any) => item.plantId == empPlant
+        );
+
       },
       (error) => {
-        console.error("Post failed", error)
+        console.error("Plant API failed", error);
       }
-    )
+    );
   }
 
 }

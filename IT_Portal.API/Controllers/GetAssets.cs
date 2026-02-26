@@ -17,7 +17,7 @@ namespace IT_Portal.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsset()
         {
-            var data = await _context.VwAssets.ToListAsync();
+            var data = await _context.VwItassetsDetails.ToListAsync();
             return Ok(data);
         }
     }

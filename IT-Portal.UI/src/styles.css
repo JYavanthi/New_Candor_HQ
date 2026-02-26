@@ -1,19 +1,9 @@
-.pageHeadingCss {
-  background: #f5f6f7 !important;
-  transform: skew(-21deg) !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26) !important;
-  border-radius: 7px !important;
-  text-align: center !important;
-  width: 30% !important;
-  margin-left: 35% !important;
-}
 
-.pageHeadingparaCss {
+/* .pageHeadingparaCss {
   font-weight: bold !important;
   color: black !important;
   font-size: calc(1rem + 1vw) !important;
-  transform: skew(21deg) !important;
-}
+} */
 
 .subHeadingCss {
   text-align: center !important;
@@ -25,7 +15,7 @@
   font-size: calc(0.3rem + 1vw) !important;
 }
 
-.angular-editor-textarea {
+-textarea {
   margin-top:0px !important;
 }
 
@@ -55,6 +45,7 @@ justify-content: space-between;
 
 body {
   margin-top: 10% !important;
+  background-color: #daecff;
 }
 
 .breadcrumbs__item {
@@ -64,7 +55,6 @@ body {
   cursor: pointer;
 }
  
-/* New CSS */
 
 .btn-back {
   background-color: #3c8dbc;
@@ -81,8 +71,6 @@ body {
   width: 93%;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  background-color: rgb(248,248,248);                                                                                                                                                                                                                                                                                                                                                                                                                  
   margin-left: 85px;
 }
 
@@ -129,4 +117,3 @@ body {
   color: white !important;
 }
 
-/* ======================Tabs Css */

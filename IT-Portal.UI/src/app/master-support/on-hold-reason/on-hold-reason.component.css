@@ -1,3 +1,19 @@
+/* .onHoldMainDiv {
+    background: white;
+    width: 95%;
+    display: flex;
+    margin-left: 2.5%;
+    border-radius: 40px;
+}
+
+.HeadingparaCss {
+    position: relative;
+    top: 7px;
+    margin-left: 170%;
+    white-space: nowrap;
+    font-size: xx-large;
+}
+
 .Heading {
     display: flex;
     justify-content: space-between;
@@ -34,8 +50,8 @@ table {
 
 .tableBox {
     position: relative;
-    width: 90%;
-    margin-left: 8%;
+    width: 85%;
+    margin-left: 9%;
     margin-bottom: 3%;
 }
 
@@ -60,4 +76,148 @@ tr:hover {
 
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
+} */
+
+
+/* Page Background */
+.onHoldMainDiv {
+    background-color: #fff;
+    width: 95%;
+    min-height: 100vh;
+    display: flex;
+    padding: 20px;
+    border-radius: 40px;
+    margin-left: 2.5%;
+
+}
+
+/* Main Content */
+.tableBox {
+    width: 85%;
+    margin: 0 auto;
+    margin-left: 10%;
+}
+
+/* Top Header Section */
+.topHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #5aa6d6;
+    padding-bottom: 10px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f07f2f;
+    letter-spacing: 1px;
+}
+
+/* Search Box */
+.searchBox {
+    display: flex;
+    align-items: center;
+    background: #e8f3f8;
+    padding: 6px 12px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.searchBox i {
+    color: #3e8cb9;
+    margin-right: 8px;
+}
+
+.searchBox input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+/* NEW Button */
+.newBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #0a8f8f;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.newBtn i {
+    font-size: 18px;
+}
+
+/* Table Card */
+.tableCard {
+    background: #f2efe9;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid #e0cfc2;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    color: #008c9e;
+    font-weight: 600;
+    border-bottom: 2px solid #1fa3b5;
+}
+
+td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e6d8cc;
+}
+
+/* Blue clickable text */
+.blueText {
+    color: #2a74d6;
+    font-weight: 600;
+}
+
+/* Status Colors */
+.active {
+    color: #2eaf4a;
+    font-weight: 600;
+}
+
+.inactive {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Action Icons */
+.actionCell {
+    text-align: center;
+}
+
+.editIcon,
+.deleteIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.editIcon {
+    background-color: #0f9d9d;
+    color: white;
+}
+
+.deleteIcon {
+    background-color: #ff4d4d;
+    color: white;
 }

@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwRptapproverView
 {
@@ -44,7 +47,7 @@ public partial class VwRptapproverView
 
     public int? PriorityType { get; set; }
 
-    public string? PlantId { get; set; }
+    public string PlantId { get; set; } = null!;
 
     public int? ChangeRequestor { get; set; }
 

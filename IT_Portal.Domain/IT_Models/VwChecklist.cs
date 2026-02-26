@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class VwChecklist
 {
@@ -8,9 +11,9 @@ public partial class VwChecklist
 
     public string? Plantname { get; set; }
 
-    public int SupportId { get; set; }
+    public string Status { get; set; } = null!;
 
-    public string? Status { get; set; }
+    public int SupportId { get; set; }
 
     public int CategoryId { get; set; }
 

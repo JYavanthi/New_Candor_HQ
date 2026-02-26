@@ -1,559 +1,727 @@
-''
+<div
+  style="padding: 10%;  background: white;  border-radius: 50px; width: 90%; margin-left: 70px; display: flex; z-index : auto">
 
-
-
-<div class="container" style="margin-top: 2%; margin-bottom: 5%;">
-  <div class="row newissue">
-    <div class="text-center col-2">
-      <button class="btn-back1 " [routerLink]="'/report_issue'" type="button">Back</button>
-    </div>
-    <div class="col-10 pageHeadingCss issuelabel">
-      <p class="pageHeadingparaCss" style="margin:0 auto">New Issue</p>
-    </div>
+  <div style="margin-left : -10%;">
+    <app-sidebarissue></app-sidebarissue>
   </div>
-  <div class="card">
-    <div class="card-body">
-      <div class="row newissueradio">
-        <div class="col-md-2 radioBtns">
-          <span><input type="radio" value="self" [(ngModel)]="selectedOption" (change)="OnLabelChange()"></span>
-          <span class="radiolabel">&nbsp;Self</span>
+  <div class="container" style="margin-left: 120px;">
+
+    <div class="text-center pageHeadingCss1 "
+      style="display: flex; justify-content: center; gap: 1%; border-bottom: 3px solid #3aa6b9; width: 115%; padding-right: 10%; margin-top: -15%; margin-left: -20px;">
+      <img src="assets/image/issue_management.png"
+        style="width: 15%; height: 50px; margin-top: -2px; padding-left: 8%;">
+      <p class="pageHeadingparaCss1"
+        style="position: sticky; top: 0; z-index: 100; white-space: nowrap; font-size: xx-large; font-weight: 900;">
+        ISSUE MANAGEMENT
+      </p>
+    </div>
+    <br>
+
+    <div class="card" style="width: 110%; border-radius: 40px;">
+      <div class="newissue">
+        <div class="text-center col-2">
+          <button class="btn-back1" [routerLink]="'/report_issue'" type="button">Back > </button>
         </div>
-        <div class="col-md-4 radioBtns">
-          <span><input type="radio" value="others" [(ngModel)]="selectedOption" (change)="OnLabelChange()"></span>
-          <span class="radiolabel">&nbsp;Others</span>
-          &nbsp;
-          <span>
-            <input type="text" class="dropdownslistinput" #EnterIssueID placeholder="Enter Issue For"
-              [disabled]="DisableissueRaiseFor" [(ngModel)]="issueRaiseFor" (input)="filterItems()"
-              (ngModelChange)="ClearOtherInputs()" />
-            <ul class="dropdowns-list" *ngIf="dropdownItems.length > 0">
-              <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">
-                {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
-              </li>
-            </ul>
-          </span>
-        </div>
-        <div class="col-md-2 radioBtns">
-          <span><input type="radio" value="guest" [(ngModel)]="selectedOption" (change)="OnLabelChange()"></span>
-          <span class="radiolabel">&nbsp;Guest</span>
+        <div class="col-10 pageHeadingCss issuelabel">
+          <img src="assets/image/new-issue.png" alt="issueimg" class="issueImg">
+          <p class="pageHeadingparaCss"
+            style="margin:0 auto; font-size: xx-large; font-weight: 900; margin-right: 0%; color: #0097ab;">New Issue
+          </p>
         </div>
       </div>
+      <br>
+      <div class="card-body" style="width: 108.5%; margin-left: -40px;">
 
-      <div class="card inside_card">
-        <div class="card-body inside_newissue">
+        <div class="row newissueradio">
 
-          <!--Self-->
-          <ng-container *ngIf="ShowSelf">
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
-              </div>
+          <div class="col-md-2 radioBtns">
+            <label class="custom-radio">
+              <input type="radio" value="self" [(ngModel)]="selectedOption" (change)="OnLabelChange()">
+              <span class="radio-box"></span>
+              <span class="radiolabel">Self</span>
+            </label>
+          </div>
 
-              <div class="col-md-3">
-                <label>Name: <span class="horinputDatas">{{Name}}</span></label>
-              </div>
-              <div class="col-md-3">
-                <label>Email: <span class="horinputDatas">{{Email}}</span></label>
-              </div>
-              <div class="col-md-3">
-                <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
-              </div>
+          <div class="col-md-6 radioBtns">
+            <label class="custom-radio">
+              <input type="radio" value="others" [(ngModel)]="selectedOption" (change)="OnLabelChange()">
+              <span class="radio-box"></span>
+              <span class="radiolabel">Others</span>
+            </label>
+
+            <div class="others-input-wrapper">
+              <input type="text" class="issue-input" #EnterIssueID placeholder="Enter issue for"
+                [disabled]="DisableissueRaiseFor" [(ngModel)]="issueRaiseFor" (input)="filterItems()"
+                (ngModelChange)="ClearOtherInputs()" />
+
+              <ul class="dropdowns-list" *ngIf="dropdownItems.length > 0">
+                <li class="drop-list" *ngFor="let item of dropdownItems" (click)="selectItem(item)">
+                  {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
+                </li>
+              </ul>
             </div>
+          </div>
 
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
-              </div>
+          <div class="col-md-2 radioBtns">
+            <label class="custom-radio">
+              <input type="radio" value="guest" [(ngModel)]="selectedOption" (change)="OnLabelChange()">
+              <span class="radio-box"></span>
+              <span class="radiolabel">Guest</span>
+            </label>
+          </div>
 
-              <div class="col-md-3">
-                <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
-              </div>
+        </div>
 
-              <div class="col-md-3">
-                <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
-              </div>
 
-              <div class="col-md-3">
-                <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
-              </div>
-            </div>
+        <div class="card inside_card" style="margin-left: 2.5%;">
+          <div class="card-body inside_newissue">
 
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Department: <span class="horinputDatas">{{Department}}</span></label>
-              </div>
+            <ng-container *ngIf="ShowSelf">
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Employee ID: <span
+                      class="horinputDatas">{{EmployeeID}}</span></label>
+                </div>
 
-              <div class="col-md-3">
-                <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Role: <span class="horinputDatas">{{Role}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-              </div>
-            </div>
-          </ng-container>
-
-          <!--Others-->
-          <ng-container *ngIf="ShowOthers">
-            <!--Requested By-->
-            <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested
-              by:</span>
-            <div class="row mt-2" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Name: <span
+                      class="horinputDatas">{{Name}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Email: <span
+                      class="horinputDatas">{{Email}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Contact No: <span
+                      class="horinputDatas">{{ContactNo}}</span></label>
+                </div>
               </div>
 
-              <div class="col-md-3">
-                <label>Name: <span class="horinputDatas">{{Name}}</span></label>
-              </div>
-              <div class="col-md-3">
-                <label>Email: <span class="horinputDatas">{{Email}}</span></label>
-              </div>
-              <div class="col-md-3">
-                <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
-              </div>
-            </div>
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span
+                      class="horinputDatas">{{ReportingManager}}</span></label>
+                </div>
 
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
-              </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Staff Category: <span
+                      class="horinputDatas">{{StaffCategory}}</span></label>
+                </div>
 
-              <div class="col-md-3">
-                <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
-              </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Plant: <span
+                      class="horinputDatas">{{Plant}}</span></label>
+                </div>
 
-              <div class="col-md-3">
-                <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Paygroup: <span
+                      class="horinputDatas">{{Paygroup}}</span></label>
+                </div>
               </div>
 
-              <div class="col-md-3">
-                <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
-              </div>
-            </div>
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Department: <span
+                      class="horinputDatas">{{Department}}</span></label>
+                </div>
 
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Designation: <span
+                      class="horinputDatas">{{Designation}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Role: <span
+                      class="horinputDatas">{{Role}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="ShowOthers">
+              <span
+                style="background: #2f6f7a; color: white; font-weight: 600; padding: 6px 12px; display: inline-block; border-radius: 4px; font-size: 14px; text-transform: uppercase;">Requested
+                by:</span>
+              <div class="row mt-2" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Employee ID: <span
+                      class="horinputDatas">{{EmployeeID}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Name: <span
+                      class="horinputDatas">{{Name}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Email: <span
+                      class="horinputDatas">{{Email}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Contact No: <span
+                      class="horinputDatas">{{ContactNo}}</span></label>
+                </div>
               </div>
 
-              <div class="col-md-3">
-                <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span
+                      class="horinputDatas">{{ReportingManager}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Staff Category: <span
+                      class="horinputDatas">{{StaffCategory}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Plant: <span
+                      class="horinputDatas">{{Plant}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Paygroup: <span
+                      class="horinputDatas">{{Paygroup}}</span></label>
+                </div>
               </div>
 
-              <div class="col-md-3">
-                <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Department: <span
+                      class="horinputDatas">{{Department}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Designation: <span
+                      class="horinputDatas">{{Designation}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Role: <span
+                      class="horinputDatas">{{Role}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                </div>
+              </div>
+              <hr />
+              <div>
+                <span
+                  style="background: #2f6f7a; color: white; font-weight: 600; padding: 6px 12px; display: inline-block; border-radius: 4px; font-size: 14px; text-transform: uppercase;">Requested
+                  for:</span>
+                <div class="row mt-2">
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Employee ID: <span
+                        class="horinputDatas">{{EmployeeIDOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Name: <span
+                        class="horinputDatas">{{OthersName}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Email: <span
+                        class="horinputDatas">{{EmailOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Contact No: <span
+                        class="horinputDatas">{{ContactNoOthers}}</span></label>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span
+                        class="horinputDatas">{{ReportingManagerOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Staff Category: <span
+                        class="horinputDatas">{{StaffCategoryOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Plant: <span
+                        class="horinputDatas">{{PlantOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Paygroup: <span
+                        class="horinputDatas">{{PaygroupOthers}}</span></label>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Department: <span
+                        class="horinputDatas">{{DepartmentOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Designation: <span
+                        class="horinputDatas">{{DesignationOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label style="color: #0097ab; font-size: larger;">Role: <span
+                        class="horinputDatas">{{RoleOthers}}</span></label>
+                  </div>
+
+                  <div class="col-md-3">
+                  </div>
+                </div>
               </div>
 
-              <div class="col-md-3">
+            </ng-container>
+
+            <!-- <ng-container *ngIf="ShowGuest">
+              <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested
+                by:</span>
+              <div class="row mt-2" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Name: <span class="horinputDatas">{{Name}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Email: <span class="horinputDatas">{{Email}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                </div>
               </div>
-            </div>
-            <hr />
-            <!--Requested For-->
-            <div>
+
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                </div>
+              </div>
+
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Department: <span class="horinputDatas">{{Department}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Role: <span class="horinputDatas">{{Role}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                </div>
+              </div>
+              <hr />
+
               <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested
                 for:</span>
               <div class="row mt-2">
                 <div class="col-md-3">
-                  <label>Employee ID: <span class="horinputDatas">{{EmployeeIDOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Guest Employee ID:</label><br>
+                  <input type="text" [(ngModel)]="GuestEmployeeID">
                 </div>
 
                 <div class="col-md-3">
-                  <label>Name: <span class="horinputDatas">{{OthersName}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Name:<span style="color:red">&nbsp;*</span></label><br>
+                  <input type="text" [(ngModel)]="GuestName">
                 </div>
 
                 <div class="col-md-3">
-                  <label>Email: <span class="horinputDatas">{{EmailOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Email:</label><br>
+                  <input type="text" [(ngModel)]="Guestemail">
+                </div>
+                <div class="col-md-3">
+                  <form [formGroup]="contactForm">
+
+                    <label style="color: #0097ab; font-size: larger;">Contact No:</label><br>
+
+                    <input id="contactNo" formControlName="contactNo" type="number" (input)="onInput($event)"
+                      placeholder="Enter 10-digit contact number" maxlength="10" required
+                      title="Please enter exactly 10 digits">
+                  </form>
+                </div>
+
+              </div>
+
+
+              <div class="row" style="display:flex;align-items:center">
+                <div class="col-md-3">
+                  <input type="text" placeholder="Enter Reporting Manager Employee ID"
+                    [(ngModel)]="ReportingManagerEmpID" (input)="filterItemsforGuest()"
+                    (ngModelChange)="ClearGuestOtherInputs()" />
+                  <ul class="dropdowns-list" *ngIf="dropdownItems2.length > 0">
+                    <li class="drop-list" value="" *ngFor="let item of dropdownItems2" (click)="selectItem(item)">
+                      {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
+                    </li>
+                  </ul>
+
                 </div>
 
                 <div class="col-md-3">
-                  <label>Contact No: <span class="horinputDatas">{{ContactNoOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Reporting Manager in ML: <span class="horinputDatas">{{ReportingManagerinML}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Staff Category of ML: <span class="horinputDatas">{{StaffCategoryofML}}</span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color: #0097ab; font-size: larger;">Plant ML: <span class="horinputDatas">{{GuestPlant}}</span></label>
                 </div>
 
               </div>
 
               <div class="row">
                 <div class="col-md-3">
-                  <label>Reporting Manager: <span class="horinputDatas">{{ReportingManagerOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Paygroup ML: <span class="horinputDatas">{{PaygroupML}}</span></label>
                 </div>
 
                 <div class="col-md-3">
-                  <label>Staff Category: <span class="horinputDatas">{{StaffCategoryOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Department ML: <span class="horinputDatas">{{DepartmentML}}</span></label>
                 </div>
 
                 <div class="col-md-3">
-                  <label>Plant: <span class="horinputDatas">{{PlantOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Designation of ML Manager: <span
+                      class="horinputDatas">{{DesignationofMLManager}}</span></label>
                 </div>
 
                 <div class="col-md-3">
-                  <label>Paygroup: <span class="horinputDatas">{{PaygroupOthers}}</span></label>
+                  <label style="color: #0097ab; font-size: larger;">Role of ML Manager: <span class="horinputDatas">{{RoleofMLManager}}</span></label>
+                </div>
+              </div>
+
+            </ng-container> -->
+
+            <div *ngIf="ShowGuest" class="guest-section">
+
+              <div class="section-title">Requested by</div>
+
+              <div class="info-block">
+
+                <div class="row info-row">
+                  <div class="col-md-3"><label>Employee ID:</label><span>{{EmployeeID}}</span></div>
+                  <div class="col-md-3"><label>Name:</label><span>{{Name}}</span></div>
+                  <div class="col-md-3"><label>Email:</label><span>{{Email}}</span></div>
+                  <div class="col-md-3"><label>Contact No:</label><span>{{ContactNo}}</span></div>
+                </div>
+
+                <div class="row info-row">
+                  <div class="col-md-3"><label>Reporting Manager:</label><span>{{ReportingManager}}</span></div>
+                  <div class="col-md-3"><label>Staff Category:</label><span>{{StaffCategory}}</span></div>
+                  <div class="col-md-3"><label>Plant:</label><span>{{Plant}}</span></div>
+                  <div class="col-md-3"><label>Paygroup:</label><span>{{Paygroup}}</span></div>
+                </div>
+
+                <div class="row info-row">
+                  <div class="col-md-3"><label>Department:</label><span>{{Department}}</span></div>
+                  <div class="col-md-3"><label>Designation:</label><span>{{Designation}}</span></div>
+                  <div class="col-md-3"><label>Role:</label><span>{{Role}}</span></div>
                 </div>
 
               </div>
 
-              <div class="row">
-                <div class="col-md-3">
-                  <label>Department: <span class="horinputDatas">{{DepartmentOthers}}</span></label>
+              <div class="section-title mt-4"
+                style="background: #2f6f7a; color: white; font-weight: 600; padding: 6px 12px; display: inline-block; border-radius: 4px; font-size: 14px; text-transform: uppercase;">
+                Requested for</div>
+
+              <div class="form-block">
+
+                <div class="row form-row">
+                  <div class="col-md-3">
+                    <label>Guest Employee ID</label>
+                    <input type="text" [(ngModel)]="GuestEmployeeID" class="form-control">
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Name <span class="required" style="color: red;">*</span></label>
+                    <input type="text" [(ngModel)]="GuestName" class="form-control">
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Email</label>
+                    <input type="text" [(ngModel)]="Guestemail" class="form-control">
+                  </div>
+
+                  <div class="col-md-3">
+                    <form [formGroup]="contactForm">
+                      <label>Contact No</label>
+                      <input id="contactNo" formControlName="contactNo" type="number" (input)="onInput($event)"
+                        maxlength="10" placeholder="Enter 10-digit contact number" class="form-control">
+                    </form>
+                  </div>
                 </div>
 
-                <div class="col-md-3">
-                  <label>Designation: <span class="horinputDatas">{{DesignationOthers}}</span></label>
+                <div class="row form-row align-items-end">
+
+                  <div class="col-md-3 position-relative">
+                    <label>Reporting Manager Employee ID</label>
+                    <input type="text" [(ngModel)]="ReportingManagerEmpID" (input)="filterItemsforGuest()"
+                      (ngModelChange)="ClearGuestOtherInputs()" class="form-control">
+
+                    <ul class="dropdowns-list" *ngIf="dropdownItems2.length > 0">
+                      <li *ngFor="let item of dropdownItems2" (click)="selectItem(item)">
+                        {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-md-3"><label>Reporting Manager in ML:</label><span>{{ReportingManagerinML}}</span>
+                  </div>
+                  <div class="col-md-3"><label>Staff Category of ML:</label><span>{{StaffCategoryofML}}</span></div>
+                  <div class="col-md-3"><label>Plant ML:</label><span>{{GuestPlant}}</span></div>
+
                 </div>
 
-                <div class="col-md-3">
-                  <label>Role: <span class="horinputDatas">{{RoleOthers}}</span></label>
+                <div class="row info-row">
+                  <div class="col-md-3"><label>Paygroup ML:</label><span>{{PaygroupML}}</span></div>
+                  <div class="col-md-3"><label>Department ML:</label><span>{{DepartmentML}}</span></div>
+                  <div class="col-md-3"><label>Designation of ML Manager:</label><span>{{DesignationofMLManager}}</span>
+                  </div>
+                  <div class="col-md-3"><label>Role of ML Manager:</label><span>{{RoleofMLManager}}</span></div>
                 </div>
 
-                <div class="col-md-3">
-                </div>
-              </div>
-            </div>
-
-          </ng-container>
-
-          <!--Guest-->
-          <ng-container *ngIf="ShowGuest">
-            <!--Requested By-->
-            <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested
-              by:</span>
-            <div class="row mt-2" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Name: <span class="horinputDatas">{{Name}}</span></label>
-              </div>
-              <div class="col-md-3">
-                <label>Email: <span class="horinputDatas">{{Email}}</span></label>
-              </div>
-              <div class="col-md-3">
-                <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
-              </div>
-            </div>
-
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
-              </div>
-            </div>
-
-            <div class="row" style="text-align:left;">
-              <div class="col-md-3">
-                <label>Department: <span class="horinputDatas">{{Department}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Role: <span class="horinputDatas">{{Role}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-              </div>
-            </div>
-            <hr />
-
-            <!--Requested for-->
-            <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested
-              for:</span>
-            <div class="row mt-2">
-              <div class="col-md-3">
-                <label>Guest Employee ID:</label><br>
-                <input type="text" [(ngModel)]="GuestEmployeeID">
-              </div>
-
-              <div class="col-md-3">
-                <label>Name:<span style="color:red">&nbsp;*</span></label><br>
-                <input type="text" [(ngModel)]="GuestName">
-              </div>
-
-              <div class="col-md-3">
-                <label>Email:</label><br>
-                <input type="text" [(ngModel)]="Guestemail">
-              </div>
-              <div class="col-md-3">
-                <form [formGroup]="contactForm">
-
-                  <label>Contact No:</label><br>
-
-                  <input id="contactNo" formControlName="contactNo" type="number" (input)="onInput($event)"
-                    placeholder="Enter 10-digit contact number" maxlength="10" required
-                    title="Please enter exactly 10 digits">
-                </form>
               </div>
 
             </div>
 
 
-            <div class="row" style="display:flex;align-items:center">
-              <div class="col-md-3">
-                <!--<label>Reporting Manager Employee ID:</label><br>-->
-                <input type="text" placeholder="Enter Reporting Manager Employee ID" [(ngModel)]="ReportingManagerEmpID"
-                  (input)="filterItemsforGuest()" (ngModelChange)="ClearGuestOtherInputs()" />
-                <ul class="dropdowns-list" *ngIf="dropdownItems2.length > 0">
-                  <li class="drop-list" value="" *ngFor="let item of dropdownItems2" (click)="selectItem(item)">
-                    {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
-                  </li>
-                </ul>
-
-              </div>
-
-              <div class="col-md-3">
-                <label>Reporting Manager in ML: <span class="horinputDatas">{{ReportingManagerinML}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Staff Category of ML: <span class="horinputDatas">{{StaffCategoryofML}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Plant ML: <span class="horinputDatas">{{GuestPlant}}</span></label>
-              </div>
-
-            </div>
-
-            <div class="row">
-              <div class="col-md-3">
-                <label>Paygroup ML: <span class="horinputDatas">{{PaygroupML}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Department ML: <span class="horinputDatas">{{DepartmentML}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Designation of ML Manager: <span class="horinputDatas">{{DesignationofMLManager}}</span></label>
-              </div>
-
-              <div class="col-md-3">
-                <label>Role of ML Manager: <span class="horinputDatas">{{RoleofMLManager}}</span></label>
-              </div>
-            </div>
-
-          </ng-container>
-
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="container-field-line">
-          <div class="text-center subHeadingparaCss" style="margin-top:-3%;">
-            <p>Details</p>
           </div>
-          <div class="card report_issue_card container-implement" style="margin-left:3%;">
-            <div class="card-body">
+        </div>
 
-              <div class="row">
-                <div class="col">
-                  <label>Raised Date<span style="color:red"> *</span></label>
-                  <input readonly [(ngModel)]="today" type="date" />
-                </div>
-                <div class="col">
-                  <label>Plant<span style="color:red"> *</span></label>
-                  <select (change)="getassets()" [(ngModel)]="plantId" required>
-                    <option value="" selected disabled hidden>Select Plant</option>
-                    <option *ngFor="let pltdata of plantcode " value="{{pltdata.id}}">{{pltdata.code}}</option>
-                  </select>
-                </div>
-                <div class="col">
-                  <label>Service-Category<span style="color:red"> *</span></label>
-                  <select (change)="getcategorytype()" [(ngModel)]="categoryId">
-                    <option value="" selected disabled hidden>Select Service Category</option>
-                    <option *ngFor="let value of categorydata " value="{{value.itcategoryId}}">
-                      {{value.categoryName}}
-                    </option>
-                  </select>
-                </div>
-              </div>
+        <div class="container">
+          <div class="container-field-line">
+            <div class="text-center subHeadingparaCss" style="margin-top:-1%;  display: flex; margin-left: 35%;">
+              <img src="assets/image/Details.png" alt="detailsImg" class="detailImg">
+              <p style="font-size: xx-large; color: #0097ab;">Details</p>
+            </div>
 
-              <div class="row">
-                <div class="col">
-                  <label>Sub-Category<span style="color:red"> *</span></label>
-                  <select [(ngModel)]="categoryTypId" (change)="getAssignTo()">
-                    <option value="" selected disabled hidden>Select Sub-Category</option>
-                    <option *ngFor="let valueCtype of categorytype " value="{{valueCtype.categoryTypeId}}">
-                      {{valueCtype.categoryType}}
-                    </option>
-                  </select>
+            <div class="card report_issue_card container-implement issue-form-card">
+              <div class="card-body issue-form-body">
+
+                <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Raised Date <span class="required"
+                        style="color: red;">*</span></label>
+                    <input class="form-control-custom" readonly [(ngModel)]="today" type="date" />
+                  </div>
+
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Plant <span class="required"
+                        style="color: red;">*</span></label>
+                    <select class="form-control-custom" [(ngModel)]="plantId" (change)="getassets()" required>
+                      <option value="" disabled selected hidden>Select Plant</option>
+                      <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId">
+                        {{ pltdata.plantCode }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Service-Category <span class="required"
+                        style="color: red;">*</span></label>
+                    <select class="form-control-custom" (change)="getcategorytype()" [(ngModel)]="categoryId">
+                      <option value="" disabled hidden>Select Service Category</option>
+                      <option *ngFor="let value of categorydata" [value]="value.itcategoryId">
+                        {{value.categoryName}}
+                      </option>
+                    </select>
+                  </div>
                 </div>
 
-                <div class="col">
-                  <label>Priority<span style="color:red"> *</span></label>
-                  <select [(ngModel)]="priority">
-                    <option value="" selected disabled hidden>Select Priority</option>
-                    <option *ngFor="let valueprio of prioritytype " value="{{valueprio.priorityId}}">
-                      {{valueprio.priorityName}}
-                    </option>
-                  </select>
-                </div>
-                <div class="col">
-                  <label>Type</label><br />
-                  <select [(ngModel)]="type">
-                    <option value="" selected disabled hidden>Select Type</option>
-                    <option value="Type">Type</option>
-                  </select>
-                </div>
-              </div>
+                <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Sub-Category <span class="required"
+                        style="color: red;">*</span></label>
+                    <select class="form-control-custom" [(ngModel)]="categoryTypId" (change)="getAssignTo()">
+                      <option value="" disabled hidden>Select Sub-Category</option>
+                      <option *ngFor="let valueCtype of categorytype" [value]="valueCtype.categoryTypeId">
+                        {{valueCtype.categoryType}}
+                      </option>
+                    </select>
+                  </div>
 
-              <div class="row">
-                <div class="col">
-                  <div>
-                    <label>Source</label><br />
-                    <select [(ngModel)]="source">
-                      <option value="" selected disabled hidden>Select Source</option>
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Priority <span class="required"
+                        style="color: red;">*</span></label>
+                    <select class="form-control-custom" [(ngModel)]="priority">
+                      <option value="" disabled hidden>Select Priority</option>
+                      <option *ngFor="let valueprio of prioritytype" [value]="valueprio.priorityId">
+                        {{valueprio.priorityName}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Type</label>
+                    <select class="form-control-custom" [(ngModel)]="type">
+                      <option value="" disabled hidden>Select Type</option>
+                      <option value="Type">Type</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Source</label>
+                    <select class="form-control-custom" [(ngModel)]="source">
+                      <option value="" disabled hidden>Select Source</option>
                       <option value="E-mail">E-mail</option>
                       <option value="Phone">Phone</option>
                       <option value="Website">Website</option>
                     </select>
                   </div>
-                </div>
 
-                <div class="col">
-                  <label>Impacted Asset</label>
-                  <select [(ngModel)]="asset">
-                    <option value="" selected disabled hidden>Select Impacted Asset</option>
-                    <option *ngFor="let valueasset of impactassetlist " value="{{valueasset.assetId}}">
-                      {{valueasset.category + ' ' + '-' + ' ' + valueasset.assetNo}}
-                    </option>
-                  </select>
-                </div>
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Impacted Asset</label>
+                    <select class="form-control-custom" [(ngModel)]="asset">
+                      <option value="" disabled hidden>Select Impacted Asset</option>
+                      <option *ngFor="let valueasset of impactassetlist" [value]="valueasset.assetId">
+                        {{valueasset.category + ' - ' + valueasset.assetNo}}
+                      </option>
+                    </select>
+                  </div>
 
-                <div class="col">
-                  <label>Assign To</label>
-                  <select [(ngModel)]="assignedTo">
-                    <option value="" selected disabled hidden>Select Assign to</option>
-                    <option *ngFor="let assgn of assignToList" value="{{assgn.empId}}">
-                      {{assgn.empId+' '+'-'+' '+assgn.firstName+' '+assgn.middleName+' '+assgn.lastName }}
-                    </option>
-                  </select>
-                </div>
-
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <div>
-                    <label>Subject<span style="color:red"> *</span></label><br />
-                    <input [(ngModel)]="Subject" style="padding:6px;" />
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Assign To</label>
+                    <select class="form-control-custom" [(ngModel)]="assignedTo">
+                      <option value="" disabled hidden>Select Assign to</option>
+                      <option *ngFor="let assgn of assignToList" [value]="assgn.empId">
+                        {{assgn.empId + ' - ' + assgn.firstName + ' ' + assgn.middleName + ' ' + assgn.lastName}}
+                      </option>
+                    </select>
                   </div>
                 </div>
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <div class="report_description">
-                    <label>Description<span style="color:red">*</span></label>
-                    <!--<textarea [(ngModel)]="issueDesc" class="textarea-implement" cols="160" rows="4"
-                id="area7"> </textarea>-->
-                    <angular-editor #editor [(ngModel)]="issueDesc" [config]="editorConfig"></angular-editor>
+                <br>
+                <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Subject <span class="required"
+                        style="color: red;">*</span></label>
+                    <input class="form-control-custom" [(ngModel)]="Subject" style="width: 80%; margin-left: 5%;" />
                   </div>
                 </div>
-                <!-- <div class="row">
-              <div class="col">
-                <div class="report_attachment">
-                  <label>Remarks</label>
-                  <textarea [(ngModel)]="remarks" class="textarea-implement" type="file" style="width:102%;"></textarea>
+                <br>
+                <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Description <span class="required"
+                        style="color: red;">*</span></label>
+                    <div class="editor-wrapper">
+                      <angular-editor #editor [(ngModel)]="issueDesc" [config]="editorConfig"></angular-editor>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div> -->
-                <!-- <div class="row">
-                  <div class="col">
-                    <div class="report_attachment">
-                      <label>Attach Document</label>
-                      <input [(ngModel)]="attachment" type="file" style="width:102%;" (change)="getattach($event)">
-                      <div *ngIf="attachment">
-                        <p>Attachment: {{ attachment }}<button style="padding: 1%; border: none; background: none;" (click)="viewFile(attachment)"><i class="fa fa-download" aria-hidden="true"></i></button></p>
-                      </div>
+                <br>
+                <!-- <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Attachment</label>
+                    <div class="attachment-box">
+                      <input type="file" [(ngModel)]="attachment" (change)="getattach($event)" />
+                      <button class="btn-add-file" type="button" (click)="addFile()">Add File</button>
+                    </div>
+
+                    <div class="attachment-list" *ngFor="let attachment of attachmentsList; index as i">
+                      {{attachment.fileName}}
+                      <i class="fa fa-eye action-icon" (click)="viewFile(attachment)"></i>
+                      <i class="fa fa-download action-icon" (click)="downFile(attachment)"></i>
+                      <i class="fa fa-times action-icon" (click)="deleteDoc(attachment)"></i>
                     </div>
                   </div>
                 </div> -->
-                <div>
-                  <label>Attachement</label>
-                  <div class="attachmentList" style="width: fit-content;">
-                    <div class="d-flex">
-                      <input type="file" [(ngModel)]="attachment" (change)="getattach($event)"
-                      style="width: 100%;"/>
-                      <!-- <i class="fa fa-plus cursor-pointer mt-3 ms-3" aria-hidden="true" (click)="addFile()"></i> -->
 
-                      <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()"
-                        style="margin: 0px 10px;height: 33px;">Add File</button>
-                    </div>
-                    <div *ngFor="let attachment of attachmentsList;index i">
-                      <div>
-                        {{attachment.fileName}}
-                        <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
-                          (click)="viewFile(attachment)"></i>
-                        <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
-                          (click)="downFile(attachment)"></i>
-                        <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
-                          style="margin-left: 10px;"></i>
+                <div class="row form-row">
+                  <div class="col form-group">
+
+                    <label class="attachment-title">Attachment</label>
+
+                    <div class="attachment-box">
+
+                      <div class="file-upload-container">
+
+                        <input type="file" id="fileUpload" class="file-input" [(ngModel)]="attachment"
+                          (change)="getattach($event)" />
+
+                        <label for="fileUpload" class="file-design">
+                          <span class="choose-file-btn">Choose File</span>
+                          <span class="file-text">
+                            {{ attachment?.name ? attachment?.name : 'No file chosen' }}
+                          </span>
+                        </label>
+
                       </div>
+
+                      <button class="add-file-btn" type="button" (click)="addFile()">
+                        ADD FILE
+                      </button>
+
                     </div>
+
+                    <div class="file-note">
+                      Only Jpg, Png and Pdf is allowed.
+                    </div>
+
+                    <div class="attachment-list" *ngFor="let attachment of attachmentsList; index as i">
+                      {{attachment.fileName}}
+                      <i class="fa fa-eye action-icon" (click)="viewFile(attachment)"></i>
+                      <i class="fa fa-download action-icon" (click)="downFile(attachment)"></i>
+                      <i class="fa fa-times action-icon" (click)="deleteDoc(attachment)"></i>
+                    </div>
+
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col">
-                    <div>
-                      <label>Proposed Resolution Date<span style="color:red"> *</span></label><br />
-                      <input type="datetime-local" [(ngModel)]="ProposedResolution" style="width:30%;" readonly/>
-                    </div>
+
+                <div class="row form-row">
+                  <div class="col form-group">
+                    <label style="color: #15455c; font-size: larger;">Proposed Resolution Date <span class="required"
+                        style="color: red;">*</span></label>
+                    <input class="form-control-custom" style="width: 30%; display: flex;" type="datetime-local"
+                      [(ngModel)]="ProposedResolution" readonly />
                   </div>
                 </div>
+
+                <div class="button-group">
+                  <span class="btn-primary-customSubmit" (click)="onsubmit('Submit')">Submit</span>
+                  <span class="btn-primary-customDraft" (click)="onsubmit('Draft')">Draft</span>
+                  <span class="issueBackBtn" [routerLink]="'/report_issue'">Back</span>
+                </div>
+
               </div>
-
-              <span class="btn-sub" (click)="onsubmit('Draft')">Draft</span>
-              <span class="btn-sub" (click)="onsubmit('Submit')">Submit</span>
-              <span class="btn-sub" [routerLink]="'/report_issue'">Back</span>
-              <!--<span class="btn-sub" [routerLink]="'/report_issue'">Cancel</span>-->
             </div>
+
           </div>
         </div>
+
       </div>
 
-
     </div>
+  </div>
 
+  <div class="notification" *ngIf="errorMessage">
+    <button class="close-btn" (click)="clearErrorMessage()"><span style="color:black;">X</span></button>
+    <p class="message-txt">{{ errorMessage }}</p>
+  </div>
+  <div class="success" *ngIf="successMessage">
+    <button class="close-btn" (click)="clearSuccessMessage()"><span style="color:black;">X</span></button>
+    <p class="message-txt">{{ successMessage }}</p>
   </div>
 </div>
-
-
-<!--
-
-<div class="notification-sucess" *ngIf="messagesuccess">
-  <p>Saved Successfully!</p>
-  <span class="close-btn" (click)="navigatesuccess()">Ok</span>
-</div>
-<div class="notification" *ngIf="messageerror">
-  <span class="close-btn" (click)="closeNotification()">&times;</span>
-  <p>Not Saved</p>
-</div> -->
-
-<!--Popup Start-->
-<div class="notification" *ngIf="errorMessage">
-  <button class="close-btn" (click)="clearErrorMessage()"><span style="color:black;">X</span></button>
-  <p class="message-txt">{{ errorMessage }}</p>
-</div>
-<div class="success" *ngIf="successMessage">
-  <button class="close-btn" (click)="clearSuccessMessage()"><span style="color:black;">X</span></button>
-  <p class="message-txt">{{ successMessage }}</p>
-</div>
-<!--Popup End-->

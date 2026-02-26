@@ -1,7 +1,8 @@
-<button class="proManagementBackBtn" (click)="navigateToLesonLearned()">Go Back</button>
-<button class="addNewBtn ms-4" (click)="navigateToEdit()">
+<button class="backBtn-goBack" (click)="navigateToLesonLearned()"> <span class="arrow">&#8249;</span> Go Back</button>
+<button class="addNewBtn-addNewTemplate ms-4" (click)="navigateToEdit()">
   Add New Template</button>
-<ng-container *ngIf="!showLessonTemplate">
+
+<!-- <ng-container *ngIf="!showLessonTemplate">
   <div class="table-container">
     <table>
       <thead>
@@ -37,6 +38,54 @@
         <mat-paginator [length]="templateDetailsList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
           [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page"
           style="margin-right:34%">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</ng-container> -->
+
+<ng-container *ngIf="!showLessonTemplate">
+  <div class="main-wrapper">
+    <div class="table-container">
+      <div class="header-row">
+        <div class="col-sr">SL. NO.</div>
+        <div class="col-name">TEMPLATE NAME</div>
+        <div class="col-active">IS ACTIVE</div>
+        <div class="col-user">CREATED BY</div>
+        <div class="col-date">CREATED DATE</div>
+        <div class="col-action">ACTION</div>
+      </div>
+
+      <div class="row-list">
+        <div class="data-row" *ngFor="let template of paginatedData; let i = index">
+          <div class="col-sr">
+            <span class="drag-handle">:::</span>
+            <span class="sl-number">{{ (pageIndex * pageSize) + i + 1 | number:'2.0' }}</span>
+          </div>
+          <div class="col-name bold-text">{{template.templateName}}</div>
+          <div class="col-active">
+            <span class="status-pill" [ngClass]="template.isActive ? 'active' : 'inactive'">
+              {{ template.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </div>
+          <div class="col-user">{{template.createdBy}}</div>
+          <div class="col-date">{{template.createdDt | date:'dd-MMM-yyyy'}}</div>
+          <div class="col-action">
+            <div class="action-icons">
+              <i class="fa fa-pencil-square-o edit-btn" (click)="navigateToEdit(template)"></i>
+              <i class="fa fa-trash delete-btn" (click)="delete(template)"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="no-data" *ngIf="paginatedData?.length === 0">
+          <i class="fa fa-search"></i> No Data Available
+        </div>
+      </div>
+
+      <div class="pagination-container" *ngIf="paginatedData?.length > 0">
+        <mat-paginator [length]="templateDetailsList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPageChange($event)" aria-label="Select page" style="margin-right: 25%;">
         </mat-paginator>
       </div>
     </div>

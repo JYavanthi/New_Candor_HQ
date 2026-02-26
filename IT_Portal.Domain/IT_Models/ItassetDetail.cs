@@ -1,4 +1,7 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class ItassetDetail
 {
@@ -86,7 +89,7 @@ public partial class ItassetDetail
 
     public string? Description { get; set; }
 
-    public int? OnHoldReason { get; set; }
+    public string? OnHoldReason { get; set; }
 
     public int? CreatedBy { get; set; }
 

@@ -1,0 +1,111 @@
+<div class="sidebar close" [ngClass]="{ 'close': isSidebarClosed }" style="margin-top: 15px; height: 95%;">
+    <div class="logo-details">
+    </div>
+    <ul class="nav-links" style="margin-top: -85px;">
+        <li>
+            <a> 
+                <img src="assets/image/home.png" class="menu-icon" alt="Home">
+            </a>
+
+            <ul class="sub-menu blank">
+                <li>
+                    <a class="link_name" href="/dashboard">Home</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li>
+            <div class="iocn-link">
+                <a>
+                    <img src="assets/image/change_request.png" class="menu-icon" alt="Home">
+                    <span class="link_name">Change Request</span>
+                </a>
+                <i class='arrow' [class]="arrowIconCR" (click)="toggleSubItems('CR')"></i>
+            </div>
+            <ul [@slideInOut]="showCRSubItems ? 'in' : 'out'" class="sub-items">
+                <li *ngFor="let item of CRmenuItems">
+                    <a [routerLink]="item.link"><i class='bx bxs-circle' style="font-size: 5px;"></i>{{ item.name }}</a>
+                </li>
+            </ul>
+            <ul class="sub-menu">
+                <li><a class="link_name">Change Request</a></li>
+                <li><a [routerLink]="'/change-request'">View Change Request</a></li>
+                <li *ngIf="ischangeanalyst"><a [routerLink]="'/new-change'">New Change Request</a></li>
+                <li><a [routerLink]="'/change_request_report'">Report</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a>
+                    <img src="assets/image/help_desk.png" class="menu-icon" alt="Home">
+                    <span class="link_name">Help Desk</span>
+                </a>
+                <i class='arrow' [class]="arrowIconHD" (click)="toggleSubItems('HD')"></i>
+            </div>
+            <ul [@slideInOut]="showHDSubItems ? 'in' : 'out'" class="sub-items">
+                <li *ngFor="let item of HDmenuItems">
+                    <a [routerLink]="item.link"><i class='bx bxs-circle' style="font-size: 5px;"></i>{{ item.name }}</a>
+                </li>
+            </ul>
+            <ul class="sub-menu">
+                <li><a class="link_name" [routerLink]="'/help-desk'">Help Desk</a></li>
+                <li><a [routerLink]="'/report_issue'">Issue</a></li>
+                <li><a [routerLink]="'/services/servicemaster'">Service</a></li>
+                <li><a [routerLink]="'/assets/viewassets'">Assets</a></li>
+                <li><a>Knowledge Base</a></li>
+            </ul>
+        </li>
+
+
+        <li>
+            <a>
+                <img src="assets/image/projectmanagment.png" class="menu-icon" alt="Home">
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" [routerLink]="'/projectmaster'">Project Management</a></li>
+            </ul>
+        </li>
+        <li *ngIf="user?.role=='Super Admin'||user?.role=='Admin'">
+            <div class="iocn-link">
+                <a>
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Master</span>
+                </a>
+                <i class='arrow' [class]="arrowIconMS" (click)="toggleSubItems('MS')"></i>
+            </div>
+            <ul [@slideInOut]="showMSSubItems ? 'in' : 'out'" class="sub-items">
+                <li *ngFor="let item of MastermenuItems">
+                    <a [routerLink]="item.link"><i class='bx bxs-circle' style="font-size: 5px;"></i>{{ item.name }}</a>
+                </li>
+            </ul>
+            <ul class="sub-menu">
+                <li><a class="link_name">Masters</a></li>
+                <li><a [routerLink]="'/mastermodule/supportmaster'">Module Master</a></li>
+                <li><a [routerLink]="'/support_view'">User Configuration</a></li>
+                <li><a [routerLink]="'/ChageRequest-Masters'">Category</a></li>
+                <li><a [routerLink]="'/categorytype'">Category Type</a></li>
+                <li><a [routerLink]="'/classification'">Classification</a></li>
+                <li><a [routerLink]="'/natureofchange'">Nature Of Change</a></li>
+                <li><a [routerLink]="'/systemlandscape'">System Landscape</a></li>
+                <li><a [routerLink]="'/Refrencemaster'">Reference</a></li>
+                <li><a [routerLink]="'/Refrencetype'">Reference Type</a></li>
+                <li><a [routerLink]="'/Priority'">Priority</a></li>
+                <li><a [routerLink]="'/viewcheklist'">Check List</a></li>
+                <li><a [routerLink]="'/slamaster'">SLA Master</a></li>
+                <li><a [routerLink]="'/onHoldReasonnMaster'">Hold Reason Master</a></li>
+                <li><a [routerLink]="'/softwareMaster'">Software Master</a></li>
+                <li><a [routerLink]="'/softwareVersionMaster'">Software Version Master</a></li>
+                <li><a [routerLink]="'/projectgroupmaster'">Project Group Master</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <li class="logout-item" style="margin-left: -25px;">
+        <a [routerLink]="urls" (click)="logout()" style="cursor: pointer;">
+            <img src="assets/image/logout.png" class="menu-icon" alt="Logout">
+            <span class="link_name"></span>
+        </a>
+    </li>
+
+</div>

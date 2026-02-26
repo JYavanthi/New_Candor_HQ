@@ -1,6 +1,6 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';import { environment } from '@environments/environment';
+import { ActivatedRoute, Router } from '@angular/router'; import { environment } from '@environments/environment';
 import { PasscrdataService } from 'app/change-request/passcrdata.service';
 
 
@@ -22,8 +22,7 @@ export class ItengineerComponent {
   Designation: string = '';
   Plant: string = '';
 
-  constructor(private http: HttpClient, private route: Router, private routeservice:PasscrdataService,private router: ActivatedRoute ) 
-  {
+  constructor(private http: HttpClient, private route: Router, private routeservice: PasscrdataService, private router: ActivatedRoute) {
     this.routeservice.getsupportteam();
     this.supportid = this.routeservice.supporterID;
 
@@ -119,7 +118,6 @@ export class ItengineerComponent {
   categorytype: any[] = [];
 
   getcategorytype() {
-    debugger
     const apiUrls = this.apiurl + '/CategoryTyp'
     const requestBody = {
 
@@ -179,7 +177,7 @@ export class ItengineerComponent {
   }
 
 
-  issueRaisedBy: any='';
+  issueRaisedBy: any = '';
   issueDate: any = '';
   issueShotDesc: any = '';
   issueDesc: any = '';
@@ -365,8 +363,8 @@ export class ItengineerComponent {
 
   assigntofilter: any[] = [];
 
- getassignto() {
-   const apiUrls = this.apiurl + '/SupportTeam'
+  getassignto() {
+    const apiUrls = this.apiurl + '/SupportTeam'
     const requestBody = {
 
     }
@@ -457,7 +455,6 @@ export class ItengineerComponent {
 
   updatevalue: any[] = [];
   getupdatevalue() {
-    debugger
     const apiUrls = this.apiurl + '/IssueList/Getissuelist'
     const requestBody = {
 
@@ -471,7 +468,7 @@ export class ItengineerComponent {
       (response: any) => {
         console.log(response);
         this.updatevalue = response.filter((row: any) => row.issueId === parseInt(this.urlissueid));
-        console.log("update issues",this.updatevalue)
+        console.log("update issues", this.updatevalue)
       },
       (error) => {
         console.error("Post failed", error)

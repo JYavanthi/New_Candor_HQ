@@ -1,3 +1,11 @@
+.newChangeRequestMaindiv {
+  width: 95%;
+  display: flex;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
 .container-field-line {
   padding: 20px;
   background-color: #fff;
@@ -311,6 +319,7 @@ th,td{
 .submit_change{
   margin-top: -3%;
   margin-right:69%;
+  display: contents;
 }
 
 .downtime_checklist{
@@ -411,7 +420,7 @@ th,td{
 }
 
 .container-implement {
-  width: 90%;
+  width: 85%;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;

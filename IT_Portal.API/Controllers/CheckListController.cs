@@ -23,7 +23,7 @@ namespace IT_Portal.API.Controllers
         }
 
         [HttpPost("ChecklistPost")]
-        public async Task<IActionResult> PostRefrence(SPCheckList obj)
+        public async Task<IActionResult> PostRefrence([FromBody]SPCheckList obj)
         {
             var spObj = await _checklistcontext.postchecklist(obj);
             return Ok(spObj);

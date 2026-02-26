@@ -1,10 +1,15 @@
-﻿namespace IT_Portal.Domain.IT_Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace IT_Portal.Persistence.IT_Models;
 
 public partial class Checklist
 {
     public int ItchecklistId { get; set; }
 
     public int? PlantId { get; set; }
+
+    public string Status { get; set; } = null!;
 
     public int SupportId { get; set; }
 
@@ -27,8 +32,4 @@ public partial class Checklist
     public int? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDt { get; set; }
-
-    public string? Status { get; set; }
-
-    public virtual Support Support { get; set; } = null!;
 }
