@@ -1,0 +1,232 @@
+<div class="change_request_header">
+  <h2>MileStone Report</h2>
+</div>
+
+<div class="row" align="right">
+  <div class="col export_pdf">
+    <!--<button class="excel_button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;-->
+    <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
+        aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+  </div>
+</div>
+
+<div class="card change_request_card_filter" *ngIf="isVisible">
+  <div class="card-body card_body_filter" [formGroup]="filterForm">
+    <div class="row filter_cr">
+      <div class="col">
+        <label>Plant</label><br />
+        <ng-multiselect-dropdown class="multiselect-dropdown dropdown-btn" [settings]="dropdownSettings"
+          [data]="dropdownList" formControlName="plantId" (ngModelChange)="mapedplantdatas()">
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="col">
+        <label>Category</label><br />
+        <ng-multiselect-dropdown [settings]="dropdownSettings" formControlName="Category" [data]="dropdowncategroy"
+          (ngModelChange)="mapedcategoryatas()">
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="col">
+        <label>Classifications</label><br />
+        <select formControlName="ClassificationId" class="input-change">
+          <option selected hidden disabled value="">Select-classification</option>
+          <option *ngFor="let classf of classificationdata" value="{{classf.itclassificationId}}">
+            {{classf.classificationName}}</option>
+        </select>
+
+      </div>
+      <div class="col">
+        <label>Priority</label><br />
+        <select formControlName="Priority" class="input-change">
+          <option selected hidden disabled value="">Select-priority</option>
+          <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Start Date:</label><br />
+        <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" formControlName="StartDate" />
+      </div>
+      <div class="col">
+        <label>End Date:</label><br />
+        <input class="input-change cr_date" type="date" id="toDate" name="toDate" formControlName="EndDate" />
+      </div>
+
+
+      <div class="col">
+        <label>Stage</label><br />
+        <select formControlName="stage" class="input-change">
+          <option selected hidden disabled value="">Select-Stage</option>
+          <option>Initiated</option>
+          <option>Approval</option>
+          <option>Implementation</option>
+          <option>Release</option>
+          <option>Closure</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Status</label><br />
+        <select class="input-change" formControlName="Status">
+          <option selected hidden disabled value="">Select Status</option>
+          <option value="All">All</option>
+          <option value="Draft">Draft</option>
+          <option value="Pending Approval">Pending Approval</option>
+          <option value="Approved level1">Approved level1</option>
+          <option value="Approved level2">Approved level2</option>
+          <option value="Approved level3">Approved level3</option>
+          <option value="Approved">Approved</option>
+          <option value="Implement">Implement</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Release">Release</option>
+          <option value="Released">Released</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+    </div>
+    <div class="access-checkbox">
+      <div>
+        <input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
+      </div>
+      <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-rounded filter_button" (click)="reset()">Reset</button><!--(click)="filterData()"-->
+      <!--(click)="filterdropdown()"-->
+    </div>
+  </div>
+</div>
+<br />
+<div class="">
+  <br />
+</div>
+
+
+<div class="mt-5">
+  <div class="tableClass">
+    <table id="excel-table">
+      <thead style="border-bottom: 2px solid;">
+        <tr>
+          <th class="n-b" colspan="14"></th>
+          <th colspan="6" class="approval-clm">Approval</th>
+          <th>Implemented</th>
+          <th colspan="6" class="approval-clm">Release</th>
+          <th>Released</th>
+          <th colspan="6" class="approval-clm">Closure</th>
+          <th>Closed</th>
+        </tr>
+        <tr>
+          <th class="n-b" colspan="14"></th>
+          <th colspan="2" class="app-sub-clm">Approval Level 1</th>
+          <th colspan="2" class="app-sub-clm">Approval Level 2</th>
+          <th colspan="2" class="app-sub-clm">Approval Level 3</th>
+          <th class="n-b"></th>
+          <th colspan="2" class="app-sub-clm">Approval Level 1</th>
+          <th colspan="2" class="app-sub-clm">Approval Level 2</th>
+          <th colspan="2" class="app-sub-clm">Approval Level 3</th>
+          <th class="n-b"></th>
+          <th colspan="2" class="app-sub-clm">Approval Level 1</th>
+          <th colspan="2" class="app-sub-clm">Approval Level 2</th>
+          <th colspan="2" class="app-sub-clm">Approval Level 3</th>
+          <th class="n-b"></th>
+        </tr>
+        <tr>
+
+          <th>RFC #</th>
+          <th>Date</th>
+          <th>Change Owner</th>
+          <th>Initiator</th>
+          <th>Plant Code</th>
+          <th>Classification</th>
+          <th>Category</th>
+          <th>Category Type</th>
+          <th>Nature of Change</th>
+          <th>Priority</th>
+          <th>Stage</th>
+          <th>Status</th>
+          <th>Draft</th>
+          <th>Submitted</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="n-b"></th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="n-b"></th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="app-sub-clm">Approver Name</th>
+          <th class="app-sub-clm">Approved Date</th>
+          <th class="n-b"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="tr-body" *ngFor="let CRreport of viewchangerequest">
+
+          <td>{{CRreport.crcode}}</td>
+          <td>{{CRreport.crdate|date:'dd-MM-yyyy'}}</td>
+          <td>{{CRreport.crowner}}</td>
+          <td>{{CRreport.initiatedFor}}</td>
+          <td>{{CRreport.plantId}}</td>
+          <td>{{CRreport.classificationName}}</td>
+          <td>{{CRreport.categoryName}}</td>
+          <td>{{CRreport.categoryType}}</td>
+          <td>{{CRreport.natureofChange}}</td>
+          <td>{{CRreport.priorityName}}</td>
+          <td>{{CRreport.stage}}</td>
+          <td>{{CRreport.status}}</td>
+          <td>{{CRreport.draftDt|date:'dd-MM-yyyy'}}</td>
+          <td>{{CRreport.submittedDt|date:'dd-MM-yyyy'}}</td>
+          <td class="app-sub-clm">{{CRreport.rfcapp1name? (CRreport.rfcapp1name.trim() !=='' ? CRreport.rfcapp1name :
+            '') : '' }}</td>
+          <td class="app-sub-clm">{{CRreport.rfcapproverLevel1Dt? (CRreport.rfcapproverLevel1Dt.trim() !=='' ?
+            (CRreport.rfcapproverLevel1Dt|date:'dd-MM-yyyy') : '') : '' }}</td>
+          <td class="app-sub-clm">{{CRreport.rfcapp2name? (CRreport.rfcapp2name.trim() !=='' ? CRreport.rfcapp2name :
+            '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.rfcapproverLevel2Dt? (CRreport.rfcapproverLevel2Dt.trim() !=='' ?
+            (CRreport.rfcapproverLevel2Dt|date:'dd-MM-yyyy') : '') : '' }}</td>
+          <td class="app-sub-clm">{{CRreport.rfcappname? (CRreport.rfcappname.trim() !=='' ? CRreport.rfcappname : '')
+            : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.rfcapprovedDt? (CRreport.rfcapprovedDt.trim() !=='' ?
+            (CRreport.rfcapprovedDt|date:'dd-MM-yyyy') : '') : '' }}</td>
+          <td>{{CRreport.implementedDt|date:'dd-MM-yyyy'}}</td>
+          <td class="app-sub-clm">{{CRreport.relapp1name? (CRreport.relapp1name.trim() !=='' ? CRreport.relapp1name :
+            '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.relApproverLevel1Dt? (CRreport.relApproverLevel1Dt.trim() !=='' ?
+            (CRreport.relApproverLevel1Dt|date:'dd-MM-yyyy') : '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.relapp2name? (CRreport.relapp2name.trim() !=='' ? CRreport.relapp2name :
+            '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.relApproverLevel2Dt? (CRreport.relApproverLevel2Dt.trim() !=='' ?
+            (CRreport.relApproverLevel2Dt|date:'dd-MM-yyyy') : '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.relappname? (CRreport.relappname.trim() !=='' ? CRreport.relappname : '')
+            : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.relApprovedDt? (CRreport.relApprovedDt.trim() !=='' ?
+            (CRreport.relApprovedDt|date:'dd-MM-yyyy') : '') : ''}}</td>
+          <td>{{CRreport.releasedDt|date:'dd-MM-yyyy'}}</td>
+          <td class="app-sub-clm">{{CRreport.colapp1name? (CRreport.colapp1name.trim() !=='' ? CRreport.colapp1name :
+            '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.colApproverLevel1Dt? (CRreport.colApproverLevel1Dt.trim() !=='' ?
+            (CRreport.colApproverLevel1Dt|date:'dd-MM-yyyy') : '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.colapp2name? (CRreport.colapp2name.trim() !=='' ? CRreport.colapp2name :
+            '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.colApproverLevel2Dt? (CRreport.colApproverLevel2Dt.trim() !=='' ?
+            (CRreport.colApproverLevel2Dt|date:'dd-MM-yyyy') : '') : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.colappname? (CRreport.colappname.trim() !=='' ? CRreport.colappname : '')
+            : ''}}</td>
+          <td class="app-sub-clm">{{CRreport.colApprovedDt? (CRreport.colApprovedDt.trim() !=='' ?
+            (CRreport.colApprovedDt|date:'dd-MM-yyyy') : '') : ''}}</td>
+          <td>{{CRreport.closedDt| date:'dd-MM-yyyy'}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]"
+    (page)="onPageChange($event)" aria-label="Select page">
+  </mat-paginator>
+</div>

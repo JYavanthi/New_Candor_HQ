@@ -1,0 +1,200 @@
+<button class="proManagementBackBtn" (click)="navigateToLesonLearned()"><span>&#8249;</span>Go Back</button>
+
+<ng-container *ngIf="!showTemplateView && !showAppTemplate">
+  <form [formGroup]="lessonForm">
+    <div class="card service_card br-top-blue">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="inputFields">
+              <!-- <div>
+                <label class="asteriskrequired" for="milestone">Milestone</label>
+                <select formControlName="milestone" (change)="getTaskList($event)">
+                  <option value="" selected disabled>Select Milestone Code </option>
+                  <option *ngFor="let milestone of milestoneList" [value]="milestone.projMilestoneId">
+                    {{milestone.milestoneTitle}}</option>
+                </select>
+              </div>
+
+              <div *ngIf="lessonForm.value.milestone">
+                <label class="asteriskrequired" for="task">Task</label>
+                <select formControlName="task">
+                  <option value="" selected hidden disabled>Select Task Code</option>
+                  <option value="" *ngFor="let task of taskList" [value]="task.taskId"> {{task.taskTitle}}</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="category">Category</label>
+                <select formControlName="category">
+                  <option value="" selected disabled>Select Category</option>
+                  <option>Requirement Gathering</option>
+                  <option>Design</option>
+                  <option>Coding And Unit Testing</option>
+                  <option>Testing</option>
+                  <option>User Acceptance Testing</option>
+                  <option>Project Management</option>
+                  <option>Others</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="lessonType">Lesson Type</label>
+                <select formControlName="lessonType">
+                  <option value="" selected disabled>Select Lesson Type</option>
+                  <option>Problems Statement</option>
+                  <option>Success Summary</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="Closer"> Project Closure Acceptance</label>
+                <select formControlName="Closer">
+                  <option value="" selected hidden disabled>Select Project Closure Acceptance</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div> -->
+
+              <div>
+                <label class="asteriskrequired" for="milestone">Milestone</label>
+                <select formControlName="milestone" (change)="getTaskList($event)">
+                  <option value="" selected disabled>Select Milestone Code</option>
+                  <option *ngFor="let milestone of milestoneList" [value]="milestone.projMilestoneId">
+                    {{ milestone.milestoneTitle }}
+                  </option>
+                </select>
+              </div>
+
+              <div *ngIf="lessonForm.value.milestone">
+                <label class="asteriskrequired" for="task">Task</label>
+                <select formControlName="task">
+                  <option value="" selected hidden disabled>Select Task Code</option>
+                  <option *ngFor="let task of taskList" [value]="task.taskId">
+                    {{ task.taskTitle }}
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="category">Category</label>
+                <select formControlName="category">
+                  <option value="" selected disabled>Select Category</option>
+                  <option>Requirement Gathering</option>
+                  <option>Design</option>
+                  <option>Coding And Unit Testing</option>
+                  <option>Testing</option>
+                  <option>User Acceptance Testing</option>
+                  <option>Project Management</option>
+                  <option>Others</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="lessonType">Lesson Type</label>
+                <select formControlName="lessonType">
+                  <option value="" selected disabled>Select Lesson Type</option>
+                  <option>Problems Statement</option>
+                  <option>Success Summary</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="Closer">Project Closure Acceptance</label>
+                <select formControlName="Closer">
+                  <option value="" selected hidden disabled>Select Project Closure Acceptance</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="impactDescription"
+                  customLabelAlert="Impact Description is Required.">Impact</label>
+                <angular-editor #editor [config]="editorConfig" formControlName="impactDescription"
+                  id="impactDescription"></angular-editor>
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" customLabelAlert="Recommendation Description is Required."
+                  for="recommendationDescription">Recommendation</label>
+                <angular-editor #editor [config]="editorConfig" id="recommendationDescription"
+                  formControlName="recommendationDescription"></angular-editor>
+              </div>
+
+            </div>
+          </div>
+          <!-- <div>
+            <div class="col-3">
+              <label>Select Predefined Template</label>
+              <select formControlName="predefinedTemplate" (change)="getTmeplateDetailsList()">
+                <option value="" selected hidden disabled>Select Predefined Template</option>
+                <option *ngFor="let template of templateList" [value]="template.prtemplateId">{{template.templateName}}
+                </option>
+              </select>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="inputFields">
+
+              <div>
+                <label for="predefinedTemplate">Select Predefined Template</label>
+                <select formControlName="predefinedTemplate" (change)="getTmeplateDetailsList()" style="width: 25%;">
+                  <option value="" selected hidden disabled>Select Predefined Template</option>
+                  <option *ngFor="let template of templateList" [value]="template.prtemplateId">
+                    {{ template.templateName }}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="inputFields">
+              <div *ngFor="let field of templateDetailsList;let i=index;" class="col-3">
+                <label [class]="field?.mandatory? 'asteriskrequired':''">{{field?.question}}</label>
+                <select [(ngModel)]="field['response']" [ngModelOptions]="{standalone: true}"
+                  (ngModelChange)="updateFieldValue($event,field)" *ngIf="field?.type?.trim()=='Dropdown'">
+                  <option value="" disabled selected>Select..</option>
+                  <option *ngFor="let v of field?.value?.split(',')">
+                    {{v}}</option>
+                </select>
+                <input type="text" *ngIf="field?.type?.trim()=='Input'" [(ngModel)]="field['answer']"
+                  [ngModelOptions]="{standalone: true}">
+                <input type="checkbox" *ngIf="field?.type?.trim()=='Checkbox'" [(ngModel)]="field['answer']"
+                  [ngModelOptions]="{standalone: true}">
+                <div *ngIf="field?.type?.trim() === 'Radio'">
+                  <div class="radio-inline-group">
+                    <label *ngFor="let option of field?.value?.split(',')" class="radio-inline-option">
+                      <input type="radio" [name]="'radio_' + i" [value]="option" [(ngModel)]="field['response']"
+                        [ngModelOptions]="{standalone: true}" />
+                      {{ option }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mainBtnsDiv">
+          <button class="actionBtn" style="margin-left: 2%;" (click)="submitLesson()">Submit</button>
+          <button class="actionBtn" (click)="clearAllFields()" *ngIf="showClear" style="background-color: #ff2e5a">Clear</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="showTemplateView">
+  <button class="proManagementBackBtn" (click)="showTemplateView=false;this.isAddTemplate.emit(false)">Go
+    Back</button>&nbsp;
+  <button class="proManagementBackBtn" (click)="showAppTemplate=true;showTemplateView=false;">Add new</button>
+  <app-pro-template-view />
+</ng-container>
+
+<ng-container *ngIf="showAppTemplate">
+  <button class="proManagementBackBtn" (click)="showTemplateView=true;showAppTemplate=false;">Go Back</button>
+  <app-pr-template />
+</ng-container>

@@ -1,0 +1,28 @@
+<div class="text-center pageHeadingCss">
+  <p class="pageHeadingparaCss">Domain</p>
+</div>
+<div class="issue-btn">
+  <button class="backBtn" type="button" [routerLink]="['/services/viewservices']">Back</button>&nbsp;
+</div>
+<div class="service_container">
+
+
+   <mat-tab-group [(selectedIndex)]="domainTabIndex">
+    <mat-tab label="Details" >
+      <ng-container *ngIf="domainTabIndex == 0">
+        <app-sr-domain-details/>
+      </ng-container>
+    </mat-tab>
+    <mat-tab label="Approval" >
+      <ng-container *ngIf="domainTabIndex == 1">
+      <app-sr-common-approval/>
+      </ng-container>
+    </mat-tab>
+    <mat-tab label="Resolution" >
+      <ng-container *ngIf="domainTabIndex == 2">
+        <app-sr-resolution />
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

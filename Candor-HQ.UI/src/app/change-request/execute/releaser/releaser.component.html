@@ -1,0 +1,214 @@
+<style>
+
+</style>
+<br />
+<ul class="breadcrumbs" id="myTab" role="tablist">
+  <li class="breadcrumbs__item active" style="cursor:pointer"
+    [style]=" ((this.appstatus == 'Approved' && this.stage=='Release') || isReleased ? 'background-color:green; color:white' :'background-color:none' ) "
+    role="presentation" id="approvel-tab" data-bs-toggle="tab" data-bs-target="#approvel" aria-controls="approvel"
+    aria-selected="false">
+    Approve
+  </li>
+  <li class="breadcrumbs__item" role="presentation" id="release1-tab"
+    [style]=" (this.appstatus == 'Approved' && this.stage=='Release') ? 'background-color:blue; color:white':((this.appstatus == 'Approved level1' && this.stage=='Release')||(this.appstatus == 'Approved level2' && this.stage=='Release') || (this.appstatus == 'Implemented' )?'background-color:grey; color:white;pointer-events:none':'background-color:green; color:white') "
+    data-bs-toggle="tab" data-bs-target="#releasetab1" aria-controls="releasetab1" aria-selected="false">
+    Release
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <!--Approver1 Start-->
+
+  <div class="tab-pane fade show active" id="approvel" role="tabpanel" aria-labelledby="approvel-tab">
+    <ul class="breadcrumbs" id="myTab" role="tablist">
+      <li class="breadcrumbs__item"
+        [style]=" ((this.appstatus == 'Implemented') ? 'background-color:blue':'background-color:green') "
+        style="cursor:pointer" (click)="Approver(1)" *ngIf=" this.approverCount[0] > 1 || this.approverCount[0] == 1"
+        role="presentation" id="approver1-tab" data-bs-toggle="tab" data-bs-target="#approver1"
+        aria-controls="approver1" aria-selected="false">
+        <button class="approverbtns">Approver 1</button>
+      </li>
+      <li role="presentation"
+        [style]=" (this.appstatus == 'Approved level1' && this.stage=='Release') ? 'background-color:blue':((this.appstatus == 'Implemented' )  ?'background-color:grey;color:white;pointer-events:none':'background-color:green') "
+        style="cursor:pointer" (click)="Approver(2)" *ngIf=" this.approverCount[0] > 2 || this.approverCount[0] == 2"
+        class="breadcrumbs__item" id="approver2-tab" data-bs-toggle="tab" data-bs-target="#approver1"
+        aria-controls="approver1" aria-selected="false">
+        <button class="approverbtns">Approver 2</button>
+      </li>
+      <li role="presentation"
+        [style]=" (this.appstatus == 'Approved level2' && this.stage=='Release') ? 'background-color:blue':((this.appstatus == 'Approved level1' && this.stage=='Release') || (this.appstatus == 'Implemented' )?'background-color:grey;color:white;pointer-events:none':'background-color:green') "
+        style="cursor:pointer" (click)="Approver(3)" *ngIf=" this.approverCount[0] > 3 || this.approverCount[0] == 3"
+        class="breadcrumbs__item" id="approver3-tab" data-bs-toggle="tab" data-bs-target="#approver1"
+        aria-controls="approver1" aria-selected="false">
+        <button class="approverbtns">Approver 3</button>
+      </li>
+
+    </ul>
+    <span style="color:red;    font-size: 12px;
+    margin-left: 15px;display: flex;justify-content: initial;"> Please Click On Approver Level to Approve.</span>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="approver1" role="tabpanel" aria-labelledby="approver1-tab">
+        <div>
+          <div class="container-field-approve">
+            <b>RFC Release {{rfcapproverlevel}}</b>
+            <div class="border-rfc-heading">
+              <div class="row">
+                <div class="col-3">
+                  <label>Approver Name</label>
+                </div>
+
+                <div *ngFor="let approver of ApproverNames()">
+                  <p>{{approver.name}}</p>
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+              </div>
+              <br />
+              <div class="row mt-3">
+                <div class="col-sm-3">
+                  <label>Date</label>
+                  <input type="datetime-local" [(ngModel)]="date" readonly />
+                </div>
+                <div class="">
+                  <label>Remarks</label>
+                  <textarea class="textarea-implement" [(ngModel)]="remark"></textarea>
+                </div>
+                <div class="col">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-field-implement">
+              <div>
+                <label class="label-approve">Attach Document</label>
+                <div class="attachmentList"></div>
+                <div class="d-flex">
+                  <input type="file" (change)="getattach($event)" [(ngModel)]="attach" />
+                  <button class="blue-botton ms-4" aria-hidden="true" type="submit" (click)="addFile()"
+                    style="margin: 0px 10px;height: 33px;">Add File</button>
+                </div>
+                <div *ngFor="let attachment of attachmentsList;index i">
+                  <div>
+                    {{attachment.fileName}}
+                    <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+                    <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                      (click)="downFile(attachment)"></i>
+                    <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                      style="margin-left: 10px;" *ngIf="appvflg && appflag"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+            <div class="btn-sub-reset" *ngIf="isapprover && !this.isReleased && appvflg && appflag">
+              <button class="btn-sub-approve" (click)="getdata(['this.APILevel'])">Approve</button>
+              <button class="btn-sub" (click)="rejectbutton('Seek Clarification')">Seek Clarification</button>
+              <button class="btn-sub-reject" type="submit" (click)="rejectbutton('Reject')">Reject</button>
+            </div>
+            </div>
+
+          </div>
+        </div>
+        <!--Below are the same History Data, you just need to update the API & call the keys below as im getting empty response-->
+        <!--history comes here-->
+        <div>
+          <br><br>
+          <p>Approver History</p>
+        </div>
+        <div>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>CR History Date</th>
+                <th>RFC#</th>
+                <th>CR Owner Name</th>
+                <!--<th>Plant</th>-->
+                <th>Stage</th>
+                <th>Status</th>
+                <th>Approved By</th>
+                <th>Approved Date</th>
+                <th>Remarks</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of tableData">
+                <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+                <td>{{getcrcode}}</td>
+                <td>{{this.crownername}}</td>
+                <!--<td>{{row.plantId}}</td>-->
+                <td>
+                  <span *ngIf="row.stage === 'N'">RFC Initiated</span>
+                  <span *ngIf="row.stage === 'R'">RFC Release</span>
+                  <span *ngIf="row.stage === 'C'">RFC Closure</span>
+                </td>
+                <td>{{row.status}}</td>
+                <td>
+                  {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '') }}
+                </td>
+                <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+                <td>{{row.remarks}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade"
+    *ngIf="(stage === 'Release' && (status === 'Approved' ||status === 'Released'))||isReleased" id="releasetab1"
+    role="tabpanel" aria-labelledby="release1-tab">
+    <div>
+      <br />
+      <div class="container-field-implement">
+        <div>
+          <label label-approve>Comments</label>
+          <textarea [(ngModel)]="releaseComments" class="textarea-implement"></textarea>
+        </div>
+
+        <div>
+          <label class="label-approve">Attach Document</label>
+          <div class="d-flex">
+            <input type="file" [(ngModel)]="attach" (change)="getattach($event)" />
+
+            <button class="blue-botton ms-4" aria-hidden="true" type="submit" value="Submit" (click)="addFile()"
+              style="margin: 0px 10px;height: 33px;">
+              Add File</button>
+          </div>
+          <!-- <input class="input-approve" type="File" (change)="getattach($event)" placeholder="" [(ngModel)]="attachmentfile" /> -->
+          <div *ngFor="let attachment of attachmentsList;index i">
+            <div>
+              Attachment: {{attachment.fileName}}
+              <button style="border: none; background: none;">
+                <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+                <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                  (click)="downFile(attachment)"></i>
+                <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                  style="margin-left: 10px;" *ngIf=!isReleased></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="btn-sub-reset">
+        <button *ngIf="!isReleased && ischangeowner" (click)="submitRelease()" class="btn-sub" type="submit">
+          Submit For Closure
+        </button>
+        <button *ngIf="ischangeanalyst" class="btn-sub" type="reset">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" *ngIf="stage !== 'Release' && status !== 'Approved'" id="releasetab1" role="tabpanel"
+    aria-labelledby="release1-tab">
+    <div class="release-approval">
+      <h1>Release Approval is Pending</h1>
+    </div>
+  </div>
+</div>

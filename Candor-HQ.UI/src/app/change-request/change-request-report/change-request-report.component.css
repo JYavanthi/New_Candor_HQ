@@ -1,0 +1,11 @@
+.generate_row {
+    width: 98%;
+}
+
+.changeRequestReportMainDiv {
+    width: 95%;
+    display: flex;
+    background: white;
+    border-radius: 40px;
+    margin-left: 2.5%;
+}

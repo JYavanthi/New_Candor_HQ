@@ -1,0 +1,30 @@
+.changeRequestMainDiv {
+  background: white;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
+td,
+th {
+  font-size: small;
+  width: auto;
+}
+
+.filter_button {
+  background-color: #3c8dbc;
+  color: white;
+  margin-top: 17px;
+}
+
+.search-crnum {
+  margin-left: -81%;
+  margin-top: 5%;
+  width: 75%;
+}
+
+td,
+th {
+  text-align: left;
+}

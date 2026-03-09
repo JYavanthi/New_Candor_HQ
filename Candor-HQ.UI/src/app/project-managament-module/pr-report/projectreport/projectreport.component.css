@@ -1,0 +1,249 @@
+.reportHeader {
+  width: 95%;
+  margin: auto;
+  margin-top: -8%;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.titleSection h2 {
+  color: #1a9aa6;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.reportIcon {
+  width: 75px;
+  height: 75px;
+}
+
+.headerLine {
+  height: 1px;
+  background: #cfcfcf;
+  margin: 10px 0 20px 0;
+}
+
+.actionSection {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.filterBtn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  color: #1a9aa6;
+  cursor: pointer;
+}
+
+.pdfBtn {
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+  background: white;
+  padding: 6px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.pdfBtn i {
+  margin-right: 6px;
+}
+
+.excelBtn {
+  border: 2px solid #27ae60;
+  color: #27ae60;
+  background: white;
+  padding: 6px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.excelBtn i {
+  margin-right: 6px;
+}
+
+th {
+  background-color: #178f97;
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.tableWrapper {
+  width: 105%;
+  margin: auto;
+  background: #c8d5e5;
+  padding: 20px;
+  border-radius: 12px;
+  margin-left: -2%;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.tableHeadings th {
+  background: #4fa3a5;
+  color: white;
+  font-weight: 600;
+  padding: 14px;
+  text-align: center;
+}
+
+.tableHeadings th:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.tableHeadings th:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.tableRow {
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.tableRow td {
+  padding: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: white;
+}
+
+.completed {
+  background: #4CAF50;
+}
+
+.progress {
+  background: #FFC107;
+  color: black;
+  height: 30px;
+}
+
+.discontinue {
+  background: #4fa3a5;
+}
+
+.cancel {
+  background: #F44336;
+}
+
+.pending {
+  background: #ff9f43;
+}
+
+.approved {
+  background: #17a2b8;
+}
+
+.noData {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+.change_request_card_filter {
+  width: 95%;
+  margin: auto;
+  background: #c9d6e6;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #9fb2c7;
+}
+
+.card_body_filter {
+  background: #d6e1ee;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.filter_cr {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.filter_cr label {
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.filter_cr input,
+.filter_cr select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 25px;
+  border: 1px solid #7aa8c7;
+  outline: none;
+  background: white;
+}
+
+.cr_date {
+  border-radius: 25px;
+}
+
+.filterReset {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.filter_button:first-child {
+  background: #22c55e;
+  border: none;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.filter_button:last-child {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 26px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dropdowns-list {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 90%;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.drop-list {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.drop-list:hover {
+  background: #f1f5f9;
+}

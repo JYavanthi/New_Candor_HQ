@@ -1,0 +1,40 @@
+<div class="br-top-blue card service_card" [formGroup]="approverForm">
+  <div class="container-field-approve">
+    <b> Service Initiate </b>
+    <div class="border-rfc-heading">
+      <div>
+        <label>{{sameRpmNhod?'Reporting Manager and HOD':this.Status == 'Pending Approval'?'Reporting Manager':'HOD'}}</label>
+        <div>{{(srData?.srselectedfor=='guest')?(srData?.guestReportingManagerName):apprName}} ({{srData?.srselectedfor=='guest'?(srData?.guestReportingManagerEmployeeId):apprId}})</div>
+      </div>
+      <!-- <div class="mt-4">
+        <label>Date</label>
+        <input type="date" formControlName="apprvedDate"/>
+      </div> -->
+      <div class="mt-2">
+        <label class="asteriskrequired">Remarks</label>
+        <textarea class="textarea-implement" formControlName="remarks"></textarea>
+      </div>
+    </div>
+  </div>
+  <div>
+    
+    <!-- <div class="container-field-implement">
+      <div>
+        <label class="label-approve">Attach Document</label>
+        <input class="input-approve" type="File" />
+      </div>
+    </div> -->
+    <!-- <div>{{srData?.status==Status}}</div> -->
+
+    <!-- <div>
+      {{Status}}{{srData?.status.trim()}}
+    </div> -->
+
+    <div class="btn-appr-rej" *ngIf="(this.srData?.status?.trim()==this.Status||this.sameRpmNhod&&this.srData?.status?.trim()=='Pending Approval')&&
+    (this.user?.empData?.employeeNo==this.apprId?.toString()||this.srData?.guestReportingManagerEmployeeId?.toString()==this.user?.empData?.employeeNo)">
+      <button (click)="approve(false,'Approved')" class="bg-green">Approve</button>
+      <button  type="submit" (click)="approve(true,'Rejected')" class="bg-red">Reject</button>
+      <!-- <button class="btn-sub" type="submit">Seek Clarification</button> -->
+    </div>
+  </div>
+</div>

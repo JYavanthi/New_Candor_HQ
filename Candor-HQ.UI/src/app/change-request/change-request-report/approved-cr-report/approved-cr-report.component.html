@@ -1,0 +1,169 @@
+<div class="card change_request_card_filter" [formGroup] = "filterForm">
+    <div class="card-body card_body_filter">
+      <div class="row filter_cr">
+        <div class="col">
+          <label>Plant</label><br />
+          <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings"
+                                   [data]="dropdownList" formControlName = "plantId"
+                                   >
+          </ng-multiselect-dropdown>
+          <!--<select [(ngModel)]="plantscode" class="input-change">
+    <option selected>Select-plant</option>
+    <option *ngFor="let plantid of plantcode" [value]="plantid.id">{{plantid.code}}</option>
+  </select>-->
+        </div>
+        <div class="col">
+          <label>Category</label><br />
+          <ng-multiselect-dropdown [settings]="dropdownSettings"
+                                   [data]="dropdowncategroy"
+                                   formControlName = "Category">
+          </ng-multiselect-dropdown>
+          <!-- <select [(ngModel)]="categoryids" class="input-change">
+     <option selected>Select-category</option>
+     <option *ngFor="let catid of categorydata" [value]="catid.itcategoryId">{{catid.categoryName}}</option>
+   </select>-->
+        </div>
+        <div class="col">
+          <label>Classifications</label><br />
+          <select formControlName = "ClassificationId" class="input-change">
+            <option selected hidden disabled value="">Select-classification</option>
+            <option *ngFor="let classf of classifications" [value]="classf.itclassificationId">{{classf.classificationName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Priority</label><br />
+          <select formControlName = "Priority" class="input-change">
+            <option selected hidden disabled value="">Select-priority</option>
+            <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">{{prio.priorityName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Start Date:</label><br />
+          <input formControlName = "StartDate" class=" input-change cr_date" type="date" id="fromDate" name="fromDate" required />
+        </div>
+        <div class="col">
+          <label>End Date:</label><br />
+          <input formControlName = "EndDate" class="input-change cr_date" type="date" id="toDate" name="toDate" required />
+        </div>
+        
+        <div class="col">
+          <label>Stage</label><br />
+          <select formControlName = "stage" class="input-change">
+            <option selected hidden disabled value="">Select-Stage</option>
+            <option>Initiated</option>
+            <option>Approval</option>
+            <option>Implementation</option>
+            <option>Release</option>
+            <option>Closure</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Status</label><br />
+                               <select class="input-change" formControlName = "Status">
+                                 <option selected hidden disabled value="">Select Status</option>
+                                 <option value="">All</option>
+                                 <option value="Draft">Draft</option>
+                                 <option value="Pending Approval">Pending Approval</option>
+                                 <option value="Approved level1">Approved level1</option>
+                                 <option value="Approved level2">Approved level2</option>
+                                 <option value="Approved">Approved</option>
+                                 <option value="Implement">Implement</option>
+                                 <option value="Implemented">Implemented</option>
+                                 <option value="Release">Release</option>
+                                 <option value="Released">Released</option>
+                                 <option value="Completed">Completed</option>
+                                 <option value="Rejected">Rejected</option>
+                                 <option value="Cancelled">Cancelled</option>
+                               </select>
+        </div>
+      </div>
+      <div class="access-checkbox">
+        <div>
+          <input formControlName = "rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
+        </div>
+        <div>
+          <button class="btn btn-rounded filter_button" (click)="filterapprover()">Filter</button>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div>
+          <button (click)="resetfn()" type="reset" class="btn btn-rounded filter_button">Reset</button>&nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+  </div>
+<div class="table-wrapper p-3">
+    <table class="fl-table" style="width:100%;margin-left:-1%;">
+        <thead class="table-head">
+            <tr class="border-bottom">
+                <th>RFC #</th>
+                <th>Requestor</th>
+                <th>Description</th>
+                <th>Stage</th>
+                <th>RFC Status</th>
+                <th>Last Approved Name</th>
+                <th>Last Approved Date</th>
+                <th>Type</th>
+                <th>Classifications</th>
+                <th>RFC Date</th>
+                <th>Expected Date of Completion</th>
+                <th>Task Count</th>
+
+            </tr>
+        </thead>
+        <tbody> 0; else noappvalue">
+            <tr class="tr-body" *ngFor="let pltdata of approvedData">
+                <td><input type="radio" name="one" id="one" /></td>
+                <td>{{pltdata.crcode}}</td>
+                <td>{{pltdata.crrequestorName}}</td>
+                <td>{{pltdata.changeDesc}}</td>
+                <td>{{pltdata.stage}}</td>
+                <td [ngSwitch]="pltdata.status.trim()">
+                    <span *ngSwitchCase="'Draft'"> <span style="color: #3c8dbc;">{{ pltdata.status }}</span></span>
+                    <span *ngSwitchCase="'Pending Approval'"> <span style="color: #808080ff; ">{{ pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Submitted'"> <span
+                            style="color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;">{{
+                            pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Approved'"> <span style="color: green;">{{ pltdata.status }}</span></span>
+                    <span *ngSwitchCase="'Approved level1'"> <span style="color: green;">{{ pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Approved level2'"> <span style="color: green;">{{ pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Completed'"> <span style="color: green;">{{ pltdata.status }}</span></span>
+                    <span *ngSwitchCase="'Rejected'"> <span style="color: red;">{{ pltdata.status }}</span></span>
+                    <span *ngSwitchCase="'Seek Clarification'"> <span style="color:cornflowerblue;">{{ pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Implement'"> <span class=" text-info">{{ pltdata.status }}</span></span>
+                    <span *ngSwitchCase="'Implemented'"> <span class=" text-info">{{ pltdata.status }}</span></span>
+                    <span *ngSwitchCase="'Pending'"> <span
+                            style="color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;">{{
+                            pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Released'"> <span style="color: rgb(154, 235, 73);">{{ pltdata.status
+                            }}</span></span>
+                    <span *ngSwitchCase="'Cancelled'"> <span style="color: rgb(255, 0,0);">{{ pltdata.status
+                            }}</span></span>
+                </td>
+                <td>{{pltdata.lastApproverName}}</td>
+                <td>{{pltdata.lastApprovedDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{pltdata.categoryName}}</td>
+                <td>{{pltdata.classificationName}}</td>
+                <td>{{' '+ pltdata.crdate | date:'dd-MM-yyyy' }}</td>
+                <td>{{' '+pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>
+                <td>{{pltdata.taskcount}}</td>
+        </tbody>
+
+        <!-- <ng-template #noappvalue>
+        <tr *ngIf="isapprover">
+          <td colspan="13">There are no RFCs</td>
+        </tr>
+      </ng-template> -->
+
+    </table>
+</div>
+<!-- <div *ngIf="isapprover && filtersapprvdata.length > 0">
+    <mat-paginator [length]="totalItemsforapprover" [pageSize]="pageSizeforapprover" [pageIndex]="pageIndexforapprover"
+        [pageSizeOptions]="[10,25,50,100]" (page)="onPageChangeforapprover($event)" aria-label="Select page"
+        style="margin-right:34%">
+    </mat-paginator>
+    <br />
+</div> -->

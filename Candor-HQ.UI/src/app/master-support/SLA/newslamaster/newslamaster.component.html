@@ -1,0 +1,144 @@
+<div class="newSlamasterMainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <h3 class="page-heading">SLA</h3>
+
+    <div class="container-field-line">
+      <form [formGroup]="slaForm">
+
+        <div class="border-rfc-heading">
+          <div class="row">
+
+            <div class="col-4 form-group">
+              <label>Category<span class="required"> *</span></label>
+              <select class="form-control-custom" (change)="getcategorytype()" formControlName="category">
+                <option value="" disabled selected>Select Category...</option>
+                <option *ngFor="let cat of categorydata" [value]="cat.itcategoryId">
+                  {{cat.categoryName}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Category Type<span class="required"> *</span></label>
+              <select class="form-control-custom" formControlName="categoryType">
+                <option value="" disabled selected>Select Category</option>
+                <option *ngFor="let valueCtype of categorytype" [value]="valueCtype.categoryTypeId">
+                  {{valueCtype.categoryType}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Classification Type<span class="required"> *</span></label>
+              <select class="form-control-custom" formControlName="Classification">
+                <option value="" disabled selected>Select Category</option>
+                <option *ngFor="let v of classiFicationList" [value]="v.itclassificationId">
+                  {{v.classificationName}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Wait Time</label>
+              <input class="form-control-custom" type="number" formControlName="WaitTime" />
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Wait Time Unit</label>
+              <select class="form-control-custom" formControlName="WaitTimeUnit">
+                <option value="" disabled selected>Select...</option>
+                <option>Hour's</option>
+                <option>Minitu's</option>
+              </select>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Assigned To<span class="required"> *</span></label>
+              <input class="form-control-custom" type="text" placeholder="Search..." matInput
+                formControlName="AssignedTo" [matAutocomplete]="autoAss" (input)="filterItems($event)">
+              <mat-autocomplete #autoAss="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let item of filteredAssigneesList" [value]="item.empId">
+                  {{ item.empId }} {{ item.firstName?'- '+item.firstName:'' }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Plant Id</label>
+              <select class="form-control-custom" formControlName="PlantId">
+                <option value="" disabled selected>Select Plant</option>
+                <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId">
+                  {{pltdata.plantCode}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Escalation1</label>
+              <input class="form-control-custom" type="text" placeholder="Search..." matInput
+                formControlName="Escalation1" [matAutocomplete]="autoEs1" (input)="filterItemsEsc1($event)">
+              <mat-autocomplete #autoEs1="matAutocomplete" [displayWith]="displayFnEsc1">
+                <mat-option *ngFor="let item of filteredSypListEsc1" [value]="item.empId">
+                  {{ item.empId }} - {{ item.firstName }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Wait Time Escal1</label>
+              <input class="form-control-custom" formControlName="WaitTimeEscal1" />
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Wait Time Unit Escal1</label>
+              <select class="form-control-custom" formControlName="WaitTimeUnitEscal1">
+                <option value="" disabled selected>Select...</option>
+                <option>Hour's</option>
+                <option>Minitu's</option>
+              </select>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Escalation 2</label>
+              <input class="form-control-custom" type="text" placeholder="Search..." matInput
+                formControlName="Escalation2" [matAutocomplete]="autoEs2" (input)="filterItemsEsc2($event)">
+              <mat-autocomplete #autoEs2="matAutocomplete" [displayWith]="displayFnEsc2">
+                <mat-option *ngFor="let item of filteredSypListEsc2" [value]="item.empId">
+                  {{ item.empId }} - {{ item.firstName }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Wait Time Escal2</label>
+              <input class="form-control-custom" formControlName="WaitTimeEscal2" />
+            </div>
+
+            <div class="col-4 form-group">
+              <label>Wait Time Unit Escal2</label>
+              <select class="form-control-custom" formControlName="WaitTimeUnitEscal2">
+                <option value="" disabled selected>Select...</option>
+                <option>Hour's</option>
+                <option>Minitu's</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Buttons -->
+          <div class="btn-section">
+            <button [routerLink]="'/slamaster'" class="btn back-btn">BACK</button>
+            <button class="btn submit-btn" (click)="submitForm()">SUBMIT</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

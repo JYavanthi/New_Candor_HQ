@@ -1,0 +1,88 @@
+<div style="display: flex">
+  <button class="addNewBtn-addNew" (click)="navigateTo()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
+        ||this.projectdetails?.projectStatus=='Approved'
+      )">Add
+    New</button>
+
+  <div style="display: flex !important; justify-content: center !important;" class="capsule">
+    <div class="toggle-wrapper">
+      <button class="toggle-button" [ngClass]="{ 'active': isOpenIssues }" (click)="filterMilestoneList('Pending')">
+        Open
+      </button>
+      <button class="toggle-button" [ngClass]="{ 'active': !isOpenIssues }" (click)="filterMilestoneList('Closed')">
+        Closed
+      </button>
+    </div>
+  </div>
+  <button class="addNewBtn-goback" (click)="goBack()" style="margin-left: -610px;" *ngIf="isSubtaskView">Go Back</button>
+</div>
+
+<div class="tableDesign">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>SL NO.</th>
+          <th>TASK CODE</th>
+          <th>TITLE</th>
+          <th>STATUS</th>
+          <th>START DATE</th>
+          <th>END DATE</th>
+          <th>PRIORITY</th>
+          <th>VIEW</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="table-row-card" *ngFor="let task of paginatedData; let i=index;">
+          <td>{{ i + 1 }}</td>
+
+          <td>{{ task.taskCode }}</td>
+
+          <td>{{ task.taskTitle }}</td>
+
+          <td>
+            <span class="status-pill" [ngClass]="{
+                'completed': task.status === 'Completed',
+                'in-progress': task.status === 'In Progress',
+                'inreview': task.status === 'In Review',
+                'toBeTested': task.status === 'To Be Tested',
+                'open': task.status === 'Open'
+              }">
+              {{ task.status }}
+            </span>
+          </td>
+
+          <td>{{ task.startDt?.split('T')[0] | date:'dd/MM/yyyy' }}</td>
+
+          <td>{{ task.endDt?.split('T')[0] | date:'dd/MM/yyyy' }}</td>
+
+          <td>{{ task.taskPriority }}</td>
+
+          <td>
+            <i class="fa fa-eye cursor-pointer" *ngIf="hasSubtasks(task.taskId)" (click)="viewSubtask(task.taskId)">
+            </i>
+          </td>
+
+          <td class="action-icons">
+            <i class="fa fa-pencil-square-o cursor-pointer" (click)="navigateTo(task.taskId)">
+            </i>
+
+            <i class="fa-solid fa-trash cursor-pointer" (click)="deleteTask(task.taskId)" *ngIf="!(projectdetails?.projectStatus=='Cancel'
+               || projectdetails?.projectStatus=='Discontinue'
+               || projectdetails?.projectStatus=='Completed'
+               || projectdetails?.projectStatus=='Approved')">
+            </i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="paginator-wrapper" *ngIf="taskList?.length > 0">
+      <mat-paginator [length]="taskList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        [pageSizeOptions]="[10, 25, 50, 100]" (page)="onPageChange($event,false)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

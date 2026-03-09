@@ -1,0 +1,107 @@
+<div class="onHoldMainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <!-- <div class="tableBox">
+    <div class="Heading">
+      <div class="text-center pageHeadingCss">
+        <p class="HeadingparaCss">On Hold Reason</p>
+      </div>
+      <div class="newBtn">
+        <button class="new" [routerLink]="'/newonholdreasonmaster'">New</button>
+      </div>
+    </div>
+    <br>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>On Hold Reason</th>
+            <th>Category Name</th>
+            <th>Category Type Name</th>
+            <th>Is Active</th>
+            <th style="text-align: center;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reason of reasonList">
+            <td>{{ reason.onholdReason }}</td>
+            <td>{{ reason.categoryName?reason.categoryName:'-' }}</td>
+            <td>{{ reason.typeName?reason.typeName:'-' }}</td>
+            <td>True</td>
+            <td style="text-align: center;">
+              <i class="fa fa-pencil-square-o cursor-pointer" (click)="navigateToView(reason)"></i>
+              <i (click)="deleteReasondata(reason)" class="fa fa-trash cursor-pointer"></i>
+            </td>
+          </tr>
+
+          <tr *ngIf="reasonList?.length === 0">
+            <td colspan="6" style="text-align: center;">
+              <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+              No Data Available
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+  <div class="tableBox">
+
+    <!-- Top Header -->
+    <div class="topHeader">
+      <div class="title">ON HOLD REASON</div>
+
+      <div class="searchBox">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search On Hold Reason">
+      </div>
+
+      <div class="newBtn" [routerLink]="'/newonholdreasonmaster'">
+        <i class="fa fa-plus-circle"></i>
+        NEW
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="tableCard">
+      <table>
+        <thead>
+          <tr>
+            <th>On Hold Reason</th>
+            <th>Category Name</th>
+            <th>Category Type Name</th>
+            <th>Is Active</th>
+            <th style="text-align:center">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let reason of reasonList">
+            <td class="blueText">{{ reason.onholdReason }}</td>
+            <td>{{ reason.categoryName ? reason.categoryName : '-' }}</td>
+            <td>{{ reason.typeName ? reason.typeName : '-' }}</td>
+
+            <td>
+              <span [ngClass]="reason.isActive ? 'active' : 'inactive'">
+                {{ reason.isActive ? 'True' : 'False' }}
+              </span>
+            </td>
+
+            <td class="actionCell">
+              <span class="editIcon" (click)="navigateToView(reason)">
+                <i class="fa fa-pencil"></i>
+              </span>
+
+              <span class="deleteIcon" (click)="deleteReasondata(reason)">
+                <i class="fa fa-trash"></i>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

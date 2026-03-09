@@ -1,0 +1,396 @@
+<form [formGroup]="radioBtnForm">
+    <div class="card-body insideCardBody">
+        
+        <div class="radioHeader">
+
+            <div class="radioItem othersSection">
+
+                <label class="radioLabel">Others:</label>
+
+                <input type="radio" formControlName="userType" value="others" (change)="onChangingRadiobtn()">
+
+                <div class="inputWrapper">
+                    <input type="text" #EnterIssueID formControlName="inputEmployeeID" (input)="filterItem()"
+                        (ngModelChange)="clearOtherData()" placeholder="Enter Employee ID">
+
+                    <ul class="dropdownList" *ngIf="radioBtnForm.controls['userType'].value == 'others' 
+                       && dropdownItems.length > 0">
+
+                        <li *ngFor="let item of dropdownItems" (click)="selectItem(item)">
+                            {{ item.employeeId + ' - ' + item.employeeName }}
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="radioItem">
+                <label class="radioLabel">Self:</label>
+                <input type="radio" formControlName="userType" value="self" (change)="onChangingRadiobtn()">
+            </div>
+
+            <div class="radioItem">
+                <label class="radioLabel">Guest:</label>
+                <input type="radio" formControlName="userType" value="guest" (change)="onChangingRadiobtn()">
+            </div>
+
+        </div>
+
+        <ng-container *ngIf="radioBtnForm.controls['userType'].value == 'self'">
+
+            <div class="employeeInfoCard">
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Employee ID:</span>
+                        <span class="empValue">{{selfEmployeeID}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Name:</span>
+                        <span class="empValue">{{selfName}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Email:</span>
+                        <span class="empValue">{{selfEmail}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Contact No:</span>
+                        <span class="empValue">{{selfContactNo}}</span>
+                    </div>
+                </div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Reporting Manager:</span>
+                        <span class="empValue">{{selfReportingManager}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Staff Category:</span>
+                        <span class="empValue">{{selfStaffCategory}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Plant:</span>
+                        <span class="empValue">{{selfPlant}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Paygroup:</span>
+                        <span class="empValue">{{selfPaygroup}}</span>
+                    </div>
+                </div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Department:</span>
+                        <span class="empValue">{{selfDepartment}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Designation:</span>
+                        <span class="empValue">{{selfDesignation}}</span>
+                    </div>
+
+                    <div class="employeeCol">
+                        <span class="empLabel">Role:</span>
+                        <span class="empValue">{{selfRole}}</span>
+                    </div>
+
+                    <div class="employeeCol"></div>
+                </div>
+
+            </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="radioBtnForm.controls['userType'].value == 'others'">
+
+            <div class="employeeInfoCard">
+
+                <div class="section-header">Requested by</div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Employee ID:</span>
+                        <span class="empValue">{{selfEmployeeID}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Name:</span>
+                        <span class="empValue">{{selfName}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Email:</span>
+                        <span class="empValue">{{selfEmail}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Contact No:</span>
+                        <span class="empValue">{{selfContactNo}}</span>
+                    </div>
+                </div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Reporting Manager:</span>
+                        <span class="empValue">{{selfReportingManager}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Staff Category:</span>
+                        <span class="empValue">{{selfStaffCategory}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Plant:</span>
+                        <span class="empValue">{{selfPlant}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Paygroup:</span>
+                        <span class="empValue">{{selfPaygroup}}</span>
+                    </div>
+                </div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Department:</span>
+                        <span class="empValue">{{selfDepartment}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Designation:</span>
+                        <span class="empValue">{{selfDesignation}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Role:</span>
+                        <span class="empValue">{{selfRole}}</span>
+                    </div>
+                    <div></div>
+                </div>
+
+                <div class="infoDivider"></div>
+
+                <div class="section-header">Requested for</div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Employee ID:</span>
+                        <span class="empValue">{{othersEmployeeID}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Name:</span>
+                        <span class="empValue">{{othersName}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Email:</span>
+                        <span class="empValue">{{othersEmail}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Contact No:</span>
+                        <span class="empValue">{{othersContactNo}}</span>
+                    </div>
+                </div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Reporting Manager:</span>
+                        <span class="empValue">{{othersReportingManager}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Staff Category:</span>
+                        <span class="empValue">{{othersStaffCategory}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Plant:</span>
+                        <span class="empValue">{{othersPlant}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Paygroup:</span>
+                        <span class="empValue">{{othersPaygroup}}</span>
+                    </div>
+                </div>
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <span class="empLabel">Department:</span>
+                        <span class="empValue">{{othersDepartment}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Designation:</span>
+                        <span class="empValue">{{othersDesignation}}</span>
+                    </div>
+                    <div class="employeeCol">
+                        <span class="empLabel">Role:</span>
+                        <span class="empValue">{{othersRole}}</span>
+                    </div>
+                    <div></div>
+                </div>
+
+            </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="radioBtnForm.controls['userType'].value == 'guest'">
+
+            <div class="section-header">REQUESTED BY</div>
+            <div class="section-container">
+
+                <div class="employeeRow">
+                    <div class="employeeCol">
+                        <label>Employee ID</label>
+                        <div class="view-value">{{selfEmployeeID}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Name</label>
+                        <div class="view-value">{{selfName}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Email</label>
+                        <div class="view-value">{{selfEmail}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Contact No</label>
+                        <div class="view-value">{{selfContactNo}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Reporting Manager</label>
+                        <div class="view-value">{{selfReportingManager}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Staff Category</label>
+                        <div class="view-value">{{selfStaffCategory}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Plant</label>
+                        <div class="view-value">{{selfPlant}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Paygroup</label>
+                        <div class="view-value">{{selfPaygroup}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Department</label>
+                        <div class="view-value">{{selfDepartment}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Designation</label>
+                        <div class="view-value">{{selfDesignation}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Role</label>
+                        <div class="view-value">{{selfRole}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">REQUESTED FOR</div>
+            <div class="section-container">
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+                        <label>Guest Employee ID</label>
+
+                        <div *ngIf="srId && srData?.status?.trim() != 'Draft'" class="view-value">
+                            {{ radioBtnForm.get('guestEmployeeID')?.value }}
+                        </div>
+
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="number"
+                            formControlName="guestEmployeeID">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="asteriskrequired">Name</label>
+
+                        <div *ngIf="srId && srData?.status?.trim() != 'Draft'" class="view-value">
+                            {{ radioBtnForm.get('guestName')?.value }}
+                        </div>
+
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="text"
+                            formControlName="guestName">
+                    </div>
+
+                    <div class="form-field">
+                        <label>Email</label>
+
+                        <div *ngIf="srId && srData?.status?.trim() != 'Draft'" class="view-value">
+                            {{ radioBtnForm.get('guestEmail')?.value }}
+                        </div>
+
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="email"
+                            formControlName="guestEmail">
+                    </div>
+
+                    <div class="form-field">
+                        <label>Contact No</label>
+
+                        <div *ngIf="srId && srData?.status?.trim() != 'Draft'" class="view-value">
+                            {{ radioBtnForm.get('guestContactNo')?.value }}
+                        </div>
+
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="tel" maxlength="10"
+                            placeholder="Enter 10-digit contact number" formControlName="guestContactNo">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="asteriskrequired">Reporting Manager Employee ID</label>
+
+                        <div *ngIf="srId && srData?.status?.trim() != 'Draft'" class="view-value">
+                            {{ radioBtnForm.get('reportingManagerID')?.value }}
+                        </div>
+
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="text"
+                            formControlName="reportingManagerID" placeholder="Enter Reporting Manager Employee ID">
+                    </div>
+
+                    <div class="form-field">
+                        <label>Reporting Manager in ML</label>
+                        <div class="view-value">{{ReportingManagerinML}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Staff Category of ML</label>
+                        <div class="view-value">{{StaffCategoryofML}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Plant ML</label>
+                        <div class="view-value">{{GuestPlant}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Paygroup ML</label>
+                        <div class="view-value">{{PaygroupML}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Department ML</label>
+                        <div class="view-value">{{DepartmentML}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Designation of ML Manager</label>
+                        <div class="view-value">{{DesignationofMLManager}}</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Role of ML Manager</label>
+                        <div class="view-value">{{RoleofMLManager}}</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </ng-container>
+
+    </div>
+</form>

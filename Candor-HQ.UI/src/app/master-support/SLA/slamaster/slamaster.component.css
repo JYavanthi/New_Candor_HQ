@@ -1,0 +1,101 @@
+.SlaMainDiv {
+  background: #ffffff;
+  width: 95%;
+  display: flex;
+  margin-left: 2.5%;
+  border-radius: 40px;
+}
+
+.container-implement {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 7%;
+  border: none;
+}
+
+.container-field-line {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+h3 {
+  color: #ff7a00;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn.btn-primary {
+  background: transparent;
+  border: none;
+  color: #0aa2c0;
+  font-weight: 600;
+  float: right;
+  margin-top: -30px;
+}
+
+.border-rfc-heading {
+  border-radius: 18px;
+  padding: 15px;
+  border: 1px solid #e3d5c7;
+  margin-top: 15px;
+}
+
+.fl-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.fl-table thead th {
+  color: #0aa2c0;
+  font-weight: 700;
+  padding: 14px;
+  border-bottom: 2px solid #0aa2c0;
+  white-space: nowrap;
+}
+
+.fl-table tbody tr {
+  border-bottom: 1px solid #f1c27d;
+}
+
+.fl-table td {
+  padding: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.fl-table td:nth-child(1),
+.fl-table td:nth-child(2),
+.fl-table td:nth-child(3),
+.fl-table td:nth-child(4),
+.fl-table td:nth-child(5),
+.fl-table td:nth-child(7),
+.fl-table td:nth-child(9) {
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+.fa-pencil-square-o {
+  background: #e6f7fb;
+  color: #0aa2c0;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.fa-trash {
+  color: #ff4d4f;
+  cursor: pointer;
+}
+
+.table-wrapper {
+  display: block;
+  margin-top: 10px;
+}
+
+.d-flex.just-cont-centre {
+  justify-content: flex-start;
+}

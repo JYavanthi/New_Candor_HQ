@@ -1,0 +1,71 @@
+<form [formGroup]="templateForm">
+    <div class="card service_card br-top-blue">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="inputFields">
+                        <div>
+                            <label class="asteriskrequired" for="templateName">Template Name</label>
+                            <input type="text" formControlName="templateName" name="templateName" id="templateName">
+                        </div>
+                        <div class="textAreaDiv">
+                            <label class="asteriskrequired" for="Question">Question</label>
+                            <textarea class="textAreaClass" formControlName="question" name="question"
+                                id="question"></textarea>
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="type">Type of input</label>
+                            <select formControlName="type" name="type" id="type">
+                                <option value="" selected disabled>Select Status...</option>
+                                <option value="Input">Input</option>
+                                <option value="Dropdown">Dropdown</option>
+                                <option value="Checkbox">Checkbox</option>
+                                <option value="Radio">Radio</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="value">Value</label>
+                            <input type="text" formControlName="value" name="value" id="value">
+                        </div>
+                        <div>
+                            <label class="asteriskrequired" for="mandatory">Mandatory</label>
+                            <input type="checkbox" formControlName="mandatory" name="mandatory" id="mandatory">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Question</th>
+                          <th>InPut Type</th>
+                          <th>Values</th>
+                          <th>Mandatory</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let template of templateDetailsList">
+                          <td>{{template.question}}</td>
+                          <td>{{template.type}}</td>
+                          <td>{{template.value}}</td>
+                          <td>{{template.mandatory}}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="6" style="text-align: center;">
+                            <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+                            No Data Available
+                          </td>
+                        </tr>
+                  
+                      </tbody>
+                    </table>
+                  </div>
+                <div class="mainBtnsDiv">
+                    <button class="actionBtn" (click)="addQuestion()">Add</button>
+                    <button class="actionBtn" (click)="saveTemplate()">Save Template</button>
+                    <!-- <button class="actionBtn" (click)="clearForm()">Clear</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

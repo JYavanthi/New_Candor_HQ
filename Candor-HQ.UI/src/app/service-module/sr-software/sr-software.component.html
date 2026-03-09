@@ -1,0 +1,182 @@
+<div style="display: flex; background-color: white; width: 95%; margin-left: 2.5%; border-radius: 40px;">
+
+  <div style="margin-left: 3%;">
+
+    <app-sidebrservicemodule></app-sidebrservicemodule>
+  </div>
+
+  <div class="serviceHeadingDiv" style="display: flex; margin-bottom: 5%;">
+    <div class="serviceButtonContainer">
+      <button class="backBtn" (click)="navigateToBack()"> BACK <span class="arrow">◀</span>
+      </button>
+    </div>
+    <div class="headingCenter" style="margin-left: 5%; margin-top: 1%;">
+      <span class="headingTitle">{{getTitle()}}</span>
+    </div>
+  </div>
+  <div class="serviceContainer" style="position: relative; width: 80%; margin-left: 5%; margin-top: 5%;">
+
+    <div class="serviceMainModuleBox" style="margin-top: 10%;">
+
+      <div class="serviceContent">
+        <div *ngIf="srId" class="srDetails">
+          <span>Service Code: {{srData?.srcode}} | Status: {{srData?.status}} | Raised Date: {{srData?.createdDt
+            |date:'dd/MM/yyyy'}} | Service Health: <i style="color:green" class='bx bxs-circle'></i></span>
+        </div>
+
+        <ng-container *ngIf="srId!=undefined && srData?.status?.trim() != 'Draft'; else elseBlock">
+          <mat-tab-group [selectedIndex]="selectedTabIndex">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <div [ngClass]="{'green-tab': true}">
+                  <span>Details</span>
+                </div>
+              </ng-template>
+
+              <div [ngSwitch]="currentUrl">
+                <div *ngSwitchCase="'/services/software'">
+                  <app-sr-common-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/email'">
+                  <app-sr-email-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/domain'">
+                  <app-sr-domain-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/externaldriveaccess'">
+                  <app-sr-external-drive-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/ftpaccess'">
+                  <app-sr-ftp-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/usbaccess'">
+                  <app-sr-usb-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/windowslogin'">
+                  <app-sr-windows-login-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/citrixaccess'">
+                  <app-sr-citrix-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/vpnaccess'">
+                  <app-sr-vpn-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/urlorinternetaccess'">
+                  <app-sr-url-or-internet-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/wifiaccess'">
+                  <app-sr-wifi-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/fileserveroraccessforfolderaccess'">
+                  <app-sr-file-server-or-access-for-folders-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/backuprestoration'">
+                  <app-sr-backup-and-restoration-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/remoteaccess'">
+                  <app-sr-remote-access-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/antivirus'">
+                  <app-sr-antivirus-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+                <div *ngSwitchCase="'/services/virtualmeeting'">
+                  <app-sr-virtual-meeting-details [srData]="srData" [currentUrl]="currentUrl" />
+                </div>
+              </div>
+            </mat-tab>
+
+            <mat-tab *ngIf="srData?.isRpmreq || srData?.isHodreq">
+              <ng-template mat-tab-label>
+                <div [ngClass]="{'green-tab': (
+                  this.srData?.status?.trim() === 'Resolved' ||
+                  this.srData?.status?.trim() === 'Approved' ||
+                  this.srData?.status?.trim() === 'Seek Clarification' ||
+                  this.srData?.status?.trim() === 'Open' ||
+                  this.srData?.status?.trim() === 'In Progress' ||
+                  this.srData?.status?.trim() === 'On Hold' ||
+                  this.srData?.status?.trim() === 'Submit Clarification'
+                )}">
+                  <span>Approval</span>
+                </div>
+              </ng-template>
+              <app-sr-common-approval [srData]="srData" />
+            </mat-tab>
+
+            <mat-tab *ngIf="srId" [disabled]="disableResolution">
+              <ng-template mat-tab-label>
+                <div [ngClass]="{'green-tab': srData?.status?.trim() === 'Resolved'}">
+                  <span>Resolution</span>
+                </div>
+              </ng-template>
+              <app-sr-resolution [srData]="srData" />
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <div [ngClass]="{'green-tab': true}">
+                  <span>History</span>
+                </div>
+              </ng-template>
+              <app-sr-common-history />
+            </mat-tab>
+
+          </mat-tab-group>
+        </ng-container>
+
+        <ng-template #elseBlock>
+          <div [ngSwitch]="currentUrl">
+            <div *ngSwitchCase="'/services/software'">
+              <app-sr-common-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/email'">
+              <app-sr-email-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/domain'">
+              <app-sr-domain-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/externaldriveaccess'">
+              <app-sr-external-drive-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/ftpaccess'">
+              <app-sr-ftp-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/usbaccess'">
+              <app-sr-usb-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/windowslogin'">
+              <app-sr-windows-login-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/citrixaccess'">
+              <app-sr-citrix-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/vpnaccess'">
+              <app-sr-vpn-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/urlorinternetaccess'">
+              <app-sr-url-or-internet-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/wifiaccess'">
+              <app-sr-wifi-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/fileserveroraccessforfolderaccess'">
+              <app-sr-file-server-or-access-for-folders-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/backuprestoration'">
+              <app-sr-backup-and-restoration-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/remoteaccess'">
+              <app-sr-remote-access-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/antivirus'">
+              <app-sr-antivirus-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+            <div *ngSwitchCase="'/services/virtualmeeting'">
+              <app-sr-virtual-meeting-details [srData]="srData" [currentUrl]="currentUrl" />
+            </div>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>

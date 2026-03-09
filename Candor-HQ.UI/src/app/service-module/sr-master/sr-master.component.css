@@ -1,0 +1,388 @@
+.srMasterMainDiv {
+    background: white;
+    width: 95%;
+    display: flex;
+    margin-left: 35px;
+    border-radius: 40px;
+}
+
+.srSidebar {
+    margin-left: 35px;
+}
+
+.filterAndViewButtons {
+    display: flex;
+    justify-content: end;
+    margin-top: -53px;
+    margin-right: -7rem;
+}
+
+.viewheadingTitle {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #3a3a3a;
+}
+
+.viewheadingCenter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 3px solid #e67e22;
+    width: 80%;
+    margin-left: 4%;
+    padding-left: 25%;
+    top: 170px;
+}
+
+.viewheadingIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.filterButton {
+    display: inline-block;
+    background-color: #3c8dbc;
+    width: 41px;
+    height: 40px;
+    border-radius: 46px;
+    align-content: center;
+    padding-left: 10px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.viewServicesButton {
+    display: inline-block;
+    background-color: #3c8dbc;
+    height: 40px;
+    border-radius: 6px;
+    align-content: center;
+    padding: 6px;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+    border-color: #3c8dbc;
+    margin: 0px 138px 0px 0px;
+}
+
+.p-absulate {
+    position: absolute;
+    right: 20px;
+}
+
+
+.table {
+    margin-top: 20px !important;
+}
+
+.update {
+    margin-left: 3rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.btn {
+    background: #3c8dbc;
+    color: white;
+    border-radius: 5px;
+}
+
+.mat-form-field .mat-input-element {
+    height: 30px !important;
+}
+
+.mat-mdc-text-field-wrapper {
+    height: auto !important;
+}
+
+.toggle-wrapper1 {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 250px;
+}
+
+
+.serviceHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+    white-space: nowrap;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.toggle-button {
+    padding: 10px 25px;
+    border-radius: 40px;
+    min-width: 170px;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: transparent;
+    color: #e67e22;
+    cursor: pointer;
+}
+
+.toggle-button.active {
+    background-color: #e67e22;
+    color: white;
+}
+
+.filterIconClass {
+    width: 45px;
+    height: 45px;
+    background-color: #0f8b8d;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newServiceBtn {
+    padding: 12px 30px;
+    border-radius: 40px;
+    border: 2px solid #0f8b8d;
+    background-color: ivory;
+    font-size: 22px;
+    font-weight: 600;
+    color: #e67e22;
+    cursor: pointer;
+}
+
+.modernTableWrapper {
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 8%;
+    background: #d9e6f2;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    background: transparent;
+    box-shadow: none;
+}
+
+.modernTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.modernTable thead tr {
+    background: #4e9aa6;
+    color: white;
+    border-radius: 20px;
+}
+
+.modernTable thead th {
+    padding: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+}
+
+.modernTable thead th:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.modernTable thead th:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.modernTable tbody tr {
+    background: #eaf2fb;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.modernTable tbody td {
+    padding: 15px;
+    border: none;
+    font-size: 13px;
+}
+
+.modernTable tbody tr td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.modernTable tbody tr td:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+tbody tr:nth-child(even) {
+    background: #eaf2fb;
+}
+
+tr:hover {
+    background: #d6e7fa;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+}
+
+.status-Completed {
+    background: #47c17c;
+}
+
+.status-InProgress {
+    background: #f4b400;
+}
+
+.status-Cancel {
+    background: #ff4d5a;
+}
+
+.status-PendingApproval {
+    background: #ff944d;
+}
+
+.status-Approved {
+    background: #3aa6b9;
+}
+
+.actionRow {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 5%;
+}
+
+.outlineCard {
+    display: flex;
+    align-items: center;
+    border: 3px solid #148c94;
+    border-radius: 15px;
+    height: 55px;
+    background: white;
+    width: 15%;
+    margin-right: -3%;
+}
+
+
+.cardBtn {
+    background: transparent;
+    border: none;
+    font-size: 10px;
+    font-weight: 600;
+    color: #148c94;
+    cursor: pointer;
+}
+
+.statusBtn {
+    border: none;
+    padding: 20px 60px;
+    font-size: 36px;
+    font-weight: 700;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+}
+
+.assignImg {
+    width: 55px;
+    height: 50px;
+}
+
+.reassignImg {
+    width: 50px;
+    height: 50px;
+}
+
+
+.onHoldDropDown {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.submitBtn {
+    margin-left: 10px;
+    background: #158f98;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.statusBtn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 28px;
+    height: 55px;
+    min-width: 180px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.statusIcon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-left: -15%;
+}
+
+.openBtn {
+    background: #f4a900;
+}
+
+.resolvedBtn {
+    background: #158f98;
+    margin-left: -3%;
+}
+
+.statusBtn.active {
+    transform: scale(1.04);
+}
+
+.statusBtn:hover {
+    opacity: 0.9;
+}

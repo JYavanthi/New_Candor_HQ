@@ -1,0 +1,425 @@
+/* .deliverables input{
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 33%;
+}
+
+.deliverables{
+    grid-column: 1 / -1;
+}
+
+.deliverables label{
+    width: 100%;
+}
+
+.disabledEditor{
+    pointer-events: none;
+}
+
+.fa-circle-plus{
+    color: #3c8dbc;
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.fa-circle-minus{
+    
+    color: #3c8dbc;
+    margin-left: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.deliverables-list{
+
+} */
+
+
+/* ===================== CARD ===================== */
+/* .service_card {
+  background: #fffdf6;
+  border-radius: 18px;
+  padding: 24px;
+} */
+
+/* ===================== GRID ===================== */
+.inputFields {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 26px;
+}
+
+/* ===================== LABELS ===================== */
+.inputFields label {
+    font-weight: 600;
+    color: #1f3c4d;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* ===================== INPUTS / SELECTS ===================== */
+.inputFields input,
+.inputFields select {
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 14px;
+    border-radius: 26px;
+    border: 2.5px solid #a9c9ef;
+    background: #fff;
+    outline: none;
+}
+
+.inputFields input::placeholder {
+    color: #9aa8b2;
+}
+
+.inputFields input:focus,
+.inputFields select:focus {
+    border-color: #3c8dbc;
+}
+
+/* ===================== DATE ===================== */
+input[type="date"] {
+    padding-right: 38px;
+}
+
+/* ===================== AUTOCOMPLETE ===================== */
+.dropdowns-list {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    z-index: 20;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.drop-list {
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.drop-list:hover {
+    background: #eef6ff;
+}
+
+/* ===================== DELIVERABLES ===================== */
+.deliverables {
+    grid-column: 1 / -1;
+}
+
+.in-deliverables {
+    display: flex;
+    align-items: center;
+}
+
+.deliverables input {
+    flex: 1;
+    padding: 11px 16px;
+    border-radius: 26px;
+    border: 2.5px solid #a9c9ef;
+}
+
+.fa-circle-plus {
+    color: #0aa6b8;
+    margin-left: 14px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.fa-circle-minus {
+    color: #0aa6b8;
+    margin-left: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.deliverables-list div {
+    background: #eef6ff;
+    padding: 6px 14px;
+    border-radius: 16px;
+    display: inline-block;
+    margin: 6px 8px 0 0;
+    font-size: 13px;
+}
+
+/* ===================== ATTACHMENT ===================== */
+app-pr-attachment {
+    display: block;
+    grid-column: 1 / -1;
+}
+
+
+/* Angular Editor look */
+.angular-editor-toolbar {
+    border-radius: 12px 12px 0 0;
+    border: 1.5px solid #7faac5;
+    background: #f2fbff;
+}
+
+.angular-editor-textarea {
+    border-radius: 0 0 12px 12px;
+    border: 1.5px solid #7faac5;
+    min-height: 140px;
+    background: #fffdf2;
+}
+
+/* ===================== BUTTONS ===================== */
+.mainBtnsDiv {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.actionBtn {
+    padding: 11px 34px;
+    border-radius: 26px;
+    background: #3c8dbc;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.actionBtn:hover {
+    background: #2f73a8;
+}
+
+/* ===================== DISABLED ===================== */
+.disabledEditor {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1200px) {
+    .inputFields {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .inputFields {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .inputFields {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Container ===== */
+.est-field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Label ===== */
+.est-field label {
+    font-weight: 600;
+    color: #1f3c4d;
+    margin-bottom: 6px;
+}
+
+/* ===== Input Wrapper ===== */
+.est-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* ===== Pill Input ===== */
+.est-input-wrapper input {
+    width: 100%;
+    height: 42px;
+    padding: 10px 46px 10px 18px;
+    font-size: 14px;
+    border-radius: 26px;
+    border: 2px solid #9ec3e6;
+    outline: none;
+    background: #fff;
+    color: #3b4b55;
+}
+
+/* Placeholder like image */
+.est-input-wrapper input::placeholder {
+    color: #b7c1c8;
+}
+
+/* Focus */
+.est-input-wrapper input:focus {
+    border-color: #3c8dbc;
+}
+
+/* ===== Icon ===== */
+.est-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3b4b55;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.est-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.est-field label {
+    font-weight: 600;
+    color: #1f3c4d;
+    margin-bottom: 6px;
+}
+
+.est-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.est-input-wrapper input {
+    width: 100%;
+    height: 42px;
+    padding: 10px 46px 10px 18px;
+    font-size: 14px;
+    border-radius: 26px;
+    border: 2px solid #9ec3e6;
+    outline: none;
+    background: #fff;
+    color: #3b4b55;
+}
+
+.est-input-wrapper input::placeholder {
+    color: #b7c1c8;
+}
+
+.est-input-wrapper input:focus {
+    border-color: #3c8dbc;
+}
+
+.est-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3b4b55;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.cost-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cost-field label {
+    font-weight: 600;
+    color: #1f3c4d;
+    margin-bottom: 6px;
+}
+
+.cost-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.cost-input-wrapper input {
+    width: 100%;
+    height: 42px;
+    padding: 10px 52px 10px 18px;
+    font-size: 14px;
+    border-radius: 26px;
+    border: 2px solid #9ec3e6;
+    outline: none;
+    background: #fff;
+    color: #3b4b55;
+}
+
+.cost-input-wrapper input::placeholder {
+    color: #b7c1c8;
+}
+
+.cost-input-wrapper input:focus {
+    border-color: #3c8dbc;
+}
+
+/* ₹ circle */
+.cost-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #35c3be;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.cost-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cost-field label {
+    font-weight: 600;
+    color: #1f3c4d;
+    margin-bottom: 6px;
+}
+
+.cost-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.cost-input-wrapper input {
+    width: 100%;
+    height: 42px;
+    padding: 10px 52px 10px 18px;
+    font-size: 14px;
+    border-radius: 26px;
+    border: 2px solid #9ec3e6;
+    outline: none;
+    background: #fff;
+    color: #3b4b55;
+}
+
+.cost-input-wrapper input::placeholder {
+    color: #b7c1c8;
+}
+
+.cost-input-wrapper input:focus {
+    border-color: #3c8dbc;
+}
+
+/* ₹ icon */
+.cost-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #35c3be;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}

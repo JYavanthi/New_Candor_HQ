@@ -1,0 +1,117 @@
+<form [formGroup]="checkListForm">
+    <div class="card service_card br-top-blue">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="inputFields">
+
+                        <div *ngIf="prdefinedTemplate" class="col-3">
+                            <label for="milestone">Select Template</label>
+                            <select formControlName="template" name="template" id="template"
+                                (change)="getChecklistList($event.target)">
+                                <option value="" selected hidden disabled>Select Template</option>
+                                <option *ngFor="let mileStone of checkListTemplate"
+                                    [value]="mileStone.checklisttemplateId">
+                                    {{mileStone.templateName}}</option>
+                            </select>
+                        </div>
+                        <div *ngIf="!prdefinedTemplate">
+                            <label class="asteriskrequired" for="checkTitle">Checklist Title</label>
+                            <input type="text" formControlName="checkTitle" name="checkTitle" id="checkTitle" />
+                        </div>
+                        <div *ngIf="!prdefinedTemplate">
+                            <label for="milestone">Milestone</label>
+                            <select formControlName="milestone" name="milestone" id="milestone"
+                                (change)="getmilestonetask($event)">
+                                <option value="" selected hidden disabled>Select Milestone</option>
+                                <option *ngFor="let mileStone of mileStoneList" [value]="mileStone.projMilestoneId">
+                                    {{mileStone.milestoneTitle}}</option>
+                            </select>
+                        </div>
+
+                        <div *ngIf="!prdefinedTemplate">
+                            <label for="Task">Task</label>
+                            <select formControlName="Task" id="Task" (change)="getChildTask($event)">
+                                <option value="" selected hidden disabled>Select Parent Task</option>
+                                <option *ngFor="let task of tasklist" [value]="task.taskId">
+                                    {{ task.taskTitle }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div *ngIf="!prdefinedTemplate">
+                            <label for="SubTask">SubTask</label>
+                            <select formControlName="SubTask" id="SubTask" >
+                                <option value="" selected hidden disabled>Select Sub Task</option>
+                                <option *ngFor="let task of childTaskList" [value]="task.taskId">
+                                    {{ task.taskTitle }}
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <div *ngIf="!prdefinedTemplate">
+                            <label for="status">Project Status</label>
+                            <select formControlName="status" name="status" id="status">
+                                <option value="" selected hidden disabled>Select Project Status</option>
+                                <option>Open</option>
+                                <option>Discontinues</option>
+                                <option>In Progress</option>
+                                <option>Canceled</option>
+                                <option>Completed</option>
+                                <option>Sponsor Approval Pending</option>
+                                <option>Approved</option>
+                            </select>
+                        </div>
+
+                        <div class="textAreaDiv" *ngIf="!prdefinedTemplate">
+                            <app-pr-attachment [title]="'Attachment'" (attachMentListEvent)="getAttchmentList($event)"
+                                (removeAttchment)="removeAttchment($event)"></app-pr-attachment>
+                        </div>
+                        <div class="textAreaDiv" *ngIf="!prdefinedTemplate">
+                            <label class="asteriskrequired" for="Discription">Description</label>
+                            <textarea formControlName="Discription" name="Discription" class="textAreaClass"
+                                id="Discription" style="border: 2.5px solid #b8d4f3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table-container">
+                    <table *ngIf="prdefinedTemplate">
+                        <thead>
+                            <tr>
+                                <th>SL. No.</th>
+                                <th>Title</th>
+                                <th>Discription</th>
+                                <th>Milestone</th>
+                                <th>Task</th>
+                                <th>Sub Task</th>
+                                <th>Project Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let task of showCheckList; let i=index;">
+                                <td>{{i+1}}</td>
+                                <td>{{task.checkListTitle}}</td>
+                                <td>{{task.description}}</td>
+                                <td>{{task.milestoneTitle}}</td>
+                                <td>{{task.taskTitle}}</td>
+                                <td>{{task.subTaskTitle}}</td>
+                                <td>{{task.projectLevel}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mainBtnsDiv">
+                    <button class="actionBtn" (click)="submitTask()" *ngIf="!checkListId">Submit</button>
+                    <button class="actionBtn" (click)="addFromPredefined()" *ngIf="!checkListId&&!prdefinedTemplate">Add
+                        From Predefined Template</button>
+                    <button class="actionBtn" (click)="clearForm()" *ngIf="!checkListId" style="background-color: #ff2e5a">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

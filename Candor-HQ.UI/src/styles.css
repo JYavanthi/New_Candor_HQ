@@ -1,0 +1,119 @@
+
+/* .pageHeadingparaCss {
+  font-weight: bold !important;
+  color: black !important;
+  font-size: calc(1rem + 1vw) !important;
+} */
+
+.subHeadingCss {
+  text-align: center !important;
+}
+
+.subHeadingparaCss {
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  font-size: calc(0.3rem + 1vw) !important;
+}
+
+-textarea {
+  margin-top:0px !important;
+}
+
+.angular-editor .angular-editor-wrapper .angular-editor-textarea {
+  padding: 0.5rem .8rem 3rem 1rem !important;
+  margin-bottom: 5px !important;
+  background-color:white !important
+}
+
+.horinputDatas {
+  font-weight: 200;
+  white-space: pre-line;
+}
+
+.required label ::after {
+  color: red;
+  content: " *";
+}
+
+.d-flex{
+  display: flex
+} 
+
+.just-space-between{
+justify-content: space-between;
+}
+
+body {
+  margin-top: 10% !important;
+  background-color: #daecff;
+}
+
+.breadcrumbs__item {
+  padding: 0.75em 0.74em 0.75em 1.25em;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+ 
+
+.btn-back {
+  background-color: #3c8dbc;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 0.5rem;
+}
+
+.container-implement {
+  width: 93%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 85px;
+}
+
+.flexCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.flexStart{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.blue-botton{
+  background-color: #113bf7;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  min-width: 100px;
+  max-height: 36px;
+}
+
+.bg-blue{
+  background-color:blue
+}
+
+.bg-grey{
+  background-color: grey;
+}
+
+.bg-green{
+  background-color: green;
+}
+
+
+::ng-deep .mdc-tab--active {
+  background-color: #3c8dbc !important;
+}
+
+::ng-deep .mdc-tab--active .mdc-tab__text-label{
+  color: white !important;
+}
+

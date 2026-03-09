@@ -1,0 +1,51 @@
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #3c8dbc;
+  padding: 10px;
+  height: 20vh;
+}
+
+.header-it {
+  color: white;
+  font-weight: normal;
+}
+
+.microlab_symbol {
+  height: 50px;
+  margin-left: 80%;
+  margin-top: -22%;
+}
+
+.unnati_symbol {
+  margin-left: 10%;
+  margin-top: -12%;
+}
+
+.itportal_symbol {
+  color: white;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 10px;
+}
+
+.container h1 {
+  margin: 0;
+}
+
+/* .txt-head {
+  color: white;
+  margin-top: 10px;
+  font-weight: 300;
+} */

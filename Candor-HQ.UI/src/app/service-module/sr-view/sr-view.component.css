@@ -1,0 +1,124 @@
+.serviceContainer {
+    position: relative;
+    width: 85%;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.serviceMainModuleBox {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: #f2f2f2;
+    padding: 15px;
+    display: flex;
+    border-radius: 0 0 5px 5px;
+    margin-right: 6%;
+}
+
+
+.backBtn {
+    background: linear-gradient(to bottom, #ffd65c, #f4b400);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d99a00;
+    transition: 0.2s ease;
+}
+
+.viewheadingTitle {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #3a3a3a;
+}
+
+.viewheadingCenter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.viewheadingIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.backBtn:hover {
+    transform: translateY(-2px);
+}
+
+.backBtn .arrow {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.viewHeadingWrapper {
+    padding: 18px 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-bottom: 3px solid #6fa3ff;
+    margin-left: 15%;
+    width: 75%;
+}
+
+
+.serviceModules {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 100%;
+    gap: 20px;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .serviceModules {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .serviceModules {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .serviceModules {
+        grid-template-columns: 1fr;
+    }
+}
+
+.serviceModuleCard {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: white;
+    height: 120px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.serviceModuleCard:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.serviceIcon {
+    font-size: 25px;
+}
+
+.serviceIconTitle {
+    font-size: 16px;
+}

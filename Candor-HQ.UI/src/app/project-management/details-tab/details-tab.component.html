@@ -1,0 +1,99 @@
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>Details </h3>
+
+    <!-- bootstrap -->
+    <div class="border-rfc-heading">
+      <div class="row mt-3">
+        <div class="col">
+          <label>Project Number</label>
+          <input type="text" placeholder="Project Number" />
+        </div>
+
+        <div class="col">
+          <label>Project Location <span style="color:red">*</span></label>
+          <select>
+            <option value="" disabled selected>Select Plant</option>
+            <option></option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Project Name/Tittle </label>
+          <input type="text" placeholder="Project Name/Tittle" />
+        </div>
+
+        <div class="col">
+          <label>Project Owner </label>
+          <input type="text" placeholder="Project Owner" />
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <label>Project Sponser </label>
+            <input type="text" placeholder="Project Sponser" />
+          </div>
+
+          <div class="col">
+            <label>Project Start Date </label>
+            <input type="date" required />
+          </div>
+          <!-- <div class="row mt-3"></div> -->
+          <div class="col">
+            <label for="endDate">End Date:<span style="color:red;font-size:x-small"> (*End Date Can't be less than start)</span></label>
+            <input type="date" id="endDate" name="endDate" required>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label style="margin-top:0%">Make This a Strict Project(Any Tasks or Activities cannot go beyond the start &
+              end Date of the Project) </label>
+            <input style="margin-left: 13%;margin-top:-2%; display: block;" type="checkbox">
+          </div>
+        </div>
+
+        <br>
+        <div>
+          <label>Brief Description of the Project </label>
+          <textarea class="textarea-implement" cols="160" rows="4"></textarea>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <label>Project Group</label>
+            <select>
+              <option value="" disabled selected>Select Group</option>
+              <option>A</option>
+              <option>B</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label>Project Access <span style="color:red">*</span></label>
+            <select>
+              <option value="" disabled selected>Select</option>
+              <option>Private</option>
+              <option>Public</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label>Deliverables</label>
+            <input type="text">
+          </div>
+        </div>
+        <div>
+          <label>Additional Notes: </label>
+          <textarea class="textarea-implement" cols="160" rows="2"></textarea>
+        </div>
+
+        <div>
+          <label class="label-approve">Attachments</label>
+          <input type="File" placeholder="">
+
+          <button class="btn-back" style="margin-left:3%;">Save</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,224 @@
+.assetContainer[_ngcontent-ng-c1972059137] {
+    position: relative;
+    width: 82%;
+    margin-left: 4%;
+    margin-top: 5%;
+}
+
+.spareHeadingWrapper {
+    padding: 18px 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-bottom: 3px solid #6fa3ff;
+    margin-left: 4%;
+    width: 75%;
+    height: 25%;
+}
+
+.assetMainModuleBox {
+    width: 100%;
+    margin-left: 12%;
+    margin-top: 15%;
+}
+
+.assetContent {
+    width: 125%;
+    margin-top: 25%;
+}
+
+.spareMinDiv {
+    background: white;
+    width: 95%;
+    margin-left: 2.5%;
+    display: flex;
+    border-radius: 40px;
+}
+
+.spareSideBr {
+    margin-left: 3%;
+}
+
+.backBtn {
+    background: linear-gradient(to bottom, #ffd65c, #f4b400);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d99a00;
+    transition: 0.2s ease;
+}
+
+.backBtn:hover {
+    transform: translateY(-2px);
+}
+
+.backBtn .arrow {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.headingCenter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.headingIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.headingTitle {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #3a3a3a;
+}
+
+.formMainCard {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.inputFields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 40px;
+}
+
+.inputFields div {
+    display: flex;
+    flex-direction: column;
+}
+
+.requestType {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #9ad3d8;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+}
+
+.inputFields label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0c8c95;
+    margin-bottom: 6px;
+}
+
+label.asteriskrequired::after {
+    content: " *";
+    color: red;
+    font-weight: bold;
+}
+
+.inputFields input,
+.inputFields select,
+.inputFields textarea {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #9ed4d8;
+    font-size: 14px;
+    background-color: #ffffff;
+    outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+.inputFields input:focus,
+.inputFields select:focus,
+.inputFields textarea:focus {
+    border-color: #0c8c95;
+    box-shadow: 0 0 4px rgba(12, 140, 149, 0.3);
+}
+
+
+.textAreaDiv {
+    grid-column: span 2;
+}
+
+.textAreaClass {
+    min-height: 85px;
+    resize: none;
+}
+
+.mainBtnsDiv {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.actionBtn {
+    min-width: 130px;
+    padding: 9px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+
+.mainBtnsDiv {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+
+.actionBtn {
+    min-width: 140px;
+    padding: 10px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.draftBtn {
+    background-color: #f28c28;
+    color: white;
+    box-shadow: 0 3px 8px rgba(242, 140, 40, 0.4);
+}
+
+.draftBtn:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+
+.submitBtn {
+    background-color: #2ecc71;
+    color: white;
+    box-shadow: 0 3px 8px rgba(46, 204, 113, 0.4);
+}
+
+.submitBtn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+.clearBtn {
+    background-color: #f5f5f5;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+}
+
+.clearBtn:hover {
+    background-color: #eaf3ff;
+    transform: translateY(-2px);
+}

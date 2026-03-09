@@ -1,0 +1,48 @@
+.backBtn {
+  background: linear-gradient(to bottom, #ffd65c, #f4b400);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #d99a00;
+  transition: 0.2s ease;
+}
+
+.backBtn:hover {
+  transform: translateY(-2px);
+}
+
+.backBtn .arrow {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.headingTitle {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #3a3a3a;
+}
+
+.headingCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.serviceButtonContainer {
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-bottom: 3px solid #6fa3ff;
+  margin-left: 4%;
+  width: 75%;
+  top: 134px;
+}

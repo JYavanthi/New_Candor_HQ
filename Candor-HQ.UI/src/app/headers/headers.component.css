@@ -1,0 +1,123 @@
+.show {
+  display: block;
+}
+
+
+
+.profile-content {
+  display: inline-block;
+}
+
+.navbar-brand {
+  margin-left: -13%;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: -28%;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #daecff;
+  padding: 5px;
+  z-index: 1000;
+}
+
+.header-it {
+  color: white;
+  font-weight: normal;
+}
+
+.microlab_symbol {
+  height: 80px;
+  margin-left: 80%;
+  margin-top: -3%;
+}
+
+.unnati_symbol {
+  margin-left: 5%;
+  margin-top: -7%;
+}
+
+.itportal_symbol {
+  color: white;
+  font-weight: 300;
+  white-space: nowrap;
+  font-size: xx-large;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 1%;
+  margin-left: -22%;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 10px;
+}
+
+.container h1 {
+  margin: 0;
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 7px 7px;
+  border: 1px solid white;
+  border-radius: 35px;
+  background-color: white;
+  width: fit-content;
+  position: relative;
+  margin-right: 25px;
+}
+
+.user-profile p {
+  color: white;
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu-profile {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background: white;
+  padding: 4px 15px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown-menu-profile p {
+  margin: 5px 0;
+  font-size: 14px;
+}

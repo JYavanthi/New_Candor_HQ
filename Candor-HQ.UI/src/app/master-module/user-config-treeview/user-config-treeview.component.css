@@ -1,0 +1,104 @@
+.treeview {
+    background: #fff;
+    width: 100%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 20px 0px 0px 0px;
+}
+
+.treeview ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.treeview label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.treeview input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: black;
+}
+
+.treeview .toggle-icon {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.treeview li {
+    margin: 5px 0;
+}
+
+.plusMinusClass {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.toggle-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.item-container {
+    border-radius: 5px;
+    padding: 10px 5px 5px 5px;
+    margin-bottom: 20px;
+    height:200px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.item-container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.child-list {
+    padding-left: 20px;
+}
+
+.parent-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 0 20px;
+}
+
+.parentSupportName {
+    font-weight: bold;
+    background-color: #cde9f7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: relative;
+    top: -30px;
+    left: 15px;
+}
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  /* The draggable part of the scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background: darkgray;
+    border-radius: 10px;
+  }
+  
+  /* The scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+  }
+  
+  /* Hover effect for the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background: darkgray;
+  }
+  

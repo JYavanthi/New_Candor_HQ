@@ -1,0 +1,204 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container-home {
+  margin-left: 10%;
+}
+
+.container-field {
+  max-width: 96.7%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: -2%;
+  margin-top: 3%;
+  border-top: 3px solid blue;
+}
+
+.container-field1 {
+  max-width: 87.7%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: -2%;
+  margin-top: 3%;
+  border-top: 3px solid blue;
+}
+
+.notes-field {
+  max-width: 84.4%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  margin-left: 0%;
+  margin-top: 3%;
+  border-top: 3px solid blue;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: -60%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type="date"] {
+  width: calc(100% - 2px);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.checkbox-margin {
+  margin-left: 40.7%;
+  margin-bottom: -10%;
+}
+
+.btn-task {
+  border-radius: 5px;
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+}
+
+.breadcrumb {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  margin-right: 5px;
+  cursor:pointer;
+}
+
+  .breadcrumb-item a {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+    .breadcrumb-item a:hover {
+      color: #007bff;
+    }
+
+  .breadcrumb-item.active {
+    color: #007bff;
+  }
+
+/*#myDropdown {
+  position: absolute;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+  #myDropdown li {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+    #myDropdown li:hover {
+      background-color: #f9f9f9;
+    }
+*/
+
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: Background;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  opacity: 0;
+  animation: slideDown 0.5s ease forwards;
+  width: 25%;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.message-txt {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.success {
+  animation: Down 0.5s ease forwards;
+  width: 25%;
+  background-color: green;
+  color: white;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes Down {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

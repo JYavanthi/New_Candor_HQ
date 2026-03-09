@@ -1,0 +1,328 @@
+.p-absulate {
+  position: absolute;
+  width: 20%;
+  right: 20px;
+}
+
+.toggle-button {
+  padding: 5px;
+  border-radius: 70px;
+  min-width: 160px;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  margin: 0px 5px;
+  cursor: pointer;
+}
+
+
+.resolutionBtns {
+  background-color: #4693c0;
+  color: white;
+  border: none;
+  padding: 4px 9px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 1rem 0rem 1rem -1rem;
+}
+
+.newissue {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -7%;
+}
+
+
+button.button-approve:disabled {
+  opacity: 0.6;
+}
+
+.onHoldDropDown {
+  margin: 1rem;
+  width: auto;
+}
+
+.resolutionBtns {
+  background-color: #4693c0;
+  color: white;
+  border: none;
+  padding: 4px 9px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 1rem 0rem 1rem -1rem;
+}
+
+.btn {
+  background: #3c8dbc;
+  color: white;
+  border-radius: 5px;
+}
+
+.backBtn {
+  background: linear-gradient(to bottom, #ffd65c, #f4b400);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #d99a00;
+  transition: 0.2s ease;
+  margin-left: 2% !important;
+
+}
+
+.backBtn:hover {
+  transform: translateY(-2px);
+}
+
+.backBtn .arrow {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.headingCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -3%;
+}
+
+.headingTitle {
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+.headingIcon {
+  width: 65px;
+  height: 65px;
+}
+
+.text-center {
+  text-align: center !important;
+  margin-left: 9rem;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-left: 8%;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-wrapper1 {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 250px;
+  height: 38px;
+  margin-left: 10%;
+}
+
+.toggle-button1 {
+  flex: 1;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  background: white;
+  transition: 0.3s;
+}
+
+.toggle-button1.active {
+  background-color: #3c8dbc;
+  color: white;
+}
+
+.toggle-button1:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.toggle-button1:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.col-4 {
+  width: 85%;
+}
+
+.col-4>div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+}
+
+.toggle-button {
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: 700;
+  color: #e07b2f;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-button.active {
+  color: #e07b2f;
+}
+
+.filterIconClass {
+  font-size: 32px;
+  color: #138a94;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 0;
+  border: none;
+  transition: 0.3s;
+}
+
+.filterIconClass:hover {
+  transform: scale(1.1);
+}
+
+.filterIconClass {
+  font-size: 32px;
+  color: #138a94;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 0;
+  border: none;
+  transition: 0.3s;
+}
+
+.filterIconClass:hover {
+  transform: scale(1.1);
+}
+
+.button-approve {
+  padding: 0px 22px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #e07b2f;
+  background: ivory;
+  border: 2px solid #138a94;
+  border-radius: 45px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-approve:hover {
+  background: #ffd65c;
+  color: white;
+}
+
+.tableBox {
+  width: 95%;
+  margin: 30px auto;
+}
+
+.customTableWrapper {
+  background: #e6edf7;
+  padding: 20px;
+  border-radius: 20px;
+  margin-left: 7%;
+}
+
+.customTableHeader {
+  display: grid;
+  grid-template-columns: 60px repeat(8, 1fr) 100px;
+  background: #3f9ca8;
+  color: white;
+  padding: 15px 0px;
+  border-radius: 20px;
+  font-weight: 600;
+  align-items: center;
+}
+
+.customTableBody {
+  margin-top: 15px;
+}
+
+.customRow {
+  display: grid;
+  grid-template-columns: 60px repeat(8, 1fr) 100px;
+  align-items: center;
+  background: #ffffff;
+  padding: 15px 10px;
+  margin-bottom: 12px;
+  border-radius: 15px;
+  border: 1px solid #c8d3e2;
+  transition: 0.2s ease;
+}
+
+.customRow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+.headerCell,
+.bodyCell {
+  font-size: 14px;
+}
+
+.select-col {
+  text-align: center;
+}
+
+.actionCell i {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.actionCell i:hover {
+  color: #3f9ca8;
+}
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: white;
+  font-weight: 500;
+}
+
+.status-badge.completed {
+  background: #49c37d;
+}
+
+.status-badge.progress {
+  background: #f5b942;
+}
+
+.status-badge.open {
+  background: #ff4d6d;
+}
+
+.status-badge.pending {
+  background: #f59e42;
+}
+
+.status-badge.approved {
+  background: #2bb3a3;
+}
+
+.noData {
+  text-align: center;
+  padding: 20px;
+  color: #3e8cba;
+  font-size: 16px;
+}

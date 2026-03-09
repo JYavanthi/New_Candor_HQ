@@ -1,0 +1,119 @@
+/* .inputFields{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  padding: 10px;
+  gap: 10px;
+} */
+
+.radio-inline-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.radio-inline-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* lesson learned css */
+
+.inputFields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 30px;
+  margin-top: 12px;
+}
+
+.inputFields>div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputFields label {
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #15455c;
+}
+
+.asteriskrequired::after {
+  content: " *";
+  color: red;
+}
+
+.inputFields input,
+.inputFields select {
+  height: 44px;
+  border-radius: 22px;
+  border: 2.5px solid #b8d4f3;
+  padding: 0 18px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+}
+
+.inputFields input::placeholder {
+  color: #9aa7b2;
+}
+
+.inputFields input:focus,
+.inputFields select:focus,
+.inputFields select:not([value=""]) {
+  border-color: #6aa9ff;
+  box-shadow: 0 0 0 3px rgba(106, 169, 255, 0.25);
+}
+
+input[type="date"] {
+  cursor: pointer;
+}
+
+
+/* pre-defined css */
+
+.inputFields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 30px;
+}
+
+.inputFields>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputFields label {
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #15455c;
+}
+
+.inputFields select {
+  height: 44px;
+  border-radius: 22px;
+  border: 2.5px solid #b8d4f3;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.inputFields select:focus {
+  border-color: #6aa9ff;
+  box-shadow: 0 0 0 3px rgba(16, 17, 19, 0.25);
+}
+
+.proManagementBackBtn {
+  background: linear-gradient(to right, #ffb347, #ffcc33);
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+}

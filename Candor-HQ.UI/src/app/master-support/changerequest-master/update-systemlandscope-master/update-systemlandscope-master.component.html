@@ -1,0 +1,91 @@
+<div class="updateSystemscopemasterMainDiv">
+
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+  <div class="container-field-line">
+
+    <!-- bootstrap -->
+    <h3>Update System LandScape</h3>&nbsp;
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>classification Name</label>
+          <!--<input type="text" [ngModel]="updatevalue[0].classificationName" />-->
+            <select [(ngModel)]="updatevalue[0].classificationId">
+    <option value="" disabled selected>Select classificationName</option>
+    <option *ngFor="let cldata of Name" [value]="cldata.itclassificationId">{{cldata.classificationName}}</option>
+  </select>
+        </div>
+
+        <div class="col">
+
+          <label>Category Name</label>
+         <!-- <input class="searchinput" type="text" [(ngModel)]="updatevalue[0].categoryName" />-->
+          <select [(ngModel)]="updatevalue[0].categoryId">
+            <option value="" disabled selected>Select categoryName</option>
+            <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">{{cldata.categoryName}}</option>
+          </select>
+
+        </div>
+
+        <div class="col">
+          <label>Module Name</label>
+          <!--<input class="searchinput" type="text" [(ngModel)]="updatevalue[0].supportId" />-->
+          <select [(ngModel)]="updatevalue[0].supportId">
+            <option value="">Select Module Name</option>
+            <option *ngFor="let cldata of support" [value]="cldata.supportId">{{cldata.supportName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>priority Name</label>
+          <!--<input type="text" [(ngModel)]="updatevalue[0].priorityName" />-->
+          <select [(ngModel)]="updatevalue[0].priorityNum">
+            <option value="" disabled selected>Select priorityName</option>
+            <option *ngFor="let cldata of priName" [value]="cldata.priorityId">{{cldata.priorityName}}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row mt-2">
+
+        <div class="col">
+          <label>System Land scape Id</label>
+          <br />
+          <input class="searchinput" type="text" readonly [(ngModel)]="updatevalue[0].sysLandscapeId" />
+        </div>
+        <div class="col">
+          <label>System Land scape</label>
+          <input type="text" [(ngModel)]="updatevalue[0].sysLandscape" />
+        </div>
+
+        <div class="col">
+          <label>Is Active</label>
+
+          <select [(ngModel)]="updatevalue[0].isActive">
+            <option>Select</option>
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <button (click)="postSystemLandscapeSp()" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="col">
+      <button [routerLink]="'/systemlandscape'" style="margin-left: -87%;" class="btn btn-primary">Back</button>
+
+    </div>
+
+  </div>
+</div>
+
+</div>

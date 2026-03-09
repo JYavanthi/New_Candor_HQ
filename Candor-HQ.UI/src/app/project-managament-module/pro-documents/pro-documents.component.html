@@ -1,0 +1,112 @@
+<!-- <div>
+  <div class="fit-right">
+    <div class="attachmentList" style="width: fit-content;">
+      <div class="d-flex">
+        <input type="file" [(ngModel)]="attach" (change)="getattach($event)" style="width: 52%;" #fileInput />
+        <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()"
+          style="margin: 5px 10px;height: 33px;">
+          Add File</button>
+      </div>
+      <span class="red-alert">Only Jpg, Jpeg, Png and Pdf is allowed.</span>
+    </div>
+  </div>
+</div> -->
+
+<div>
+  <div class="fit-right">
+    <div class="attachmentList">
+
+      <label class="attachment-label">Attachment</label>
+
+      <div class="attachment-wrapper">
+
+        <input type="file" [(ngModel)]="attach" (change)="getattach($event)" #fileInput class="file-input-hidden" />
+
+        <div class="custom-file-box" (click)="fileInput.click()">
+          <span class="choose-btn">Choose File</span>
+          <span class="file-name">
+            {{ selectedFiles?.name || 'No file chosen' }}
+          </span>
+        </div>
+
+        <button class="add-file-btn" type="button" (click)="addFile()">
+          ADD FILE
+        </button>
+
+      </div>
+
+      <span class="red-alert">
+        Only Jpg, Jpeg, Png and Pdf is allowed.
+      </span>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th>File name</th>
+        <th>Uploaded By</th>
+        <th>Uploaded Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fileName of attachmentsList;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{fileName.fileName}}</td>
+        <td>{{fileName.createdByName}}</td>
+        <td>{{fileName.createdDt | date: 'dd/MM/yy HH:mm'}}</td>
+        <td>
+          <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(fileName)"></i>
+          <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+            (click)="downFile(fileName)"></i>
+          <i class="fa-solid fa-trash cursor-pointer" style="margin-left: 12px;" (click)="deleteDoc(fileName)"></i>
+      </tr>
+      <tr *ngIf="!(attachmentsList?.length>0)">
+        <td colspan="6" style="text-align: center;">
+          <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+          No Data Available
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<div class="custom-table-wrapper">
+  <div class="header-row">
+    <div class="col-sr">SL. NO.</div>
+    <div class="col-file">FILE NAME</div>
+    <div class="col-user">UPLOADED BY</div>
+    <div class="col-date">UPLOADED DATE</div>
+    <div class="col-action">ACTION</div>
+  </div>
+
+  <div class="row-container">
+    <div class="data-row" *ngFor="let fileName of attachmentsList; let i=index">
+      <div class="col-sr">
+        <span class="drag-icon">:::</span>
+        <span class="index-number">{{i + 1 | number:'2.0'}}</span>
+      </div>
+      <div class="col-file file-name">{{fileName.fileName}}</div>
+      <div class="col-user">{{fileName.createdByName}}</div>
+      <div class="col-date">{{fileName.createdDt | date: 'dd/MMM/yyyy'}}</div>
+      <div class="col-action">
+        <div class="action-buttons">
+          <i class="fa fa-eye view-icon" (click)="viewFile(fileName)"></i>
+          <i class="fa fa-download download-icon" (click)="downFile(fileName)"></i>
+          <i class="fa-solid fa-trash delete-icon" (click)="deleteDoc(fileName)"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-data" *ngIf="!(attachmentsList?.length > 0)">
+      <i class="fa fa-search"></i> No Data Available
+    </div>
+  </div>
+</div>

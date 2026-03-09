@@ -1,0 +1,194 @@
+.issue-container {
+  padding: 20px;
+  margin-top: -8%;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #1a8c95;
+  font-weight: 600;
+}
+
+.title-section h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.title-icon {
+  color: #f4b400;
+  font-size: 28px;
+}
+
+
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.project-select label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a8c95;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.search-select {
+  position: relative;
+}
+
+.search-select i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #1a8c95;
+}
+
+.search-select select {
+  padding: 8px 8px 8px 30px;
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid #bcd;
+}
+
+
+.export-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.pdf-btn {
+  border: 2px solid #d9534f;
+  color: #d9534f;
+  background: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.excel-btn {
+  border: 2px solid #2e8b57;
+  color: #2e8b57;
+  background: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.pdf-btn i,
+.excel-btn i {
+  margin-right: 5px;
+}
+
+
+.issueImg {
+  width: 75px;
+  height: 75px;
+}
+
+.tableBox {
+  background: #c8d4e5;
+  padding: 20px;
+  border-radius: 20px;
+  width: 108%;
+  margin-left: -4%;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.tableHeadings {
+  background: #3f9aa0;
+  color: white;
+}
+
+.tableHeadings th {
+  padding: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.table-row {
+  background: #f5f6f7;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px #9fb7d7;
+}
+
+.table-row td {
+  padding: 14px;
+  border: none;
+}
+
+
+.table-row td:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.table-row td:last-child {
+  border-radius: 0 12px 12px 0;
+}
+
+
+.table-row:hover {
+  background: #eef2f7;
+}
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+}
+
+
+.completed {
+  background: #5cc27a;
+}
+
+.progress {
+  background: #f3c74b;
+  height: 30px;
+}
+
+.cancel {
+  background: #ff4d6d;
+}
+
+.pending {
+  background: #f4a261;
+}
+
+.approved {
+  background: #2a9d8f;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #3e8cba;
+}
+
+.paginator-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}

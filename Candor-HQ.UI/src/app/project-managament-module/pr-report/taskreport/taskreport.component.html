@@ -1,0 +1,82 @@
+<div class="titleSection">
+  <img src="assets/image/taskReport.png" class="reportIcon">
+  <h2>Task Report</h2>
+</div>
+<div class="container-home">
+  <div class="row" align="right">
+    <div class="col export_pdf">
+      <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
+          aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+    </div>
+    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
+
+    </div>
+  </div>
+</div>
+
+<div class="row generate_row">
+  <div class="col-3">
+    <label for="selector">Select Project</label>&nbsp;
+    <select (change)="onOptionSelected($event)">
+      <option value="" disabled selected hidden>Select-Project</option>
+      <option *ngFor="let ptoject of projectManagementList" [value]="ptoject.projectMgmtId">
+        {{ptoject.projectCode + '-' + ptoject.projectName}}
+      </option>
+    </select>
+
+  </div>
+</div>
+
+<div class="tableDesign">
+  <div class="table-container">
+    <div class="table-header">
+      <div></div>
+      <div>SL NO.</div>
+      <div>TASK CODE</div>
+      <div>TITLE</div>
+      <div>STATUS</div>
+      <div>START DATE</div>
+      <div>END DATE</div>
+      <div>PRIORITY</div>
+    </div>
+
+    <div class="table-row" *ngFor="let task of paginatedData; let i=index">
+
+      <div class="drag">
+        <i class="fa fa-ellipsis-v"></i>
+        <i class="fa fa-ellipsis-v"></i>
+      </div>
+
+      <div>{{i+1}}</div>
+      <div>{{task.taskCode}}</div>
+      <div>{{task.taskTitle}}</div>
+
+      <div>
+        <span class="status" [ngClass]="{
+          'completed':task.status=='Completed',
+          'progress':task.status=='In Progress',
+          'cancel':task.status=='Cancel',
+          'pending':task.status=='Pending Approval',
+          'approved':task.status=='Approved',
+          'inReview' : task.status=='In Review'
+          }">
+          {{task.status}}
+        </span>
+      </div>
+
+      <div>{{task.startDt | date:'dd-MMM-yyyy'}}</div>
+      <div>{{task.endDt | date:'dd-MMM-yyyy'}}</div>
+      <div>{{task.taskPriority}}</div>
+
+    </div>
+
+    <div class="no-data" *ngIf="paginatedData?.length === 0">
+      <i class="fa fa-search"></i> No Data Available
+    </div>
+
+    <mat-paginator *ngIf="paginatedData?.length > 0" [length]="paginatedData?.length" [pageSize]="pageSize"
+      [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)">
+    </mat-paginator>
+
+  </div>
+</div>

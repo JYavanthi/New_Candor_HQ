@@ -1,0 +1,83 @@
+
+<!--<div class="row generate_row">
+  <h1 style="margin-left:46%;">Reports</h1>
+  <div class="col selector">
+    <label for="selector">Selector :</label>&nbsp;
+    <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)" class="select_change_report">
+      <option disabled selected>Select-Report</option>
+      <option value="home">Change request report</option>
+      <option value="about">Task Assigned report</option>
+      <option value="contact">Summary Change report</option>
+    </select>
+  </div>
+</div>
+<div [ngSwitch]="selectedOption">
+  <div *ngSwitchCase="'home'">
+    <app-view-change></app-view-change>
+
+
+  </div>
+  <div *ngSwitchCase="'about'">
+    <app-view-task></app-view-task>
+  </div>
+  <div *ngSwitchCase="'contact'">
+    <app-view-summary></app-view-summary>
+  </div>
+</div>-->
+<button [routerLink]="'/change_request_report'" style="margin-left: 7%;margin-top:1%;" class="btn btn-primary">Back</button>
+
+<div class="row" align="right" style="margin-right:2%;" >
+  <div class="col export_pdf">
+    <button (click)="generatePDF()" class="excel_button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
+   <button (click)="downloadExcel()" class="excel_button"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+  </div>
+</div>
+
+<div class="mt-5">
+  <div id="excel-table">
+    <div style="margin-bottom:5%;">
+      <h2 class="change_request_header">{{filterObject.Status}} Change Request Report</h2>
+    </div>
+    <table style="margin-left:8%;width:auto;">
+      <thead style="border-bottom:2px solid;">
+        <tr>
+          <th>Change ID</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Change owner</th>
+          <th>Initiator</th>
+          <th>Classification</th>
+          <th>Category</th>
+          <th>Category Type</th>
+          <th>Nature of Change</th>
+          <th>Priority</th>
+          <th>Stage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tr-body" *ngFor="let CRreport of filteredRejectData">
+          <td>{{CRreport.crcode}}</td>
+          <td>{{CRreport.changeDesc}}</td>
+          <td>{{CRreport.crdate|date:'dd-MM-yyyy'}}</td>
+          <td>{{CRreport.crowner}}</td>
+          <td>{{CRreport.initiatedFor}}</td>
+          <td>{{CRreport.classificationName}}</td>
+          <td>{{CRreport.categoryName}}</td>
+          <td>{{CRreport.categoryType}}</td>
+          <td>{{CRreport.natureofChange}}</td>
+          <td>
+            <span *ngIf="CRreport.priorityType === 1">Very High</span>
+            <span *ngIf="CRreport.priorityType === 2">High</span>
+            <span *ngIf="CRreport.priorityType === 3">Medium</span>
+            <span *ngIf="CRreport.priorityType === 4">Low</span>
+            <span *ngIf="CRreport.priorityType === 5">Very Low</span>
+          </td>
+          <td>{{CRreport.stage}}</td>
+          <td>{{CRreport.status}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </div>

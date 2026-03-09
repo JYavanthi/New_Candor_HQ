@@ -1,0 +1,285 @@
+/* .table-container {
+  max-width: 100%;
+  overflow: auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  background-color: white;
+  margin: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #cde9f7;
+  color: black;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+} */
+
+.custom-table-wrapper {
+  background-color: #e3effd;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+
+  .header-row {
+    display: flex;
+    background-color: #5bb0bd;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+
+  .row-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .data-row {
+    display: flex;
+    background-color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 1px solid #c9e0ff;
+    align-items: center;
+    transition: all 0.2s ease;
+    color: #444;
+    font-size: 14px;
+
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-color: #5bb0bd;
+    }
+  }
+
+  .col-sr {
+    flex: 0 0 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  .col-file {
+    flex: 2;
+    font-weight: 600;
+    color: #333;
+    padding-left: 0px;
+  }
+
+  .col-user {
+    flex: 1.5;
+  }
+
+  .col-date {
+    flex: 1.5;
+  }
+
+  .col-action {
+    flex: 1;
+    text-align: center;
+  }
+
+  .drag-icon {
+    color: #9eb5d3;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 18px;
+    letter-spacing: -2px;
+  }
+
+  .index-number {
+    font-weight: 600;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+
+    i {
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.1s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .view-icon {
+      color: #5bb0bd;
+    }
+
+    .download-icon {
+      color: #f0ad4e;
+    }
+
+    .delete-icon {
+      color: #ff5c75;
+    }
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    color: #3e8cba;
+  }
+}
+
+.resolution-cell {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  position: relative;
+  max-width: 200px;
+  white-space: nowrap;
+}
+
+.resolution-cell::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 5px;
+  z-index: 10;
+  white-space: normal;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: max-content;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+.resolution-cell:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-btn {
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.red-alert {
+  font-size: 10px;
+  color: #e04b4b;
+  font-weight: 600;
+}
+
+.fit-right {
+  display: flex;
+  justify-content: initial;
+  margin-top: 16px;
+}
+
+
+/* Attachement Css */
+
+
+.attachmentList {
+  width: fit-content;
+}
+
+.attachment-label {
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #15455c;
+}
+
+.attachment-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.custom-file-box {
+  display: flex;
+  align-items: center;
+  border: 2px solid #9fd3df;
+  border-radius: 25px;
+  height: 50px;
+  min-width: 330px;
+  cursor: pointer;
+  overflow: hidden;
+  background: #fff;
+}
+
+.choose-btn {
+  background: #0fa4a9;
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.file-name {
+  padding-left: 50px;
+  color: #7a9aa5;
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-file-btn {
+  background: #62c28c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-file-btn:hover {
+  background: #4caf7d;
+}
+
+.red-alert {
+  display: block;
+  margin-top: 6px;
+  color: #e57373;
+  font-size: 13px;
+}

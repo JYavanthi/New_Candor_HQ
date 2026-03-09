@@ -1,0 +1,103 @@
+<div class="reportContainer">
+    <div class="reportHeader">
+        <div class="reportTitle">
+            <img src="assets/image/taskReport.png" class="raciImg">
+            <h2>RACI REPORT</h2>
+        </div>
+    </div>
+
+    <hr>
+    <div class="filterRow">
+
+        <div class="projectSelect">
+            <label>Select Project</label>
+
+            <div class="searchSelect">
+                <i class="fa fa-search"></i>
+
+                <select (change)="onOptionSelected($event)">
+                    <option value="" disabled selected hidden>Select- project</option>
+                    <option *ngFor="let ptoject of projectManagementList" [value]="ptoject.projectMgmtId">
+
+                        {{ptoject.projectCode+'-'+ptoject.projectName}}
+
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="exportBtns">
+
+            <button class="pdfBtn">
+                <i class="fa fa-file-pdf-o"></i>
+                PDF
+            </button>
+
+            <button class="excelBtn">
+                <i class="fa fa-file-excel-o"></i>
+                Excel
+            </button>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="tableMainContainer">
+
+        <div class="tableCard">
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Employee ID</th>
+                            <th>Participants or Followers</th>
+                            <th>Type</th>
+                            <!-- <th>Department</th>
+                            <th>Designation</th> -->
+                            <th>Responsible</th>
+                            <th>Accountable</th>
+                            <th>Consulted</th>
+                            <th>Informed</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let member of memberList">
+
+                            <td>{{member.memberName}}</td>
+                            <td>{{member.empId}}</td>
+                            <td>{{member.role}}</td>
+                            <td>{{member.type}}</td>
+                            <!-- <td>{{member.department}}</td>
+                            <td>{{member.designation}}</td> -->
+                            <td><input type="checkbox" [ngModel]="member.responsible" disabled></td>
+                            <td><input type="checkbox" [ngModel]="member.accountable" disabled></td>
+                            <td><input type="checkbox" [ngModel]="member.consulted" disabled></td>
+                            <td><input type="checkbox" [ngModel]="member.informed" disabled></td>
+
+                        </tr>
+
+                        <tr *ngIf="memberList?.length === 0">
+                            <td colspan="10" class="noData">
+                                <i class="fa fa-search"></i> No Data Available
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

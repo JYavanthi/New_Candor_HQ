@@ -1,0 +1,468 @@
+<div style="background: white; width: 95%; margin-left: 2.5%; display: flex; border-radius: 40px;">
+    <div style="margin-left: 3%;">
+        <app-master-sidebar></app-master-sidebar>
+    </div>
+    <div class="service_container">
+
+        <div class="userConfigHeadingCss"
+            style="display: flex; border-bottom: 3px solid #3b82f6; padding-left: 35%; font-size: xx-large; gap : 15px">
+            <img src="assets/image/user_log.png" alt="userLog" class="userLogImg" style="width: 10%; height: 60px;">
+            <p class="userHeadingparaCss" style="font-weight: 800; padding-top: 1%;">USER CONFIGURATION</p>
+        </div>
+        <br>
+        <div class="card service_card br-top-blue">
+            <form [formGroup]="userForm">
+                <!-- <div style="margin-top: 5%;">
+
+                    <button class="backBtn" (click)="Back()">Back</button>
+                    <button (click)="copyFunc()" class="copy" style="margin-left: 90%;">
+                        {{showAdminSuperAdmin? 'Copy User':'Back'}}
+                    </button>
+
+                </div> -->
+                <div class="topActionBar">
+
+                    <button class="backBtn" (click)="Back()" style="margin-left: 2%; border-radius: 15px;">
+                        BACK ◀
+                    </button>
+
+                    <button *ngIf="showAdminSuperAdmin" (click)="copyFunc()" class="copyUserBtn">
+                        COPY USER
+                    </button>
+
+                </div>
+                <div class="card-body" style="margin-top: 0%;">
+                    <div class="card-body insideCardBody">
+                        <div class="row radioBG">
+                            <div class="col-md-4 radioBtns">
+                                <div class="empClass">
+                                    <span class="radioTitle">&nbsp;Employee ID</span>
+                                    &nbsp;
+                                    <span style="position: relative;">
+                                        <input type="text" formControlName="employeeID" name="employeeID"
+                                            placeholder="Enter Employee ID" (input)="filterItem()"
+                                            (ngModelChange)="clearEmployeeDetails()" />
+                                        <ul class="dropdowns-list" *ngIf="employeeDropdownList.length > 0">
+                                            <li class="drop-list" value="" *ngFor="let item of employeeDropdownList"
+                                                (click)="selectItem(item)">
+                                                {{ item.employeeId !== undefined ? (item.employeeId + ' - ' +
+                                                item.employeeName)
+                                                : 'Users not available' }}
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+
+                                <div class="userRoleClass" *ngIf="showAdminSuperAdmin">
+                                    <span style="font-weight: bolder;">Select User Role:</span>
+                                    <div class="userRoleCheckbox">
+                                        <span class="flexStart">
+                                            <span><input type="checkbox" (change)="onChangeCheckBox()"
+                                                    formControlName="Admin" name="Admin"></span>
+                                            <span>&nbsp;Admin</span>
+                                        </span>
+                                        <span class="flexStart">
+                                            <span><input type="checkbox" (change)="onChangeCheckBox()"
+                                                    formControlName="superAdmin" name="superAdmin"></span>
+                                            <span>&nbsp;Super Admin</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="copyEmpID" *ngIf="!showAdminSuperAdmin">
+                                    <span class="radioTitle">Enter Employee ID to Copy</span>
+                                    &nbsp;
+                                    <span style="position: relative;">
+                                        <input type="text" placeholder="Enter Employee ID to Copy"
+                                            formControlName="copiedEmpID" name="copiedEmpID"
+                                            (input)="filterItemToCopy()" (ngModelChange)="clearCopiedEmpID()" />
+                                        <ul class="dropdowns-list" *ngIf="supportDropdownList.length > 0">
+                                            <li class="drop-list" style="font-weight:100;color:black;" value=""
+                                                *ngFor="let item of supportDropdownList"
+                                                (click)="selectCopyUserItem(item)">
+                                                {{ item.empId !== undefined ? (item.empId + ' - ' +
+                                                item.firstName?.trim() +item.middleName?.trim() + item.lastName?.trim())
+                                                : 'Users not available' }}
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--Details-->
+                        <ng-container>
+                            <div class="row" style="text-align:left;">
+                                <div class="col-md-3">
+                                    <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Name: <span class="horinputDatas">{{Name}}</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Email: <span class="horinputDatas">{{Email}}</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align:left;">
+                                <div class="col-md-3">
+                                    <label>Reporting Manager: <span
+                                            class="horinputDatas">{{ReportingManager}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align:left;">
+                                <div class="col-md-3">
+                                    <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                    <!-- Employee Details with Input Ends -->
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- Plant, Category, Category type and Classification Starts -->
+                            <div class="row" *ngIf="showAdminSuperAdmin && !userForm.value.superAdmin"
+                                [@expandCollapse]>
+                                <div class="userConfigInputFields">
+                                    <div>
+                                        <label style="color: white">Plant</label>
+                                        <ng-multiselect-dropdown class="multiselect-dropdown"
+                                            formControlName="userConfigPlant" name="userConfigPlant"
+                                            [settings]="plantDropdownSettings" [data]="plantList"
+                                            [disabled]="userForm.controls['userConfigPlant'].disabled">
+                                        </ng-multiselect-dropdown>
+                                    </div>
+
+                                    <div>
+                                        <label style="color: white">Category</label>
+                                        <ng-multiselect-dropdown (ngModelChange)="getCategoryTypeList();"
+                                            class="multiselect-dropdown" formControlName="userConfigCategory"
+                                            name="userConfigCategory" [settings]="categoryDropdownSettings"
+                                            [data]="categoryList"
+                                            [disabled]="userForm.controls['userConfigCategory'].disabled">
+                                        </ng-multiselect-dropdown>
+                                    </div>
+
+                                    <div>
+                                        <label style="color: white">Category Type</label>
+                                        <ng-multiselect-dropdown class="multiselect-dropdown"
+                                            formControlName="userConfigCategoryType" name="userConfigCategoryType"
+                                            [settings]="categoryTypeDropdownSettings" [data]="categoryTypeList"
+                                            [disabled]="userForm.controls['userConfigCategoryType'].disabled">
+                                        </ng-multiselect-dropdown>
+                                    </div>
+
+                                    <div>
+                                        <label style="color: white">Classification</label>
+                                        <ng-multiselect-dropdown class="multiselect-dropdown"
+                                            formControlName="userConfigClassification" name="userConfigClassification"
+                                            [settings]="classificationDropdownSettings" [data]="classificationList"
+                                            [disabled]="userForm.controls['userConfigClassification'].disabled">
+                                        </ng-multiselect-dropdown>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Plant, Category, Category type and Classification Ends -->
+
+                            <div class="row" *ngIf="showAdminSuperAdmin && !userForm.value.superAdmin">
+                                <!-- Parent Modules -->
+                                <div class="userConfigFlexStart" [@expandCollapse]>
+                                    <span style="font-size: 15px; font-weight: 700;"><b>Select Modules:</b></span>
+                                    <span *ngIf="parentModuleList.length == 0; else showParentModules"
+                                        style="font-weight: bold;">Loading...</span>
+                                    <ng-template #showParentModules>
+                                        <div *ngFor="let module of parentModuleList" class="flexStart">
+                                            <span>
+                                                <input type="checkbox"
+                                                    (change)="onParentCheckBoxChange(module.supportId, $event)"
+                                                    [formControlName]="module.supportName" [name]="module.supportName">
+                                            </span>
+                                            <span>&nbsp;<b>{{module.supportName}}</b></span>
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                                <!-- Child Modules -->
+                                <ng-container *ngFor="let module of parentModuleList">
+                                    <div *ngIf="parentModuleChilds[module.supportId]" [@expandCollapse]
+                                        class="userConfigFlexStart" style="margin-top:1.5%;">
+                                        <span class="spanPosition">
+                                            <span class="wrapChilds">
+                                                <ng-container
+                                                    *ngFor="let childModule of parentModuleChilds[module.supportId]">
+                                                    <div class="flexStart">
+                                                        <span>
+                                                            <input type="checkbox"
+                                                                (change)="onChildModuleChange(childModule.supportName,childModule.supportId)"
+                                                                [formControlName]="childModule.supportName"
+                                                                [name]="childModule.supportName">
+                                                        </span>
+                                                        <span>&nbsp;<b>{{childModule.supportName}}</b></span>
+                                                    </div>
+                                                </ng-container>
+                                            </span>
+                                            <span class="parentSupportName">{{module.supportName}}</span>
+                                        </span>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <div class="row" *ngIf="userForm.controls['Change Request']?.value" [@expandCollapse]>
+                                <ng-container>
+                                    <div class="userConfigFlexStart" style="margin-top:1.5%;">
+                                        <span class="spanPosition">
+                                            <span class="wrapChilds">
+                                                <ng-container>
+                                                    <div class="flexStart">
+                                                        <span>
+                                                            <input type="checkbox" formControlName="isApprove"
+                                                                name="isApprove" (change)="onApproveChange()" />
+                                                        </span>
+                                                        <span>&nbsp;<b>Approve</b></span>
+                                                    </div>
+                                                    <div class="flexStart">
+                                                        <span>
+                                                            <input type="checkbox" formControlName="isAnalyst"
+                                                                name="isAnalyst" />
+                                                        </span>
+                                                        <span>&nbsp;<b>Analyst</b></span>
+                                                    </div>
+                                                    <div class="flexStart">
+                                                        <span>
+                                                            <input type="checkbox" formControlName="isExecutive"
+                                                                name="isExecutive" />
+                                                        </span>
+                                                        <span>&nbsp;<b>Executive</b></span>
+                                                    </div>
+                                                </ng-container>
+                                            </span>
+                                            <span class="parentSupportName">Change Request</span>
+                                        </span>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <ng-container *ngIf="showAdminSuperAdmin && !userForm.value.superAdmin">
+                                <div class="row" *ngIf="showApproverLevels" [@expandCollapse]>
+                                    <ng-container>
+                                        <div class="userConfigFlexStart" style="margin-top:1.5%;">
+                                            <span class="spanPosition">
+                                                <span class="wrapChilds">
+                                                    <ng-container>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox" formControlName="approverLevel1"
+                                                                    name="approverLevel1" (change)="approverLevel1()" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Approver level 1</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox" formControlName="approverLevel2"
+                                                                    name="approverLevel2" (change)="approverLevel2()" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Approver level 2</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox" formControlName="approverLevel3"
+                                                                    name="approverLevel3" (change)="approverLevel3()" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Approver level 3</b></span>
+                                                        </div>
+                                                    </ng-container>
+                                                </span>
+                                                <span class="parentSupportName">Approver Levels</span>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                                <div class="row" *ngIf="showApproverLevel1" [@expandCollapse]>
+                                    <ng-container>
+                                        <div class="userConfigFlexStart" style="margin-top:1.5%;">
+                                            <span class="spanPosition">
+                                                <span class="wrapChilds">
+                                                    <ng-container>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="CRApproverLevel1"
+                                                                    name="CRApproverLevel1" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Change Request</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="releaseApproverLevel1"
+                                                                    name="releaseApproverLevel1" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Release</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="closureApproverLevel1"
+                                                                    name="closureApproverLevel1" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Closure</b></span>
+                                                        </div>
+                                                    </ng-container>
+                                                </span>
+                                                <span class="parentSupportName">Select Stage for Approver Level 1</span>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                                <div class="row" *ngIf="showApproverLevel2" [@expandCollapse]>
+                                    <ng-container>
+                                        <div class="userConfigFlexStart" style="margin-top:1.5%;">
+                                            <span class="spanPosition">
+                                                <span class="wrapChilds">
+                                                    <ng-container>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="CRApproverLevel2"
+                                                                    name="CRApproverLevel2" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Change Request</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="releaseApproverLevel2"
+                                                                    name="releaseApproverLevel2" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Release</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="closureApproverLevel2"
+                                                                    name="closureApproverLevel2" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Closure</b></span>
+                                                        </div>
+                                                    </ng-container>
+                                                </span>
+                                                <span class="parentSupportName">Select Stage for Approver Level 2</span>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                                <div class="row" *ngIf="showApproverLevel3" [@expandCollapse]>
+                                    <ng-container>
+                                        <div class="userConfigFlexStart" style="margin-top:1.5%;">
+                                            <span class="spanPosition">
+                                                <span class="wrapChilds">
+                                                    <ng-container>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="CRApproverLevel3"
+                                                                    name="CRApproverLevel3" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Change Request</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="releaseApproverLevel3"
+                                                                    name="releaseApproverLevel3" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Release</b></span>
+                                                        </div>
+                                                        <div class="flexStart">
+                                                            <span>
+                                                                <input type="checkbox"
+                                                                    formControlName="closureApproverLevel3"
+                                                                    name="closureApproverLevel3" />
+                                                            </span>
+                                                            <span>&nbsp;<b>Closure</b></span>
+                                                        </div>
+                                                    </ng-container>
+                                                </span>
+                                                <span class="parentSupportName">Select Stage for Approver Level 3</span>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+
+                            <div class="row"
+                                *ngIf="showAdminSuperAdmin && !userForm.value.superAdmin && this.showAssetList"
+                                [@expandCollapse]>
+                                <div class="userConfigFlexStart" style="margin-top:1.5%;">
+                                    <span class="spanPosition">
+                                        <span class="wrapChilds">
+                                            <ng-container *ngFor="let item of assetSpareList">
+                                                <div class="flexStart">
+                                                    <span>
+                                                        <input type="checkbox" [formControlName]="item.supportName"
+                                                            [name]="item.supportName" />
+                                                    </span>
+                                                    <span>&nbsp;<b>{{item.supportName}}</b></span>
+                                                </div>
+                                            </ng-container>
+                                        </span>
+                                        <span class="parentSupportName">Asset/Spare</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="showAdminSuperAdmin && !userForm.value.superAdmin">
+                                <span *ngIf="this.showSRTree" [@expandCollapse]>
+                                    <app-user-config-treeview (checkedItemsChanged)="handleCheckedItems($event)"
+                                        [@expandCollapse]></app-user-config-treeview>
+                                </span>
+                            </div>
+
+                            <div class="mainBtnsDiv">
+                                <button class="actionBtn" (click)="Submit()">Submit</button>
+                                <button class="actionBtn" (click)="resetRole();clearAll()">Clear</button>
+                                <button class="actionBtn" routerLink="/mastermodule/supportmaster">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

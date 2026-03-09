@@ -1,0 +1,176 @@
+.reportContainer {
+  width: 95%;
+  margin: auto;
+  margin-top: -6%;
+}
+
+.reportHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reportTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reportTitle h2 {
+  color: #0f8a94;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.raciImg {
+  width: 75px;
+  height: 75px;
+}
+
+.filterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.projectSelect label {
+  font-weight: 600;
+  color: #0f8a94;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.searchSelect {
+  position: relative;
+}
+
+.searchSelect i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: gray;
+}
+
+.searchSelect select {
+  padding: 8px 10px 8px 35px;
+  width: 260px;
+  border-radius: 8px;
+  border: 1px solid #c7c7c7;
+  outline: none;
+}
+
+.exportBtns {
+  display: flex;
+  gap: 15px;
+}
+
+.pdfBtn {
+  border: 2px solid #d9534f;
+  color: #d9534f;
+  padding: 8px 20px;
+  border-radius: 25px;
+  background: white;
+  font-weight: 600;
+}
+
+.excelBtn {
+  border: 2px solid #28a745;
+  color: #28a745;
+  padding: 8px 20px;
+  border-radius: 25px;
+  background: white;
+  font-weight: 600;
+}
+
+.pdfBtn:hover {
+  background: #d9534f;
+  color: white;
+}
+
+.excelBtn:hover {
+  background: #28a745;
+  color: white;
+}
+
+.tableMainContainer {
+  background: #cfd9e6;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.tableCard {
+  width: 100%;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+thead tr {
+  background: #4c9aa2;
+  border-radius: 20px;
+}
+
+thead th {
+  padding: 14px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+thead th:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+tbody tr {
+  background: #e9edf3;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+tbody tr:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+tbody td {
+  padding: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+tbody td:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+tbody td:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: default;
+}
+
+.noData {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #3e8cba;
+}

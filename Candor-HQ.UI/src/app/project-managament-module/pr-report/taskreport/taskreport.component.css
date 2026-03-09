@@ -1,0 +1,152 @@
+.reportIcon {
+  width: 75px;
+  height: 75px;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-bottom: 3px solid whitesmoke;
+  margin-top: -5%;
+}
+
+.titleSection h2 {
+  color: #1a9aa6;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.generate_row {
+  margin-left: 2%;
+  margin-bottom: 15px;
+}
+
+.generate_row label {
+  font-weight: 600;
+  color: #1a8c96;
+  font-size: 18px;
+}
+
+.generate_row select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #7fb5c4;
+  outline: none;
+  margin-left: 5%;
+}
+
+.export_pdf {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
+  margin-top: 1%;
+}
+
+.excel_button {
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+  background: #e9f6ec;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.excel_button i {
+  font-size: 18px;
+}
+
+.tableDesign {
+  width: 100%;
+  margin: auto;
+}
+
+.table-container {
+  background: #cfdceb;
+  padding: 3px;
+  border-radius: 14px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 40px 80px 150px 200px 160px 160px 160px 120px;
+  background: #4e9aa3;
+  color: white;
+  padding: 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.table-row {
+  display: grid;
+  grid-template-columns: 40px 80px 150px 200px 160px 160px 160px 120px;
+  background: #e7eef5;
+  border: 1px solid #79a8d8;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+.drag {
+  color: #7a7a7a;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+}
+
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: white;
+  font-size: 13px;
+}
+
+
+.completed {
+  background: #5ac878;
+}
+
+.progress {
+  background: #ffc83d;
+  justify-content: center;
+  height: 35px;
+}
+
+.cancel {
+  background: #ff4b5c;
+}
+
+.pending {
+  background: #ffa76b;
+}
+
+.approved {
+  background: #3bb4b7;
+}
+
+.inReview {
+  background: #1a8c96;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #3e8cba;
+  font-size: 18px;
+}
+
+mat-paginator {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,67 @@
+.pm-table-wrapper {
+    background: #e6f0ff;
+    padding: 16px;
+    border-radius: 14px;
+}
+
+.pm-table-header {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    background: #4aa6b8;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 22px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.pm-table-row {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    align-items: center;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.pm-table-row input[type="checkbox"] {
+    accent-color: #4aa6b8;
+}
+
+.pm-actions i {
+    margin: 0 6px;
+    cursor: pointer;
+    color: #4aa6b8;
+    font-size: 15px;
+}
+
+.pm-actions i.fa-trash {
+    color: #e65c5c;
+}
+
+.pm-no-data {
+    text-align: center;
+    padding: 20px;
+    color: #3e8cba;
+    font-size: 14px;
+}
+
+.pm-no-data i {
+    font-size: 20px;
+    margin-right: 6px;
+}
+
+.addNewBtn-addNew {
+    background: #62c28c;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    color: white;
+    font-weight: 700;
+}

@@ -1,0 +1,48 @@
+<br />
+
+<h1 class="helpdesk_header">Helpdesk</h1><br />
+
+<div class="container-home">
+  <div class="text-center">
+    <h2>How can we help you?</h2><br />
+  </div>
+  <div class="row row_card">
+    <div class="card card_helpdesk" style="width:23%;">
+      <div class="card-body card_body_helpdesk" [routerLink]="'/report_issue'">
+        <div>
+          <h1><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
+        </div>
+        <div>
+          <h4 class="card_content">I am facing an issue</h4>
+          <button class="issue_button" [routerLink]="'/report_issue'">Report issue</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card_helpdesk" style="width:23%;">
+      <div class="card-body card_body_helpdesk" [routerLink]="'/service'">
+        <div>
+          <h1><i class="fa fa-wrench" aria-hidden="true"></i></h1>
+        </div>
+        <div>
+          <h4 class="card_content">I need a new service</h4>
+          <button class="service_button" [routerLink]="'/service'">New Service</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card_helpdesk" style="width:23%;">
+    <div class="card-body card_body_helpdesk">
+      <div>
+        <h1><i class="fa fa-plus-square" aria-hidden="true"></i></h1>
+      </div>
+      <div>
+        <h4 class="card_content">I need a new IT Spare/Consumable/Asset</h4>
+        <button class="service_button" [routerLink]="'/service'">New Assets</button>
+
+      
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

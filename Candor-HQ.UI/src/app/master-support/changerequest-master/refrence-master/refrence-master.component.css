@@ -1,0 +1,159 @@
+.referMasterMainDiv {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 30px;
+  margin-left: 2.5%;
+}
+
+.container-implement {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 8%;
+  border: none;
+}
+
+.referenceBottomCss {
+  border-bottom: 3px solid #3b82f6;
+}
+
+.container-field-line {
+  padding: 25px;
+  background-color: #ffffff;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.container-field-line h3 {
+  color: #f97316;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.search-hero {
+  position: absolute;
+  top: 25px;
+  left: 200px;
+  width: 320px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px 8px 35px;
+  border-radius: 10px;
+  border: 1px solid #b6d4e3;
+  outline: none;
+  height: 40px;
+  margin-top: -10px;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+}
+
+.search-hero::before {
+  content: "\f002";
+  font-family: FontAwesome;
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  color: #3b82f6;
+}
+
+.btn-primary {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  background-color: #17a2b8 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 6px 20px !important;
+  font-weight: 500;
+}
+
+.border-rfc-heading {
+  margin-top: 60px;
+  border: 1px solid #f1d9c7;
+  border-radius: 15px;
+  padding: 15px;
+  background: #fff;
+}
+
+.table-wrapper {
+  display: block;
+  font-family: sans-serif;
+}
+
+.fl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.fl-table thead {
+  background-color: #f4f8fb;
+}
+
+.fl-table th {
+  padding: 12px;
+  text-align: left;
+  color: #0e7490;
+  font-weight: 600;
+  border-bottom: 2px solid #0e7490;
+}
+
+.fl-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.tr-body:hover {
+  background-color: #f9fcff;
+}
+
+.fl-table td:first-child {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.fl-table td:nth-child(2) {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.fl-table td:nth-child(3) {
+  font-weight: 600;
+}
+
+.fl-table td:nth-child(3):contains("True") {
+  color: #22c55e;
+}
+
+.fl-table td:nth-child(3):contains("False") {
+  color: #ef4444;
+}
+
+.fl-table i.fa-pencil-square-o {
+  background-color: #0ea5a5;
+  color: white;
+  padding: 7px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.fl-table i.fa-trash {
+  background-color: #ef4444;
+  color: white;
+  padding: 7px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.fl-table td i {
+  margin-right: 8px;
+}

@@ -1,0 +1,46 @@
+.filterAndViewButtons {
+    display: flex;
+    justify-content: end;
+    margin-top: -53px;
+}
+
+.filterAndViewButtons .filterButton {
+    display: inline-block;
+    background-color: #3c8dbc;
+    width: 42px;
+    height: 42px;
+    border-radius: 46px;
+    align-content: center;
+    padding-left: 11px;
+    font-size: 23px;
+    color: white;
+    cursor: pointer;
+}
+
+.filterAndViewButtons .viewServicesButton {
+    display: inline-block;
+    background-color: #3c8dbc;
+    height: 40px;
+    border-radius: 6px;
+    align-content: center;
+    padding: 6px;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+    border-color: #3c8dbc;
+    margin: 0px 138px 0px 0px;
+}
+.table {
+    text-align: -webkit-center;
+    margin-top: 32px;
+}
+.tableHeadings {
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    text-align: center;
+    height: 53px;
+}
+tbody tr{
+    text-align: center;
+    color: #46a3ca;
+}

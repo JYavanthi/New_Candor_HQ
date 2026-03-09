@@ -1,0 +1,639 @@
+<div class="container-home">
+  <div style="margin-left: 3%">
+    <app-sidebarissue></app-sidebarissue>
+  </div>
+  <app-headers></app-headers>
+
+  <div class="container containerClass">
+    <!-- <div class="container containerClass">
+      <div class="row">
+        <div class="col-4">
+          <a>
+            <button class="btn-back1" (click)="Goback()" type="button">Back</button>
+          </a>
+        </div>
+        <div class="col-4 pageHeadingCss">
+          <p class="pageHeadingparaCss" style="margin: 0 auto !important;">Issue Resolution</p>
+        </div>
+        <div class="col-4">
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="container containerClass">
+      <div class="row headerRow">
+
+        <div class="col-4 backSection">
+          <button class="btn-back1" (click)="Goback()" type="button">
+            BACK ◀
+          </button>
+        </div>
+
+        <div class="col-4 pageHeadingCss">
+          <div class="headingWrapper">
+            <img src="assets/image/issue_management.png" class="headingIcon">
+            <span class="pageHeadingparaCss">Issue Resolution</span>
+          </div>
+        </div>
+
+        <div class="col-4"></div>
+
+      </div>
+    </div>
+
+    <div class="row MainCont">
+      <div class="main-content" [ngClass]="{'full-width': !isUpdateSidebarVisible}">
+        <div class="bxChat">
+          <i class='bx bxs-chat' (click)="toggleUpdateSidebar()"></i>
+        </div>
+        <div class="updatecontent">
+
+          <div class="container" style="margin-top: 2%; margin-bottom: 5%;">
+            <div class="topDatas">
+              <div class="secondtopDatas">
+
+                <div style="font-weight: bold; font-size: 18px; width:85%;">
+                  Issue Code: {{issueData?.issueCode}} |&nbsp;&nbsp; Issue Raised Date: {{issueData?.issueDate | date:
+                  'dd/MM/yyyy'}}
+                  |&nbsp;&nbsp; Status: {{issueData?.status}}
+                  |&nbsp;&nbsp; Task Health:
+                  <span
+                    [style]="(issueData?.slastatus == 'R') ? 'color:red':((issueData?.slastatus == 'Y')  ? 'color:yellow':'color:green')">
+                    <i class='bx bxs-circle'></i>
+                  </span>
+                </div>
+
+                <div class="insidesecondtopDatas"
+                  *ngIf="!(issueData?.status.trim() == 'Cancelled' || issueData?.status.trim() == 'Closed') ">
+                  <div class="d-flex resolutionDate" *ngIf="resolutionDateField">
+                    <label class="mt-2">Resolution Date<span style="color:red">*</span>:</label><br />
+                    <input class="ms-3" type="datetime-local" [(ngModel)]="resolutionDate" [min]="presentTime"
+                      [disabled]="resolutionDtDisabled" />
+                  </div>
+                  <button class="btnsTop" *ngIf="inProgress" (click)="updateStatus('In Progress')">Pick</button>
+                  <button class="btnsTop" *ngIf="seekClarification" (click)="updateStatus('Seek Clarification')">Seek
+                    Clarification</button>
+                  <button class="btnsTop" *ngIf="onHold" (click)="updateStatus('Hold')">On Hold</button>
+                  <button class="btnsTop" *ngIf="resolve" (click)="updateStatus('Resolved')">Resolved</button>
+                  <button class="btnsTop" *ngIf="forward" (click)="updateStatus('ForwardTextOpen')">Re-Assign </button>
+                  <button class="btnsTop" *ngIf="assign" (click)="updateStatus('assignTextOpen')">Assign</button>
+                  <button class="btnsTop" *ngIf="submitClarification"
+                    (click)="updateStatus('Submit Clarification')">Submit Clarification</button>
+                  <button class="btnsTop" *ngIf="closeIssue" (click)="updateStatus('Closed')">Close Issue</button>
+                  <button class="btnsTop" *ngIf="unResolved" (click)="updateStatus('Not Resolved')">Not
+                    resolved</button>
+                  <button class="btnsTop" *ngIf="cancel" (click)="updateStatus('Cancelled')">Cancel</button>
+
+                  <div *ngIf="onHoldReason" class="d-flex">
+                    <label class="onHold">On Hold Reason:</label>
+                    <select required [(ngModel)]="onHoldComment">
+                      <option value="" selected disabled hidden>Select Reason</option>
+                      <option *ngFor="let reason of reasonList" value="{{reason.issueOnholdCatId}}">
+                        {{reason.onholdReason}}</option>
+                    </select>
+                    <button class="btnsTop" (click)="updateStatus('On Hold' )">Submit</button>
+                  </div>
+                  <div *ngIf="ForwardTextOpen" class="d-flex">
+                    <label class="onHold">Re-Assign To</label>
+                    <select [(ngModel)]="forwardTo">
+                      <option value="" selected disabled hidden>Select Re-Assign to</option>
+                      <option *ngFor="let assgn of forwardToList" value="{{assgn.empId}}">
+                        {{assgn.empId+' '+'-'+' '+assgn.firstName+' '+assgn.middleName||''+' '+assgn.lastName||'' }}
+                      </option>
+                    </select>
+                    <button class="btnsTop" (click)="updateStatus('Open')">Submit</button>
+                  </div>
+                  <div *ngIf="AssignTextOpen" class="d-flex">
+                    <label class="onHold">Assign To</label>
+                    <select [(ngModel)]="forwardTo">
+                      <option value="" selected disabled hidden>Select Assign to</option>
+                      <option *ngFor="let assgn of assignToList" value="{{assgn.empId}}">
+                        {{assgn.empId+' '+'-'+' '+assgn.firstName+' '+(assgn.middleName || " ")+' '+(assgn.lastName || "
+                        ") }}
+                      </option>
+                    </select>
+                    <button class="btnsTop" (click)="updateStatus('Open')">Submit</button>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="mt-2" [hidden]="!ShowCommentBox">
+                <div [@expandCollapseAnimation]>
+                  <textarea rows="3" cols="50" placeholder="Enter comments here..." #EnterCommentsID
+                    [(ngModel)]="commentBoxText"
+                    style="width: 100%; padding: 5px; margin-top:1%; border: 1px solid white;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="card inside_card">
+                  <div class="card-body inside_newissue">
+                    <div [hidden]="!ShowSelfInputs">
+                      <span
+                        style="background: #2f6f7a; color: white; font-weight: 600; padding: 6px 12px; display: inline-block; border-radius: 4px; font-size: 14px; text-transform: uppercase;">Raised
+                        For:</span>
+                      <div class="row mt-2" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label  style="color: #0097ab; font-size: larger;">Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Name: <span class="horinputDatas">{{Name}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Email: <span class="horinputDatas">{{Email}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Department: <span class="horinputDatas">{{Department}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Role: <span class="horinputDatas">{{Role}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--Others-->
+                    <div [hidden]="!ShowOthers">
+                      <!--Requested By-->
+                      <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Raised
+                        by:</span>
+                      <div class="row mt-2" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Name: <span class="horinputDatas">{{Name}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>Email: <span class="horinputDatas">{{Email}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                        </div>
+                      </div>
+                      <hr />
+                      <!--Requested For-->
+                      <div>
+                        <span
+                          style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested
+                          for:</span>
+                        <div class="row mt-2">
+                          <div class="col-md-3">
+                            <label>Employee ID: <span class="horinputDatas">{{EmployeeIDOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Name: <span class="horinputDatas">{{OthersName}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Email: <span class="horinputDatas">{{EmailOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Contact No: <span class="horinputDatas">{{ContactNoOthers}}</span></label>
+                          </div>
+
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label>Reporting Manager: <span
+                                class="horinputDatas">{{ReportingManagerOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Staff Category: <span class="horinputDatas">{{StaffCategoryOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Plant: <span class="horinputDatas">{{PlantOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Paygroup: <span class="horinputDatas">{{PaygroupOthers}}</span></label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label>Department: <span class="horinputDatas">{{DepartmentOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Designation: <span class="horinputDatas">{{DesignationOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Role: <span class="horinputDatas">{{RoleOthers}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!--Guest-->
+                    <div [hidden]="!ShowGuest">
+                      <!--Requested By-->
+                      <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Raised
+                        by:</span>
+                      <div class="row mt-2" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Name: <span class="horinputDatas">{{Name}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>Email: <span class="horinputDatas">{{Email}}</span></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                        </div>
+                      </div>
+                      <hr />
+
+                      <!--Requested for-->
+                      <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Raised
+                        for:</span>
+                      <div class="row mt-2">
+                        <div class="col-md-4">
+                          <label>Guest Employee ID: <span class="horinputDatas">{{GuestEmployeeID}}</span></label>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label>Name:<span class="horinputDatas">{{GuestName}}</span></label>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label>Email:<span class="horinputDatas">{{Guestemail}}</span></label>
+                        </div>
+
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Contact No:<span class="horinputDatas">{{GuestContactNo}}</span></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label>Reporting Manager Employee ID:<span
+                              class="horinputDatas">{{ReportingManagerEmpID}}</span></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label>Reporting Manager in ML:<span
+                              class="horinputDatas">{{ReportingManagerinML}}</span></label>
+                        </div>
+
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Staff Category of ML:<span class="horinputDatas">{{StaffCategoryofML}}</span></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label>Plant ML:<span class="horinputDatas">{{GuestPlant}}</span></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label>Paygroup ML:<span class="horinputDatas">{{PaygroupML}}</span></label>
+                        </div>
+
+
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Department ML:<span class="horinputDatas">{{DepartmentML}}</span></label>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label>Designation of ML Manager:<span
+                              class="horinputDatas">{{DesignationofMLManager}}</span></label>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label>Role of ML Manager:<span class="horinputDatas">{{RoleofMLManager}}</span></label>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="container">
+                  <div class="container-field-line">
+                    <div class="text-center subHeadingparaCss"
+                      style="margin-top:-1%;  display: flex; margin-left: 38%;">
+                      <img src="assets/image/Details.png" alt="detailsImg" class="detailImg">
+                      <p style="font-size: xx-large; color: #0097ab;">Details</p>
+                    </div>
+                    <div class="card report_issue_card" style="width:100%;margin-left:0; background-color: #f8f8f8;">
+                      <div class="card-body">
+
+                        <div class="row mt-2">
+                          <div class="col-md-3">
+                            <label>Raised Date: <span class="horinputDatas">&nbsp;&nbsp;{{issueData?.issueDate | date:
+                                'dd/MM/yyyy'}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Plant:<span class="horinputDatas">&nbsp;&nbsp;{{issueData?.plantname}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Service-Category:<span
+                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.categoryName}}</span></label>
+                          </div>
+                          <div class="col-md-3">
+                            <label>Sub-Category:<span
+                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.categoryType}}</span></label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label>Priority:<span
+                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.priorityName}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Type:<span class="horinputDatas">&nbsp;&nbsp;{{issueData?.type}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Source:<span class="horinputDatas">&nbsp;&nbsp;{{issueData?.source}}</span></label>
+                          </div>
+
+                          <div class="col-md-3">
+                            <label>Impacted Asset: <span
+                                class="horinputDatas">&nbsp;&nbsp;{{(impactassetassetcat?.category??'')+'
+                                '+(impactassetassetcat?.category?'-':'')+'
+                                '+(impactassetassetcat?.assetNo??'')}}</span></label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Assigned to:<span class="horinputDatas">&nbsp;&nbsp;{{(issueData?.assignedToid||
+                                '')+' '+'-'+' '+issueData?.assignedTo}}</span></label>
+                          </div>
+
+
+
+
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-11">
+                            <label>Subject:<span
+                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.issueShotDesc}}</span></label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="report_description">
+                              <label>Description<span style="color:red">*</span></label>
+                              <textarea [(ngModel)]="description" style="width:100%;padding:5px;background:white;"
+                                disabled rows="2" cols="50"></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="report_description">
+                              <label>Attachment</label>
+                              <div *ngFor="let attachment of attachmentsList;">
+                                <div>
+                                  {{attachment.fileName}}
+                                  <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
+                                    (click)="viewFileM(attachment)"></i>
+                                  <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true"
+                                    style="margin-left: 10px;" (click)="downFile(attachment)"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col">
+                            <div>
+                              <label>Proposed Resolution Date<span style="color:red"> *</span></label><br />
+                              <input type="datetime-local" [(ngModel)]="ProposedResolution" style="width:20%;"
+                                readonly />
+                            </div>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div *ngIf="!(this.issueData?.status.trim() == 'Cancelled' || this.issueData?.status.trim() == 'Closed') ">
+              <div class="secondtopDatas2">
+                <button class="btnsTop" *ngIf="seekClarification" (click)="scrollToTop()">Seek Clarification</button>
+                <button class="btnsTop" *ngIf="onHold" (click)="scrollToTop()">On Hold</button>
+                <button class="btnsTop" *ngIf="resolve" (click)="scrollToTop()">Resolved</button>
+                <button class="btnsTop" *ngIf="forward" (click)="scrollToTop()">Re-Assign</button>
+                <button class="btnsTop" *ngIf="assign" (click)="scrollToTop()">Assign</button>
+                <button class="btnsTop" *ngIf="submitClarification" (click)="scrollToTop()">Submit
+                  Clarification</button>
+                <button class="btnsTop" *ngIf="closeIssue" (click)="scrollToTop()">Close Issue</button>
+                <button class="btnsTop" *ngIf="unResolved" (click)="scrollToTop()">Not resolved</button>
+                <button class="btnsTop" *ngIf="cancel" (click)="scrollToTop()">Cancel</button>
+
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+      <div class="updatesidebar" [ngClass]="{'show': isUpdateSidebarVisible}">
+        <div class="subHeadingCss mt-3" style="display: flex; justify-content: center;">
+          <p class="subHeadingparaCss">
+            Resolution Comments
+          </p>
+        </div>
+
+        <div class="panel-content open">
+
+          <ng-container *ngIf="messageList.length > 0; else showElseBlock">
+            <div class="message" *ngFor="let message of messageList">
+              <div *ngIf="message.text!=''">
+                <div class="message-user">{{ message.userRole }}</div>
+                <div class="message-text">{{ message.text }}</div>
+                <div class="message-timestamp">{{ getFormattedTime(message.timestamp) }}</div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #showElseBlock>
+            <h6 style="text-align: center; padding: 15px;">No comments available</h6>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="container containerClass">
+      <div class="row">
+        <ng-container>
+          <div class="text-center subHeadingCss" style="display: flex; justify-content: flex-start;">
+            <p class="subHeadingparaCss">
+              History
+            </p>
+          </div>
+
+          <div class="panel-content open">
+            <div>
+              <table class="table" style="width:100%; ">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Issue Date</th>
+                    <th>Issue Raised By</th>
+                    <th>Issue Raised For</th>
+                    <th>Status</th>
+                    <th class="mx-200">Resolution Remark</th>
+
+                    <th>Assigned To</th>
+                    <th>Assigned On</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of historytableData;">
+                    <td>{{row.issueDate | date:'dd-MM-yyyy HH:mm'}}</td>
+                    <td>{{row.issueRaiseBy}}</td>
+                    <td>{{row.issueRaisedFor}}</td>
+                    <td>{{row.status}}</td>
+                    <td class="mx-200">{{row.remarks}}</td>
+                    <td>{{row.assignedTo}}</td>
+                    <td>{{row.assignedOn| date:'dd-MM-yyyy HH:mm'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+
+</div>

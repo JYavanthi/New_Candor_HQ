@@ -1,0 +1,53 @@
+<style>
+    table,th,td {
+      border: 1px solid !important;
+    }
+  
+    table {
+      width: 100% !important;
+    }
+    .border {
+      border: 1px solid !important;
+      margin: 10px !important;
+      padding: 10px !important;
+    }
+  </style>
+  
+  <div class="border">
+    <p><b>Dear @approvedBy</b></p>
+    <p>Please find the details of the Change Request Submitted by @requestedBy approved by @approvedBy.<br />    </p>
+    <p><b>Service Code</b>: @serviceCode</p>
+    <p><b>Requestor Name</b>: @RequestorName</p>
+    <span style="border-bottom:1.5px solid black;width:100%;display:inline-block;"></span>
+    <p><b>Requested Date and Time</b>: @requestedDateTime</p>
+    <p><b>Status</b>: @Status</p>
+    <br />
+    <table>
+      <thead>
+        <tr>
+          <th>Approver Level</th>
+          <th>Name of Approver</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Approved Level 1</td>
+          <td>@approver1 </td>
+          <td>@approver1Status</td>
+        </tr>
+        <tr>
+          <td>Approved Level 2</td>
+          <td>@approver2</td>
+          <td>@approver2Status</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <p><a href=${loginUrl} target=${loginUrl}>Click here</a> to Log into Unnati and provide your Approval / Rejection or Seek clarification.</p>
+    <p>Regards,</p>
+    <p>IT Team</p>
+    <p>Micro Labs Ltd</p>
+    <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+  </div>
+  

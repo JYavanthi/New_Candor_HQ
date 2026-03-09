@@ -1,0 +1,46 @@
+<div class="mainContnt" [ngClass]="{'active': isDialogOpen}">
+    <div class="box" @dialogAnimation>
+        <div class="boxes bx2">
+            
+            <form [formGroup]="dialogForm">
+                <span class="closeIcon"><i (click)="closeDialog()" class="fas fa-window-close"></i></span>
+
+                <div class="radioContent">
+                    <section>
+                        <div *ngIf="parentList.length == 0; else showParent">
+                            <span>Loading...</span>
+                        </div>
+                        <ng-template #showParent>
+                            <div *ngFor="let parent of parentList" class="parentListClass">
+                                <div class="radioWithLabels">
+                                    <span>
+                                        <input type="radio" [formControlName]="'selectedId'" [name]="'selectedId'"
+                                            [value]="parent.supportId" (change)="onParentRadioSelection(parent)">
+                                    </span>
+                                    <span>
+                                        <label>{{ parent.supportName | titlecase }}</label>
+                                    </span>
+                                </div>
+
+                                <div *ngIf="selectedParentId === parent.supportId" style="margin-left: 20px;">
+                                    <div *ngFor="let child of childList" class="childListClass">
+                                        <span>
+                                            <input type="radio" (change)="onChildRadioSelection(child)" [formControlName]="'selectedId'" [name]="'selectedId'"
+                                                [value]="child.supportId">
+                                        </span>
+                                        <span><label>{{ child.supportName | titlecase }}</label></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </section>
+                </div>
+
+                <span class="saveBtnSpan" *ngIf="parentList.length != 0">
+                    <button type="button" class="saveBtn" (click)="save()"><i class="fas fa-save"></i> Save</button>
+                </span>
+            </form>
+
+        </div>
+    </div>
+</div>

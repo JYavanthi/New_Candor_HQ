@@ -1,0 +1,143 @@
+<form [formGroup]="resolutionForm">
+  <div class="MainCont">
+    <div class="container-field-approve" [ngClass]="{'full-width': !isUpdateSidebarVisible}">
+      <div>
+        <div class="bxChat">
+          <div style="    display: flex;
+    flex-direction: column;">
+    <div class="abc" style="    width: 100%;">
+      <i class='bx bxs-chat' (click)="toggleUpdateSidebar()"></i></div>
+            <span class="chat-note" style="    transform: translate(29px, 20px);">To see comments click on icon.</span>
+          </div>
+        </div>
+        <!-- <div [@expandCollapseAnimation]> -->
+        <div *ngIf="this.srData?.status?.trim() == 'In Progress' || this.srData?.status?.trim() == 'Seek Clarification' || this.srData?.status?.trim() == 'On Hold'
+        || this.srData?.status?.trim() == 'Submit Clarification' ">
+          <label  class="asteriskrequired" for="textBox">Remarks</label>
+          <textarea rows="3" class="textBox" formControlName="remarks"></textarea>
+        </div>
+
+        <div class="row mt-4">
+          <!-- <div class="col-4" *ngIf="this.srData?.status?.trim() == 'In Progress' || this.srData?.status?.trim() == 'Seek Clarification' ||
+          this.srData?.status?.trim() == 'On Hold' || this.srData?.status?.trim() == 'Submit Clarification'">
+            <label>Proposed Resolution On</label>
+            <input type="datetime-local" formControlName="proposedResDate">
+          </div> -->
+          <div class="col-4" *ngIf="this.srData?.status?.trim() == 'In Progress' || this.srData?.status?.trim() == 'Seek Clarification' ||
+          this.srData?.status?.trim() == 'On Hold' || this.srData?.status?.trim() == 'Submit Clarification'">
+            <label class="mt-2">Resolution Date<span style="color:red">*</span>:</label><br />
+            <input class="" type="datetime-local" formControlName="extimateResolutionDate" [min]="presentTime"
+               />
+          </div>
+          <div class="col-4">
+
+          </div>
+
+          <div class="issuesubmitbtns assignfield"
+            *ngIf="(this.srData?.status?.trim()?.trim() == 'Approved'||this.srData?.status?.trim()?.trim()=='Approval not required')&&(isSuperAdmin
+              ||this.user.empData?.employeeNo==this.srData?.rpmEmpNo||this.user.empData?.employeeNo==this.srData?.hodEmpNo||
+              this.user.empData?.employeeNo==this.srData?.guestReportingManagerEmployeeId)">
+            <button type="submit" class="resolutionBtns" (click)="getAssignto()">Assign</button>
+            <div class="d-flex" *ngIf="assignToDropDown"> <label class="onHoldLabel"> Assign to <span style="color: red;">*</span>:</label>
+              <select required formControlName="assign" class="onHoldDropDown">
+                <option value="" selected disabled hidden>Select Assign to</option>
+                <option *ngFor="let assign of assignToList" value="{{assign.empId}}">{{assign.empId+' '+'-'+'
+                  '+assign.firstName+' '+assign.middleName+' '+assign.lastName }}
+                </option>
+              </select>
+              &nbsp;&nbsp;&nbsp;<button type="submit" class="resolutionBtns"
+                (click)="assignTo('Open', 'Assigned')">Submit</button>
+            </div>
+
+          </div>
+
+          <div class="issuesubmitbtns assignfield"
+            *ngIf="this.srData?.status?.trim() == 'Open' && this.srData.assignedTo.toString() == this.user.empData.employeeNo">
+            <div class="d-flex">
+              <label class="mt-2">Proposed Resolution On <span style="color: red;">*</span> : </label>
+              <input type="datetime-local" class="ms-4" formControlName="proposedResDate" [min]="presentTime">
+            </div>
+            <button type="submit" class="resolutionBtns" (click)="resolveService('In Progress', 'Picked')">Pick</button>
+          </div>
+          <div class="issuesubmitbtns"
+            *ngIf="this.srData?.status?.trim() != 'Resolved' && (this.srData?.status?.trim() == 'In Progress' || this.srData?.status?.trim() == 'Seek Clarification' || this.srData?.status?.trim() == 'On Hold'||this.srData?.status?.trim() == 'Submit Clarification')">
+            <button type="submit"
+              *ngIf="isEngineer && this.srData?.assignedTo?.toString()==this.user?.empData?.employeeNo"
+              class="resolutionBtns" (click)="resolveService('Seek Clarification', 'Seek Clarification')">Seek
+              Clarification</button>
+            <button type="submit" *ngIf="!isEngineer&&this.srData?.status?.trim()== 'Seek Clarification'"
+              class="resolutionBtns" (click)="resolveService('Submit Clarification', 'Submit Clarification')">Submit
+              Clarification</button>
+            <button type="submit"
+              *ngIf="isEngineer&&this.srData?.assignedTo?.toString()==this.user?.empData?.employeeNo"
+              class="resolutionBtns" (click)="resolveService('Resolved', 'Resolved')">Resolved</button>
+            <button type="submit"
+              *ngIf="isEngineer&&this.srData?.assignedTo?.toString()==this.user?.empData?.employeeNo"
+              class="resolutionBtns" (click)="onHold()"> On Hold</button>
+
+            <div class="d-flex" *ngIf="onHoldDropDown"> <label class="onHoldLabel asteriskrequired">On Hold Reason:</label>
+              <select required formControlName="onHold" class="onHoldDropDown"
+                [disabled]="this.srData?.status?.trim() != 'Resolved'">
+                <option value="" selected disabled>Select Reason</option>
+                <option *ngFor="let reason of onHoldReason" value="{{reason.issueOnholdCatId}}">{{reason.onholdReason}}
+                </option>
+              </select>
+              &nbsp;&nbsp;&nbsp;<button type="submit" class="resolutionBtns"
+                (click)="resolveService('On Hold', 'On Hold')">Submit</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="updatesidebar" [ngClass]="{'show': isUpdateSidebarVisible}">
+      <div class="subHeadingCss mt-3" style="display: flex; justify-content: center;">
+        <p class="subHeadingparaCss">
+          Resolution Comments<!--&nbsp;<i style="font-size:20px;" class='bx bx-chevrons-down'></i>-->
+        </p>
+      </div>
+      <div >
+        <app-chat-box></app-chat-box>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>SR Code</th>
+          <th>Service Date</th>
+          <th>Service Raised By</th>
+          <th>Service Raised For</th>
+          <th>Status</th>
+          <th>Resolution Remark</th>
+          <th>Assigned To</th>
+          <th>Assigned On</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let h of history">
+          <td>{{srData.srcode}}</td>
+          <td>{{h.supportName}}</td>
+          <td>{{h.status}}</td>
+          <td>{{h.remarks}}</td>
+          <td>{{h.modifiedDt?h.modifiedDt:h.createdDt}}</td>
+          <td>{{h.modifiedByName.trim()==''||h.modifiedByName.trim()==null?h.createdByName:h.modifiedByName}}</td>
+        </tr>
+
+        <tr *ngIf="history?.length === 0">
+          <td colspan="6" style="text-align: center;">
+            <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+            No Data Available
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div> -->
+
+
+</form>

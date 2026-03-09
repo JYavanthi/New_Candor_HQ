@@ -1,0 +1,145 @@
+<div class="change_request_header">
+  <h2>View Change Request Report</h2>
+</div>
+
+<div class="row" align="right">
+  <div class="col export_pdf">
+    <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o"
+        aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
+    <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
+        aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+  </div>
+</div>
+
+<div class="card change_request_card_filter" *ngIf="isVisible">
+  <div class="card-body card_body_filter" [formGroup]="filterForm">
+    <div class="row filter_cr">
+      <div class="col">
+        <label>Plant</label><br />
+        <ng-multiselect-dropdown class="multiselect-dropdown dropdown-btn" [settings]="dropdownSettings"
+          [data]="dropdownList" formControlName="plantId" (ngModelChange)="mapedplantdatas()">
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="col">
+        <label>Category</label><br />
+        <ng-multiselect-dropdown [settings]="dropdownSettings" formControlName="Category" [data]="dropdowncategroy"
+          (ngModelChange)="mapedcategoryatas()">
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="col">
+        <label>Classifications</label><br />
+        <select formControlName="ClassificationId" class="input-change">
+          <option selected hidden disabled value="">Select-classification</option>
+          <option *ngFor="let classf of classificationdata" value="{{classf.itclassificationId}}">
+            {{classf.classificationName}}</option>
+        </select>
+
+      </div>
+      <div class="col">
+        <label>Priority</label><br />
+        <select formControlName="Priority" class="input-change">
+          <option selected hidden disabled value="">Select-priority</option>
+          <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Start Date:</label><br />
+        <input class="input-change cr_date" [max]="currentDate" type="date" id="fromDate" name="fromDate"
+          formControlName="StartDate" />
+      </div>
+      <div class="col">
+        <label>End Date:</label><br />
+        <input class="input-change cr_date" type="date" [min]="this.filterForm.value['StartDate']" [max]="currentDate"
+          id="toDate" name="toDate" formControlName="EndDate" />
+      </div>
+
+      <div class="col">
+        <label>Stage</label><br />
+        <select formControlName="stage" class="input-change">
+          <option selected hidden disabled value="">Select-Stage</option>
+          <option>Initiated</option>
+          <option>Approval</option>
+          <option>Implementation</option>
+          <option>Release</option>
+          <option>Closure</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Status</label><br />
+        <select class="input-change" formControlName="Status">
+          <option selected hidden disabled value="">Select Status</option>
+          <option value="All">All</option>
+          <option value="Draft">Draft</option>
+          <option value="Pending Approval">Pending Approval</option>
+          <option value="Approved level1">Approved level1</option>
+          <option value="Approved level2">Approved level2</option>
+          <option value="Approved level3">Approved level3</option>
+          <option value="Approved">Approved</option>
+          <option value="Implement">Implement</option>
+          <option value="Implemented">Implemented</option>
+          <option value="Release">Release</option>
+          <option value="Released">Released</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+    </div>
+    <div class="access-checkbox">
+      <div>
+        <input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
+      </div>
+      <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-rounded filter_button" (click)="reset()">Reset</button><!--(click)="filterData()"-->
+      <!--(click)="filterdropdown()"-->
+    </div>
+  </div>
+</div>
+<br />
+<div class="">
+  <br />
+</div>
+
+
+<div class="mt-5">
+  <div class="tableClass">
+    <table id="excel-table">
+      <thead style="border-bottom:2px solid;">
+        <tr>
+          <th>RFC #</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Change owner</th>
+          <th>Initiator</th>
+          <th>Plant Code</th>
+          <th>Classification</th>
+          <th>Category</th>
+          <th>Category Type</th>
+          <th>Nature of Change</th>
+          <th>Priority</th>
+          <th>Stage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tr-body" *ngFor="let CRreport of viewchangerequest">
+          <td>{{CRreport.crcode}}</td>
+          <td>{{CRreport.changeDesc}}</td>
+          <td>{{''+CRreport.crdate| date:'dd-MM-yyyy'}}</td>
+          <td>{{CRreport.crowner}}</td>
+          <td>{{CRreport.initiatedFor}}</td>
+          <td>{{CRreport.plantId}}</td>
+          <td>{{CRreport.classificationName}}</td>
+          <td>{{CRreport.categoryName}}</td>
+          <td>{{CRreport.categoryType}}</td>
+          <td>{{CRreport.natureofChange}}</td>
+          <td>{{CRreport.priorityName}}</td>
+          <td>{{CRreport.stage}}</td>
+          <td>{{CRreport.status}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]"
+    (page)="onPageChange($event)" aria-label="Select page" style="margin-right:34%">
+  </mat-paginator>
+</div>

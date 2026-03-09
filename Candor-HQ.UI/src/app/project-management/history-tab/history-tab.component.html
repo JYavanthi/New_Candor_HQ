@@ -1,0 +1,33 @@
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Project Code</th>
+          <th>Project Name</th>
+          <th>activity</th>
+          <th>Remarks</th>
+          <th>Updated Date</th>
+          <th>Updated By</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+        <tr *ngFor="let h of history">
+          <td>{{h.projectCode}}</td>
+          <td>{{h.projectName}}</td>
+          <td>{{h.activity}}</td>
+          <td class="resolution-cell" title="{{h?.remarks}}">{{h.remarks||h.apprRemarks||h.userRemarks||h.resolRemarks||'-'}}</td>
+          <td>{{h.modifiedDt?(h.modifiedDt| date: 'dd-MM-yyyy HH:mm'):h.createdDt | date: 'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{h.modifiedByName.trim()==''||h.modifiedByName.trim()==null?h.createdByName:h.modifiedByName}}</td>
+        </tr>
+  
+         <tr *ngIf="history?.length === 0">
+          <td colspan="6" style="text-align: center;">
+            <i style="color: #3e8cba;font-size: 20px;" class="fa fa-search"></i>
+            No Data Available
+          </td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+  

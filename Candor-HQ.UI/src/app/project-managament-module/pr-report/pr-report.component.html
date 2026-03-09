@@ -1,0 +1,30 @@
+<div class="report-container">
+
+    <div class="report-header">
+        <img src="assets/image/report.png" class="report-icon">
+        <h2>REPORT</h2>
+    </div>
+
+    <h3 class="selector-title">Selector</h3>
+
+    <div class="select-wrapper">
+        <span class="search-icon">
+            <i class="fa fa-search" style="margin-left: 120%;"></i>
+        </span>
+
+        <select class="select_change_report" [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)">
+
+            <option value="" disabled selected hidden>Select Report</option>
+            <option value="/projectmanagement/report/projectreport">Project Report</option>
+            <option value="/projectmanagement/report/taskreport">Task Report</option>
+            <option value="/projectmanagement/report/issuereport">Issue Report</option>
+            <option value="/projectmanagement/report/racireport">RACI Matrix Report</option>
+
+        </select>
+
+        <span class="dropdown-icon">
+            <i class="fa fa-chevron-down"></i>
+        </span>
+    </div>
+
+</div>

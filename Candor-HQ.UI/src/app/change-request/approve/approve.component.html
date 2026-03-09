@@ -1,0 +1,150 @@
+<div class="notification" *ngIf="errorMessage">
+  <!-- <button class="close-btn" (click)="clearErrorMessage()">X</button> -->
+  <button type="button" class="btn-close" style="color: white;" (click)="clearErrorMessage()" aria-label="Close"></button>
+  <p class="message-txt">{{ errorMessage }}</p>
+</div>
+
+<div class="success" *ngIf="successMessage">
+  <button type="button" class="btn-close" style="color: white;" (click)="clearErrorMessage()" aria-label="Close"></button>
+  <p class="message-txt">{{ successMessage }}</p>
+</div>
+
+<div class="Rejected" *ngIf="Rejected">
+  <button type="button" class="btn-close" style="color: white;" (click)="clearErrorMessage()" aria-label="Close"></button>
+  <p class="message-txt">{{ Rejected }}</p>
+</div>
+
+<ul class="breadcrumbs" id="myTab" role="tablist">
+
+  <li class="breadcrumbs__item" [style] = " ((this.crData.status.trim() == 'Draft')?'background-color:grey':(this.crData.status.trim() == 'Pending Approval') ? 'background-color:blue':'background-color:green') " style="cursor:pointer" (click)="Approver(1)"
+  *ngIf=" this.approverCount[0] > 1 || this.approverCount[0] == 1" role="presentation" id="approver1-tab" data-bs-toggle="tab" data-bs-target="#approver1" aria-controls="approver1" aria-selected="false">
+    <button class="approverbtns" >Approver 1</button>
+  </li>
+  <li role="presentation" [style] = " (this.crData.status.trim() == 'Approved level1' && this.crData.stage.trim()=='Approval') ? 'background-color:blue':((this.crData?.status.trim() == 'Pending Approval'|| this.crData?.status.trim() == 'Draft')  ?'background-color:grey;color:white;pointer-events:none':'background-color:green') " style="cursor:pointer" (click)="Approver(2)" *ngIf=" this.approverCount[0] > 2 || this.approverCount[0] == 2" class="breadcrumbs__item" id="approver2-tab" data-bs-toggle="tab" data-bs-target="#approver1" aria-controls="approver1" aria-selected="false">
+    <button  class="approverbtns">Approver 2</button>
+  </li>
+  <li role="presentation" [style] = " (this.crData.status.trim() == 'Approved level2' && this.crData?.stage.trim()=='Approval') ? 'background-color:blue':((this.crData?.status.trim() == 'Approved level1' && this.crData?.stage.trim()=='Approval') || (this.crData?.status.trim() == 'Pending Approval' )?'background-color:grey;color:white;pointer-events:none':'background-color:green') " style="cursor:pointer" (click)="Approver(3)" *ngIf=" this.approverCount[0] > 3 || this.approverCount[0] == 3" class="breadcrumbs__item" id="approver3-tab" data-bs-toggle="tab" data-bs-target="#approver1" aria-controls="approver1" aria-selected="false">
+    <button  class="approverbtns">Approver 3</button>
+  </li>
+</ul>
+<span style="color:red;    font-size: 12px;
+margin-left: 15px;display: flex;justify-content: initial;"> Please Click On Approver Level to Approve.</span>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="approver1" role="tabpanel" aria-labelledby="approver1-tab">
+    <div>
+      <div class="container-field-approve">
+        <b> RFC Initiate {{rfcapproverlevel}}</b>
+        <div class="border-rfc-heading">
+          <div class="row">
+            <div class="col-3">
+              <label>Approver Name</label>
+            </div>
+
+            <div *ngFor="let approver of ApproverNames()">
+              <p>{{approver.name}}</p>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+          </div>
+          <br />
+          <div class="row mt-3">
+            <div class="col">
+              <label>Date</label>
+              <input type="datetime-local" [(ngModel)]="date" readonly [min]="todaysDate"/>
+            </div>
+            <div class="">
+              <label>Remarks</label>
+              <textarea class="textarea-implement" [(ngModel)]="remark"></textarea>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="container-field-implement">
+          <div>
+            <label>Attach Document</label>
+            <div class="attachmentList" style="width: fit-content;">
+              <div class="d-flex">
+                <input type="file" [(ngModel)]="attach" (change)="getattach($event)"/>
+  
+                <button class="blue-botton ms-4" aria-hidden="true" type="submit" value="Submit" (click)="addFile()"
+                  style="margin: 0px 10px;height: 33px;">
+                  Add File</button> 
+              </div>
+              <div *ngFor="let attachment of attachmentsList;index i">
+                <div>
+                  {{attachment.fileName}}
+                  <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+                  <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                    (click)="downFile(attachment)"></i>
+                  <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                    style="margin-left: 10px;" *ngIf="appvflg && appflag"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-field-implement">
+          <div class="btn-sub-reset">
+            <div *ngIf="isapprover.length > 0 && !this.crData?.isApproved && appvflg && appflag">
+              <button class="btn-sub-approve" (click)="getdata([this.APILevel])">Approve</button>
+              <button class="btn-sub-reject" (click)="rejectbutton('Reject')">Reject</button>
+              <button class="btn-sub" (click)="rejectbutton('Seek Clarification')">Seek Clarification</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+<br />
+<br />
+  <div id="approverhistory">
+    <br><br>
+    <p>Approver History</p>
+  </div>
+  <div>
+    <table class="table" >
+      <thead class="thead-dark">
+        <tr>
+          <th>CR History Date</th>
+          <th>RFC#</th>
+          <th>CR Owner Name</th>
+          <th>Stage</th>
+          <th>Status</th>
+          <th>Approved By</th>
+          <th>Approved Date</th>
+          <th>Remarks</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableData">
+          <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{crData?.crcode}}</td>
+          <td>{{this.crData?.crowner}}</td>
+          <td>
+            <span *ngIf="row.stage === 'N'">RFC Initiated</span>
+            <span *ngIf="row.stage === 'R'">RFC Release</span>
+            <span *ngIf="row.stage === 'C'">RFC Closure</span>
+          </td>
+          <td>{{row.status}}</td>
+          <td>
+            {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '') }}
+          </td>
+          <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{row.remarks}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <!--</div>-->

@@ -1,0 +1,41 @@
+.container-home-s {
+    margin-left: 10%;
+}
+
+.container-implement {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 92%;
+    margin-left: 1%;
+    margin-top: 10px;
+    border-top: 5px solid #113bf7;
+}
+
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    margin-top: 1vh;
+}
+
+/* Check List Start  */
+.collapsible {
+    background-color: #ccc;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 87%;
+    border: none;
+    text-align: left;
+    outline: none;
+    margin-left: 6.5%;
+}
+
+.content-chicklist {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+  }
+
+

@@ -1,0 +1,434 @@
+<!-- <div class="back-Button">
+    <button class="btn-back" [routerLink]="'/change-request'">Back</button>
+</div> -->
+<form action="" [formGroup]="newCrForm" appHighlightInvalidFields="myForm" #myForm>
+  <div class="container-implement" >
+    <div class="container-field-line">
+      <h3>Change Request</h3>
+
+      <div class="border-rfc-heading">
+        <div class="row mt-3">
+          @if(isImplement==true){
+          <div class="col">
+            <label>RFC# <span>*</span></label>
+            <input type="text" [attr.readonly]="true" formControlName="rfcNo" />
+          </div>
+          }
+          <div class="col">
+            <label>RFC Date <span>*</span></label>
+            <input type="datetime-local" [attr.readonly]="true" formControlName="rfcDate" />
+          </div>
+          <div class="col">
+            <label>Change Owner</label>
+            <input type="text" placeholder="Change Owner" readonly formControlName="changeOwner" name="changeOwner" />
+          </div>
+          <div class="col">
+            <label>Initiator <span>*</span></label>
+            <input type="text" placeholder="Enter Initiator Name" (input)="getInitiatorList()" formControlName="initiator"
+            [readOnly]="this.newCrForm?.get('initiator')?.value"/>
+            <ul class="dropdowns-list">
+              <li class="drop-list" *ngFor="let a of initaitorList" value="" (click)="selectItem(a)">{{a}}</li>
+            </ul>
+          </div>
+          @if(!crData) {
+          <div class="col SameChangeOwner ">
+            <span><input type="checkbox" formControlName="sameChangeOwnerCheckBox"
+                name="sameChangeOwnerCheckBox" (change)="setinitator()"></span>
+            <span>&nbsp;Same Change Owner</span>
+          </div>
+          }
+
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label>Plant<span>*</span></label>
+            <select formControlName="plantId" name="plantId">
+              <option value="" disabled hidden selected>Select Plant</option>
+              @for (plants of plantsList; track plants.id){
+              <option value={{plants.id}}>{{plants.code}}</option>
+              }
+            </select>
+
+
+          </div>
+          <div class="col">
+            <label>Priority <span>*</span></label>
+
+            <select formControlName="priority" name="priority">
+              <option value="" disabled hidden selected>Select Priority</option>
+              @for(priorities of priorityList; track priorities.priorityId) {
+              <option value={{priorities.priorityId}}>{{priorities.priorityName}}</option>
+              }
+            </select>
+
+
+          </div>
+          <div class="col">
+            <label class="chnageRequestedLabel">
+              Change Requested By<span>&nbsp;*</span>
+            </label>
+            <input type="text" class="searchinput" placeholder="Enter Change Requestor Name" name="changeRequestedBy"
+              (input)="getcrByList()" (ngModelChange)="ClearReqPlant()" formControlName="changeRequestedBy" />
+            <ul class="dropdowns-list">
+              <li class="drop-list" value="" *ngFor="let item of crByList" (click)="selectItemcr(item)">{{ item.employeeId + '-' + item.employeeName }}</li>
+            </ul>
+          </div>
+          <div class="col">
+            <label>Requestor Plant <span>*</span></label>
+            <input type="text" formControlName="requestorPlant" name="requestorPlant" readonly />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label>Classifications <span>*</span></label>
+            <select aria-placeholder="select" formControlName="classifications" name="classifications">
+              <option value="" disabled hidden selected>Select Classifications</option>
+              @for(classification of classificationList; track classification.itclassificationId){
+              <option value={{classification.itclassificationId}}>{{classification.classificationName}}
+              </option>
+              }
+
+            </select>
+          </div>
+          <div class="col">
+            <label>Category <span>*</span></label>
+            <select formControlName="category" (change)="onCategoryChange()" name="category">
+              <option value="" disabled hidden selected>Select Category</option>
+              @for(categories of categoryList;track categories.itcategoryId) {
+              <option value={{categories.itcategoryId}}>{{categories.categoryName}}</option>
+              }
+            </select>
+          </div>
+          <div class="col">
+            <label>Sub-Category<span>*</span></label>
+            <select formControlName="subCategory" name="subCategory">
+              <option value="" disabled hidden selected>Select Sub-Category</option>
+              @for(subCategories of categoryTypeList;track subCategories.categoryTypeId) {
+              <option value={{subCategories.categoryTypeId}}>{{subCategories.categoryType}}</option>
+              }
+            </select>
+          </div>
+          <div class="col">
+            <label>Nature of Change <span>*</span></label>
+            <select formControlName="natureOfChange" name="natureOfChange">
+              <option value="" disabled hidden selected>Select Nature of Change</option>
+              @for(natureChange of natureOfChangeList; track natureChange.natureofChangeId ){
+              <option value={{natureChange.natureofChangeId}}>{{natureChange.natureofChange1}}</option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label>Reference <span>*</span></label>
+            <select formControlName="reference" name="reference">
+              <option value="" disabled hidden selected>Select Reference</option>
+              @for(reference of referenceList; track reference.referenceId) {
+              <option value={{reference.referenceId}}>{{reference.referenceName}}</option>
+              }
+            </select>
+          </div>
+          <div class="col">
+            <label>Reference Type <span>*</span></label>
+            <select formControlName="referenceType" name="referenceType">
+              <option value="" disabled hidden selected>Select Reference Type</option>
+              @for(referenceTypes of referenceTypeList; track referenceTypes.referenceTypeId){
+              <option value={{referenceTypes.referenceTypeId}}>{{referenceTypes.referenceType}}</option>
+              }
+            </select>
+          </div>
+          <div class="col">
+            <label>Change Requested On <span>*</span></label>
+            <input type="datetime-local" placeholder="" formControlName="changeRequestedOn" name="changeRequestedOn" />
+          </div>
+          <div class="col">
+            <label>Change Triggered By <span>*</span></label>
+            <select formControlName="changeTriggeredBy" name="changeTriggeredBy">
+              <option value="" disabled hidden selected>Select Change Triggered By</option>
+              <option>Compliance</option>
+              <option>Commercial</option>
+              <option>Statutory</option>
+              <option>Legal</option>
+              <option>SAP</option>
+              <option>Business Requirements</option>
+              <option>Efficiency/Productivity</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6" class="notificationEmail">
+            <span><input type="checkbox" formControlName="notificationCheckBox" name="notificationCheckBox"></span>
+            <span>&nbsp;<b class="emailcheckbox">Send Notification to Change Requestor</b></span>
+          </div>
+          <div class="col-md-6">
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <p><br /><b style="font-size:16px;color:brown"> </b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- System landscape -->
+
+  <div class="container-implement" >
+    <div class="container-field-line">
+      <h3>System Landscape</h3>
+      <div class="row just-space-between">
+        <div class="col" *ngFor="let systemLandScape of systemLandScapes" class="sysLndScape">
+          <input type="checkbox" [ngModelOptions]="{standalone: true}" id="checkbox"
+            [(ngModel)]="systemLandScape['isChcked']" style="width: 15px;">&nbsp;
+          <label for="checkbox" style="margin: 2px 5px;">{{systemLandScape.sysLandscape1}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- System landscape radio btn -->
+
+  <div class="container-implement">
+    <div class="container-field-line">
+      <h3>Change Overview</h3>
+      <div class="border-rfc-heading">
+        <div>
+          <label>Change Description<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="changeDescription" name="changeDescription"></textarea>
+        </div>
+        <div>
+          <label>Reason For Change<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="reasonForChange" name="reasonForChange"></textarea>
+        </div>
+        <div>
+          <label>Alternate Consideration<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="alternateConsideration"
+            name="alternateConsideration"></textarea>
+        </div>
+        <div>
+          <label>Impact of not doing change<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" id="area4" formControlName="impactOfNotDoingChnage"
+            name="impactOfNotDoingChnage"></textarea>
+        </div>
+        <div>
+          <label>Benefits of doing change<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="benefitsOfChange" name="benefitsOfChange"></textarea>
+        </div>
+        <div>
+          <label>Business Impact if Change is implemented<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="businessImpact" name="businessImpact"></textarea>
+        </div>
+        <div>
+          <label>Roll Back Plan<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="rollBackPlan" name="rollBackPlan"></textarea>
+        </div>
+        <div>
+          <label>Back out plan<span>&nbsp;*</span></label>
+          <textarea cols="160" rows="4" formControlName="backOutPlan" name="backOutPlan"></textarea>
+        </div>
+        <div>
+          <label>Attachement</label>
+          <div class="attachmentList" style="width: fit-content;">
+            <div class="d-flex">
+              <input type="file" [(ngModel)]="attach" (change)="getattach($event)" style="width: 100%;"
+              [ngModelOptions]="{standalone: true}"/>
+              <!-- <i class="fa fa-plus cursor-pointer mt-3 ms-3" aria-hidden="true" (click)="addFile()"></i> -->
+
+              <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()"
+                style="margin: 0px 10px;height: 33px;">
+                Add File</button>
+            </div>
+            <div *ngFor="let attachment of attachmentsList;let i = index;">
+              <div>
+                {{attachment.attachedFile}}
+                <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+                <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                  (click)="downFile(attachment)"></i>
+                <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                  style="margin-left: 10px;"></i>
+              </div>
+            </div>
+          </div>
+
+          <!--<input type="file" [(ngModel)]="attach" (change)="getattach($event)" / >
+  <div *ngIf="attach">
+    <p>Attachment: {{ attach }}<button style="padding: 1%; border: none; background: none;" (click)="viewFile(attach)"><i class="fa fa-download" aria-hidden="true"></i></button></p>
+  </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-implement">
+    <div class="container-field-line">
+      <h3>Effort & Estimate</h3>
+      <div class="border-rfc-heading">
+        <div class="row">
+          <div class="col">
+            <label>Approx Cost</label>
+            <input type="text" placeholder="" formControlName="approxCost" name="approxCost" />
+          </div>
+          <div class="col">
+            <label>Currency </label>
+            <input type="text" placeholder="INR" formControlName="currency" name="currency" />
+          </div>
+          <div class="col">
+            <label>Estimated Effort <span style="color:red">*</span></label>
+            <input type="number" min="0" formControlName="estimatedEffort" name="estimatedEffort" />
+          </div>
+          <div class="col">
+            <label>Effort Day(s)/Hour(s) <span style="color:red">*</span></label>
+            <select formControlName="effortDays" name="effortDays">
+              <option value="" selected hidden disabled>Select Effort Day(s)/Hour(s)</option>
+              <option value="Days">Days</option>
+              <option value="Hours">Hours</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label>Expected Date of Completion <span style="color:red">*</span></label>
+            <input type="date" placeholder="1" name="rfcDate" formControlName="expectedCompletionDate" />
+          </div>
+          <div class="col">
+
+          </div>
+          <div class="col">
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <!-- <div class="notification-confirm" >
+            <p style="font-size:17px;">Unchecking will clear all your datas. Click 'Yes' to Clear.</p>
+            <div style="text-align:center;">
+              <button class="confirombtn" (click)="Yes()">Yes</button>
+              <button class="confirombtn" (click)="No()">No</button>
+            </div>
+          </div> -->
+          <div class="col" style="display:flex;justify-content:flex-start;">
+            <span><input type="checkbox" formControlName="downtimeRequired" name="rfcDate"></span>
+            <span>&nbsp;&nbsp;<b>Is Downtime Required?</b></span>
+          </div>
+        </div>
+        @if(newCrForm.value['downtimeRequired']){
+        <div class="row mt-5 downtimeDates">
+          <div class="col">
+            <label>From Date <span>*</span></label>
+            <input type="datetime-local" placeholder="" formControlName="fromDate" />
+          </div>
+          <div class="col">
+            <label>End Date<span> (*End Date Can't be less than start)</span></label>
+            <input type="datetime-local" formControlName="endDate" />
+          </div>
+          <div class="col">
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <div class="row mt-3 downtimeImpact">
+          <div class="col" style="width:50%">
+            <label>Impacted Location <span>*</span></label>
+
+            <ng-multiselect-dropdown [settings]="plantDropdown" [data]="plantList" formControlName="impactedLocation"
+              (ngModelChange)="onSelectedItemsChange()">
+            </ng-multiselect-dropdown>
+
+          </div>
+          <div class="col">
+            <label>Impacted Department <span>*</span></label>
+            <ng-multiselect-dropdown [settings]="departmentDropdown" [data]="impactedDepartmentList"
+              formControlName="impactedDepartment" (ngModelChange)="onSelecteddepartmentItemsChange()">
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="col">
+            <label>Impacted Function <span>*</span></label>
+            <input type="text" formControlName="impactedFunction" />
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <div class="row downtime_checklist">
+          <h3>CheckList</h3>
+          <div style="width:75%;" class="container-field-line">
+
+            <table width="70%">
+              <thead>
+                <tr>
+                  <th width="10%">Sl.no</th>
+                  <th width="30%">Title</th>
+                  <th width="50%">Description</th>
+                  <th width="10%">Mandatory</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        }
+
+      </div>
+    </div>
+  </div>
+
+  <!-- G*P Classification -->
+  <div class="container-implement">
+    <div class="container-field-line">
+      <h3>GxP Classification</h3>
+      <div class="row">
+        <div class="col" class="gxpCheckBox">
+          <span><input type="checkbox" formControlName="gxpClassificationCheckBox"></span>
+          <span>&nbsp;&nbsp;<b>Is GxP Classification Available?</b></span>
+        </div>
+      </div>
+      <br />
+      @if(newCrForm.value['gxpClassificationCheckBox']){
+      <div class="border-inline border-rfc-heading">
+        <div class="container-line">
+          <div class="row g_p_classification">
+            <div class="col">Select-Plant <span>*</span></div>
+            <div class="col">Change Control # <span>*</span></div>
+            <div class="col">Change Control Date <span>*</span></div>
+          </div>
+
+          <div class="row g_p_classification">
+            <div class="col">
+              <select formControlName="gxpPlantId">
+                <option value="" disabled hidden selected>Select Plant</option>
+                @for (plants of plantsList; track plants.id){
+                <option value={{plants.id}}>{{plants.code}}</option>
+                }
+              </select>
+            </div>
+            <div class="col">
+              <input type="text" formControlName="changeControlNo" />
+            </div>
+            <div class="col">
+              <input type="date" formControlName="changeControlDate" />
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+      }
+
+    </div>
+
+    <div class="submit_change">
+      <button type="submit" value="Submit" (click)="onSubmit('Draft')">Save</button>
+      <button type="submit" value="Submit">Submit for approval</button>
+      <button type="submit">Close</button>
+    </div>
+
+  </div>
+</form>

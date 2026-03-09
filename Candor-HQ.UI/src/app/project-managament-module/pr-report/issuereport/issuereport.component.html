@@ -1,0 +1,112 @@
+<div class="issue-container">
+
+  <div class="title-section">
+    <img src="assets/image/issueReport.png" class="issueImg">
+    <h1>ISSUE REPORT</h1>
+  </div>
+
+  <hr>
+
+  <div class="top-controls">
+
+    <div class="project-select">
+      <label>Select Project</label>
+
+      <div class="search-select">
+        <i class="fa fa-search"></i>
+
+        <select (change)="onOptionSelected($event)">
+          <option value="" disabled selected hidden>Select- project</option>
+
+          <option *ngFor="let ptoject of projectManagementList" [value]="ptoject.projectMgmtId">
+
+            {{ptoject.projectCode + '-' + ptoject.projectName}}
+
+          </option>
+        </select>
+
+      </div>
+    </div>
+
+    <div class="export-buttons">
+
+      <button (click)="exportToPDF()" class="pdf-btn">
+        <i class="fa fa-file-pdf-o"></i> PDF
+      </button>
+
+      <button (click)="exportexcel()" class="excel-btn">
+        <i class="fa fa-file-excel-o"></i> Excel
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="tableBox">
+
+    <div class="table-container">
+
+      <table #tableRef id="excel-table">
+
+        <thead>
+          <tr class="tableHeadings">
+            <th>Sl. No.</th>
+            <th>Issue Code</th>
+            <!-- <th>Short Description</th> -->
+            <th>Milestone Title</th>
+            <th>Task</th>
+            <th>Sub-Task</th>
+            <th>Created Date</th>
+            <th>Assigned By</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr class="table-row" *ngFor="let issue of paginatedData; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{issue.issueCode}}</td>
+            <!-- <td>{{issue.description}}</td> -->
+            <td>{{issue.milestoneTitle}}</td>
+            <td>{{issue.taskTitle}}</td>
+            <td>{{issue.subTaskTitle}}</td>
+            <td>{{issue.createdDt | date:'dd-MM-yyyy'}}</td>
+            <td>{{issue.assignByName}}</td>
+            <td>{{issue.assignToName}}</td>
+
+            <td>
+              <span class="status-badge" [ngClass]="{
+                'completed': issue.status=='Completed',
+                'progress': issue.status=='In Progress',
+                'cancel': issue.status=='Cancel',
+                'pending': issue.status=='Pending Approval',
+                'approved': issue.status=='Approved'
+              }">
+                {{issue.status}}
+              </span>
+            </td>
+          </tr>
+
+          <tr *ngIf="taskList?.length === 0">
+            <td colspan="15" class="no-data">
+              <i class="fa fa-search"></i> No Data Available
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <div class="mb-5 paginator-box" *ngIf="taskList?.length > 0">
+        <mat-paginator [length]="taskList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)" style="background : #c8d4e5">
+        </mat-paginator>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

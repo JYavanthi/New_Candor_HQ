@@ -1,0 +1,16 @@
+<div class="panel-content open scroll-y">
+    <ng-container>
+        <div *ngFor="let remark of remarkList">
+            <div class="message" *ngIf="remark?.resolRemarks">
+                <div>
+                    <div class="message-user">{{(assetId||spareId)?remark.modifiedBy:remark?.createdByName}}</div>
+                    <div class="message-text">{{remark?.resolRemarks}}</div>
+                    <div class="message-timestamp">{{remark?.createdDt | date: 'HH:mm dd/MM/yyyy'}}</div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #showElseBlock>
+        <h6 class="no-comment">No comments available</h6>
+    </ng-template>
+</div>

@@ -1,0 +1,76 @@
+.naturemainDiv {
+  display: flex;
+  width: 95%;
+  background: #fff;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
+.container-implement {
+  width: 77%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-left: 13%;
+}
+
+.page-heading {
+  color: #e67e22;
+  font-weight: 700;
+  border-bottom: 3px solid #6fa8dc;
+  padding-bottom: 6px;
+  margin-bottom: 15px;
+}
+
+.container-field-line {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #c9bfae;
+}
+
+.border-rfc-heading {
+  border: none;
+  padding: 5px;
+}
+
+.form-group label {
+  color: #0c7a7a;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-control-custom {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #7fb8c4;
+  background: #f5f5f5;
+  outline: none;
+}
+
+.form-control-custom:disabled {
+  background: #e3e3e3;
+  cursor: not-allowed;
+}
+
+.btn-section {
+  margin-top: 15px;
+}
+
+.submit-btn {
+  background: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
+  margin-right: 10px;
+}
+
+.back-btn {
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
+}

@@ -1,0 +1,131 @@
+.back-Button {
+    margin-left: 6%;
+}
+
+.container-field-line {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 10px;
+    border-top: 5px solid #113bf7;
+    margin-bottom: 3%;
+  }
+
+  .border-rfc-heading {
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: rgb(155, 158, 158);
+    padding: 10px;
+  }
+
+  .border-rfc-heading label span {
+    color:red;
+  }
+
+  .border-rfc-heading .row .col label span {
+    color:red;
+  }
+
+  .dropdowns-list {
+    min-width: 297px;
+  }
+
+  .SameChangeOwner {
+    display: flex;
+    align-items: center;
+    margin-top: calc(0% + 1.5vw)
+  } 
+  .chnageRequestedLabel{
+    display: flex; 
+    justify-content: flex-start;
+    align-items:center
+  }
+
+  .dropdowns-list {
+    min-width: 297px;
+  }
+
+  .emailcheckbox{
+    color:blue;
+    font-size:14px;
+}
+.notificationEmail{
+    display:flex;
+    justify-content:flex-start;
+}
+
+.sysLndScape {
+    display: flex; 
+    justify-content: start;
+    width: 7rem;
+  }
+
+.sysLndScape label {
+    margin-right:0%;
+}
+
+.border-rfc-heading textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 70px;
+  margin-bottom:1.5rem;
+}
+ 
+.gxpCheckBox {
+  display:flex;
+  justify-content:flex-start;
+}
+
+.g_p_classification{
+  white-space: nowrap;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  width: 450%;
+  margin-top: 2%;
+  justify-content: space-around;
+}
+
+.g_p_classification div span{
+  color:red;
+}
+.g_p_classification div input {
+  height: 5.3vh;
+  margin-bottom: 5%;
+}
+
+.submit_change{
+  margin-top: -3%;
+  margin-right:69%;
+}
+
+.submit_change button{
+  background-color: #113bf7;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10%;
+  margin-left: 3%;
+}
+
+.downtimeDates div label span{
+  color:red;
+  font-size:x-small
+}
+
+.downtimeFields{
+  display:flex;
+  justify-content:flex-start;
+}
+
+.downtimeImpact div label span{
+  color:red;
+}
