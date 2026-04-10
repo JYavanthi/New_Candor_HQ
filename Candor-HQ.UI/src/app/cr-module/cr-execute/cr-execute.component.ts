@@ -332,7 +332,7 @@ async getsupportteams() {
         crTemplateDtlsID: 0,
         supportID: this.crData.supportId,
         sysLandscapeID: 1,
-        classificationID: this.crData.classifcationId,
+        classificationID: this.crData.classificationId,
         categoryID: this.crData.categoryId,
         categoryTypID: this.crData.categoryTypeId,
         taskName: 'string',

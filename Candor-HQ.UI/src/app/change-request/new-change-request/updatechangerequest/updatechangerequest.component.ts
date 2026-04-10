@@ -447,7 +447,7 @@ export class UpdatechangerequestComponent {
     const apiUrls = this.apiurl + '/Plantid'
     this.http.get(apiUrls).subscribe(
       (response: any) => {
-        this.plantcode = response.filter((item: any) => this.assignedplant.includes(item.id));
+        this.plantcode = response.filter((item: any) => this.assignedplant.includes(item.plantId));
       },
       (error) => {
         console.error("Post failed", error)
@@ -549,7 +549,7 @@ export class UpdatechangerequestComponent {
         this.isapproved = this.updatevalue[0].isApproved;
         this.crdesc = this.updatevalue[0].changeDesc;
         this.crdateval = this.updatevalue[0].crdate;
-        this.classificationId = this.updatevalue[0].classifcationId;
+        this.classificationId = this.updatevalue[0].classificationId;
         this.plantid = this.updatevalue[0].plantId;
         this.plantData.push(this.updatevalue);
         this.attach = this.Value.attachment;
@@ -656,7 +656,7 @@ export class UpdatechangerequestComponent {
     else if (this.RequestorPlant == "") {
       alert('Requestor plant should not be empty');
     }
-    else if (this.Value.classifcationId == "") {
+    else if (this.Value.classificationId == "") {
       alert('Select Classification');
     }
     else if (this.Value.categoryId == "" || this.selectedCategory == '') {
@@ -802,7 +802,7 @@ export class UpdatechangerequestComponent {
       "type": "U",
       "itcrid": this.itcrid,
       "supportId": 1,
-      "classifcationId": Number(this.classificationId),
+      "classificationId": Number(this.classificationId),
       "categoryId": Number(this.selectedCategory),
       "crowner": this.updatevalue[0].crowner,
       "referenceId": this.updatevalue[0].referenceId,

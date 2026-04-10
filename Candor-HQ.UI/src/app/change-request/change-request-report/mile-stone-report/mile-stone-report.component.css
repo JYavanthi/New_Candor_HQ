@@ -1,20 +1,29 @@
-td,th{
-    padding: 2px;
+td,
+th {
+  padding: 2px;
 }
 
-
-
-.approval-clm{
-    text-align: center;
+.approval-clm {
+  text-align: center;
 }
 
+.excelBtn {
+  border: 2px solid #27ae60;
+  color: #27ae60;
+  background: white;
+  padding: 6px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
 
-table,th,td{
-    border: 1px solid #cdc7c7;
+table,
+th,
+td {
+  border: 1px solid #cdc7c7;
 
 }
 
-.n-b{
+.n-b {
   border: unset !important;
 }
 
@@ -25,37 +34,18 @@ td {
   text-align: center;
 }
 
-.filter_button {
-  background-color: #3c8dbc;
-  color: white;
-  margin-top: 17px;
-}
 
 .search-crnum {
   margin-left: -195%;
   margin-top: 5%;
   width: 75%;
 }
-.multiselect-dropdown .dropdown-btn {
-  display: inline-block;
-  border-bottom: 1px solid #adadad !important;
-  width: 100%;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-weight: 400;
-  line-height: 1.52857143;
-  text-align: left;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border-radius: 20px;
-  background-color: #b8d4f3;
-}
+
 
 .export_pdf {
   justify-content: end;
   display: flex;
-  margin-right: 10%;
+  margin-right: 0%;
 }
 
 .change_request_header {
@@ -66,25 +56,168 @@ td {
 }
 
 .tableClass {
-  width: 98%;    
+  width: 98%;
   overflow: auto;
   height: 500px;
 }
 
-.access-checkbox {
-  margin-left: 25%;
-}
-td,th{
+td,
+th {
   min-width: 110px !important;
 }
 
 .scroller {
-  position: fixed; /* Fix to the viewport */
-  bottom: 0; /* Align to the bottom */
-  left: 0; /* Start from the left */
-  width: 100%; /* Full width */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent wrapping of content */
-  background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.filter-container {
+  background: #f7fbff;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #c5d0db;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+}
+
+.filter-group label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.filter-group input,
+.filter-group select,
+::ng-deep .multiselect-dropdown .dropdown-btn {
+  background: #e9edf2;
+  border: 1px solid #9fb3c8 !important;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+  width: 100%;
+}
+
+::ng-deep .multiselect-dropdown {
+  width: 100%;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.search-input {
+  border-radius: 20px;
+  padding: 8px 12px;
+  border: 1px solid #9fb3c8;
+  background: #e9edf2;
+  width: 20%;
+  margin-right: 60%;
+}
+
+.btn {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn {
+  background: #28a745;
+  color: white;
+}
+
+.clear-btn {
+  background: #e35d6a;
+  color: white;
+}
+
+.custom-table-wrapper {
+  width: 98%;
+  overflow: auto;
+  height: 500px;
+  border: 2px solid #3aa6a6;
+  border-radius: 6px;
+}
+
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.custom-table thead th {
+  background-color: #f3f6f6;
+  color: #2c7a7b;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #3aa6a6;
+  padding: 10px 6px;
+  font-size: 13px;
+}
+
+.custom-table .app-sub-clm {
+  background-color: #e6f4f4;
+  color: #2c7a7b;
+  font-weight: 500;
+}
+
+.custom-table td {
+  border: 1px solid #3aa6a6;
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1fbfb;
+}
+
+.custom-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.custom-table td,
+.custom-table th {
+  min-width: 110px !important;
+}
+
+.approval-clm {
+  background-color: #d9efef !important;
+  color: #1f6f6f;
+  font-weight: 600;
+}
+
+.n-b {
+  border: none !important;
+  background: transparent !important;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
 }

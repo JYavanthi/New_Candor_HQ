@@ -1,25 +1,18 @@
-<div style="background: white; width: 95%; margin-left: 2.5%; display: flex; border-radius: 40px;">
+<div class="userConfigMainDiv">
     <div style="margin-left: 3%;">
         <app-master-sidebar></app-master-sidebar>
     </div>
     <div class="service_container">
 
         <div class="userConfigHeadingCss"
-            style="display: flex; border-bottom: 3px solid #3b82f6; padding-left: 35%; font-size: xx-large; gap : 15px">
+            style="display: flex; border-bottom: 3px solid #3b82f6; padding-left: 27%; font-size: xx-large; gap : 15px">
             <img src="assets/image/user_log.png" alt="userLog" class="userLogImg" style="width: 10%; height: 60px;">
             <p class="userHeadingparaCss" style="font-weight: 800; padding-top: 1%;">USER CONFIGURATION</p>
         </div>
         <br>
         <div class="card service_card br-top-blue">
             <form [formGroup]="userForm">
-                <!-- <div style="margin-top: 5%;">
 
-                    <button class="backBtn" (click)="Back()">Back</button>
-                    <button (click)="copyFunc()" class="copy" style="margin-left: 90%;">
-                        {{showAdminSuperAdmin? 'Copy User':'Back'}}
-                    </button>
-
-                </div> -->
                 <div class="topActionBar">
 
                     <button class="backBtn" (click)="Back()" style="margin-left: 2%; border-radius: 15px;">
@@ -455,8 +448,9 @@
                             </div>
 
                             <div class="mainBtnsDiv">
-                                <button class="actionBtn" (click)="Submit()">Submit</button>
-                                <button class="actionBtn" (click)="resetRole();clearAll()">Clear</button>
+                                <button class="submit-btn" (click)="Submit()">Submit</button>
+                                <button class="actionBtn" style="background-color: #ff2e5a"
+                                    (click)="resetRole();clearAll()">Clear</button>
                                 <button class="actionBtn" routerLink="/mastermodule/supportmaster">Cancel</button>
                             </div>
                         </div>

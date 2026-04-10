@@ -521,7 +521,7 @@ API_URLS = {
       "type": "I",
       "itcrid": 0,
       "supportId": 1,
-      "classifcationId": this.newCrForm.value['classifications'],
+      "classificationId": this.newCrForm.value['classifications'],
       "categoryId": this.newCrForm.value['category'],
       "categoryTypeId": this.newCrForm.value['subCategory'],
       "crowner": this.user?.empData?.employeeNo,

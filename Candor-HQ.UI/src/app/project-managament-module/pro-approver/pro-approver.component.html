@@ -10,24 +10,25 @@
         <div class="container-field-approve">
           <div class="border-rfc-heading">
             <div>
-              <label>{{projectdetails?.projectOwnerName}}(<span>{{projectdetails?.projectOwner}}</span>)</label>
+              <label
+                style="color: #15455c; font-size: larger;">{{projectdetails?.projectOwnerName}}(<span>{{projectdetails?.projectOwner}}</span>)</label>
 
             </div>
             <div class="mt-2">
-              <label class="asteriskrequired">Remarks</label>
+              <label class="asteriskrequired" style="color: #15455c; font-size: larger;">Remarks</label>
               <textarea class="textarea-implement" formControlName="remarks"></textarea>
             </div>
           </div>
         </div>
         <div>
           <div class="btn-appr-rej">
-            <button class="bg-green" (click)="approve(projectdetails?.projectOwner!=projectdetails?.sponser?'Pending Sponsor Approval':'Approved','A1')"
+            <button class="bg-green"
+              (click)="approve(projectdetails?.projectOwner!=projectdetails?.sponser?'Pending Sponsor Approval':'Approved','A1')"
               *ngIf="projectdetails?.projectOwner.toString()==this.loggedInUserDetails.empData.employeeNo
               && (projectdetails.projectStatus=='Discontinue'
               || projectdetails.projectStatus=='Cancel'
               || projectdetails.projectStatus=='Completed')">Approve</button>
-            <button type="submit" class="bg-red" (click)="approve('In Progress','R1')"
-            *ngIf="projectdetails?.projectOwner.toString()==this.loggedInUserDetails.empData.employeeNo
+            <button type="submit" class="bg-red" (click)="approve('In Progress','R1')" *ngIf="projectdetails?.projectOwner.toString()==this.loggedInUserDetails.empData.employeeNo
             && (projectdetails.projectStatus=='Discontinue'
               || projectdetails.projectStatus=='Cancel'
               || projectdetails.projectStatus=='Completed')">Reject</button>
@@ -60,13 +61,11 @@
         <div>
 
 
-          
+
           <div class="btn-appr-rej">
-            <button class="bg-green" (click)="approve1('Approved','A2')"
-              *ngIf="projectdetails?.sponser.toString()==this.loggedInUserDetails.empData.employeeNo
+            <button class="bg-green" (click)="approve1('Approved','A2')" *ngIf="projectdetails?.sponser.toString()==this.loggedInUserDetails.empData.employeeNo
               && projectdetails.projectStatus=='Pending Sponsor Approval'">Approve</button>
-            <button type="submit" class="bg-red" (click)="approve1('In Progress','R2')"
-            *ngIf="projectdetails?.sponser.toString()==this.loggedInUserDetails.empData.employeeNo
+            <button type="submit" class="bg-red" (click)="approve1('In Progress','R2')" *ngIf="projectdetails?.sponser.toString()==this.loggedInUserDetails.empData.employeeNo
             && projectdetails.projectStatus=='Pending Sponsor Approval'">Reject</button>
           </div>
         </div>

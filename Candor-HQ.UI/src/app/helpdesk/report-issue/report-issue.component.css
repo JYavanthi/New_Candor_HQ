@@ -377,6 +377,9 @@ button[disabled] {
   background: deeppink;
 }
 
+.status-notResolved {
+  background-color: brown;
+}
 
 .wrap-text {
   white-space: pre-line;

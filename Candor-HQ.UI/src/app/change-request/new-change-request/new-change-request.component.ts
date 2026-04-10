@@ -44,7 +44,8 @@ export class NewChangeRequestComponent {
   isPopupVisible = false;
   plantData: any[] = [];
   supportId: any = '';
-  classificationId: any = '';
+  // classificationId: any = '';
+  classificationId: number | null = null;
   categoryId: any = '';
   crowner: any = '';
   crdate: any = '';
@@ -328,7 +329,10 @@ export class NewChangeRequestComponent {
     else if (this.RequestorPlant == "") {
       alert('Requestor plant should not be empty');
     }
-    else if (this.classificationId == "") {
+    // else if (this.classificationId == "") {
+    //   alert('Select Classification');
+    // }
+    else if (!this.classificationId) {
       alert('Select Classification');
     }
     else if (this.selectedCategory == "") {
@@ -460,110 +464,245 @@ export class NewChangeRequestComponent {
   attachfile: any = '';
 
 
-  ExecuteFunc(status: any) {
-    if (status == "Draft") {
-      this.isSubmittedVal = false;
-    } else {
-      this.isSubmittedVal = true;
-    }
-    this.attachfile = this.selectedFile.name;
-    if (this.attachfile == undefined) {
-      this.attachfile = '';
-    }
-    const apiUrl = this.apiurl + "/ChangeRequest/InsertChangeRequest";
-    this.crinitiate = this.crinitiatedFor.split("-")[0];
-    const changerequested = this.changerequestedby.split("-")[0];
-    let checkedLansScapes = this.systemlandscape.filter(m => m.isChcked == true).map(m => m.sysLandscapeId)
-      .join(',')
+  // ExecuteFunc(status: any) {
+  //   if (status == "Draft") {
+  //     this.isSubmittedVal = false;
+  //   } else {
+  //     this.isSubmittedVal = true;
+  //   }
+  //   this.attachfile = this.selectedFile.name;
+  //   if (this.attachfile == undefined) {
+  //     this.attachfile = '';
+  //   }
+  //   const apiUrl = this.apiurl + "/ChangeRequest/InsertChangeRequest";
+  //   this.crinitiate = this.crinitiatedFor.split("-")[0];
+  //   const changerequested = this.changerequestedby.split("-")[0];
+  //   let checkedLansScapes = this.systemlandscape.filter(m => m.isChcked == true).map(m => m.sysLandscapeId)
+  //     .join(',')
 
+  //   const requestBody = {
+  //     "type": "I",
+  //     "itcrid": 0,
+  //     "supportId": 1,
+  //     // "classificationId": this.classificationId,
+  //     "classificationId": Number(this.classificationId),
+  //     "categoryId": this.selectedCategory,
+  //     "categoryTypeId": this.categoryTypeId,
+  //     "crowner": this.user?.empData?.employeeNo,
+  //     "crdate": this.today,
+  //     "crrequestedBy": changerequested,
+  //     "crrEmailNotification": this.EmailNotification,
+  //     "crrequestedDt": this.crrequestedDt,
+  //     "crinitiatedFor": this.crinitiate,
+  //     "status": status,
+  //     "referenceId": this.referenceid,
+  //     "referenceTyp": this.referencetype,
+  //     "natureOfChange": this.natureOfChange,
+  //     "priorityType": this.crpriority,
+  //     // "plantId": this.plantId,
+  //     "plantId": 1,
+  //     "sysLandscapeID": this.sysLandscapeID,
+  //     "gxpclassification": this.CheckGxPClassification,
+  //     "gxpplantId": this.gxpplantId ? this.gxpplantId : null,
+  //     "changeControlNo": this.changeControlNo ? this.changeControlNo : null,
+  //     "changeControlDt": this.changeControlDt ? this.changeControlDt : null,
+  //     "changeControlAttach": false,
+  //     "changeDesc": this.changeDesc,
+  //     "reasonForChange": this.reasonForChange,
+  //     "alternateConsidetation": this.alternateConsidetation ? this.alternateConsidetation : null,
+  //     "impactNotDoing": this.impactNotDoing,
+  //     "businessImpact": this.businessImpact,
+  //     "triggeredBy": this.triggeredBy,
+  //     "benefits": this.benefits ? this.benefits : null,
+  //     "estimatedCost": this.estimatedCost,
+  //     "estimatedCostCurr": this.estimatedCostCurr ? this.estimatedCostCurr : null,
+  //     "estimatedEffort": this.estimatedEffort ? this.estimatedEffort : null,
+  //     "estimatedEffortUnit": this.estimatedEffortUnit ? this.estimatedEffortUnit : null,
+  //     "estimatedDateCompletion": this.estimatedDateCompletion ? this.estimatedDateCompletion : null,
+  //     "rollbackPlan": this.rollbackPlan ? this.rollbackPlan : null,
+  //     "backoutPlan": this.backoutPlan ? this.backoutPlan : null,
+  //     "downTimeRequired": this.CheckDowntimeReq,
+  //     "downTimeFromDate": this.downTimeFromDate ? this.downTimeFromDate : null,
+  //     "downTimeToDate": this.downTimeToDate ? this.downTimeToDate : null,
+  //     "impactedLocation": this.impactedLocation,
+  //     "impactedDept": this.impactedDept,
+  //     'imactedFunc': this.imactedFunc,
+  //     "isSubmitted": this.isSubmittedVal,
+  //     "isApproved": false,
+  //     "isImplemented": false,
+  //     "isReleased": false,
+  //     "createdBy": this.user?.empData?.employeeNo,
+  //     "SysLandscapeID": checkedLansScapes,
+  //     "attachment": this.attachfile,
+  //     "attachmentIds": this.attachmentsList.map((m: any) => m.attachId)
+  //   }
+
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   };
+  //   console.log("classificationId:", this.classificationId, typeof this.classificationId);
+  //   this.http.post(apiUrl, requestBody, httpOptions).subscribe(
+  //     (response: any) => {
+  //       if (response.type == "E") {
+  //         this.successMessage = response.message;
+  //         alert(this.successMessage);
+  //       }
+  //       else {
+  //         if (status == "Draft") {
+  //           this.successMessage = 'Saved Successfully as Draft!';
+  //           alert(this.successMessage);
+  //           this.route.navigate(['/change-request']);
+  //         }
+  //         else if (requestBody.type == 'I') {
+  //           this.successMessage = 'Submitted Successfully for RFC Pending Approval!';
+  //           alert(this.successMessage);
+  //           this.route.navigate(['/change-request']);
+  //         }
+  //         else {
+  //           this.successMessage = 'Submitted Successfully for RFC Pending Approval!';
+  //           alert(this.successMessage);
+  //           this.route.navigate(['/change-request']);
+  //         }
+  //       }
+  //     },
+  //     (error: any) => {
+  //       console.log('Post request failed', error);
+  //     });
+  // }
+
+
+  ExecuteFunc(status: any) {
+
+    // ✅ Submit flag
+    this.isSubmittedVal = status !== "Draft";
+
+    // ✅ Safe attachment handling
+    this.attachfile = this.selectedFile?.name || '';
+
+    const apiUrl = this.apiurl + "/ChangeRequest/InsertChangeRequest";
+
+    // ✅ Safe split (avoid undefined crash)
+    this.crinitiate = this.crinitiatedFor ? this.crinitiatedFor.split("-")[0] : null;
+    const changerequested = this.changerequestedby ? this.changerequestedby.split("-")[0] : null;
+
+    // ✅ System Landscape
+    let checkedLansScapes = this.systemlandscape
+      .filter(m => m.isChcked === true)
+      .map(m => m.sysLandscapeId)
+      .join(',');
+
+    // ✅ FINAL REQUEST BODY (ALL FIXED)
     const requestBody = {
-      "type": "I",
-      "itcrid": 0,
-      "supportId": 1,
-      "classifcationId": this.classificationId,
-      "categoryId": this.selectedCategory,
-      "categoryTypeId": this.categoryTypeId,
-      "crowner": this.user?.empData?.employeeNo,
-      "crdate": this.today,
-      "crrequestedBy": changerequested,
-      "crrEmailNotification": this.EmailNotification,
-      "crrequestedDt": this.crrequestedDt,
-      "crinitiatedFor": this.crinitiate,
-      "status": status,
-      "referenceId": this.referenceid,
-      "referenceTyp": this.referencetype,
-      "natureOfChange": this.natureOfChange,
-      "priorityType": this.crpriority,
-      // "plantId": this.plantId,
-      "plantId" : 1,
-      "sysLandscapeID": this.sysLandscapeID,
-      "gxpclassification": this.CheckGxPClassification,
-      "gxpplantId": this.gxpplantId ? this.gxpplantId : null,
-      "changeControlNo": this.changeControlNo ? this.changeControlNo : null,
-      "changeControlDt": this.changeControlDt ? this.changeControlDt : null,
-      "changeControlAttach": false,
-      "changeDesc": this.changeDesc,
-      "reasonForChange": this.reasonForChange,
-      "alternateConsidetation": this.alternateConsidetation ? this.alternateConsidetation : null,
-      "impactNotDoing": this.impactNotDoing,
-      "businessImpact": this.businessImpact,
-      "triggeredBy": this.triggeredBy,
-      "benefits": this.benefits ? this.benefits : null,
-      "estimatedCost": this.estimatedCost,
-      "estimatedCostCurr": this.estimatedCostCurr ? this.estimatedCostCurr : null,
-      "estimatedEffort": this.estimatedEffort ? this.estimatedEffort : null,
-      "estimatedEffortUnit": this.estimatedEffortUnit ? this.estimatedEffortUnit : null,
-      "estimatedDateCompletion": this.estimatedDateCompletion ? this.estimatedDateCompletion : null,
-      "rollbackPlan": this.rollbackPlan ? this.rollbackPlan : null,
-      "backoutPlan": this.backoutPlan ? this.backoutPlan : null,
-      "downTimeRequired": this.CheckDowntimeReq,
-      "downTimeFromDate": this.downTimeFromDate ? this.downTimeFromDate : null,
-      "downTimeToDate": this.downTimeToDate ? this.downTimeToDate : null,
-      "impactedLocation": this.impactedLocation,
-      "impactedDept": this.impactedDept,
-      'imactedFunc': this.imactedFunc,
-      "isSubmitted": this.isSubmittedVal,
-      "isApproved": false,
-      "isImplemented": false,
-      "isReleased": false,
-      "createdBy": this.user?.empData?.employeeNo,
-      "SysLandscapeID": checkedLansScapes,
-      "attachment": this.attachfile,
-      "attachmentIds": this.attachmentsList.map((m: any) => m.attachId)
-    }
+      type: "I",
+      itcrid: 0,
+
+      supportId: 1,
+
+      // 🔥 IMPORTANT FIXES
+      // ✅ CORRECT
+      classificationId: Number(this.classificationId),
+      categoryId: Number(this.selectedCategory),
+      categoryTypeId: Number(this.categoryTypeId),
+
+      crowner: Number(this.user?.empData?.employeeNo),
+
+      crdate: this.today,
+      crrequestedBy: changerequested ? Number(changerequested) : null,
+      crrEmailNotification: this.EmailNotification,
+
+      crrequestedDt: this.crrequestedDt,
+      crinitiatedFor: this.crinitiate ? Number(this.crinitiate) : null,
+
+      status: status,
+
+      referenceId: this.referenceid ? Number(this.referenceid) : null,
+      referenceTyp: this.referencetype ? Number(this.referencetype) : null,
+      natureOfChange: this.natureOfChange ? Number(this.natureOfChange) : null,
+      priorityType: this.crpriority ? Number(this.crpriority) : null,
+
+      // ❌ WRONG BEFORE → "plantId": 1
+      // ✅ FIXED
+      plantId: Number(this.plantId),
+
+      SysLandscapeID: checkedLansScapes,
+
+      gxpclassification: this.CheckGxPClassification,
+
+      gxpplantId: this.gxpplantId ? Number(this.gxpplantId) : null,
+      changeControlNo: this.changeControlNo || null,
+      changeControlDt: this.changeControlDt || null,
+
+      changeControlAttach: false,
+
+      changeDesc: this.changeDesc,
+      reasonForChange: this.reasonForChange,
+      alternateConsidetation: this.alternateConsidetation || null,
+      impactNotDoing: this.impactNotDoing,
+      businessImpact: this.businessImpact,
+      triggeredBy: this.triggeredBy,
+      benefits: this.benefits || null,
+
+      estimatedCost: this.estimatedCost ? Number(this.estimatedCost) : null,
+      estimatedCostCurr: this.estimatedCostCurr || null,
+
+      estimatedEffort: this.estimatedEffort ? Number(this.estimatedEffort) : null,
+      estimatedEffortUnit: this.estimatedEffortUnit || null,
+
+      estimatedDateCompletion: this.estimatedDateCompletion || null,
+
+      rollbackPlan: this.rollbackPlan || null,
+      backoutPlan: this.backoutPlan || null,
+
+      downTimeRequired: this.CheckDowntimeReq,
+      downTimeFromDate: this.downTimeFromDate || null,
+      downTimeToDate: this.downTimeToDate || null,
+
+      impactedLocation: this.impactedLocation,
+      impactedDept: this.impactedDept,
+      imactedFunc: this.imactedFunc,
+
+      isSubmitted: this.isSubmittedVal,
+      isApproved: false,
+      isImplemented: false,
+      isReleased: false,
+
+      createdBy: Number(this.user?.empData?.employeeNo),
+
+      attachment: this.attachfile,
+      attachmentIds: this.attachmentsList.map((m: any) => m.attachId)
+    };
+
+    // ✅ DEBUG (VERY IMPORTANT)
+    console.log("FINAL PAYLOAD 👉", requestBody);
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
+
     this.http.post(apiUrl, requestBody, httpOptions).subscribe(
       (response: any) => {
-        if (response.type == "E") {
-          this.successMessage = response.message;
-          alert(this.successMessage);
+
+        if (response.type === "E") {
+          alert(response.message);
+          return;
         }
-        else {
-          if (status == "Draft") {
-            this.successMessage = 'Saved Successfully as Draft!';
-            alert(this.successMessage);
-            this.route.navigate(['/change-request']);
-          }
-          else if (requestBody.type == 'I') {
-            this.successMessage = 'Submitted Successfully for RFC Pending Approval!';
-            alert(this.successMessage);
-            this.route.navigate(['/change-request']);
-          }
-          else {
-            this.successMessage = 'Submitted Successfully for RFC Pending Approval!';
-            alert(this.successMessage);
-            this.route.navigate(['/change-request']);
-          }
+
+        if (status === "Draft") {
+          alert('Saved Successfully as Draft!');
+        } else {
+          alert('Submitted Successfully for RFC Pending Approval!');
         }
+
+        this.route.navigate(['/change-request']);
       },
       (error: any) => {
-        console.log('Post request failed', error);
-      });
+        console.error('Post request failed', error);
+      }
+    );
   }
 
   selectedFile: any = '';
@@ -711,6 +850,7 @@ export class NewChangeRequestComponent {
   }
 
   wrkflow: any = '';
+  
   showSavebtn(val: Number) {
     if (val == 0) {
       this.vflag = false;
@@ -750,16 +890,30 @@ export class NewChangeRequestComponent {
 
   classifications: any[] = [];
 
+  // getclassification() {
+  //   const apiUrls = this.apiurl + '/Classification'
+  //   this.http.get(apiUrls).subscribe(
+  //     (response: any) => {
+  //       this.classifications = response;
+  //     },
+  //     (error) => {
+  //       console.error("Post failed", error)
+  //     }
+  //   )
+  // }
+
   getclassification() {
-    const apiUrls = this.apiurl + '/Classification'
+    const apiUrls = this.apiurl + '/Classification';
+
     this.http.get(apiUrls).subscribe(
       (response: any) => {
+        console.log("Classification Data:", response);
         this.classifications = response;
       },
       (error) => {
-        console.error("Post failed", error)
+        console.error("Post failed", error);
       }
-    )
+    );
   }
 
   inatiatorid: any;
@@ -1077,16 +1231,38 @@ export class NewChangeRequestComponent {
   }
 
   checklist: any[] = [];
+  // getCheckList() {
+  //   const apiUrls = this.apiurl + '/CheckList'
+  //   this.http.get(apiUrls).subscribe(
+  //     (response: any) => {
+  //       this.checklist = response.filter((item: any) => item.plantId === parseInt(this.plantId) && item.supportId === 1 && item.classificationId === parseInt(this.classificationId) && item.categoryId === parseInt(this.selectedCategory));
+  //     },
+  //     (error) => {
+  //       console.error("Post failed", error)
+  //     }
+  //   )
+  // }
+
   getCheckList() {
-    const apiUrls = this.apiurl + '/CheckList'
+    if (!this.plantId || !this.classificationId || !this.selectedCategory) {
+      return;
+    }
+
+    const apiUrls = this.apiurl + '/CheckList';
+
     this.http.get(apiUrls).subscribe(
       (response: any) => {
-        this.checklist = response.filter((item: any) => item.plantId === parseInt(this.plantId) && item.supportId === 1 && item.classificationId === parseInt(this.classificationId) && item.categoryId === parseInt(this.selectedCategory));
+        this.checklist = response.filter((item: any) =>
+          item.plantId === Number(this.plantId) &&
+          item.supportId === 1 &&
+          item.classificationId === Number(this.classificationId) &&
+          item.categoryId === Number(this.selectedCategory)
+        );
       },
       (error) => {
-        console.error("Post failed", error)
+        console.error("Post failed", error);
       }
-    )
+    );
   }
 
   // getplant() {

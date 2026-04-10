@@ -13,6 +13,7 @@
   margin-left: 40px;
   border-radius: 50px;
   display: flex;
+  margin-top: -2%;
 }
 
 .excelButton {
@@ -414,6 +415,7 @@ td:contains("Completed") {
   display: flex;
   align-items: center;
   gap: 0px;
+  margin-left: 25%;
 }
 
 .pm-icon {

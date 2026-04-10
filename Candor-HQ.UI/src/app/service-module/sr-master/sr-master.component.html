@@ -49,7 +49,8 @@
 
     <div class="d-flex justify-content-center">
 
-      <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
+      <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]
+        style="margin-left: -2%; width: 90%;">
         <div class="card-body card_body_filter" [formGroup]="filterForm">
           <div class="row filter_cr">
             <div class="col">
@@ -113,45 +114,6 @@
 
     </div>
 
-    <!-- <div class="d-flex" style="margin-left: 8%; gap: 60px; margin-top: 5%;">
-      <button class="assignBtn" [disabled]="disableAssign" (click)="onButtonClick($event, 'true')">Assign
-        To</button>
-      <div class="d-flex field" *ngIf="assignToDropDown">
-        <select required [(ngModel)]="assign" class="onHoldDropDown">
-          <option value="" selected disabled hidden>Select Assign to</option>
-          <option *ngFor="let assign of assignToList" value="{{assign.empId}}">{{assign.empId+' '+'-'+'
-            '+assign.firstName+' '+assign.middleName+' '+assign.lastName }}
-          </option>
-        </select>
-        &nbsp;&nbsp;&nbsp;<button type="submit" class="resolutionBtns"
-          (click)="onButtonClick($event, 'false')">Submit</button>
-      </div>
-
-      <button class="assignBtn" [disabled]="disableReAssign" (click)="onButtonClick($event, 'reAssign')">Re-Assign
-        To</button>
-
-      <div class="d-flex field" *ngIf="reAssignToDropDown">
-        <select required [(ngModel)]="reAssign" class="onHoldDropDown">
-          <option value="" selected disabled hidden>Select Re-Assign to</option>
-          <option *ngFor="let assign of reAssignToList" value="{{assign.empId}}">{{assign.empId+' '+'-'+'
-            '+assign.firstName+' '+assign.middleName+' '+assign.lastName }}
-          </option>
-        </select>
-        &nbsp;&nbsp;&nbsp;<button type="submit" class="resolutionBtns"
-          (click)="onButtonClick($event, 'reAssignSubmit')">Submit</button>
-      </div>
-
-      <div class="d-flex field" *ngIf="isServiceActive=='M'" style="width: 170px; height: 45px;">
-        <button class="toggle-button1" [ngClass]="{ 'active': isOpenService }"
-          (click)="toggleMyServiceTable(isServiceActive,false,true)">
-          Open
-        </button>
-        <button class="toggle-button1" [ngClass]="{ 'active': !isOpenService }"
-          (click)="toggleMyServiceTable(isServiceActive,false,false)">
-          Resolved
-        </button>
-      </div>
-    </div> -->
 
     <div class="actionRow">
 
@@ -164,7 +126,6 @@
         </button>
       </div>
 
-      <!-- Assign Dropdown -->
       <div class="field" *ngIf="assignToDropDown">
         <select required [(ngModel)]="assign" class="onHoldDropDown">
           <option value="" selected disabled hidden>Select Assign to</option>
@@ -177,7 +138,6 @@
         </button>
       </div>
 
-      <!-- Re-Assign -->
       <div class="actionCard outlineCard">
         <div class="iconCircle">
           <img src="assets/image/reassigned.png" alt="reassignImg" class="reassignImg">
@@ -187,7 +147,6 @@
         </button>
       </div>
 
-      <!-- ReAssign Dropdown -->
       <div class="field" *ngIf="reAssignToDropDown">
         <select required [(ngModel)]="reAssign" class="onHoldDropDown">
           <option value="" selected disabled hidden>Select Re-Assign to</option>

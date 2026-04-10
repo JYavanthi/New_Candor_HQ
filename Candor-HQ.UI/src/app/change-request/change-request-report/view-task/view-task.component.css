@@ -1,49 +1,28 @@
-
-
 .change_request_header {
-    margin-top: 3%;
+  margin-top: 3%;
 }
-
-
 
 .excel_button {
-    background-color: #3c8dbc;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.excel_div {
-    justify-content: end;
-    display: flex;
-    margin-right: 5%;
-}
-
-th,
-td {
-    padding: 3px 14px;
-    text-align: center;
-}
-
-.table_report {
-    display: flex;
-    justify-content: center;
-}
-
-.filter_button {
-  margin-top: 17px;
   background-color: #3c8dbc;
   color: white;
-  padding: 5px 20px;
+  padding: 8px 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
 }
 
+.excel_div {
+  justify-content: end;
+  display: flex;
+  margin-right: 5%;
+}
+
+
+.table_report {
+  display: flex;
+  justify-content: center;
+}
 
 .filter {
   display: flex;
@@ -61,29 +40,250 @@ td {
 .export_pdf {
   justify-content: end;
   display: flex;
-  margin-right: 10%;
+  margin-right: 0%;
 }
 
 .task_header {
-  margin-left: 0;
-  margin-top: 3%;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
+  margin-right: 46%;
+  white-space: nowrap;
 }
 
-.access-checkbox {
-  margin-left:25%;
+.header-title {
+  color: #1c8c8c;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: 'Poppins', sans-serif;
 }
 
-table,th,td{
-  border: 1px solid #cdc7c7;
-
+.pdfBtn {
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+  background: white;
+  padding: 6px 20px;
+  border-radius: 25px;
+  font-weight: 600;
 }
+
+.excelBtn {
+  border: 2px solid #27ae60;
+  color: #27ae60;
+  background: white;
+  padding: 6px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+
+/* Container */
+.filter-container {
+  background: #f7fbff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Row layout */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Each field */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  flex: 1;
+}
+
+/* Labels */
+.filter-group label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+/* Pill Inputs */
+.input-pill {
+  border-radius: 25px;
+  border: 1px solid #7aa6c2;
+  padding: 8px 12px;
+  background: #e9edf1;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Date alignment */
+input[type="date"].input-pill {
+  padding-right: 10px;
+}
+
+/* Bottom section */
+.filter-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Search box */
+.search-pill {
+  border-radius: 25px;
+  border: 1px solid #7aa6c2;
+  padding: 8px 15px;
+  width: 220px;
+  background: #e9edf1;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* Filter button (green like image) */
+.filter-btn {
+  background: #28a745;
+  color: white;
+  border-radius: 25px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Clear button (red like image) */
+.clear-btn {
+  background: #e85c66;
+  color: white;
+  border-radius: 25px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover effects */
+.filter-btn:hover {
+  background: #218838;
+}
+
+.clear-btn:hover {
+  background: #d9534f;
+}
+
+
+/* Container background */
 .tableClass {
   width: 98%;
+  margin: 20px auto;
+  padding: 15px;
+  background: #cfd8e3;
+  border-radius: 15px;
+  overflow-x: auto;
 }
-.tableClass {
-  width: 98%;    
-  overflow: auto;
-  height: 500px;
+
+/* Remove default table borders */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  /* space between rows */
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+thead tr {
+  background: #3f8f9d;
+  color: white;
+}
+
+thead th {
+  padding: 12px;
+  font-size: 13px;
+  text-align: center;
+  border: none;
+}
+
+/* Rounded header */
+thead th:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* Row card style */
+tbody tr {
+  background: #e9edf2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Make row look like card */
+tbody td {
+  padding: 12px;
+  text-align: center;
+  border: none;
+  font-size: 13px;
+}
+
+/* Rounded row edges */
+tbody tr td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+tbody tr td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Hover effect */
+tbody tr:hover {
+  transform: scale(1.01);
+  transition: 0.2s;
+}
+
+/* STATUS BADGES */
+td:last-child {
+  font-weight: 600;
+}
+
+/* Common badge style */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  display: inline-block;
+}
+
+/* Different statuses */
+.status-completed {
+  background: #4caf50;
+}
+
+.status-progress {
+  background: #f4b400;
+}
+
+.status-cancel {
+  background: #ff4d6d;
+}
+
+.status-pending {
+  background: #ff914d;
+}
+
+.status-approved {
+  background: #2aa198;
 }

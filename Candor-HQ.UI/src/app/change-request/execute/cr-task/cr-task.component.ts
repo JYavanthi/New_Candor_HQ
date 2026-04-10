@@ -807,7 +807,7 @@ export class CrTaskComponent {
     const requestBody = {
       "categroyId": this.emailCR[0].categoryId,
       "supportId": this.emailCR[0].supportId,
-      "classificationId": this.emailCR[0].classifcationId
+      "classificationId": this.emailCR[0].classificationId
     };
     try {
       const response: any = await this.http.post(apiUrl, requestBody).toPromise();

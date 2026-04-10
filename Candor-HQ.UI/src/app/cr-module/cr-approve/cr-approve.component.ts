@@ -43,7 +43,7 @@ export class CrApproveComponent {
   //     "stage": "N",
   //     "plantid": Number(this.crData?.plantId),
   //     "categoryId": Number(this.crData?.categoryId),
-  //     "classificationId": Number(this.crData?.classifcationId)
+  //     "classificationId": Number(this.crData?.classificationId)
   //   }
   //   this.httpSer.httpPost(this.APIURLS.GetApprover, requestBody).subscribe((response: any) => {
 

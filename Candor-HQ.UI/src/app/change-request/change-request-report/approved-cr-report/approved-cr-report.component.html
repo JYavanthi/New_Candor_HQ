@@ -4,13 +4,9 @@
         <div class="col">
           <label>Plant</label><br />
           <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings"
-                                   [data]="dropdownList" formControlName = "plantId"
-                                   >
+                                   [data]="dropdownList" formControlName = "plantId">
           </ng-multiselect-dropdown>
-          <!--<select [(ngModel)]="plantscode" class="input-change">
-    <option selected>Select-plant</option>
-    <option *ngFor="let plantid of plantcode" [value]="plantid.id">{{plantid.code}}</option>
-  </select>-->
+
         </div>
         <div class="col">
           <label>Category</label><br />
@@ -18,10 +14,7 @@
                                    [data]="dropdowncategroy"
                                    formControlName = "Category">
           </ng-multiselect-dropdown>
-          <!-- <select [(ngModel)]="categoryids" class="input-change">
-     <option selected>Select-category</option>
-     <option *ngFor="let catid of categorydata" [value]="catid.itcategoryId">{{catid.categoryName}}</option>
-   </select>-->
+    
         </div>
         <div class="col">
           <label>Classifications</label><br />
@@ -152,18 +145,5 @@
                 <td>{{pltdata.taskcount}}</td>
         </tbody>
 
-        <!-- <ng-template #noappvalue>
-        <tr *ngIf="isapprover">
-          <td colspan="13">There are no RFCs</td>
-        </tr>
-      </ng-template> -->
-
     </table>
 </div>
-<!-- <div *ngIf="isapprover && filtersapprvdata.length > 0">
-    <mat-paginator [length]="totalItemsforapprover" [pageSize]="pageSizeforapprover" [pageIndex]="pageIndexforapprover"
-        [pageSizeOptions]="[10,25,50,100]" (page)="onPageChangeforapprover($event)" aria-label="Select page"
-        style="margin-right:34%">
-    </mat-paginator>
-    <br />
-</div> -->

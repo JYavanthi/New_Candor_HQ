@@ -833,7 +833,7 @@ export class UpdateCrtaskComponent {
     const requestBody = {
       "categroyId": this.crrdtls[0].categoryId,
       "supportId": this.crrdtls[0].supportId,
-      "classificationId": this.crrdtls[0].classifcationId
+      "classificationId": this.crrdtls[0].classificationId
     };
     try {
       const response: any = await this.http.post(apiUrl, requestBody).toPromise();

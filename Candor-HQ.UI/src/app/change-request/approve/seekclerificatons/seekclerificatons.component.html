@@ -54,9 +54,9 @@
       <div class="row mt-3">
         <div class="col">
           <label>Classifications</label>
-          <select [(ngModel)]="updatevalue[0].classifcationId">
+          <select [(ngModel)]="updatevalue[0].classificationId">
             <option value="" disabled>Select Plant</option>
-            <option *ngFor="let cldata of classifications" [value]="cldata.itclassificationId" [attr.selected]="cldata.itclassificationId === updatevalue[0].classifcationId ? true : null">
+            <option *ngFor="let cldata of classifications" [value]="cldata.itclassificationId" [attr.selected]="cldata.itclassificationId === updatevalue[0].classificationId ? true : null">
               {{cldata.classificationName}}
             </option>
           </select>

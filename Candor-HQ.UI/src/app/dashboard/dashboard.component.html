@@ -1,18 +1,24 @@
 <div class="dashboardMainDiv">
 
-  <div style="margin-left: 1.5%; padding-top: 5%; position: sticky; top: 0;">
+  <div class="dashboardSideBar">
     <app-dashboard-side-bar></app-dashboard-side-bar>
   </div>
-  
+
   <div style="width: 82%;
     margin-left: 10%;">
-    <div class="container" style="margin-top: -60% !important;">
-      <div class="row row-cols-2 row-cols-lg-5 gx-lg-5  gy-lg-3 " style="margin-left: 1%">
+    <div class="container"
+      style="margin-top: -60% !important; border-radius: 20px; background: #e7f0fa; width: 100%; padding: 12px 28px; margin-left: 4%;">
+      <div class="row row-cols-2 row-cols-lg-5 gx-lg-5  gy-lg-3">
+
         <div class="col g-4">
 
           <div id="carouselExampleAutoplaying1" class="carousel slide carousel_slide" data-bs-ride="carousel"
-            data-bs-interval="3000" style="margin-left: -11%; border-radius: 3px;">
-            <h4 class="carousel_header">Change-Request</h4>
+            data-bs-interval="3000">
+            <div>
+              <i class="fa fa-exchange" aria-hidden="true"></i>
+              <h4 class="carousel_header">
+                Change-Request</h4>
+            </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <h4 class="carousel_new">New</h4>
@@ -27,11 +33,7 @@
                 <h3 class="d-block w-100 carousel_no_3">{{ completedCount }}</h3>
               </div>
             </div>
-            <div>
-              <h2 class="carousel_icon">
-                <i class="fa fa-exchange" aria-hidden="true"></i>
-              </h2>
-            </div>
+
             <button class="carousel-control-prev carousel_control_1" href="#carouselExampleAutoplaying1" role="button"
               data-bs-slide="prev" data-bs-slide-to="0">
               <span class="carousel_button_1"><i class="fas fa-circle"></i></span>
@@ -45,11 +47,16 @@
               <span class="carousel_button_3"><i class="fas fa-circle"></i></span>
             </button>
           </div>
+
         </div>
         <div class="col g-4">
           <div id="carouselExampleAutoplaying2" class="carousel slide carousel_slide" data-bs-ride="carousel"
-            data-bs-interval="3000" style="margin-left: -2%; border-radius:3px;">
-            <h4 class="carousel_header">Issues/Incident</h4>
+            data-bs-interval="3000">
+            <div>
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              <h4 class="carousel_header">
+                Issues/Incident</h4>
+            </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <h4 class="carousel_new">Open</h4>
@@ -64,11 +71,7 @@
                 <h3 class="d-block w-100 carousel_no_3">{{completedIssueCount}}</h3>
               </div>
             </div>
-            <div>
-              <h2 class="carousel_icon">
-                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-              </h2>
-            </div>
+
             <button class="carousel-control-prev carousel_control_1" href="#carouselExampleAutoplaying2" role="button"
               data-bs-slide="prev" data-bs-slide-to="0">
               <span class="carousel_button_1"><i class="fas fa-circle"></i></span>
@@ -85,8 +88,12 @@
         </div>
         <div class="col g-4">
           <div id="carouselExampleAutoplaying3" class="carousel slide carousel_slide" data-bs-ride="carousel"
-            data-bs-interval="5000" style="margin-left: 5%; border-radius: 3px;">
-            <h4 class="carousel_header">Service Request</h4>
+            data-bs-interval="5000">
+            <div>
+              <i class="fa fa-wrench" aria-hidden="true"></i>
+              <h4 class="carousel_header">
+                Service Request</h4>
+            </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <h4 class="carousel_new">New</h4>
@@ -101,11 +108,7 @@
                 <h3 class="d-block w-100 carousel_no_3">{{serviceCompleted}}</h3>
               </div>
             </div>
-            <div>
-              <h2 class="carousel_icon">
-                <i class="fa fa-wrench" aria-hidden="true"></i>
-              </h2>
-            </div>
+
             <button class="carousel-control-prev carousel_control_1" href="#carouselExampleAutoplaying3" role="button"
               data-bs-slide="prev" data-bs-slide-to="0">
               <span class="carousel_button_1"><i class="fas fa-circle"></i></span>
@@ -122,8 +125,12 @@
         </div>
         <div class="col g-4">
           <div id="carouselExampleAutoplaying4" class="carousel slide carousel_slide" data-bs-ride="carousel"
-            data-bs-interval="5000" style="margin-left: 14%; border-radius: 3px;">
-            <h4 class="carousel_header">Assets/Spare</h4>
+            data-bs-interval="5000">
+            <div>
+              <i class="fa fa-plus-square" aria-hidden="true"></i>
+              <h4 class="carousel_header">
+                Assets/Spare</h4>
+            </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <h4 class="carousel_new">In Progress</h4>
@@ -138,11 +145,7 @@
                 <h3 class="d-block w-100 carousel_no_3">{{assetCompleted + '/' + spareCompleted}}</h3>
               </div>
             </div>
-            <div>
-              <h2 class="carousel_icon">
-                <i class="fa fa-plus-square" aria-hidden="true"></i>
-              </h2>
-            </div>
+
             <button class="carousel-control-prev carousel_control_1" href="#carouselExampleAutoplaying4" role="button"
               data-bs-slide="prev" data-bs-slide-to="0">
               <span class="carousel_button_1"><i class="fas fa-circle"></i></span>
@@ -159,8 +162,12 @@
         </div>
         <div class="col g-4">
           <div id="carouselExampleAutoplaying5" class="carousel slide carousel_slide" data-bs-ride="carousel"
-            data-bs-interval="5000" style="margin-left: 23%; border-radius: 3px;">
-            <h4 class="carousel_header">Project</h4>
+            data-bs-interval="5000">
+            <div>
+              <i class='fas fa-project-diagram'></i>
+              <h4 class="carousel_header">
+                Project</h4>
+            </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <h4 class="carousel_new">In Progress</h4>
@@ -171,11 +178,7 @@
                 <h3 class="d-block w-100 carousel_no_2_1">{{completedProjectCount}}</h3>
               </div>
             </div>
-            <div>
-              <h2 class="carousel_icon">
-                <i class='fas fa-project-diagram'></i>
-              </h2>
-            </div>
+
             <button class="carousel-control-prev carousel_control_1" href="#carouselExampleAutoplaying5" role="button"
               data-bs-slide="prev" data-bs-slide-to="0">
               <span class="carousel_button_1"><i class="fas fa-circle"></i></span>
@@ -190,7 +193,6 @@
       </div>
     </div>
 
-    <!-- Filter -->
     <div class="actions">
       <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
         <nav id="TableOfContents">
@@ -288,7 +290,6 @@
     <br />
 
 
-    <!--For Issues-->
     <div style="text-align: center;" class="pb-4">
       <h2>Issues</h2>
     </div>

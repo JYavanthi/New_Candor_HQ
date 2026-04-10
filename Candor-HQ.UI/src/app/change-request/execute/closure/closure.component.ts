@@ -131,7 +131,7 @@ todaysDate = new Date().toISOString().slice(0,10);
         this.plantidforapp = this.crid.plantId
         this.isApproved = this.crid.isApproved;
         this.categoryId = this.crid.categoryId;
-        this.classificationId = this.crid.classifcationId
+        this.classificationId = this.crid.classificationId
         if (this.isApproved == true) {
           this.approveflag = false;
         }
@@ -622,7 +622,7 @@ todaysDate = new Date().toISOString().slice(0,10);
       "stage": "C",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -1185,7 +1185,7 @@ todaysDate = new Date().toISOString().slice(0,10);
       "stage": "C",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -1413,7 +1413,7 @@ todaysDate = new Date().toISOString().slice(0,10);
       "stage": "C",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
 
     const httpOptions = {

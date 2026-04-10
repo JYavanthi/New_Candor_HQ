@@ -71,7 +71,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="row">
           <span class="subHeading" style="color: #15455c">Actual</span>
           <div class="inputFields">
@@ -90,15 +90,18 @@
         </div>
 
 
-        <div>
-          <label class="asteriskrequired" for="description" style="font-size : larger; color : #15455c">Description</label>
-          <textarea class="textAreaClass" formControlName="description" name="description" id="description" style="border: 2.5px solid #b8d4f3"></textarea>
+        <div style="display: grid;">
+          <label class="asteriskrequired" for="description"
+            style="font-size : larger; color : #15455c">Description</label>
+          <textarea class="textAreaClass" formControlName="description" name="description" id="description"
+            style="border: 2.5px solid #b8d4f3"></textarea>
         </div>
 
         <div class="mainBtnsDiv">
           <button class="actionBtn" (click)="submitMilestone()" *ngIf="!(this.projectdetails?.projectStatus=='Cancel'||this.projectdetails?.projectStatus=='Discontinue'||this.projectdetails?.projectStatus=='Completed'
         || this.projectdetails?.projectStatus == 'Approved')">{{milestoneId? 'Update' : 'Submit'}}</button>
-          <button class="actionBtn" *ngIf="!milestoneId" (click)="clearForm()" style="background-color: #ff2e5a">Clear</button>
+          <button class="actionBtn" *ngIf="!milestoneId" (click)="clearForm()"
+            style="background-color: #ff2e5a">Clear</button>
         </div>
       </div>
     </div>

@@ -1,11 +1,104 @@
-.generate_row {
-    width: 98%;
-}
-
 .changeRequestReportMainDiv {
     width: 95%;
     display: flex;
-    background: white;
+    background: #ffffff;
     border-radius: 40px;
     margin-left: 2.5%;
+    padding: 20px;
+    margin-top: -2%;
+}
+
+.sidebar {
+    margin-left: 10px;
+}
+
+.container-home {
+    width: 85%;
+    margin-left: 4%;
+}
+
+
+.selector-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.selector-title h3 {
+    color: #1c8c8c;
+    font-weight: 600;
+}
+
+.selector-box {
+    position: relative;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.select_change_report {
+    width: 100%;
+    padding: 12px 40px 12px 40px;
+    border-radius: 30px;
+    border: 1px solid #1c8c8c;
+    outline: none;
+    font-size: 16px;
+    color: #555;
+    appearance: none;
+    background-color: #f8fdfd;
+    cursor: pointer;
+    height: 50px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1c8c8c;
+    font-size: 16px;
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 0px;
+    top: 55%;
+    transform: translateY(-50%);
+    color: #1c8c8c;
+    pointer-events: none;
+}
+
+.report-content {
+    margin-top: 20px;
+}
+
+hr {
+    margin-top: 10px;
+    border: 0.5px solid #ddd;
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Heading */
+.report-header h2 {
+    color: #1c8c8c;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Image container */
+.report-icon {
+    width: 75px;
+    height: 75px;
+}
+
+/* Image styling */
+.report-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }

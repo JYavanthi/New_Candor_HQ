@@ -1,3 +1,12 @@
+.classficationMainDiv {
+  display: flex;
+  width: 95%;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+  margin-top: -2%;
+}
+
 .container-implement {
   width: 77%;
   margin: 20px auto;

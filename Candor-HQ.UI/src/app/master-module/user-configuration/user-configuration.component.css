@@ -1,6 +1,45 @@
+.userConfigMainDiv {
+    background: white;
+    width: 95%;
+    margin-left: 2.5%;
+    display: flex;
+    border-radius: 40px;
+    background: white;
+    width: 95%;
+    margin-left: 2.5%;
+    display: flex;
+    border-radius: 40px;
+    margin-top: -2%;
+}
+
 .service_container {
     margin-top: 2%;
     margin-left: 10%;
+}
+
+.submit-btn {
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 18px;
+    margin-left: 10px;
+}
+
+.actionBtn {
+    border-radius: 5px;
+    padding: 6px 18px;
+    border: none;
+    background-color: #1d8cf8;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 2%;
+}
+
+.actionBtn:hover {
+    background-color: #0f6fdc;
 }
 
 .HeadingparaCss {

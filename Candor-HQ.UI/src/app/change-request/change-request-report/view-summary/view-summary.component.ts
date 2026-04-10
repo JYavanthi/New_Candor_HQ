@@ -124,10 +124,11 @@ export class ViewSummaryComponent {
       true:(m.stage==this.filterForm.controls['stage'].value))
       )
     })
-    this.count= []
-    this.stustuList.forEach((m:any)=>{
-      this.count.push(this.getopenCount(m))
-    })
+   this.count = []; // ✅ MUST
+
+this.stustuList.forEach((m: any) => {
+  this.count.push(this.getopenCount(m));
+});
   }
 
   fetchCategoryData(): void {
@@ -273,23 +274,26 @@ export class ViewSummaryComponent {
   changerequest = [];
 
   // statusList: string[] = ['Open', 'Completed', 'Draft', 'Pending', 'Approved', 'Implemented', 'Released', 'Closure', 'Rejected'];
-  getChangeRequests(): void {
-    const apiUrl = this.apiurl + '/ViewChangeRequest/ViewChangerequest';
-    this.http.get(apiUrl).subscribe(
-      (response: any) => {
-        this.changerequest = response;
-        this.viewchangerequest = response
-        this.stustuList.forEach((m:any)=>{
-          this.count.push(this.getopenCount(m))
-        })
-        this.code = [...new Set(response.map((item: any) => item.plantId))];
-      },
+getChangeRequests(): void {
+  const apiUrl = this.apiurl + '/ViewChangeRequest/ViewChangerequest';
+  this.http.get(apiUrl).subscribe(
+    (response: any) => {
+      this.changerequest = response;
+      this.viewchangerequest = response;
 
-      (error) => {
-        console.error("Request failed", error);
-      }
-    );
-  }
+      this.count = []; // ✅ RESET FIRST
+
+      this.stustuList.forEach((m: any) => {
+        this.count.push(this.getopenCount(m));
+      });
+
+      this.code = [...new Set(response.map((item: any) => item.plantId))];
+    },
+    (error) => {
+      console.error("Request failed", error);
+    }
+  );
+}
   mapedplantdatas() {
     this.impactedLocation = this.selectedPlantIds.map((item: any) => item.item_id);
     this.selectedlocationNames = Array.from(new Set(this.impactedLocation));

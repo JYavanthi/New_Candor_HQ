@@ -4,6 +4,7 @@
     display: flex;
     margin-left: 35px;
     border-radius: 40px;
+    margin-top: -2%;
 }
 
 .srSidebar {
@@ -35,7 +36,7 @@
     width: 80%;
     margin-left: 4%;
     padding-left: 25%;
-    top: 170px;
+    top: 115px;
 }
 
 .viewheadingIcon {
@@ -121,7 +122,7 @@ input[type=number] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 5%;
     white-space: nowrap;
 }
 
@@ -180,7 +181,7 @@ input[type=number] {
 .modernTableWrapper {
     width: 95%;
     margin-left: 2%;
-    margin-top: 8%;
+    margin-top: 5%;
     background: #d9e6f2;
     padding: 20px;
     border-radius: 20px;
@@ -286,7 +287,7 @@ tr:hover {
     display: flex;
     align-items: center;
     gap: 40px;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .outlineCard {
@@ -385,4 +386,112 @@ tr:hover {
 
 .statusBtn:hover {
     opacity: 0.9;
+}
+
+/* OUTER CENTER ALIGN */
+.d-flex.justify-content-center {
+    width: 100%;
+}
+
+/* CARD STYLE (MAIN CONTAINER) */
+.change_request_card_filter {
+    width: 100%;
+    max-width: 1200px;
+    background: #d9e0e6;
+    border-radius: 18px;
+    padding: 20px 25px;
+    border: 1px solid #c3cbd3;
+}
+
+/* ROW LAYOUT */
+.filter_cr {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* EACH COLUMN */
+.filter_cr .col {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+/* LABELS */
+label,
+::ng-deep .mat-form-field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 6px;
+}
+
+/* MATERIAL FIELD FULL WIDTH */
+::ng-deep .mat-form-field {
+    width: 100%;
+}
+
+/* REMOVE MATERIAL BACKGROUND */
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* REMOVE UNDERLINE */
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+/* PILL STYLE FOR SELECT */
+::ng-deep .mat-select-trigger {
+    background: #eef3f7;
+    border: 1px solid #9fb6c9;
+    border-radius: 25px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* DATE INPUT */
+.cr_date {
+    background: #eef3f7;
+    border: 1px solid #9fb6c9;
+    border-radius: 25px;
+    padding: 8px 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* BUTTON CONTAINER */
+.justify-content-end {
+    margin-top: 18px;
+}
+
+/* COMMON BUTTON */
+.filter_button {
+    border-radius: 25px;
+    padding: 8px 22px;
+    font-weight: 600;
+    border: none;
+}
+
+.filter_button:first-child {
+    background-color: #22c55e;
+    color: #fff;
+}
+
+button[type="reset"] {
+    background-color: #f56565;
+    color: #fff;
+}
+
+.filter_button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .filter_cr {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }

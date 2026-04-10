@@ -27,11 +27,6 @@ h1 {
 }
 
 
-.container .container-field-line .subHeadingCss {
-  width: 200px;
-  margin-left: 3%;
-}
-
 .textarea-implement {
   margin-left: 1px;
   width: 100%;
@@ -75,11 +70,6 @@ h1 {
   overflow: hidden;
 }
 
-.panel-content.open {
-  display: block;
-  padding: 10px;
-  animation: slideDown 0.5s ease;
-}
 
 @keyframes slideDown {
   0% {
@@ -157,12 +147,6 @@ h1 {
   margin: 0 auto !important;
 }
 
-.topDatas {
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #67b1db;
-  padding: 10px;
-}
 
 .secondtopDatas {
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -196,6 +180,7 @@ h1 {
   display: flex;
   transition: transform 0.3s ease;
   width: 100%;
+  margin-top: -3%;
 }
 
 .main-content {
@@ -225,12 +210,6 @@ h1 {
   margin-right: 0;
 }
 
-.insidesecondtopDatas {
-  margin-top: 1%;
-  display: flex;
-  align-items: center;
-}
-
 .insidesecondtopDatas2 {
   background-color: #67b1db;
   padding: 15px;
@@ -253,9 +232,9 @@ h1 {
   font-size: 10px;
   display: flex;
   justify-content: flex-end;
-  position: relative;
-  top: 70px;
-  right: 30px;
+  position: absolute;
+  top: 13%;
+  right: 75px;
 }
 
 .bxs-chat:before {
@@ -279,7 +258,6 @@ h1 {
   overflow: hidden;
   position: relative;
   padding: 25px 40px;
-  border-bottom: 3px solid #7aa6ff;
   margin-left: 6%;
   margin-top: -1%;
 }
@@ -287,6 +265,11 @@ h1 {
 .headerRow {
   display: flex;
   align-items: center;
+  border-bottom: 3px solid #7aa6ff;
+  margin-left: -5%;
+  height: 70px;
+  width: 100%;
+
 }
 
 .btn-back1 {
@@ -315,10 +298,13 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
+
 .headingIcon {
-  width: 35px;
+  width: 50px;
+  height: 50px;
 }
 
 .pageHeadingparaCss {
@@ -352,9 +338,10 @@ h1 {
 
 
 .horinputDatas {
-  font-size: larger;
+  font-size: 15px;
   color: #333;
   margin-left: 4px;
+  font-weight: 600;
 }
 
 .inside_card .row {
@@ -369,4 +356,236 @@ h1 {
 .inside_card .col-md-3,
 .inside_card .col-md-4 {
   margin-bottom: 8px;
+}
+
+.topDatas {
+  background: #168c94;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.secondtopDatas {
+  background: transparent;
+}
+
+.issueHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  gap: 20px;
+}
+
+.issueItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label {
+  opacity: 0.9;
+  font-size: larger;
+  color: white;
+}
+
+.value {
+  font-weight: 700;
+}
+
+.healthCircle {
+  display: inline-block;
+}
+
+.insidesecondtopDatas {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.btnsTop {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btnsTop:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.resolutionDate {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.selectSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.selectSection select {
+  padding: 5px;
+  border-radius: 4px;
+  border: none;
+}
+
+.commentSection {
+  margin-top: 15px;
+}
+
+.commentSection textarea {
+  width: 100%;
+  background: white;
+  border-radius: 6px;
+  border: none;
+  padding: 14px;
+  font-size: 15px;
+  resize: none;
+  color: #555;
+}
+
+.issueBtn {
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-right: 10px;
+  min-width: 120px;
+  transition: all .2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.closeBtn {
+  background: linear-gradient(90deg, #1fb18c, #0a7c7c);
+}
+
+.closeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.notResolvedBtn {
+  background: linear-gradient(90deg, #ffb15e, #ff8c3a);
+}
+
+.notResolvedBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.cancelBtn {
+  background: linear-gradient(90deg, #ff5a5a, #ff2d55);
+}
+
+.cancelBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+.report_issue_card {
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 0%;
+  width: 100%;
+
+}
+
+.issueDetailsSection {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #7fbfc1;
+  background: #f3f3f3;
+}
+
+.issueDetailsSection label {
+  color: #1a8a94;
+  font-weight: 600;
+  margin-right: 5px;
+  font-size: larger;
+}
+
+
+.horinputDatas {
+  color: #444;
+  font-weight: 600;
+}
+
+.descriptionSection {
+  margin-top: 15px;
+  background: whitesmoke;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #7fbfc1;
+}
+
+.sectionTitle {
+  color: #1a8a94;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.subjectBox {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.subjectBox label {
+  color: #1a8a94;
+  font-weight: 600;
+}
+
+.subjectValue {
+  margin-top: 5px;
+}
+
+.attachBtn {
+  background: #1a8a94;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.attachBtn i {
+  margin-left: 8px;
+}
+
+.attachmentRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 5px;
+  color: #444;
+}
+
+.actionIcon {
+  cursor: pointer;
+  color: #1a8a94;
+  font-size: 16px;
+}
+
+.resolutionBox input {
+  border: 2px solid #f2b84c;
+  border-radius: 12px;
+  padding: 8px;
+  width: 220px;
 }

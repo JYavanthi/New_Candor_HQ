@@ -1,15 +1,25 @@
 <div class="newChangeRequestMaindiv">
+
   <div style="margin-left: 3%;">
     <app-dashboard-side-bar></app-dashboard-side-bar>
   </div>
 
-  <div class="container-implement">
-    <div style="margin-left: 6%;">
-      <button class="btn-back" [routerLink]="'/change-request'" style="margin-left : 35px">Back</button>
+  <div class="container-implement" style="border: 1px solid #a5a5a5; border-radius: 15px;">
+
+    <div class="header-container">
+
+      <button class="back-btn" [routerLink]="'/change-request'">
+        BACK
+      </button>
+
+      <div class="title-section">
+        <img src="assets/image/changeRequest.png" class="title-icon" alt="icon">
+        <h2>Change Request</h2>
+      </div>
+
     </div>
 
     <div class="container-field-line">
-      <h3>Change Request</h3>
       <div class="border-rfc-heading">
         <div class="row mt-3">
           <div class="col">
@@ -31,7 +41,7 @@
           </div>
           <div class="col SameChangeOwner ">
             <span><input type="checkbox" [(ngModel)]="sameinitator" (click)="setinitator()"></span>
-            <span>&nbsp;Same Change Owner</span>
+            <span style="font-size : larger; color: #15455c; ">&nbsp;Same Change Owner</span>
           </div>
         </div>
         <div class="row mt-3">
@@ -39,7 +49,10 @@
             <label>Plant <span style="color:red">*</span></label>
             <select [(ngModel)]="plantId">
               <option value="" disabled hidden selected>Select Plant</option>
-              <option *ngFor="let pltdata of plantcode " value="pltdata.plantId">{{ pltdata.plantCode }}</option>
+              <!-- <option *ngFor="let pltdata of plantcode " value="pltdata.plantId">{{ pltdata.plantCode }}</option> -->
+              <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId">
+                {{ pltdata.plantCode }}
+              </option>
             </select>
           </div>
           <div class="col">
@@ -73,31 +86,44 @@
             <select aria-placeholder="select" (change)="categoryfunctions()" [(ngModel)]="classificationId"
               ngModelChange="classificationType()">
               <option value="" disabled hidden selected>Select Classifications</option>
-              <option *ngFor="let cldata of classifications " value="{{cldata.itclassificationId}}">
-                {{cldata.classificationName}}</option>
+              <!-- <option *ngFor="let cldata of classifications " value="{{cldata.itclassificationId}}">
+                {{cldata.classificationName}}</option> -->
+
+              <option *ngFor="let cldata of classifications" [value]="cldata.itclassificationId">
+                {{cldata.classificationName}}
+              </option>
             </select>
           </div>
           <div class="col">
             <label>Category <span style="color:red">*</span></label>
             <select (change)="categoryfunctions()" [(ngModel)]="selectedCategory">
               <option value="" disabled hidden selected>Select Category</option>
-              <option *ngFor="let value of categorydata" value="{{value.itcategoryId}}">{{value.categoryName}}</option>
+              <!-- <option *ngFor="let value of categorydata" value="{{value.itcategoryId}}">{{value.categoryName}}</option> -->
+              <option *ngFor="let value of categorydata" [value]="value.itcategoryId">
+                {{value.categoryName}}
+              </option>
             </select>
           </div>
           <div class="col">
             <label>Sub-Category<span style="color:red">*</span></label>
             <select [(ngModel)]="categoryTypeId">
               <option value="" disabled hidden selected>Select Sub-Category</option>
-              <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">
-                {{valueCtype.categoryType}}</option>
+              <!-- <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">
+                {{valueCtype.categoryType}}</option> -->
+              <option *ngFor="let valueCtype of categorytype" [value]="valueCtype.categoryTypeId">
+                {{valueCtype.categoryType}}
+              </option>
             </select>
           </div>
           <div class="col">
             <label>Nature of Change <span style="color:red">*</span></label>
             <select [(ngModel)]="natureOfChange">
               <option value="" disabled hidden selected>Select Nature of Change</option>
-              <option *ngFor="let valueN of Natureofchange " value="{{valueN.natureofChangeId}}">
-                {{valueN.natureofChange1}}</option>
+              <!-- <option *ngFor="let valueN of Natureofchange " value="{{valueN.natureofChangeId}}">
+                {{valueN.natureofChange1}}</option> -->
+              <option *ngFor="let valueN of Natureofchange" [value]="valueN.natureofChangeId">
+                {{valueN.natureofChange1}}
+              </option>
             </select>
           </div>
         </div>
@@ -106,14 +132,20 @@
             <label>Reference <span style="color:red">*</span></label>
             <select [(ngModel)]="referenceid">
               <option value="" disabled hidden selected>Select Reference</option>
-              <option *ngFor="let refdata of refer " value="{{refdata.referenceId}}">{{refdata.referenceName}}</option>
+              <!-- <option *ngFor="let refdata of refer " value="{{refdata.referenceId}}">{{refdata.referenceName}}</option> -->
+              <option *ngFor="let refdata of refer" [value]="refdata.referenceId">
+                {{refdata.referenceName}}
+              </option>
             </select>
           </div>
           <div class="col">
             <label>Reference Type <span style="color:red">*</span></label>
             <select [(ngModel)]="referencetype">
               <option value="" disabled hidden selected>Select Reference Type</option>
-              <option *ngFor="let refdata of reftype " value="{{refdata.referenceTypeId}}">{{refdata.referenceType}}
+              <!-- <option *ngFor="let refdata of reftype " value="{{refdata.referenceTypeId}}">{{refdata.referenceType}}
+              </option> -->
+              <option *ngFor="let refdata of reftype" [value]="refdata.referenceTypeId">
+                {{refdata.referenceType}}
               </option>
             </select>
           </div>
@@ -149,7 +181,8 @@
         <p><br /><b style="font-size:16px;color:brown">{{this.wrkflow}}</b></p>
       </div>
     </div>
-    <div class="container-implement">
+
+    <!-- <div class="container-implement">
       <div class="container-field-line">
         <h3>System Landscape</h3>
         <div class="row">
@@ -160,10 +193,24 @@
         </div>
 
       </div>
-    </div>
-    <!-- System landscape radio btn -->
+    </div> -->
 
-    <div class="container-implement">
+    <div class="system-card">
+      <h3 class="card-title">System Landscape</h3>
+      <div class="checkbox-row">
+        <div class="checkbox-item" *ngFor="let item of systemlandscape; let i = index">
+          <label class="custom-checkbox">
+            <input type="checkbox" [(ngModel)]="item.isChcked" [id]="'checkbox_' + i">
+            <span class="checkmark"></span>
+          </label>
+          <label class="label-text" [for]="'checkbox_' + i">
+            {{ item.sysLandscape1 }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-implement" style="width: 100%;">
       <div class="container-field-line">
         <h3>Change Overview</h3>
         <div class="border-rfc-heading">
@@ -221,16 +268,11 @@
                   </div>
                 </div>
               </div>
-
-              <!--<input type="file" [(ngModel)]="attach" (change)="getattach($event)" / >
-  <div *ngIf="attach">
-    <p>Attachment: {{ attach }}<button style="padding: 1%; border: none; background: none;" (click)="viewFile(attach)"><i class="fa fa-download" aria-hidden="true"></i></button></p>
-  </div>-->
             </div>
           </div>
         </div>
       </div>
-      <div class="container-implement">
+      <div class="container-implement" style="width: 100%;">
         <div class="container-field-line">
           <h3>Effort & Estimate</h3>
           <div class="border-rfc-heading">
@@ -316,12 +358,9 @@
                   [(ngModel)]="selectedlocationNames" (ngModelChange)="onSelectedItemsChange()">
                 </ng-multiselect-dropdown>
 
-                <!--<label>Impacted Location</label>
-          <input type="text" placeholder="" />-->
               </div>
               <div class="col" *ngIf="showRiskQ">
                 <label>Impacted Department <span style="color:red">*</span></label>
-                <!--<input type="text" [(ngModel)]="impactedDept" placeholder="" />-->
                 <ng-multiselect-dropdown [settings]="dropdownDepartmentSettings" [data]="dropdownListDepartment"
                   [(ngModel)]="selecteddepartmentNames" (ngModelChange)="onSelecteddepartmentItemsChange()">
                 </ng-multiselect-dropdown>
@@ -336,7 +375,6 @@
             <div class="row downtime_checklist" *ngIf="showRiskQ">
               <h3>CheckList</h3>
               <div style="width:75%;" class="container-field-line">
-                <!--<div class="container">-->
                 <table width="70%">
                   <thead>
                     <tr>
@@ -363,7 +401,7 @@
       </div>
 
       <!-- G*P Classification -->
-      <div class="container-implement">
+      <div class="container-implement" style="border: 1px solid #a5a5a5; width: 95%; border-radius: 15px;">
         <div class="container-field-line">
           <h3>GxP Classification</h3>
           <div class="notification-confirm" *ngIf="gxpradioconfirmation">
@@ -392,7 +430,8 @@
                 <div class="col">
                   <select [(ngModel)]="gxpplantId">
                     <option value="" disabled hidden selected>Select Plant</option>
-                    <option *ngFor="let pltdata of plantcode " value="pltdata.plantId">{{pltdata.plantCode}}</option>
+                    <!-- <option *ngFor="let pltdata of plantcode " value="pltdata.plantId">{{pltdata.plantCode}}</option> -->
+                    <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId">{{ pltdata.plantCode }}</option>
                   </select>
                 </div>
                 <div class="col">

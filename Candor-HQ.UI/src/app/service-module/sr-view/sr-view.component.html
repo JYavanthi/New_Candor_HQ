@@ -20,11 +20,27 @@
     <div class="serviceMainModuleBox">
       <div class="serviceModules">
 
-        <ng-container *ngFor="let item of viewServices">
+        <!-- <ng-container *ngFor="let item of viewServices">
           <div class="serviceModuleCard" [routerLink]="item.routerLink">
             <span class="serviceIcon"><i [style.color]="item.iconColor" [ngClass]="'fa '+item.iconClass "></i></span>
             <span class="serviceIconTitle">{{item.serviceTitle}}</span>
           </div>
+        </ng-container> -->
+
+        <ng-container *ngFor="let item of viewServices">
+
+          <div class="serviceModuleCard" [routerLink]="item.routerLink">
+
+            <span class="serviceIcon">
+              <img [src]="item.iconImage" class="serviceImg">
+            </span>
+
+            <span class="serviceIconTitle">
+              {{item.serviceTitle}}
+            </span>
+
+          </div>
+
         </ng-container>
 
       </div>

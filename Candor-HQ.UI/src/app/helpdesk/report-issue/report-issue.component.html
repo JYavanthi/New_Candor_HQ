@@ -160,6 +160,7 @@
               <option value="Cancelled">Cancelled</option>
               <option value="Resolved">Resolved</option>
               <option value="Closed">Closed</option>
+              <option value="Not Resolved">Not Resolved</option>
             </select>
 
           </div>
@@ -231,7 +232,8 @@
     'status-seekClarification': row.status?.trim() === 'Seek Clarification',
     'status-onHold': row.status?.trim() === 'On Hold',
     'status-all': row.status?.trim() === 'All',
-    'status-closed': row.status?.trim() === 'Closed'
+    'status-closed': row.status?.trim() === 'Closed',
+    'status-notResolved' : row.status?.trim() === 'Not Resolved'
   }">
                   {{row.status}}
                 </span>

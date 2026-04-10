@@ -190,6 +190,7 @@ export class SrMasterComponent {
     this.isServiceActive = myService
     this.pageIndex = 0
     if (first) {
+      
       this.serviceListShow = (this.serviceList?.filter((m: any) => {
         return (m.hodEmpNo?.toString() == this.user?.empData?.employeeNo || m.rpmEmpNo == this.user?.empData?.employeeNo || this.user?.supportTeamAssignList[0]?.isSuperAdmin
           || this.user?.supportTeamAssignList?.map((a: any) => a.supportId).includes(m.supportId)) && m.status?.trim() != 'Draft'

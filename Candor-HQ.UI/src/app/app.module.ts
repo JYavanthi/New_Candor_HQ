@@ -167,6 +167,7 @@ import { CdkDrag, CdkDropList, DragDropModule } from '@angular/cdk/drag-drop';
 import { SidebarissueComponent } from './helpdesk/sidebarissue/sidebarissue.component';
 import { SupportSidebarComponent } from './master-support/support-view/support-sidebar/support-sidebar.component';
 import { DashboardSideBarComponent } from './dashboard/dashboard-side-bar/dashboard-side-bar.component';
+import { NewDashboardComponent } from './dashboard/new-dashboard/new-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -307,7 +308,8 @@ import { DashboardSideBarComponent } from './dashboard/dashboard-side-bar/dashbo
     NewSoftwareVersionMasterComponent,
     SidebarissueComponent,
     SupportSidebarComponent,
-    DashboardSideBarComponent
+    DashboardSideBarComponent,
+    NewDashboardComponent
     ],
   imports: [
     BrowserModule,

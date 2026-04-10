@@ -1,9 +1,32 @@
-/* Radio button styles */
+.excuteMinDiv {
+  width: 95%;
+  display: flex;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+  margin-top: -2%;
+}
+
+.container-home {
+  width: 100%;
+}
+
+.back-btn {
+  background: linear-gradient(180deg, #ffd76a, #f4b400);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 input[type="radio"] {
   margin-right: 5px;
 }
 
-/* Select and button styles */
 h4 select,
 h4 button {
   padding: 5px;
@@ -36,9 +59,9 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
   border-radius: 4px;
-    position: absolute;
-    z-index: 1;
-    background-color: white;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
 }
 
 select {
@@ -53,7 +76,8 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   text-align: center;
   padding: 8px;
 }
@@ -63,7 +87,7 @@ td {
 }
 
 li.active {
-  color:white;
+  color: white;
 }
 
 .txt-style {
@@ -104,9 +128,9 @@ li.active {
   background-color: green;
 }
 
-.isstatustrue{
-    background-color:green;
-    color:white;
+.isstatustrue {
+  background-color: green;
+  color: white;
 }
 
 .isstatusfalse {

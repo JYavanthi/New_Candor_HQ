@@ -168,9 +168,6 @@ export class CommonComponent implements OnChanges {
   }
 
 
-
-
-
   itcrid: any='';
   viewchangerequest: any[] = [];
 

@@ -12,7 +12,6 @@ import { HttpServiceService } from 'shared/services/http-service.service';
 
 @Component({
   selector: 'app-dashboard',
-
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
@@ -408,6 +407,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+  
   public doughnutChartData: ChartData<any, any[], string> = {
     labels: [],
     datasets: [
@@ -517,42 +517,42 @@ issueBarChartData: ChartDataset[] = [
   // issuebarChartLegend = true;
 
 
-  getBarchart() {
-    const apiUrls = this.apiurl + '/Barchart/Getbarchart';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'content-Type': 'application/json'
-      }),
-    };
+    getBarchart() {
+      const apiUrls = this.apiurl + '/Barchart/Getbarchart';
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'content-Type': 'application/json'
+        }),
+      };
 
-    this.http.get<any>(apiUrls).subscribe(
+      this.http.get<any>(apiUrls).subscribe(
 
-      (response: any[]) => {
-        this.chartdata = response;
-        if (this.issuperadmin) {
-          this.getbarchartfilter = response
-        }
-        else {
-          if (this.ischangeanalyst) {
-            this.getbarchartfilter = response.filter((item: { crowner: Number; }) => item.crowner === parseInt(this.supportid))
+        (response: any[]) => {
+          this.chartdata = response;
+          if (this.issuperadmin) {
+            this.getbarchartfilter = response
           }
           else {
-            this.getbarchartfilter = response.filter((item: any) => this.assignedcat.includes(item.categoryId) && this.assignedplant.includes(item.plantId));
+            if (this.ischangeanalyst) {
+              this.getbarchartfilter = response.filter((item: { crowner: Number; }) => item.crowner === parseInt(this.supportid))
+            }
+            else {
+              this.getbarchartfilter = response.filter((item: any) => this.assignedcat.includes(item.categoryId) && this.assignedplant.includes(item.plantId));
+            }
           }
+          this.getbarchart = this.getbarchartfilter
+          this.crData = this.getbarchart
+
+          const uniqueMonths = Array.from(new Set(this.getbarchart.map(item => item.crmonth)));
+
+          // Update chart data and labels
+          this.updateBarChartData();
+          this.updateBarChartLabels(uniqueMonths);
+        },
+        (error) => {
         }
-        this.getbarchart = this.getbarchartfilter
-        this.crData = this.getbarchart
-
-        const uniqueMonths = Array.from(new Set(this.getbarchart.map(item => item.crmonth)));
-
-        // Update chart data and labels
-        this.updateBarChartData();
-        this.updateBarChartLabels(uniqueMonths);
-      },
-      (error) => {
-      }
-    );
-  }
+      );
+    }
 
   filteredbarchartplant() {
     if (this.asignedplantidfilter != '') {

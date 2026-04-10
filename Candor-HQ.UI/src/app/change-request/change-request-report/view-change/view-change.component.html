@@ -1,145 +1,137 @@
 <div class="change_request_header">
-  <h2>View Change Request Report</h2>
+  <h2 class="header-title">View Change Request Summary</h2>
 </div>
 
 <div class="row" align="right">
   <div class="col export_pdf">
-    <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o"
+    <button (click)="exportToPDF()" class="pdfBtn"><i class="fa fa-file-pdf-o"
         aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
-    <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
-        aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+    <button (click)="exportexcel()" class="excelBtn"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;
+      Excel</button>
   </div>
 </div>
 
-<div class="card change_request_card_filter" *ngIf="isVisible">
-  <div class="card-body card_body_filter" [formGroup]="filterForm">
-    <div class="row filter_cr">
-      <div class="col">
-        <label>Plant</label><br />
-        <ng-multiselect-dropdown class="multiselect-dropdown dropdown-btn" [settings]="dropdownSettings"
-          [data]="dropdownList" formControlName="plantId" (ngModelChange)="mapedplantdatas()">
+<div style="padding: 15px; background: #eaf4ff; border-radius: 15px">
+  <div class="filter-container" *ngIf="isVisible" [formGroup]="filterForm">
+
+    <div class="filter-row">
+
+      <div class="filter-field">
+        <label>Plant</label>
+        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList" formControlName="plantId"
+          (ngModelChange)="mapedplantdatas()">
         </ng-multiselect-dropdown>
       </div>
-      <div class="col">
-        <label>Category</label><br />
+
+      <div class="filter-field">
+        <label>Category</label>
         <ng-multiselect-dropdown [settings]="dropdownSettings" formControlName="Category" [data]="dropdowncategroy"
           (ngModelChange)="mapedcategoryatas()">
         </ng-multiselect-dropdown>
       </div>
-      <div class="col">
-        <label>Classifications</label><br />
-        <select formControlName="ClassificationId" class="input-change">
-          <option selected hidden disabled value="">Select-classification</option>
-          <option *ngFor="let classf of classificationdata" value="{{classf.itclassificationId}}">
-            {{classf.classificationName}}</option>
-        </select>
 
-      </div>
-      <div class="col">
-        <label>Priority</label><br />
-        <select formControlName="Priority" class="input-change">
-          <option selected hidden disabled value="">Select-priority</option>
-          <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
+      <div class="filter-field">
+        <label>Classifications</label>
+        <select formControlName="ClassificationId">
+          <option hidden disabled value="">Select</option>
+          <option *ngFor="let classf of classificationdata" [value]="classf.itclassificationId">
+            {{classf.classificationName}}
+          </option>
         </select>
-      </div>
-      <div class="col">
-        <label>Start Date:</label><br />
-        <input class="input-change cr_date" [max]="currentDate" type="date" id="fromDate" name="fromDate"
-          formControlName="StartDate" />
-      </div>
-      <div class="col">
-        <label>End Date:</label><br />
-        <input class="input-change cr_date" type="date" [min]="this.filterForm.value['StartDate']" [max]="currentDate"
-          id="toDate" name="toDate" formControlName="EndDate" />
       </div>
 
-      <div class="col">
-        <label>Stage</label><br />
-        <select formControlName="stage" class="input-change">
-          <option selected hidden disabled value="">Select-Stage</option>
-          <option>Initiated</option>
-          <option>Approval</option>
-          <option>Implementation</option>
-          <option>Release</option>
-          <option>Closure</option>
+      <div class="filter-field">
+        <label>Priority</label>
+        <select formControlName="Priority">
+          <option hidden disabled value="">Select</option>
+          <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">
+            {{prio.priorityName}}
+          </option>
         </select>
       </div>
-      <div class="col">
-        <label>Status</label><br />
-        <select class="input-change" formControlName="Status">
-          <option selected hidden disabled value="">Select Status</option>
-          <option value="All">All</option>
-          <option value="Draft">Draft</option>
-          <option value="Pending Approval">Pending Approval</option>
-          <option value="Approved level1">Approved level1</option>
-          <option value="Approved level2">Approved level2</option>
-          <option value="Approved level3">Approved level3</option>
-          <option value="Approved">Approved</option>
-          <option value="Implement">Implement</option>
-          <option value="Implemented">Implemented</option>
-          <option value="Release">Release</option>
-          <option value="Released">Released</option>
-          <option value="Completed">Completed</option>
-        </select>
+
+      <div class="filter-field">
+        <label>Start Date</label>
+        <input type="date" [max]="currentDate" formControlName="StartDate">
       </div>
-    </div>
-    <div class="access-checkbox">
-      <div>
-        <input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
+
+      <div class="filter-field">
+        <label>End Date</label>
+        <input type="date" [min]="filterForm.value['StartDate']" [max]="currentDate" formControlName="EndDate">
       </div>
-      <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn btn-rounded filter_button" (click)="reset()">Reset</button><!--(click)="filterData()"-->
-      <!--(click)="filterdropdown()"-->
+
+      <div class="filter-buttons">
+        <button class="btn-filter" (click)="filterdropdown()">FILTER</button>
+        <button class="btn-clear" (click)="reset()">Clear</button>
+      </div>
+
     </div>
+
   </div>
 </div>
+
 <br />
 <div class="">
   <br />
 </div>
 
+<div class="table-container mt-5">
 
-<div class="mt-5">
-  <div class="tableClass">
-    <table id="excel-table">
-      <thead style="border-bottom:2px solid;">
-        <tr>
-          <th>RFC #</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Change owner</th>
-          <th>Initiator</th>
-          <th>Plant Code</th>
-          <th>Classification</th>
-          <th>Category</th>
-          <th>Category Type</th>
-          <th>Nature of Change</th>
-          <th>Priority</th>
-          <th>Stage</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="tr-body" *ngFor="let CRreport of viewchangerequest">
-          <td>{{CRreport.crcode}}</td>
-          <td>{{CRreport.changeDesc}}</td>
-          <td>{{''+CRreport.crdate| date:'dd-MM-yyyy'}}</td>
-          <td>{{CRreport.crowner}}</td>
-          <td>{{CRreport.initiatedFor}}</td>
-          <td>{{CRreport.plantId}}</td>
-          <td>{{CRreport.classificationName}}</td>
-          <td>{{CRreport.categoryName}}</td>
-          <td>{{CRreport.categoryType}}</td>
-          <td>{{CRreport.natureofChange}}</td>
-          <td>{{CRreport.priorityName}}</td>
-          <td>{{CRreport.stage}}</td>
-          <td>{{CRreport.status}}</td>
-        </tr>
-
-      </tbody>
-    </table>
+  <!-- HEADER -->
+  <div class="table-header">
+    <div>SL NO.</div>
+    <div>RFC #</div>
+    <div>Description</div>
+    <div>Date</div>
+    <div>Change Owner</div>
+    <div>Initiator</div>
+    <div>Plant</div>
+    <div>Classification</div>
+    <div>Category</div>
+    <div>Category Type</div>
+    <div>Nature</div>
+    <div>Priority</div>
+    <div>Stage</div>
+    <div>Status</div>
   </div>
-  <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]"
-    (page)="onPageChange($event)" aria-label="Select page" style="margin-right:34%">
-  </mat-paginator>
+
+  <!-- ROWS -->
+  <div class="table-body">
+    <div class="table-row" *ngFor="let CRreport of viewchangerequest; let i = index">
+
+      <div>{{i + 1}}</div>
+      <div>{{CRreport.crcode}}</div>
+      <div>{{CRreport.changeDesc}}</div>
+      <div>{{CRreport.crdate | date:'dd-MM-yyyy'}}</div>
+      <div>{{CRreport.crowner}}</div>
+      <div>{{CRreport.initiatedFor}}</div>
+      <div>{{CRreport.plantId}}</div>
+      <div>{{CRreport.classificationName}}</div>
+      <div>{{CRreport.categoryName}}</div>
+      <div>{{CRreport.categoryType}}</div>
+      <div>{{CRreport.natureofChange}}</div>
+      <div>{{CRreport.priorityName}}</div>
+      <div>{{CRreport.stage}}</div>
+
+      <!-- STATUS -->
+      <div>
+        <span class="status-badge" [ngClass]="{
+                'completed': CRreport.status === 'Completed',
+                'progress': CRreport.status === 'In Progress',
+                'cancel': CRreport.status === 'Cancel',
+                'pending': CRreport.status === 'Pending Approval',
+                'approved': CRreport.status === 'Approved'
+              }">
+          {{CRreport.status}}
+        </span>
+      </div>
+
+    </div>
+  </div>
+
 </div>
+
+<!-- PAGINATOR -->
+<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]"
+  (page)="onPageChange($event)" style="margin-right: 28%;">
+</mat-paginator>

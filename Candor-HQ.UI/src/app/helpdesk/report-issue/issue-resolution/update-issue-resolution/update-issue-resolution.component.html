@@ -32,7 +32,7 @@
 
         <div class="col-4 pageHeadingCss">
           <div class="headingWrapper">
-            <img src="assets/image/issue_management.png" class="headingIcon">
+            <img src="assets/image/issueResolution.png" class="headingIcon">
             <span class="pageHeadingparaCss">Issue Resolution</span>
           </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="updatecontent">
 
           <div class="container" style="margin-top: 2%; margin-bottom: 5%;">
-            <div class="topDatas">
+            <!-- <div class="topDatas">
               <div class="secondtopDatas">
 
                 <div style="font-weight: bold; font-size: 18px; width:85%;">
@@ -127,7 +127,174 @@
                     style="width: 100%; padding: 5px; margin-top:1%; border: 1px solid white;"></textarea>
                 </div>
               </div>
+            </div> -->
+
+            <div class="topDatas">
+
+              <div class="secondtopDatas">
+
+                <!-- ISSUE HEADER -->
+                <div class="issueHeader">
+
+                  <div class="issueItem">
+                    <span class="label">Issue Code:</span>
+                    <span class="value">{{issueData?.issueCode}}</span>
+                  </div>
+
+                  <div class="issueItem">
+                    <span class="label">Issue Raised Date:</span>
+                    <span class="value">{{issueData?.issueDate | date:'dd/MM/yyyy'}}</span>
+                  </div>
+
+                  <div class="issueItem">
+                    <span class="label">Status:</span>
+                    <span class="value">{{issueData?.status}}</span>
+                  </div>
+
+                  <div class="issueItem">
+                    <span class="label">Task Health:</span>
+
+                    <span class="healthCircle"
+                      [style]="(issueData?.slastatus == 'R') ? 'color:red':((issueData?.slastatus == 'Y')  ? 'color:yellow':'color:green')">
+                      <i class='bx bxs-circle'></i>
+                    </span>
+
+
+                  </div>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+                <div class="insidesecondtopDatas"
+                  *ngIf="!(issueData?.status.trim() == 'Cancelled' || issueData?.status.trim() == 'Closed')">
+
+                  <div class="resolutionDate" *ngIf="resolutionDateField">
+                    <label>Resolution Date<span style="color:red">*</span></label>
+                    <input type="datetime-local" [(ngModel)]="resolutionDate" [min]="presentTime"
+                      [disabled]="resolutionDtDisabled">
+                  </div>
+
+                  <button class="btnsTop" *ngIf="inProgress" (click)="updateStatus('In Progress')">Pick</button>
+
+                  <button class="btnsTop" *ngIf="seekClarification" (click)="updateStatus('Seek Clarification')">
+                    Seek Clarification
+                  </button>
+
+                  <button class="btnsTop" *ngIf="onHold" (click)="updateStatus('Hold')">
+                    On Hold
+                  </button>
+
+                  <button class="btnsTop" *ngIf="resolve" (click)="updateStatus('Resolved')">
+                    Resolved
+                  </button>
+
+                  <button class="btnsTop" *ngIf="forward" (click)="updateStatus('ForwardTextOpen')">
+                    Re-Assign
+                  </button>
+
+                  <button class="btnsTop" *ngIf="assign" (click)="updateStatus('assignTextOpen')">
+                    Assign
+                  </button>
+
+                  <button class="btnsTop" *ngIf="submitClarification" (click)="updateStatus('Submit Clarification')">
+                    Submit Clarification
+                  </button>
+
+                  <button class="issueBtn closeBtn" *ngIf="closeIssue" (click)="updateStatus('Closed')">
+                    Close Issue
+                  </button>
+
+                  <button class="issueBtn notResolvedBtn" *ngIf="unResolved" (click)="updateStatus('Not Resolved')">
+                    Not Resolved
+                  </button>
+
+                  <button class="issueBtn cancelBtn" *ngIf="cancel" (click)="updateStatus('Cancelled')">
+                    Cancel
+                  </button>
+
+
+                  <!-- ON HOLD SECTION -->
+                  <div *ngIf="onHoldReason" class="selectSection">
+
+                    <label>On Hold Reason</label>
+
+                    <select [(ngModel)]="onHoldComment">
+                      <option value="" disabled selected>Select Reason</option>
+                      <option *ngFor="let reason of reasonList" value="{{reason.issueOnholdCatId}}">
+                        {{reason.onholdReason}}
+                      </option>
+                    </select>
+
+                    <button class="btnsTop" (click)="updateStatus('On Hold')">
+                      Submit
+                    </button>
+
+                  </div>
+
+
+                  <!-- REASSIGN -->
+                  <div *ngIf="ForwardTextOpen" class="selectSection">
+
+                    <label>Re-Assign To</label>
+
+                    <select [(ngModel)]="forwardTo">
+
+                      <option value="" disabled selected>Select Employee</option>
+
+                      <option *ngFor="let assgn of forwardToList" value="{{assgn.empId}}">
+
+                        {{assgn.empId}} - {{assgn.firstName}} {{assgn.middleName || ''}} {{assgn.lastName || ''}}
+
+                      </option>
+
+                    </select>
+
+                    <button class="btnsTop" (click)="updateStatus('Open')">
+                      Submit
+                    </button>
+
+                  </div>
+
+
+                  <!-- ASSIGN -->
+                  <div *ngIf="AssignTextOpen" class="selectSection">
+
+                    <label>Assign To</label>
+
+                    <select [(ngModel)]="forwardTo">
+
+                      <option value="" disabled selected>Select Employee</option>
+
+                      <option *ngFor="let assgn of assignToList" value="{{assgn.empId}}">
+
+                        {{assgn.empId}} - {{assgn.firstName}} {{assgn.middleName || ''}} {{assgn.lastName || ''}}
+
+                      </option>
+
+                    </select>
+
+                    <button class="btnsTop" (click)="updateStatus('Open')">
+                      Submit
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- COMMENT BOX -->
+              <div class="commentSection" [hidden]="!ShowCommentBox">
+
+                <textarea rows="3" placeholder="Enter Comments Here..." #EnterCommentsID [(ngModel)]="commentBoxText">
+    </textarea>
+
+              </div>
+
             </div>
+
             <div class="card">
               <div class="card-body">
                 <div class="card inside_card">
@@ -138,48 +305,59 @@
                         For:</span>
                       <div class="row mt-2" style="text-align:left;">
                         <div class="col-md-3">
-                          <label  style="color: #0097ab; font-size: larger;">Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Employee ID: <span
+                              class="horinputDatas">{{EmployeeID}}</span></label>
                         </div>
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Name: <span class="horinputDatas">{{Name}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Name: <span
+                              class="horinputDatas">{{Name}}</span></label>
                         </div>
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Email: <span class="horinputDatas">{{Email}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Email: <span
+                              class="horinputDatas">{{Email}}</span></label>
                         </div>
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
-                        </div>
-                      </div>
-
-                      <div class="row" style="text-align:left;">
-                        <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Plant: <span class="horinputDatas">{{Plant}}</span></label>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Contact No: <span
+                              class="horinputDatas">{{ContactNo}}</span></label>
                         </div>
                       </div>
 
                       <div class="row" style="text-align:left;">
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Department: <span class="horinputDatas">{{Department}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Reporting Manager: <span
+                              class="horinputDatas">{{ReportingManager}}</span></label>
                         </div>
 
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Staff Category: <span
+                              class="horinputDatas">{{StaffCategory}}</span></label>
                         </div>
 
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Role: <span class="horinputDatas">{{Role}}</span></label>
+                          <label style="color: #0097ab; font-size: larger;">Plant: <span
+                              class="horinputDatas">{{Plant}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Paygroup: <span
+                              class="horinputDatas">{{Paygroup}}</span></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="text-align:left;">
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Department: <span
+                              class="horinputDatas">{{Department}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Designation: <span
+                              class="horinputDatas">{{Designation}}</span></label>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label style="color: #0097ab; font-size: larger;">Role: <span
+                              class="horinputDatas">{{Role}}</span></label>
                         </div>
 
                         <div class="col-md-3">
@@ -436,7 +614,8 @@
                       <img src="assets/image/Details.png" alt="detailsImg" class="detailImg">
                       <p style="font-size: xx-large; color: #0097ab;">Details</p>
                     </div>
-                    <div class="card report_issue_card" style="width:100%;margin-left:0; background-color: #f8f8f8;">
+
+                    <!-- <div class="card report_issue_card" style="width:100%;margin-left:0; background-color: #f8f8f8;">
                       <div class="card-body">
 
                         <div class="row mt-2">
@@ -487,9 +666,6 @@
                                 '')+' '+'-'+' '+issueData?.assignedTo}}</span></label>
                           </div>
 
-
-
-
                         </div>
 
                         <div class="row">
@@ -538,7 +714,160 @@
                         </div>
 
                       </div>
+                    </div> -->
+
+                    <div class="card report_issue_card">
+
+                      <div class="card-body">
+
+                        <!-- DETAILS SECTION -->
+
+                        <div class="issueDetailsSection">
+
+                          <div class="row mt-2">
+                            <div class="col-md-3">
+                              <label>Raised Date:</label>
+                              <span class="horinputDatas">{{issueData?.issueDate | date:'dd/MM/yyyy'}}</span>
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Plant:</label>
+                              <span class="horinputDatas">{{issueData?.plantname}}</span>
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Service-Category:</label>
+                              <span class="horinputDatas">{{issueData?.categoryName}}</span>
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Sub-Category:</label>
+                              <span class="horinputDatas">{{issueData?.categoryType}}</span>
+                            </div>
+                          </div>
+
+                          <hr>
+
+                          <div class="row">
+                            <div class="col-md-3">
+                              <label>Priority:</label>
+                              <span class="horinputDatas">{{issueData?.priorityName}}</span>
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Type:</label>
+                              <span class="horinputDatas">{{issueData?.type}}</span>
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Source:</label>
+                              <span class="horinputDatas">{{issueData?.source}}</span>
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Impacted Asset:</label>
+                              <span class="horinputDatas">
+                                {{(impactassetassetcat?.category??'')+' '+(impactassetassetcat?.category?'-':'')+'
+                                '+(impactassetassetcat?.assetNo??'')}}
+                              </span>
+                            </div>
+                          </div>
+
+                          <hr>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label>Assigned to:</label>
+                              <span class="horinputDatas">
+                                {{(issueData?.assignedToid|| '')+' - '+issueData?.assignedTo}}
+                              </span>
+                            </div>
+                          </div>
+
+                        </div>
+
+
+                        <!-- DESCRIPTION SECTION -->
+
+                        <div class="descriptionSection">
+
+                          <h5 class="sectionTitle">Subject</h5>
+
+                          <div class="row">
+                            <div class="col-md-12">
+
+                              <div class="subjectBox">
+                                <div class="subjectValue">
+                                  {{issueData?.issueShotDesc}}
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="report_description">
+                                <label style=" color: #1a8a94; font-weight: 600;">Description<span
+                                    style="color:red">*</span></label>
+                                <textarea [(ngModel)]="description" style="width:100%;padding:5px;background:white;"
+                                  disabled rows="2" cols="50"></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                          <!-- ATTACHMENT -->
+
+                          <div class="row mt-3">
+
+                            <div class="col-md-12">
+
+                              <div class="report_description">
+                                <label style="color: #1a8a94; font-weight: 600;">Attachment</label>
+                                <div *ngFor="let attachment of attachmentsList;">
+                                  <div>
+                                    {{attachment.fileName}}
+                                    <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
+                                      (click)="viewFileM(attachment)"></i>
+                                    <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true"
+                                      style="margin-left: 10px;" (click)="downFile(attachment)"></i>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+                          </div>
+
+
+                          <!-- RESOLUTION DATE -->
+
+                          <div class="row mt-3">
+
+                            <div class="col-md-12">
+
+                              <label class="subHeading" style="color: #1a8a94; font-weight: 600;">
+                                PROPOSED RESOLUTION DATE<span style="color:red">*</span>
+                              </label>
+
+                              <div class="resolutionBox">
+
+                                <input type="datetime-local" [(ngModel)]="ProposedResolution" readonly />
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
                     </div>
+
                   </div>
 
                 </div>
@@ -557,7 +886,7 @@
                   Clarification</button>
                 <button class="btnsTop" *ngIf="closeIssue" (click)="scrollToTop()">Close Issue</button>
                 <button class="btnsTop" *ngIf="unResolved" (click)="scrollToTop()">Not resolved</button>
-                <button class="btnsTop" *ngIf="cancel" (click)="scrollToTop()">Cancel</button>
+                <button class="issueBtn cancelBtn" *ngIf="cancel" (click)="scrollToTop()">Cancel</button>
 
               </div>
             </div>
@@ -602,7 +931,7 @@
 
           <div class="panel-content open">
             <div>
-              <table class="table" style="width:100%; ">
+              <table class="table" style="width:100%;">
                 <thead class="thead-dark">
                   <tr>
                     <th>Issue Date</th>

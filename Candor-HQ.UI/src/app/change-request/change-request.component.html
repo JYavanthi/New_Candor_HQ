@@ -20,19 +20,26 @@
       <p>{{deletemessage}}</p>
       <span class="close-btn" (click)="navigatesuccess()">Ok</span>
     </div>
-    <div class="text-center">
+    <div class="text-center change-header">
+      <img src="assets/image/changeRequest.png" alt="Change Request Icon" class="header-icon">
       <h1>Change Request</h1>
     </div>
+
+
     <div class="btn-approve">
       <button class="button-approve" [disabled]="!ischangeanalyst" [routerLink]="'/new-change'"
-        [ngStyle]="{'background-color': (!ischangeanalyst) ? 'gray' : '#3c8dbc'}">New Change Request</button>
-      <!--<button class="button-approve"  [disabled]="isapprover || issupportegineer" [routerLink]="'/new-change'">New Change Request</button>-->&nbsp;
+        [ngStyle]="{'opacity': (!ischangeanalyst) ? '0.6' : '1'}">New Change Request</button>
       <button class="button-approve" [disabled]="!isapprover" (click)="gotoapprove('profile')"
-        [ngStyle]="{'background-color': (!isapprover) ? 'gray' : '#3c8dbc'}">Approve</button>&nbsp;
+        [ngStyle]="{'opacity': (!isapprover) ? '0.6' : '1'}">Approve</button>&nbsp;
       <button class="button-approve" [disabled]="!issupportegineer" (click)="goToTab('contact')"
-        [ngStyle]="{'background-color': (!issupportegineer) ? 'gray' : '#3c8dbc'}">Execute</button>&nbsp;
-      <button class="button-approve" [routerLink]="'/change_request_report'">Reports</button>
+        [ngStyle]="{'opacity': (!issupportegineer) ? '0.6' : '1'}">Execute</button>&nbsp;
+      <!-- <button class="button-approve" [routerLink]="'/change_request_report'">Reports</button> -->
+      <button class="button-approve" [routerLink]="'/change_request_report'" routerLinkActive="active-btn">
+        Reports
+      </button>
     </div>
+
+
     <br />
     <br />
     <div class="notification-confirm" *ngIf="deleteconfirmation">
@@ -46,6 +53,7 @@
       <p>{{deleteinmessage}}</p>
       <span class="close-btn" (click)="navigateinprogress()">Ok</span>
     </div>
+
     <div class="card change_request_card_filter" [formGroup]="filterForm">
       <div class="card-body card_body_filter">
         <div class="row filter_cr">
@@ -54,19 +62,13 @@
             <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings" [data]="dropdownList"
               formControlName="plantId">
             </ng-multiselect-dropdown>
-            <!--<select [(ngModel)]="plantscode" class="input-change">
-    <option selected>Select-plant</option>
-    <option *ngFor="let plantid of plantcode" [value]="plantid.id">{{plantid.code}}</option>
-  </select>-->
+
           </div>
           <div class="col">
             <label>Category</label><br />
             <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdowncategroy" formControlName="Category">
             </ng-multiselect-dropdown>
-            <!-- <select [(ngModel)]="categoryids" class="input-change">
-     <option selected>Select-category</option>
-     <option *ngFor="let catid of categorydata" [value]="catid.itcategoryId">{{catid.categoryName}}</option>
-   </select>-->
+
           </div>
           <div class="col">
             <label>Classifications</label><br />
@@ -77,7 +79,7 @@
             </select>
           </div>
           <div class="col">
-            <label>Priority</label><br />
+            <label style="margin-left : 18%;">Priority</label><br />
             <select formControlName="Priority" class="input-change">
               <option selected hidden disabled value="">Select-priority</option>
               <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">{{prio.priorityName}}</option>
@@ -126,15 +128,13 @@
           </div>
         </div>
         <div class="access-checkbox">
-          <div>
-            <input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
-          </div>
+
           <div>
             <button class="btn btn-rounded filter_button" (click)="onclickfilter()">Filter</button>&nbsp;&nbsp;&nbsp;
           </div>
           <div>
-            <button (click)="resetfn()" type="reset"
-              class="btn btn-rounded filter_button">Reset</button>&nbsp;&nbsp;&nbsp;
+            <button (click)="resetfn()" type="reset" class="btn btn-rounded filter_button"
+              style="background: #168a93; border-color: white;">Reset</button>&nbsp;&nbsp;&nbsp;
           </div>
           <div *ngIf="isassignappbutton">
             <button (click)="isassignbutton()" class="btn btn-rounded filter_button">Assigned To Me</button>&nbsp;&nbsp;
@@ -150,11 +150,12 @@
         </div>
       </div>
     </div>
-    <div>
-      <h1 style="margin-left:3%;margin-bottom:1%;" *ngIf="ischangeanalyst"><b><u style="font-size: 21px;">CHANGE
-            ANALYST</u></b></h1>
-      <div class="table-wrapper p-3">
-        <table class="fl-table" style="width:100%;margin-left:-1%">
+
+
+    <div class="section-card" *ngIf="ischangeanalyst">
+      <h3 class="section-title">CHANGE ANALYST</h3>
+      <div class="custom-table">
+        <table class="fl-table" style="width:100%;margin-left:0%">
           <thead *ngIf="ischangeanalyst" class="table-head">
             <tr class="border-bottom">
               <th style="width:5%">Select</th>
@@ -170,10 +171,9 @@
               <th style="width:5%">RFC Date</th>
               <th style="width:5%">Expected Date of Completion</th>
               <th style="width:5%">Task Count</th>
-              <!--<th>Attachments</th>-->
             </tr>
           </thead>
-          <tbody *ngIf="ischangeanalyst && viewchangerequest.length > 0; else noData">
+          <tbody *ngIf="viewchangerequest.length > 0; else noData">
             <tr class="tr-body" *ngFor="let pltdata of viewchangerequest">
               <td><input type="radio" (click)="onRadioSelect(pltdata)" name="one" id="one" /></td>
               <td>
@@ -219,15 +219,12 @@
               <td>{{pltdata.crdate | date:'dd-MM-yyyy' }}</td>
               <td>{{pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>
               <td>{{pltdata.taskcount}}</td>
-              <!--<td><i class="fa fa-download" aria-hidden="true"></i></td>-->
 
             </tr>
 
           </tbody>
           <ng-template #noData>
-            <tr *ngIf="ischangeanalyst">
-              <td colspan="13">There are no RFCs</td>
-            </tr>
+            <div class="no-data">There are no RFC#</div>
           </ng-template>
         </table>
       </div>
@@ -240,10 +237,9 @@
 
       <br *ngIf="issuperadmin" />
       <br *ngIf="issuperadmin" />
-      <h1 style="margin-left:3%;margin-bottom:1%;" *ngIf="issupportegineer"><b><u style="font-size: 21px;">SUPPORT
-            ENGINEER-TASK ASSIGNED</u></b></h1>
-      <div class="table-wrapper p-3">
-        <table class="fl-table" style="width:100%;margin-left:-1%;">
+      <h3 class="section-title" *ngIf="issupportegineer">SUPPORT ENGINEER-TASK ASSIGNED</h3>
+      <div class="custom-table">
+        <table style="width:100%;margin-left:0%;">
           <thead *ngIf="issupportegineer" class="table-head">
             <tr class="border-bottom ">
               <th>Select</th>
@@ -262,7 +258,7 @@
               <th>Task Count</th>
             </tr>
           </thead>
-          <tbody *ngIf="issupportegineer && filterexecutdata.length > 0; else novalue">
+          <tbody *ngIf="viewchangerequest.length > 0; else noData">
             <tr class="tr-body" *ngFor="let pltdata of filterexecutdata">
               <td><input type="radio" (change)="onRadioSelect(pltdata)" name="one" id="one" /></td>
               <td>
@@ -310,51 +306,9 @@
             </tr>
 
           </tbody>
-          <ng-template #novalue>
-            <tr *ngIf="issupportegineer ">
-              <td colspan="13">There are no RFCs</td>
-            </tr>
+          <ng-template #noData>
+            <div class="no-data">There are no RFC#</div>
           </ng-template>
-          <!--<tbody *ngIf="issupportegineer">
-        <tr class="tr-body" *ngFor="let pltdata of supporassignto">
-          <td><input type="radio" (change)="onRadioSelect(pltdata)" name="one" id="one" /></td>
-          <td>
-            <a href="" *ngIf="pltdata.status!='Cancelled'" (click)="onRadio(pltdata)" routerLink="/executive/{{pltdata.itcrid}}/edit">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </a>
-          </td>
-
-          <td>{{pltdata.crcode}}</td>
-          <td>{{pltdata.itcrExecID}}</td>
-          <td>{{pltdata.crowner}}</td>
-          <td>{{pltdata.changeDesc}}</td>
-          <td>{{pltdata.stage}}</td>
-          <td [ngSwitch]="pltdata.status.trim()">
-            <span *ngSwitchCase="'Draft'"> <span style="color: #3c8dbc;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Pending Approval'"> <span style="color: #808080ff; ">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Submitted'"> <span style="color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Approved'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Approved level1'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Approved level2'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Completed'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Rejected'"> <span style="color: red;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Seek Clarification'"> <span style="color:cornflowerblue;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Implement'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Implemented'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Pending'"> <span style="color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Released'"> <span style="color: rgb(154, 235, 73);">{{ pltdata.status }}</span></span>
-            <span *ngSwitchCase="'Cancelled'"> <span style="color: rgb(255, 0,0);">{{ pltdata.status }}</span></span>
-
-          </td>
-          <td>{{pltdata.taskstatus}}</td>
-          <td>{{pltdata.categoryName}}</td>
-          <td>{{pltdata.classificationName}}</td>
-          <td>{{pltdata.crdate | date:'dd-MM-yyyy' }}</td>
-          <td>{{pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>-->
-          <!--<td><i class="fa fa-download" aria-hidden="true"></i></td>-->
-          <!--<td>{{pltdata.taskcount}}</td>
-          </tr>
-        </tbody>-->
         </table>
 
       </div>
@@ -367,10 +321,11 @@
 
       <br *ngIf="issuperadmin" />
       <br *ngIf="issuperadmin" />
-      <h1 style="margin-left:3%;margin-bottom:1%;" *ngIf="isapprover"><b><u style="font-size: 21px;">APPROVAL -
-            PENDING</u></b></h1>
-      <div class="table-wrapper p-3">
-        <table class="fl-table" style="width:100%;margin-left:-1%;">
+
+      <h1 class="section-title">APPROVAL -
+        PENDING</h1>
+      <div class="custom-table">
+        <table style="width:100%; margin-left: 0%;">
           <thead *ngIf="isapprover" class="table-head">
             <tr class="border-bottom">
               <th>Select</th>
@@ -387,11 +342,10 @@
               <th>RFC Date</th>
               <th>Expected Date of Completion</th>
               <th>Task Count</th>
-              <!--<th>Attachments</th>-->
 
             </tr>
           </thead>
-          <tbody *ngIf="isapprover && filtersapprvdata.length > 0; else noappvalue">
+          <tbody *ngIf="viewchangerequest.length > 0; else noData">
             <tr class="tr-body" *ngFor="let pltdata of filtersapprvdata">
               <td><input type="radio" (change)="onRadioSelect(pltdata)" name="one" id="one" /></td>
               <td>
@@ -437,59 +391,11 @@
               <td>{{pltdata.taskcount}}</td>
           </tbody>
 
-          <ng-template #noappvalue>
-            <tr *ngIf="isapprover">
-              <td colspan="13">There are no RFCs</td>
-            </tr>
+          <ng-template #noData>
+            <div class="no-data">There are no RFC#</div>
           </ng-template>
 
-          <!--<tbody *ngIf="assignedtodata && isassigntome.length > 0; else noappasgnvalue">
-  <tr class="tr-body" *ngFor="let pltdata of isassigntome">
-    <td><input type="radio" (change)="onRadioSelect(pltdata)" name="one" id="one" /></td>
-    <td>
-      <a href="" (click)="onRadio(pltdata)" routerLink="/executive/{{pltdata.itcrid}}/edit">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-      </a>
-    </td>
 
-    <td>{{pltdata.crcode}}</td>
-    <td>{{pltdata.crrequestorName}}</td>
-    <td>{{pltdata.changeDesc}}</td>
-    <td>{{pltdata.stage}}</td>
-    <td [ngSwitch]="pltdata.status.trim()">
-      <span *ngSwitchCase="'Draft'"> <span style="color: #3c8dbc;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Pending Approval'"> <span style="color: #808080ff; ">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Submitted'"> <span style="color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Approved'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Approved level1'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Approved level2'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Completed'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Rejected'"> <span style="color: red;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Seek Clarification'"> <span style="color:cornflowerblue;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Implement'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Implemented'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Pending'"> <span style="color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Released'"> <span style="color: rgb(154, 235, 73);">{{ pltdata.status }}</span></span>
-      <span *ngSwitchCase="'Cancelled'"> <span style="color: rgb(255, 0,0);">{{ pltdata.status }}</span></span>
-
-    </td>
-
-    <td>{{pltdata.categoryName}}</td>
-    <td>{{pltdata.classificationName}}</td>
-    <td>{{pltdata.crdate | date:'dd-MM-yyyy' }}</td>
-    <td>{{pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>-->
-          <!--<td><i class="fa fa-download" aria-hidden="true"></i></td>-->
-          <!--<td hidden>{{pltdata.isApproved}}</td>
-      <td>{{pltdata.taskcount}}</td>
-
-    </tr>
-
-  </tbody>
-  <ng-template #noappasgnvalue>
-    <tr *ngIf="assignedtodata">
-      <td colspan="13">There are no RFCs</td>
-    </tr>
-  </ng-template>-->
         </table>
       </div>
       <div *ngIf="isapprover && filtersapprvdata.length > 0">

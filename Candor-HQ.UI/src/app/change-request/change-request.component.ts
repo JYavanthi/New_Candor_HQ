@@ -9,6 +9,7 @@ import { UserInfoSerService } from 'app/services/user-info-ser.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFilePopUpComponent } from './add-file-pop-up/add-file-pop-up.component';
 import { environment } from '@environments/environment';
+import { firstValueFrom } from 'rxjs';
 interface DropdownItem {
   item_id: number;
   item_text: string;
@@ -30,11 +31,11 @@ export class ChangeRequestComponent {
   filterForm: any;
   getcrcode: string = '';
   user: any;
-  currentDate=new Date().toISOString().slice(0,10);
+  currentDate = new Date().toISOString().slice(0, 10);
 
 
   constructor(private http: HttpClient, private routeservice: PasscrdataService, private router: Router, private route: ActivatedRoute,
-    private fb: FormBuilder, private userInfo : UserInfoSerService) {
+    private fb: FormBuilder, private userInfo: UserInfoSerService) {
 
     this.routeservice.crdata.subscribe(data => {
       if (data && data.report) {
@@ -45,7 +46,7 @@ export class ChangeRequestComponent {
     this.routeservice.getsupportteam();
     this.supportid = this.routeservice.supporterID;
     this.supportname = this.routeservice.supporterName;
-    this.user=this.userInfo.getUser()
+    this.user = this.userInfo.getUser()
     const currentDate = new Date();
     this.today = currentDate.toISOString().slice(0, 10);
     this.getsupportteams();
@@ -56,16 +57,16 @@ export class ChangeRequestComponent {
 
   ngOnInit(): void {
     this.loadData();
-    this.filterForm=this.fb.group({
-      plantId:[],
-      Category:[],
-      ClassificationId:'',
-      Priority:'',
-      StartDate:'',
-      EndDate:'',
-      Status:'',
-      rfcChangeNumber:'',
-      stage:''
+    this.filterForm = this.fb.group({
+      plantId: [],
+      Category: [],
+      ClassificationId: '',
+      Priority: '',
+      StartDate: '',
+      EndDate: '',
+      Status: '',
+      rfcChangeNumber: '',
+      stage: ''
     })
   }
 
@@ -119,7 +120,7 @@ export class ChangeRequestComponent {
         //this.crfilter = response.filter((item: any) => item.changeRequestor === parseInt(this.supportid));
         this.rptfilter = response.filter((item: any) => item.changeRequestor === parseInt(this.supportid));
         this.viewchangerequest = response.filter((item: any) => item.changeRequestor === parseInt(this.supportid));
-        console.log('response',this.viewchangerequest );
+        console.log('response', this.viewchangerequest);
         this.filtersdata = this.parseAndSortResponse(this.rptfilter);
         this.totalItems = this.rptfilter.length;
         const startIndex = this.pageIndex * this.pageSize;
@@ -134,9 +135,9 @@ export class ChangeRequestComponent {
     }
   }
 
-  
-  downFile(fileName:any): void {
-    const apiUrl = this.apiurl+'/ChangeRequest/Download/'+fileName.attachId
+
+  downFile(fileName: any): void {
+    const apiUrl = this.apiurl + '/ChangeRequest/Download/' + fileName.attachId
 
     this.http.get(apiUrl, { responseType: 'blob' }).subscribe(
       (response: Blob) => {
@@ -237,26 +238,26 @@ export class ChangeRequestComponent {
 
   filterChangeCr() {
     this.viewchangerequest = this.rptfilter
-    this.viewchangerequest = this.viewchangerequest.filter(m=>{
+    this.viewchangerequest = this.viewchangerequest.filter(m => {
       return (
-        ((this.filterForm.controls['plantId'].value==null||
-      this.filterForm.controls['plantId'].value.length==0)?true:(this.filterForm.controls['plantId'].value.map((b:any)=>{return b.item_id}).indexOf(m.plantcode)!=-1))
-      &&((this.filterForm.controls['Category'].value==null||
-      this.filterForm.controls['Category'].value.length==0)?true:(this.filterForm.controls['Category'].value.map((a:any)=>{return a.item_id}).indexOf(m.itcategoryId)!=-1))
-      &&((this.filterForm.controls['ClassificationId'].value==''||this.filterForm.controls['ClassificationId'].value==null)?
-      true:(m.itclassificationId==this.filterForm.controls['ClassificationId'].value))
-      &&((this.filterForm.controls['Priority'].value==''||this.filterForm.controls['Priority'].value==null)?
-      true:(m.priorityType==this.filterForm.controls['Priority'].value))
-      &&((this.filterForm.controls['Status'].value==''||this.filterForm.controls['Status'].value==null)?
-      true:(m.status==this.filterForm.controls['Status'].value))
-      &&((this.filterForm.controls['StartDate'].value==''||this.filterForm.controls['StartDate'].value==null)?
-      true:(m.crdate.split('T')[0]>=this.filterForm.controls['StartDate'].value))
-      &&((this.filterForm.controls['EndDate'].value==''||this.filterForm.controls['EndDate'].value==null)?
-      true:(m.crdate.split('T')[0]<=this.filterForm.controls['EndDate'].value))
-      &&((this.filterForm.controls['rfcChangeNumber'].value==''||this.filterForm.controls['rfcChangeNumber'].value==null)?
-      true:(m.crcode==this.filterForm.controls['rfcChangeNumber'].value))
-      &&((this.filterForm.controls['stage'].value==''||this.filterForm.controls['stage'].value==null)?
-      true:(m.stage==this.filterForm.controls['stage'].value))
+        ((this.filterForm.controls['plantId'].value == null ||
+          this.filterForm.controls['plantId'].value.length == 0) ? true : (this.filterForm.controls['plantId'].value.map((b: any) => { return b.item_id }).indexOf(m.plantcode) != -1))
+        && ((this.filterForm.controls['Category'].value == null ||
+          this.filterForm.controls['Category'].value.length == 0) ? true : (this.filterForm.controls['Category'].value.map((a: any) => { return a.item_id }).indexOf(m.itcategoryId) != -1))
+        && ((this.filterForm.controls['ClassificationId'].value == '' || this.filterForm.controls['ClassificationId'].value == null) ?
+          true : (m.itclassificationId == this.filterForm.controls['ClassificationId'].value))
+        && ((this.filterForm.controls['Priority'].value == '' || this.filterForm.controls['Priority'].value == null) ?
+          true : (m.priorityType == this.filterForm.controls['Priority'].value))
+        && ((this.filterForm.controls['Status'].value == '' || this.filterForm.controls['Status'].value == null) ?
+          true : (m.status == this.filterForm.controls['Status'].value))
+        && ((this.filterForm.controls['StartDate'].value == '' || this.filterForm.controls['StartDate'].value == null) ?
+          true : (m.crdate.split('T')[0] >= this.filterForm.controls['StartDate'].value))
+        && ((this.filterForm.controls['EndDate'].value == '' || this.filterForm.controls['EndDate'].value == null) ?
+          true : (m.crdate.split('T')[0] <= this.filterForm.controls['EndDate'].value))
+        && ((this.filterForm.controls['rfcChangeNumber'].value == '' || this.filterForm.controls['rfcChangeNumber'].value == null) ?
+          true : (m.crcode == this.filterForm.controls['rfcChangeNumber'].value))
+        && ((this.filterForm.controls['stage'].value == '' || this.filterForm.controls['stage'].value == null) ?
+          true : (m.stage == this.filterForm.controls['stage'].value))
       )
     })
 
@@ -328,7 +329,7 @@ export class ChangeRequestComponent {
 
   selectradio: any = '';
   gotoapprove(tabId: string) {
-    if (this.selectradio!='') {
+    if (this.selectradio != '') {
       const itcrid = this.selectradio.itcrid;
       this.router.navigate([`/executive/${itcrid}/edit`], { fragment: tabId });
       setTimeout(() => {
@@ -358,16 +359,16 @@ export class ChangeRequestComponent {
   }
 
   goToTab(tabId: string) {
-    if (this.selectradio=='') {
-        alert("Select the RFC")
-      }
+    if (this.selectradio == '') {
+      alert("Select the RFC")
+    }
     else {
-        const itcrid = this.selectradio.itcrid;
-        this.router.navigate([`/executive/${itcrid}/edit`], { fragment: tabId });
-        setTimeout(() => {
-          this.excutepage();
-        },1000);
-      }
+      const itcrid = this.selectradio.itcrid;
+      this.router.navigate([`/executive/${itcrid}/edit`], { fragment: tabId });
+      setTimeout(() => {
+        this.excutepage();
+      }, 1000);
+    }
   }
 
   excutepage() {
@@ -395,7 +396,7 @@ export class ChangeRequestComponent {
     }
     else if (this.getstatus != 'Rejected') {
       const actvFlg = { activeFlg: 'true' }
-      let urlNavigate = '/executive/' +  (row['ITCRID']?row['ITCRID']:row['itcrid'])+ '/edit'
+      let urlNavigate = '/executive/' + (row['ITCRID'] ? row['ITCRID'] : row['itcrid']) + '/edit'
       this.router.navigate([urlNavigate]);
     }
   }
@@ -438,26 +439,26 @@ export class ChangeRequestComponent {
 
   filtersupportengineer() {
     this.filterexecutdata = this.supportengineers
-    this.filterexecutdata = this.filterexecutdata.filter(m=>{
+    this.filterexecutdata = this.filterexecutdata.filter(m => {
       return (
-    ((this.filterForm.controls['plantId'].value==null||
-    this.filterForm.controls['plantId'].value.length==0)?true:(this.filterForm.controls['plantId'].value.map((b:any)=>{return b.item_id}).indexOf(m.plantcode)!=-1))
-    &&((this.filterForm.controls['Category'].value==null||
-    this.filterForm.controls['Category'].value.length==0)?true:(this.filterForm.controls['Category'].value.map((a:any)=>{return a.item_id}).indexOf(m.itcategoryId)!=-1))
-    &&((this.filterForm.controls['ClassificationId'].value==''||this.filterForm.controls['ClassificationId'].value==null)?
-    true:(m.itclassificationId==this.filterForm.controls['ClassificationId'].value))
-    &&((this.filterForm.controls['Priority'].value==''||this.filterForm.controls['Priority'].value==null)?
-    true:(m.priorityType==this.filterForm.controls['Priority'].value))
-    &&((this.filterForm.controls['Status'].value==''||this.filterForm.controls['Status'].value==null)?
-    true:(m.status==this.filterForm.controls['Status'].value))
-    &&((this.filterForm.controls['StartDate'].value==''||this.filterForm.controls['StartDate'].value==null)?
-    true:(m.crdate.split('T')[0]>=this.filterForm.controls['StartDate'].value))
-    &&((this.filterForm.controls['EndDate'].value==''||this.filterForm.controls['EndDate'].value==null)?
-    true:(m.crdate.split('T')[0]<=this.filterForm.controls['EndDate'].value))
-    &&((this.filterForm.controls['rfcChangeNumber'].value==''||this.filterForm.controls['rfcChangeNumber'].value==null)?
-    true:(m.crcode==this.filterForm.controls['rfcChangeNumber'].value))
-    &&((this.filterForm.controls['stage'].value==''||this.filterForm.controls['stage'].value==null)?
-    true:(m.stage==this.filterForm.controls['stage'].value))
+        ((this.filterForm.controls['plantId'].value == null ||
+          this.filterForm.controls['plantId'].value.length == 0) ? true : (this.filterForm.controls['plantId'].value.map((b: any) => { return b.item_id }).indexOf(m.plantcode) != -1))
+        && ((this.filterForm.controls['Category'].value == null ||
+          this.filterForm.controls['Category'].value.length == 0) ? true : (this.filterForm.controls['Category'].value.map((a: any) => { return a.item_id }).indexOf(m.itcategoryId) != -1))
+        && ((this.filterForm.controls['ClassificationId'].value == '' || this.filterForm.controls['ClassificationId'].value == null) ?
+          true : (m.itclassificationId == this.filterForm.controls['ClassificationId'].value))
+        && ((this.filterForm.controls['Priority'].value == '' || this.filterForm.controls['Priority'].value == null) ?
+          true : (m.priorityType == this.filterForm.controls['Priority'].value))
+        && ((this.filterForm.controls['Status'].value == '' || this.filterForm.controls['Status'].value == null) ?
+          true : (m.status == this.filterForm.controls['Status'].value))
+        && ((this.filterForm.controls['StartDate'].value == '' || this.filterForm.controls['StartDate'].value == null) ?
+          true : (m.crdate.split('T')[0] >= this.filterForm.controls['StartDate'].value))
+        && ((this.filterForm.controls['EndDate'].value == '' || this.filterForm.controls['EndDate'].value == null) ?
+          true : (m.crdate.split('T')[0] <= this.filterForm.controls['EndDate'].value))
+        && ((this.filterForm.controls['rfcChangeNumber'].value == '' || this.filterForm.controls['rfcChangeNumber'].value == null) ?
+          true : (m.crcode == this.filterForm.controls['rfcChangeNumber'].value))
+        && ((this.filterForm.controls['stage'].value == '' || this.filterForm.controls['stage'].value == null) ?
+          true : (m.stage == this.filterForm.controls['stage'].value))
       )
     })
     this.totalItemsforsupport = this.filterexecutdata.length;
@@ -552,6 +553,7 @@ export class ChangeRequestComponent {
 
   issuperadmin: boolean = false;
   supportadmin() {
+  
     if (this.isapprover == true && this.ischangeanalyst == true && this.issupportegineer == true) {
       this.issuperadmin = true;
       this.issupegineerasignbtn = false;
@@ -582,33 +584,67 @@ export class ChangeRequestComponent {
   }
 
   filteredList: any[] = [];
+
+
+  // async changeapprovers() {
+  //   const apiUrls = this.apiurl + '/VwApproverCR/getPendingForApprovalCR?id='+this.user?.supportTeamData?.supportTeamId
+
+  //   try {
+  //     const response: any = await this.http.get(apiUrls,).toPromise();
+
+  //     if (response) {
+  //       this.changeapprover = response;
+
+  //       this.filteredList = this.changeapprover
+  //       this.filtersapprvdata = this.parseAndSortResponse(this.filteredList);
+  //       this.totalItemsforapprover = this.filteredList.length;
+  //       this.filtersapprvdata = this.filtersapprvdata.slice(this.pageIndexforapprover * this.pageSizeforapprover, (this.pageIndexforapprover + 1) * this.pageSizeforapprover);
+  //       this.filterapprover();
+  //     } else {
+  //       console.error('Response is undefined or null');
+  //     }
+  //   } catch (error) {
+  //     console.error('GET request failed', error);
+  //   }
+  // }
+
   async changeapprovers() {
-    const apiUrls = this.apiurl + '/VwApproverCR/getPendingForApprovalCR?id='+this.user?.supportTeamData?.supportTeamId
+
+    const supportId = this.user?.supportTeamData?.supportTeamId;
+
+    if (!supportId) {
+      console.error('SupportTeamId is missing');
+      return;
+    }
+
+    const apiUrls = `${this.apiurl}/VwApproverCR/getPendingForApprovalCR?id=${supportId}`;
 
     try {
-      const response: any = await this.http.get(apiUrls,).toPromise();
+      const response: any = await firstValueFrom(this.http.get(apiUrls));
 
-      if (response) {
-        this.changeapprover = response;
+      const data = Array.isArray(response)
+        ? response
+        : response?.data || [];
 
-        this.filteredList = this.changeapprover
-        // this.changeapprover.filter(changeAP => {
-        //   const match = this.getsupportteamassignList.find(getsupportteam =>
-        //     parseInt(changeAP.plantcode) == parseInt(getsupportteam.plantId) &&
-        //     parseInt(changeAP.itcategoryId) == parseInt(getsupportteam.categoryId)  &&
-        //     parseInt(changeAP.itclassificationId) == parseInt(getsupportteam.classificationId) &&
-        //     parseInt(getsupporttefam.supportTeamId) == parseInt(this.getsupportid));
-        //   return !!match;
-        // });
-        this.filtersapprvdata = this.parseAndSortResponse(this.filteredList);
-        this.totalItemsforapprover = this.filteredList.length;
-        this.filtersapprvdata = this.filtersapprvdata.slice(this.pageIndexforapprover * this.pageSizeforapprover, (this.pageIndexforapprover + 1) * this.pageSizeforapprover);
-        this.filterapprover();
-      } else {
-        console.error('Response is undefined or null');
-      }
-    } catch (error) {
-      console.error('GET request failed', error);
+      this.changeapprover = data;
+      this.filteredList = data;
+
+      this.filtersapprvdata = this.parseAndSortResponse(data);
+
+      this.totalItemsforapprover = data.length;
+
+      this.filtersapprvdata = this.filtersapprvdata.slice(
+        this.pageIndexforapprover * this.pageSizeforapprover,
+        (this.pageIndexforapprover + 1) * this.pageSizeforapprover
+      );
+
+      this.filterapprover();
+
+    } catch (error: any) {
+      console.error('GET request failed');
+      console.error('Status:', error?.status);
+      console.error('Message:', error?.message);
+      console.error('Error Body:', error?.error);
     }
   }
 
@@ -633,25 +669,25 @@ export class ChangeRequestComponent {
 
   filterapprover() {
     this.filtersapprvdata = this.filteredList;
-    this.filtersapprvdata = this.filtersapprvdata.filter(m=>{
-      return ((this.filterForm.controls['plantId'].value==null||
-      this.filterForm.controls['plantId'].value.length==0)?true:(this.filterForm.controls['plantId'].value.map((b:any)=>{return b.item_id}).indexOf(m.plantcode)!=-1))
-      &&((this.filterForm.controls['Category'].value==null||
-      this.filterForm.controls['Category'].value.length==0)?true:(this.filterForm.controls['Category'].value.map((a:any)=>{return a.item_id}).indexOf(m.itcategoryId)!=-1))
-      &&((this.filterForm.controls['ClassificationId'].value==''||this.filterForm.controls['ClassificationId'].value==null)?
-      true:(m.itclassificationId==this.filterForm.controls['ClassificationId'].value))
-      &&((this.filterForm.controls['Priority'].value==''||this.filterForm.controls['Priority'].value==null)?
-      true:(m.priorityType==this.filterForm.controls['Priority'].value))
-      &&((this.filterForm.controls['Status'].value==''||this.filterForm.controls['Status'].value==null)?
-      true:(m.status==this.filterForm.controls['Status'].value))
-      &&((this.filterForm.controls['StartDate'].value==''||this.filterForm.controls['StartDate'].value==null)?
-      true:(m.crdate.split('T')[0]>=this.filterForm.controls['StartDate'].value))
-      &&((this.filterForm.controls['EndDate'].value==''||this.filterForm.controls['EndDate'].value==null)?
-      true:(m.crdate.split('T')[0]<=this.filterForm.controls['EndDate'].value))
-      &&((this.filterForm.controls['rfcChangeNumber'].value==''||this.filterForm.controls['rfcChangeNumber'].value==null)?
-      true:(m.crcode==this.filterForm.controls['rfcChangeNumber'].value))
-      &&((this.filterForm.controls['stage'].value==''||this.filterForm.controls['stage'].value==null)?
-      true:(m.stage==this.filterForm.controls['stage'].value))
+    this.filtersapprvdata = this.filtersapprvdata.filter(m => {
+      return ((this.filterForm.controls['plantId'].value == null ||
+        this.filterForm.controls['plantId'].value.length == 0) ? true : (this.filterForm.controls['plantId'].value.map((b: any) => { return b.item_id }).indexOf(m.plantcode) != -1))
+        && ((this.filterForm.controls['Category'].value == null ||
+          this.filterForm.controls['Category'].value.length == 0) ? true : (this.filterForm.controls['Category'].value.map((a: any) => { return a.item_id }).indexOf(m.itcategoryId) != -1))
+        && ((this.filterForm.controls['ClassificationId'].value == '' || this.filterForm.controls['ClassificationId'].value == null) ?
+          true : (m.itclassificationId == this.filterForm.controls['ClassificationId'].value))
+        && ((this.filterForm.controls['Priority'].value == '' || this.filterForm.controls['Priority'].value == null) ?
+          true : (m.priorityType == this.filterForm.controls['Priority'].value))
+        && ((this.filterForm.controls['Status'].value == '' || this.filterForm.controls['Status'].value == null) ?
+          true : (m.status == this.filterForm.controls['Status'].value))
+        && ((this.filterForm.controls['StartDate'].value == '' || this.filterForm.controls['StartDate'].value == null) ?
+          true : (m.crdate.split('T')[0] >= this.filterForm.controls['StartDate'].value))
+        && ((this.filterForm.controls['EndDate'].value == '' || this.filterForm.controls['EndDate'].value == null) ?
+          true : (m.crdate.split('T')[0] <= this.filterForm.controls['EndDate'].value))
+        && ((this.filterForm.controls['rfcChangeNumber'].value == '' || this.filterForm.controls['rfcChangeNumber'].value == null) ?
+          true : (m.crcode == this.filterForm.controls['rfcChangeNumber'].value))
+        && ((this.filterForm.controls['stage'].value == '' || this.filterForm.controls['stage'].value == null) ?
+          true : (m.stage == this.filterForm.controls['stage'].value))
     })
     this.totalItemsforapprover = this.filtersapprvdata.length;
 
@@ -667,7 +703,7 @@ export class ChangeRequestComponent {
     this.isassigntome = this.changeapprover.filter((item: any) => (item.approver1 === parseInt(this.getsupportid) || item.approver2 === parseInt(this.getsupportid) || item.approver3 === parseInt(this.getsupportid)));
     this.isassigntome = this.isassigntome.filter((item: any) => (item.status.trim() !== "Approved") && (item.status.trim() !== "Completed"));
     this.isassigntome = this.parseAndSortResponse(this.isassigntome);
-   }
+  }
 
   allcrdata: boolean = true;
   assignedtodata: boolean = false;
@@ -680,15 +716,15 @@ export class ChangeRequestComponent {
 
 
   resetfn() {
-    this.statusfilter='';
-    this.plantscode='';
-    this.categoryids='';
-    this.classificationid= '';
-    this.prioritytypeid  = '';
+    this.statusfilter = '';
+    this.plantscode = '';
+    this.categoryids = '';
+    this.classificationid = '';
+    this.prioritytypeid = '';
     this.fromDt = '';
     this.endDt = '';
     this.searchrfcnumber = '';
-    this.filterflag= false;
+    this.filterflag = false;
 
     this.filterForm.reset()
     this.filterChangeCr()
@@ -744,7 +780,7 @@ export class ChangeRequestComponent {
 
   deletesuccess: boolean = false;
   deletemessage: any = '';
-   messageerror: boolean = false;
+  messageerror: boolean = false;
   errormessage: any;
   errorresponse: any;
 
@@ -754,7 +790,7 @@ export class ChangeRequestComponent {
       "type": "D",
       "itcrid": this.deletecrid,
       "supportId": 0,
-      "classifcationId": 0,
+      "classificationId": 0,
       "categoryId": 0,
       "categoryTypeId": 0,
       "crowner": 0,
@@ -813,7 +849,7 @@ export class ChangeRequestComponent {
             this.deleteinmessage = "There are open items it can't be deleted"
           } else if (this.errorresponse == "S") {
             this.deletesuccess = true;
-            this.deletemessage = "RFC Code: " + this.getcrcode +" Deleted Successfully"
+            this.deletemessage = "RFC Code: " + this.getcrcode + " Deleted Successfully"
           }
         },
         (error: any) => {
@@ -833,5 +869,5 @@ export class ChangeRequestComponent {
 }
 
 function round(): number {
-    throw new Error('Function not implemented.');
+  throw new Error('Function not implemented.');
 }

@@ -1,64 +1,69 @@
 <div class="task_header">
-  <h2>Change Request - Task-Wise Report</h2>
+  <h2 class="header-title">Change Request - Task-Wise Report</h2>
 </div>
 
 <div class="row" align="right">
   <div class="col export_pdf">
-    <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o"
+    <button (click)="exportToPDF()" class="pdfBtn"><i class="fa fa-file-pdf-o"
         aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
-    <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
-        aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+    <button (click)="exportexcel()" class="excelBtn"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;
+      Excel</button>
   </div>
 </div>
 
-<div class="card change_request_card_filter">
-  <div class="card-body card_body_filter" [formGroup]="filterForm">
-    <div class="row filter_cr">
-      <div class="col">
-        <label>Plant</label><br />
-        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList" formControlName="plantId"
-          (ngModelChange)="mapedplantdatas()">
+<div style="padding: 15px; background: #eaf4ff; border-radius: 15px">
+  <div class="filter-container" [formGroup]="filterForm">
+    <div class="filter-row">
+
+      <div class="filter-group">
+        <label>Plant</label>
+        <ng-multiselect-dropdown class="input-pill" [settings]="dropdownSettings" [data]="dropdownList"
+          formControlName="plantId" (ngModelChange)="mapedplantdatas()">
         </ng-multiselect-dropdown>
       </div>
-      <div class="col">
-        <label>Category</label><br />
-        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdowncategroy" formControlName="Category"
-          (ngModelChange)="mapedcategoryatas()">
+
+      <div class="filter-group">
+        <label>Category</label>
+        <ng-multiselect-dropdown class="input-pill" [settings]="dropdownSettings" [data]="dropdowncategroy"
+          formControlName="Category" (ngModelChange)="mapedcategoryatas()">
         </ng-multiselect-dropdown>
-        <!--<select [(ngModel)]="categoryids" class="input-change">
-    <option selected>Select-category</option>
-    <option *ngFor="let catid of categorydata" [value]="catid.itcategoryId">{{catid.categoryName}}</option>
-  </select>-->
       </div>
-      <div class="col">
-        <label>Classifications</label><br />
-        <select formControlName="ClassificationId" class="input-change">
-          <option selected hidden disabled value="">Select-classification</option>
+
+      <div class="filter-group">
+        <label>Classifications</label>
+        <select formControlName="ClassificationId" class="input-pill">
+          <option hidden>Select Classification</option>
           <option *ngFor="let classf of classificationdata" [value]="classf.itclassificationId">
-            {{classf.classificationName}}</option>
+            {{classf.classificationName}}
+          </option>
         </select>
       </div>
-      <div class="col">
-        <label>Priority</label><br />
-        <select formControlName="Priority" class="input-change">
-          <option selected hidden disabled value="">Select-priority</option>
-          <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">{{prio.priorityName}}</option>
+
+      <div class="filter-group">
+        <label>Priority</label>
+        <select formControlName="Priority" class="input-pill">
+          <option hidden>Select Priority</option>
+          <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">
+            {{prio.priorityName}}
+          </option>
         </select>
       </div>
-      <div class="col">
-        <label>Start Date:</label><br />
-        <input formControlName="StartDate" class="input-change cr_date" [max]="currentDate" type="date" id="fromDate"
-          name="fromDate" required />
+
+      <div class="filter-group">
+        <label>Start Date</label>
+        <input type="date" formControlName="StartDate" class="input-pill" [max]="currentDate">
       </div>
-      <div class="col">
-        <label>End Date:</label><br />
-        <input formControlName="EndDate" class="input-change cr_date" [min]="this.filterForm.value['StartDate']"
-          [max]="currentDate" type="date" id="toDate" name="toDate" required />
+
+      <div class="filter-group">
+        <label>End Date</label>
+        <input type="date" formControlName="EndDate" class="input-pill" [min]="filterForm.value['StartDate']"
+          [max]="currentDate">
       </div>
-      <div class="col">
-        <label>Stage</label><br />
-        <select formControlName="stage" class="input-change">
-          <option selected hidden disabled value="">Select-Stage</option>
+
+      <div class="filter-group">
+        <label>Stage</label>
+        <select formControlName="stage" class="input-pill">
+          <option hidden>Select Stage</option>
           <option>Initiated</option>
           <option>Approval</option>
           <option>Implementation</option>
@@ -66,29 +71,30 @@
           <option>Closure</option>
         </select>
       </div>
-      <div class="col">
-        <label>Status</label><br />
-        <select class="input-change" formControlName="Status">
-          <option selected hidden disabled value="">Select Status</option>
+
+      <div class="filter-group">
+        <label>Status</label>
+        <select formControlName="Status" class="input-pill">
+          <option hidden>Select Status</option>
           <option value="All">All</option>
           <option>Draft</option>
-          <option value="Pending Approval">Pending Approval</option>
-          <option value="Approved level1">Approved level1</option>
-          <option value="Approved level2">Approved level2</option>
-          <option value="Approved level3">Approved level3</option>
-          <option value="Approved">Approved</option>
-          <option value="Implement">Implement</option>
-          <option value="Implemented">Implemented</option>
-          <option value="Release">Release</option>
-          <option value="Released">Released</option>
-          <option value="Completed">Completed</option>
+          <option>Pending Approval</option>
+          <option>Approved</option>
+          <option>Implemented</option>
+          <option>Completed</option>
         </select>
       </div>
+
     </div>
-    <div class="access-checkbox">
-      <div><input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" /></div>
-      <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
-      <button type="reset" class="btn btn-rounded filter_button" (click)="reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+
+    <!-- Bottom row -->
+    <div class="filter-actions">
+      <!-- <input type="text" formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-pill"> -->
+
+      <div class="button-group">
+        <button class="btn filter-btn" (click)="filterdropdown()">FILTER</button>
+        <button class="btn clear-btn" type="reset" (click)="reset()">Clear</button>
+      </div>
     </div>
   </div>
 </div>
@@ -140,7 +146,18 @@
           <td>{{TAreport.endDt|date:'dd-MM-yyyy'}}</td>
           <td>{{TAreport.actualStartDt|date:'dd-MM-yyyy'}}</td>
           <td>{{TAreport.actualEndDt|date:'dd-MM-yyyy'}}</td>
-          <td>{{TAreport.status}}</td>
+          <!-- <td>{{TAreport.status}}</td> -->
+          <td>
+            <span class="status-badge" [ngClass]="{
+      'status-completed': TAreport.status === 'Completed',
+      'status-progress': TAreport.status === 'In Progress',
+      'status-cancel': TAreport.status === 'Cancel',
+      'status-pending': TAreport.status === 'Pending Approval',
+      'status-approved': TAreport.status === 'Approved'
+    }">
+              {{TAreport.status}}
+            </span>
+          </td>
           <td>{{TAreport.dependSyelanscape}}</td>
           <td>{{TAreport.depndtask}}</td>
         </tr>
@@ -149,6 +166,6 @@
   </div>
 
   <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]"
-    (page)="onPageChange($event)" aria-label="Select page" style="margin-right:34%">
+    (page)="onPageChange($event)" aria-label="Select page" style="margin-right:28%">
   </mat-paginator>
 </div>

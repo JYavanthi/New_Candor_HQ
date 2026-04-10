@@ -1,4 +1,4 @@
-<div class="spareMinDiv">
+<div class="spareMainDiv">
 
     <div class="spareSideBr">
         <app-asset-sidebar></app-asset-sidebar>
@@ -29,7 +29,7 @@
                 </div>
 
                 <ng-container *ngIf="spareId!=undefined && spareData?.status?.trim() != 'Draft'; else elseBlock">
-                    <mat-tab-group [selectedIndex]="selectedTabIndex">
+                    <mat-tab-group [selectedIndex]="selectedTabIndex" class="custom-mat-tabs">
 
                         <mat-tab>
                             <ng-template mat-tab-label>

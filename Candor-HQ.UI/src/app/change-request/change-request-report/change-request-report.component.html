@@ -1,45 +1,67 @@
 <div class="changeRequestReportMainDiv">
-    <div style="margin-left: 3%;">
+
+    <div class="sidebar">
         <app-dashboard-side-bar></app-dashboard-side-bar>
     </div>
+
     <div class="container-home">
-        <div class="text-center">
-            <h1>Reports</h1>
-        </div>
-        <div class="row generate_row">
-            <div class="col selector">
-                <label for="selector">Selector :</label>&nbsp;
-                <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)"
-                    class="select_change_report">
-                    <option value="" disabled selected hidden>Select-Report</option>
-                    <option value="home">Change Request Report</option>
-                    <option value="cradRept" *ngIf="loggedUer.role.includes('Approver')">Change Request Approved Report
-                    </option>
-                    <option value="about">Task Assigned Report</option>
-                    <option value="contact">Summary Change Report</option>
-                    <option value="crMileStone">MileStone Report</option>
-                </select>
+
+        <div class="report-header">
+
+            <div class="report-icon">
+                <img src="assets/image/report.png" alt="Report Icon">
             </div>
-            <div [ngSwitch]="selectedOption">
-                <div *ngSwitchCase="'home'">
-                    <app-view-change></app-view-change>
-                </div>
-                <div *ngSwitchCase="'about'">
-                    <app-view-task></app-view-task>
-                </div>
-                <div *ngSwitchCase="'cradRept'">
-                    <app-cr-approved-report></app-cr-approved-report>
-                </div>
-                <div *ngSwitchCase="'contact'">
-                    <app-view-summary></app-view-summary>
-                </div>
-                <div *ngSwitchCase="'crMileStone'">
-                    <app-mile-stone-report></app-mile-stone-report>
-                </div>
+
+            <h2>REPORT</h2>
+
+        </div>
+        <hr />
+
+        <div class="selector-title">
+            <h3>Selector</h3>
+        </div>
+
+        <div class="selector-box">
+            <i class="fa fa-search search-icon"></i>
+
+            <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)"
+                class="select_change_report">
+
+                <option value="" disabled selected hidden>Select Report</option>
+                <option value="home">Change Request Report</option>
+                <option value="cradRept" *ngIf="loggedUer.role.includes('Approver')">
+                    Change Request Approved Report
+                </option>
+                <option value="about">Task Assigned Report</option>
+                <option value="contact">Summary Change Report</option>
+                <option value="crMileStone">MileStone Report</option>
+
+            </select>
+
+            <i class="fa fa-chevron-down dropdown-icon"></i>
+        </div>
+
+        <div [ngSwitch]="selectedOption" class="report-content">
+            <div *ngSwitchCase="'home'">
+                <app-view-change></app-view-change>
+            </div>
+
+            <div *ngSwitchCase="'about'">
+                <app-view-task></app-view-task>
+            </div>
+
+            <div *ngSwitchCase="'cradRept'">
+                <app-cr-approved-report></app-cr-approved-report>
+            </div>
+
+            <div *ngSwitchCase="'contact'">
+                <app-view-summary></app-view-summary>
+            </div>
+
+            <div *ngSwitchCase="'crMileStone'">
+                <app-mile-stone-report></app-mile-stone-report>
             </div>
         </div>
+
     </div>
-    <!-- <div class="scroll-down">
-    <i class="fa-solid fa-arrow-down"></i>
-</div> -->
 </div>

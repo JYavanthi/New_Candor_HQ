@@ -176,7 +176,7 @@ export class ImplemetComponent implements OnChanges {
       this.plantidforapp = this.crid?.plantId;
       this.categoryId = this.crid?.categoryId;
       this.categorytypeId = this.crid?.categoryTypeId;
-      this.classificationId = this.crid?.classifcationId;
+      this.classificationId = this.crid?.classificationId;
       this.getvalue();
       this.usersupportteams();
       this.asignandviewtasks();
@@ -235,7 +235,7 @@ export class ImplemetComponent implements OnChanges {
     const requestBody = {
       "categroyId": this.crid?.categoryId,
       "supportId": this.crid?.supportId,
-      "classificationId": this.crid?.classifcationId
+      "classificationId": this.crid?.classificationId
     };
 
     try {
@@ -778,7 +778,7 @@ export class ImplemetComponent implements OnChanges {
         "crTemplateDtlsID": 0,
         "supportID": this.crid.supportId,
         "sysLandscapeID": 1,
-        "classificationID": this.crid.classifcationId,
+        "classificationID": this.crid.classificationId,
         "categoryID": this.crid.categoryId,
         "categoryTypID": this.crid.categoryTypeId,
         "taskName": "string",

@@ -1,58 +1,12 @@
-/* .systemMainDiv {
-  display: flex;
-  width: 95%;
-  background: white;
-  border-radius: 40px;
-  margin-left: 2.5%;
-}
-
-.container-field-line {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 95%;
-  margin-left: 2%;
-  margin-top: 10px;
-  border-top: 5px solid #113bf7;
-  margin-bottom: 3%;
-}
-
-.field-line {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 56%;
-  margin-left: 2%;
-  margin-top: 14px;
-}
-
-.container-implement {
-  width: 77%;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f8f8f8;
-  margin-left: 15%;
-}
-
-.border-rfc-heading {
-  border: 1px solid;
-  border-radius: 5px;
-  border-color: rgb(155, 158, 158);
-  padding: 10px;
-} */
-
-
-/* main layout */
 .systemMainDiv {
   display: flex;
   width: 95%;
   background: #fff;
   border-radius: 40px;
   margin-left: 2.5%;
+  margin-top: -2%;
 }
 
-/* grey container */
 .container-implement {
   width: 77%;
   margin: 20px auto;
@@ -62,7 +16,6 @@
   border-radius: 10px;
 }
 
-/* orange heading + blue underline */
 .page-heading {
   color: #e67e22;
   font-weight: 700;
@@ -71,7 +24,6 @@
   margin-bottom: 15px;
 }
 
-/* cream rounded card */
 .container-field-line {
   background: #efe7d6;
   border-radius: 15px;
@@ -79,13 +31,11 @@
   border: 1px solid #c9bfae;
 }
 
-/* remove inner border */
 .border-rfc-heading {
   border: none;
   padding: 5px;
 }
 
-/* teal labels */
 .form-group label {
   color: #0c7a7a;
   font-weight: 600;
@@ -93,7 +43,6 @@
   display: block;
 }
 
-/* rounded inputs */
 .form-control-custom {
   width: 100%;
   padding: 8px 12px;
@@ -103,7 +52,6 @@
   outline: none;
 }
 
-/* buttons */
 .btn-section {
   margin-top: 15px;
 }

@@ -1,40 +1,22 @@
-/*table, th, td {
-  border: 1px solid;
-}*/
-
 .checkbox-container {
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center;
+  /* Align items vertically */
 }
 
-  /* Style for checkbox */
-  .checkbox-container input[type="checkbox"] {
-    margin-bottom:5px;
-    margin-right:-15px; /* Adjust spacing between checkbox and label */
-  }
+/* Style for checkbox */
+.checkbox-container input[type="checkbox"] {
+  margin-bottom: 5px;
+  margin-right: -15px;
+  /* Adjust spacing between checkbox and label */
+}
 
-  /* Style for label */
-  .checkbox-container label {
-    margin: 0; /* Remove default margin */
-  }
-.container-implement{
-  width: 100%;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f8f8f8;
-  margin-left: 0%;
+/* Style for label */
+.checkbox-container label {
+  margin: 0;
+  /* Remove default margin */
 }
-.container-field-line {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 95%;
-  margin-left: 2%;
-  margin-top: 10px;
-  border-top: 5px solid #113bf7;
-  margin-bottom: 3%;
-}
+
 
 .addmore_button {
   background-color: #113bf7;
@@ -44,37 +26,43 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-top:5%;
-  
+  margin-top: 5%;
+
 }
 
 .container-line {
   padding: 15px;
 }
 
-.border-rfc-heading {
-  border: 1px solid;
-  border-radius: 5px;
-  border-color: rgb(155, 158, 158);
-  padding: 10px;
-  
-}
-
-input,
-select {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 .g_p_input {
   height: 4.5vh;
   margin-bottom: 5%;
 }
-.fa-edit, .fa-trash-o {
+
+.fa-edit,
+.fa-trash-o {
   font-size: 21px;
   margin-top: 7%;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  margin-left: 35%;
+  margin-bottom: 3%;
+}
+
+.title-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.title-section h2 {
+  color: #1aa3a3;
+  font-weight: 600;
+  margin: 0;
 }
 
 .g_p_classification {
@@ -93,7 +81,6 @@ select {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 104%;
   margin-top: 5%;
-  border-top: 5px solid #113bf7;
   margin-left: -2%;
 }
 
@@ -162,11 +149,138 @@ select {
   }
 }
 
-.emailcheckbox {
-  color: blue;
-  font-size: 14px;
+.btn-sub {
+  min-width: 180px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-sub:nth-child(1) {
+  background-color: #f68b44;
+}
+
+.btn-sub:nth-child(2) {
+  background-color: #138d90;
+}
+
+.btn-sub:nth-child(3) {
+  background-color: #ff2d55;
 }
 
 .dropdowns-list {
   min-width: 297px;
+}
+
+.container-implement {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+}
+
+.container-field-line {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 100%;
+
+}
+
+.container-field-line h3 {
+  text-align: center;
+  font-weight: 600;
+  color: #2f80ed;
+  margin-bottom: 20px;
+}
+
+.border-rfc-heading {
+  border: 1px solid #a5a5a5;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.row {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 25px;
+  border: 2px solid #6ea8fe;
+  outline: none;
+  font-size: 13px;
+  transition: 0.3s;
+  background-color: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2f80ed;
+  box-shadow: 0 0 5px rgba(47, 128, 237, 0.3);
+}
+
+input:disabled,
+select:disabled {
+  background-color: #eef2f7;
+  cursor: not-allowed;
+}
+
+.dropdowns-list {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ddd;
+  width: 90%;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.drop-list {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.drop-list:hover {
+  background-color: #f1f5ff;
+}
+
+.emailcheckbox {
+  font-size: 14px;
+  color: #333;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 768px) {
+  .row {
+    display: block;
+  }
+
+  .col {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

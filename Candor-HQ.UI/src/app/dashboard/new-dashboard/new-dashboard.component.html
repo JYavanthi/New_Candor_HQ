@@ -1,0 +1,428 @@
+<div class="newDashboardMainDiv">
+
+    <!-- SIDEBAR -->
+    <div class="dashboardSideBar">
+        <app-dashboard-side-bar></app-dashboard-side-bar>
+    </div>
+
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <div class="dashboard-wrapper">
+
+        <!-- HEADER -->
+        <div class="dashboard-header">
+            <h2>DASHBOARD</h2>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <div class="dashboard-summary">
+
+            <div class="summary-card">
+                <div class="card-header carousel-header">
+
+                    <div class="header-title">
+                        <span class="icon blue">📝</span>
+                        <span class="title">Change Requests</span>
+                    </div>
+
+                    <div id="carouselChangeRequest" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="3000">
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <h5 class="carousel-label new">New</h5>
+                                <h3 class="carousel-count">{{newCount}}</h3>
+                            </div>
+
+                            <div class="carousel-item">
+                                <h5 class="carousel-label pending">Pending</h5>
+                                <h3 class="carousel-count">{{pendingCount}}</h3>
+                            </div>
+
+                            <div class="carousel-item">
+                                <h5 class="carousel-label completed">Completed</h5>
+                                <h3 class="carousel-count">{{completedCount}}</h3>
+                            </div>
+
+                        </div>
+
+                        <!-- indicators -->
+
+                        <!-- <div class="carousel-indicators custom-indicators">
+
+                            <button type="button" data-bs-target="#carouselChangeRequest" data-bs-slide-to="0"
+                                class="active"></button>
+
+                            <button type="button" data-bs-target="#carouselChangeRequest" data-bs-slide-to="1"></button>
+
+                            <button type="button" data-bs-target="#carouselChangeRequest" data-bs-slide-to="2"></button>
+
+                        </div> -->
+
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+                    <span class="label">NEW:</span>
+                    <span class="count">0</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar green"></div>
+                </div>
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-header issue-header">
+
+                    <div class="issue-title">
+                        <span class="icon orange">⚠️</span>
+                        <span class="title">Issues/Incidents</span>
+                    </div>
+
+                    <div id="carouselIssues" class="carousel slide issue-carousel" data-bs-ride="carousel"
+                        data-bs-interval="3000">
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <span class="issue-label open">Open</span>
+                                <span class="issue-count">{{openIssueCount}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="issue-label pending">Pending</span>
+                                <span class="issue-count">{{pendingIssueCount}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="issue-label completed">Completed</span>
+                                <span class="issue-count">{{completedIssueCount}}</span>
+                            </div>
+
+                        </div>
+
+                        <!-- <div class="carousel-indicators issue-indicators">
+
+                            <button type="button" data-bs-target="#carouselIssues" data-bs-slide-to="0" class="active">
+                            </button>
+
+                            <button type="button" data-bs-target="#carouselIssues" data-bs-slide-to="1">
+                            </button>
+
+                            <button type="button" data-bs-target="#carouselIssues" data-bs-slide-to="2">
+                            </button>
+
+                        </div> -->
+
+                    </div>
+
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar blue"></div>
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-card">
+
+                <div class="card-header service-header">
+
+                    <div class="service-title">
+                        <span class="icon purple">🔧</span>
+                        <span class="title">Service Requests</span>
+                    </div>
+
+                    <div id="carouselServiceRequest" class="carousel slide service-carousel" data-bs-ride="carousel"
+                        data-bs-interval="5000">
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <span class="service-label new">New</span>
+                                <span class="service-count">{{serviceNew}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="service-label pending">Pending</span>
+                                <span class="service-count">{{servicePending}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="service-label completed">Completed</span>
+                                <span class="service-count">{{serviceCompleted}}</span>
+                            </div>
+
+                        </div>
+
+                        <!-- <div class="carousel-indicators service-indicators">
+
+                            <button type="button" data-bs-target="#carouselServiceRequest" data-bs-slide-to="0"
+                                class="active">
+                            </button>
+
+                            <button type="button" data-bs-target="#carouselServiceRequest" data-bs-slide-to="1">
+                            </button>
+
+                            <button type="button" data-bs-target="#carouselServiceRequest" data-bs-slide-to="2">
+                            </button>
+
+                        </div> -->
+
+                    </div>
+
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar purple"></div>
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-card">
+
+                <div class="card-header asset-header">
+
+                    <div class="asset-title">
+                        <span class="icon blue">🧾</span>
+                        <span class="title">Assets/Spare</span>
+                    </div>
+
+                    <div id="carouselAssets" class="carousel slide asset-carousel" data-bs-ride="carousel"
+                        data-bs-interval="5000">
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <span class="asset-label progress-label">In Progress</span>
+                                <span class="asset-count">{{assetNew + '/' + spareNew}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="asset-label pending-label">Pending</span>
+                                <span class="asset-count">{{assetPending + '/' + sparePending}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="asset-label completed-label">Completed</span>
+                                <span class="asset-count">{{assetCompleted + '/' + spareCompleted}}</span>
+                            </div>
+
+                        </div>
+
+                        <div class="carousel-indicators asset-indicators">
+
+                            <button type="button" data-bs-target="#carouselAssets" data-bs-slide-to="0"
+                                class="active"></button>
+
+                            <button type="button" data-bs-target="#carouselAssets" data-bs-slide-to="1"></button>
+
+                            <button type="button" data-bs-target="#carouselAssets" data-bs-slide-to="2"></button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar green"></div>
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-card">
+
+                <div class="card-header project-header">
+
+                    <div class="project-title">
+                        <span class="icon dark">💼</span>
+                        <span class="title">Projects</span>
+                    </div>
+
+                    <div id="carouselProjects" class="carousel slide project-carousel" data-bs-ride="carousel"
+                        data-bs-interval="5000">
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <span class="project-label progress-label">In Progress</span>
+                                <span class="project-count">{{inProgressProjectCount}}</span>
+                            </div>
+
+                            <div class="carousel-item">
+                                <span class="project-label completed-label">Completed</span>
+                                <span class="project-count">{{completedProjectCount}}</span>
+                            </div>
+
+                        </div>
+
+                        <div class="carousel-indicators project-indicators">
+
+                            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="0"
+                                class="active"></button>
+
+                            <button type="button" data-bs-target="#carouselProjects" data-bs-slide-to="1"></button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar orange"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHART SECTION -->
+        <div class="charts-container">
+
+            <div class="charts-row">
+
+                <!-- Monthly Chart -->
+                <div class="chart-card">
+
+                    <div class="chart-header">
+                        Change Request Monthly Views
+                    </div>
+
+                    <div class="chart-body">
+
+                        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'">
+                        </canvas>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Overall Chart -->
+                <div class="chart-card">
+
+                    <div class="chart-card full-width">
+
+                        <div class="chart-header">
+                            Change Request Overall View
+                        </div>
+
+                        <div class="chart-body plant-chart">
+
+                            <canvasjs-chart [options]="chartOptions">
+                            </canvasjs-chart>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom Chart -->
+            <!-- <div class="charts-row">
+
+                <div class="chart-header">
+                    Change Request Plant Wise View
+                </div>
+
+                <div class="chart-body">
+
+                    <canvas baseChart [data]="doughnutChartData" [type]="'doughnut'">
+                    </canvas>
+
+                </div>
+            </div> -->
+
+        </div>
+
+        <div class="issues-main">
+
+            <div class="issues-title">
+                <h2>ISSUES</h2>
+            </div>
+
+            <div class="issues-container">
+
+                <!-- Top Charts -->
+                <div class="issues-row">
+
+                    <!-- Monthly View -->
+                    <div class="issues-card">
+                        <div class="issues-card-header">
+                            Monthly Views
+                        </div>
+
+                        <div class="chart-inner">
+
+                            <canvas baseChart [datasets]="issueBarChart?.datasets" [labels]="issueBarChart?.labels"
+                                [options]="{ responsive: true }" [type]="'bar'">
+                            </canvas>
+
+                        </div>
+                    </div>
+
+
+                    <!-- Doughnut -->
+                    <div class="issues-card">
+                        <div class="issues-card-header">
+                            Plan-Wise Views
+                        </div>
+
+                        <div class="chart-inner">
+
+                            <canvas baseChart [datasets]="issueDoughnutChartData?.datasets"
+                                [labels]="issueDoughnutChartData?.labels" [options]="issueDoughnutOptions"
+                                [type]="'doughnut'">
+                            </canvas>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Bottom Chart -->
+                <div class="issues-row">
+
+                    <div class="issues-card full-width">
+
+                        <div class="issues-card-header">
+                            Plan-Wise Views
+                        </div>
+
+                        <div class="chart-inner">
+
+                            <canvas baseChart [datasets]="planLineChartData?.datasets"
+                                [labels]="planLineChartData?.labels" [options]="lineChartOptions" [type]="'line'">
+                            </canvas>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

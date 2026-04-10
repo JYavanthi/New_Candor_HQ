@@ -17,7 +17,7 @@ import { AddFilePopUpComponent } from '../add-file-pop-up/add-file-pop-up.compon
 
 
 export class ApproveComponent implements OnChanges {
-todaysDate= new Date().toISOString().slice(0,10);
+  todaysDate = new Date().toISOString().slice(0, 10);
   showInitiator: boolean = false;
   showRiskQ: boolean = false;
   tabs: any[] = [];
@@ -77,7 +77,7 @@ todaysDate= new Date().toISOString().slice(0,10);
   apprv3email: any = ''
   tableData: any[] = [];
   @Input() crData: any
-  @Input() crData1:any
+  @Input() crData1: any
   user: any;
   attachmentsList: any = [];
   MAX_FILE_SIZE = 1024 * 1024 * 5
@@ -85,7 +85,7 @@ todaysDate= new Date().toISOString().slice(0,10);
   selectedFiles: File | undefined;
 
   constructor(private http: HttpClient, private employeeInfo: GetEmployeeInfoService,
-    public userInfo:UserInfoSerService, private dialog: MatDialog, private httpSer: HttpServiceService, private routeservice: PasscrdataService, private router: Router, private route: ActivatedRoute) {
+    public userInfo: UserInfoSerService, private dialog: MatDialog, private httpSer: HttpServiceService, private routeservice: PasscrdataService, private router: Router, private route: ActivatedRoute) {
     this.employeeInfo.empList().then(() => {
       this.allEmpList = this.employeeInfo.EmpList;
     });
@@ -212,8 +212,10 @@ todaysDate= new Date().toISOString().slice(0,10);
   remarkValues: string[] = [];
   value: any;
   attachfile: any = '';
-  getdata(statu: any) {
-    if(this.remark==''){
+
+
+  getdata(status: any) {
+    if (this.remark == '') {
       alert('Enter Remarks');
       return;
     }
@@ -241,26 +243,25 @@ todaysDate= new Date().toISOString().slice(0,10);
       this.crData.status = "Approved"
     }
 
-   // alert('status before submit getdata() : ' + this.status + ' status' + this.APILevel)
-        const apiUrl = this.apiurl + '/CRapprove/Approve';
-        const requestBody = {
-          "Flag": "I",
-          "CRApproverID": 1,
-          "PlantID": this.crData?.plantId,
-          "SupportID": 1,
-          "CRID": this.crData?.itcrid,
-          "approverLevel":this.APILevel,
-          "Stage": "N",
-          "ApproverID": Number(this.supportid),
-          "ApprovedDt": this.today,
-          "Remarks": this.remark,
-          "Comments":this.comment,
-          "Status": this.crData?.status?.trim(),
-          "Attachment": this.attachfile,
-          "CreatedBy": this.supportid,
-          "CreatedDt": this.currentdate,
-          "ModifiedBy": this.supportid,
-          "ModifiedDt": this.currentdate,
+    const apiUrl = this.apiurl + '/CRapprove/Approve';
+    const requestBody = {
+      "Flag": "I",
+      "CRApproverID": 1,
+      "PlantID": this.crData?.plantId,
+      "SupportID": 1,
+      "CRID": this.crData?.itcrid,
+      "approverLevel": this.APILevel,
+      "Stage": "N",
+      "ApproverID": Number(this.supportid),
+      "ApprovedDt": this.today,
+      "Remarks": this.remark,
+      "Comments": this.comment,
+      "Status": this.crData?.status?.trim(),
+      "Attachment": this.attachfile,
+      "CreatedBy": this.supportid,
+      "CreatedDt": this.currentdate,
+      "ModifiedBy": this.supportid,
+      "ModifiedDt": this.currentdate,
 
     }
     const httpOptions = {
@@ -287,12 +288,12 @@ todaysDate= new Date().toISOString().slice(0,10);
       });
   }
 
-  
+
 
   getattach(event: any): void {
     this.selectedFiles = event.target.files[0];
   }
-  
+
 
   openAddFile(crid: any) {
     const dialogRef = this.dialog.open(AddFilePopUpComponent, {
@@ -310,8 +311,8 @@ todaysDate= new Date().toISOString().slice(0,10);
   onFileSelected(event: any): void {
     this.selectedFiles = event.target.files[0];
   }
-  
- filestg : string;
+
+  filestg: string;
   addFile(): void {
     if (!this.selectedFiles) {
       console.error('No files selected.');
@@ -321,7 +322,7 @@ todaysDate= new Date().toISOString().slice(0,10);
       alert('File size must not exceed 5 MB.')
       return
     }
-    
+
     switch (this.APILevel) {
       case 1:
         this.filestg = 'N1';
@@ -351,7 +352,7 @@ todaysDate= new Date().toISOString().slice(0,10);
           attachId: response?.attachId,
           attachedFile: this.selectedFiles?.name,
           file: this.selectedFiles,
-         })
+        })
         this.attach = ''
         this.getFileData();
       },
@@ -382,20 +383,20 @@ todaysDate= new Date().toISOString().slice(0,10);
       itcrid: this.itcrid
     }
     this.httpSer.httpGet(url, param).subscribe(res => {
-      this.attachmentsList = res 
+      this.attachmentsList = res
       this.attachmentsList = this.attachmentsList.filter((m: any) => m.stage === this.filestg)
     })
   }
 
 
-  
+
   deleteDoc(Doc: any) {
-    let url = '/ChangeRequest/Delete/'+Doc.attachId
+    let url = '/ChangeRequest/Delete/' + Doc.attachId
     this.httpSer.httpDelete(url).subscribe(res => {
       this.attachmentsList = this.attachmentsList.filter((m: any) => Doc.attachId != m.attachId)
     })
   }
-  
+
   downFile(fileName: any): void {
     const apiUrl = `${this.apiurl}/ChangeRequest/Download/${fileName.attachId}`
     this.http.get(apiUrl, { responseType: 'blob' }).subscribe(
@@ -443,31 +444,31 @@ todaysDate= new Date().toISOString().slice(0,10);
       alert('Enter Remarks for RFC ')
     }
     else {
-    const apiUrl = this.apiurl + '/CRapprove/Approve';
-    const requestBody = {
-      "Flag": "I",
-      "CRApproverID": 1,
-      "PlantID": this.crData.plantId,
-      "SupportID": 1,
-      "CRID": this.crData.itcrid,
-      "approverLevel": Number(this.APILevel),
-      "Stage": "N",
-      "ApproverID": Number(this.supportid),
-      "ApprovedDt": this.today,
-      "Remarks": this.remark,
-      "Comments": this.comment,
-      "Status": status,
-      "Attachment": this.attachfile,
-      "CreatedBy": Number(this.supportid),
-      "CreatedDt": this.currentdate,
-      "ModifiedBy": Number(this.supportid),
-      "ModifiedDt": this.currentdate,
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+      const apiUrl = this.apiurl + '/CRapprove/Approve';
+      const requestBody = {
+        "Flag": "I",
+        "CRApproverID": 1,
+        "PlantID": this.crData.plantId,
+        "SupportID": 1,
+        "CRID": this.crData.itcrid,
+        "approverLevel": Number(this.APILevel),
+        "Stage": "N",
+        "ApproverID": Number(this.supportid),
+        "ApprovedDt": this.today,
+        "Remarks": this.remark,
+        "Comments": this.comment,
+        "Status": status,
+        "Attachment": this.attachfile,
+        "CreatedBy": Number(this.supportid),
+        "CreatedDt": this.currentdate,
+        "ModifiedBy": Number(this.supportid),
+        "ModifiedDt": this.currentdate,
+      }
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
 
       this.http.post(apiUrl, requestBody, httpOptions).subscribe(
         (response: any) => {
@@ -542,7 +543,7 @@ todaysDate= new Date().toISOString().slice(0,10);
       "stage": "N",
       "plantid": Number(this.crData?.plantId),
       "categoryId": Number(this.crData?.categoryId),
-      "classificationId": Number(this.crData?.classifcationId)
+      "classificationId": Number(this.crData?.classificationId)
     }
 
     const httpOptions = {
@@ -788,13 +789,13 @@ todaysDate= new Date().toISOString().slice(0,10);
           .replace('{{Approvestatus}}', 'RFC Initiation Approved Level 1')
           .replace('{{crid}}', this.crData?.crcode)
           .replace('{{crapprover1}}', this.approver1Names)
-          .replace('{{crapprover2}}',  this.appv?.length>=2?this.approver2Names:'NA')
-          .replace('{{crapprover3}}', this.appv?.length==3?this.approver3Names:'NA')
+          .replace('{{crapprover2}}', this.appv?.length >= 2 ? this.approver2Names : 'NA')
+          .replace('{{crapprover3}}', this.appv?.length == 3 ? this.approver3Names : 'NA')
           .replace('{{phase}}', 'RFC Initiation Approval')
           .replace('{{status}}', 'RFC Initiation Approved Level 1')
           .replace('@Approval1Status', this.approverlevelstatus1)
-          .replace('@Approval2Status', this.appv?.length>=2?this.approverlevelstatus2:'NA')
-          .replace('@Approval3Status', this.appv?.length==3?this.approverlevelstatus3:'NA')
+          .replace('@Approval2Status', this.appv?.length >= 2 ? this.approverlevelstatus2 : 'NA')
+          .replace('@Approval3Status', this.appv?.length == 3 ? this.approverlevelstatus3 : 'NA')
           .replace('{{approvedby}}', [this.user?.empData?.firstName, this.user?.empData?.middleName, this.user?.empData?.lastName]
             .filter(Boolean)
             .join(' '));
@@ -842,13 +843,13 @@ todaysDate= new Date().toISOString().slice(0,10);
           .replace('{{Approvestatus}}', 'RFC Initiation Approved Level 2')
           .replace('{{crid}}', this.crData?.crcode)
           .replace('{{crapprover1}}', this.approver1Names)
-          .replace('{{crapprover2}}', this.appv?.length>=2?this.approver2Names:'NA')
-          .replace('{{crapprover3}}', this.appv?.length==3?this.approver3Names:'NA')
+          .replace('{{crapprover2}}', this.appv?.length >= 2 ? this.approver2Names : 'NA')
+          .replace('{{crapprover3}}', this.appv?.length == 3 ? this.approver3Names : 'NA')
           .replace('{{phase}}', 'RFC Initiation Approval')
           .replace('{{status}}', 'RFC Initiation Approved Level 2')
           .replace('@Approval1Status', this.approverlevelstatus1)
-          .replace('@Approval2Status', this.appv?.length>=2?this.approverlevelstatus2:'NA')
-          .replace('@Approval3Status', this.appv?.length==3?this.approverlevelstatus3:'NA')
+          .replace('@Approval2Status', this.appv?.length >= 2 ? this.approverlevelstatus2 : 'NA')
+          .replace('@Approval3Status', this.appv?.length == 3 ? this.approverlevelstatus3 : 'NA')
           .replace('{{approvedby}}', [this.user?.empData?.firstName, this.user?.empData?.middleName, this.user?.empData?.lastName]
             .filter(Boolean)
             .join(' '));
@@ -857,7 +858,7 @@ todaysDate= new Date().toISOString().slice(0,10);
       else if (emailreq == "Approved") {
 
         //this.to1 = this.approver3Emails
-        this.to1 = this.appv?.length==3?this.approver3Emails:this.appv?.length==2?this.approver2Emails:this.approver1Emails
+        this.to1 = this.appv?.length == 3 ? this.approver3Emails : this.appv?.length == 2 ? this.approver2Emails : this.approver1Emails
         this.cc1 = this.croemail
         this.cc2 = this.crremail
         if (this.approver1Names == '') {
@@ -887,7 +888,7 @@ todaysDate= new Date().toISOString().slice(0,10);
         const output = this.readHtmlFile('assets/approvalemail.html');
 
         this.populatedOutput = output
-          .replace('{{this.Cremailvalue[0].crrequestedBy}}', this.appv?.length==3?this.approver3Names:this.appv?.length==2?this.approver2Names:this.approver1Names)
+          .replace('{{this.Cremailvalue[0].crrequestedBy}}', this.appv?.length == 3 ? this.approver3Names : this.appv?.length == 2 ? this.approver2Names : this.approver1Names)
           .replace('{{this.Cremailvalue[0].crrequestedBy}}', this.crrequestedBy)
           .replace('{{Requestorname}}', this.crData1?.crrequestorName)
           .replace('{{Submittedname}}', this.crData1?.crowner)
@@ -898,11 +899,11 @@ todaysDate= new Date().toISOString().slice(0,10);
           .replace('{{status}}', 'RFC Initiation Approved')
           .replace('{{crid}}', this.crData?.crcode)
           .replace('{{crapprover1}}', this.approver1Names)
-          .replace('{{crapprover2}}', this.appv?.length>=2?this.approver2Names:'NA')
-          .replace('{{crapprover3}}', this.appv?.length==3?this.approver3Names:'NA')
+          .replace('{{crapprover2}}', this.appv?.length >= 2 ? this.approver2Names : 'NA')
+          .replace('{{crapprover3}}', this.appv?.length == 3 ? this.approver3Names : 'NA')
           .replace('@Approval1Status', this.approverlevelstatus1)
-          .replace('@Approval2Status', this.appv?.length>=2?this.approverlevelstatus2:'NA')
-          .replace('@Approval3Status', this.appv?.length==3?this.approverlevelstatus3:'NA')
+          .replace('@Approval2Status', this.appv?.length >= 2 ? this.approverlevelstatus2 : 'NA')
+          .replace('@Approval3Status', this.appv?.length == 3 ? this.approverlevelstatus3 : 'NA')
           .replace('{{approvedby}}', [this.user?.empData?.firstName, this.user?.empData?.middleName, this.user?.empData?.lastName]
             .filter(Boolean)
             .join(' '));
@@ -914,7 +915,7 @@ todaysDate= new Date().toISOString().slice(0,10);
         if (this.crData.status.trim() == 'Approved') {
           this.appname = this.approver3Names
           //this.to1 = this.approver3Emails
-          this.to1 = this.appv?.length==3?this.approver3Emails:this.appv?.length==2?this.approver2Emails:this.approver1Emails;
+          this.to1 = this.appv?.length == 3 ? this.approver3Emails : this.appv?.length == 2 ? this.approver2Emails : this.approver1Emails;
           this.approverlevelstatus1 = 'Approved'
           this.approverlevelstatus2 = 'Approved'
           this.approverlevelstatus3 = 'Rejected'
@@ -976,11 +977,11 @@ todaysDate= new Date().toISOString().slice(0,10);
           .replace('{{crid}}', this.crData?.crcode)
           .replace('{{setstatus}}', 'Rejected')
           .replace('{{crapprover1}}', this.approver1Names)
-          .replace('{{crapprover2}}', this.appv?.length>=2?this.approver2Names:'NA')
-          .replace('{{crapprover3}}', this.appv?.length==3?this.approver3Names:'NA')
+          .replace('{{crapprover2}}', this.appv?.length >= 2 ? this.approver2Names : 'NA')
+          .replace('{{crapprover3}}', this.appv?.length == 3 ? this.approver3Names : 'NA')
           .replace('@Approval1Status', this.approverlevelstatus1)
-          .replace('@Approval2Status', this.appv?.length>=2?this.approverlevelstatus2:'NA')
-          .replace('@Approval3Status', this.appv?.length==3?this.approverlevelstatus3:'NA')
+          .replace('@Approval2Status', this.appv?.length >= 2 ? this.approverlevelstatus2 : 'NA')
+          .replace('@Approval3Status', this.appv?.length == 3 ? this.approverlevelstatus3 : 'NA')
           .replace('{{approvedby}}', [this.user?.empData?.firstName, this.user?.empData?.middleName, this.user?.empData?.lastName]
             .filter(Boolean)
             .join(' '));
@@ -991,7 +992,7 @@ todaysDate= new Date().toISOString().slice(0,10);
         this.cc2 = this.crremail
         if (this.crData.status.trim() == 'Approved') {
           this.appname = this.approver3Names
-          this.to1 = this.appv?.length==3?this.approver3Emails:this.appv?.length==2?this.approver2Emails:this.approver1Emails
+          this.to1 = this.appv?.length == 3 ? this.approver3Emails : this.appv?.length == 2 ? this.approver2Emails : this.approver1Emails
           this.approverlevelstatus1 = 'Approved'
           this.approverlevelstatus2 = 'Approved'
           this.approverlevelstatus3 = 'Seek Clarification'
@@ -1054,11 +1055,11 @@ todaysDate= new Date().toISOString().slice(0,10);
           .replace('{{crid}}', this.crData?.crcode)
           .replace('{{setstatus}}', 'Seek Clarification')
           .replace('{{crapprover1}}', this.approver1Names)
-          .replace('{{crapprover2}}', this.appv?.length>=2?this.approver2Names:'NA')
-          .replace('{{crapprover3}}', this.appv?.length==3?this.approver3Names:'NA')
+          .replace('{{crapprover2}}', this.appv?.length >= 2 ? this.approver2Names : 'NA')
+          .replace('{{crapprover3}}', this.appv?.length == 3 ? this.approver3Names : 'NA')
           .replace('@Approval1Status', this.approverlevelstatus1)
-          .replace('@Approval2Status', this.appv?.length>=2?this.approverlevelstatus2:'NA')
-          .replace('@Approval3Status', this.appv?.length==3?this.approverlevelstatus3:'NA')
+          .replace('@Approval2Status', this.appv?.length >= 2 ? this.approverlevelstatus2 : 'NA')
+          .replace('@Approval3Status', this.appv?.length == 3 ? this.approverlevelstatus3 : 'NA')
           .replace('{{approvedby}}', [this.user?.empData?.firstName, this.user?.empData?.middleName, this.user?.empData?.lastName]
             .filter(Boolean)
             .join(' '))
@@ -1088,7 +1089,7 @@ todaysDate= new Date().toISOString().slice(0,10);
 
       var cc1pluscc1 = cc1pluscc.replace(',,', ',');
 
-      if (this.to1 == "" || this.to1 == null ) {
+      if (this.to1 == "" || this.to1 == null) {
         this.to1 = '';
       }
       if (To == "" || To == null) {
@@ -1143,7 +1144,7 @@ todaysDate= new Date().toISOString().slice(0,10);
       (response: any) => {
         this.isapprover = response.filter((item: any) =>
           parseInt(item.categoryId) == parseInt(this.crData?.categoryId) &&
-          parseInt(item.classificationId) == parseInt(this.crData?.classifcationId) &&
+          parseInt(item.classificationId) == parseInt(this.crData?.classificationId) &&
           parseInt(item.plantId) == parseInt(this.crData?.plantId) &&
           parseInt(item.supportTeamId) == parseInt(this.getsupportid)
         );
@@ -1188,7 +1189,7 @@ todaysDate= new Date().toISOString().slice(0,10);
       "stage": "N",
       "plantid": Number(this.crData?.plantId),
       "categoryId": Number(this.crData?.categoryId),
-      "classificationId": Number(this.crData?.classifcationId)
+      "classificationId": Number(this.crData?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -1397,7 +1398,7 @@ todaysDate= new Date().toISOString().slice(0,10);
     if (this.crData.status.trim() == "Pending Approval" && this.date != '') {
       if (this.appvflg) {
         this.appflag = true;
-        this.remark = '';
+        // this.remark = '';
         this.attach = '';
         this.date = this.currentday;
       }
@@ -1520,22 +1521,6 @@ todaysDate= new Date().toISOString().slice(0,10);
     return approverNames;
   }
 
-  // ApproverNames(): { id: string, name: string }[] {
-  //   const approverNames: { id: string, name: string }[] = [];
-  //   for (const item of this.responseData) {
-  //     for (const key in item) {
-  //       if (key.endsWith('Name')) {
-  //         const idKey = key.replace('Name', '');
-  //         const id = item[idKey];
-  //         const name = item[key];
-  //         if (id && name && name.trim() !== '') {
-  //           approverNames.push({ id, name });
-  //         }
-  //       }
-  //     }
-  //   }
-  //   return approverNames;
-  // }
 
   async getapproverslevel() {
 
@@ -1548,7 +1533,7 @@ todaysDate= new Date().toISOString().slice(0,10);
       "stage": "N",
       "plantid": Number(this.crData?.plantId),
       "categoryId": Number(this.crData?.categoryId),
-      "classificationId": Number(this.crData?.classifcationId)
+      "classificationId": Number(this.crData?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({

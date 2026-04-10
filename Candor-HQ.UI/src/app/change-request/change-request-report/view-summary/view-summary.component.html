@@ -1,63 +1,60 @@
+<div class="row" align="right">
+  <div class="col export_pdf">
+    <button (click)="exportToPDF()" class="pdfBtn"><i class="fa fa-file-pdf-o"
+        aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
+    <button (click)="exportexcel()" class="excelBtn"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;
+      Excel</button>
+  </div>
+</div>
 
+<h3 class="header-title">View Change Request Summary</h3><br />
 
+<div style="padding: 15px; background: #eaf4ff; border-radius: 15px">
+  <div class="card change_request_card_filter ">
+    <div class="card-body card_body_filter" [formGroup]="filterForm">
+      <div class="row filter_cr">
+        <div class="col">
+          <label>Plant</label><br />
+          <ng-multiselect-dropdown class="multiselect-dropdown dropdown-btn" [settings]="dropdownSettings"
+            [data]="dropdownList" formControlName="plantId">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col">
+          <label>Category</label><br />
+          <ng-multiselect-dropdown [settings]="dropdownSettings" formControlName="Category" [data]="dropdowncategroy">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col">
+          <label>Classifications</label><br />
+          <select formControlName="ClassificationId" class="input-change">
+            <option selected hidden disabled value="">Select-classification</option>
+            <option *ngFor="let classf of classificationdata" value="{{classf.itclassificationId}}">
+              {{classf.classificationName}}</option>
+          </select>
 
-    <div class="row" align="right">
-
-      <div class="col export_pdf">
-        <button (click)="exportToPDF()" class="excel_button"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
-        <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
-      </div>
-    </div>
-
-    <h3 style="text-align:center;">View Change Request Summary</h3><br />
-
-    <div class="card change_request_card_filter ">
-      <div class="card-body card_body_filter" [formGroup] = "filterForm">
-        <div class="row filter_cr">
-          <div class="col">
-            <label>Plant</label><br />
-            <ng-multiselect-dropdown class="multiselect-dropdown dropdown-btn" [settings]="dropdownSettings"
-                                     [data]="dropdownList"
-                                     formControlName = "plantId"
-                                     >
-            </ng-multiselect-dropdown>
-          </div>
-          <div class="col">
-            <label>Category</label><br />
-            <ng-multiselect-dropdown [settings]="dropdownSettings" formControlName = "Category"
-                                     [data]="dropdowncategroy"
-                                     >
-            </ng-multiselect-dropdown>
-          </div>
-          <div class="col">
-            <label>Classifications</label><br />
-            <select formControlName = "ClassificationId" class="input-change">
-              <option selected hidden disabled value="">Select-classification</option>
-              <option *ngFor="let classf of classificationdata" value="{{classf.itclassificationId}}">{{classf.classificationName}}</option>
-            </select>
-
-          </div>
-          <div class="col">
-            <label>Priority</label><br />
-            <select formControlName = "Priority" class="input-change">
-              <option selected hidden disabled value="">Select-priority</option>
-              <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
-            </select>
-          </div>
-          <div class="col">
-            <label>Start Date:</label><br />
-            <input class="input-change cr_date" [max]="currentDate" type="date" id="fromDate" name="fromDate"
-            formControlName = "StartDate"/>
-          </div>
-          <div class="col">
-            <label>End Date:</label><br />
-            <input class="input-change cr_date" type="date" [min]="this.filterForm.value['StartDate']" [max]="currentDate" id="toDate" name="toDate" formControlName = "EndDate"  />
-          </div>
+        </div>
+        <div class="col">
+          <label>Priority</label><br />
+          <select formControlName="Priority" class="input-change">
+            <option selected hidden disabled value="">Select-priority</option>
+            <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Start Date:</label><br />
+          <input class="input-change cr_date" [max]="currentDate" type="date" id="fromDate" name="fromDate"
+            formControlName="StartDate" />
+        </div>
+        <div class="col">
+          <label>End Date:</label><br />
+          <input class="input-change cr_date" type="date" [min]="this.filterForm.value['StartDate']" [max]="currentDate"
+            id="toDate" name="toDate" formControlName="EndDate" />
+        </div>
 
 
         <div class="col">
           <label>Stage</label><br />
-          <select formControlName = "stage" class="input-change">
+          <select formControlName="stage" class="input-change" style="width: 15%;">
             <option selected hidden disabled value="">Select-Stage</option>
             <option>Initiated</option>
             <option>Approval</option>
@@ -66,7 +63,69 @@
             <option>Closure</option>
           </select>
         </div>
-          <!-- <div class="col">
+
+      </div>
+      <div class="access-checkbox">
+        <!-- <div>
+          <input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
+        </div> -->
+        <button class="btn btn-rounded filter_button ms-3" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-rounded filter_button" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="border-rfc-heading">
+  <div class="table-wrapper" style="overflow-x: auto;">
+    <table id="excel-table" class="fl-table mt-5">
+      <thead class="table-head">
+        <tr class="border-bottom">
+          <th>Status</th>
+          <th>Total</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="tr-body" *ngFor="let Status of stustuList;let i=index">
+          <td style="color:Black;font-weight:500;">{{Status}}</td>
+          <td (click)="navigateToOtherComponent(Status)" class="cursor">{{ count[i] }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div> -->
+
+<div>
+  <table id="excel-table" class="fl-table mt-5 status-table">
+
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th *ngFor="let Status of stustuList">
+          {{ Status }}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="row-title">Total</td>
+
+        <td *ngFor="let c of count; let i = index" (click)="navigateToOtherComponent(stustuList[i])" class="cursor">
+          {{ c }}
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<!-- <div class="col">
             <label>Status</label><br />
                                  <select class="input-change" formControlName = "Status">
                                    <option selected hidden disabled value="">Select Status</option>
@@ -84,37 +143,3 @@
                                    <option value="Completed">Completed</option>
                                  </select>
           </div> -->
-        </div>
-        <div class="access-checkbox">
-          <div>
-            <input formControlName="rfcChangeNumber" placeholder="Search RFC #" class="search-crnum" type="text" />
-          </div>
-          <button class="btn btn-rounded filter_button ms-3" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-rounded filter_button" (click)="reset()">Reset</button><!--(click)="filterData()"-->  <!--(click)="filterdropdown()"-->
-        </div>
-      </div>
-    </div>
-    <div class="border-rfc-heading">
-      <div class="table-wrapper" style="overflow-x: auto;">
-        <table id="excel-table" class="fl-table mt-5">
-          <thead class="table-head">
-            <tr class="border-bottom">
-              <th>Status</th>
-              <!-- <th *ngFor="let plantId of code">{{ plantId }}</th> -->
-              <th>Total</th>
-
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr class="tr-body" *ngFor="let Status of stustuList;let i=index">
-              <td style="color:Black;font-weight:500;">{{Status}}</td>
-              <td (click)="navigateToOtherComponent(Status)" class="cursor">{{ count[i] }}</td>
-              <!-- <td>{{ getTotalopen('Open') }}</td> -->
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-    </div>

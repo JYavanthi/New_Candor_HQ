@@ -84,7 +84,7 @@ export class ReleaserComponent implements OnChanges {
       this.isApproved = this.crid?.isApproved;
       this.isReleased = this.crid?.isReleased;
       this.categoryId = this.crid?.categoryId;
-      this.classificationId = this.crid?.classifcationId;
+      this.classificationId = this.crid?.classificationId;
       this.plantidforapp = this.crid?.plantId;
       this.getcrcode = this.crid?.crcode;
     }
@@ -138,7 +138,7 @@ export class ReleaserComponent implements OnChanges {
       this.isReleased = this.crid.isReleased;
       this.getcrcode = this.crid.crcode;
       this.categoryId = this.crid.categoryId;
-      this.classificationId = this.crid.classifcationId;
+      this.classificationId = this.crid.classificationId;
       this.plantidforapp = this.crid.plantId;
 
       this.getrequetervalue(this.crid?.itcrid);
@@ -470,7 +470,7 @@ export class ReleaserComponent implements OnChanges {
       "stage": "R",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -497,7 +497,7 @@ export class ReleaserComponent implements OnChanges {
       "stage": "C",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -979,7 +979,6 @@ export class ReleaserComponent implements OnChanges {
 
       }
       else if ((emailreq == "Closure")) {
-        // alert('closure email' + this.approver1Emails)
 
         this.to1 = this.approver1Emails
         this.cc1 = this.crremail
@@ -1060,6 +1059,7 @@ export class ReleaserComponent implements OnChanges {
       }
 
       const requestBody = {
+        
         "to": (this.to1 + To).replace(/^,+|,+$/g, '').trim().replace(/\s+/g, ' '),
         "cc": cc1pluscc1.replace(/^,+|,+$/g, '').trim().replace(/\s+/g, ' '),
         "subject": this.subjecttxt,
@@ -1493,7 +1493,7 @@ export class ReleaserComponent implements OnChanges {
       "stage": "R",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
 
     const httpOptions = {
@@ -1664,7 +1664,7 @@ export class ReleaserComponent implements OnChanges {
       "stage": "R",
       "plantid": Number(this.crid?.plantId),
       "categoryId": Number(this.crid?.categoryId),
-      "classificationId": Number(this.crid?.classifcationId)
+      "classificationId": Number(this.crid?.classificationId)
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -1702,18 +1702,14 @@ export class ReleaserComponent implements OnChanges {
   releaseComments: any = '';
   attachments: any = '';
   submitRelease() {
-    if(this.remark==''){
-      alert('Enter Remarks');
-      return;
-    }
-
     // this.attachfile = this.selectedFiles.name;
     // if (this.attachfile == undefined) {
     //   this.attachfile = '';
     // }
 
     if (this.releaseComments.trim() == '') {
-      alert(' Enter Release Comments')
+      alert(' Enter Release Comments');
+      return;
 
     } else {
       const apiUrl = this.apiurl + "/CRrelease/Releaser";

@@ -110,6 +110,7 @@ import { SoftwaremasterComponent } from './softwaremaster/softwaremaster.compone
 import { SoftwareVersionMasterComponent } from './software-version-master/software-version-master.component';
 import { NewSoftwareMasterComponent } from './new-software-master/new-software-master.component';
 import { NewSoftwareVersionMasterComponent } from './new-software-version-master/new-software-version-master.component';
+import { NewDashboardComponent } from './dashboard/new-dashboard/new-dashboard.component';
 
 
 
@@ -123,7 +124,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard', component: NewDashboardComponent, canActivate: [AuthGuard] },
+      {path: 'newDashboard', component: NewDashboardComponent},
       { path: 'page-not-found', component: ChangetabComponent },
       // Change Request
       { path: 'change-request', component: ChangeRequestComponent },

@@ -4,6 +4,7 @@
   display: flex;
   margin-left: 2.5%;
   border-radius: 40px;
+  margin-top: -2%;
 }
 
 td,
@@ -12,19 +13,267 @@ th {
   width: auto;
 }
 
-.filter_button {
-  background-color: #3c8dbc;
-  color: white;
-  margin-top: 17px;
-}
-
-.search-crnum {
-  margin-left: -81%;
-  margin-top: 5%;
-  width: 75%;
-}
-
 td,
 th {
   text-align: left;
+}
+
+.change-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.change-header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1f8a8a;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .change-header {
+    flex-direction: column;
+  }
+
+  .change-header h1 {
+    font-size: 32px;
+  }
+
+  .header-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.btn-approve {
+  background: #168a93;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 4px;
+  margin-top: 1%;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.button-approve {
+  padding: 10px 28px;
+  border-radius: 30px;
+  border: 2px solid #ff7a2f;
+  background: white;
+  color: #1c7d85;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-approve:hover:not(:disabled) {
+  background: #dbe7ec;
+}
+
+.button-approve:last-child {
+  background: #ff8c42;
+  color: white;
+  border: none;
+}
+
+.button-approve:last-child:hover:not(:disabled) {
+  background: #ffc23b;
+}
+
+.button-approve:disabled {
+  background: #c0c0c0 !important;
+  color: #666;
+  cursor: not-allowed;
+  border: none;
+}
+
+.btn-approve button {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .btn-approve {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.change_request_card_filter {
+  background: white;
+  border: 2px solid #0f8a92;
+  border-radius: 25px;
+  padding: 20px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.filter_cr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter_cr .col {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+label {
+  font-weight: 700;
+  color: #0f8a92;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.input-change,
+.cr_date,
+select {
+  background: #e9edf1;
+  border: 2px solid #0f8a92;
+  border-radius: 30px;
+  padding: 8px 15px;
+  outline: none;
+  font-size: 15px;
+  color: #5a6b7b;
+}
+
+::ng-deep .plantstyle .dropdown-btn,
+::ng-deep ng-multiselect-dropdown .dropdown-btn {
+  border-radius: 30px !important;
+  border: 2px solid #0f8a92 !important;
+  background: #e9edf1 !important;
+  padding: 6px 12px !important;
+}
+
+.access-checkbox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0px;
+  margin-left: 40%;
+}
+
+.filter_button {
+  border-radius: 25px;
+  padding: 8px 25px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.filter_button:first-of-type {
+  background: #4a90e2;
+  color: white;
+}
+
+button[type="reset"] {
+  background: #4a90e2;
+  color: white;
+}
+
+.filter_button:last-of-type {
+  background: linear-gradient(45deg, #ff8c42, #e67e22);
+  color: white;
+  border: 2px solid #ffb066;
+}
+
+.filter_button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .filter_cr {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .access-checkbox {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.section-title {
+  color: #0a8ea0;
+  font-weight: 700;
+  text-decoration: underline;
+  margin: 20px 0 10px 35px;
+  font-size: 20px;
+}
+
+.section-card {
+  margin: 10px 15px 25px;
+}
+
+.custom-table {
+  background: white;
+  border: 2px solid #0a8ea0;
+  border-radius: 18px;
+  padding: 12px;
+  width: 99%;
+  margin-left: 0.5%;
+}
+
+.custom-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table thead tr {
+  border-bottom: 2px solid #0a8ea0;
+}
+
+.table-head {
+  background-color: #eae6dc;
+}
+
+.custom-table th {
+  text-align: left;
+  padding: 10px 8px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.custom-table td {
+  padding: 10px 8px;
+  font-size: 13px;
+}
+
+.fl-table {
+  border: none !important;
+  background: transparent !important;
+}
+
+.no-data {
+  text-align: center;
+  padding: 15px;
+  color: #6c6c6c;
+  font-size: 14px;
+  white-space: nowrap;
+  margin-left: 295%;
+}
+
+.fa {
+  cursor: pointer;
+  color: #0a8ea0;
+}
+
+.fa-trash {
+  color: red;
 }

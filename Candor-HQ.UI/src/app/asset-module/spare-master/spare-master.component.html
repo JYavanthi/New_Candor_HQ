@@ -1,4 +1,4 @@
-<div style="background: white; width: 95%; margin-left: 2.5%; border-radius: 40px; display: flex;">
+<div class="spareMastermainDiv">
 
     <div style="margin-left: 3%">
         <app-asset-sidebar></app-asset-sidebar>
@@ -31,29 +31,13 @@
                 </button>
             </div>
 
-            <!-- <div class="col-4" style="position: absolute; right: 26px;">
-                <button class="toggle-button3" [ngClass]="{ 'active': isAssetActive=='M' }"
-                    (click)="toggleMyServiceTable('M')">
-                    MY SPARE
-                </button>
-                <div style="display: flex; justify-content: flex-end;">
-                    <span class="filterIconClass" (click)="toggleVisibility()"><i class="fa fa-filter"
-                            aria-hidden="true"></i></span>
-                    &nbsp;
-                    <button class="button-approve" style="margin-top:0;" [routerLink]="['/assets/itspare']">New IT
-                        Spare</button>
-                </div>
-            </div> -->
-
             <div class="spareTopBar">
 
-                <!-- Left Title -->
                 <div class="mySpareTitle" [ngClass]="{ 'active': isAssetActive=='M' }"
                     (click)="toggleMyServiceTable('M')">
                     My Spare
                 </div>
 
-                <!-- Right Section -->
                 <div class="spareRightSection">
 
                     <span class="filterIconClass" (click)="toggleVisibility()">
@@ -70,7 +54,8 @@
 
 
         </div>
-        <div class="card change_request_card_filter" [@expandCollapseAnimation] *ngIf="isVisible">
+        <div class="card change_request_card_filter" [@expandCollapseAnimation] *ngIf="isVisible"
+            style="width: 88%; margin-top: 2%; margin-left: 6%;">
             <div class="card-body card_body_filter" [formGroup]="filterForm">
                 <div class="row filter_cr">
                     <div class="col">
