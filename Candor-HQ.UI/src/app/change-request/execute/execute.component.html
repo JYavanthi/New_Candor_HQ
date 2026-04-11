@@ -5,10 +5,11 @@
   </div>
 
   <div class="container-home">
-    <div style="margin-left: 6; margin-top: 3%;">
+    <div style="margin-left: 6%; margin-top: 3%;">
       <button class="back-btn" [routerLink]="'/change-request'">Back</button>
+      <app-common [crid]="crData"></app-common>
+
     </div>
-    <app-common [crid]="crData"></app-common>
     <br />
     <br />
     <div class="tab-implement">

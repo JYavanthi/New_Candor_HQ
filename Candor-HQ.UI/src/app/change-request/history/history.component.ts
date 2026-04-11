@@ -92,7 +92,11 @@ export class HistoryComponent {
 
   approverhistory: any[] = [];
   tableData: any[] = [];
+
+
   getData() {
+
+    debugger
     if(!this.getcrcode){
       return
     }

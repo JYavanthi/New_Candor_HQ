@@ -31,10 +31,7 @@ body {
   font-family: "Open Sans", serif;
 }
 
-.container {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
+
 
 .card {
   position: relative;
@@ -64,93 +61,6 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.track {
-  position: relative;
-  background-color: #ddd;
-  height: 7px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 60px;
-  margin-top: -2%;
-  margin-left: 7%;
-}
-
-  .track .step {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    width: 25%;
-    margin-top: -18px;
-    text-align: center;
-    position: relative;
-  }
-
-    .track .step.active:before {
-      background: green;
-    }
-
-    .track .step.inactive:before {
-      background: #e88504;
-    }
-
-    .track .step.rejected:before {
-      background: red;
-    }
-
-    .track .step::before {
-      height: 7px;
-      position: absolute;
-      content: "";
-      width: 100%;
-      left: 0;
-      top: 18px;
-    }
-
-    .track .step.active .icon {
-      background: green;
-      color: #fff;
-    }
-
-    .track .step.inactive .icon {
-      background: #e88504;
-      color: #fff;
-    }
-
-    .track .step.rejected .icon {
-      background: red;
-      color: #fff;
-    }
-
-  .track .icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    position: relative;
-    border-radius: 100%;
-    background: #ddd;
-  }
-
-  .track .step.active .text {
-    font-weight: 400;
-    color: #000;
-  }
-
-  .track .step.inactive .text {
-    font-weight: 400;
-    color: #000;
-  }
-
-  .track .step.rejected .text {
-    font-weight: 400;
-    color: #000;
-  }
-
-  .track .text {
-    display: block;
-    margin-top: 7px;
-  }
 
 .itemside {
   position: relative;
@@ -160,11 +70,11 @@ body {
   width: 100%;
 }
 
-  .itemside .aside {
-    position: relative;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-  }
+.itemside .aside {
+  position: relative;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
 
 .img-sm {
   width: 80px;
@@ -201,24 +111,143 @@ p {
   border-radius: 1px;
 }
 
-  .btn-warning:hover {
-    color: #ffffff;
-    background-color: #ff2b00;
-    border-color: #ff2b00;
-    border-radius: 1px;
-  }
+.btn-warning:hover {
+  color: #ffffff;
+  background-color: #ff2b00;
+  border-color: #ff2b00;
+  border-radius: 1px;
+}
 
 .date-status {
   padding: 20px;
 }
 
 .common_card {
-  margin-left: 9%;
-  margin-top: 2%;
+  margin-left: 55%;
+  margin-top: -4%;
   width: 40%;
+  border: none;
 }
 
 .colorcode {
   background-color: green;
   color: white;
+}
+
+
+
+.container {
+  margin-top: 70px;
+  margin-bottom: 50px;
+  margin-left: -7%;
+}
+
+/* TRACK LINE */
+.track {
+  position: relative;
+  height: 6px;
+  display: flex;
+  margin-bottom: 70px;
+  margin-top: -2%;
+  margin-left: 7%;
+  background: #e0e0e0;
+  border-radius: 5px;
+}
+
+/* EACH STEP */
+.track .step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  margin-top: -22px;
+}
+
+/* LINE COLOR BETWEEN STEPS */
+.track .step::before {
+  content: "";
+  position: absolute;
+  height: 6px;
+  width: 100%;
+  left: -50%;
+  top: 22px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+/* FIRST STEP FIX */
+.track .step:first-child::before {
+  display: none;
+}
+
+/* ACTIVE (GREEN - COMPLETED) */
+.track .step.active::before {
+  background: #2fbf71;
+}
+
+.track .step.active .icon {
+  background: #2fbf71;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(47, 191, 113, 0.2);
+}
+
+/* INACTIVE (ORANGE - CURRENT STEP) */
+.track .step.inactive::before {
+  background: #f4a62a;
+}
+
+.track .step.inactive .icon {
+  background: #f4a62a;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(244, 166, 42, 0.2);
+}
+
+/* REJECTED (RED) */
+.track .step.rejected::before {
+  background: #e74c3c;
+}
+
+.track .step.rejected .icon {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* DEFAULT (UPCOMING - GREY) */
+.track .icon {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 50%;
+  background: #cfd8dc;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+/* TEXT */
+.track .text {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* ACTIVE TEXT */
+.track .step.active .text {
+  color: #2fbf71;
+  font-weight: 600;
+}
+
+/* CURRENT STEP TEXT */
+.track .step.inactive .text {
+  color: #f4a62a;
+  font-weight: 600;
+}
+
+/* REJECTED TEXT */
+.track .step.rejected .text {
+  color: #e74c3c;
+  font-weight: 600;
 }
