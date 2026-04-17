@@ -76,7 +76,8 @@
               <div class="row mt-3">
                 <div class="col">
                   <label>Date</label>
-                  <input type="datetime-local" [(ngModel)]="date" class="dateStylelessons" readonly />
+                  <input type="datetime-local" [(ngModel)]="date" class="dateStylelessons"
+                    style="height: 40px; width: 20%; margin-left: 1%;" readonly />
                 </div>
                 <div class="">
                   <label>Remarks</label>
@@ -91,7 +92,8 @@
                 <label class="label-approve">Attach Document</label>
                 <div class="attachmentList"></div>
                 <div class="d-flex">
-                  <input type="File" placeholder="Attach File" [(ngModel)]="attach" (change)="getattach($event)" />
+                  <input type="File" placeholder="Attach File" [(ngModel)]="attach" (change)="getattach($event)"
+                    style="width: 30%;" />
                   <button class="blue-botton ms-4" aria-hidden="true" type="submit" (click)="addFile()"
                     style="margin: 0px 10px;height: 33px;">Add File</button>
                 </div>
@@ -117,14 +119,11 @@
         </div>
       </div>
 
-    </div><br /><br /><br />
-    <!--Below are the same History Data, you just need to update the API & call the keys below as im getting empty response-->
-    <div>
-      <br><br>
-      <p>Approver History</p>
     </div>
-    <br><br>
+
     <div>
+      <p>Approver History</p>
+
       <table class="table">
         <thead class="thead-dark">
           <tr>

@@ -13,9 +13,6 @@
     <br />
     <div class="container-home" *ngIf="updatevalue[0]">
 
-
-      <!--breadcrumb-->
-
       <nav style="width:40%;" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a (click)="goToTab('contact')">Implementation Plan</a></li>
@@ -130,11 +127,6 @@
             </select>
           </div>
           <div class="col">
-            <!--<label>Depend Task</label>
-  <select [(ngModel)]="Selectthetask">
-    <option value="" selected disabled hidden>Select the task</option>
-    <option *ngFor="let pltdata of depdenttask" value="{{pltdata.itcrexecId}}">{{pltdata.executionStepName}}</option>
-  </select>-->
             <label>Depend Task</label>
             <select [(ngModel)]="Selectthetask">
               <option value="" disabled hidden>Select the task</option>
@@ -150,15 +142,13 @@
           </div>
         </div>
       </div>
-      <!-- end here  -->
       <div class="container-field1">
         <div>
           <label>Execution Step Name <span style="color:red">*</span></label>
           <input [(ngModel)]="updatevalue[0].executionStepName" type="text" />
         </div> <br />
         <div>
-          <!--<label for="">Notes</label>
-      <textarea [(ngModel)]="executionStepDesc" class="textarea-implement" cols="160" rows="4" id="area1"></textarea>-->
+
           <label>Execution Step Desc <span style="color:red">*</span></label>
           <textarea [(ngModel)]="updatevalue[0].executionStepDesc" class="textarea-implement"></textarea>
         </div>
@@ -175,13 +165,13 @@
         </button>
       </div>
 
-      <div class="mt-5 updatehistory">
-        <div>
-          <p>Execution Plan History</p>
-        </div>
-        <div>
-          <table class="table">
-            <thead class="thead-dark">
+  
+      <div class="updatehistory">
+        <p class="section-title">Execution Plan History</p>
+
+        <div class="table-card">
+          <table class="custom-table">
+            <thead>
               <tr>
                 <th>CR History Date</th>
                 <th>RFC#</th>
@@ -191,9 +181,9 @@
                 <th>Remarks</th>
                 <th>Assigned To</th>
                 <th>Forwarded To</th>
-
               </tr>
             </thead>
+
             <tbody>
               <tr *ngFor="let row of executionhistory">
                 <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
@@ -211,7 +201,6 @@
             </tbody>
           </table>
         </div>
-
       </div>
 
     </div>

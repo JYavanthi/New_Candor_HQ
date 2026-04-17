@@ -1,10 +1,9 @@
 .viewall-task {
-  background-color: wheat;
-  padding: 1px;
-  border-radius: 5px;
-  width: 17%;
   text-align: center;
-  color: black;
+  font-size: larger;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #1f1f1f;
 }
 
 button[disabled] {
@@ -12,7 +11,258 @@ button[disabled] {
   pointer-events: none;
 }
 
+.viewexeplan-button {
+  background: #0ea5a8;
+}
+
 .landscapeClass {
   display: flex !important;
   justify-content: center !important;
+  border: 1px solid #6c8ea3;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.h1tag {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #1f1f1f;
+}
+
+.table-wrapper {
+  background-color: white;
+  border: 1px solid #6c8ea3;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.fl-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border: none;
+  margin-left: -1%;
+}
+
+.fl-table thead th {
+  background-color: #0f8b94;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 2px solid #6c8ea3;
+  white-space: nowrap;
+}
+
+.fl-table tbody td {
+  padding: 12px 10px;
+  font-size: 13px;
+  color: #333;
+  border-bottom: 1px solid #d6cfc2;
+  vertical-align: middle;
+}
+
+.fl-table tbody tr:hover td {
+  background-color: #dcd7cb;
+  transition: 0.2s;
+}
+
+.fl-table tbody td:nth-child(6) {
+  color: #0f8b94;
+  font-weight: 600;
+}
+
+.fl-table i {
+  font-size: 16px;
+  color: #0f8b94;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.fl-table .fa-trash {
+  color: #dc3545;
+}
+
+.fl-table thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.fl-table thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.implement-button {
+  margin-top: 15px;
+  background-color: #0f8b94;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.implement-button:hover {
+  background-color: #0c6f75;
+}
+
+.fl-table th,
+.fl-table td {
+  border-right: none !important;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #bfb8aa;
+  border-radius: 10px;
+}
+
+.task-row {
+  width: 100%;
+}
+
+.task-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.task-checkbox {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #007c8c;
+}
+
+.task-checkbox input {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  accent-color: #007c8c;
+}
+
+.task-select {
+  height: 40px;
+  min-width: 220px;
+  padding: 0 15px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+  background: #f5f5f5;
+  font-size: 14px;
+  cursor: pointer;
+  width: 30%;
+}
+
+.btn-teal {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 25px;
+  border: none;
+  background: #0ea5a8;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-teal:hover {
+  background: #0b8f92;
+}
+
+.btn-outline {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 25px;
+  border: 1px solid #0ea5a8;
+  background: #0ea5a8;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background: #0ea5a8;
+  color: white;
+}
+
+button:disabled {
+  background: #ccc !important;
+  cursor: not-allowed;
+}
+
+.history-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 15px;
+  width: 100%;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.table-container {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #dcdcdc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead {
+  background-color: #0f8b8d;
+  color: white;
+}
+
+thead th {
+  padding: 10px;
+  text-align: left;
+  font-weight: 600;
+  border-right: 1px solid #ffffff30;
+}
+
+tbody {
+  background-color: white;
+}
+
+tbody td {
+  padding: 10px;
+  border-right: 1px solid #e0d8c8;
+  border-top: 1px solid #e0d8c8;
+}
+
+thead th:last-child,
+tbody td:last-child {
+  border-right: none;
+}
+
+.table-container table tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.table-container table tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+tbody tr:hover {
+  background-color: #e8e4da;
+  transition: 0.2s;
 }

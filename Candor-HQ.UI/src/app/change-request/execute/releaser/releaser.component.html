@@ -44,13 +44,13 @@
       </li>
 
     </ul>
-    <span style="color:red;    font-size: 12px;
-    margin-left: 15px;display: flex;justify-content: initial;"> Please Click On Approver Level to Approve.</span>
+    <span style="color:red; font-size: 12px; margin-left: 15px;display: flex;justify-content: initial;"> Please Click On
+      Approver Level to Approve.</span>
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="approver1" role="tabpanel" aria-labelledby="approver1-tab">
         <div>
-          <div class="container-field-approve">
+          <!-- <div class="container-field-approve">
             <b>RFC Release {{rfcapproverlevel}}</b>
             <div class="border-rfc-heading">
               <div class="row">
@@ -106,69 +106,188 @@
             </div>
 
             <div>
-            <div class="btn-sub-reset" *ngIf="isapprover && !this.isReleased && appvflg && appflag">
-              <button class="btn-sub-approve" (click)="getdata(['this.APILevel'])">Approve</button>
-              <button class="btn-sub" (click)="rejectbutton('Seek Clarification')">Seek Clarification</button>
-              <button class="btn-sub-reject" type="submit" (click)="rejectbutton('Reject')">Reject</button>
-            </div>
+              <div class="btn-sub-reset" *ngIf="isapprover && !this.isReleased && appvflg && appflag">
+                <button class="btn-sub-approve" (click)="getdata(['this.APILevel'])">Approve</button>
+                <button class="btn-sub" (click)="rejectbutton('Seek Clarification')">Seek Clarification</button>
+                <button class="btn-sub-reject" type="submit" (click)="rejectbutton('Reject')">Reject</button>
+              </div>
             </div>
 
+          </div> -->
+
+          <div class="approve-card">
+
+            <!-- Header -->
+            <div class="approve-header">
+              RFC Initiate Approval Level {{rfcapproverlevel}}
+            </div>
+
+            <!-- Form Body -->
+            <div class="approve-body">
+
+              <!-- Approver Name -->
+              <div class="form-group">
+                <label>Approver Name</label>
+                <input class="input-box" type="text" *ngFor="let approver of ApproverNames()" [value]="approver.name"
+                  readonly />
+              </div>
+
+              <!-- Date & Time -->
+              <div class="row mt-3">
+                <div class="col-md-3">
+                  <label>Date</label>
+                  <input class="input-box" type="text" [(ngModel)]="date" readonly />
+                </div>
+
+                <div class="col-md-3">
+                  <label>Time</label>
+                  <input class="input-box" type="text" [value]="date | date:'HH:mm:ss'" readonly />
+                </div>
+              </div>
+
+              <!-- Remarks -->
+              <div class="form-group mt-3">
+                <label>Remarks</label>
+                <textarea class="textarea-box" [(ngModel)]="remark"></textarea>
+              </div>
+
+              <!-- Attachment -->
+              <div class="form-group mt-3">
+                <label>Attachment</label>
+
+                <div class="d-flex align-items-center">
+                  <input type="file" (change)="getattach($event)" style="width: 30%;" />
+
+                  <button class="btn-add-file" (click)="addFile()">Add File</button>
+                </div>
+
+                <div class="attachment-list mt-2" *ngFor="let attachment of attachmentsList; index i">
+                  {{attachment.fileName}}
+
+                  <i class="fa fa-eye icon" (click)="viewFile(attachment)"></i>
+
+                  <i class="fa fa-download icon" (click)="downFile(attachment)"></i>
+
+                  <i class="fa fa-times icon text-danger" *ngIf="appvflg && appflag"
+                    (click)="deleteDoc(attachment)"></i>
+
+                </div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="btn-group mt-3" *ngIf="isapprover && !this.isReleased && appvflg && appflag">
+
+                <button class="btn approve" (click)="getdata(['this.APILevel'])">Approve</button>
+
+                <button class="btn warn" (click)="rejectbutton('Seek Clarification')">Seek Clarification</button>
+
+                <button class="btn reject" (click)="rejectbutton('Reject')">Reject</button>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- <div>
+          <p>Approver History</p>
+          <div>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>CR History Date</th>
+                  <th>RFC#</th>
+                  <th>CR Owner Name</th>
+                  <th>Stage</th>
+                  <th>Status</th>
+                  <th>Approved By</th>
+                  <th>Approved Date</th>
+                  <th>Remarks</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of tableData">
+                  <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+                  <td>{{getcrcode}}</td>
+                  <td>{{this.crownername}}</td>
+                  <td>
+                    <span *ngIf="row.stage === 'N'">RFC Initiated</span>
+                    <span *ngIf="row.stage === 'R'">RFC Release</span>
+                    <span *ngIf="row.stage === 'C'">RFC Closure</span>
+                  </td>
+                  <td>{{row.status}}</td>
+                  <td>
+                    {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '')
+                    }}
+                  </td>
+                  <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+                  <td>{{row.remarks}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> -->
+
+        <div class="approver-history-card">
+          <p class="title">Approver History</p>
+
+          <div class="table-container">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>CR History Date</th>
+                  <th>RFC#</th>
+                  <th>CR Owner Name</th>
+                  <th>Stage</th>
+                  <th>Status</th>
+                  <th>Approved By</th>
+                  <th>Approved Date</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let row of tableData">
+                  <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+                  <td>{{getcrcode}}</td>
+                  <td>{{crownername}}</td>
+
+                  <td>
+                    <span *ngIf="row.stage === 'N'">RFC Initiated</span>
+                    <span *ngIf="row.stage === 'R'">RFC Release</span>
+                    <span *ngIf="row.stage === 'C'">RFC Closure</span>
+                  </td>
+
+                  <td>{{row.status}}</td>
+
+                  <td>
+                    {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '')
+                    }}
+                  </td>
+
+                  <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+                  <td>{{row.remarks}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-   
-        
-        <div>
-          <br><br>
-          <p>Approver History</p>
-        </div>
-        <div>
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th>CR History Date</th>
-                <th>RFC#</th>
-                <th>CR Owner Name</th>
-                <!--<th>Plant</th>-->
-                <th>Stage</th>
-                <th>Status</th>
-                <th>Approved By</th>
-                <th>Approved Date</th>
-                <th>Remarks</th>
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let row of tableData">
-                <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
-                <td>{{getcrcode}}</td>
-                <td>{{this.crownername}}</td>
-                <!--<td>{{row.plantId}}</td>-->
-                <td>
-                  <span *ngIf="row.stage === 'N'">RFC Initiated</span>
-                  <span *ngIf="row.stage === 'R'">RFC Release</span>
-                  <span *ngIf="row.stage === 'C'">RFC Closure</span>
-                </td>
-                <td>{{row.status}}</td>
-                <td>
-                  {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '') }}
-                </td>
-                <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
-                <td>{{row.remarks}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
-  <div class="tab-pane fade"
+
+  <!-- <div class="tab-pane fade"
     *ngIf="(stage === 'Release' && (status === 'Approved' ||status === 'Released'))||isReleased" id="releasetab1"
     role="tabpanel" aria-labelledby="release1-tab">
     <div>
       <br />
       <div class="container-field-implement">
         <div>
-          <label label-approve>Comments</label>
+          <label>Comments</label>
           <textarea [(ngModel)]="releaseComments" class="textarea-implement"></textarea>
         </div>
 
@@ -181,7 +300,6 @@
               style="margin: 0px 10px;height: 33px;">
               Add File</button>
           </div>
-          <!-- <input class="input-approve" type="File" (change)="getattach($event)" placeholder="" [(ngModel)]="attachmentfile" /> -->
           <div *ngFor="let attachment of attachmentsList;index i">
             <div>
               Attachment: {{attachment.fileName}}
@@ -203,6 +321,59 @@
         </button>
         <button *ngIf="ischangeanalyst" class="btn-sub" type="reset">Cancel</button>
       </div>
+    </div>
+  </div> -->
+
+  <div class="tab-pane fade"
+    *ngIf="(stage === 'Release' && (status === 'Approved' ||status === 'Released'))||isReleased" id="releasetab1"
+    role="tabpanel" aria-labelledby="release1-tab">
+
+    <div class="release-card">
+
+      <!-- Header -->
+      <div class="release-header">
+        RFC Release Approval
+      </div>
+
+      <!-- Comments -->
+      <div class="form-group">
+        <label class="label-title">Comments</label>
+        <textarea [(ngModel)]="releaseComments" class="custom-textarea"></textarea>
+      </div>
+
+      <!-- Attachment -->
+      <div class="form-group">
+        <label class="label-title">Attachment</label>
+
+        <div class="file-upload">
+          <input type="file" (change)="getattach($event)" class="file-input" style="width: 30%;"/>
+          <button class="btn-add" (click)="addFile()">Add File</button>
+        </div>
+
+        <!-- File List -->
+        <div *ngFor="let attachment of attachmentsList; index as i" class="file-list">
+          <span class="file-name">{{attachment.fileName}}</span>
+
+          <div class="file-actions">
+            <i class="fa fa-eye" (click)="viewFile(attachment)"></i>
+            <i class="fa fa-download" (click)="downFile(attachment)"></i>
+            <i class="fa fa-times" *ngIf="!isReleased" (click)="deleteDoc(attachment)">
+            </i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button *ngIf="!isReleased && ischangeowner" (click)="submitRelease()" class="btn-submit">
+          Submit For Closure
+        </button>
+
+        <button *ngIf="ischangeanalyst" class="btn-cancel">
+          Cancel
+        </button>
+      </div>
+
     </div>
   </div>
 

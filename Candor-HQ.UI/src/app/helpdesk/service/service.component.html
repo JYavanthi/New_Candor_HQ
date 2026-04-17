@@ -1,215 +1,224 @@
+<div class="serviceMainDiv">
 
-<div class="col-md-12 table-head-crum">
-  <div class="text-center pageHeadingCss">
-    <p class="pageHeadingparaCss">Service Requests</p>
+  <div class="serviceSideBar">
+    <app-sidebarissue></app-sidebarissue>
   </div>
-  <div class="button-bread">
-    <span class="filterIconClass" (click)="showFilter=!showFilter"><i class="fa fa-filter" aria-hidden="true"></i></span>
-    <button class="button-approve" [routerLink]="'/services/viewservices'"><i class='bx bx-plus-circle'></i> New Services</button>
-  </div>
-</div>
-<div class="card card_filter" style="margin-bottom:3%;" *ngIf="showFilter">
-  <div class="card-body card_body_filter">
-    <div class="row filter_cr">
-      <div class="col">
-        <label>Plant</label><br />
-        <select class="input-change">
-          <option value="1" disabled selected>Select-plant</option>
-          <option value="1">ML 1</option>
-          <option value="2">ML 2</option>
-          <option value="3">ML 3</option>
-          <option value="4">ML 4</option>
-          <option value="5">ML 5</option>
-          <option value="6">ML 6</option>
-          <option value="6">ML 7</option>
-          <option value="6">ML 8</option>
-          <option value="6">ML 9</option>
-          <option value="6">ML 10</option>
-        </select>
-      </div>
-      <div class="col">
-        <label>Service-Category</label><br />
-        <select class="input-change">
-          <option value="1" disabled selected>Select-category</option>
-          <option value="1">Servers</option>
-          <option value="2">Network</option>
-          <option value="3">Security</option>
-          <option value="4">Inhouse Development</option>
-          <option value="5">SAP</option>
-          <option value="6">Software</option>
-          <option value="6">Desktop/Laptop</option>
-          <option value="6">Printers</option>
-        </select>
-      </div>
-      <div class="col">
-        <label>Sub-Category</label><br />
-        <select class="input-change">
-          <option value="1" disabled selected>Select-sub_category</option>
-          <option value="1">Major</option>
-          <option value="2">Standard</option>
-          <option value="3">Minor</option>
-          <option value="4">Emergency</option>
-        </select>
-      </div>
-      <div class="col">
-        <label>Priority</label><br />
-        <select class="input-change">
-          <option value="1" disabled selected>Select-priority</option>
-          <option value=""></option>
-        </select>
-      </div>
-      <div class="col">
-        <label>Start Date:</label><br />
-        <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" required />
-      </div>
-      <div class="col">
-        <label>End Date:</label><br />
-        <input class="input-change cr_date" type="date" id="toDate" name="toDate" required />
+
+  <div class="col-md-12 table-head-crum">
+    <div class="text-center pageHeadingCss">
+      <p class="pageHeadingparaCss">Service Requests</p>
+    </div>
+    <div class="button-bread">
+      <span class="filterIconClass" (click)="showFilter=!showFilter"><i class="fa fa-filter"
+          aria-hidden="true"></i></span>
+      <button class="button-approve" [routerLink]="'/services/viewservices'"><i class='bx bx-plus-circle'></i> New
+        Services</button>
+    </div>
+    <div class="card card_filter" style="margin-bottom:3%;" *ngIf="showFilter">
+      <div class="card-body card_body_filter">
+        <div class="row filter_cr">
+          <div class="col">
+            <label>Plant</label><br />
+            <select class="input-change">
+              <option value="1" disabled selected>Select-plant</option>
+              <option value="1">ML 1</option>
+              <option value="2">ML 2</option>
+              <option value="3">ML 3</option>
+              <option value="4">ML 4</option>
+              <option value="5">ML 5</option>
+              <option value="6">ML 6</option>
+              <option value="6">ML 7</option>
+              <option value="6">ML 8</option>
+              <option value="6">ML 9</option>
+              <option value="6">ML 10</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>Service-Category</label><br />
+            <select class="input-change">
+              <option value="1" disabled selected>Select-category</option>
+              <option value="1">Servers</option>
+              <option value="2">Network</option>
+              <option value="3">Security</option>
+              <option value="4">Inhouse Development</option>
+              <option value="5">SAP</option>
+              <option value="6">Software</option>
+              <option value="6">Desktop/Laptop</option>
+              <option value="6">Printers</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>Sub-Category</label><br />
+            <select class="input-change">
+              <option value="1" disabled selected>Select-sub_category</option>
+              <option value="1">Major</option>
+              <option value="2">Standard</option>
+              <option value="3">Minor</option>
+              <option value="4">Emergency</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>Priority</label><br />
+            <select class="input-change">
+              <option value="1" disabled selected>Select-priority</option>
+              <option value=""></option>
+            </select>
+          </div>
+          <div class="col">
+            <label>Start Date:</label><br />
+            <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" required />
+          </div>
+          <div class="col">
+            <label>End Date:</label><br />
+            <input class="input-change cr_date" type="date" id="toDate" name="toDate" required />
+          </div>
+        </div>
+        <button class="btn btn-rounded filter_button">Filter</button>
       </div>
     </div>
-    <button class="btn btn-rounded filter_button">Filter</button>
+
+
+
+    <div style="margin-bottom:2%; margin-left:5%;    margin-top: 20px;">
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <th>Select</th>
+              <th>Service ID</th>
+              <th>Service</th>
+              <th>Requestor</th>
+              <th>Status</th>
+              <th>Category</th>
+              <th>Sub-Category</th>
+              <th>Type</th>
+              <th>Priority</th>
+              <th>Assigned To</th>
+              <th>Attachment</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr-body">
+              <td><input type="checkbox" name="one" id="one" /></td>
+              <td>CR1000012</td>
+              <td>Service</td>
+              <td>Nilesh Kapse</td>
+              <td>Progress</td>
+              <td>Servers</td>
+              <td>Cables</td>
+              <td>Business application</td>
+              <td>Very High</td>
+              <td>Michael</td>
+              <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              <td>
+                <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+            <tr class="tr-body">
+              <td><input type="checkbox" name="one" id="one" /></td>
+              <td>CR1000012</td>
+              <td>Service</td>
+              <td>Nilesh Kapse</td>
+              <td>Progress</td>
+              <td>Printers</td>
+              <td>Inks</td>
+              <td>Business application</td>
+              <td>Very High</td>
+              <td>Michael</td>
+              <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              <td>
+                <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+            <tr class="tr-body">
+              <td><input type="checkbox" name="one" id="one" /></td>
+              <td>CR1000012</td>
+              <td>Service</td>
+              <td>Nilesh Kapse</td>
+              <td>Progress</td>
+              <td>Laptop/Desktop</td>
+              <td>Ram management</td>
+              <td>Business application</td>
+              <td>Very High</td>
+              <td>Michael</td>
+              <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              <td>
+                <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+            <tr class="tr-body">
+              <td><input type="checkbox" name="one" id="one" /></td>
+              <td>CR1000012</td>
+              <td>Service</td>
+              <td>Nilesh Kapse</td>
+              <td>Progress</td>
+              <td>Network</td>
+              <td>Slow Connectivity</td>
+              <td>Business application</td>
+              <td>Very High</td>
+              <td>Michael</td>
+              <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              <td>
+                <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+            <tr class="tr-body">
+              <td><input type="checkbox" name="one" id="one" /></td>
+              <td>CR1000012</td>
+              <td>Service</td>
+              <td>Nilesh Kapse</td>
+              <td>Progress</td>
+              <td>Security</td>
+              <td>cloud security</td>
+              <td>Business application</td>
+              <td>Very High</td>
+              <td>Michael</td>
+              <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              <td>
+                <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+            <tr class="tr-body">
+              <td><input type="checkbox" name="one" id="one" /></td>
+              <td>CR1000012</td>
+              <td>Service</td>
+              <td>Nilesh Kapse</td>
+              <td>Progress</td>
+              <td>Servers</td>
+              <td>Cables</td>
+              <td>Business application</td>
+              <td>Very High</td>
+              <td>Michael</td>
+              <td><i class="fa fa-download" aria-hidden="true"></i></td>
+              <td>
+                <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+    </div>
   </div>
-</div>
 
-
-
-<div style="margin-bottom:2%; margin-left:5%;    margin-top: 20px;">
-  <div class="table-wrapper">
-    <table class="fl-table">
-      <thead class="table-head">
-        <tr class="border-bottom">
-          <th>Select</th>
-          <th>Service ID</th>
-          <th>Service</th>
-          <th>Requestor</th>
-          <th>Status</th>
-          <th>Category</th>
-          <th>Sub-Category</th>
-          <th>Type</th>
-          <th>Priority</th>
-          <th>Assigned To</th>
-          <th>Attachment</th>
-          <th>Update</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="tr-body">
-          <td><input type="checkbox" name="one" id="one" /></td>
-          <td>CR1000012</td>
-          <td>Service</td>
-          <td>Nilesh Kapse</td>
-          <td>Progress</td>
-          <td>Servers</td>
-          <td>Cables</td>
-          <td>Business application</td>
-          <td>Very High</td>
-          <td>Michael</td>
-          <td><i class="fa fa-download" aria-hidden="true"></i></td>
-          <td>
-            <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          </td>
-          <td>
-            <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-        <tr class="tr-body">
-          <td><input type="checkbox" name="one" id="one" /></td>
-          <td>CR1000012</td>
-          <td>Service</td>
-          <td>Nilesh Kapse</td>
-          <td>Progress</td>
-          <td>Printers</td>
-          <td>Inks</td>
-          <td>Business application</td>
-          <td>Very High</td>
-          <td>Michael</td>
-          <td><i class="fa fa-download" aria-hidden="true"></i></td>
-          <td>
-            <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          </td>
-          <td>
-            <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-        <tr class="tr-body">
-          <td><input type="checkbox" name="one" id="one" /></td>
-          <td>CR1000012</td>
-          <td>Service</td>
-          <td>Nilesh Kapse</td>
-          <td>Progress</td>
-          <td>Laptop/Desktop</td>
-          <td>Ram management</td>
-          <td>Business application</td>
-          <td>Very High</td>
-          <td>Michael</td>
-          <td><i class="fa fa-download" aria-hidden="true"></i></td>
-          <td>
-            <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          </td>
-          <td>
-            <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-        <tr class="tr-body">
-          <td><input type="checkbox" name="one" id="one" /></td>
-          <td>CR1000012</td>
-          <td>Service</td>
-          <td>Nilesh Kapse</td>
-          <td>Progress</td>
-          <td>Network</td>
-          <td>Slow Connectivity</td>
-          <td>Business application</td>
-          <td>Very High</td>
-          <td>Michael</td>
-          <td><i class="fa fa-download" aria-hidden="true"></i></td>
-          <td>
-            <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          </td>
-          <td>
-            <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-        <tr class="tr-body">
-          <td><input type="checkbox" name="one" id="one" /></td>
-          <td>CR1000012</td>
-          <td>Service</td>
-          <td>Nilesh Kapse</td>
-          <td>Progress</td>
-          <td>Security</td>
-          <td>cloud security</td>
-          <td>Business application</td>
-          <td>Very High</td>
-          <td>Michael</td>
-          <td><i class="fa fa-download" aria-hidden="true"></i></td>
-          <td>
-            <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          </td>
-          <td>
-            <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-        <tr class="tr-body">
-          <td><input type="checkbox" name="one" id="one" /></td>
-          <td>CR1000012</td>
-          <td>Service</td>
-          <td>Nilesh Kapse</td>
-          <td>Progress</td>
-          <td>Servers</td>
-          <td>Cables</td>
-          <td>Business application</td>
-          <td>Very High</td>
-          <td>Michael</td>
-          <td><i class="fa fa-download" aria-hidden="true"></i></td>
-          <td>
-            <a [routerLink]="'/newcrpage'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          </td>
-          <td>
-            <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <br />
 </div>

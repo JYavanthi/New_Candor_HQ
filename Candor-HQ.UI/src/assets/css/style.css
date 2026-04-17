@@ -82,33 +82,10 @@
   padding-top: 6%;
 }
 
-.table-wrapper {
-  justify-content: center;
-  font-family: sans-serif;
-  margin-top: 1vh;
-  display: flex;
-  font-size: small;
-}
-
-.fl-table {
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: normal;
-  border: none;
-  border-collapse: collapse;
-  background-color: white;
-}
-
-.fl-table td,
-.fl-table th {
-  text-align: center;
-  padding: 8px;
-}
-
 .fl-table td {
   border-right: 1px solid #f8f8f8;
   font-size: 12px;
-}
+} 
 
 tr.border-bottom th {
   border-bottom: 2px solid black;
@@ -276,17 +253,15 @@ input[type="file"] {
 
 /* Execute change */
 .container-field-implement {
-  max-width: 97%;
+  max-width: 100%;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: grid;
   gap: 15px;
   grid-template-columns: repeat(1, 1fr);
   margin-left: 1%;
   margin-top: 3%;
-  border-top: #113bf7 5px solid;
 }
 
 /*change request report*/
@@ -514,11 +489,6 @@ input[type="file"] {
   margin-left: 1%;
 }
 
-.table-wrapper {
-  display: flex;
-  justify-content: center;
-  font-size: small;
-}
 
 .users_request_helpdesk {
   margin-left: 5%;
@@ -527,16 +497,6 @@ input[type="file"] {
 
 .helpdesk_header {
   text-align: center;
-}
-
-
-/*report issue*/
-
-.table-wrapper {
-  display: flex;
-  justify-content: center;
-  font-size: small;
-  margin-top: -1%;
 }
 
 .cr_date {
@@ -831,8 +791,8 @@ table {
   width: 100%;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f8f8f8;
+  /* border: 1px solid #ddd;
+  background-color: #f8f8f8; */
   margin-left: -10px;
 }
 
@@ -978,10 +938,6 @@ input[type="date"] {
   display: flex;
   align-items: center;
   margin-left: 10px;
-}
-
-.btn-sub-reset {
-  margin-top: -7%;
 }
 
 .btn-sub {
@@ -1353,11 +1309,8 @@ li {
   }
 }
 
-/* Approve breadcrumb  */
-
 .breadcrumbs {
-  border: 1px solid #cbd2d9;
-  border-radius: 0.3rem;
+
   display: inline-flex;
   overflow: hidden;
   margin-left: 20px;
@@ -1656,13 +1609,6 @@ li {
   cursor: pointer;
 }
 
-/* issue management */
-.table-wrapper {
-  margin-left: 2%;
-  width: 95%;
-}
-
-/* ended */
 
 .service_header_h1tag {
   text-align: center;

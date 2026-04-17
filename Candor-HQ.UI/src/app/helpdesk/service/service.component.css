@@ -1,3 +1,15 @@
+.serviceMainDiv {
+  width: 95%;
+  display: flex;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
+.serviceSideBar {
+  margin-left: 2%;
+}
+
 .table-wrapper {
   display: flex;
   justify-content: center;
@@ -54,16 +66,16 @@ th {
   display: none;
 }
 
-.description:hover .inside_description{
-    display: block;
+.description:hover .inside_description {
+  display: block;
 }
 
-.cr_filter_checkbox{
+.cr_filter_checkbox {
   margin-top: 2%;
   margin-right: 2px;
 }
 
-.cr_filter_label{
+.cr_filter_label {
   margin-top: 23px;
   margin-right: 3%;
 
@@ -72,21 +84,21 @@ th {
 .access-checkbox {
   display: flex;
   justify-content: center;
-  
+
 }
 
-.filter_button{
+.filter_button {
   background-color: #3c8dbc;
   color: white;
   margin-top: 17px;
 }
 
-.card_filter{
+.card_filter {
   width: 82%;
   margin-left: 11%;
 }
 
-.filter{
+.filter {
   display: flex;
   justify-content: end;
   margin-right: 5%;
@@ -105,21 +117,24 @@ th {
   margin-top: 2%;
 }
 
-.release_text{
+.release_text {
   color: rgb(154, 235, 73);
 }
 
-.table-head-crum{
-  display: flex;
+.table-head-crum {
   max-height: 87px;
   margin-bottom: 3%;
+  width: 90%;
+  margin-left: 6%;
 }
 
-.table-head-crum .button-bread{
+.table-head-crum .button-bread {
   width: 25%;
   display: flex;
+  margin-left: 70%;
 }
-.table-head-crum .button-bread .filterIconClass{
+
+.table-head-crum .button-bread .filterIconClass {
   max-height: 60px;
   margin-top: 40px;
   margin-right: 10px;

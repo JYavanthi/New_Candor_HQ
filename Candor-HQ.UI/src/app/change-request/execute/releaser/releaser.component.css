@@ -1,19 +1,3 @@
-
-h4,
-p,
-input,
-select,
-table {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* Container style */
-
 .container-implement {
   width: 80%;
   margin: 20px auto;
@@ -23,7 +7,6 @@ table {
   margin-left: 8%;
 }
 
-/* Heading styles */
 .h1tag {
   color: #333;
   font-size: 24px;
@@ -31,19 +14,16 @@ table {
   text-align: center;
 }
 
-/* Radio button styles */
 input[type="radio"] {
   margin-right: 5px;
 }
 
-/* Select and button styles */
 h4 select,
 h4 button {
   padding: 5px;
   margin-right: 10px;
 }
 
-/* Button styles */
 .implement-button,
 .implement-button i {
   background-color: #3c8dbc;
@@ -80,8 +60,6 @@ h4 button {
   box-shadow: #000;
   text-align: center;
 }
-
-/* RFC Tab */
 
 .container-field {
   max-width: 96.7%;
@@ -127,9 +105,6 @@ select {
   background-color: white;
 }
 
-.d-flex{
-  align-items: center;
-}
 select {
   cursor: pointer;
 }
@@ -144,26 +119,8 @@ input[type="date"] {
   margin-left: 10px;
 }
 
-.btn-sub-reset {
-  margin-top: 3%;
-  margin-left: 0%;
-  margin-bottom: 2px;
-}
 
-.btn-sub {
-  background-color: #113bf7;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 3%;
-  margin-bottom:2px;
-}
-
-
-.attachment{
+.attachment {
   z-index: 1 !important;
   position: absolute !important;
 }
@@ -214,37 +171,18 @@ input[type="date"] {
   border-top: 5px solid #113bf7;
 }
 
-.container-field-approve {
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 97%;
-  margin-left: 1%;
-  margin-top: 10px;
-  border-top: 5px solid green;
-}
 
 .container-line {
   padding: 15px;
   white-space: nowrap;
 }
 
-/* Actions */
 .container-home {
   margin-right: 11%;
   font-size: small;
 }
 
 .btn-approve {
-  border: none;
-  border-radius: 5px;
-  background-color: #113bf7;
-  color: white;
-  padding: 5px;
-}
-
-.btn-submit {
-  width: 60%;
   border: none;
   border-radius: 5px;
   background-color: #113bf7;
@@ -260,13 +198,6 @@ input[type="date"] {
   color: white;
   padding: 5px;
   margin-left: -93px;
-}
-
-.border-rfc-heading {
-  border: 1px solid;
-  border-radius: 5px;
-  border-color: rgb(155, 158, 158);
-  padding: 10px;
 }
 
 .breadcrumb-top {
@@ -286,7 +217,6 @@ td {
   font-size: small;
 }
 
-/* history */
 .container-light {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
@@ -315,11 +245,11 @@ td {
   border-radius: 50%;
 }
 
-  .container-light img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right: 0;
-  }
+.container-light img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
 
 .time-right {
   text-align: right;
@@ -338,16 +268,15 @@ td {
   font-size: x-small;
 }
 
-  .scroll-box::-webkit-scrollbar {
-    width: 5px;
-  }
+.scroll-box::-webkit-scrollbar {
+  width: 5px;
+}
 
-  .scroll-box::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-  }
+.scroll-box::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
 
-/* chicklist */
 .collapsible {
   background-color: #ccc;
   color: #444;
@@ -396,8 +325,6 @@ td {
   font-size: medium;
 }
 
-/* system landscape */
-
 .custom-dropdown {
   position: relative;
   display: inline-block;
@@ -412,27 +339,23 @@ td {
   z-index: 1;
 }
 
-  .custom-dropdown-content label {
-    display: block;
-    padding: 10px;
-  }
+.custom-dropdown-content label {
+  display: block;
+  padding: 10px;
+}
 
-  .custom-dropdown-content input[type="radio"] {
-    margin-right: 10px;
-  }
+.custom-dropdown-content input[type="radio"] {
+  margin-right: 10px;
+}
 
 .custom-dropdown:focus-within .custom-dropdown-content {
   display: block;
 }
 
-/* Changes for implementation */
-
 .implement_button {
   display: flex;
   align-items: center;
 }
-
-/* breadcrumb */
 
 ul,
 li {
@@ -462,7 +385,6 @@ li {
   margin-top: -4%;
 }
 
-
 .breadcrumb__item {
   height: 100%;
   background-color: white;
@@ -484,12 +406,10 @@ li {
   cursor: pointer;
 }
 
-
-  .breadcrumb__item:hover {
-    background: #3d5ce9;
-    color: #FFF;
-  }
-
+.breadcrumb__item:hover {
+  background: #3d5ce9;
+  color: #FFF;
+}
 
 .breadcrumb__inner {
   display: flex;
@@ -505,7 +425,6 @@ li {
   overflow: hidden;
   white-space: nowrap;
 }
-
 
 @media all and (max-width: 1000px) {
   .breadcrumb {
@@ -531,8 +450,6 @@ li {
   }
 }
 
-/* Approve breadcrumb  */
-
 .breadcrumbs {
   border: 1px solid #cbd2d9;
   border-radius: 0.3rem;
@@ -544,18 +461,11 @@ li {
   margin-top: 5px;
 }
 
-/* Execute implementation plan css */
-
 .option_implment {
   width: auto;
   margin-left: 3%;
 }
 
-.select_closure, .textarea-implement, .input-approve, .textarea-implement {
-  margin-bottom: 3%;
-}
-
-/* finalizing */
 .btn-approval {
   width: 60%;
   border: none;
@@ -565,7 +475,6 @@ li {
   padding: 5px;
   margin-left: -15%;
 }
-
 
 .checklist_task {
   margin-left: 13%;
@@ -620,8 +529,6 @@ li {
   justify-content: end;
   margin-right: 3%;
 }
-
-/* finialzing execute */
 
 .checklist_task {
   margin-left: 13%;
@@ -722,7 +629,6 @@ li {
   margin-left: 10%;
 }
 
-
 .g_p_classification {
   white-space: nowrap;
   text-align: center;
@@ -733,7 +639,8 @@ li {
   justify-content: space-around;
 }
 
-.fa-edit, .fa-trash-o {
+.fa-edit,
+.fa-trash-o {
   font-size: 21px;
   margin-top: 7%;
   cursor: pointer;
@@ -747,7 +654,6 @@ li {
 .styled-select {
   height: 7vh;
 }
-
 
 .notification {
   position: fixed;
@@ -786,7 +692,6 @@ li {
   padding: 10px;
   font-size: 16px;
 }
-
 
 .success {
   animation: slideDown 0.5s ease forwards;
@@ -832,8 +737,260 @@ li {
   color: white;
 }
 
-.release-approval{
-    background-color:deepskyblue;
-    margin-left:5%;
+.release-approval {
+  background-color: deepskyblue;
+  margin-left: 5%;
 }
 
+.approve-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 97%;
+  margin: 10px auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.approve-header {
+  font-weight: 600;
+  color: #0f8b8d;
+  font-size: 18px;
+  border-bottom: 3px solid #3bb273;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  display: block;
+  color: #15455c;
+  font-size: large;
+}
+
+.input-box {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  background: #eee;
+}
+
+.textarea-box {
+  width: 100%;
+  height: 90px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  background: #eee;
+  padding: 10px;
+}
+
+.btn-add-file {
+  margin-left: 10px;
+  background: #0f8b8d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 15px;
+}
+
+.attachment-list {
+  font-size: 13px;
+}
+
+.icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #0f8b8d;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  width: 40%;
+}
+
+.btn {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  color: white;
+}
+
+.btn.approve {
+  background: #0f8b8d;
+}
+
+.btn.warn {
+  background: #ffb703;
+}
+
+.btn.reject {
+  background: #e63946;
+}
+
+h4,
+p,
+input,
+select,
+table {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.approver-history-card {
+  border: 1px solid #cfd8dc;
+  border-radius: 12px;
+  padding: 10px;
+  background: #ffffff;
+  width: 100%;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.table-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #cfd8dc;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table thead {
+  background-color: #0f8a92;
+  color: white;
+}
+
+.custom-table th {
+  padding: 12px;
+  font-size: 13px;
+  text-align: left;
+  border-right: 1px solid #e0e0e0;
+}
+
+.custom-table tbody {
+  background-color: #e8e4d9;
+}
+
+.custom-table td {
+  padding: 12px;
+  font-size: 13px;
+  border-right: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.custom-table th:last-child,
+.custom-table td:last-child {
+  border-right: none;
+}
+
+.custom-table tbody tr {
+  height: 50px;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #ddd7c8;
+}
+
+.release-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #d3cec4;
+}
+
+.release-header {
+  font-weight: 600;
+  color: #007c8c;
+  border-bottom: 2px solid #2bb673;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.custom-textarea {
+  width: 100%;
+  height: 90px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-input {
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.btn-add {
+  background: #0f9d9d;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.file-list {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.file-name {
+  font-size: 14px;
+}
+
+.file-actions i {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #007c8c;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-submit {
+  background: #2bb673;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  width: 20%;
+}
+
+.btn-cancel {
+  background: #ccc;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+}

@@ -96,7 +96,6 @@ export class HistoryComponent {
 
   getData() {
 
-    debugger
     if(!this.getcrcode){
       return
     }

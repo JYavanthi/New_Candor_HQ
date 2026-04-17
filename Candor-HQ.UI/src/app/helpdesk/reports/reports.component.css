@@ -1,4 +1,17 @@
-.selector{
-    align-content:center;
-    margin-left:400px;
+.selector {
+    align-content: center;
+    margin-left: 400px;
+}
+
+.reportMainDiv {
+    width: 95%;
+    display: flex;
+    background: white;
+    border-radius: 40px;
+    margin-left: 2.5%;
+    margin-top: -2%;
+}
+
+.reportSideBar {
+    margin-left: 5%;
 }

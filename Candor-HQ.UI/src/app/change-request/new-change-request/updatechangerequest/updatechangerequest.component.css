@@ -4,17 +4,13 @@
   /* Align items vertically */
 }
 
-/* Style for checkbox */
 .checkbox-container input[type="checkbox"] {
   margin-bottom: 5px;
   margin-right: -15px;
-  /* Adjust spacing between checkbox and label */
 }
 
-/* Style for label */
 .checkbox-container label {
   margin: 0;
-  /* Remove default margin */
 }
 
 
@@ -210,11 +206,10 @@
 }
 
 label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #333;
   margin-bottom: 5px;
   display: block;
+  color: #15455c;
+  font-size: large;
 }
 
 input,
