@@ -77,12 +77,12 @@ th {
 }
 
 .tableWrapper {
-  width: 105%;
+  width: 106%;
   margin: auto;
   background: #c8d5e5;
-  padding: 20px;
+  padding: 15px;
   border-radius: 12px;
-  margin-left: -2%;
+  margin-left: -3%;
 }
 
 table {

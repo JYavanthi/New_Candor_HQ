@@ -1,133 +1,88 @@
-/*.report_header{
-    text-align: center;
+.slaResolutionMainDiv {
+    display: flex;
+    background-color: white;
+    width: 95%;
+    border-radius: 40px;
+    margin-left: 2.5%;
 }
 
-.container-implement {
-    width: 92%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-    margin-left: 92px;
+.slaResolutionSideBar {
+    margin-left: 2%;
+
 }
+
+.btn-back {
+    background: linear-gradient(to bottom, #ffd86a, #f5a623);
+    color: #1a1a1a;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #c97f00;
+    transition: 0.2s;
+}
+
 
 th,
 td {
     padding: 2px 13px;
-    text-align: center;
+    text-align: left;
     margin-left: -1%;
     white-space: nowrap;
 }
 
-.button-assign {
-    background-color: #3c8dbc;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.button-clarification {
-    background-color: #3c8dbc;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.assign {
-    margin-left: 8%;
-}
-
-.clarification {
-    display: flex;
-    justify-content: end;
-    margin-right: 2%;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.mandatory {
-    font-size: large;
-    margin-left: 10%;
-    margin-top: 1%;
-}
-
-label {
-    white-space: nowrap;
-}
-
-.summary_card{
-    width: 20rem;
-    white-space: nowrap;
-    margin-left: 7%;
-}*/
-
-th,
-td {
-  padding: 2px 13px;
-  text-align: left;
-  margin-left: -1%;
-  white-space: nowrap;
-}
-
 .filter_button {
-  background-color: #3c8dbc;
-  color: white;
-  margin-top: 17px;
-  margin-left: 40%;
+    background-color: #3c8dbc;
+    color: white;
+    margin-top: 17px;
+    margin-left: 40%;
 }
 
-.card{
-    width:90%;
-    margin:20px 70px;
+.card {
+    width: 90%;
+    margin: 20px 70px;
 
 }
 
-.slareporttable{
-    margin:25px 280px;
+.slareporttable {
+    margin: 25px 280px;
 }
 
 .export_pdf {
-  margin-left: -87px;
+    margin-left: -87px;
 }
 
-.table-wrapper{
-    margin-top:20px;
+.table-wrapper {
+    margin-top: 20px;
     margin-left: 10%;
     width: 88%;
 }
+
 .fl-table {
     margin-left: 188rem;
 }
 
 .changeAnalystTable table {
-    width:100%;
-    margin-left:-1%;
+    width: 100%;
+    margin-left: -1%;
 }
 
-table,th,td{
+table,
+th,
+td {
     border: 1px solid #cdc7c7;
 }
-.sizetable{
+
+.sizetable {
     overflow-x: auto;
     width: 89%;
     margin-left: 8%;
 }
 
 .reportDescription {
-  /*  display: -webkit-box;*/
+    /*  display: -webkit-box;*/
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -136,27 +91,29 @@ table,th,td{
     position: relative;
     max-width: 200px;
     white-space: nowrap;
-  }
+}
 
-    .reportDescription:after {
-      content: attr(title);
-      position: absolute;
-      left: 0;
-      bottom: 100%;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      padding: 5px;
-      z-index: 10;
-      white-space: normal;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      width: max-content;
-      max-width: 300px;
-      line-height: 1.5;
-    }
+.reportDescription:after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 5px;
+    z-index: 10;
+    white-space: normal;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: max-content;
+    max-width: 300px;
+    line-height: 1.5;
+}
 
-    .reportDescription:hover::after {
-      visibility: visible; /* Make visible on hover */
-      opacity: 1; /* Fully opaque on hover */
-    }
+.reportDescription:hover::after {
+    visibility: visible;
+    /* Make visible on hover */
+    opacity: 1;
+    /* Fully opaque on hover */
+}

@@ -1,49 +1,35 @@
-<div class="uapdateClassficationmainDiv">
-  <div style="margin-left : 3%;">
+<div class="updateClassficationmainDiv">
+
+  <div class="sidebar">
     <app-support-sidebar></app-support-sidebar>
   </div>
 
-  <div class="container-implement">
-    <div class="container-field-line">
+  <div class="main-card">
+    <h3 class="title">Update Classification</h3>
 
-      <!-- bootstrap -->
-      <h3>Update Classification</h3>
-      <div class="border-rfc-heading">
-        <div class="row mt-2">
-          <div class="col">
-            <label>Classification ID</label>
-            <input type="text" readonly placeholder="classificationId"
-              [(ngModel)]="updatevalue[0].itclassificationId" />
-          </div>
-          <div class="col">
-            <label>Classification Name</label>
-            <input type="text" placeholder="Classificationname" [(ngModel)]="updatevalue[0].classificationName" />
-          </div>
-          <!--  <div class="col">
-                  <label>Is Active</label>
+    <div class="form-card">
+      <div class="row">
 
-                  <select [(ngModel)]="isactive">
-                    <option [ngValue]="true">True</option>
-                    <option [ngValue]="false">False</option>
-                  </select>
-                </div>
-        -->
+        <div class="form-group">
+          <label>Classification ID</label>
+          <input type="text" readonly placeholder="classificationId"
+            [(ngModel)]="updatevalue[0].itclassificationId" />
+        </div>
 
-
+        <div class="form-group">
+          <label>Classification Name</label>
+          <input type="text" placeholder="Classificationname"
+            [(ngModel)]="updatevalue[0].classificationName" />
         </div>
 
       </div>
     </div>
-    <div class="row mt-2">
-      <div class="col">
-        <button (click)="postClassification()" class="btn btn-primary">Submit</button>
-      </div>
-      <div class="col">
-        <button [routerLink]="'/classification'" style="margin-left: -87%;" class="btn btn-primary">Back</button>
 
-      </div>
-
+    <div class="button-row">
+      <button (click)="postClassification()" class="btn-submit">SUBMIT</button>
+      <button [routerLink]="'/classification'" class="btn-back">BACK</button>
     </div>
+
   </div>
 
 </div>

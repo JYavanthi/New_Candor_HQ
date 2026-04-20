@@ -6,6 +6,23 @@
     margin-left: 2.5%;
 }
 
+.issueReportSideBar {
+    margin-left: 2%;
+}
+
+.btn-back {
+    background: linear-gradient(to bottom, #ffd86a, #f5a623);
+    color: #1a1a1a;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #c97f00;
+    transition: 0.2s;
+}
+
 th,
 td {
     padding: 2px 13px;

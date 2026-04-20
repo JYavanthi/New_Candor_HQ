@@ -21,7 +21,6 @@
 }
 
 .toggle-button.active {
-
   background-color: #3c8dbc;
   color: white;
 }
@@ -172,5 +171,5 @@
   align-items: center;
   gap: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  margin-left: 10px;
+  height: 30%;
 }

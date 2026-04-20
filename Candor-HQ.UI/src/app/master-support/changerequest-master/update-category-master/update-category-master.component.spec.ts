@@ -10,8 +10,8 @@ describe('UpdateCategoryMasterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UpdateCategoryMasterComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(UpdateCategoryMasterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

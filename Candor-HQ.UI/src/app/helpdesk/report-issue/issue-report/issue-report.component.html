@@ -5,12 +5,12 @@
   </div>
 
 
-  <div class="container-home">
+  <div class="container-home" style="width: 90%; margin-left: 5%;">
     <div class="text-center">
       <div class="text-center pageHeadingCss">
         <p class="pageHeadingparaCss">Issue Report</p>
       </div>
-      <button style="margin-right:78%" class="btn-back" [routerLink]="'/reports'" type="button">Back </button>&nbsp;
+      <button style="margin-right:78%" class="btn-back" [routerLink]="'/reports'" type="button">Back > </button>&nbsp;
     </div>
     <div class="row" align="right">
       <div class="col export_pdf">
@@ -171,7 +171,7 @@
           </tbody>
         </table>
       </div>
-      <div *ngIf="issuelist?.length > 0">
+      <div *ngIf="issuelist?.length > 0" style="margin-left: 25%;">
         <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex"
           [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)" aria-label="Select page"
           style="margin-right:34%">

@@ -684,8 +684,6 @@ export class UpdateIssueResolutionComponent {
   }
 
   updateStatus(status: any) {
-
-
     if (status == "Resolved") {
       const resolutionDate = new Date();
       this.ShowCommentBox = true;

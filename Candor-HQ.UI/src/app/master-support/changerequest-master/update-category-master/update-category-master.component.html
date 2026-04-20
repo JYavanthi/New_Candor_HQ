@@ -1,56 +1,52 @@
 <div class="updateCategorymainDiv">
-  <div style="margin-left : 3%;">
+
+  <div class="sidebar">
     <app-support-sidebar></app-support-sidebar>
   </div>
 
-  <div class="container-implement">
-    <div class="container-field-line">
+  <div class="main-card">
+    <h3 class="title">Update Category Type</h3>
 
-      <!-- bootstrap -->
-      <h3>Update Category Type </h3>
-      <div class="border-rfc-heading">
-        <div class="row mt-2">
-          <div class="col">
-            <label>Category Type ID</label>
-            <input type="text" [(ngModel)]="updatevalue[0].categoryTypeId" readonly />
-          </div>
-          <div class="col">
-            <label>Category Name</label>
-            <!-- <input type="text" [(ngModel)]="updatevalue[0].categoryName" />-->
-            <select [(ngModel)]="updatevalue[0].categoryId">
-              <option value="" disabled selected>Select categoryName</option>
-              <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">{{cldata.categoryName}}</option>
-            </select>
-          </div>
-          <div class="col">
-            <label>Category Type</label>
-            <input type="text" placeholder="CategoryType" [(ngModel)]="updatevalue[0].categoryType" />
-          </div>
-          <div class="col">
-            <label>Is Active</label>
-            <select [(ngModel)]="updatevalue[0].isActive">
-              <option>Select</option>
-              <option [ngValue]="true">True</option>
-              <option [ngValue]="false">False</option>
-            </select>
-          </div>
+    <div class="form-card">
+      <div class="row">
 
+        <div class="form-group">
+          <label>Category Type ID</label>
+          <input type="text" [(ngModel)]="updatevalue[0].categoryTypeId" readonly />
+        </div>
 
+        <div class="form-group">
+          <label>Category Name</label>
+          <select [(ngModel)]="updatevalue[0].categoryId">
+            <option value="" disabled selected>Select categoryName</option>
+            <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">
+              {{cldata.categoryName}}
+            </option>
+          </select>
+        </div>
 
+        <div class="form-group">
+          <label>Category Type</label>
+          <input type="text" placeholder="CategoryType" [(ngModel)]="updatevalue[0].categoryType" />
+        </div>
+
+        <div class="form-group">
+          <label>Is Active</label>
+          <select [(ngModel)]="updatevalue[0].isActive">
+            <option>Select</option>
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
         </div>
 
       </div>
     </div>
-    <div class="row mt-2">
-      <div class="col">
-        <button (click)="postCategoryTyp()" class="btn btn-primary">Submit</button>
-      </div>
-      <div class="col">
-        <button [routerLink]="'/categorytype'" style="margin-left: -86%;" class="btn btn-primary">Back</button>
 
-      </div>
-
+    <div class="button-row">
+      <button (click)="postCategoryTyp()" class="btn-submit">SUBMIT</button>
+      <button [routerLink]="'/categorytype'" class="btn-back">BACK</button>
     </div>
+
   </div>
 
 </div>

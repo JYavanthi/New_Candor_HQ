@@ -20,48 +20,9 @@
       <p>{{deletemessage}}</p>
       <span class="close-btn" (click)="navigatesuccess()">Ok</span>
     </div>
-    <!-- <div class="container-field-line">
-    <h3>Reference Type</h3>
-    <div class="search-hero">
-      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()" autocomplete="off" placeholder="search Reference Type">
-    </div>
-    <button class="btn btn-primary" [routerLink]="'/newrefrencetype'" style="margin-left:92%;margin-top:-5%;width:7%;">New</button>
-
-    <div class="border-rfc-heading">
-      <div class="table-wrapper" style="overflow-x: auto">
-        <table class="fl-table">
-          <thead class="table-head">
-            <tr class="border-bottom">
-              <th>ReferenceType ID</th>
-              <th>Reference Type</th>
-
-              <th>Is Active</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let type of filteredData ? filteredData : Referencetype" class="tr-body">
-              <td>{{ type.referenceTypeId }}</td>
-              <td>{{ type.referenceType }}</td>
-              <td>{{ type.isActive }}</td>
-
-              <td>
-                <a href="" routerLink="/updaterefrencetype/{{type.referenceTypeId}}/edit">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </a>&nbsp;&nbsp;
-                <i (click)="deleteRow(type.referenceTypeId,type.referenceType)" class="fa fa-trash" aria-hidden="true"></i>
-
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div> -->
 
     <div class="container-field-line">
 
-      <!-- Header Section -->
       <div class="top-header">
         <h3 class="page-title">REFERENCE TYPE</h3>
 
@@ -73,7 +34,7 @@
           </div>
 
           <button class="new-btn" [routerLink]="'/newrefrencetype'">
-            <i class="fa fa-plus"></i> NEW
+            <i class="fa fa-plus" style="margin-top: 7%; padding-right: 5%;"></i> NEW
           </button>
         </div>
       </div>

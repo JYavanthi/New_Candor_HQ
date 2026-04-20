@@ -1,50 +1,42 @@
 <div class="updatenatureMainDiv">
 
-  <div style="margin-left : 3%;">
+  <div class="sidebar">
     <app-support-sidebar></app-support-sidebar>
   </div>
 
-  <div class="container-implement">
-    <div class="container-field-line">
+  <div class="main-card">
+    <h3 class="title">Update Nature Of Change</h3>
 
-      <!-- bootstrap -->
-      <h3>Update Nature Of Change </h3>
-      <div class="border-rfc-heading">
-        <div class="row mt-2">
-          <div class="col">
-            <label>Nature Of ChangeID</label>
-            <input class="searchinput" type="text" readonly [(ngModel)]="updatevalue[0].natureofChangeId" />
-          </div>
-          <div class="col">
-            <label>Nature Of Change</label>
-            <input type="text" [(ngModel)]="updatevalue[0].natureofChange1" />
-          </div>
-          <div class="col">
-            <label>Is Active</label>
+    <div class="form-card">
+      <div class="row">
 
-            <select [(ngModel)]="updatevalue[0].isActive">
-              <option>Select</option>
-              <option [ngValue]="true">True</option>
-              <option [ngValue]="false">False</option>
-            </select>
+        <div class="form-group">
+          <label>Nature Of ChangeID</label>
+          <input class="searchinput" type="text" readonly [(ngModel)]="updatevalue[0].natureofChangeId" />
+        </div>
 
-          </div>
+        <div class="form-group">
+          <label>Nature Of Change</label>
+          <input type="text" [(ngModel)]="updatevalue[0].natureofChange1" />
+        </div>
 
-
+        <div class="form-group">
+          <label>Is Active</label>
+          <select [(ngModel)]="updatevalue[0].isActive">
+            <option>Select</option>
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
         </div>
 
       </div>
     </div>
-    <div class="row mt-2">
-      <div class="col">
-        <button (click)="postNatureofChange()" class="btn btn-primary">Submit</button>
-      </div>
-      <div class="col">
-        <button [routerLink]="'/natureofchange'" style="margin-left: -87%;" class="btn btn-primary">Back</button>
 
-      </div>
-
+    <div class="button-row">
+      <button (click)="postNatureofChange()" class="btn-submit">SUBMIT</button>
+      <button [routerLink]="'/natureofchange'" class="btn-back">BACK</button>
     </div>
+
   </div>
 
 </div>
