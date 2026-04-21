@@ -73,17 +73,18 @@
             </div>
           </div>
 
-          <div class="col-md-4" style="display: flex !important; justify-content: center !important;"
-            *ngIf="!fromSupportTeam">
+          <div class="col-md-4 toggle-container" *ngIf="!fromSupportTeam">
             <div class="toggle-wrapper">
               <button class="toggle-button" [ngClass]="{ 'active': isOpenIssues }" (click)="openIssue()">
                 Open
               </button>
+
               <button class="toggle-button" [ngClass]="{ 'active': !isOpenIssues }" (click)="closeIssue()">
                 Closed
               </button>
-            </div>
 
+              <div class="toggle-slider" [ngClass]="{ 'right': !isOpenIssues }"></div>
+            </div>
           </div>
 
           <div class="col-md-4">
@@ -108,7 +109,7 @@
         </div>
       </div>
 
-  
+
       <div class="filter-container" *ngIf="isVisible" [formGroup]="filterForm">
 
         <div class="filter-row">

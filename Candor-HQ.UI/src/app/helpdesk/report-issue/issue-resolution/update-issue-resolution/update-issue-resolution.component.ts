@@ -817,14 +817,6 @@ export class UpdateIssueResolutionComponent {
       "textChat": jsonString
     }
 
-    // const requestBody =
-    // {
-    //   "issueId": this.selectedRowData[0]['issueId'],
-    //   "status": status,
-    //   "ChatsBox": param,
-    //   "ModifiedBy": parseInt(this.user?.empData?.employeeNo),
-    //   "ResolutionRemarks": messageText
-    // }
     if (status != "In Progress") {
       const requestBody = {
         "issueId": this.issueData?.issueId,

@@ -36,7 +36,7 @@
           <select disabled [(ngModel)]="plantvalue">
             <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId"
               [attr.selected]="pltdata.plantId === plantvalue ? true : null">
-              {{ pltdata.plantcode }}
+              {{ pltdata.plantCode }}
             </option>
           </select>
         </div>
@@ -414,9 +414,9 @@
             <div class="col">
               <select [(ngModel)]="Value.gxpplantId" [disabled]="Value['status'] != 'Draft'">
                 <option value="" selected hidden disabled>Select Plant</option>
-                <option *ngFor="let pltdata of plantcode" [value]="pltdata.id"
-                  [attr.selected]="pltdata.id === Value.plantId ? true : null">
-                  {{ pltdata.code }}
+                <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId"
+                  [attr.selected]="pltdata.plantId === Value.plantId ? true : null">
+                  {{ pltdata.plantCode }}
                 </option>
               </select>
             </div>
