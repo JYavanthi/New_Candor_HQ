@@ -421,8 +421,6 @@ textarea {
   transition: all 0.3s ease;
 }
 
-
-
 .submit-btn {
   background: linear-gradient(135deg, #4da3ff, #0066cc);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);

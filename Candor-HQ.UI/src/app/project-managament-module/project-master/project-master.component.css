@@ -227,7 +227,7 @@ td:contains("Completed") {
 .cancel {
   background: #ff4d6d;
   width: 100px;
-  padding-left: 25px;
+  padding-left: 10px;
 }
 
 .pending {
@@ -238,7 +238,10 @@ td:contains("Completed") {
   background: #36c3c9;
 }
 
-/* Action icon */
+.discontinue {
+  background: palevioletred;
+}
+
 .cursor-pointer {
   font-size: 18px;
   color: #4ea8b9;

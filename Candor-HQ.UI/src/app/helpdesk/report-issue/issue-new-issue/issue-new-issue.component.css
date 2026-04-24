@@ -9,6 +9,22 @@
   margin-top: -2%;
 }
 
+.pageHeadingparaCss1 {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  white-space: nowrap;
+  font-size: xx-large;
+  font-weight: 900;
+}
+
+.imgCss {
+  width: 15%;
+  height: 50px;
+  margin-top: -2px;
+  padding-left: 8%;
+}
+
 .NewissueSideBar {
   margin-left: -10%;
 }

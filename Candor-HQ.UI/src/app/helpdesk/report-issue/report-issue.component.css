@@ -213,7 +213,7 @@ button[disabled] {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  background-color: #f5f5f5;
+  background-color: white;
   border: 2px solid transparent;
   transition: all 0.3s ease;
 }
@@ -257,7 +257,6 @@ button[disabled] {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 12px;
-  /* gap between rows */
 }
 
 .issue-table thead tr {
@@ -343,7 +342,8 @@ button[disabled] {
 }
 
 .clarification {
-  background: #8e24aa;
+  background: #ab97e6;
+  white-space: nowrap;
 }
 
 .hold {
@@ -363,15 +363,17 @@ button[disabled] {
 }
 
 .issue-table-wrapper {
-  background: #cfd8e3;
-  padding: 10px;
+  background: #daecff;
+  padding: 6px;
   border-radius: 15px;
+  margin-bottom: 5%;
 }
 
 .issue-table th {
-  padding: 12px;
+  padding: 5px;
   font-size: 13px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .issue-table th:first-child {
@@ -443,7 +445,8 @@ button[disabled] {
 }
 
 .clarification {
-  background: #8e24aa;
+  background: orange;
+  white-space: nowrap;
 }
 
 .hold {

@@ -27,8 +27,11 @@
           <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="filterData()"
             autocomplete="off" placeholder="Search Classification Name ">
         </div>
-        <button class="btn btn-primary" style="margin-top:-5%;margin-left:92%;width:7%;"
-          [routerLink]="'/newclassification'">New</button>
+        <button class="btn btn-primary"
+          style="margin-left:90%; margin-top:-3%; width:8%; display: flex; margin-bottom: 1%;"
+          [routerLink]="'/newclassification'"> New <i class="fa fa-plus-circle"
+            style="margin-left: 15%; margin-top: 10%;"></i>
+        </button>
       </div>
 
       <div class="border-rfc-heading">
@@ -51,7 +54,6 @@
                   </a>&nbsp;&nbsp;
                   <i (click)="deleteRow(classic.itclassificationId,classic.classificationName)" class="fa fa-trash"
                     aria-hidden="true"></i>
-
                 </td>
               </tr>
             </tbody>
@@ -60,5 +62,4 @@
       </div>
     </div>
   </div>
-
 </div>

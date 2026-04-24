@@ -1565,7 +1565,7 @@ export class ReleaserComponent implements OnChanges {
         this.getlevel = Number(level) - 1
         if (this.getapprvdtls.length > 0) {
           this.approvedDt = this.getapprvdtls[this.getlevel].approvedDt;
-          this.remark = this.getapprvdtls[this.getlevel].remarks
+          this.remark = this.getapprvdtls[this.getlevel].Remarks
           this.date = this.getapprvdtls[this.getlevel].approvedDt
           this.comment = this.getapprvdtls[this.getlevel].comments
           this.attach = this.getapprvdtls[this.getlevel].attachment

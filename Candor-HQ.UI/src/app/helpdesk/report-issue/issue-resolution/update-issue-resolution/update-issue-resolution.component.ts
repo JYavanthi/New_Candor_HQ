@@ -231,7 +231,7 @@ export class UpdateIssueResolutionComponent {
     }
     if (messageText.trim()) {
       this.messageList.push({
-        userRole: this.issueData['userRole'], //veryImp
+        userRole: this.issueData['userRole'], 
         text: messageText,
         timestamp: new Date()
       });

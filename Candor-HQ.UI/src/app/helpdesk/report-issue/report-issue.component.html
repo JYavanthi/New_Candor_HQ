@@ -115,7 +115,7 @@
         <div class="filter-row">
 
           <div class="filter-group">
-            <label>Plant</label>
+            <label>Project</label>
             <ng-multiselect-dropdown class="custom-dropdown" [settings]="dropdownSettings" [data]="dropdownList"
               formControlName="plantId">
             </ng-multiselect-dropdown>
@@ -184,14 +184,13 @@
 
       </div>
 
-      <br />
 
       <ng-container *ngIf="ShowMyIssue">
         <div class="issue-table-wrapper">
 
           <table class="issue-table">
 
-            <thead>
+            <thead style="height: 60px;">
               <tr>
                 <th>Action</th>
                 <th>Issue Code</th>
@@ -326,7 +325,7 @@
         <div class="issue-table-wrapper">
           <table class="issue-table" #tableRef id="excel-table">
 
-            <thead>
+            <thead style="height: 60px;">
               <tr>
                 <th>
                   <input type="checkbox" [(ngModel)]="Allselected" (change)="selectAll($event)">

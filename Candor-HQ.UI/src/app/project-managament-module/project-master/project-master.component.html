@@ -146,8 +146,9 @@
       'completed': projectData.projectStatus === 'Completed',
       'inprogress': projectData.projectStatus === 'In Progress',
       'cancel': projectData.projectStatus === 'Cancel',
-      'pending': projectData.projectStatus === 'Pending Approval',
-      'approved': projectData.projectStatus === 'Approved'
+      'pending': projectData.projectStatus === 'Pending Sponsor Approval',
+      'approved': projectData.projectStatus === 'Approved',
+      'discontinue' : projectData.projectStatus === 'Discontinue'
     }">
                     {{ projectData.projectStatus }}
                   </span>

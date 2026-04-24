@@ -444,6 +444,7 @@ export class IssueNewIssueComponent {
   }
 
   async getAssignTo() {
+
     if (this.selectedOption == 'others' && this.issueRaiseFor == '') {
       alert('Select Self, Others or Guest');
       return
@@ -941,69 +942,6 @@ export class IssueNewIssueComponent {
   middlename: any;
   lastname: any;
 
-  /*  fetchAllItems() {
-      const apiUrl = this.apiurl + '/EmployeeMasters';
-      this.http.get<any[]>(apiUrl).subscribe(
-        (response: any[]) => {
-          console.log("Function", response);
-          this.supportnames = response.map(item => item.employeeId + '-' + item.firstName + ' ' + item.middleName + ' ' + item.lastName);
-          this.supportteamname = this.supportnames;
-          this.employeeprofile = response.filter((row: any) => row.employeeId === this.supportid.trim());
-          this.firstname = this.employeeprofile[0].firstName;
-          this.middlename = this.employeeprofile[0].middleName;
-          this.lastname = this.employeeprofile[0].lastName;
-          *//*this.supportpersonname = this.firstname + this.middlename + this.lastname;*//*
-if (this.firstname !== null && this.firstname !== undefined) {
-this.supportpersonname += this.firstname;
-}
-
-if (this.middlename !== null && this.middlename !== undefined) {
-// If the supportpersonname is not empty, add a space before concatenating middle name
-if (this.supportpersonname !== '') {
-this.supportpersonname += ' ';
-}
-this.supportpersonname += this.middlename;
-}
-
-if (this.lastname !== null && this.lastname !== undefined) {
-// If the supportpersonname is not empty, add a space before concatenating last name
-if (this.supportpersonname !== '') {
-this.supportpersonname += ' ';
-}
-this.supportpersonname += this.lastname;
-}
-
-// If all parts of the name are null or undefined, set supportpersonname to 'Unknown'
-if (this.supportpersonname === '') {
-this.supportpersonname = 'Unknown';
-}
-
-
-// If all parts of the name are null, set supportpersonname to 'Unknown'
-if (this.supportpersonname === '') {
-this.supportpersonname = 'Unknown';
-}
-},
-(error: any) => {
-console.error('GET request failed', error);
-}
-);
-}
-
-filterItems() {
-const filter = this.issueRaiseFor.toUpperCase();
-this.dropdownItems = this.supportteamname.filter(item =>
-item.toUpperCase().includes(filter)
-);
-if (this.dropdownItems.length === 0 && filter !== '') {
-this.dropdownItems.push('No name found');
-}
-else if (filter === '') {
-this.dropdownItems.length = 0
-}
-
-}
-*/
 
   filterItems() {
     const filter = this.issueRaiseFor.toUpperCase().trim();

@@ -30,7 +30,7 @@
 
 .form-card {
   margin-top: 15px;
-  background: #f3eee6;
+  background: #fffecf;
   border-radius: 12px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -63,6 +63,7 @@
   border: 1px solid #90caf9;
   outline: none;
   font-size: 14px;
+  background: white;
 }
 
 .button-row {

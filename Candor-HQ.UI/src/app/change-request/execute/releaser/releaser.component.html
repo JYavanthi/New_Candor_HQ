@@ -190,47 +190,6 @@
 
         </div>
 
-
-        <!-- <div>
-          <p>Approver History</p>
-          <div>
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th>CR History Date</th>
-                  <th>RFC#</th>
-                  <th>CR Owner Name</th>
-                  <th>Stage</th>
-                  <th>Status</th>
-                  <th>Approved By</th>
-                  <th>Approved Date</th>
-                  <th>Remarks</th>
-
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let row of tableData">
-                  <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
-                  <td>{{getcrcode}}</td>
-                  <td>{{this.crownername}}</td>
-                  <td>
-                    <span *ngIf="row.stage === 'N'">RFC Initiated</span>
-                    <span *ngIf="row.stage === 'R'">RFC Release</span>
-                    <span *ngIf="row.stage === 'C'">RFC Closure</span>
-                  </td>
-                  <td>{{row.status}}</td>
-                  <td>
-                    {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '')
-                    }}
-                  </td>
-                  <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
-                  <td>{{row.remarks}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div> -->
-
         <div class="approver-history-card">
           <p class="title">Approver History</p>
 
@@ -280,49 +239,6 @@
     </div>
   </div>
 
-  <!-- <div class="tab-pane fade"
-    *ngIf="(stage === 'Release' && (status === 'Approved' ||status === 'Released'))||isReleased" id="releasetab1"
-    role="tabpanel" aria-labelledby="release1-tab">
-    <div>
-      <br />
-      <div class="container-field-implement">
-        <div>
-          <label>Comments</label>
-          <textarea [(ngModel)]="releaseComments" class="textarea-implement"></textarea>
-        </div>
-
-        <div>
-          <label class="label-approve">Attach Document</label>
-          <div class="d-flex">
-            <input type="file" [(ngModel)]="attach" (change)="getattach($event)" />
-
-            <button class="blue-botton ms-4" aria-hidden="true" type="submit" value="Submit" (click)="addFile()"
-              style="margin: 0px 10px;height: 33px;">
-              Add File</button>
-          </div>
-          <div *ngFor="let attachment of attachmentsList;index i">
-            <div>
-              Attachment: {{attachment.fileName}}
-              <button style="border: none; background: none;">
-                <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
-                <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
-                  (click)="downFile(attachment)"></i>
-                <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
-                  style="margin-left: 10px;" *ngIf=!isReleased></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="btn-sub-reset">
-        <button *ngIf="!isReleased && ischangeowner" (click)="submitRelease()" class="btn-sub" type="submit">
-          Submit For Closure
-        </button>
-        <button *ngIf="ischangeanalyst" class="btn-sub" type="reset">Cancel</button>
-      </div>
-    </div>
-  </div> -->
 
   <div class="tab-pane fade"
     *ngIf="(stage === 'Release' && (status === 'Approved' ||status === 'Released'))||isReleased" id="releasetab1"

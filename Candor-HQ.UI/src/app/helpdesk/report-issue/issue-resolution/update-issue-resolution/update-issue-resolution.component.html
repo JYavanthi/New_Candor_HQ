@@ -191,7 +191,6 @@
 
               </div>
 
-
               <!-- COMMENT BOX -->
               <div class="commentSection" [hidden]="!ShowCommentBox">
 
@@ -205,7 +204,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="card inside_card">
-                  <div class="card-body inside_newissue">
+                  <div class="card-body inside_newissue" style="background: #fffdf1;">
                     <div [hidden]="!ShowSelfInputs">
                       <span
                         style="background: #2f6f7a; color: white; font-weight: 600; padding: 6px 12px; display: inline-block; border-radius: 4px; font-size: 14px; text-transform: uppercase;">Raised
@@ -241,7 +240,7 @@
                         </div>
 
                         <div class="col-md-3">
-                          <label style="color: #0097ab; font-size: larger;">Plant: <span
+                          <label style="color: #0097ab; font-size: larger;">Project: <span
                               class="horinputDatas">{{Plant}}</span></label>
                         </div>
 
@@ -303,7 +302,7 @@
                         </div>
 
                         <div class="col-md-3">
-                          <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                          <label>Project: <span class="horinputDatas">{{Plant}}</span></label>
                         </div>
 
                         <div class="col-md-3">
@@ -363,7 +362,7 @@
                           </div>
 
                           <div class="col-md-3">
-                            <label>Plant: <span class="horinputDatas">{{PlantOthers}}</span></label>
+                            <label>Project: <span class="horinputDatas">{{PlantOthers}}</span></label>
                           </div>
 
                           <div class="col-md-3">
@@ -422,7 +421,7 @@
                         </div>
 
                         <div class="col-md-3">
-                          <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                          <label>Project: <span class="horinputDatas">{{Plant}}</span></label>
                         </div>
 
                         <div class="col-md-3">
@@ -486,7 +485,7 @@
                           <label>Staff Category of ML:<span class="horinputDatas">{{StaffCategoryofML}}</span></label>
                         </div>
                         <div class="col-md-4">
-                          <label>Plant ML:<span class="horinputDatas">{{GuestPlant}}</span></label>
+                          <label>Project ML:<span class="horinputDatas">{{GuestPlant}}</span></label>
                         </div>
                         <div class="col-md-4">
                           <label>Paygroup ML:<span class="horinputDatas">{{PaygroupML}}</span></label>
@@ -522,106 +521,6 @@
                       <p style="font-size: xx-large; color: #0097ab;">Details</p>
                     </div>
 
-                    <!-- <div class="card report_issue_card" style="width:100%;margin-left:0; background-color: #f8f8f8;">
-                      <div class="card-body">
-
-                        <div class="row mt-2">
-                          <div class="col-md-3">
-                            <label>Raised Date: <span class="horinputDatas">&nbsp;&nbsp;{{issueData?.issueDate | date:
-                                'dd/MM/yyyy'}}</span></label>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label>Plant:<span class="horinputDatas">&nbsp;&nbsp;{{issueData?.plantname}}</span></label>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label>Service-Category:<span
-                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.categoryName}}</span></label>
-                          </div>
-                          <div class="col-md-3">
-                            <label>Sub-Category:<span
-                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.categoryType}}</span></label>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-3">
-                            <label>Priority:<span
-                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.priorityName}}</span></label>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label>Type:<span class="horinputDatas">&nbsp;&nbsp;{{issueData?.type}}</span></label>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label>Source:<span class="horinputDatas">&nbsp;&nbsp;{{issueData?.source}}</span></label>
-                          </div>
-
-                          <div class="col-md-3">
-                            <label>Impacted Asset: <span
-                                class="horinputDatas">&nbsp;&nbsp;{{(impactassetassetcat?.category??'')+'
-                                '+(impactassetassetcat?.category?'-':'')+'
-                                '+(impactassetassetcat?.assetNo??'')}}</span></label>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label>Assigned to:<span class="horinputDatas">&nbsp;&nbsp;{{(issueData?.assignedToid||
-                                '')+' '+'-'+' '+issueData?.assignedTo}}</span></label>
-                          </div>
-
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-11">
-                            <label>Subject:<span
-                                class="horinputDatas">&nbsp;&nbsp;{{issueData?.issueShotDesc}}</span></label>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="report_description">
-                              <label>Description<span style="color:red">*</span></label>
-                              <textarea [(ngModel)]="description" style="width:100%;padding:5px;background:white;"
-                                disabled rows="2" cols="50"></textarea>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="report_description">
-                              <label>Attachment</label>
-                              <div *ngFor="let attachment of attachmentsList;">
-                                <div>
-                                  {{attachment.fileName}}
-                                  <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
-                                    (click)="viewFileM(attachment)"></i>
-                                  <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true"
-                                    style="margin-left: 10px;" (click)="downFile(attachment)"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div>
-                              <label>Proposed Resolution Date<span style="color:red"> *</span></label><br />
-                              <input type="datetime-local" [(ngModel)]="ProposedResolution" style="width:20%;"
-                                readonly />
-                            </div>
-
-                          </div>
-                        </div>
-
-                      </div>
-                    </div> -->
 
                     <div class="card report_issue_card">
 
@@ -638,7 +537,7 @@
                             </div>
 
                             <div class="col-md-3">
-                              <label>Plant:</label>
+                              <label>Project:</label>
                               <span class="horinputDatas">{{issueData?.plantname}}</span>
                             </div>
 
@@ -733,7 +632,7 @@
 
                               <div class="report_description">
                                 <label style="color: #1a8a94; font-weight: 600;">Attachment</label>
-                                <div *ngFor="let attachment of attachmentsList;">
+                                <div *ngFor="let attachment of attachmentsList">
                                   <div>
                                     {{attachment.fileName}}
                                     <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
@@ -803,6 +702,8 @@
 
         </div>
       </div>
+
+
       <div class="updatesidebar" [ngClass]="{'show': isUpdateSidebarVisible}">
         <div class="subHeadingCss mt-3" style="display: flex; justify-content: center;">
           <p class="subHeadingparaCss">

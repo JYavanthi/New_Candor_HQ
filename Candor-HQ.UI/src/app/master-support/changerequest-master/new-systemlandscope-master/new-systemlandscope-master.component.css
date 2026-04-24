@@ -11,7 +11,7 @@
   width: 77%;
   margin: 20px auto;
   padding: 20px;
-  background: #f3f3f3;
+  background: white;
   margin-left: 12%;
   border-radius: 10px;
 }
@@ -25,7 +25,7 @@
 }
 
 .container-field-line {
-  background: #efe7d6;
+  background: #fffecf;
   border-radius: 15px;
   padding: 20px;
   border: 1px solid #c9bfae;
@@ -48,7 +48,7 @@
   padding: 8px 12px;
   border-radius: 10px;
   border: 1px solid #7fb8c4;
-  background: #f5f5f5;
+  background: white;
   outline: none;
 }
 
