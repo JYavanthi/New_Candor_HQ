@@ -94,7 +94,7 @@
 }
 
 .tableBox {
-  background: #c8d4e5;
+  background: #daecff;
   padding: 20px;
   border-radius: 20px;
   width: 108%;
@@ -125,7 +125,7 @@ table {
 }
 
 .table-row {
-  background: #f5f6f7;
+  background: white;
   border-radius: 12px;
   box-shadow: 0 0 0 1px #9fb7d7;
 }
@@ -191,4 +191,5 @@ table {
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  background: white;
 }

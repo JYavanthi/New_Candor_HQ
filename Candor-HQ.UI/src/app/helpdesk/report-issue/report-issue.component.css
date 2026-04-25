@@ -20,12 +20,6 @@
   margin-left: 150px;
 }
 
-.AssgnBtns {
-  display: flex;
-  gap: 5px;
-  margin: 0 auto;
-}
-
 .remarks {
   width: 80%;
 }
@@ -257,6 +251,7 @@ button[disabled] {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 12px;
+  white-space: nowrap;
 }
 
 .issue-table thead tr {
@@ -367,6 +362,7 @@ button[disabled] {
   padding: 6px;
   border-radius: 15px;
   margin-bottom: 5%;
+  overflow: overlay;
 }
 
 .issue-table th {
@@ -389,22 +385,6 @@ button[disabled] {
 .issue-row {
   background: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.issue-row td {
-  padding: 12px;
-  text-align: center;
-  font-size: 13px;
-}
-
-.issue-row td:first-child {
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-}
-
-.issue-row td:last-child {
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
 .issue-row:hover {
@@ -702,4 +682,70 @@ button[disabled] {
 /* Hover effect */
 .toggle-button:hover {
   color: #007bff;
+}
+
+/* Container */
+.AssgnBtns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Button wrapper */
+.issue-btn {
+  display: flex;
+}
+
+/* Base button style */
+.btn-back {
+  min-width: 110px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #fff;
+}
+
+/* Assign button */
+.issue-btn:nth-child(1) .btn-back {
+  background: #007bff;
+}
+
+.issue-btn:nth-child(1) .btn-back:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+/* Re-Assign button */
+.issue-btn:nth-child(2) .btn-back {
+  background: #17a2b8;
+}
+
+.issue-btn:nth-child(2) .btn-back:hover:not(:disabled) {
+  background: #117a8b;
+}
+
+/* Resolved button */
+.issue-btn:nth-child(3) .btn-back {
+  background: #28a745;
+}
+
+.issue-btn:nth-child(3) .btn-back:hover:not(:disabled) {
+  background: #1e7e34;
+}
+
+/* 🔒 Disabled state (IMPORTANT) */
+.btn-back:disabled {
+  background: #d6d6d6 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Optional subtle click effect */
+.btn-back:active:not(:disabled) {
+  transform: scale(0.97);
 }

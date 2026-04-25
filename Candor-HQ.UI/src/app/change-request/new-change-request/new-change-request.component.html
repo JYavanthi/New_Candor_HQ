@@ -46,9 +46,9 @@
         </div>
         <div class="row mt-3">
           <div class="col">
-            <label>Plant <span style="color:red">*</span></label>
+            <label>Project <span style="color:red">*</span></label>
             <select [(ngModel)]="plantId">
-              <option value="" disabled hidden selected>Select Plant</option>
+              <option value="" disabled hidden selected>Select Project</option>
               <!-- <option *ngFor="let pltdata of plantcode " value="pltdata.plantId">{{ pltdata.plantCode }}</option> -->
               <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId">
                 {{ pltdata.plantCode }}
@@ -429,7 +429,7 @@
               <div class="row g_p_classification">
                 <div class="col">
                   <select [(ngModel)]="gxpplantId">
-                    <option value="" disabled hidden selected>Select Plant</option>
+                    <option value="" disabled hidden selected>Select Project</option>
                     <!-- <option *ngFor="let pltdata of plantcode " value="pltdata.plantId">{{pltdata.plantCode}}</option> -->
                     <option *ngFor="let pltdata of plantcode" [value]="pltdata.plantId">{{ pltdata.plantCode }}</option>
                   </select>

@@ -196,7 +196,7 @@ export class UpdateIssueResolutionComponent {
   assign: boolean = false;
   assignTo: string = '';
   ShowCommentBox: boolean = true;
-  isUpdateSidebarVisible = false;
+  // isUpdateSidebarVisible = false;
   user: any;
   reasonList: any
   ProposedResolution: any;
@@ -231,7 +231,7 @@ export class UpdateIssueResolutionComponent {
     }
     if (messageText.trim()) {
       this.messageList.push({
-        userRole: this.issueData['userRole'], 
+        userRole: this.issueData['userRole'],
         text: messageText,
         timestamp: new Date()
       });
@@ -248,12 +248,18 @@ export class UpdateIssueResolutionComponent {
     })
   }
 
+  isUpdateSidebarVisible: boolean = false;
+
+  closeSidebar() {
+    this.isUpdateSidebarVisible = false;
+  }
+
+  openSidebar() {
+    this.isUpdateSidebarVisible = true;
+  }
 
 
   getcommentMessage() {
-    // let param = {
-    //   "id": this.selectedRowData[0].issueId
-    // }
     const url = '/issueChat/getComments'
     this.httpser.httpGet(url, { id: this.issueId }).subscribe((m: any) => {
       let a = JSON.parse(m['textChat']);
@@ -266,6 +272,7 @@ export class UpdateIssueResolutionComponent {
       });
     })
   }
+
   getFormattedTime(date: Date): string {
     if (typeof (date) == 'string') {
       date = new Date(date)
@@ -331,119 +338,7 @@ export class UpdateIssueResolutionComponent {
     }
   }
 
-  // ngOnInit(): void {
-  //   this.getIssueData()
-  //   this.attachment = this.issueData?.attachment
-  //   this.getcommentMessage();
-  //   this.OnlyAsset();
-  //   this.fetchAllItems();
-  //   this.issueHistory();
-  //   this.getFileData();
-  //   this.getOnHOldReason()
-  // }
-
-  // getIssueData() {
-  //   const apiUrls = '/IssueList/GetissuelistById';
-  //   let param = {
-  //     id  : this.issueId
-  //   }
-  //   return this.httpser.httpGet(apiUrls,param).toPromise()
-  //     .then((response: any) => {
-  //       this.issueData = response
-  //       const status = this.issueData.status.trim();
-  //       if (status != "Open") {
-  //         this.resolutionDate = this.issueData?.resolutionDt;
-  //       }
-  //       this.updateResolutionData();
-
-  //       this.getUpdatedinputs();
-  //       if (this.issueData && this.onEdit == "false") {
-
-  //         if ((status === "Open") && this.issueData.assignedToid != this.user.empData.employeeNo && this.issueData.assignedToid == 0) {
-  //           this.resolutionDateField = false;
-  //           this.assign = true;
-  //         }
-  //         else if((status === "Open") && this.issueData.assignedToid != this.user.empData.employeeNo &&this.issueData.assignedToid != 0 ){
-  //           this.resolutionDateField = false;
-  //           this.forward = true;
-  //         }
-
-  //         else if ((status === "Open") && this.issueData.assignedToid == this.user.empData.employeeNo) {
-
-  //           this.inProgress = true;
-  //           this.resolutionDtDisabled = false;
-  //         }
-  //         else if ((status === "In Progress" || status == "Seek Clarification" || status === "Not Resolved" || status === "Submit Clarification") && this.issueData.assignedToid == this.user.empData.employeeNo) {
-  //           this.seekClarification = true;
-  //           this.resolve = true;
-  //           this.onHold = true;
-  //           this.forward = true;
-  //         }
-  //         else if (status.includes("On Hold") && this.issueData.assignedToid == this.user.empData.employeeNo) {
-  //           this.seekClarification = true;
-  //           this.resolve = true;
-  //           this.forward = true;
-  //           this.onHold = true;
-  //         }
-  //         else if (status == "Resolved") {
-  //           this.seekClarification = false;
-  //           this.resolve = false;
-  //           this.forward = false;
-  //           this.onHold = false;
-  //         }
-  //         else if (this.issueData.assignedToid == 0) {
-  //           this.assign = true;
-  //           this.onHold = false;
-  //           this.resolutionDateField = false;
-  //         }
-  //         else if ((this.isSuperAdmin || this.isAdmin) && this.issueData?.assignedToid != this.user.empData.employeeNo && this.issueData.assignedToid != 0 && (status != "Resolved" || status != "Closed" || status != "Cancelled")) {
-  //           this.forward = true;
-  //           this.assign = false;
-  //         }
-
-  //         this.assignedTo = this.issueData?.assignedToid;
-  //         if (this.issueData?.status?.toUpperCase().trim() == "CANCELLED" ||
-  //           this.issueData?.status?.toUpperCase().trim() == "CLOSED" ||
-  //           !this.seekClarification && !this.issueData?.status.trim().includes('On Hold') && !this.resolve && !this.forward && !this.assign && !this.submitClarification && !this.closeIssue && !this.unResolved && !this.cancel) {
-  //           this.ShowCommentBox = false;
-  //         }
-  //         else {
-  //           this.ShowCommentBox = true;
-  //         }
-  //       }
-  //       if (this.issueData && this.onEdit == "true") {
-  //         this.ShowUserRemarks = true;
-  //         this.cancel = true;
-  //         this.ShowResolutionRemarks = false;
-  //         if (status == "Open") {
-  //           this.resolutionDateField = false;
-  //           // this.cancel = true;
-  //         }
-  //         else if (status == "Seek Clarification") {
-  //           this.submitClarification = true;
-  //           // this.cancel = true;
-  //         }
-  //         // if (status.includes("On Hold")) {
-  //         //   this.cancel = true;
-  //         // }
-  //         else if (status == "Resolved") {
-  //           this.closeIssue = true;
-  //           this.unResolved = true;
-  //         }
-  //         // else if (status == "In Progress") {
-  //         //   this.cancel = true;
-  //         // }
-  //       }
-  //     })
-  //     .catch((error: any) => {
-  //       throw error;
-  //     });
-  // }
-
-
-
-  // In your component class
-
+ 
   async ngOnInit(): Promise<void> {
     try {
       await this.getIssueData();
@@ -905,6 +800,8 @@ export class UpdateIssueResolutionComponent {
       this.attachmentsList = res
     })
   }
+
+  
   viewFileM(fileName: any): void {
     const apiUrl = `${this.apiurl}/IssueList/View/${fileName.attachId}`;
 
@@ -928,6 +825,7 @@ export class UpdateIssueResolutionComponent {
       this.attachmentsList = this.attachmentsList.filter((m: any) => Doc.attachId != m.attachId)
     })
   }
+
   getInputDatas() {
     if (this.getSelfData) {
       this.EmployeeID = this.getSelfData[0]?.employeeId;

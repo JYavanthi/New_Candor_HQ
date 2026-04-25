@@ -64,7 +64,7 @@
 }
 
 .table-container {
-  background: #cfdceb;
+  background: #daecff;
   padding: 3px;
   border-radius: 14px;
 }
@@ -85,7 +85,7 @@
 .table-row {
   display: grid;
   grid-template-columns: 40px 80px 150px 200px 160px 160px 160px 120px;
-  background: #e7eef5;
+  background: white;
   border: 1px solid #79a8d8;
   border-radius: 14px;
   padding: 12px;
@@ -134,8 +134,20 @@
   background: #3bb4b7;
 }
 
+.resolved {
+  background: lightgreen;
+}
+
 .inReview {
   background: #1a8c96;
+}
+
+.open {
+  background: #1a9aa6;
+}
+
+.toBeTested {
+  background: lightslategray;
 }
 
 .no-data {

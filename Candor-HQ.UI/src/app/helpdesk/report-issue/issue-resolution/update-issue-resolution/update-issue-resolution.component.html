@@ -704,36 +704,65 @@
       </div>
 
 
-      <div class="updatesidebar" [ngClass]="{'show': isUpdateSidebarVisible}">
-        <div class="subHeadingCss mt-3" style="display: flex; justify-content: center;">
-          <p class="subHeadingparaCss">
-            Resolution Comments
-          </p>
+
+
+      <div class="comments-sidebar" [ngClass]="{'open': isUpdateSidebarVisible}">
+
+        <!-- Header -->
+        <div class="comments-header">
+          <h3>Resolution Comments</h3>
+
+          <!-- Close Button -->
+          <button class="close-btn" (click)="closeSidebar()">
+            ✕
+          </button>
         </div>
 
-        <div class="panel-content open">
+        <!-- Content -->
+        <div class="comments-body">
 
-          <ng-container *ngIf="messageList.length > 0; else showElseBlock">
-            <div class="message" *ngFor="let message of messageList">
-              <div *ngIf="message.text!=''">
-                <div class="message-user">{{ message.userRole }}</div>
-                <div class="message-text">{{ message.text }}</div>
-                <div class="message-timestamp">{{ getFormattedTime(message.timestamp) }}</div>
+          <ng-container *ngIf="messageList.length > 0; else noComments">
+
+            <div class="comment-item" *ngFor="let message of messageList">
+
+              <div *ngIf="message.text?.trim() !== ''" class="comment-card">
+
+                <div class="comment-role">
+                  {{ message.userRole }}
+                </div>
+
+                <div class="comment-text">
+                  {{ message.text }}
+                </div>
+
+                <div class="comment-time">
+                  {{ getFormattedTime(message.timestamp) }}
+                </div>
+
               </div>
+
             </div>
+
           </ng-container>
-          <ng-template #showElseBlock>
-            <h6 style="text-align: center; padding: 15px;">No comments available</h6>
+
+          <ng-template #noComments>
+            <div class="no-comments">
+              No comments available
+            </div>
           </ng-template>
+
         </div>
+
       </div>
+
     </div>
+
     <div class="container containerClass">
       <div class="row">
         <ng-container>
           <div class="text-center subHeadingCss" style="display: flex; justify-content: flex-start;">
             <p class="subHeadingparaCss">
-              History
+              <!-- History -->
             </p>
           </div>
 

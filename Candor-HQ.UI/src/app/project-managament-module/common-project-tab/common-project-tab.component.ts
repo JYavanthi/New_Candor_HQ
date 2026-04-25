@@ -133,6 +133,8 @@ export class CommonProjectTabComponent {
       });
     })
   }
+
+  
   onTabChange(event: any) {
     this.router.navigate(['projectmanagement' + this.getSelectedUrl(event?.index)], { queryParams: { projectId: this.projectID } });
   }

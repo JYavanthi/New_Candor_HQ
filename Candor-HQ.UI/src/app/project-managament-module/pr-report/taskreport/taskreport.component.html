@@ -58,7 +58,10 @@
           'cancel':task.status=='Cancel',
           'pending':task.status=='Pending Approval',
           'approved':task.status=='Approved',
-          'inReview' : task.status=='In Review'
+          'inReview' : task.status=='In Review',
+          'open' : task.status == 'Open',
+          'resolved' :  task.status == 'Resolved',
+          'toBeTested' : task.status == 'To Be Tested'
           }">
           {{task.status}}
         </span>
@@ -75,7 +78,8 @@
     </div>
 
     <mat-paginator *ngIf="paginatedData?.length > 0" [length]="paginatedData?.length" [pageSize]="pageSize"
-      [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)">
+      [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)"
+      style="padding-right: 25%;">
     </mat-paginator>
 
   </div>

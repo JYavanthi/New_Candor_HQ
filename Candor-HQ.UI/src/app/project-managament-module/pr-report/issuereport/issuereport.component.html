@@ -101,7 +101,7 @@
 
       <div class="mb-5 paginator-box" *ngIf="taskList?.length > 0">
         <mat-paginator [length]="taskList?.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
-          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)" style="background : #c8d4e5">
+          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)">
         </mat-paginator>
       </div>
 

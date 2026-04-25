@@ -39,9 +39,9 @@
         </div>
         <div class="row mt-3">
           <div class="col">
-            <label>Plant<span>*</span></label>
+            <label>Project<span>*</span></label>
             <select formControlName="plantId" name="plantId">
-              <option value="" disabled hidden selected>Select Plant</option>
+              <option value="" disabled hidden selected>Select Project</option>
               @for (plants of plantsList; track plants.id){
               <option value={{plants.id}}>{{plants.code}}</option>
               }

@@ -86,7 +86,7 @@
                 <select>
                   <option>Office</option>
                   <option>Field</option>
-                  <option>Plant</option>
+                  <option>Project</option>
                   <option>Consultant</option>
                 </select>
               </div>
@@ -138,7 +138,7 @@
                   <select>
                     <option>Office</option>
                     <option>Field</option>
-                    <option>Plant</option>
+                    <option>Project</option>
                     <option>Consultant</option>
                   </select>
                 </div>
@@ -257,96 +257,3 @@
   </div>
 </div>
 
-<!--<div class="service_container">
-  <div class="notification-sucess" *ngIf="deletesuccess">
-    <p>{{deletemessage}}</p>
-    <span class="close-btn" (click)="navigatesuccess()">Ok</span>
-  </div>
-  <div class="notification" *ngIf="messageerror">
-    <span class="close-btn" (click)="closeNotification()">&times;</span>
-    <p>Not Saved</p>
-  </div>
-  <div class="card service_card" style="border-top: 6px solid #113bf7;">
-    <div class="card-body">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <label>Raised By</label>
-              <input [(ngModel)]="supportpersonname" readonly type="text" />
-            </div>
-            <div class="col">
-              <label>Others</label>
-              <input [(ngModel)]="israisedfor" type="checkbox" />
-            </div>
-            <div *ngIf="israisedfor" class="col">
-              <label>Raised For</label>
-              <input class="searchinput" type="text" [(ngModel)]="issueRaiseFor" (input)="filterItems()" />
-              <ul class="dropdowns-list">
-                <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">{{item}}</li>
-              </ul>
-            </div>
-            <div class="col">
-              <label>Plant</label>
-              <select [(ngModel)]="plantID" class="select-sc">
-                <option value="">Select Plant code</option>
-                <option *ngFor="let cldata of plantcode" [value]="cldata.id">{{cldata.code}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label>Asset</label>
-              <select [(ngModel)]="assetID" class="select-sc">
-                <option value="">Select Asset</option>
-                <option *ngFor="let cldata of plantcode" [value]="cldata.id">{{cldata.code}}</option>
-              </select>
-            </div>
-            <div class="col">
-              <label>Category Name</label>
-              <select [(ngModel)]="categoryID" class="select-sc">
-                <option value="">Select categoryName</option>
-                <option *ngFor="let cldata of categoryName" [value]="cldata.itcategoryId">{{cldata.categoryName}}</option>
-              </select>
-            </div>
-            <div class="col">
-              <label>Sub-Category</label>
-              <select [(ngModel)]="categoryTypID" class="select-sc">
-                <option value="">Select Plant code</option>
-                <option *ngFor="let cldata of subcategoryName" [value]="cldata.categoryTypeId">{{cldata.categoryType}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label>Priority</label>
-              <select [(ngModel)]="priority" class="select-sc">
-                <option value="">Select Asset</option>
-                <option *ngFor="let cldata of prioritytyp" [value]="cldata.priorityId">{{cldata.priorityName}}</option>
-              </select>
-            </div>
-            <div class="col">
-              <label>Source</label>
-              <input [(ngModel)]="source" class="text" />
-            </div>
-            <div class="col">
-              <label>Attachment</label><br />
-              <input style="width:100%;" [(ngModel)]="attachment" class="select-sc" type="file" />
-            </div>
-          </div>
-          <div>
-            <label>Short Description</label><br />
-            <textarea [(ngModel)]="shotDesc" class="textarea-sc"></textarea>
-          </div>
-          <div>
-            <label>Service Requestor Description</label><br />
-            <textarea [(ngModel)]="srDesc" class="textarea-sc"></textarea>
-          </div>
-        </div>
-      </div>
-      <button (click)="submitservicecitrix()" class="btn-service">Submit</button>
-      <button class="btn-service">Cancel</button>
-    </div>
-  </div>
-</div>
--->
