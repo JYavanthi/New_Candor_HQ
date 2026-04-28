@@ -199,6 +199,10 @@ td {
     background: #26a69a;
 }
 
+.implemented {
+    background: #3a8ea5;
+}
+
 .table-container::-webkit-scrollbar {
     height: 8px;
 }

@@ -8,15 +8,14 @@
 }
 
 .table-container {
-  max-width: 100%;
-  overflow: auto;
+  max-width: 95%;
+  overflow: overlay;
   border-radius: 15px;
 }
 
 .spareMastermainDiv {
   background: white;
   width: 95%;
-  margin-left: 2.5%;
   border-radius: 40px;
   display: flex;
   margin-top: -2%;
@@ -111,6 +110,10 @@ thead input[type="checkbox"] {
   background: brown;
 }
 
+.approvalNotrequired {
+  background: sienna;
+}
+
 .fa-pencil-square-o,
 .fa-trash {
   margin-right: 10px;
@@ -125,14 +128,6 @@ thead input[type="checkbox"] {
 .fa-trash {
   color: #ff4d6d;
 }
-
-
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 
 th,
 td {
@@ -279,13 +274,13 @@ button.button-approve:disabled {
 }
 
 .spareHeaderContainer {
-  width: 95%;
+  width: 90%;
   padding: 25px 40px;
   display: flex;
   align-items: center;
   position: relative;
   border-bottom: 2px solid burlywood;
-  margin-left: 2.5%;
+  margin-left: 2%;
   margin-top: -1%;
 }
 
@@ -330,12 +325,12 @@ button.button-approve:disabled {
 }
 
 .spareTopBar {
-  width: 95%;
+  width: 85%;
   padding: 0px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 2%;
+  margin-left: 6%;
 }
 
 .mySpareTitle {

@@ -159,7 +159,7 @@
         <div class="tableBox">
             <div class="table-container">
                 <table>
-                    <thead>
+                    <thead style="white-space: nowrap;">
                         <tr>
                             <th style="text-align: center;"> <input style="text-align:center;" type="checkbox"
                                     style="width: 20px;" [(ngModel)]="Allselected" (change)="selectAll($event)">Select
@@ -200,7 +200,8 @@
           'submitClarification' : row.status == 'Submit Clarification',
           'onHold' : row.status == 'On Hold',
           'draft' : row.status == 'Draft',
-          'resolved' : row.status == 'Resolved'
+          'resolved' : row.status == 'Resolved',
+          'approvalNotrequired' : row.status == 'Approval not required'
         }">
                                     {{row.status}}
                                 </span>

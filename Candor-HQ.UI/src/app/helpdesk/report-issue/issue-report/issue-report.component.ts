@@ -39,20 +39,20 @@ export class IssueReportComponent {
   pageIndex: number = 0;
   pageSize: number = 20;
   totalItems = 0;
-  issuelistvalue :any;
+  issuelistvalue: any;
   issuelistFilterValue: any;
-  currentDate=new Date().toISOString().slice(0,10)
+  currentDate = new Date().toISOString().slice(0, 10)
   supportnames: any;
   allEmpList: any;
   selectedOption: any;
   dropdownItems: any;
 
 
-  constructor(private fb:FormBuilder,public employeeInfo:GetEmployeeInfoService ,
-    private http:HttpClient,private httpSer:HttpServiceService) { }
+  constructor(private fb: FormBuilder, public employeeInfo: GetEmployeeInfoService,
+    private http: HttpClient, private httpSer: HttpServiceService) { }
   filterForm: any;
-  isVisible:boolean = false;
-  issuelist : any;
+  isVisible: boolean = false;
+  issuelist: any;
   private apiurl = environment.apiurls
 
   toggleVisibility() {
@@ -60,16 +60,16 @@ export class IssueReportComponent {
   }
   ngOnInit(): void {
     this.fetchAllItems()
-    this.filterForm=this.fb.group({
-      plantId:[],
-      Category:[],
-      subCategory:'',
-      Priority:'',
-      StartDate:'',
-      EndDate:'',
-      Status:'',
-      rfcChangeNumber:'',
-      assignTo:''
+    this.filterForm = this.fb.group({
+      plantId: [],
+      Category: [],
+      subCategory: '',
+      Priority: '',
+      StartDate: '',
+      EndDate: '',
+      Status: '',
+      rfcChangeNumber: '',
+      assignTo: ''
     })
     this.getplant();
     this.getcategory();
@@ -81,7 +81,7 @@ export class IssueReportComponent {
 
   filterItems() {
     const filter = this.filterForm.value.assignTo.toUpperCase().trim();
-    const isUserItems = this.supportnames.filter((item:any) =>
+    const isUserItems = this.supportnames.filter((item: any) =>
       item.employeeId.toUpperCase().toString().includes(filter) || item.employeeName.toUpperCase().toString().includes(filter)
     );
     this.dropdownItems = isUserItems.filter((row: any) => row.employeeId)
@@ -107,39 +107,40 @@ export class IssueReportComponent {
     }
   }
 
-  setFormControl(item:any){
+  setFormControl(item: any) {
     this.filterForm.controls['assignTo'].setValue(item.employeeId)
     this.dropdownItems = []
   }
+
   filterdropdown() {
 
     this.issuelistvalue = this.issuelist
-    this.issuelistFilterValue = this.issuelistvalue.filter((m:any)=>{
+    this.issuelistFilterValue = this.issuelistvalue.filter((m: any) => {
       return (
 
-        ((this.filterForm.controls['plantId'].value==null||
-      this.filterForm.controls['plantId'].value.length==0)?true:(this.filterForm.controls['plantId'].value.map((b:any)=>{return b.item_id}).indexOf(m.plantId)!=-1))
-      &&((this.filterForm.controls['Category'].value==null||
-      this.filterForm.controls['Category'].value.length==0)?true:(this.filterForm.controls['Category'].value.map((a:any)=>{return a.item_id}).indexOf(m.categoryId)!=-1))
+        ((this.filterForm.controls['plantId'].value == null ||
+          this.filterForm.controls['plantId'].value.length == 0) ? true : (this.filterForm.controls['plantId'].value.map((b: any) => { return b.item_id }).indexOf(m.plantId) != -1))
+        && ((this.filterForm.controls['Category'].value == null ||
+          this.filterForm.controls['Category'].value.length == 0) ? true : (this.filterForm.controls['Category'].value.map((a: any) => { return a.item_id }).indexOf(m.categoryId) != -1))
 
-      &&((this.filterForm.controls['Priority'].value==''||this.filterForm.controls['Priority'].value==null)?
-      true:(m.priorityid==this.filterForm.controls['Priority'].value))
-      &&((this.filterForm.controls['Status'].value==''||this.filterForm.controls['Status'].value==null)?
-      true:(m.status.trim()==this.filterForm.controls['Status'].value))
-      &&((this.filterForm.controls['StartDate'].value==''||this.filterForm.controls['StartDate'].value==null)?
-      true:(m.issueDate.split('T')[0]>this.filterForm.controls['StartDate'].value))
-      &&((this.filterForm.controls['EndDate'].value==''||this.filterForm.controls['EndDate'].value==null)?
-      true:(m.issueDate.split('T')[0]<=this.filterForm.controls['EndDate'].value))
-      &&((this.filterForm.controls['rfcChangeNumber'].value==''||this.filterForm.controls['rfcChangeNumber'].value==null)?
-      true:(m.crcode==this.filterForm.controls['rfcChangeNumber'].value))
-      &&((this.filterForm.controls['assignTo'].value==0||this.filterForm.controls['assignTo'].value==null)?
-      true:(m.assignedToId==this.filterForm.controls['assignTo'].value))
+        && ((this.filterForm.controls['Priority'].value == '' || this.filterForm.controls['Priority'].value == null) ?
+          true : (m.priorityid == this.filterForm.controls['Priority'].value))
+        && ((this.filterForm.controls['Status'].value == '' || this.filterForm.controls['Status'].value == null) ?
+          true : (m.status.trim() == this.filterForm.controls['Status'].value))
+        && ((this.filterForm.controls['StartDate'].value == '' || this.filterForm.controls['StartDate'].value == null) ?
+          true : (m.issueDate.split('T')[0] > this.filterForm.controls['StartDate'].value))
+        && ((this.filterForm.controls['EndDate'].value == '' || this.filterForm.controls['EndDate'].value == null) ?
+          true : (m.issueDate.split('T')[0] <= this.filterForm.controls['EndDate'].value))
+        && ((this.filterForm.controls['rfcChangeNumber'].value == '' || this.filterForm.controls['rfcChangeNumber'].value == null) ?
+          true : (m.crcode == this.filterForm.controls['rfcChangeNumber'].value))
+        && ((this.filterForm.controls['assignTo'].value == 0 || this.filterForm.controls['assignTo'].value == null) ?
+          true : (m.assignedToId == this.filterForm.controls['assignTo'].value))
       )
     })
     this.issuelistvalue = this.parseAndSortResponse(this.issuelistFilterValue)
     this.totalItems = this.issuelistvalue.length
     this.issuelistvalue = this.issuelistvalue.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize);
-console.log('issue list',this.issuelistvalue);
+    console.log('issue list', this.issuelistvalue);
   }
   filteredData: any[] = []; // Array to hold filtered data
   viewchangerequestFiltered: any; // Array to hold selected statuses
@@ -155,6 +156,8 @@ console.log('issue list',this.issuelistvalue);
     'Release': false,
     'Completed': false,
   };
+
+
   selectAll(event: any) {
     const isChecked = event.target.checked;
     const checkboxes = document.querySelectorAll('.cr_filter_checkbox');
@@ -185,6 +188,7 @@ console.log('issue list',this.issuelistvalue);
 
     return parsedResponse;
   }
+  
   // Filter Function
 
   dropdownSettings = {
@@ -198,7 +202,7 @@ console.log('issue list',this.issuelistvalue);
       (data) => {
         this.dropdownList = data.map(item => ({
           item_id: item.plantId,
-          item_text: item.plantCode 
+          item_text: item.plantCode
         }));
       },
       (error) => {
@@ -262,7 +266,7 @@ console.log('issue list',this.issuelistvalue);
     const apiUrl = this.apiurl + '/Category'
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
-        this.dropdowncategroy = data.filter((row:any)=>row.isActive).map(item => ({
+        this.dropdowncategroy = data.filter((row: any) => row.isActive).map(item => ({
           item_id: item.itcategoryId,
           item_text: item.categoryName
         }));
@@ -312,8 +316,8 @@ console.log('issue list',this.issuelistvalue);
     this.filterForm.controls['Status'].setValue('');
     this.filterdropdown()
   }
-// End Filter
-  getIssuereportlist(){
+  // End Filter
+  getIssuereportlist() {
     // let param = {
     //   pageNumber: this.pageIndex + 1,
     //   pageSize: this.pageSize,
@@ -355,31 +359,31 @@ console.log('issue list',this.issuelistvalue);
     const tableElement = document.getElementById('excel-table');
 
     if (!tableElement) {
-        console.error("Table element not found.");
-        return;
+      console.error("Table element not found.");
+      return;
     }
 
     const columns = Array.from(tableElement.querySelectorAll('thead th'))
-        .slice(0, 2)
-        .map(th => ({
-            dataKey: th.textContent?.trim() || '',
-            title: th.textContent?.trim() || '',
-            styles: { cellWidth: 'auto', maxCellWidth: 50 }
-        }));
+      .slice(0, 2)
+      .map(th => ({
+        dataKey: th.textContent?.trim() || '',
+        title: th.textContent?.trim() || '',
+        styles: { cellWidth: 'auto', maxCellWidth: 50 }
+      }));
 
     (doc as any).autoTable({
-        head: [columns],
-        body: Array.from(tableElement.querySelectorAll('tbody tr')).map(row => {
-            return Array.from(row.querySelectorAll('td')).slice(0, 2).map(td => td.textContent || '');
-        }),
-        styles: { overflow: 'linebreak' }, // Allow text to wrap
-        columnStyles: {
-          0: { maxCellWidth: 50 },
-          1: { maxCellWidth: 50 },
-          2: { maxCellWidth: 50 },
-          3: { maxCellWidth: 50 },
-          4: { maxCellWidth: 50 }
-        }
+      head: [columns],
+      body: Array.from(tableElement.querySelectorAll('tbody tr')).map(row => {
+        return Array.from(row.querySelectorAll('td')).slice(0, 2).map(td => td.textContent || '');
+      }),
+      styles: { overflow: 'linebreak' }, // Allow text to wrap
+      columnStyles: {
+        0: { maxCellWidth: 50 },
+        1: { maxCellWidth: 50 },
+        2: { maxCellWidth: 50 },
+        3: { maxCellWidth: 50 },
+        4: { maxCellWidth: 50 }
+      }
     });
 
     doc.save('issueReport.pdf');

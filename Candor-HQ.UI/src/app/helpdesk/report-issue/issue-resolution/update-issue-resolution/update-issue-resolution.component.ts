@@ -122,7 +122,7 @@ export class UpdateIssueResolutionComponent {
   unResolved: boolean = false;
   cancel: boolean = false;
   onHold: boolean = false;
-  onHoldReason: boolean = false;
+  onHoldReason: boolean = false;                                                                                                                                                                                   
   ShowUserRemarks: boolean = false;
   forward: boolean = false;
   ShowResolutionRemarks: boolean = false;

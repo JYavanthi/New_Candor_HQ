@@ -220,59 +220,217 @@ button[type="reset"] {
   margin: 10px 15px 25px;
 }
 
-.custom-table {
-  background: white;
-  border: 2px solid #0a8ea0;
-  border-radius: 18px;
-  padding: 12px;
-  width: 99%;
-  margin-left: 0.5%;
-}
-
-.custom-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.custom-table thead tr {
-  border-bottom: 2px solid #0a8ea0;
-}
-
-.table-head {
-  background-color: #fffecf;
-}
-
-.custom-table th {
-  text-align: left;
-  padding: 10px 8px;
-  font-size: 14px;
-  color: #333;
-  font-weight: 500;
-}
-
-.custom-table td {
-  padding: 10px 8px;
-  font-size: 13px;
-}
-
-.fl-table {
-  border: none !important;
-  background: transparent !important;
-}
-
-.no-data {
-  text-align: center;
-  padding: 15px;
-  color: #6c6c6c;
-  font-size: 14px;
-  white-space: nowrap;
-}
 
 .fa {
   cursor: pointer;
   color: #0a8ea0;
 }
 
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.modern-table thead tr {
+  background: #3aa6a8;
+  color: white;
+}
+
+.modern-table th {
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.modern-table thead tr th:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.modern-table thead tr th:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.modern-table tbody tr {
+  background: #ffffff;
+  transition: 0.2s;
+}
+
+.modern-table tbody tr td {
+  padding: 12px;
+  font-size: 13px;
+  border-top: 1px solid #cfe3f1;
+  border-bottom: 1px solid #cfe3f1;
+}
+
+.modern-table tbody tr td:first-child {
+  border-left: 1px solid #cfe3f1;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.modern-table tbody tr td:last-child {
+  border-right: 1px solid #cfe3f1;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.modern-table tbody tr:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: white;
+  display: inline-block;
+}
+
+.completed {
+  background: #4caf50;
+}
+
+.pending {
+  background: #ff9800;
+}
+
+.rejected {
+  background: #f44336;
+}
+
+.progress {
+  background: #03a9f4;
+  height: 30px;
+}
+
+.draft {
+  background: #607d8b;
+}
+
+.implemented {
+  background: #ffc23b;
+}
+
+.fa-pencil {
+  color: #0a8ea0;
+}
+
 .fa-trash {
   color: red;
+}
+
+.no-data {
+  text-align: center;
+  padding: 15px;
+  color: #6c6c6c;
+}
+
+.custom-table {
+  background: #eef4fb;
+  padding: 20px;
+  border-radius: 20px;
+  overflow-x: auto;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  /* spacing between rows */
+  font-size: 13px;
+}
+
+.styled-table thead th {
+  background: #4da3a6;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.styled-table thead th:first-child {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.styled-table thead th:last-child {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.styled-table tbody tr {
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: 0.2s;
+}
+
+.styled-table tbody tr:hover {
+  transform: translateY(-2px);
+}
+
+.styled-table td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.styled-table tbody tr td:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.styled-table tbody tr td:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.desc {
+  text-align: left;
+  max-width: 250px;
+  word-break: break-word;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  display: inline-block;
+  min-width: 110px;
+}
+
+.completed {
+  background: #4CAF50;
+}
+
+.approved {
+  background: #009688;
+}
+
+.pending {
+  background: #ff9800;
+}
+
+.cancel {
+  background: #f44336;
+}
+
+.progress {
+  background: #2196f3;
+  height: 30px;
+}
+
+.fa-pencil {
+  cursor: pointer;
+  color: #4da3a6;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #999;
 }

@@ -252,9 +252,6 @@ export class SpareMasterComponent {
         "assignedBy": this.user?.empData?.employeeNo,
         "status": "Open",
         "createdBy": this.user?.empData?.employeeNo
-
-
-
       };
 
       const apiRequest = this.httpSer.httpPost('/AssetRequest/SaveResolution', requestBody).toPromise();

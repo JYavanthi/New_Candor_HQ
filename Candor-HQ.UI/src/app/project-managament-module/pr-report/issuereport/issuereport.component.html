@@ -82,7 +82,11 @@
                 'progress': issue.status=='In Progress',
                 'cancel': issue.status=='Cancel',
                 'pending': issue.status=='Pending Approval',
-                'approved': issue.status=='Approved'
+                'approved': issue.status=='Approved',
+                'inReview' : issue.status == 'In Review',
+                'open' : issue.status == 'Open',
+                'toBeTested' : issue.status == 'To be tested'
+                
               }">
                 {{issue.status}}
               </span>

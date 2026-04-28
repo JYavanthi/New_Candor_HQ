@@ -89,7 +89,6 @@ th {
 }
 
 .reportDescription {
-    /*  display: -webkit-box;*/
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -120,7 +119,5 @@ th {
 
 .reportDescription:hover::after {
     visibility: visible;
-    /* Make visible on hover */
     opacity: 1;
-    /* Fully opaque on hover */
 }

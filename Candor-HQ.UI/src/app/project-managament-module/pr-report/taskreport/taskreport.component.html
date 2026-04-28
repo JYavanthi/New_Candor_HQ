@@ -2,17 +2,7 @@
   <img src="assets/image/taskReport.png" class="reportIcon">
   <h2>Task Report</h2>
 </div>
-<div class="container-home">
-  <div class="row" align="right">
-    <div class="col export_pdf">
-      <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
-          aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
-    </div>
-    <div class="col-md-12" style="display: flex; justify-content: flex-end;">
 
-    </div>
-  </div>
-</div>
 
 <div class="row generate_row">
   <div class="col-3">
@@ -25,6 +15,12 @@
     </select>
 
   </div>
+
+  <div class="col export_pdf">
+    <button (click)="exportexcel()" class="excel_button"><i class="fa fa-file-excel-o"
+        aria-hidden="true"></i>&nbsp;&nbsp; Excel</button>
+  </div>
+
 </div>
 
 <div class="tableDesign">

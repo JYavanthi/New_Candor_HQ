@@ -158,7 +158,6 @@ table {
   display: inline-block;
 }
 
-
 .completed {
   background: #5cc27a;
 }
@@ -178,6 +177,18 @@ table {
 
 .approved {
   background: #2a9d8f;
+}
+
+.inReview {
+  background : #d9534f;
+}
+
+.open {
+   background: mediumseagreen;
+}
+
+.toBeTested {
+  background: orangered;
 }
 
 .no-data {
