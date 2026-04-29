@@ -5,7 +5,7 @@
   </div>
 
 
-  <div class="container-home" style="width: 90%; margin-left: 5%;">
+  <!-- <div class="container-home" style="width: 90%; margin-left: 5%;">
     <div class="text-center">
       <div class="text-center pageHeadingCss">
         <p class="pageHeadingparaCss">Issue Report</p>
@@ -23,52 +23,63 @@
 
       </div>
     </div>
+
+
+
     <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
       <div class="card-body card_body_filter" [formGroup]="filterForm">
-        <div class="row filter_cr">
-          <div class="col">
-            <label>Project</label><br />
-            <div>
-              <ng-multiselect-dropdown class="plantstyle" [settings]="dropdownSettings" [data]="dropdownList"
-                formControlName="plantId" (ngModelChange)="mapedplantdatas()">
-              </ng-multiselect-dropdown>
-            </div>
-          </div>
-          <div class="col">
-            <label>Service Category</label><br />
-            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdowncategroy" formControlName="Category"
-              (ngModelChange)="mapedcategoryatas($event)">
+
+        <div class="filter-container">
+
+          <div class="filter-item">
+            <label>Project</label>
+            <ng-multiselect-dropdown class="custom-input" [settings]="dropdownSettings" [data]="dropdownList"
+              formControlName="plantId" (ngModelChange)="mapedplantdatas()">
             </ng-multiselect-dropdown>
           </div>
-          <div class="col">
-            <label>Sub-Category</label><br />
-            <select class="input-change" formControlName="subCategory">
-              <option selected disabled hidden value="">Select Sub-Category</option>
-              <option *ngFor="let valueCtype of categorytype" value="{{valueCtype.categoryTypeId}}">
-                {{valueCtype.categoryType}}</option>
+
+          <div class="filter-item">
+            <label>Service Category</label>
+            <ng-multiselect-dropdown class="custom-input" [settings]="dropdownSettings" [data]="dropdowncategroy"
+              formControlName="Category" (ngModelChange)="mapedcategoryatas($event)">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <div class="filter-item">
+            <label>Sub-Category</label>
+            <select class="custom-input" formControlName="subCategory">
+              <option selected disabled hidden value="">Select</option>
+              <option *ngFor="let valueCtype of categorytype" [value]="valueCtype.categoryTypeId">
+                {{valueCtype.categoryType}}
+              </option>
             </select>
           </div>
-          <div class="col">
-            <label>Priority</label><br />
-            <select formControlName="Priority" class="input-change">
-              <option selected disabled hidden value="">Select Priority</option>
-              <option *ngFor="let prio of prioritydata" value="{{prio.priorityId}}">{{prio.priorityName}}</option>
+
+          <div class="filter-item">
+            <label>Priority</label>
+            <select class="custom-input" formControlName="Priority">
+              <option selected disabled hidden value="">Select</option>
+              <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">
+                {{prio.priorityName}}
+              </option>
             </select>
           </div>
-          <div class="col">
-            <label>Start Date:</label><br />
-            <input class="input-change cr_date" [max]="currentDate" type="date" id="fromDate" name="fromDate" required
-              formControlName="StartDate" />
+
+          <div class="filter-item">
+            <label>Start Date</label>
+            <input type="date" class="custom-input" [max]="currentDate" formControlName="StartDate" />
           </div>
-          <div class="col">
-            <label>End Date:</label><br />
-            <input class="input-change cr_date" [max]="currentDate" [min]="this.filterForm.value['StartDate']"
-              type="date" id="toDate" name="toDate" required formControlName="EndDate" />
+
+          <div class="filter-item">
+            <label>End Date</label>
+            <input type="date" class="custom-input" [max]="currentDate" [min]="this.filterForm.value['StartDate']"
+              formControlName="EndDate" />
           </div>
-          <div class="col">
-            <label>Status</label><br />
-            <select class="input-change" formControlName="Status">
-              <option selected disabled hidden value="">Select Status</option>
+
+          <div class="filter-item">
+            <label>Status</label>
+            <select class="custom-input" formControlName="Status">
+              <option selected disabled hidden value="">Select</option>
               <option value="">All</option>
               <option>Draft</option>
               <option>Open</option>
@@ -80,38 +91,38 @@
               <option>Closed</option>
             </select>
           </div>
-          <div class="col">
-            <label>Assign To</label><br />
-            <!-- <input type="text" formControlName="assignTo" (ngModelChange)="ClearOtherInputs()"/> -->
-            <span>
-              <input type="text" class="dropdownslistinput" #EnterIssueID placeholder="Enter Issue For"
-                formControlName="assignTo" (input)="filterItems()" />
+
+          <div class="filter-item">
+            <label>Assign To</label>
+            <div class="dropdown-wrapper">
+              <input type="text" class="custom-input" placeholder="Enter Employee" formControlName="assignTo"
+                (input)="filterItems()" />
+
               <ul class="dropdowns-list" *ngIf="dropdownItems?.length > 0">
-                <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="setFormControl(item)">
+                <li *ngFor="let item of dropdownItems" (click)="setFormControl(item)">
                   {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
                 </li>
               </ul>
-            </span>
+            </div>
           </div>
-        </div>
-        <div class="access-checkbox">
-          <div>
-            <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
+
+          <div class="filter-actions">
+            <button class="btn filter-btn" (click)="filterdropdown()">Filter</button>
+            <button class="btn clear-btn" (click)="resetfn()" type="reset">Clear</button>
           </div>
-          <div>
-            <button (click)="resetfn()" type="reset"
-              class="btn btn-rounded filter_button">Reset</button>&nbsp;&nbsp;&nbsp;
-          </div>
+
         </div>
       </div>
     </div>
+
+
     <div class="mt-5">
       <div class="tableClass sizetable">
         <table id="excel-table">
           <thead style="border-bottom: 2px solid;">
             <tr class="border-bottom">
               <th>Issue Ticket No</th>
-              <th class="min-width-100 ">Descriptions</th>
+              <th class="min-width-100">Descriptions</th>
               <th>Priority</th>
               <th class="max-width-100">Assigned Date</th>
               <th>Status</th>
@@ -155,7 +166,6 @@
               <td>{{(row.assignedTo && row.assignedToId)? row.assignedTo + ' (' + row.assignedToId + ')': ' '}}</td>
               <td>{{row.updateBy ? (row.updateBy !== '' ? row.updateBy : ' ') :' '}}</td>
               <td>{{row.updateDt ? (row.updateDt !== '' ? (row.updateDt|date:'dd-MM-yyyy') :' '): ' '}}</td>
-              <!-- {{CRreport.rfcapproverLevel1Dt? (CRreport.rfcapproverLevel1Dt.trim() !=='' ? (CRreport.rfcapproverLevel1Dt|date:'dd-MM-yyyy') : 'NA') : 'NA'  }} -->
               <td>{{row.resolveBy}}</td>
               <td>{{row.resolveDt ? (row.resolveDt !== '' ? (row.resolveDt|date:'dd-MM-yyyy') :' '): ' '}}</td>
               <td>{{row.resolveRemarks ? (row.resolveRemarks !=='' ? row.resolveRemarks : ' '): ''}}</td>
@@ -176,6 +186,220 @@
           [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)" aria-label="Select page"
           style="margin-right:34%">
         </mat-paginator>
+      </div>
+    </div>
+
+  </div> -->
+
+  <div class="issue-container">
+
+    <!-- Header -->
+    <div class="header">
+      <button class="btn-back" routerLink="/reports">BACK</button>
+
+      <div class="title">
+        <img src="assets/image/issueReport.png" class="title-icon" />
+        <h2>ISSUE REPORT</h2>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="icon-btn" (click)="toggleVisibility()">
+        <i class="fa fa-filter"></i>
+      </button>
+
+      <button class="excel-btn" (click)="exportexcel()">
+        <i class="fa fa-file-excel-o"></i> Excel
+      </button>
+    </div>
+
+    <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
+      <div class="card-body card_body_filter" [formGroup]="filterForm">
+
+        <div class="filter-container">
+
+          <div class="filter-item">
+            <label>Project</label>
+            <ng-multiselect-dropdown class="custom-input" [settings]="dropdownSettings" [data]="dropdownList"
+              formControlName="plantId" (ngModelChange)="mapedplantdatas()">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <div class="filter-item">
+            <label>Service Category</label>
+            <ng-multiselect-dropdown class="custom-input" [settings]="dropdownSettings" [data]="dropdowncategroy"
+              formControlName="Category" (ngModelChange)="mapedcategoryatas($event)">
+            </ng-multiselect-dropdown>
+          </div>
+
+          <div class="filter-item">
+            <label>Sub-Category</label>
+            <select class="custom-input" formControlName="subCategory">
+              <option selected disabled hidden value="">Select</option>
+              <option *ngFor="let valueCtype of categorytype" [value]="valueCtype.categoryTypeId">
+                {{valueCtype.categoryType}}
+              </option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label>Priority</label>
+            <select class="custom-input" formControlName="Priority">
+              <option selected disabled hidden value="">Select</option>
+              <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">
+                {{prio.priorityName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label>Start Date</label>
+            <input type="date" class="custom-input" [max]="currentDate" formControlName="StartDate" />
+          </div>
+
+          <div class="filter-item">
+            <label>End Date</label>
+            <input type="date" class="custom-input" [max]="currentDate" [min]="this.filterForm.value['StartDate']"
+              formControlName="EndDate" />
+          </div>
+
+          <div class="filter-item">
+            <label>Status</label>
+            <select class="custom-input" formControlName="Status">
+              <option selected disabled hidden value="">Select</option>
+              <option value="">All</option>
+              <option>Draft</option>
+              <option>Open</option>
+              <option>In Progress</option>
+              <option>Seek Clarification</option>
+              <option>On Hold</option>
+              <option>Cancelled</option>
+              <option>Resolved</option>
+              <option>Closed</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label>Assign To</label>
+            <div class="dropdown-wrapper">
+              <input type="text" class="custom-input" placeholder="Enter Employee" formControlName="assignTo"
+                (input)="filterItems()" />
+
+              <ul class="dropdowns-list" *ngIf="dropdownItems?.length > 0">
+                <li *ngFor="let item of dropdownItems" (click)="setFormControl(item)">
+                  {{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="filter-actions">
+            <button class="btn filter-btn" (click)="filterdropdown()">Filter</button>
+            <button class="btn clear-btn" (click)="resetfn()" type="reset">Clear</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Issue Ticket No</th>
+              <th>Descriptions</th>
+              <th>Priority</th>
+              <th>Assigned Date</th>
+              <th>Status</th>
+              <th>Initial Category</th>
+              <th>Initial Category Type</th>
+              <th>Raised By</th>
+              <th>Issue Raised For</th>
+              <th>Project Name</th>
+              <th>Paygroup</th>
+              <th>Employee Category</th>
+              <th>Assigned To</th>
+              <th>Last Update By</th>
+              <th>Last Update Dt</th>
+              <th>Resolved By</th>
+              <th>Resolution Dt</th>
+              <th>Resolution Remarks</th>
+              <th>Closure Dt</th>
+              <th>Closure By</th>
+              <th>Closure Remarks</th>
+              <th>Response SLA Dt</th>
+              <th>Response SLA Engineer</th>
+              <th>SLA Met/Not Met</th>
+              <th>SLA Breach Reason</th>
+              <th>SLA Delayed By</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let row of issuelistvalue">
+              <td>{{row.issueCode}}</td>
+
+              <td class="reportDescription" [title]="row.issueDesc">
+                {{row.issueDesc}}
+              </td>
+
+              <td>{{row.priorityName}}</td>
+              <td>{{row.assignedOn | date:'dd-MM-yyyy'}}</td>
+
+              <td>
+                <span class="status" [ngClass]="row.status?.replace(' ','')">
+                  {{row.status}}
+                </span>
+              </td>
+
+              <td>{{row.categoryName}}</td>
+              <td>{{row.categoryType}}</td>
+
+              <td>
+                {{(row.raisedByEmp)?
+                row.raisedByEmp + ' (' + row.raisedById + ')':
+                row.createdBy}}
+              </td>
+
+              <td>
+                {{row.issuerisedForId !== 0 ?
+                (row.issuerisedfor +' ('+row.issuerisedForId+')') : '' }}
+              </td>
+
+              <td>{{row.plantName}}</td>
+              <td>{{row.paygroup}}</td>
+              <td>{{row.empcategory}}</td>
+
+              <td>
+                {{(row.assignedTo && row.assignedToId)?
+                row.assignedTo + ' (' + row.assignedToId + ')': ''}}
+              </td>
+
+              <td>{{row.updateBy || ''}}</td>
+              <td>{{row.updateDt ? (row.updateDt | date:'dd-MM-yyyy') : ''}}</td>
+
+              <td>{{row.resolveBy}}</td>
+              <td>{{row.resolveDt ? (row.resolveDt | date:'dd-MM-yyyy') : ''}}</td>
+
+              <td>{{row.resolveRemarks}}</td>
+
+              <td>{{row.closedDate ? (row.closedDate | date:'dd-MM-yyyy') : ''}}</td>
+              <td>{{row.closedBY}}</td>
+              <td>{{row.closedRemark}}</td>
+
+              <td>{{row.slaDate ? (row.slaDate | date:'dd-MM-yyyy') : ''}}</td>
+
+              <td><!-- SLA Engineer (if available) --></td>
+              <td><!-- SLA Met/Not Met --></td>
+              <td><!-- SLA Breach Reason --></td>
+              <td><!-- SLA Delayed By --></td>
+
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 

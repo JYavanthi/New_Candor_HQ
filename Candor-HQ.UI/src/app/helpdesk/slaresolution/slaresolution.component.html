@@ -1,7 +1,7 @@
 <div class="slaResolutionMainDiv">
 
 
-   <div class="slaResolutionSideBar">
+  <div class="slaResolutionSideBar">
     <app-sidebarissue></app-sidebarissue>
   </div>
 
@@ -25,6 +25,7 @@
 
       </div>
     </div>
+
     <div class="card change_request_card_filter" *ngIf="isVisible" [@expandCollapseAnimation]>
       <div class="card-body card_body_filter" [formGroup]="filterForm">
         <div class="row filter_cr">
@@ -71,7 +72,6 @@
 
           <div class="col">
             <label>Assign To</label><br />
-            <!-- <input type="text" formControlName="assignTo" (ngModelChange)="ClearOtherInputs()"/> -->
             <span>
               <input type="text" class="dropdownslistinput" #EnterIssueID placeholder="Enter Issue For"
                 formControlName="assignTo" (input)="filterItems()" />
@@ -103,7 +103,7 @@
         </div>
         <div class="access-checkbox">
           <div>
-            <button class="btn btn-rounded filter_button" (click)="filterdropdown()">Filter</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-rounded filter_button" (click)="filterdropdown()" style="background : #22c55e">Filter</button>&nbsp;&nbsp;&nbsp;
           </div>
           <div>
             <button (click)="resetfn()" type="reset"
@@ -171,7 +171,5 @@
     </div>
 
   </div>
-
-
 
 </div>

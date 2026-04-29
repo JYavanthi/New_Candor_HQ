@@ -4,28 +4,35 @@
     <app-sidebarissue></app-sidebarissue>
   </div>
 
-  <div class="reportContainer-home" style="width: 90%;">
-    <div class="text-center pageHeadingCss">
-      <p class="pageHeadingparaCss">Issue Reports</p>
-    </div>
-    <br />
-    <div style="margin-left: 15%;">
-      <button class="btn-back" [routerLink]="'/report_issue'">Back</button>
-    </div>
-    <div class="row generate_row">
-      <div class="col selector">
-        <label for="selector">Selector :</label>&nbsp;
-        <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)" class="select_change_report">
-          <option selected disabled value="Select Report">Select Report</option>
-          <option>Issue Report</option>
-          <option>Issue Resolution</option>
-        </select>
-      </div>
+  <div class="report-wrapper">
 
-      <div [ngSwitch]="selectedOption">
+    <!-- Header -->
+    <div class="header">
+      <button class="btn-back" routerLink="/report_issue">BACK</button>
 
+      <div class="title">
+        <img src="assets/image/issueReport.png" alt="Issue Icon" class="title-icon" />
+        <h2>ISSUE REPORT</h2>
       </div>
     </div>
+
+    <hr />
+
+    <!-- Selector Card -->
+    <div class="selector-card">
+
+      <h3>Selector</h3>
+
+      <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionSelected($event)" class="select-box">
+
+        <option disabled selected>Select Report</option>
+        <option>Issue Report</option>
+        <option>Issue Resolution</option>
+
+      </select>
+
+    </div>
+
   </div>
 
 </div>

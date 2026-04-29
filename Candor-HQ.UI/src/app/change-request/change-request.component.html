@@ -154,87 +154,7 @@
 
     <div class="section-card" *ngIf="ischangeanalyst">
       <h3 class="section-title">CHANGE ANALYST</h3>
-      <!-- <div class="custom-table">
-        <table class="fl-table" style="width:100%;margin-left:0%">
-          <thead *ngIf="ischangeanalyst" class="table-head">
-            <tr class="border-bottom">
-              <th style="width:5%">Select</th>
-              <th style="width:5%">Update</th>
-              <th style="width:5%">Delete</th>
-              <th style="width:10%">RFC #</th>
-              <th style="width:10%">Requestor</th>
-              <th style="width:20%">Description</th>
-              <th style="width:10%">Stage</th>
-              <th style="width:10%">RFC Status</th>
-              <th style="width:5%">Type</th>
-              <th style="width:5%">Classifications</th>
-              <th style="width:5%">RFC Date</th>
-              <th style="width:5%">Expected Date of Completion</th>
-              <th style="width:5%">Task Count</th>
-            </tr>
-          </thead>
-          <tbody *ngIf="viewchangerequest.length > 0; else noData">
-            <tr class="tr-body" *ngFor="let pltdata of viewchangerequest">
-              <td><input type="radio" (click)="onRadioSelect(pltdata)" name="one" id="one" /></td>
-              <td>
-                <a href="" *ngIf="pltdata.status!='Cancelled'" (click)="onRadio(pltdata)"
-                  routerLink="/executive/{{pltdata.itcrid}}/edit">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </a>
-              </td>
-              <td>
-                <i *ngIf="pltdata.status!='Cancelled'  && pltdata.status=='Draft'" class="fa fa-trash"
-                  aria-hidden="true" (click)="deleteRow(pltdata.itcrid, pltdata.crcode)"></i>
-              </td>
-              <td>{{pltdata.crcode}}</td>
-              <td>{{pltdata.crrequestorName}}</td>
-              <td>{{pltdata.changeDesc}}</td>
-              <td>{{pltdata.stage}}</td>
-              <td [ngSwitch]="pltdata.status.trim()">
-                <span *ngSwitchCase="'Draft'"> <span style="color: #3c8dbc;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Pending Approval'"> <span style="color: #808080ff; ">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Submitted'"> <span
-                    style="color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Approved'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Approved level1'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Approved level2'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Completed'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Rejected'"> <span style="color: red;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Seek Clarification'"> <span style="color:cornflowerblue;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Implement'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Implemented'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Pending'"> <span
-                    style="color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Released'"> <span style="color: rgb(154, 235, 73);">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Cancelled'"> <span style="color: rgb(255, 0, 0);">{{ pltdata.status
-                    }}</span></span>
-              </td>
-              <td>{{pltdata.categoryName}}</td>
-              <td>{{pltdata.classificationName}}</td>
-              <td>{{pltdata.crdate | date:'dd-MM-yyyy' }}</td>
-              <td>{{pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>
-              <td>{{pltdata.taskcount}}</td>
-
-            </tr>
-
-          </tbody>
-          <ng-template #noData>
-            <div class="no-data">There are no RFC#</div>
-          </ng-template>
-        </table>
-      </div>
-      <div *ngIf="ischangeanalyst && viewchangerequest.length > 0">
-        <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex"
-          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChange($event)" aria-label="Select page"
-          style="margin-right:34%">
-        </mat-paginator>
-      </div> -->
-
+    
       <div class="custom-table">
         <table class="modern-table">
 
@@ -286,7 +206,8 @@
               'rejected': pltdata.status == 'Rejected' || pltdata.status == 'Cancelled',
               'progress': pltdata.status == 'Implement' || pltdata.status == 'Submitted',
               'draft': pltdata.status == 'Draft',
-              'implemented' : pltdata.status == 'Implemented'
+              'implemented' : pltdata.status == 'Implemented',
+              'released' : pltdata.status == 'Released'
             }">
                   {{pltdata.status}}
                 </span>
@@ -324,86 +245,6 @@
       <br *ngIf="issuperadmin" />
       <br *ngIf="issuperadmin" />
       <h3 class="section-title" *ngIf="issupportegineer">SUPPORT ENGINEER-TASK ASSIGNED</h3>
-      <!-- <div class="custom-table">
-        <table style="width:100%;margin-left:0%;">
-          <thead *ngIf="issupportegineer" class="table-head">
-            <tr class="border-bottom">
-              <th>Select</th>
-              <th>Update</th>
-              <th>RFC #</th>
-              <th>Task ID</th>
-              <th>Requestor</th>
-              <th>Description</th>
-              <th>Stage</th>
-              <th>RFC Status</th>
-              <th>Task Status</th>
-              <th>Type</th>
-              <th>Classifications</th>
-              <th>RFC Date</th>
-              <th>Expected Date of Completion</th>
-              <th>Task Count</th>
-            </tr>
-          </thead>
-          <tbody *ngIf="viewchangerequest.length > 0; else noData">
-            <tr class="tr-body" *ngFor="let pltdata of filterexecutdata">
-              <td><input type="radio" (change)="onRadioSelect(pltdata)" name="one" id="one" /></td>
-              <td>
-                <a href="" *ngIf="pltdata.status!='Cancelled'" (click)="onRadio(pltdata)"
-                  routerLink="/executive/{{pltdata.itcrid}}/edit">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </a>
-              </td>
-              <td>{{pltdata.crcode}}</td>
-              <td>{{pltdata.itcrexecId}}</td>
-              <td>{{pltdata.crrequestorName}}</td>
-              <td>{{pltdata.changeDesc}}</td>
-              <td>{{pltdata.stage}}</td>
-              <td [ngSwitch]="pltdata.status.trim()">
-                <span *ngSwitchCase="'Draft'"> <span style="color: #3c8dbc;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Pending Approval'"> <span style="color: #808080ff; ">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Submitted'"> <span
-                    style="color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Approved'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Approved level1'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Approved level2'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Completed'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Rejected'"> <span style="color: red;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Seek Clarification'"> <span style="color:cornflowerblue;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Implement'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Implemented'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Pending'"> <span
-                    style="color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Released'"> <span style="color: rgb(154, 235, 73);">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Cancelled'"> <span style="color: rgb(255, 0,0);">{{ pltdata.status
-                    }}</span></span>
-              </td>
-              <td>{{pltdata.taskstatus}}</td>
-              <td>{{pltdata.categoryName}}</td>
-              <td>{{pltdata.classificationName}}</td>
-              <td>{{pltdata.crdate | date:'dd-MM-yyyy' }}</td>
-              <td>{{pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>
-              <td>{{pltdata.taskcount}}</td>
-
-            </tr>
-
-          </tbody>
-          <ng-template #noData>
-            <div class="no-data">There are no RFC#</div>
-          </ng-template>
-        </table>
-
-      </div>
-      <div *ngIf="issupportegineer && filterexecutdata.length > 0">
-        <mat-paginator [length]="totalItemsforsupport" [pageSize]="pageSizeforsupport" [pageIndex]="pageIndexforsupport"
-          [pageSizeOptions]="[10,25,50,100]" (page)="onPageChangeforsupport($event)" aria-label="Select page"
-          style="margin-right:34%">
-        </mat-paginator>
-      </div> -->
 
       <div class="custom-table">
 
@@ -430,7 +271,7 @@
           </thead>
 
           <!-- BODY -->
-          <tbody *ngIf="filterexecutdata.length > 0; else noData">
+          <tbody *ngIf="filterexecutdata.length > 0; else noData" style="white-space: nowrap;">
 
             <tr *ngFor="let pltdata of filterexecutdata">
 
@@ -461,7 +302,8 @@
               'approved': pltdata.status.includes('Approved'),
               'pending': pltdata.status === 'Pending' || pltdata.status === 'Pending Approval',
               'cancel': pltdata.status === 'Cancelled' || pltdata.status === 'Rejected',
-              'progress': pltdata.status === 'Submitted' || pltdata.status === 'Implemented'
+              'progress': pltdata.status === 'Submitted' || pltdata.status === 'Implemented',
+              'released' : pltdata.stauts === 'Released'
             }">
                   {{pltdata.status}}
                 </span>
@@ -500,89 +342,6 @@
       <h1 class="section-title">APPROVAL -
         PENDING</h1>
 
-      <!-- <div class="custom-table">
-        <table style="width:100%; margin-left: 0%;">
-          <thead *ngIf="isapprover" class="table-head">
-            <tr class="border-bottom">
-              <th>Select</th>
-              <th>Update</th>
-              <th>RFC #</th>
-              <th>Requestor</th>
-              <th>Description</th>
-              <th>Stage</th>
-              <th>RFC Status</th>
-              <th>Last Approved Name</th>
-              <th>Last Approved Date</th>
-              <th>Type</th>
-              <th>Classifications</th>
-              <th>RFC Date</th>
-              <th>Expected Date of Completion</th>
-              <th>Task Count</th>
-
-            </tr>
-          </thead>
-          <tbody *ngIf="viewchangerequest.length > 0; else noData">
-            <tr class="tr-body" *ngFor="let pltdata of filtersapprvdata">
-              <td><input type="radio" (change)="onRadioSelect(pltdata)" name="one" id="one" /></td>
-              <td>
-                <a href="" *ngIf="pltdata.status!='Cancelled'" (click)="onRadio(pltdata)"
-                  routerLink="/executive/{{pltdata.itcrid}}/edit">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </a>
-              </td>
-              <td>{{pltdata.crcode}}</td>
-              <td>{{pltdata.crrequestorName}}</td>
-              <td>{{pltdata.changeDesc}}</td>
-              <td>{{pltdata.stage}}</td>
-              <td [ngSwitch]="pltdata.status.trim()">
-                <span *ngSwitchCase="'Draft'"> <span style="color: #3c8dbc;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Pending Approval'"> <span style="color: #808080ff; ">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Submitted'"> <span
-                    style="color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Approved'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Approved level1'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Approved level2'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Completed'"> <span style="color: green;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Rejected'"> <span style="color: red;">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Seek Clarification'"> <span style="color:cornflowerblue;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Implement'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Implemented'"> <span class=" text-info">{{ pltdata.status }}</span></span>
-                <span *ngSwitchCase="'Pending'"> <span
-                    style="color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Released'"> <span style="color: rgb(154, 235, 73);">{{ pltdata.status
-                    }}</span></span>
-                <span *ngSwitchCase="'Cancelled'"> <span style="color: rgb(255, 0,0);">{{ pltdata.status
-                    }}</span></span>
-              </td>
-              <td>{{pltdata.lastApproverName}}</td>
-              <td>{{pltdata.lastApprovedDate | date:'dd-MM-yyyy'}}</td>
-              <td>{{pltdata.categoryName}}</td>
-              <td>{{pltdata.classificationName}}</td>
-              <td>{{pltdata.crdate | date:'dd-MM-yyyy' }}</td>
-              <td>{{pltdata.estimatedDateCompletion | date:'dd-MM-yyyy' }}</td>
-              <td>{{pltdata.taskcount}}</td>
-          </tbody>
-
-          <ng-template #noData>
-            <div class="no-data">There are no RFC#</div>
-          </ng-template>
-
-
-        </table>
-      </div>
-      <div *ngIf="isapprover && filtersapprvdata.length > 0">
-        <mat-paginator [length]="totalItemsforapprover" [pageSize]="pageSizeforapprover"
-          [pageIndex]="pageIndexforapprover" [pageSizeOptions]="[10,25,50,100]" (page)="onPageChangeforapprover($event)"
-          aria-label="Select page" style="margin-right:34%">
-        </mat-paginator>
-        <br />
-      </div> -->
-
-
       <div class="custom-table">
 
         <table class="styled-table">
@@ -608,7 +367,7 @@
           </thead>
 
           <!-- BODY -->
-          <tbody *ngIf="filtersapprvdata.length > 0; else noData">
+          <tbody *ngIf="filtersapprvdata.length > 0; else noData" style="white-space: nowrap;">
 
             <tr *ngFor="let pltdata of filtersapprvdata">
 
@@ -638,7 +397,8 @@
               'approved': pltdata.status.includes('Approved'),
               'pending': pltdata.status === 'Pending' || pltdata.status === 'Pending Approval',
               'cancel': pltdata.status === 'Cancelled' || pltdata.status === 'Rejected',
-              'progress': pltdata.status === 'Submitted' || pltdata.status === 'Implemented'
+              'progress': pltdata.status === 'Submitted' || pltdata.status === 'Implemented',
+              'released' : pltdata.status === 'Released'
             }">
                   {{pltdata.status}}
                 </span>

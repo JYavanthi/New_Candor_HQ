@@ -92,13 +92,6 @@ th {
   background: #ffc23b;
 }
 
-.button-approve:disabled {
-  background: #c0c0c0 !important;
-  color: #666;
-  cursor: not-allowed;
-  border: none;
-}
-
 .btn-approve button {
   margin: 0;
 }
@@ -220,12 +213,6 @@ button[type="reset"] {
   margin: 10px 15px 25px;
 }
 
-
-.fa {
-  cursor: pointer;
-  color: #0a8ea0;
-}
-
 .modern-table {
   width: 100%;
   border-collapse: separate;
@@ -282,20 +269,15 @@ button[type="reset"] {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.status-badge {
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  color: white;
-  display: inline-block;
-}
 
 .completed {
   background: #4caf50;
+  text-align: center;
 }
 
 .pending {
   background: #ff9800;
+  white-space: nowrap;
 }
 
 .rejected {
@@ -309,6 +291,7 @@ button[type="reset"] {
 
 .draft {
   background: #607d8b;
+  text-align: center;
 }
 
 .implemented {
@@ -317,6 +300,11 @@ button[type="reset"] {
 
 .fa-pencil {
   color: #0a8ea0;
+}
+
+.released {
+  background: #0a8ea0;
+  text-align: center;
 }
 
 .fa-trash {
@@ -340,7 +328,6 @@ button[type="reset"] {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 10px;
-  /* spacing between rows */
   font-size: 13px;
 }
 
@@ -405,6 +392,7 @@ button[type="reset"] {
 
 .completed {
   background: #4CAF50;
+  text-align: center;
 }
 
 .approved {
@@ -413,6 +401,7 @@ button[type="reset"] {
 
 .pending {
   background: #ff9800;
+  white-space: nowrap;
 }
 
 .cancel {
@@ -422,11 +411,6 @@ button[type="reset"] {
 .progress {
   background: #2196f3;
   height: 30px;
-}
-
-.fa-pencil {
-  cursor: pointer;
-  color: #4da3a6;
 }
 
 .no-data {

@@ -33,13 +33,6 @@ td {
     white-space: nowrap;
 }
 
-.filter_button {
-    background-color: #3c8dbc;
-    color: white;
-    margin-top: 17px;
-    margin-left: 40%;
-}
-
 .card {
     width: 90%;
     margin: 20px 70px;
@@ -116,4 +109,101 @@ td {
     /* Make visible on hover */
     opacity: 1;
     /* Fully opaque on hover */
+}
+
+/* Card background like image */
+.change_request_card_filter {
+    background: #daecff;
+    border-radius: 16px;
+    padding: 15px 20px;
+    border: 1px solid #d0d7de;
+}
+
+/* Make row behave like horizontal flex bar */
+.filter_cr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+/* Override bootstrap col */
+.filter_cr .col {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.filter_cr label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #2c3e50;
+}
+
+/* Inputs & dropdowns */
+.input-change,
+.cr_date,
+.dropdownslistinput,
+::ng-deep .ng-multiselect-dropdown {
+    height: 38px;
+    border-radius: 25px !important;
+    border: 1px solid #9ec3db !important;
+    padding: 5px 12px;
+    font-size: 13px;
+    background: #fff;
+}
+
+/* Fix multiselect internal UI */
+::ng-deep .ng-multiselect-dropdown .dropdown-btn {
+    border: none !important;
+    height: 36px;
+    border-radius: 25px !important;
+}
+
+/* Assign dropdown */
+.dropdowns-list {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.drop-list {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.drop-list:hover {
+    background: #f2f2f2;
+}
+
+/* Button container aligned right  #22c55e*/
+.access-checkbox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+    gap: 12px;
+}
+
+/* 🔥 UPDATED BUTTON STYLE (match image) */
+.filter_button {
+    border: none;
+    border-radius: 25px;
+    padding: 6px 22px;
+    font-weight: 600;
+    margin: 0 !important;
+}
+
+/* Red Reset button */
+.access-checkbox button:last-child {
+    background-color: #e85d75;
+    color: white;
 }
