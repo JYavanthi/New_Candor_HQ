@@ -1,0 +1,288 @@
+<div class="dashboardNewMainDiv">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="dashboardNewSideCss">
+        <app-dashboard-new-sidebar></app-dashboard-new-sidebar>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="dashboardContent">
+
+        <!-- HEADER -->
+        <div class="dashboard-header">
+            <img src="assets/image/dashBoard_Image.png" alt="dashboard icon" />
+            <h2>DASHBOARD</h2>
+        </div>
+
+        <div class="header">
+            <div class="left">
+                <h1>Good morning, Akshith</h1>
+                <p>28 Apr 2026 · TV001 Plant · Week 18</p>
+            </div>
+
+            <div class="right">
+                <button class="btn" (click)="goToNewChange()">
+                    <span class="icon">+</span>
+                    <span>New CR</span>
+                </button>
+
+                <button class="btn" [routerLink]="'/issue_new_issue'">
+                    <span class="icon">+</span>
+                    <span>Raise Issue</span>
+                </button>
+
+                <button class="btn" (click)="goToNewProject()">
+                    <span class="icon">+</span>
+                    <span>New Project</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+
+            <!-- TOP CARDS -->
+            <div class="top-cards">
+
+                <div class="card small-card">
+                    <h4>Change Requests</h4>
+                    <h2>5</h2>
+                    <div class="tags">
+                        <span class="green">3 In Review</span>
+                        <span class="red">1 Overdue</span>
+                    </div>
+                </div>
+
+                <div class="card small-card">
+                    <h4>Open Issues</h4>
+                    <h2>4</h2>
+                    <div class="tags">
+                        <span class="red">1 Critical</span>
+                        <span class="orange">2 High</span>
+                    </div>
+                </div>
+
+                <div class="card small-card">
+                    <h4>Active Project</h4>
+                    <h2>5</h2>
+                    <div class="tags">
+                        <span class="green">2 On Track</span>
+                        <span class="orange">1 At Risk</span>
+                    </div>
+                </div>
+
+                <div class="card small-card circle-card">
+                    <h4>SLA Compliance</h4>
+
+                    <div class="sla-wrapper">
+                        <div class="progress-circle">
+                            <span>84%</span>
+                        </div>
+
+                        <div class="sla-text">
+                            <p class="target">Target: 95%</p>
+                            <p class="gap">-8% gap</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- MIDDLE SECTION -->
+
+            <div class="middle-section">
+
+                <!-- CRITICAL ALERTS -->
+                <div class="card alert-card">
+                    <div class="card-header red-text">
+                        <span style="font-size: larger;">Critical Alerts</span>
+                        <span class="badge">3 Active</span>
+                    </div>
+
+                    <div class="alert-item">
+                        <div class="title">Production DB Down</div>
+                        <div class="sub">HD/2026/001 · 2h ago</div>
+                    </div>
+
+                    <div class="alert-item">
+                        <div class="title">CR Overdue – SAP API</div>
+                        <div class="sub">CR/2026/004 · 3 days late</div>
+                    </div>
+
+                    <div class="alert-item">
+                        <div class="title">SLA Breach Risk</div>
+                        <div class="sub">TV001 · Expires today</div>
+                    </div>
+
+                    <div class="alert-item">
+                        <div class="title">Project approved</div>
+                        <div class="sub">TV003/PM/5 · 1h ago</div>
+                    </div>
+                </div>
+
+                <!-- RECENT ACTIVITY -->
+                <div class="card activity-card">
+                    <div class="card-header">
+                        <span style="font-size: larger;">Recent Activity</span>
+                        <span class="live-dot">● Live</span>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="avatar">AI</div>
+                        <div>
+                            Closed issue <span class="link">TV001/S1/09</span>
+                            <div class="sub">5 min ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="avatar blue">RK</div>
+                        <div>
+                            Updated project <span class="link">TV03/PM/3</span>
+                            <div class="sub">18 min ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="avatar green">MK</div>
+                        <div>
+                            Raised CR <span class="link">CR/2026/004</span>
+                            <div class="sub">25 min ago</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="avatar purple">PJ</div>
+                        <div>
+                            Approved <span class="link">TV03/PM/5</span>
+                            <div class="sub">40 min ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEAM WORKLOAD -->
+                <div class="card workload-card">
+                    <div class="card-header" style="font-size: larger;">Team Workload</div>
+
+                    <div class="progress-item">
+                        <div class="avatar small">AI</div>
+                        <span>Akshith J</span>
+                        <div class="bar">
+                            <div class="fill" style="width:67%"></div>
+                        </div>
+                        <span class="percent red">67%</span>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="avatar small">AI</div>
+                        <span>Akshith J</span>
+                        <div class="bar">
+                            <div class="fill" style="width:52%"></div>
+                        </div>
+                        <span class="percent">52%</span>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="avatar small">AI</div>
+                        <span>Akshith J</span>
+                        <div class="bar">
+                            <div class="fill" style="width:92%"></div>
+                        </div>
+                        <span class="percent red">92%</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOTTOM SECTION -->
+            <div class="bottom-section">
+
+                <!-- PROJECT STATUS -->
+                <div class="card status-board">
+                    <div class="card-header">Project Status Board</div>
+
+                    <div class="status-columns">
+
+                        <div class="column">
+                            <div class="column-header progress">● In Progress</div>
+
+                            <div class="pill">
+                                <div class="title">DB Migration</div>
+                                <div class="sub">TV03/PM/3</div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="title">CR Overdue – SAP API</div>
+                                <div class="sub">CR/2026/004 · 3 day late</div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="title">SLA Breach Risk</div>
+                                <div class="sub">TV001 · Expires today</div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="title">Project approved</div>
+                                <div class="sub">TV03/PM/5 · 3h ago</div>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="column-header review">● In Review</div>
+
+                            <div class="pill">
+                                <div class="title">DB Migration</div>
+                                <div class="sub">TV03/PM/3</div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="title">CR Overdue – SAP API</div>
+                                <div class="sub">CR/2026/004 · 3 day late</div>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="column-header completed">● Completed</div>
+
+                            <div class="pill">
+                                <div class="title">DB Migration</div>
+                                <div class="sub">TV03/PM/3</div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="title">CR Overdue – SAP API</div>
+                                <div class="sub">CR/2026/004 · 3 day late</div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="title">SLA Breach Risk</div>
+                                <div class="sub">TV001 · Expires today</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CHART -->
+                <div class="card chart-card">
+                    <div class="card-header">Weekly Issue Trend</div>
+
+                    <div class="legend">
+                        <span class="dot blue"></span> Mobile
+                        <span class="dot purple"></span> Desktop
+                        <span class="dot orange"></span> Tablet
+                    </div>
+
+                    <canvas id="chart"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

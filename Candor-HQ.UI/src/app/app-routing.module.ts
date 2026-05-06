@@ -111,6 +111,8 @@ import { SoftwareVersionMasterComponent } from './software-version-master/softwa
 import { NewSoftwareMasterComponent } from './new-software-master/new-software-master.component';
 import { NewSoftwareVersionMasterComponent } from './new-software-version-master/new-software-version-master.component';
 import { NewDashboardComponent } from './dashboard/new-dashboard/new-dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardNewComponent } from './dashboard-new/dashboard-new.component';
 
 
 
@@ -124,9 +126,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: NewDashboardComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard', component: DashboardNewComponent, canActivate: [AuthGuard] },
       {path: 'newDashboard', component: NewDashboardComponent},
       { path: 'page-not-found', component: ChangetabComponent },
+      {path: 'dashboardNew', component: DashboardNewComponent},
+      
       // Change Request
       { path: 'change-request', component: ChangeRequestComponent },
       { path: 'new-change', component: NewChangeRequestComponent },
@@ -142,6 +146,9 @@ const routes: Routes = [
       { path: 'view_summary', component: ViewSummaryComponent },
       { path: 'history', component: HistoryComponent },
       { path: 'ChageRequest-Masters', component: ChangerequestMasterComponent },
+
+      //Login
+      {path: 'login', component : LoginComponent},
 
       // master support
       { path: 'mastersupport', component: MasterSupportComponent },

@@ -168,6 +168,10 @@ import { SidebarissueComponent } from './helpdesk/sidebarissue/sidebarissue.comp
 import { SupportSidebarComponent } from './master-support/support-view/support-sidebar/support-sidebar.component';
 import { DashboardSideBarComponent } from './dashboard/dashboard-side-bar/dashboard-side-bar.component';
 import { NewDashboardComponent } from './dashboard/new-dashboard/new-dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardNewComponent } from './dashboard-new/dashboard-new.component';
+import { DashboardNewSidebarComponent } from './dashboard-new/dashboard-new-sidebar/dashboard-new-sidebar.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -309,7 +313,11 @@ import { NewDashboardComponent } from './dashboard/new-dashboard/new-dashboard.c
     SidebarissueComponent,
     SupportSidebarComponent,
     DashboardSideBarComponent,
-    NewDashboardComponent
+    NewDashboardComponent,
+    LoginComponent,
+    DashboardNewComponent,
+    DashboardNewSidebarComponent,
+    RegistrationComponent
     ],
   imports: [
     BrowserModule,
