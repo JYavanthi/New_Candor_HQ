@@ -113,6 +113,9 @@ import { NewSoftwareVersionMasterComponent } from './new-software-version-master
 import { NewDashboardComponent } from './dashboard/new-dashboard/new-dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardNewComponent } from './dashboard-new/dashboard-new.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { WorkDetailsComponent } from './registration/work-details/work-details.component';
+import { SecurityComponent } from './registration/security/security.component';
 
 
 
@@ -148,7 +151,12 @@ const routes: Routes = [
       { path: 'ChageRequest-Masters', component: ChangerequestMasterComponent },
 
       //Login
-      {path: 'login', component : LoginComponent},
+      {path: 'login', component : LoginComponent,  data: { hideHeader: true }},
+
+      //Registration
+      {path: 'registration', component : RegistrationComponent,  data: { hideHeader: true }},
+      {path: 'work-details', component : WorkDetailsComponent},
+      {path: 'security', component : SecurityComponent},
 
       // master support
       { path: 'mastersupport', component: MasterSupportComponent },

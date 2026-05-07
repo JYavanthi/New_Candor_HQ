@@ -172,6 +172,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardNewComponent } from './dashboard-new/dashboard-new.component';
 import { DashboardNewSidebarComponent } from './dashboard-new/dashboard-new-sidebar/dashboard-new-sidebar.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { WorkDetailsComponent } from './registration/work-details/work-details.component';
+import { SecurityComponent } from './registration/security/security.component';
 
 @NgModule({
   declarations: [
@@ -317,7 +319,9 @@ import { RegistrationComponent } from './registration/registration.component';
     LoginComponent,
     DashboardNewComponent,
     DashboardNewSidebarComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    WorkDetailsComponent,
+    SecurityComponent
     ],
   imports: [
     BrowserModule,

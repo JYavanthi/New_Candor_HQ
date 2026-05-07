@@ -17,7 +17,12 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
 
-        this.showHeader = !event.url.includes('login');
+        this.showHeader = !(
+          event.url.includes('login') ||
+          event.url.includes('registration') || 
+          event.url.includes('work-details') || 
+          event.url.includes('security')
+        );
       }
     });
   }

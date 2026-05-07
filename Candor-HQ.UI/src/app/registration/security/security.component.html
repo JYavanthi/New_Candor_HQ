@@ -1,0 +1,296 @@
+<div class="regMainDiv">
+
+    <div class="page-wrapper">
+
+        <!-- LEFT SIDE -->
+        <div class="register-content">
+
+            <div class="logo-wrapper">
+                <img src="/assets/image/main_image.png" class="main-logo" />
+
+                <img src="/assets/image/hq_remove.png" class="text-logo" />
+            </div>
+
+            <img src="/assets/image/contact_image.png" class="illustration-img" />
+
+            <div class="text-section">
+
+                <h2>Create your Candor HQ account</h2>
+
+                <p>
+                    Join Candor HQ to collaborate,
+                    manage and achieve more together.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="form-container">
+
+            <!-- STEPPER -->
+            <div class="stepper">
+
+                <div class="step-item">
+                    <div class="step-circle">1</div>
+                    <span>Basic Information</span>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="step-item">
+                    <div class="step-circle">2</div>
+                    <span>Work Details</span>
+                </div>
+
+                <div class="step-line active"></div>
+
+                <div class="step-item active">
+                    <div class="step-circle active-circle">3</div>
+                    <span>Security & Confirmation</span>
+                </div>
+
+            </div>
+
+            <!-- TITLE -->
+            <div class="top-content">
+
+                <h1>Create Your Account</h1>
+
+                <p>
+                    Fill in the details below to complete your registration.
+                </p>
+
+            </div>
+
+            <!-- SECURITY QUESTION -->
+            <div class="section-box">
+
+                <div class="section-title">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <h3>Security Question</h3>
+
+                </div>
+
+                <div class="form-grid two-grid">
+
+                    <div class="form-group">
+                        <label>Select Security Question</label>
+
+                        <div class="input-box">
+
+                            <select>
+                                <option>
+                                    What is the name of your first school?
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Answer</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input type="text" placeholder="Enter your answer">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- VERIFICATION -->
+            <div class="section-box">
+
+                <div class="section-title">
+
+                    <div class="icon-circle">
+                        <i class="fa-regular fa-shield"></i>
+                    </div>
+
+                    <h3>Verification</h3>
+
+                </div>
+
+                <p class="section-desc">
+                    We will send a One-Time Password (OTP) to your registered
+                    email and mobile number.
+                </p>
+
+                <div class="form-grid two-grid">
+
+                    <div class="form-group">
+
+                        <label>Email OTP</label>
+
+                        <div class="otp-wrapper">
+
+                            <div class="otp-input">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <input type="text" placeholder="Enter 6-digit OTP">
+
+                            </div>
+
+                            <button>Send OTP</button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Mobile OTP</label>
+
+                        <div class="otp-wrapper">
+
+                            <div class="otp-input">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                                <input type="text" placeholder="Enter 6-digit OTP">
+
+                            </div>
+
+                            <button>Send OTP</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ADDITIONAL -->
+            <div class="section-box">
+
+                <div class="section-title">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+
+                    <h3>
+                        Additional Preferences
+                        <span>(Optional)</span>
+                    </h3>
+
+                </div>
+
+                <div class="form-grid three-grid">
+
+
+                    <div class="form-group">
+
+                        <label>GST Number</label>
+
+                        <div class="input-box">
+
+
+                            <input type="text" placeholder="Enter 15-digit GST">
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Preferred Language</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-globe"></i>
+
+                            <select>
+                                <option>Select language</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Time Zone</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-regular fa-clock"></i>
+
+                            <select>
+                                <option>Select time zone</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- TERMS -->
+            <div class="terms-box">
+
+                <div class="check-row">
+
+                    <input type="checkbox" checked>
+
+                    <label>Terms & Conditions</label>
+
+                </div>
+
+                <p>
+                    I agree to the
+                    <a href="#">Terms & Conditions</a>
+                    and
+                    <a href="#">Privacy Policy</a>.
+                </p>
+
+            </div>
+
+            <!-- INFO BOX -->
+            <div class="info-box">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <span>
+                    Please review your details before creating your account.
+                </span>
+
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="button-wrapper">
+
+                <button class="back-btn" (click)="onBack()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back
+                </button>
+
+                <button class="create-btn">
+                    Create Account
+                    <i class="fa-solid fa-lock"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
