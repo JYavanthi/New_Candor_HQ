@@ -1,17 +1,10 @@
-<!-- <div class="loginMainDiv">
-    <div class="login-page"></div>
-</div> -->
-
-
-<div class="loginMainDiv">
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="loginMainDiv">
     <div class="login-page">
 
-        <!-- Login Form Card -->
         <div class="login-card">
 
             <div>
                 <h2>Log in to CandorHQ</h2>
-
                 <p class="sub-text">
                     Enter your details to access your account.
                 </p>
@@ -23,7 +16,17 @@
 
                 <div class="input-field">
                     <i class="fa-regular fa-envelope"></i>
-                    <input type="email" placeholder="Enter your email address" />
+                    <input type="email" formControlName="email" placeholder="Enter your email address" />
+                </div>
+
+                <!-- Validation -->
+                <div class="error" *ngIf="submitted && f['email'].errors">
+                    <small *ngIf="f['email'].errors['required']">
+                        Email is required
+                    </small>
+                    <small *ngIf="f['email'].errors['email']">
+                        Enter a valid email
+                    </small>
                 </div>
             </div>
 
@@ -34,17 +37,28 @@
                 <div class="input-field">
                     <i class="fa-solid fa-lock"></i>
 
-                    <input [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" />
+                    <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                        placeholder="Enter your password" />
 
                     <i class="eye-icon" [ngClass]="showPassword ? 'fa-solid fa-eye-slash' : 'fa-regular fa-eye'"
                         (click)="togglePassword()"></i>
+                </div>
+
+                <!-- Validation -->
+                <div class="error" *ngIf="submitted && f['password'].errors">
+                    <small *ngIf="f['password'].errors['required']">
+                        Password is required
+                    </small>
+                    <small *ngIf="f['password'].errors['minlength']">
+                        Minimum 6 characters required
+                    </small>
                 </div>
             </div>
 
             <!-- Remember -->
             <div class="remember-row">
                 <div class="remember-left">
-                    <input type="checkbox" checked />
+                    <input type="checkbox" formControlName="remember" />
                     <span>Remember me</span>
                 </div>
 
@@ -52,34 +66,9 @@
             </div>
 
             <!-- Button -->
-            <button class="login-btn">
+            <button type="submit" class="login-btn">
                 Log In
             </button>
-
-            <!-- Divider -->
-            <div class="divider">
-                <span>or continue with</span>
-            </div>
-
-            <!-- Social Buttons -->
-            <div class="social-login">
-
-                <button>
-                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" />
-                    Google
-                </button>
-
-                <button>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" />
-                    Microsoft
-                </button>
-
-                <button>
-                    <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" />
-                    Apple
-                </button>
-
-            </div>
 
             <!-- Signup -->
             <p class="signup-text">
@@ -90,4 +79,4 @@
         </div>
 
     </div>
-</div>
+</form>

@@ -313,6 +313,7 @@ export class ApproveComponent implements OnChanges {
   }
 
   filestg: string;
+  
   addFile(): void {
     if (!this.selectedFiles) {
       console.error('No files selected.');

@@ -1,279 +1,369 @@
-<div class="regMainDiv">
-    <div class="page-wrapper">
+<form [formGroup]="basicInformationForm">
 
-        <!-- LEFT SIDE -->
-        <div class="register-content">
+    <div class="regMainDiv">
 
-            <!-- Logo -->
-            <div class="logo-wrapper">
-                <img src="/assets/image/main_image.png" alt="Candor HQ" class="main-logo" />
+        <div class="page-wrapper">
 
-                <img src="/assets/image/hq_remove.png" alt="Candor HQ" class="text-logo" />
-            </div>
+            <!-- LEFT SIDE -->
+            <div class="register-content">
 
-            <!-- Illustration -->
-            <img src="/assets/image/contact_image.png" alt="Register Illustration" class="illustration-img" />
-
-            <!-- Text -->
-            <div class="text-section">
-                <h2>Create your Candor HQ account</h2>
-
-                <p>
-                    Join Candor HQ to collaborate, manage
-                    <br />
-                    and achieve more together.
-                </p>
-            </div>
-
-        </div>
-
-        <!-- RIGHT SIDE FORM -->
-        <div class="form-container">
-
-            <!-- Header -->
-            <div class="form-header">
-                <h1>Create Your Account</h1>
-                <p>Fill in the details below to get started.</p>
-            </div>
-
-            <!-- Steps -->
-            <div class="stepper">
-
-                <div class="step active">
-                    <div class="step-circle">1</div>
-                    <span>Basic Information</span>
+                <div class="logo-wrapper">
+                    <img src="/assets/image/main_image.png" class="main-logo" />
+                    <img src="/assets/image/hq_remove.png" class="text-logo" />
                 </div>
 
-                <div class="line"></div>
+                <img src="/assets/image/contact_image.png" class="illustration-img" />
 
-                <div class="step">
-                    <div class="step-circle">2</div>
-                    <span>Work Details</span>
-                </div>
+                <div class="text-section">
 
-                <div class="line"></div>
+                    <h2>Create your Candor HQ account</h2>
 
-                <div class="step">
-                    <div class="step-circle">3</div>
-                    <span>Security & Confirmation</span>
-                </div>
-
-            </div>
-
-            <!-- BASIC INFO -->
-            <div class="section">
-
-                <div class="section-title">
-                    <i class="fa-regular fa-user"></i>
-                    <h3>Basic Information</h3>
-                </div>
-
-                <!-- REPLACE YOUR INPUTS WITH THIS -->
-
-                <div class="form-grid">
-
-                    <!-- Full Name -->
-                    <div class="input-group">
-                        <label>Full Name</label>
-
-                        <div class="input-box">
-                            <i class="fa-regular fa-user"></i>
-                            <input type="text" placeholder="Enter full name">
-                        </div>
-                    </div>
-
-                    <!-- Username -->
-                    <div class="input-group">
-                        <label>Username</label>
-
-                        <div class="input-box">
-                            <i class="fa-regular fa-user"></i>
-                            <input type="text" placeholder="Choose a username">
-                        </div>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="input-group">
-                        <label>Email Address</label>
-
-                        <div class="input-box">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" placeholder="Enter email address">
-                        </div>
-                    </div>
-
-                    <!-- Mobile -->
-                    <div class="input-group">
-                        <label>Mobile Number</label>
-
-                        <div class="input-box">
-                            <i class="fa-solid fa-phone"></i>
-                            <input type="text" placeholder="Enter mobile number">
-                        </div>
-                    </div>
-
-                    <!-- Password -->
-                    <div class="input-group">
-                        <label>Password</label>
-
-                        <div class="input-box">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" placeholder="Enter password">
-
-                            <i class="fa-regular fa-eye-slash right-icon"></i>
-                        </div>
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="input-group">
-                        <label>Confirm Password</label>
-
-                        <div class="input-box">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" placeholder="Confirm password">
-
-                            <i class="fa-regular fa-eye-slash right-icon"></i>
-                        </div>
-                    </div>
+                    <p>
+                        Join Candor HQ to collaborate, manage
+                        <br>
+                        and achieve more together.
+                    </p>
 
                 </div>
 
             </div>
 
-            <!-- PERSONAL DETAILS -->
-            <div class="section">
+            <!-- RIGHT SIDE -->
+            <div class="form-container">
 
-                <div class="section-title">
-                    <i class="fa-regular fa-id-card"></i>
-                    <h3>Personal Details</h3>
+                <div class="form-header">
+
+                    <h1>Create Your Account</h1>
+
+                    <p>
+                        Fill in the details below to get started.
+                    </p>
+
                 </div>
 
-                <div class="form-grid">
+                <!-- STEPPER -->
+                <div class="stepper">
 
-                    <!-- DATE OF BIRTH -->
-
-                    <div class="input-group">
-                        <label>Date of Birth</label>
-
-                        <div class="input-box">
-                            <i class="fa-regular fa-calendar"></i>
-                            <input type="date">
-                        </div>
+                    <div class="step active">
+                        <div class="step-circle">1</div>
+                        <span>Work Details</span>
                     </div>
 
-                    <!-- GENDER -->
+                    <div class="line"></div>
 
-                    <div class="input-group">
-                        <label>Gender</label>
-
-                        <div class="input-box">
-                            <i class="fa-solid fa-venus-mars"></i>
-
-                            <select>
-                                <option>Select gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
+                    <div class="step">
+                        <div class="step-circle">2</div>
+                        <span>Basic Information</span>
                     </div>
 
-                    <div class="input-group">
-                        <label>Profile Photo (Optional)</label>
+                    <div class="line"></div>
 
-                        <button class="upload-btn">
-                            Upload Photo
-                        </button>
+                    <div class="step">
+                        <div class="step-circle">3</div>
+                        <span>Security & Confirmation</span>
                     </div>
 
                 </div>
 
-            </div>
+                <!-- SECTION -->
+                <div class="section">
 
-            <!-- ADDRESS DETAILS -->
-            <div class="section">
+                    <div class="section-title">
 
-                <div class="section-title">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <h3>Address Details</h3>
-                </div>
+                        <i class="fa-regular fa-id-card"></i>
+                        <h3>Personal Details</h3>
 
-                <div class="form-grid address-grid">
-
-                    <!-- COUNTRY -->
-
-                    <div class="input-group">
-                        <label>Country</label>
-
-                        <div class="input-box">
-                            <i class="fa-solid fa-earth-asia"></i>
-
-                            <select>
-                                <option>Select country</option>
-                            </select>
-                        </div>
                     </div>
 
-                    <!-- STATE -->
+                    <div class="form-grid">
 
-                    <div class="input-group">
-                        <label>State</label>
+                        <!-- EMPLOYEE -->
+                        <div class="input-group">
 
-                        <div class="input-box">
-                            <i class="fa-solid fa-location-dot"></i>
+                            <label>Employee Name</label>
 
-                            <select>
-                                <option>Select state</option>
-                            </select>
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Enter employee name" formControlName="employeeName">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['employeeName'].errors">
+
+                                <span *ngIf="f['employeeName'].errors['required']">
+                                    Employee name is required
+                                </span>
+
+                                <span *ngIf="f['employeeName'].errors['minlength']">
+                                    Minimum 3 characters required
+                                </span>
+
+                            </div>
+
                         </div>
+
+                        <!-- PHONE -->
+                        <div class="input-group">
+
+                            <label>Phone Number</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                                <input type="text" placeholder="Enter phone number" formControlName="phoneNumber"
+                                    maxlength="10" (input)="onlyNumbers($event)">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['phoneNumber'].errors">
+
+                                <span *ngIf="f['phoneNumber'].errors['required']">
+                                    Phone number is required
+                                </span>
+
+                                <span *ngIf="f['phoneNumber'].errors['pattern']">
+                                    Enter valid 10 digit number
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="input-group">
+
+                            <label>Email Address</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <input type="email" placeholder="Enter email address" formControlName="emailAddress">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['emailAddress'].errors">
+
+                                <span *ngIf="f['emailAddress'].errors['required']">
+                                    Email is required
+                                </span>
+
+                                <span *ngIf="f['emailAddress'].errors['email']">
+                                    Enter valid email address
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- DESIGNATION -->
+                        <div class="input-group">
+
+                            <label>Designation</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-briefcase"></i>
+
+                                <select formControlName="designation">
+
+                                    <option value="">
+                                        Select designation
+                                    </option>
+
+                                    <option value="Developer">
+                                        Developer
+                                    </option>
+
+                                    <option value="UI Designer">
+                                        UI Designer
+                                    </option>
+
+                                    <option value="HR">
+                                        HR
+                                    </option>
+
+                                    <option value="Manager">
+                                        Manager
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['designation'].errors">
+
+                                <span *ngIf="f['designation'].errors['required']">
+                                    Designation is required
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- DOB -->
+                        <div class="input-group">
+
+                            <label>Date of Birth</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                <input type="date" formControlName="dateOfBirth">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['dateOfBirth'].errors">
+
+                                <span *ngIf="f['dateOfBirth'].errors['required']">
+                                    Date of birth is required
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- GENDER -->
+                        <div class="input-group">
+
+                            <label>Gender</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-venus-mars"></i>
+
+                                <select formControlName="gender">
+
+                                    <option value="">
+                                        Select gender
+                                    </option>
+
+                                    <option value="Male">
+                                        Male
+                                    </option>
+
+                                    <option value="Female">
+                                        Female
+                                    </option>
+
+                                    <option value="Others">
+                                        Others
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['gender'].errors">
+
+                                <span *ngIf="f['gender'].errors['required']">
+                                    Gender is required
+                                </span>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <!-- CITY -->
+                    <!-- ADDRESS -->
+                    <div class="address-section">
 
-                    <div class="input-group">
-                        <label>City</label>
+                        <div class="address-header">
 
-                        <div class="input-box">
-                            <i class="fa-solid fa-city"></i>
-                            <input type="text" placeholder="Enter city">
+                            <h4>Address Details</h4>
+
+                            <div class="checkbox-group">
+
+                                <input type="checkbox" formControlName="isSameAsBusinessAddress">
+
+                                <label>
+                                    Same as Business Address
+                                </label>
+
+                            </div>
+
                         </div>
+
+                        <div class="address-grid">
+
+                            <div class="input-group full-width">
+
+                                <label>Address</label>
+
+                                <div class="input-box">
+
+                                    <i class="fa-solid fa-location-dot"></i>
+
+                                    <input type="text" placeholder="Enter address" formControlName="addressLine">
+
+                                </div>
+
+                                <div class="error-message" *ngIf="submitted && f['addressLine'].errors">
+
+                                    <span *ngIf="f['addressLine'].errors['required']">
+                                        Address is required
+                                    </span>
+
+                                    <span *ngIf="f['addressLine'].errors['minlength']">
+                                        Minimum 5 characters required
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <!-- ZIP -->
+                </div>
 
-                    <div class="input-group">
-                        <label>ZIP / PIN Code</label>
+                <!-- FOOTER -->
+                <div class="form-footer">
 
-                        <div class="input-box">
-                            <i class="fa-solid fa-map-pin"></i>
-                            <input type="text" placeholder="Enter zip / pin code">
-                        </div>
+                    <div class="secure-text">
+                        Your information is secure with us.
                     </div>
+
+                    <div class="signin-text">
+
+                        Already have an account?
+
+                        <a href="#">
+                            Sign in
+                        </a>
+
+                    </div>
+
                 </div>
 
-            </div>
+                <div class="btn-wrapper">
 
-            <!-- FOOTER -->
-            <div class="form-footer">
+                    <button type="button" class="back-btn" (click)="previousStep()">
 
-                <div class="secure-text">
-                    Your information is secure with us.
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back
+
+                    </button>
+
+                    <button type="button" class="next-btn" (click)="goToWorkDetails()">
+
+                        Next Step →
+
+                    </button>
+
                 </div>
 
-                <div class="signin-text">
-                    Already have an account?
-                    <a href="#">Sign in</a>
-                </div>
-
-            </div>
-
-            <!-- BUTTON -->
-            <div class="btn-wrapper">
-                <button class="next-btn" (click)="goToWorkDetails()">
-                    Next Step →
-                </button>
             </div>
 
         </div>
 
     </div>
-</div>
+
+</form>

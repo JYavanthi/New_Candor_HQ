@@ -1,169 +1,468 @@
-<div class="regMainDiv">
+<form [formGroup]="securityForm" (ngSubmit)="onLogin()">
 
-    <div class="page-wrapper">
+    <div class="regMainDiv">
 
-        <!-- LEFT SIDE -->
-        <div class="register-content">
+        <div class="page-wrapper">
 
-            <div class="logo-wrapper">
-                <img src="/assets/image/main_image.png" class="main-logo" />
+            <!-- LEFT SIDE -->
+            <div class="register-content">
 
-                <img src="/assets/image/hq_remove.png" class="text-logo" />
-            </div>
+                <div class="logo-wrapper">
 
-            <img src="/assets/image/contact_image.png" class="illustration-img" />
+                    <img src="/assets/image/main_image.png" class="main-logo" />
 
-            <div class="text-section">
+                    <img src="/assets/image/hq_remove.png" class="text-logo" />
 
-                <h2>Create your Candor HQ account</h2>
-
-                <p>
-                    Join Candor HQ to collaborate,
-                    manage and achieve more together.
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- RIGHT SIDE -->
-        <div class="form-container">
-
-            <!-- STEPPER -->
-            <div class="stepper">
-
-                <div class="step-item">
-                    <div class="step-circle">1</div>
-                    <span>Basic Information</span>
                 </div>
 
-                <div class="step-line"></div>
+                <img src="/assets/image/contact_image.png" class="illustration-img" />
 
-                <div class="step-item">
-                    <div class="step-circle">2</div>
-                    <span>Work Details</span>
-                </div>
+                <div class="text-section">
 
-                <div class="step-line active"></div>
+                    <h2>Create your Candor HQ account</h2>
 
-                <div class="step-item active">
-                    <div class="step-circle active-circle">3</div>
-                    <span>Security & Confirmation</span>
+                    <p>
+                        Join Candor HQ to collaborate,
+                        manage and achieve more together.
+                    </p>
+
                 </div>
 
             </div>
 
-            <!-- TITLE -->
-            <div class="top-content">
+            <!-- RIGHT SIDE -->
+            <div class="form-container">
 
-                <h1>Create Your Account</h1>
+                <!-- STEPPER -->
+                <div class="stepper">
 
-                <p>
-                    Fill in the details below to complete your registration.
-                </p>
+                    <div class="step-item">
 
-            </div>
+                        <div class="step-circle">1</div>
 
-            <!-- SECURITY QUESTION -->
-            <div class="section-box">
+                        <span>Basic Information</span>
 
-                <div class="section-title">
-
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-lock"></i>
                     </div>
 
-                    <h3>Security Question</h3>
+                    <div class="step-line"></div>
+
+                    <div class="step-item">
+
+                        <div class="step-circle">2</div>
+
+                        <span>Work Details</span>
+
+                    </div>
+
+                    <div class="step-line active"></div>
+
+                    <div class="step-item active">
+
+                        <div class="step-circle active-circle">3</div>
+
+                        <span>Security & Confirmation</span>
+
+                    </div>
 
                 </div>
 
-                <div class="form-grid two-grid">
+                <!-- TITLE -->
+                <div class="top-content">
 
-                    <div class="form-group">
-                        <label>Select Security Question</label>
+                    <h1>Create Your Account</h1>
 
-                        <div class="input-box">
+                    <p>
+                        Fill in the details below to complete your registration.
+                    </p>
 
-                            <select>
-                                <option>
-                                    What is the name of your first school?
-                                </option>
-                            </select>
+                </div>
+
+                <!-- SECURITY QUESTION 1 -->
+                <div class="section-box">
+
+                    <div class="section-title">
+
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+
+                        <h3>Security Question 1</h3>
+
+                    </div>
+
+                    <div class="form-grid two-grid">
+
+                        <div class="form-group">
+
+                            <label>Select Security Question 1</label>
+
+                            <div class="input-box">
+
+                                <select formControlName="securityQuestion1">
+
+                                    <option value="">
+                                        Select Question
+                                    </option>
+
+                                    <option value="school">
+                                        What is the name of your first school?
+                                    </option>
+
+                                    <option value="pet">
+                                        What is your pet name?
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['securityQuestion1'].errors">
+
+                                Security question is required
+
+                            </div>
 
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Your Answer</label>
+                        <div class="form-group">
 
-                        <div class="input-box">
+                            <label>Your Answer</label>
 
-                            <i class="fa-regular fa-user"></i>
+                            <div class="input-box">
 
-                            <input type="text" placeholder="Enter your answer">
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Enter your answer" formControlName="securityAnswer1">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['securityAnswer1'].errors">
+
+                                Answer is required
+
+                            </div>
 
                         </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <!-- SECURITY QUESTION 2 -->
+                <div class="section-box">
 
-            <!-- VERIFICATION -->
-            <div class="section-box">
+                    <div class="section-title">
 
-                <div class="section-title">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
 
-                    <div class="icon-circle">
-                        <i class="fa-regular fa-shield"></i>
+                        <h3>Security Question 2</h3>
+
                     </div>
 
-                    <h3>Verification</h3>
+                    <div class="form-grid two-grid">
+
+                        <div class="form-group">
+
+                            <label>Select Security Question 2</label>
+
+                            <div class="input-box">
+
+                                <select formControlName="securityQuestion2">
+
+                                    <option value="">
+                                        Select Question
+                                    </option>
+
+                                    <option value="teacher">
+                                        What is your favorite teacher name?
+                                    </option>
+
+                                    <option value="city">
+                                        Which city were you born in?
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['securityQuestion2'].errors">
+
+                                Security question is required
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Your Answer</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Enter your answer" formControlName="securityAnswer2">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['securityAnswer2'].errors">
+
+                                Answer is required
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <p class="section-desc">
-                    We will send a One-Time Password (OTP) to your registered
-                    email and mobile number.
-                </p>
+                <!-- OTP SECTION -->
+                <div class="section-box">
 
-                <div class="form-grid two-grid">
+                    <div class="section-title">
 
-                    <div class="form-group">
+                        <div class="icon-circle">
+                            <i class="fa-regular fa-shield"></i>
+                        </div>
 
-                        <label>Email OTP</label>
+                        <h3>Verification</h3>
 
-                        <div class="otp-wrapper">
+                    </div>
 
-                            <div class="otp-input">
+                    <div class="form-grid two-grid">
+
+                        <!-- EMAIL OTP -->
+                        <div class="form-group">
+
+                            <label>Email OTP</label>
+
+                            <div class="otp-wrapper">
+
+                                <div class="otp-input">
+
+                                    <i class="fa-regular fa-envelope"></i>
+
+                                    <input type="text" placeholder="Enter 6-digit OTP" formControlName="emailOtp">
+
+                                </div>
+
+                                <button type="button" (click)="sendEmailOtp()">
+
+                                    Send OTP
+
+                                </button>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['emailOtp'].errors">
+
+                                <span *ngIf="f['emailOtp'].errors['required']">
+                                    Email OTP is required
+                                </span>
+
+                                <span *ngIf="f['emailOtp'].errors['pattern']">
+                                    Enter valid 6 digit OTP
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- MOBILE OTP -->
+                        <div class="form-group">
+
+                            <label>Mobile OTP</label>
+
+                            <div class="otp-wrapper">
+
+                                <div class="otp-input">
+
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    <input type="text" placeholder="Enter 6-digit OTP" formControlName="mobileOtp">
+
+                                </div>
+
+                                <button type="button" (click)="sendMobileOtp()">
+
+                                    Send OTP
+
+                                </button>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['mobileOtp'].errors">
+
+                                <span *ngIf="f['mobileOtp'].errors['required']">
+                                    Mobile OTP is required
+                                </span>
+
+                                <span *ngIf="f['mobileOtp'].errors['pattern']">
+                                    Enter valid 6 digit OTP
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- BASIC INFORMATION -->
+                <div class="section">
+
+                    <div class="section-title">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <h3>Basic Information</h3>
+
+                    </div>
+
+                    <div class="form-grid1">
+
+                        <!-- FULL NAME -->
+                        <div class="input-group">
+
+                            <label>Full Name</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Enter full name" formControlName="fullName">
+
+                            </div>
+
+                            <div class="error-message"
+                                *ngIf="(submitted || f['fullName'].touched) && f['fullName'].errors">
+                                Full name is required
+                            </div>
+
+                        </div>
+
+                        <!-- USERNAME -->
+                        <div class="input-group">
+
+                            <label>Username</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Choose a username" formControlName="userName">
+
+                            </div>
+
+                            <div class="error-message"
+                                *ngIf="(submitted || f['userName'].touched) && f['userName'].errors">
+                                Username is required
+                            </div>
+
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="input-group">
+
+                            <label>Email Address</label>
+
+                            <div class="input-box">
 
                                 <i class="fa-regular fa-envelope"></i>
 
-                                <input type="text" placeholder="Enter 6-digit OTP">
+                                <input type="email" placeholder="Enter email address" formControlName="email">
 
                             </div>
 
-                            <button>Send OTP</button>
+                            <div class="error-message" *ngIf="(submitted || f['email'].touched) && f['email'].errors">
 
+                                <span *ngIf="f['email'].errors['required']">Email is required</span>
+                                <span *ngIf="f['email'].errors['email']">Invalid email</span>
+
+                            </div>
                         </div>
 
-                    </div>
+                        <!-- MOBILE -->
+                        <div class="input-group">
 
-                    <div class="form-group">
+                            <label>Mobile Number</label>
 
-                        <label>Mobile OTP</label>
-
-                        <div class="otp-wrapper">
-
-                            <div class="otp-input">
+                            <div class="input-box">
 
                                 <i class="fa-solid fa-phone"></i>
 
-                                <input type="text" placeholder="Enter 6-digit OTP">
+                                <input type="text" placeholder="Enter mobile number" formControlName="mobileNumber" maxlength="10" (input)="onlyNumbers($event)" >
 
                             </div>
 
-                            <button>Send OTP</button>
+                            <div class="error-message" *ngIf="(submitted || f['email'].touched) && f['email'].errors">
+
+                                <span *ngIf="f['email'].errors['required']">Email is required</span>
+                                <span *ngIf="f['email'].errors['email']">Invalid email</span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- PASSWORD -->
+                        <div class="input-group">
+
+                            <label>Password</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input [type]="showPassword ? 'text' : 'password'" placeholder="Enter password"
+                                    formControlName="password">
+
+                                <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                                    class="right-icon" (click)="togglePassword()"></i>
+
+                            </div>
+
+                            <div class="error-message"
+                                *ngIf="(submitted || f['password'].touched) && f['password'].errors">
+
+                                <span *ngIf="f['password'].errors['required']">Password is required</span>
+                                <span *ngIf="f['password'].errors['minlength']">Minimum 6 characters</span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="input-group">
+
+                            <label>Confirm Password</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm password"
+                                    formControlName="confirmPassword">
+
+                                <i class="fa-regular" [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
+                                    class="right-icon" (click)="toggleConfirmPassword()"></i>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['confirmPassword'].errors">
+
+                                <span *ngIf="f['confirmPassword'].errors['required']">
+                                    Confirm password is required
+                                </span>
+
+                                <span *ngIf="f['confirmPassword'].errors['passwordMismatch']">
+                                    Password does not match
+                                </span>
+
+                            </div>
 
                         </div>
 
@@ -171,121 +470,158 @@
 
                 </div>
 
-            </div>
+                <!-- PREFERENCES -->
+                <div class="section-box">
 
-            <!-- ADDITIONAL -->
-            <div class="section-box">
+                    <div class="section-title">
 
-                <div class="section-title">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
 
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-gear"></i>
+                        <h3>
+                            Additional Preferences
+                        </h3>
+
                     </div>
 
-                    <h3>
-                        Additional Preferences
-                        <span>(Optional)</span>
-                    </h3>
+                    <div class="form-grid three-grid">
 
-                </div>
+                        <div class="form-group">
 
-                <div class="form-grid three-grid">
+                            <label>GST Number</label>
 
+                            <div class="input-box">
 
-                    <div class="form-group">
+                                <input type="text" placeholder="Enter 15-digit GST" formControlName="gstNumber">
 
-                        <label>GST Number</label>
+                            </div>
 
-                        <div class="input-box">
+                        </div>
 
+                        <div class="form-group">
 
-                            <input type="text" placeholder="Enter 15-digit GST">
+                            <label>Preferred Language</label>
 
+                            <div class="input-box">
 
+                                <i class="fa-solid fa-globe"></i>
+
+                                <select formControlName="preferredLanguage">
+
+                                    <option value="">
+                                        Select language
+                                    </option>
+
+                                    <option value="English">
+                                        English
+                                    </option>
+
+                                    <option value="Hindi">
+                                        Hindi
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="error-message"
+                                *ngIf="(submitted || f['preferredLanguage'].touched) && f['preferredLanguage'].errors">
+                                Preferred language is required
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Time Zone</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                <select formControlName="timeZone">
+
+                                    <option value="">
+                                        Select time zone
+                                    </option>
+
+                                    <option value="IST">
+                                        IST
+                                    </option>
+
+                                    <option value="UTC">
+                                        UTC
+                                    </option>
+
+                                </select>
+
+                            </div>
+                            <div class="error-message"
+                                *ngIf="(submitted || f['timeZone'].touched) && f['timeZone'].errors">
+                                Time zone is required
+                            </div>
                         </div>
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label>Preferred Language</label>
+                <!-- TERMS -->
+                <div class="terms-box">
 
-                        <div class="input-box">
+                    <div class="check-row">
 
-                            <i class="fa-solid fa-globe"></i>
+                        <input type="checkbox" formControlName="acceptTerms">
 
-                            <select>
-                                <option>Select language</option>
-                            </select>
-
-                        </div>
+                        <label>
+                            Terms & Conditions
+                        </label>
 
                     </div>
 
-                    <div class="form-group">
+                    <p>
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+                        and
+                        <a href="#">Privacy Policy</a>.
+                    </p>
 
-                        <label>Time Zone</label>
+                    <div class="error-message" *ngIf="submitted && f['acceptTerms'].errors">
 
-                        <div class="input-box">
-
-                            <i class="fa-regular fa-clock"></i>
-
-                            <select>
-                                <option>Select time zone</option>
-                            </select>
-
-                        </div>
+                        Please accept terms and conditions
 
                     </div>
 
+                </div>
+
+                <!-- INFO -->
+                <div class="info-box">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <span>
+                        Please review your details before creating your account.
+                    </span>
 
                 </div>
 
-            </div>
+                <!-- BUTTONS -->
+                <div class="button-wrapper">
 
-            <!-- TERMS -->
-            <div class="terms-box">
+                    <button type="button" class="back-btn" (click)="onBack()">
 
-                <div class="check-row">
+                        <i class="fa-solid fa-arrow-left"></i>
 
-                    <input type="checkbox" checked>
+                        Back
 
-                    <label>Terms & Conditions</label>
+                    </button>
+
+                    <button class="create-btn" type="submit">
+                        Create Account
+                    </button>
 
                 </div>
-
-                <p>
-                    I agree to the
-                    <a href="#">Terms & Conditions</a>
-                    and
-                    <a href="#">Privacy Policy</a>.
-                </p>
-
-            </div>
-
-            <!-- INFO BOX -->
-            <div class="info-box">
-
-                <i class="fa-solid fa-circle-info"></i>
-
-                <span>
-                    Please review your details before creating your account.
-                </span>
-
-            </div>
-
-            <!-- BUTTONS -->
-            <div class="button-wrapper">
-
-                <button class="back-btn" (click)="onBack()">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    Back
-                </button>
-
-                <button class="create-btn">
-                    Create Account
-                    <i class="fa-solid fa-lock"></i>
-                </button>
 
             </div>
 
@@ -293,4 +629,4 @@
 
     </div>
 
-</div>
+</form>
