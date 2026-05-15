@@ -11,20 +11,19 @@
                     <th class="placeIcon">Remove</th>
                 </tr>
                 <tr *ngFor="let file of selectedFiles; let i=index;let first=first">
-                        <td>
-                            <input type="file" (change)="onFileSelected($event,i)" #fileInput style="display:none">
-                            <button (click)="fileInput.click()" class="p-1">Choose File</button>
-                        </td>
-                        <td>
-                            {{ file.name }}
-                        </td>
-                        <td class="placeIcon">
-                            <i class="fa fa-plus" aria-hidden="true" (click)="addRow(file)"></i>
-                        </td>
-                        <td class="placeIcon">
-                            <i class="fa fa-minus" aria-hidden="true" (click)="removeRow(i)"
-                            *ngIf="!first"></i>
-                        </td>
+                    <td>
+                        <input type="file" (change)="onFileSelected($event,i)" #fileInput style="display:none">
+                        <button (click)="fileInput.click()" class="p-1">Choose File</button>
+                    </td>
+                    <td>
+                        {{ file.name }}
+                    </td>
+                    <td class="placeIcon">
+                        <i class="fa fa-plus" aria-hidden="true" (click)="addRow(file)"></i>
+                    </td>
+                    <td class="placeIcon">
+                        <i class="fa fa-minus" aria-hidden="true" (click)="removeRow(i)" *ngIf="!first"></i>
+                    </td>
                 </tr>
             </table>
         </div>

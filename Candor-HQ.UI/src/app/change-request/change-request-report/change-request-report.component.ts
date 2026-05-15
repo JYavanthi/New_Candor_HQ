@@ -8,13 +8,13 @@ import { UserInfo } from 'os';
   styleUrl: './change-request-report.component.css'
 })
 export class ChangeRequestReportComponent {
-selectedOption: string = '';
+  selectedOption: string = '';
   loggedUer: any;
 
-constructor(public userInfo: UserInfoSerService){
-  
-  this.loggedUer = userInfo.getUser()
-}
+  constructor(public userInfo: UserInfoSerService) {
+
+    this.loggedUer = userInfo.getUser()
+  }
   onOptionSelected(option: string): void {
     this.selectedOption = option;
   }

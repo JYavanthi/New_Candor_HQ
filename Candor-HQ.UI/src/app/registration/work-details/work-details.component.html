@@ -289,20 +289,10 @@
 
                                     <select formControlName="state">
 
-                                        <option value="">
-                                            Select state
-                                        </option>
+                                        <option value="">Select state</option>
 
-                                        <option value="Karnataka">
-                                            Karnataka
-                                        </option>
-
-                                        <option value="Tamil Nadu">
-                                            Tamil Nadu
-                                        </option>
-
-                                        <option value="Kerala">
-                                            Kerala
+                                        <option *ngFor="let state of states" [value]="state.id">
+                                            {{ state.name }}
                                         </option>
 
                                     </select>

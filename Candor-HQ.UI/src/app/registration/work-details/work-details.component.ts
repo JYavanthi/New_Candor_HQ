@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { State, StateServiceService } from 'app/services/state.service.service';
 import { HttpServiceService } from 'shared/services/http-service.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class WorkDetailsComponent {
   workDetailsForm!: FormGroup;
   submitted = false;
   selectedFile: any;
+  states: State[] = [];
 
-  constructor(private router: Router, private fb: FormBuilder, private httpSer: HttpServiceService) {
+  constructor(private router: Router, private fb: FormBuilder, private httpSer: HttpServiceService, private stateService: StateServiceService) {
 
   }
 
@@ -37,6 +39,19 @@ export class WorkDetailsComponent {
 
     });
 
+    this.loadStates();
+
+  }
+
+  loadStates() {
+    this.stateService.getStates().subscribe({
+      next: (res) => {
+        this.states = res;
+      },
+      error: (err) => {
+        console.error('Error fetching states', err);
+      }
+    });
   }
 
   onlyNumbers(event: any) {

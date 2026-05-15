@@ -124,9 +124,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'issue', loadChildren: () => import('./issue-module/issue.module').then(m => m.IssueModule) },
   {
-    path: '',
-    component: AppComponent,
-    canActivate: [AuthGuard],
+    path: '', component: AppComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardNewComponent, canActivate: [AuthGuard] },
