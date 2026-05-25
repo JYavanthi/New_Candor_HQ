@@ -14,9 +14,6 @@ export class SecurityComponent {
 
   submitted = false;
 
-  showPassword = false;
-  showConfirmPassword = false;
-
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -37,16 +34,13 @@ export class SecurityComponent {
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
       gstNumber: [''],
       preferredLanguage: ['', Validators.required],
       timeZone: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
 
-    }, {
-      validators: this.passwordMatchValidator
-    });
+    },
+    );
 
   }
 
@@ -67,34 +61,7 @@ export class SecurityComponent {
     return this.securityForm.controls;
   }
 
-  passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
 
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword');
-
-    if (!confirmPassword) return null;
-
-    if (password !== confirmPassword.value) {
-      confirmPassword.setErrors({ passwordMismatch: true });
-    } else {
-      if (confirmPassword.hasError('passwordMismatch')) {
-        confirmPassword.setErrors(null);
-      }
-    }
-
-    return null;
-  }
-
-  togglePassword() {
-
-    this.showPassword = !this.showPassword;
-
-  }
-
-  toggleConfirmPassword() {
-    this.showConfirmPassword = !this.showConfirmPassword;
-
-  }
 
   sendEmailOtp() {
     alert('Email OTP Sent Successfully');
@@ -108,12 +75,12 @@ export class SecurityComponent {
 
   onBack() {
 
-    this.router.navigate(['/work-details']);
+    this.router.navigate(['/registration']);
 
   }
 
-  onLogin() {
 
+  onLogin() {
     console.log('Button Clicked');
 
     this.submitted = true;
@@ -130,7 +97,7 @@ export class SecurityComponent {
       this.securityForm.markAllAsTouched();
       return;
     }
-    
+
     const requestBody = {
       flag: 'I',
       securityPreferenceId: 0,
@@ -144,7 +111,6 @@ export class SecurityComponent {
       userName: this.securityForm.value.userName,
       emailAddress: this.securityForm.value.email,
       mobileNumber: this.securityForm.value.mobileNumber,
-      password: this.securityForm.value.password,
       createdBy: 1,
       modifiedBy: 1
     };

@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '@environments/environment';
 import { HttpServiceService } from 'shared/services/http-service.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class RegistrationComponent {
   basicInformationForm!: FormGroup;
   submitted = false;
 
-  constructor(private router: Router, private fb: FormBuilder, public httpSer: HttpServiceService) { }
+  constructor(private router: Router, private fb: FormBuilder, public httpSer: HttpServiceService, private http: HttpClient) { }
 
 
 
@@ -22,15 +24,53 @@ export class RegistrationComponent {
 
 
       employeeId: [0],
-      employeeName: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
+      firstName: ['', Validators.required],
+      middleName: [''],
+      lastName: ['', Validators.required], phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
       emailAddress: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
       designation: ['', [Validators.required]],
       dateOfBirth: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       addressLine: ['', [Validators.required]],
       isSameAsBusinessAddress: [false],
-    });
+    }, {
+      validators: this.passwordMatchValidator
+    }
+    );
+
+  }
+
+  passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
+
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword');
+
+    if (!confirmPassword) return null;
+
+    if (password !== confirmPassword.value) {
+      confirmPassword.setErrors({ passwordMismatch: true });
+    } else {
+      if (confirmPassword.hasError('passwordMismatch')) {
+        confirmPassword.setErrors(null);
+      }
+    }
+
+    return null;
+  }
+
+  showPassword = false;
+  showConfirmPassword = false;
+
+  togglePassword() {
+
+    this.showPassword = !this.showPassword;
+
+  }
+
+  toggleConfirmPassword() {
+    this.showConfirmPassword = !this.showConfirmPassword;
 
   }
 
@@ -55,7 +95,20 @@ export class RegistrationComponent {
     this.basicInformationForm.controls['businessNumber'].setValue(value, { emitEvent: false });
   }
 
-  goToWorkDetails() {
+  EmpList: any[] = [];
+
+  empList() {
+    const apiUrl = environment.apiurls + '/HREmployee';
+    return this.http.get(apiUrl).toPromise()
+      .then((response: any) => {
+        this.EmpList = response;
+      })
+      .catch((error: any) => {
+        throw error;
+      });
+  }
+
+  async goToWorkDetails() {
 
     this.submitted = true;
 
@@ -64,47 +117,71 @@ export class RegistrationComponent {
       return;
     }
 
+    const formValue = this.basicInformationForm.value;
+
+    // ✅ Optional: get employee list
+    await this.empList();
+
+    const selectedEmp = this.EmpList.find(
+      (x: any) => x.employeeId == formValue.employeeId
+    );
+
+    const empId = selectedEmp ? String(selectedEmp.employeeId) : '';
+
+    const nameParts = formValue.employeeName
+      ? formValue.employeeName.trim().split(' ')
+      : [];
+
     const requestBody = {
+      flag: 'I',   // ✅ IMPORTANT (no wrapper)
 
-      "flag": 'I',
-      "employeeId": this.basicInformationForm.value.employeeId || 0,
-      "employeeName": this.basicInformationForm.value.employeeName,
-      "phoneNumber": this.basicInformationForm.value.phoneNumber,
-      "emailAddress": this.basicInformationForm.value.emailAddress,
-      "designation": this.basicInformationForm.value.designation,
-      "dateOfBirth": this.basicInformationForm.value.dateOfBirth,
-      "gender": this.basicInformationForm.value.gender,
-      "addressLine": this.basicInformationForm.value.addressLine,
-      "isSameAsBusinessAddress": this.basicInformationForm.value.isSameAsBusinessAddress,
-      "createdDate": new Date().toISOString(),
-      "ModifiedDate": new Date().toISOString()
+      userId: 0,
 
+      firstName: nameParts[0] || '',
+      middleName: nameParts.length > 2 ? nameParts[1] : null,
+      lastName: nameParts.length > 1 ? nameParts[nameParts.length - 1] : '',
+
+      phoneNumber: formValue.phoneNumber,
+      emailAddress: formValue.emailAddress,
+      password: formValue.password,
+
+      empID: empId,   // ✅ must be string
+
+      designation: formValue.designation,
+      dateOfBirth: formValue.dateOfBirth,
+      gender: formValue.gender,
+      addressLine: formValue.addressLine,
+
+      isSameAsBusinessAddress: formValue.isSameAsBusinessAddress,
+
+      isActive: true,
+      isDeleted: false,
+
+      createdBy: 1,
+      modifiedBy: 1
     };
 
-    console.log(requestBody);
-    this.httpSer.httpPost('/BasicInformation/SaveBasicInformation', requestBody).subscribe({
+    console.log("Final Request:", requestBody);
 
-      next: (response: any) => {
-        console.log(response);
-        if (response.type === 'S') {
+    this.httpSer.httpPost('/BasicInformation/SaveBasicInformation', requestBody)
+      .subscribe({
 
-          alert('Basic Information Saved Successfully');
-          this.router.navigate(['/security']);
-        } else {
-          alert(response.message || 'Save Failed');
+        next: (response: any) => {
+          console.log(response);
+
+          if (response.type === 'S') {
+            alert('Basic Information Saved Successfully');
+            this.router.navigate(['/security']);
+          } else {
+            alert(response.message || 'Save Failed');
+          }
+        },
+
+        error: (error) => {
+          console.error(error);
+          alert('API Error');
         }
 
-      },
-
-      error: (error) => {
-        console.log(error);
-        alert('API Error');
-
-      }
-
-    });
-
+      });
   }
-
-
 }

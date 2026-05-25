@@ -593,49 +593,31 @@ export class NewChangeRequestComponent {
       .map(m => m.sysLandscapeId)
       .join(',');
 
-    // ✅ FINAL REQUEST BODY (ALL FIXED)
     const requestBody = {
       type: "I",
       itcrid: 0,
-
       supportId: 1,
-
-      // 🔥 IMPORTANT FIXES
-      // ✅ CORRECT
       classificationId: Number(this.classificationId),
       categoryId: Number(this.selectedCategory),
       categoryTypeId: Number(this.categoryTypeId),
-
       crowner: Number(this.user?.empData?.employeeNo),
-
       crdate: this.today,
       crrequestedBy: changerequested ? Number(changerequested) : null,
       crrEmailNotification: this.EmailNotification,
-
       crrequestedDt: this.crrequestedDt,
       crinitiatedFor: this.crinitiate ? Number(this.crinitiate) : null,
-
       status: status,
-
       referenceId: this.referenceid ? Number(this.referenceid) : null,
       referenceTyp: this.referencetype ? Number(this.referencetype) : null,
       natureOfChange: this.natureOfChange ? Number(this.natureOfChange) : null,
       priorityType: this.crpriority ? Number(this.crpriority) : null,
-
-      // ❌ WRONG BEFORE → "plantId": 1
-      // ✅ FIXED
       plantId: Number(this.plantId),
-
       SysLandscapeID: checkedLansScapes,
-
       gxpclassification: this.CheckGxPClassification,
-
       gxpplantId: this.gxpplantId ? Number(this.gxpplantId) : null,
       changeControlNo: this.changeControlNo || null,
       changeControlDt: this.changeControlDt || null,
-
       changeControlAttach: false,
-
       changeDesc: this.changeDesc,
       reasonForChange: this.reasonForChange,
       alternateConsidetation: this.alternateConsidetation || null,
@@ -889,18 +871,6 @@ export class NewChangeRequestComponent {
   }
 
   classifications: any[] = [];
-
-  // getclassification() {
-  //   const apiUrls = this.apiurl + '/Classification'
-  //   this.http.get(apiUrls).subscribe(
-  //     (response: any) => {
-  //       this.classifications = response;
-  //     },
-  //     (error) => {
-  //       console.error("Post failed", error)
-  //     }
-  //   )
-  // }
 
   getclassification() {
     const apiUrls = this.apiurl + '/Classification';
@@ -1231,17 +1201,7 @@ export class NewChangeRequestComponent {
   }
 
   checklist: any[] = [];
-  // getCheckList() {
-  //   const apiUrls = this.apiurl + '/CheckList'
-  //   this.http.get(apiUrls).subscribe(
-  //     (response: any) => {
-  //       this.checklist = response.filter((item: any) => item.plantId === parseInt(this.plantId) && item.supportId === 1 && item.classificationId === parseInt(this.classificationId) && item.categoryId === parseInt(this.selectedCategory));
-  //     },
-  //     (error) => {
-  //       console.error("Post failed", error)
-  //     }
-  //   )
-  // }
+
 
   getCheckList() {
     if (!this.plantId || !this.classificationId || !this.selectedCategory) {

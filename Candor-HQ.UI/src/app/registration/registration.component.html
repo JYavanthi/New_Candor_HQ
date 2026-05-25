@@ -51,9 +51,11 @@
 
                     <div class="line"></div>
 
-                    <div class="step">
-                        <div class="step-circle">2</div>
+                      <div class="step active">
+
+                        <div class="circle">2</div>
                         <span>Basic Information</span>
+
                     </div>
 
                     <div class="line"></div>
@@ -77,26 +79,80 @@
 
                     <div class="form-grid">
 
-                        <!-- EMPLOYEE -->
+                        <!-- details -->
                         <div class="input-group">
 
-                            <label>Employee Name</label>
+                            <label>FirstName</label>
 
                             <div class="input-box">
 
                                 <i class="fa-regular fa-user"></i>
 
-                                <input type="text" placeholder="Enter employee name" formControlName="employeeName">
+                                <input type="text" placeholder="Enter firstName" formControlName="firstName">
 
                             </div>
 
-                            <div class="error-message" *ngIf="submitted && f['employeeName'].errors">
+                            <div class="error-message" *ngIf="submitted && f['firstName'].errors">
 
-                                <span *ngIf="f['employeeName'].errors['required']">
+                                <span *ngIf="f['firstName'].errors['required']">
+                                    FirstName name is required
+                                </span>
+
+                                <span *ngIf="f['firstName'].errors['minlength']">
+                                    Minimum 3 characters required
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                         <div class="input-group">
+
+                            <label>MiddleName</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Enter middleName" formControlName="middleName">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['middleName'].errors">
+
+                                <span *ngIf="f['middleName'].errors['required']">
+                                    MiddleName name is required
+                                </span>
+
+                                <span *ngIf="f['middleName'].errors['minlength']">
+                                    Minimum 3 characters required
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                         <div class="input-group">
+
+                            <label>lastName</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" placeholder="Enter lastName" formControlName="lastName">
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['lastName'].errors">
+
+                                <span *ngIf="f['lastName'].errors['required']">
                                     Employee name is required
                                 </span>
 
-                                <span *ngIf="f['employeeName'].errors['minlength']">
+                                <span *ngIf="f['lastName'].errors['minlength']">
                                     Minimum 3 characters required
                                 </span>
 
@@ -153,6 +209,64 @@
 
                                 <span *ngIf="f['emailAddress'].errors['email']">
                                     Enter valid email address
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Password</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input [type]="showPassword ? 'text' : 'password'" placeholder="Enter password"
+                                    formControlName="password">
+
+                                <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                                    class="right-icon" (click)="togglePassword()"></i>
+
+                            </div>
+
+                            <div class="error-message"
+                                *ngIf="(submitted || f['password'].touched) && f['password'].errors">
+
+                                <span *ngIf="f['password'].errors['required']">Password is required</span>
+                                <span *ngIf="f['password'].errors['minlength']">Minimum 6 characters</span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="input-group">
+
+                            <label>Confirm Password</label>
+
+                            <div class="input-box">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <input [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm password"
+                                    formControlName="confirmPassword">
+
+                                <i class="fa-regular" [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
+                                    class="right-icon" (click)="toggleConfirmPassword()"></i>
+
+                            </div>
+
+                            <div class="error-message" *ngIf="submitted && f['confirmPassword'].errors">
+
+                                <span *ngIf="f['confirmPassword'].errors['required']">
+                                    Confirm password is required
+                                </span>
+
+                                <span *ngIf="f['confirmPassword'].errors['passwordMismatch']">
+                                    Password does not match
                                 </span>
 
                             </div>

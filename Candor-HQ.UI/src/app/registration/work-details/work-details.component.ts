@@ -14,43 +14,131 @@ export class WorkDetailsComponent {
   workDetailsForm!: FormGroup;
   submitted = false;
   selectedFile: any;
-  states: State[] = [];
 
   constructor(private router: Router, private fb: FormBuilder, private httpSer: HttpServiceService, private stateService: StateServiceService) {
 
   }
 
+  // ngOnInit(): void {
+
+  //   this.workDetailsForm = this.fb.group({
+
+  //     companyName: ['', [Validators.required]],
+  //     businessNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
+  //     workEmail: ['', [Validators.required, Validators.email]],
+  //     address: ['', [Validators.required, Validators.minLength(5)]],
+  //     // country: ['', [Validators.required]],
+  //     // state: ['', [Validators.required]],
+  //     // city: ['', [Validators.required]],
+  //     country: [''],
+  //     state: [''],
+  //     city: [''],
+  //     zipCode: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
+  //     profilePhoto: ['']
+
+  //   });
+
+  //   this.loadStates();
+  //   this.loadCountries();
+  //   this.loadCities();
+  //   this.loadPincodes();
+
+  // }
+
   ngOnInit(): void {
 
     this.workDetailsForm = this.fb.group({
-
       companyName: ['', [Validators.required]],
       businessNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
       workEmail: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, Validators.minLength(5)]],
-      // country: ['', [Validators.required]],
-      // state: ['', [Validators.required]],
-      // city: ['', [Validators.required]],
-      country: [''],
-      state: [''],
-      city: [''],
+
+      country: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+
       zipCode: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
       profilePhoto: ['']
-
     });
 
-    this.loadStates();
+    // ✅ Load only countries initially
+    this.loadCountries();
 
+    // 🔥 Country → State
+    this.workDetailsForm.get('country')?.valueChanges.subscribe(countryId => {
+
+      this.states = [];
+      this.cities = [];
+      this.pincodes = [];
+
+      this.workDetailsForm.patchValue({
+        state: '',
+        city: '',
+        zipCode: ''
+      });
+
+      if (countryId) {
+        this.loadStatesByCountry(countryId);
+      }
+    });
+
+    // 🔥 State → City
+    this.workDetailsForm.get('state')?.valueChanges.subscribe(stateId => {
+
+      this.cities = [];
+      this.pincodes = [];
+
+      this.workDetailsForm.patchValue({
+        city: '',
+        zipCode: ''
+      });
+
+      if (stateId) {
+        this.loadCitiesByState(stateId);
+      }
+    });
+
+    // 🔥 City → Pincode
+    this.workDetailsForm.get('city')?.valueChanges.subscribe(cityId => {
+
+      this.pincodes = [];
+
+      this.workDetailsForm.patchValue({
+        zipCode: ''
+      });
+
+      if (cityId) {
+        this.loadPincodesByCity(cityId);
+      }
+    });
   }
 
-  loadStates() {
-    this.stateService.getStates().subscribe({
-      next: (res) => {
-        this.states = res;
-      },
-      error: (err) => {
-        console.error('Error fetching states', err);
-      }
+  countries: any[] = [];
+  states: any[] = [];
+  cities: any[] = [];
+  pincodes: any[] = [];
+
+  loadCountries() {
+    this.stateService.getCountries().subscribe(res => {
+      this.countries = res;
+    });
+  }
+
+  loadStatesByCountry(countryId: number) {
+    this.stateService.getStatesByCountry(countryId).subscribe(res => {
+      this.states = res;
+    });
+  }
+
+  loadCitiesByState(stateId: number) {
+    this.stateService.getCitiesByState(stateId).subscribe(res => {
+      this.cities = res;
+    });
+  }
+
+  loadPincodesByCity(cityId: number) {
+    this.stateService.getPincodesByCity(cityId).subscribe(res => {
+      this.pincodes = res;
     });
   }
 

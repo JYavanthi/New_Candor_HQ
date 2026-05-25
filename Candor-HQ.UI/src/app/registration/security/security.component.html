@@ -395,7 +395,8 @@
 
                                 <i class="fa-solid fa-phone"></i>
 
-                                <input type="text" placeholder="Enter mobile number" formControlName="mobileNumber" maxlength="10" (input)="onlyNumbers($event)" >
+                                <input type="text" placeholder="Enter mobile number" formControlName="mobileNumber"
+                                    maxlength="10" (input)="onlyNumbers($event)">
 
                             </div>
 
@@ -408,63 +409,6 @@
 
                         </div>
 
-                        <!-- PASSWORD -->
-                        <div class="input-group">
-
-                            <label>Password</label>
-
-                            <div class="input-box">
-
-                                <i class="fa-solid fa-lock"></i>
-
-                                <input [type]="showPassword ? 'text' : 'password'" placeholder="Enter password"
-                                    formControlName="password">
-
-                                <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
-                                    class="right-icon" (click)="togglePassword()"></i>
-
-                            </div>
-
-                            <div class="error-message"
-                                *ngIf="(submitted || f['password'].touched) && f['password'].errors">
-
-                                <span *ngIf="f['password'].errors['required']">Password is required</span>
-                                <span *ngIf="f['password'].errors['minlength']">Minimum 6 characters</span>
-
-                            </div>
-
-                        </div>
-
-                        <!-- CONFIRM PASSWORD -->
-                        <div class="input-group">
-
-                            <label>Confirm Password</label>
-
-                            <div class="input-box">
-
-                                <i class="fa-solid fa-lock"></i>
-
-                                <input [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm password"
-                                    formControlName="confirmPassword">
-
-                                <i class="fa-regular" [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
-                                    class="right-icon" (click)="toggleConfirmPassword()"></i>
-
-                            </div>
-
-                            <div class="error-message" *ngIf="submitted && f['confirmPassword'].errors">
-
-                                <span *ngIf="f['confirmPassword'].errors['required']">
-                                    Confirm password is required
-                                </span>
-
-                                <span *ngIf="f['confirmPassword'].errors['passwordMismatch']">
-                                    Password does not match
-                                </span>
-
-                            </div>
-
-                        </div>
 
                     </div>
 

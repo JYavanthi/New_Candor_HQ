@@ -59,11 +59,9 @@
 
                     <div class="line active"></div>
 
-                    <div class="step active">
-
-                        <div class="circle">2</div>
+                     <div class="step">
+                        <div class="step-circle">2</div>
                         <span>Basic Information</span>
-
                     </div>
 
                     <div class="line"></div>
@@ -247,33 +245,19 @@
                                     <i class="fa-solid fa-earth-asia"></i>
 
                                     <select formControlName="country">
+                                        <option value="">Select country</option>
 
-                                        <option value="">
-                                            Select country
+                                        <option *ngFor="let country of countries" [value]="country.id">
+                                            {{ country.name }}
                                         </option>
-
-                                        <option value="India">
-                                            India
-                                        </option>
-
-                                        <option value="USA">
-                                            USA
-                                        </option>
-
-                                        <option value="UK">
-                                            UK
-                                        </option>
-
                                     </select>
 
                                 </div>
 
                                 <div class="error-message" *ngIf="submitted && f['country'].errors">
-
                                     <span *ngIf="f['country'].errors['required']">
                                         Country is required
                                     </span>
-
                                 </div>
 
                             </div>
@@ -318,16 +302,22 @@
 
                                     <i class="fa-solid fa-city"></i>
 
-                                    <input type="text" placeholder="Enter city" formControlName="city">
+                                    <select formControlName="city">
+
+                                        <option value="">Select city</option>
+
+                                        <option *ngFor="let city of cities" [value]="city.id">
+                                            {{ city.name }}
+                                        </option>
+
+                                    </select>
 
                                 </div>
 
                                 <div class="error-message" *ngIf="submitted && f['city'].errors">
-
                                     <span *ngIf="f['city'].errors['required']">
                                         City is required
                                     </span>
-
                                 </div>
 
                             </div>
@@ -341,7 +331,15 @@
 
                                     <i class="fa-solid fa-map-pin"></i>
 
-                                    <input type="text" placeholder="Enter ZIP / PIN Code" formControlName="zipCode">
+                                    <select formControlName="zipCode">
+
+                                        <option value="">Select PIN Code</option>
+
+                                        <option *ngFor="let pin of pincodes" [value]="pin.pincode">
+                                            {{ pin.pincode }} - {{ pin.officename }}
+                                        </option>
+
+                                    </select>
 
                                 </div>
 
@@ -349,10 +347,6 @@
 
                                     <span *ngIf="f['zipCode'].errors['required']">
                                         ZIP code is required
-                                    </span>
-
-                                    <span *ngIf="f['zipCode'].errors['pattern']">
-                                        Enter valid 6 digit PIN code
                                     </span>
 
                                 </div>
