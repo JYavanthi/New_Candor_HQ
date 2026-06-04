@@ -34,8 +34,6 @@ export class HomeComponent {
   }
   idofemployee: any;
 
-  // checkValidUSer(v:number){
-  // }
   async employeeid() {
     this.route.params.subscribe(params => {
       this.idofemployee = params['this.empNumber'];
@@ -56,13 +54,7 @@ export class HomeComponent {
       }
       return;
     }
-    //  else {
-    //   localStorage.setItem('isLoggedin', 'ture');
-    //   if (confirm("You're Not Authenticated!")) {
-    //     window.location.href = this.loginurls + '#' + '/slogin';
-    //   }
-    //   return;
-    // }
+
   }
 
 }

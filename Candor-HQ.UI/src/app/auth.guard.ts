@@ -14,9 +14,7 @@ export class AuthGuard implements CanActivate {
     if (isLoggedIn === 'true') {
       return true;
     } 
-    //  if (isLoggedIn === 'false') {
-    //   return true;
-    // }
+
     else {
         if (confirm("You're Not Authenticated!")) {
           localStorage.removeItem('token');
