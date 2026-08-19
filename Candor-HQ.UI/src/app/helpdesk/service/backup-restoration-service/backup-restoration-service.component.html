@@ -1,0 +1,126 @@
+''
+
+<div class="text-center pageHeadingCss">
+  <p class="pageHeadingparaCss">Backup & Restoration</p>
+</div>
+<div class="issue-btn">
+  <button style="margin-left:12%;" class="btn-back" [routerLink]="'/service'" type="button">Back</button>&nbsp;
+</div>
+<!--<div class="service_header_h1tag">
+  <h1>Backup & Restoration</h1>
+  <div class="issue-btn">
+    <button style="margin-right:72%;" class="btn-back" [routerLink]="'/service'" type="button">Back </button>&nbsp;
+  </div>
+</div>-->
+
+<div class="service_container">
+  <div class="card service_card" style="border-top: 6px solid #113bf7;">
+    <div class="card-body">
+      <div class="card">
+        <div class="card-body">
+          <div class="software">
+            <div class="row">
+              <!--<div class="col">
+                <label>Choose Asset</label>
+                <select>
+                  <option disabled selected>Choose-Asset</option>
+                  <option>Server</option>
+                  <option>Network</option>
+                  <option>Security</option>
+                  <option>Inhouse Development</option>
+                  <option>SAP</option>
+                  <option>Software</option>
+                  <option>Desktop/Laptop</option>
+                  <option>Printers</option>
+                </select>
+              </div>-->
+              <div style="width: 25%; margin-left: 0%;">
+                <label>Request Type</label>
+                <select [(ngModel)]="RequestFor" (ngModelChange)="RequestForFunc()">
+                  <option>Backup into Tape</option>
+                  <option>Backup into External Drive</option>
+                  <option>Restoration Request</option>
+                </select>
+              </div>
+            </div>
+            <div [hidden]="!showBackupintoTape">
+              <div class="row">
+                <div class="col">
+                  <label>One time Scheduled<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>If One time<span style="color:red"> *</span></label>
+                  <input type="date" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>Start Date<span style="color:red"> *</span></label>
+                  <input type="date" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>End Date<span style="color:red"> *</span></label>
+                  <input type="date" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="row">
+                  <label>Provide Description<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+                </div>
+
+              </div>
+            </div>
+            <div [hidden]="!showBackupintoExternalDrive">
+              <div class="row">
+                <div class="col">
+                  <label>Specify the Devive you are transfering Data to <span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>Provide Description<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div [hidden]="!showRestorationRequest">
+              <div class="row">
+                <div class="col">
+                  <label>Restoration Date refrence<span style="color:red"> *</span></label>
+                  <input type="date" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>Restoration Date refrence<span style="color:red"> *</span></label>
+                  <input type="date" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>Provide Description<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <label>Attachment</label>
+              <input type="file" style="width: 98%; margin-left: 1%;" />
+            </div>
+            <div class="row">
+              <label>Description</label>
+              <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span style="margin-left: 39%;" class="btn-sub software_submit" [routerLink]="'/service'">Submit</span>
+            </div>
+            <div class="col">
+              <span style=" margin-left: -32%;" class="btn-sub" [routerLink]="'/service'">Cancel</span>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

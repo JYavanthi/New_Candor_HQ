@@ -1,0 +1,195 @@
+
+
+
+
+/*.excel_button {
+    background-color: #3c8dbc;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+th,
+td {
+    padding: 3px 14px;
+    text-align: center;
+}
+
+.table_report {
+    display: flex;
+    justify-content: center;
+}
+
+.export_pdf {
+    justify-content: end;
+    display: flex;
+    margin-left: 60%;
+}
+
+.export_excel {
+    justify-content: end;
+    display: flex;
+    margin-right: 3%;
+}
+
+.print_div {
+    justify-content: end;
+    display: flex;
+    margin-right: 5%;
+    margin-bottom: 3%;
+}*/
+
+
+/* filter table */
+/*.table-wrapper {
+    display: flex;
+    justify-content: center;
+    font-size: small;
+    margin-top: -1%;
+}
+
+.cr_date {
+    margin-top: 8px;
+    padding-top: 9px;
+}
+
+
+.description {
+    padding: 5px;
+    width: 70px;
+    height: 15px;
+}
+
+.inside_description {
+    padding: 5px;
+    position: relative;
+    left: 75px;
+    top: 5px;
+    background: #bebebe;
+    width: 100px;
+    height: 15px;
+    color: black;
+    display: none;
+}
+
+.description:hover .inside_description {
+    display: block;
+}
+
+.cr_filter_checkbox {
+    margin-top: 2%;
+    margin-right: 2px;
+}
+
+.cr_filter_label {
+    margin-top: 23px;
+    margin-right: 3%;
+
+}
+
+.access-checkbox {
+    display: flex;
+    justify-content: center;
+
+}
+
+.filter_button {
+    background-color: #3c8dbc;
+    color: white;
+    margin-top: 17px;
+}
+
+
+
+.filter {
+    display: flex;
+    justify-content: end;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.btn-approve {
+    display: flex;
+    justify-content: center;
+    margin-top: -7%;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.release_text {
+    color: rgb(154, 235, 73);
+}*/
+
+th,
+td {
+  padding: 3px 14px;
+  text-align: center;
+}
+
+.filter_button {
+  background-color: #3c8dbc;
+  color: white;
+  margin-top: 17px;
+}
+
+.search-crnum {
+  margin-left: -195%;
+  margin-top: 5%;
+  width: 75%;
+}
+.multiselect-dropdown .dropdown-btn {
+  display: inline-block;
+  border-bottom: 1px solid #adadad !important;
+  width: 100%;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.52857143;
+  text-align: left;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border-radius: 4px;
+}
+
+.export_pdf {
+  justify-content: end;
+  display: flex;
+  margin-right: 10%;
+}
+
+.change_request_header {
+  margin-left: 0;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+
+.tableClass {
+  width: 105rem;
+  display: flex;
+  justify-content: center;
+}
+.tableClass {
+    width: 98%;    
+    overflow: auto;
+    height: 500px;
+  }
+.access-checkbox {
+  margin-left: 25%;
+}
+td,th{
+    padding: 2px;
+    height: fit-content;
+}
+
+table,th,td{
+    border: 1px solid #cdc7c7;
+    height: fit-content;
+}

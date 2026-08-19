@@ -1,0 +1,34 @@
+  selectedFile: any='';
+  getattech(event:any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+
+  addFile(): void {
+    if (!this.selectedFile) {
+      console.error('No file selected.');
+      return;
+    }
+
+    if (!this.crid.itcrid) {
+      console.error('ITCRID is required.');
+      return;
+    }
+
+    const itcrid = this.crid.itcrid.toString();
+    const formData = new FormData();
+
+    formData.append('itcrid', itcrid);
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+
+    const apiUrl = this.apiurl + '/CRlession'; // Adjust the API endpoint as per your route
+
+    this.http.post(apiUrl, formData).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error: any) => {
+        console.error('POST request failed', error);
+      }
+    );
+  }

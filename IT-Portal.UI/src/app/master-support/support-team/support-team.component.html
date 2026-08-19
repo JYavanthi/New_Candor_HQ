@@ -1,0 +1,230 @@
+<div class="container-implement">
+  <div class="notification-sucess" *ngIf="messagesuccess">
+    <p>Saved Successfully!</p>
+    <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+  </div>
+  <div class="notification" *ngIf="messageerror">
+    <span class="close-btn" (click)="closeNotification()">&times;</span>
+    <p>Not Saved</p>
+  </div>
+  <div class="container-field-line">
+    <h3>Employee Details</h3>
+    <!-- bootstrap -->
+    <div class="border-rfc-heading">
+      <div class="row mt-2">
+        <div class="col">
+          <label>Employe ID</label>
+          <input class="searchinput" type="text" placeholder="Employee ID" [(ngModel)]="empid" (input)="filterItems()" />
+          <ul class="dropdownslist" *ngIf="dropdownItems.length > 0">
+            <li class="droplist" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">
+              {{ item.employeeId }}
+            </li>
+          </ul>
+        </div>
+        <div class="col">
+          <label>First Name</label>
+          <input class="searchinput" type="text" placeholder="Firstname" [(ngModel)]="firstname" readonly />
+        </div>
+        <div class="col">
+          <label>Middle Name</label>
+          <input type="text" placeholder="Middlename" [(ngModel)]="middlename" readonly />
+        </div>
+        <div class="col">
+          <label>Last Name</label>
+          <input type="text" placeholder="Lastname" [(ngModel)]="lastname" readonly />
+        </div>
+
+      </div>
+      <br>
+      <div class="row mt-2">
+        <div class="col">
+          <label>Email</label>
+          <input type="text" placeholder="Email" [(ngModel)]="Email" readonly />
+        </div>
+        <div class="col">
+          <label class="file">Image Url</label><br />
+          <input type="text" placeholder="Image" style="width:99%" [(ngModel)]="imageurls" />
+        </div>
+        <div class="col">
+          <label>Date Of Birth</label><br>
+          <input type="date" style="width:99%" [(ngModel)]="dob" readonly />
+        </div>
+        <div class="col">
+          <label>Date of Leaving</label><br>
+          <input type="datetime-local" value="" style="width:99%" [(ngModel)]="dol" readonly />
+        </div>
+      </div>
+      <br>
+      <div class="row mt-2">
+        <div class="col">
+          <label>Designation</label>
+          <input type="text" placeholder="Designation" [(ngModel)]="designation" readonly />
+        </div>
+        <div class="col">
+          <label>Classfication</label>
+          <select aria-placeholder="select" [(ngModel)]="classificationId" ngModelChange="classificationType()">
+            <option value="" disabled selected>Select Classifications</option>
+            <option *ngFor="let cldata of classifications" value="{{cldata.itclassificationId}}">{{cldata.classificationName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Category</label>
+          <!--<select (change)="categoryfunctions()" [(ngModel)]="selectedCategory">
+      <option value="" disabled selected>Select Category</option>
+      <option *ngFor="let value of categorydata " value="{{value.itcategoryId}}">{{value.categoryName}}</option>
+    </select>-->
+          <ng-multiselect-dropdown style="width:30%;" [settings]="dropdownCatSettings"
+                                   [data]="dropdownListCat"
+                                   [(ngModel)]="selectedmultiplecat"
+                                   (ngModelChange)="onSelectedcatItemsChange()">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col">
+          <label>Module Name</label>
+          <select aria-placeholder="select" [(ngModel)]="supportId" (change)="onselect()">
+            <option value="" disabled selected>Select SupportName</option>
+            <option *ngFor="let supportdata of itsupportid" value="{{supportdata.supportId}}">{{supportdata.supportName}}</option>
+          </select>
+        </div>
+        <br>
+        <div class="row mt-2">
+          <div class="col-sm-3" *ngIf="Helpdeskbutton">
+            <label>CategoryType</label>
+            <ng-multiselect-dropdown style="width:30%;" [settings]="dropdownCattypeSettings"
+                                     [data]="dropdownListCattype"
+                                     [(ngModel)]="selectedmultiplecattype"
+                                     (ngModelChange)="onSelectedcattypeItemsChange()">
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="col-sm-3">
+            &nbsp;<label>Plant</label>
+            <br>
+            <div>
+              <ng-multiselect-dropdown style="width:100%;" [settings]="dropdownDepartmentSettings"
+                                       [data]="dropdownListDepartment"
+                                       [(ngModel)]="selecteddepartmentNames"
+                                       (ngModelChange)="onSelecteddepartmentItemsChange()">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <input class="cr_filter_checkbox" [(ngModel)]="isActive" value="Active" type="checkbox" style="margin-left: 0%; margin-top: 6%;">
+            <label style="font-size:small;margin-left:2%;">Is Active</label>
+          </div>
+          <div class="col-sm-3">
+            <label>Role</label>
+            <input readonly [(ngModel)]="role" />
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-implement">
+  <div class="container-field-line">
+    <div class="border-rfc-heading">
+      &nbsp;
+      <div class="row row_landscape">
+        <div class="col" *ngIf="ApproverButton"><input type="checkbox" (change)="toggleMiniForm()" [(ngModel)]="IsApprove" id="IsApprove" value="IsApprove" required></div>
+        <div class="col system_landscape"  *ngIf="ApproverButton">Is Approver</div>
+        <div class="col"><input type="checkbox" (change)="rolechange()" required [(ngModel)]="IsAnalyst" id="IsAnalyst" value="IsAnalyst" ></div>
+        <div class="col system_landscape" >Is Analyst</div>
+        <div class="col"><input type="checkbox" (change)="rolechange()" required [(ngModel)]="IsEngineer" id="IsEngineer" value="IsEngineer"></div>
+        <div class="col system_landscape" >Is Executive</div>
+        <div class="col"><input type="checkbox" (change)="rolechange()" required [(ngModel)]="IsAdmin" id="IsEngineer" value="IsEngineer"></div>
+        <div class="col system_landscape">Is Admin</div>
+        <div *ngIf="superadminaccess" (change)="rolechange()" class="col"><input type="checkbox" required [(ngModel)]="IsSuperAdmin" id="IsEngineer" value="IsEngineer"></div>
+        <div *ngIf="superadminaccess" class="col system_landscape">Is SuperAdmin</div>
+      </div>
+      <!--is approve-->
+      <div *ngIf="showMiniForm" class="mini-form">
+        <div class="field-line" *ngFor="let field of formFields; let i = index">
+          <div class="row mt-2" [hidden]="!showMiniForm">
+            <div class="col">
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="approverlevel" id="stage1" required>
+                <label for="stage1">Approver level 1</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="approverlevel2" id="stage2" required>
+                <label for="stage2">Approver level 2</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="approverlevel3" id="stage3" required>
+                <label for="stage3">Approver level 3</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="approverlevel">
+          <h6 style="margin-top:4%;">Select Stage for Approver 1:</h6>
+          <div class="row mt-2">
+            <div class="col" style="margin-top:1%;">
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverN" id="ChangeRequest" value="N" required>
+                <label for="ChangeRequest">Change Request</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverR" id="Release" value="R" required>
+                <label for="Release">Release</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverC" id="Closure" value="C" required>
+                <label for="Closure">Closure</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="approverlevel2">
+          <h6 style="margin-top:4%;">Select Stage for Approver 2:</h6>
+          <div class="row mt-2">
+            <div class="col" style="margin-top:1%;">
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverN2" id="ChangeRequest2" value="N" required>
+                <label for="ChangeRequest2">Change Request</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverR2" id="Release2" value="R" required>
+                <label for="Release2">Release</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverC2" id="Closure2" value="C" required>
+                <label for="Closure2">Closure</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="approverlevel3">
+          <h6 style="margin-top:4%;">Select Stage for Approver 3:</h6>
+          <div class="row mt-2">
+            <div class="col" style="margin-top:1%;">
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverN3" id="ChangeRequest3" value="N" required>
+                <label for="ChangeRequest3">Change Request</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverR3" id="Release3" value="R" required>
+                <label for="Release3">Release</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" [(ngModel)]="ApproverC3" id="Closure3" value="C" required>
+                <label for="Closure3">Closure</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+    <div class="submit_change">
+      <button class="btn-sub" type="submit" value="Submit" (click)="postSupportTeam()">Submit </button>
+      <button class="btn-sub" [routerLink]="'/support_view'" type="submit">Close</button>
+    </div>
+  </div>
+

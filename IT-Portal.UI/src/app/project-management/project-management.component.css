@@ -1,0 +1,71 @@
+.project-btn{
+    margin-left: 40%;
+}
+
+
+.container-implement {
+    width: 57%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: rgb(248, 248, 248);
+    margin-left: 282px;
+}
+
+.container-field-line {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 10px;
+    border-top: 5px solid #113bf7;
+    margin-bottom: 3%;
+  }
+  
+  .border-inline {
+    width: 98%;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+  }
+  
+  .border-rfc-heading {
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: rgb(155, 158, 158);
+    padding: 10px;
+  }
+  
+
+  /* {
+    margin-left: 20%;
+    margin-top: -2%;
+} */
+  /* Style the search box container */
+  /* .search-container {
+    margin-top: 20px;
+  } */
+
+  /* Style the search box
+  input[type=text] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  } */
+
+  .container-field-line {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 10px;
+    border-top: 5px solid #113bf7;
+    margin-bottom: 3%;
+  }

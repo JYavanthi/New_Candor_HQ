@@ -1,0 +1,121 @@
+<form [formGroup]="windowLoginForm">
+
+    <div class="card service_card br-top-blue">
+        <div class="card-body">
+            <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+            <div class="card">
+                <div class="card-body">
+                    <div class="software">
+                        <div class="row">
+                            <div class="requestTypeClass">
+                                <div>
+                                    <label class="asteriskrequired">Request Type</label>
+                                    <select formControlName="requestType" name="requestType"
+                                        (change)="changeRequestTypeValue()">
+                                        <option selected disabled hidden value="">Select Request Type</option>
+                                        <option *ngFor="let requesttype of requestTypeList"
+                                            [value]="requesttype.supportId">{{requesttype.supportName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New User Starts -->
+                        <div class="row" *ngIf="windowLoginForm.get('requestType')?.value == 57">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="userType1" customLabelAlert="Select User Type">User Type</label>
+                                    <select formControlName="userType1" name="userType1">
+                                        <option selected disabled value="">Select User Type</option>
+                                        <option>Citrix User</option>
+                                        <option>Laptop</option>
+                                        <option>Desktop</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="changeOUPath">Change OU Path</label>
+                                    <input type="text" formControlName="changeOUPath" name="changeOUPath" />
+                                </div>
+
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="purposeOrJustification"
+                                        customLabelAlert="Enter Purpose/Justification">Purpose/Justification</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--New User Ends -->
+
+                        <!-- Change OU Path Starts -->
+                        <div class="row" *ngIf="windowLoginForm.get('requestType')?.value == 58 ">
+                          <div class="inputFields">
+                              <div>
+                                  <label class="asteriskrequired" for="userType1" customLabelAlert="Select User Type">User Type</label>
+                                  <select formControlName="userType1" name="userType1">
+                                      <option selected disabled value="">Select User Type</option>
+                                      <option>Citrix User</option>
+                                      <option>Laptop</option>
+                                      <option>Desktop</option>
+                                  </select>
+                              </div>
+
+                              <div>
+                                  <label class="asteriskrequired" for="changeOUPath">Change OU Path</label>
+                                  <input type="text" formControlName="changeOUPath" name="changeOUPath" />
+                              </div>
+
+                              <div class="textAreaDiv">
+                                  <label class="asteriskrequired" for="purposeOrJustification"
+                                      customLabelAlert="Enter Purpose/Justification">Purpose/Justification</label>
+                                  <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                      name="purposeOrJustification"></textarea>
+                              </div>
+
+                          </div>
+                      </div>
+                         <!-- Change OU Path Ends -->
+
+                        <!-- Reset Password & Unlock User & Disable User Starts -->
+                        <div class="row"
+                            *ngIf="windowLoginForm.get('requestType')?.value == 59 || windowLoginForm.get('requestType')?.value == 60 || windowLoginForm.get('requestType')?.value == 61">
+                            <div class="inputFields">
+
+                                <div>
+                                    <label class="asteriskrequired" for="employeeType"
+                                        customLabelAlert="Select Employee Type">Employee Type</label>
+                                    <select formControlName="employeeType" name="employeeType">
+                                        <option selected disabled hidden value="">Select Employee Type</option>
+                                        <option>Office</option>
+                                        <option>Field</option>
+                                        <option>Consultant</option>
+                                    </select>
+                                </div>
+
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="purposeOrJustification"
+                                        customLabelAlert="Enter Purpose/Justification">Purpose/Justification</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Reset Password & Unlock User & Disable User Ends -->
+
+                        <div class="mainBtnsDiv"
+                            *ngIf="windowLoginForm.get('requestType')?.value && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+                            <button class="actionBtn" (click)="Submit('Draft')">Draft</button>
+                            <button class="actionBtn" (click)="Submit('Pending Approval')">Submit</button>
+                            <button class="actionBtn" (click)="clearAll()">Clear</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

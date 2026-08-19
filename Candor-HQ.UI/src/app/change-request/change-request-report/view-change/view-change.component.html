@@ -1,0 +1,138 @@
+<div class="change_request_header">
+  <h2 class="header-title">View Change Request Summary</h2>
+</div>
+
+<div class="row" align="right">
+  <div class="col export_pdf">
+    <button (click)="exportToPDF()" class="pdfBtn"><i class="fa fa-file-pdf-o"
+        aria-hidden="true"></i>&nbsp;&nbsp;Pdf</button> &nbsp;&nbsp;
+    <button (click)="exportexcel()" class="excelBtn"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;&nbsp;
+      Excel</button>
+  </div>
+</div>
+
+<div style="padding: 15px; background: #eaf4ff; border-radius: 15px">
+  <div class="filter-container" *ngIf="isVisible" [formGroup]="filterForm">
+
+    <div class="filter-row">
+
+      <div class="filter-field">
+        <label>Project</label>
+        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList" formControlName="plantId"
+          (ngModelChange)="mapedplantdatas()">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <div class="filter-field">
+        <label>Category</label>
+        <ng-multiselect-dropdown [settings]="dropdownSettings" formControlName="Category" [data]="dropdowncategroy"
+          (ngModelChange)="mapedcategoryatas()">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <div class="filter-field">
+        <label>Classifications</label>
+        <select formControlName="ClassificationId">
+          <option hidden disabled value="">Select</option>
+          <option *ngFor="let classf of classificationdata" [value]="classf.itclassificationId">
+            {{classf.classificationName}}
+          </option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label>Priority</label>
+        <select formControlName="Priority">
+          <option hidden disabled value="">Select</option>
+          <option *ngFor="let prio of prioritydata" [value]="prio.priorityId">
+            {{prio.priorityName}}
+          </option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label>Start Date</label>
+        <input type="date" [max]="currentDate" formControlName="StartDate">
+      </div>
+
+      <div class="filter-field">
+        <label>End Date</label>
+        <input type="date" [min]="filterForm.value['StartDate']" [max]="currentDate" formControlName="EndDate">
+      </div>
+
+      <div class="filter-buttons">
+        <button class="btn-filter" (click)="filterdropdown()">FILTER</button>
+        <button class="btn-clear" (click)="reset()">Clear</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<br />
+<div class="">
+  <br />
+</div>
+
+<div class="table-container mt-5">
+
+  <!-- HEADER -->
+  <div class="table-header">
+    <div>SL NO.</div>
+    <div>RFC #</div>
+    <div>Description</div>
+    <div>Date</div>
+    <div>Change Owner</div>
+    <div>Initiator</div>
+    <div>Project</div>
+    <div>Classification</div>
+    <div>Category</div>
+    <div>Category Type</div>
+    <div>Nature</div>
+    <div>Priority</div>
+    <div>Stage</div>
+    <div>Status</div>
+  </div>
+
+  <!-- ROWS -->
+  <div class="table-body">
+    <div class="table-row" *ngFor="let CRreport of viewchangerequest; let i = index">
+
+      <div>{{i + 1}}</div>
+      <div>{{CRreport.crcode}}</div>
+      <div>{{CRreport.changeDesc}}</div>
+      <div>{{CRreport.crdate | date:'dd-MM-yyyy'}}</div>
+      <div>{{CRreport.crowner}}</div>
+      <div>{{CRreport.initiatedFor}}</div>
+      <div>{{CRreport.plantId}}</div>
+      <div>{{CRreport.classificationName}}</div>
+      <div>{{CRreport.categoryName}}</div>
+      <div>{{CRreport.categoryType}}</div>
+      <div>{{CRreport.natureofChange}}</div>
+      <div>{{CRreport.priorityName}}</div>
+      <div>{{CRreport.stage}}</div>
+
+      <!-- STATUS -->
+      <div>
+        <span class="status-badge" [ngClass]="{
+                'completed': CRreport.status === 'Completed',
+                'progress': CRreport.status === 'In Progress',
+                'cancel': CRreport.status === 'Cancel',
+                'pending': CRreport.status === 'Pending Approval',
+                'approved': CRreport.status === 'Approved',
+                'implemented' : CRreport.status === 'Implemented'
+              }">
+          {{CRreport.status}}
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- PAGINATOR -->
+<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[10,25,50,100]"
+  (page)="onPageChange($event)" style="margin-right: 28%;">
+</mat-paginator>

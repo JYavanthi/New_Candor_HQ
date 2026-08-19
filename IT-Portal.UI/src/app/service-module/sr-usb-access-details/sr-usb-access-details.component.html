@@ -1,0 +1,109 @@
+<form [formGroup]="usbAccessForm">
+    <div class="card service_card br-top-blue">
+        <div class="card-body">
+            <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+            <div class="card">
+                <div class="card-body">
+                    <div class="software">
+                        <div class="row">
+                            <div class="requestTypeClass">
+                                <div>
+                                    <label class="asteriskrequired">Request Type</label>
+                                    <select formControlName="requestType" name="requestType"
+                                        (change)="changeRequestTypeValue()">
+                                        <option selected disabled hidden value="">Select Request Type</option>
+                                        <option *ngFor="let requesttype of requestTypeList"
+                                            [value]="requesttype.supportId">{{requesttype.supportName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row"
+                            *ngIf="usbAccessForm.value.requestType==54||usbAccessForm.value.requestType==55">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="adId">AD ID</label>
+                                    <input id="adId" formControlName="adId" type="text" />
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired"for="assetDetails">Asset Details</label>
+                                    <select id="assetDetails" formControlName="assetDetails" required
+                                    (change)="selectDetails($event)">
+                                        <option selected disabled hidden value="">Select Asset</option>
+                                        <option *ngFor=" let item of assetDetails" [value]="item.assetNo">{{item?.category + ' '+ item?.assetNo}}</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired">Hostname</label>
+                                    <input  type="text" formControlName="hostname1"/>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="deviceType">Device Type</label>
+                                    <input type="text" id="deviceType" formControlName="deviceType"/>
+                                    <!-- <select id="deviceType" formControlName="deviceType">
+                                      <option selected disabled hidden value="">Select Device Type</option>
+                                        <option value="CD/DVD">CD/DVD</option>
+                                        <option value="USB">USB</option>
+                                    </select> -->
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="durationFrom">Duration From</label>
+                                    <input id="durationFrom" type="date" [min]="formValidationService.todaysDate" [max]="formValidationService.maxDate"
+                                    (input)="validateYear(usbAccessForm.value.durationFrom)" formControlName="durationFrom" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="durationTo">Duration To</label>
+                                    <input id="durationTo" type="date" [min]="usbAccessForm.value.durationFrom" [max]="formValidationService.maxDate" formControlName="durationTo" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="accessType">Access Type</label>
+                                    <select id="accessType" formControlName="accessType">
+                                      <option selected disabled hidden value="">Select Access Type</option>
+                                        <option value="Read-only">Read-only</option>
+                                        <option value="Read & Execute">Read & Execute</option>
+                                        <option value="Modify">Modify</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="ipAddress">IP Address</label>
+                                    <input id="ipAddress" formControlName="ipAddress" type="text"/>
+                                </div>
+
+                                <div>
+                                  <label class="asteriskrequired" for="employeeType">Employee Type</label>
+                                  <select formControlName="employeeType" name="employeeType" id="employeeType">
+                                    <option selected hidden disabled value="">Select Employee type</option>
+                                    <option value="Office">Office</option>
+                                    <option value="Field">Field</option>
+                                    <option value="Consultant">Consultant</option>
+                                  </select>
+                                </div>
+
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification">Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mainBtnsDiv"
+                        *ngIf="usbAccessForm.value.requestType && ((!srId)||this.srData?.status.trim() == 'Draft')">
+                        <button class="actionBtn" (click)="Submit('Draft')">Draft</button>
+                        <button class="actionBtn" (click)="Submit('Pending Approval')">Submit</button>
+                        <button class="actionBtn" (click)="clearAll()">Clear</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

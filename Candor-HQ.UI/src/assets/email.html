@@ -1,0 +1,56 @@
+<style>
+  table, th, td {
+    border: 1px solid !important;
+  }
+  table {
+    margin-left: 4% !important;
+  }
+  
+</style>
+
+
+<h3><b>Dear {{this.Cremailvalue[0].crrequestedBy}}</b> </h3>
+<br /><br />
+<p>{{BodyContent}}<br /><br />
+  <b>Requestor Name:</b> {{this.Cremailvalue[0].crrequestedBy}}<br />
+  <b>Requested Date:</b> {{this.Cremailvalue[0].crdate}}<br />
+  <b>Phase:</b> {{phase}}<br />
+  <b>Status:</b> {{status}}<br />
+  <b>Change Description: </b>{{this.Cremailvalue[0].changeDesc}}</p>
+<br />
+<table>
+  <thead>
+    <tr>
+      <td>Approver Level</td>
+      <td>Name of Approver</td>
+      <td>Status</td>
+      <!--<td>Remarks with Dates</td>-->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Approved Level 1</td>
+      <td>{{crapprover1}} </td>
+      <td>@Approval1Status</td>
+      <!--<td></td>-->
+    </tr>
+    <tr>
+      <td>Approved Level 2</td>
+      <td>{{crapprover2}}</td>
+      <td>@Approval2Status</td>
+      <!--<td></td>-->
+    </tr>
+    <tr>
+      <td>Approved Level 3</td>
+      <td>{{crapprover3}}</td>
+      <td>@Approval3Status</td>
+      <!--<td></td>-->
+    </tr>
+  </tbody>
+</table>
+<p><a href=${loginUrl}>Click here </a>to Log into Unnati and view your status.</p>
+<p>Regards,</p>
+<p>IT Team</p>
+<p>Micro Labs Ltd</p>
+<p><a href="http://www.unnati.microlabs.co.in">www.unnati.microlabs.co.in</a></p>
+<p></p>

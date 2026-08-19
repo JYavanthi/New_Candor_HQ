@@ -1,0 +1,59 @@
+<style>
+  table, th, td {
+    border: 1px solid;
+  }
+
+  table {
+    width: 100%;
+  }
+</style>
+
+<div style="border: 1px solid black; margin: 10px; padding: 10px;">
+  <span>Dear Approvers,</span><br />
+  <p>For following Change ID ${crid}, the Task ID is assigned to you.</p>
+  <p><b>CR ID</b>: ${crid}</p>
+  <p><b>Requestor Name</b>: {{this.Cremailvalue[0].crrequestedBy}}</p>
+  <p><b>Requested Date</b>: {{this.Cremailvalue[0].crdate}}</p>
+  <p><b>Phase</b>: Release</p>
+  <p><b>Status</b>: Release Approval</p>
+  <p><b>Change description</b>: {{this.Cremailvalue[0].changeDesc}}</p>
+  <span style="border-bottom:1.5px solid black;width:100%;display:inline-block;"></span>
+  <p><b>RELEASE DETAILS</b>: {{ReleaseComments}}</p>
+  -<br />
+  -<br />
+  -<br />
+  <br />
+
+  <p><b>RELEASE APPROVERS</b></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Approver Level</th>
+        <th>${response[0].crapprover11N} (${response[0].crapprover11NempId})</th>
+        <th>Status</th>
+        <!--<th>Remarks with Dates</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Approval 1</td>
+        <td>${response[0].crapprover12N} (${response[0].crapprover12NempId})</td>
+        <td>Pending</td>
+        <!--<td></td>-->
+      </tr>
+      <tr>
+        <td>Approval 2</td>
+        <td>${response[0].crapprover13N} (${response[0].crapprover13NempId})</td>
+        <td>Queued</td>
+        <!--<td></td>-->
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a href=${loginUrl} target=${loginUrl}>Click here</a> to Log into Unnati and view / update your status.</p>
+  <p>Regards,</p>
+  <p>IT Team</p>
+  <p>Micro Labs Ltd</p>
+  <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+</div>

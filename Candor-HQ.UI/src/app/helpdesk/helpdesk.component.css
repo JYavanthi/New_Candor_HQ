@@ -1,0 +1,11 @@
+.helpDeskMain {
+  width: 95%;
+  display: flex;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+}
+
+.helpDeskSideBar {
+  margin-left: 3%;
+}

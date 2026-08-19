@@ -1,0 +1,73 @@
+<!-- <div>
+    <div>
+        <label class="asteriskrequired">{{title}}</label>
+        <div class="attachmentList" style="width: fit-content;">
+            <ng-container *ngIf="!tabID">
+                <div class="d-flex" *ngIf="(prTypeFlag=='P')||(prTypeFlag=='T'&&!taskId)||(prTypeFlag=='I'&&!issueId)||
+                (prTypeFlag=='C'&&!checkListId)">
+                    <input type="file" [(ngModel)]="attach" (change)="getattach($event)"
+                    style="width: 52%;" #fileInput/>
+                    <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()"
+                        style="margin: 0px 10px;height: 33px;">
+                        Add File</button>
+                </div>
+                <span class="red-alert">Only Jpg, Jpeg, Png and Pdf is allowed.</span>
+            </ng-container>
+            
+            <div *ngFor="let attachment of attachmentsList;let i=index">
+                <div>
+                    {{attachment.fileName}}
+                    <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+                    <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                        (click)="downFile(attachment)"></i>
+                    <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                    *ngIf="(prTypeFlag=='T'&&!taskId)||prTypeFlag=='P'||(prTypeFlag=='C'&&!checkListId)||(prTypeFlag=='I'&&!issueId)"
+                        style="margin-left: 10px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="attachment-wrapper">
+    <label class="asteriskrequired" style="color:#15455c; font-size: large;">{{ title }}</label>
+
+    <ng-container *ngIf="!tabID">
+        <div class="attachment-row"
+            *ngIf="(prTypeFlag=='P')||(prTypeFlag=='T'&&!taskId)||(prTypeFlag=='I'&&!issueId)||(prTypeFlag=='C'&&!checkListId)">
+
+            <div class="attachment-pill">
+                <button type="button" class="choose-file-btn" (click)="fileInput.click()">
+                    Choose File
+                </button>
+
+                <span class="file-name">
+                    {{ selectedFileName || 'No file chosen' }}
+                </span>
+
+                <input type="file" #fileInput hidden (change)="getattach($event)" />
+            </div>
+
+            <button class="add-file-btn" (click)="addFile()">
+                ADD FILE
+            </button>
+        </div>
+
+        <span class="red-alert">
+            Only Jpg, Jpeg, Png and Pdf is allowed.
+        </span>
+    </ng-container>
+
+    <!-- Uploaded list -->
+    <div class="uploaded-list" *ngFor="let attachment of attachmentsList">
+        <span class="doc-name">{{ attachment.fileName }}</span>
+
+        <i class="fa fa-eye icon" (click)="viewFile(attachment)"></i>
+        <i class="fa fa-download icon" (click)="downFile(attachment)"></i>
+
+        <i class="fa fa-times icon delete"
+            *ngIf="(prTypeFlag=='T'&&!taskId)||prTypeFlag=='P'||(prTypeFlag=='C'&&!checkListId)||(prTypeFlag=='I'&&!issueId)"
+            (click)="deleteDoc(attachment)">
+        </i>
+    </div>
+</div>

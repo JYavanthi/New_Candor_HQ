@@ -1,0 +1,32 @@
+<style>
+  table, th, td {
+    border: 1px solid;
+  }
+
+  table {
+    width: 100%;
+  }
+</style>
+
+<div style="border: 1px solid black; margin: 10px; padding: 10px;">
+  <span>Dear ${response[0].assignedToName},</span><br />
+  <p>For following RFC Code ${crid}, the Task ID: ${response[0].taskId} is ${response.status}.</p>
+  <p><b>RFC Code</b>: ${crid}</p>
+  <p><b>Requestor Name</b>: {{this.Cremailvalue[0].crrequestedBy}}</p>
+  <p><b>Requested Date</b>: {{this.Cremailvalue[0].crdate}}</p>
+  <p><b>Phase</b>: Execution</p>
+  <p><b>Status</b>: ${response[0].estatus}</p>
+  <p><b>Change description</b>:{{this.Cremailvalue[0].changeDesc}}</p>
+  <span style="border-bottom:1.5px solid black;width:100%;display:inline-block;"></span>
+  <p><b>Task ID</b>: ${response[0].taskId}</p>
+  <p><b>Task Assigned Date</b>: ${response[0].assignedDt}</p>
+  <p><b>Task Status</b>: ${response[0].estatus}</p>
+  <p><b>Task Assigned To</b>: ${response[0].assignedToName}</p>
+  <p><b>Task Descriptions</b>: ${response[0].taskDesc}</p>
+
+  <p><a href=${loginUrl} target=${loginUrl}>Click here</a> to Log into Unnati and view / update your status.</p>
+  <p>Regards,</p>
+  <p>IT Team</p>
+  <p>Micro Labs Ltd</p>
+  <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+</div>

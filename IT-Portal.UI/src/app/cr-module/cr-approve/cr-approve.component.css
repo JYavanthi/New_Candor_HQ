@@ -1,0 +1,100 @@
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: bisque;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    animation: slideDown 0.5s ease forwards;
+    width: 25%;
+}
+
+.success {
+    animation: slideDown 0.5s ease forwards;
+    width: 25%;
+    background-color: green;
+    color: white;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Rejected {
+    animation: slideDown 0.5s ease forwards;
+    width: 25%;
+    background-color: green;
+    color: white;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.notification p,
+.success p,
+.Rejected p {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.notification button,
+.success button,
+.Rejected button {
+    color: white;
+}
+
+.approvalNote {
+    color: red;
+    font-size: 12px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: initial;
+}
+
+.container-field-approve {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 97%;
+    margin-left: 1%;
+    margin-top: 10px;
+    border-top: 5px solid green;
+}
+
+.border-rfc-heading {
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: rgb(155, 158, 158);
+    padding: 10px;
+}
+
+.container-field-implement label {
+    display: block;
+    margin-bottom: 5px;
+    margin-right: -3%;
+}
+
+
+.container-field-implement input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 3%;
+}
+
+.attachmentButton {
+    padding: 1%; 
+    border: none; 
+    background: none;
+}
+
+.btn-sub-reset {
+    margin-top: -9%;
+  }
+

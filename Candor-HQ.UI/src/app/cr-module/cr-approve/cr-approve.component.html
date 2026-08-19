@@ -1,0 +1,69 @@
+<!-- <div class="notification">
+    <button type="button" class="btn-close" aria-label="Close"></button>
+    <p></p>
+  </div>
+
+  <div class="success">
+    <button type="button" class="btn-close" aria-label="Close"></button>
+    <p></p>
+  </div>
+
+  <div class="Rejected">
+    <button type="button" class="btn-close" aria-label="Close"></button>
+    <p></p>
+  </div> -->
+
+
+<mat-tab-group [(selectedIndex)]="approveTabIndex">
+  <mat-tab label="Approval 1" >
+    <ng-container *ngIf="approveTabIndex == 0">
+      <app-cr-approve-tab [stage]="stage" [crData]="crData" [level]=1 [approveStage]="'Initiated'"
+        [approveStatus]="'Pending Approval'"></app-cr-approve-tab>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="Approval 2">
+    <ng-container *ngIf="approveTabIndex == 1">
+    <app-cr-approve-tab [stage]="stage" [crData]="crData" [level]=2 [approveStage]="'Approval'"
+      [approveStatus]="'Approved Level 1'"></app-cr-approve-tab>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group><br><br>
+<div id="approverhistory">
+  <br><br>
+  <p>Approver History</p>
+</div>
+<div>
+  <table class="table" >
+    <thead class="thead-dark">
+      <tr>
+        <th>CR History Date</th>
+        <th>RFC#</th>
+        <th>CR Owner Name</th>
+        <th>Stage</th>
+        <th>Status</th>
+        <th>Approved By</th>
+        <th>Approved Date</th>
+        <th>Remarks</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of historyDetails">
+        <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+        <td>{{this.crData?.crcode}}</td>
+        <td>{{this.crData?.crowner}}</td>
+        <td>
+          <span *ngIf="row.stage === 'N'">RFC Initiated</span>
+          <span *ngIf="row.stage === 'R'">RFC Release</span>
+          <span *ngIf="row.stage === 'C'">RFC Closure</span>
+        </td>
+        <td>{{row.status}}</td>
+        <td>
+          {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '') }}
+        </td>
+        <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+        <td>{{row.remarks}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

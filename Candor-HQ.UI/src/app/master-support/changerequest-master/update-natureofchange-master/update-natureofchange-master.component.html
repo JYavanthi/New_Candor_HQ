@@ -1,0 +1,42 @@
+<div class="updatenatureMainDiv">
+
+  <div class="sidebar">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="main-card">
+    <h3 class="title">Update Nature Of Change</h3>
+
+    <div class="form-card">
+      <div class="row">
+
+        <div class="form-group">
+          <label>Nature Of ChangeID</label>
+          <input class="searchinput" type="text" readonly [(ngModel)]="updatevalue[0].natureofChangeId" />
+        </div>
+
+        <div class="form-group">
+          <label>Nature Of Change</label>
+          <input type="text" [(ngModel)]="updatevalue[0].natureofChange1" />
+        </div>
+
+        <div class="form-group">
+          <label>Is Active</label>
+          <select [(ngModel)]="updatevalue[0].isActive">
+            <option>Select</option>
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button (click)="postNatureofChange()" class="btn-submit">SUBMIT</button>
+      <button [routerLink]="'/natureofchange'" class="btn-back">BACK</button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,60 @@
+.assetContainer {
+    position: relative;
+    width: 70% !important;
+    margin-left: 10% !important;
+    margin-top: 15% !important;
+}
+
+.viewAssetHeadingDiv {
+    background-color: #4f9aa8 !important;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.assetTitle {
+    font-size: 38px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.viewAssetMainModuleBox {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.viewAssetModules {
+    display: flex;
+    gap: 120px;
+}
+
+.assetModuleCard {
+    width: 260px;
+    height: 200px;
+    background-color: #ffffff;
+    border: 2px solid #bfbfbf;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.assetModuleCard:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+}
+
+.viewImg {
+    width: 90px;
+    height: 90px;
+}
+
+.assetIconTitle {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1f4e5a;
+}

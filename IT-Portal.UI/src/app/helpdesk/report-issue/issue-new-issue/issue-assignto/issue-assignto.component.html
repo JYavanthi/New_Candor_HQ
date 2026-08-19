@@ -1,0 +1,9 @@
+<div mat-dialog-content class="container">
+
+  <label>Assigned To</label><br />
+  <input style="width:50%;" class="searchinput" type="text" placeholder="Enter Initiator Name" [(ngModel)]="assignedTo" (input)="filterAssignedto()" />
+  <ul class="dropdowns-list">
+    <li class="drop-list" value="" *ngFor="let item of Itemsassignedto" (click)="selectAssignedto(item)">{{item}}</li>
+  </ul><br />
+  <button class="btn-sub" (click)="issueassignedto()">Submit</button>
+</div>

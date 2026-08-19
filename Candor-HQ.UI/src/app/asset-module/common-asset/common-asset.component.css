@@ -1,0 +1,6 @@
+.backBtn {
+    margin-left: 7% !important;
+    position: fixed;
+    z-index: 99 !important;
+    margin-top: -3% !important;
+  }

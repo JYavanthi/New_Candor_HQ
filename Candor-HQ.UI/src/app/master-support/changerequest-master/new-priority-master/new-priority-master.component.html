@@ -1,0 +1,41 @@
+<div class="prioritymainDiv">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <h3 class="page-heading">NEW PRIORITY</h3>
+
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Priority Name</label>
+            <input class="form-control-custom" type="text" placeholder="Priority Name" [(ngModel)]="priorityName" />
+          </div>
+
+          <div class="col form-group">
+            <label>Is Active</label>
+            <select class="form-control-custom" [(ngModel)]="isActive">
+              <option selected>Select</option>
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="btn-section">
+          <button (click)="postPriority()" class="btn submit-btn">SUBMIT</button>
+          <button [routerLink]="'/Priority'" class="btn back-btn">BACK</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

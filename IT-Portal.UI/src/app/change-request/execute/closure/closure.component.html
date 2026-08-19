@@ -1,0 +1,269 @@
+<!--bootstrap tab-->
+<ul class="breadcrumbs" id="myTab" role="tablist">
+  <li class="breadcrumbs__item active" role="presentation" style="cursor:pointer"
+    [style]=" ((this.appstatus == 'Released' && this.stage=='Release') ? 'background-color:blue; color:white' :'background-color:green; color:white' ) "
+    id="clocercrapprove-tab" data-bs-toggle="tab" data-bs-target="#clocercrapprove" aria-controls="clocercrapprove"
+    aria-selected="false">
+    Approver
+  </li>
+  <li class="breadcrumbs__item" role="presentation" id="closercr-tab" data-bs-toggle="tab"
+    [style]=" ((this.appstatus == 'Approved' && this.stage=='Closure') ? 'background-color:blue; color:white' :(this.appstatus == 'Completed' && this.stage=='Closure')?'background-color:green;color:white':'background-color:grey;color:white;pointer-events:none;' ) "
+    data-bs-target="#closercr" aria-controls="closercr" aria-selected="true">
+    Closure
+  </li>
+  <li class="breadcrumbs__item" role="presentation" id="clocerfeedback-tab" data-bs-toggle="tab"
+    [style]=" ((this.followupdtls.length != 0) ? 'background-color:green; color:white' :'background-color:white; color:black' ) "
+    data-bs-target="#clocerfeedback" aria-controls="clocerfeedback" aria-selected="false">
+    FollowUp
+  </li>
+  <li class="breadcrumbs__item" role="presentation" id="crlesson-tab" data-bs-toggle="tab"
+    [style]=" ((this.lessondata.length != 0) ? 'background-color:green; color:white' :'background-color:white; color:black' ) "
+    data-bs-target="#crlesson" aria-controls="crlesson" aria-selected="false">
+    Lessons Learned
+  </li>
+</ul>
+<!--Approver-->
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="clocercrapprove" role="tabpanel" aria-labelledby="clocercrapprove-tab">
+    <ul class="breadcrumbs" id="myTab" role="tablist">
+
+      <li class="breadcrumbs__item"
+        [style]=" (this.appstatus == 'Released') ? 'background-color:blue': 'background-color:green'"
+        style="cursor:pointer" (click)="Approver(1)" *ngIf=" this.approverCount[0] > 1 || this.approverCount[0] == 1"
+        role="presentation" id="approver1-tab" data-bs-toggle="tab" data-bs-target="#approver1"
+        aria-controls="approver1" aria-selected="false">
+        <button class="approverbtns">Approver 1</button>
+      </li>
+      <li role="presentation"
+        [style]=" (isCompleted)?'background-color:green':(this.appstatus == 'Approved level1' && this.stage=='Closure') ? 'background-color:blue':((this.appstatus == 'Approved level2' && this.stage=='Closure') ?'background-color:green':'background-color:grey') "
+        style="cursor:pointer" (click)="Approver(2)" *ngIf=" this.approverCount[0] > 2 || this.approverCount[0] == 2"
+        class="breadcrumbs__item" id="approver2-tab" data-bs-toggle="tab" data-bs-target="#approver1"
+        aria-controls="approver1" aria-selected="false">
+        <button class="approverbtns">Approver 2</button>
+      </li>
+      <li role="presentation"
+        [style]="  (isCompleted)?'background-color:green':(this.appstatus == 'Approved level2' && this.stage=='Closure') ? 'background-color:blue':( (this.appstatus == 'Approved level1' && this.stage=='Closure') ?'background-color:grey':'background-color:grey') "
+        style="cursor:pointer" (click)="Approver(3)" *ngIf=" this.approverCount[0] > 3 || this.approverCount[0] == 3"
+        class="breadcrumbs__item" id="approver3-tab" data-bs-toggle="tab" data-bs-target="#approver1"
+        aria-controls="approver1" aria-selected="false">
+        <button class="approverbtns">Approver 3</button>
+      </li>
+
+    </ul>
+    <span style="color:red;    font-size: 12px;
+    margin-left: 15px;display: flex;justify-content: initial;"> Please Click On Approver Level to Approve.</span>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="approver1" role="tabpanel" aria-labelledby="approver1-tab">
+        <div>
+          <div class="container-field-approve">
+            <b>RFC Closure {{rfcapproverlevel}}</b>
+            <div class="border-rfc-heading">
+              <div class="row">
+                <div class="col-3">
+                  <label>Approver Name</label>
+                </div>
+
+                <div *ngFor="let approver of ApproverNames()">
+                  <p>{{approver.name}}</p>
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+              </div>
+              <br />
+              <div class="row mt-3">
+                <div class="col">
+                  <label>Date</label>
+                  <input type="datetime-local" [(ngModel)]="date" class="dateStylelessons" readonly />
+                </div>
+                <div class="">
+                  <label>Remarks</label>
+                  <textarea class="textarea-implement" [(ngModel)]="remark"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-field-implement">
+              <div>
+                <label class="label-approve">Attach Document</label>
+                <div class="attachmentList"></div>
+                <div class="d-flex">
+                  <input type="File" placeholder="Attach File" [(ngModel)]="attach" (change)="getattach($event)" />
+                  <button class="blue-botton ms-4" aria-hidden="true" type="submit" (click)="addFile()"
+                    style="margin: 0px 10px;height: 33px;">Add File</button>
+                </div>
+                <div *ngFor="let attachment of attachmentsList;index i">
+                  Attachment: {{attachment.fileName}}
+                  <button style="border: none; background: none;">
+                    <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true"
+                      (click)="viewFile1(attachment)"></i> &nbsp;
+                    <i class="fa fa-download" aria-hidden="true" (click)="downFile(attachment)"></i>
+                    <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                      style="margin-left: 10px;" *ngIf="appvflg && appflag"></i>
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="btn-sub-reset" *ngIf="isapprover && !this.isCompleted && appvflg && appflag">
+              <button class="btn-sub-approve" (click)="getdata(['this.APILevel'])"> Approve</button>
+              <button class="btn-sub-reject" type="submit" (click)="rejectbutton('Reject')">Reject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><br /><br /><br />
+    <!--Below are the same History Data, you just need to update the API & call the keys below as im getting empty response-->
+    <div>
+      <br><br>
+      <p>Approver History</p>
+    </div>
+    <br><br>
+    <div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>CR History Date</th>
+            <th>RFC#</th>
+            <th>CR Owner Name</th>
+            <!--<th>Plant</th>-->
+            <th>Stage</th>
+            <th>Status</th>
+            <th>Approved By</th>
+            <th>Approved Date</th>
+            <th>Remarks</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of tableData">
+            <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{getcrcode}}</td>
+            <td>{{crownername}}</td>
+            <!--<td>{{row.plantId}}</td>-->
+            <td>
+              <span *ngIf="row.stage === 'N'">RFC Initiated</span>
+              <span *ngIf="row.stage === 'R'">RFC Release</span>
+              <span *ngIf="row.stage === 'C'">RFC Closure</span>
+            </td>
+            <td>{{row.status}}</td>
+            <td>
+              {{ row.approverId ? (row.approverId + ' - ' + (row.approverName || '')) : (row.approverName || '') }}
+            </td>
+            <td>{{row.approvedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td>{{row.remarks}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+  <!--Closure Tab-->
+
+  <div class="tab-pane fade" id="closercr" role="tabpanel" aria-labelledby="closercr-tab">
+    <div class="execute_container_implement">
+      <h3>Closure</h3>
+      <div class="row">
+        <div class="col">
+          <label>Status</label>
+          <select [(ngModel)]="closedstatus" class="select_closure">
+            <option disabled>Select Status</option>
+            <option value="Completed Successfully">Completed Successfully</option>
+            <option value="Completed partially">Completed partially</option>
+            <option value="Not Successfull">Not Successfull</option>
+            <option value="Not Implemented">Not Implemented</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label label-approve>Closure Comments</label>
+        <textarea [(ngModel)]="closureRemarks" class="textarea-implement"></textarea>
+      </div>
+      <div>
+        <label>Feedback</label>
+        <textarea [(ngModel)]="feedbackout" class="textarea-implement" cols="160" rows="4" id="area1"></textarea>
+      </div>
+      <!--<div *ngIf="this.appstatus != 'Completed' ">-->
+      <div *ngIf="this.stage=='Closure' && this.appstatus == 'Approved' ">
+        <button class="viewexeplan-button" (click)="submitCloser()">
+          Submit
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="crlesson" role="tabpanel" aria-labelledby="clocerlession-tab">
+    <div class="execute_container_implement">
+      <h3>Lessons Learned</h3>
+      <div class="row">
+        <!--<div class="col">
+          <label class="label-approve">Upload to Knowledge Base </label>
+          <input [(ngModel)]="attachment" class="input-approve" type="File" placeholder="CR-KBCR_001" (change)="getattech($event)" />
+        </div>-->
+
+        <!--<div *ngIf="lessonvalviewattachment">
+          <p>Attachment: {{ lessonvalviewattachment }}</p>
+          <button (click)="viewFile(crid.itcrid, lessonvalviewattachment)">View File</button>
+        </div>-->
+
+        <div class="col">
+          <label>Lessons Learned Date</label>
+          <input [(ngModel)]="lessonDt" class="dateStylelessons" type="date" [min]="todaysDate" />
+        </div>
+      </div>
+      <div>
+        <!--<div *ngFor="let lesson of lessondata; let i=index" class="col">
+          <label label-approve>Lessons learnt</label>
+          <textarea [(ngModel)]="lesson.lessons" value="{{lesson.lessons}}" class="textarea-implement"></textarea>
+        </div>-->
+        <div *ngFor="let lesson of lessonsArray; let i=index" class="col">
+          <label label-approve>Lessons learnt</label>
+          <textarea [(ngModel)]="lesson.text" class="textarea-implement"></textarea>
+        </div>
+      </div>
+      <button style="margin-right: 1%;" class="implement-button" (click)="addLesson()">
+        Add Lesson
+      </button>
+      <button style="margin-right: 1%;" class="implement-button" (click)="removeLastLesson()">
+        <i class="fa fa-remove"></i> Remove
+      </button>
+      <button class="implement-button" (click)="crlesson()">
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="clocerfeedback" role="tabpanel" aria-labelledby="clocerfeedback-tab">
+    <div class="execute_container_implement">
+      <h3>Follo wUp</h3>
+      <div class="row">
+        <div class="col">
+          <label>FollowUp Date</label>
+          <input [(ngModel)]="followupDt" class="dateStyle" type="date" [min]="todaysDate" />
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div>
+        <label label-approve>FollowUp Comments</label>
+        <textarea [(ngModel)]="followupComments" class="textarea-implement"></textarea>
+      </div>
+
+      <button (click)="Closerfollowup()" class="implement-button">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--</div>-->

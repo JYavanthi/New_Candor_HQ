@@ -1,0 +1,213 @@
+.change_request_header {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    margin-right: 25%;
+    white-space: nowrap;
+}
+
+.header-title {
+    color: #1c8c8c;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pdfBtn {
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+    background: white;
+    padding: 6px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.excelBtn {
+    border: 2px solid #27ae60;
+    color: #27ae60;
+    background: white;
+    padding: 6px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+th,
+td {
+    padding: 3px 14px;
+    text-align: center;
+}
+
+.search-crnum {
+    margin-left: -195%;
+    margin-top: 5%;
+    width: 75%;
+}
+
+.export_pdf {
+    justify-content: end;
+    display: flex;
+    margin-right: 0%;
+}
+
+
+.filter-container {
+    background: #f7fbff;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #c5ced8;
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    height: 135px;
+}
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+.filter-field label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.filter-field select,
+.filter-field input,
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    border: 1px solid #6fa8c9 !important;
+    border-radius: 25px !important;
+    padding: 8px 12px !important;
+    background: #f4f7fb !important;
+    outline: none;
+    font-size: 13px;
+    width: 100%;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    border-bottom: none !important;
+}
+
+.filter-buttons {
+    display: flex;
+    align-items: flex-end;
+    gap: 100px;
+    margin-left: 80%;
+    margin-top: -5%;
+}
+
+.btn-filter {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 18px;
+    cursor: pointer;
+}
+
+.btn-clear {
+    background-color: #e85d6a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 18px;
+    cursor: pointer;
+}
+
+.btn-filter:hover {
+    background-color: #218838;
+}
+
+.btn-clear:hover {
+    background-color: #d94b57;
+}
+
+
+.table-container {
+    background: #cfd9e6;
+    padding: 20px;
+    border-radius: 20px;
+    overflow-x: auto;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(150px, 1fr));
+    background: #3a8ea5;
+    color: white;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 2090px;
+}
+
+.table-body {
+    margin-top: 10px;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(150px, 1fr));
+    background: #eaf0f6;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #aab7c4;
+    min-width: 2110px;
+}
+
+.table-row div {
+    font-size: 13px;
+    color: #333;
+    word-break: break-word;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.completed {
+    background: #4caf50;
+}
+
+.progress {
+    background: #ffc107;
+}
+
+.cancel {
+    background: #f44336;
+}
+
+.pending {
+    background: #ff9800;
+}
+
+.approved {
+    background: #26a69a;
+}
+
+.implemented {
+    background: #3a8ea5;
+}
+
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #9fb3c8;
+    border-radius: 10px;
+}

@@ -1,0 +1,80 @@
+/*.form-download {
+  margin-left: 5%;
+  margin-top: 3%;
+  background-color: #edecec;
+  padding: 15px;
+  width: 89%;
+}*/
+
+/*.text-area{
+    height:75px;
+    width:99%;
+}*/
+
+button[disabled] {
+  background-color: #76bbe3;
+  pointer-events: none;
+}
+
+.container-field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 10px;
+ 
+  margin-bottom: 3%;
+}
+
+.field-line {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 56%;
+  margin-left: 2%;
+  margin-top: 14px;
+}
+
+.container-implement {
+  width: 77%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  margin-left: 15%;
+}
+
+.border-rfc-heading {
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: rgb(155, 158, 158);
+  padding: 10px;
+}
+
+
+.cursor {
+  cursor: pointer;
+  color:deepskyblue;
+ 
+}
+
+table,th,td{
+  border: 1px solid #cdc7c7;
+
+}
+
+.tableClass {
+  width: 98%;    
+  overflow: auto;
+  height: 500px;
+}
+.filter_button {
+  background-color: #3c8dbc;
+  color: white;
+  margin-top: 17px;
+}
+
+.border-rfc-heading{
+  margin-top: 30px;
+}

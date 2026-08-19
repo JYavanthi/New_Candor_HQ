@@ -1,0 +1,68 @@
+.dropdowns-list{
+  position: relative;
+  border: 1px solid lightgray;
+}
+
+.change_request_card_filter {
+  width: 95%;
+  margin-left: 3%;
+  margin-top: 0;
+}
+
+.filterReset{
+  display: flex;
+  justify-content: right;
+  margin-right: 2%;
+}
+
+.table-container {
+    max-width: 100%;
+    overflow: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 8px 8px;
+    background-color: white;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tableBox {
+    position: relative;
+    width: 100%;
+
+  }
+
+  th,
+  td {
+    padding: 2px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #cde9f7;
+    color: black;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-wrap: nowrap;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .export_pdf {
+    margin-left: -87px;
+  }
+  .filter_button {
+    background-color: #3c8dbc;
+    color: white;
+    margin-top: 17px;
+    margin-left: 40%;
+  }

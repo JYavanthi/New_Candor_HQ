@@ -1,0 +1,32 @@
+<style>
+  table, th, td {
+    border: 1px solid;
+  }
+
+  table {
+    width: 100%;
+  }
+</style>
+
+<div style="border: 1px solid black; margin: 10px; padding: 10px;">
+  <span>Dear ${SubmitterName},</span><br />
+  <p>Thank you for submitting the issues. Below are the details of the Issue/Incident.</p>
+  <p><b>ISSUE ID</b>: ${IssueID}</p>
+  <p><b>Requestor Name</b>: {{RequestorName}}</p>
+  <p><b>Plant Code</b>: {{PlantCode}}</p>
+  <p><b>Department</b>: {{DepartmentName}}</p>
+  <p><b>Phone No.</b>: ${PhoneNo}</p>
+  <span style="border-bottom:1.5px solid black;width:100%;display:inline-block;"></span>
+  <p><b>Requested Date and Time</b>: ${RequestedDateandTime}</p>
+  <p><b>Status</b>: {{Status}}</p>
+  <p><b>Priority</b>: ${Priority}</p>
+  <p><b>Issue Description</b>: ${IssueDescription}</p>
+  <p><b>Maximum Target Resolution Time</b>: {{ProposedResolutionDate}}</p>
+  <p><b>SLA</b>: ${WithinSLAorBreachedMet}</p>
+  <p>Our Support Engineer will get back on your queries to provide the Resolution.</p>
+  <p><a href=${loginUrl} target=${loginUrl}>Click here</a> to Log into Unnati and view your status.</p>
+  <p>Regards,</p>
+  <p>IT Team</p>
+  <p>Micro Labs Ltd</p>
+  <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+</div>

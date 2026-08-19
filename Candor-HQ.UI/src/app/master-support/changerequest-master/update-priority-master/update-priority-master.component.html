@@ -1,0 +1,42 @@
+<div class="updatepriorityMainDiv">
+
+  <div class="sidebar">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="main-card">
+    <h3 class="title">Update Priority</h3>
+
+    <div class="form-card">
+      <div class="row">
+
+        <div class="form-group">
+          <label>Priority ID</label>
+          <input class="searchinput" type="text" readonly [(ngModel)]="updatevalue[0].priorityId" />
+        </div>
+
+        <div class="form-group">
+          <label>Priority Name</label>
+          <input class="searchinput" type="text" [(ngModel)]="updatevalue[0].priorityName" />
+        </div>
+
+        <div class="form-group">
+          <label>Is Active</label>
+          <select [(ngModel)]="updatevalue[0].isActive">
+            <option>Select</option>
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button (click)="postPriority()" class="btn-submit">SUBMIT</button>
+      <button [routerLink]="'/Priority'" class="btn-back">BACK</button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,386 @@
+<div class="assetContainer">
+
+    <div class="assetHeadingDiv">
+        <div class="assetTitle">IT Asset</div>
+        <div class="assetButtonContainer">
+            <button class="assetBackBtn" (click)="navigateToBack()">Back</button>
+        </div>
+    </div>
+
+    <div class="assetMainModuleBox">
+
+        <div class="assetContent">
+            <div *ngIf="assetId" class="assetDetails">
+                <span>Asset Code: {{assetData?.assetCode}} | Status: {{assetData?.status}} | Raised Date:
+                    {{assetData?.createdDt
+                    |date:'dd/MM/yyyy'}} | Asset Health: <i style="color:green" class='bx bxs-circle'></i></span>
+            </div>
+
+            <ng-container *ngIf="assetId!=undefined && assetData?.status?.trim() != 'Draft'; else elseBlock">
+                <mat-tab-group [selectedIndex]="selectedTabIndex">
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': true}">
+                                <span>Details</span>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+                    </mat-tab>
+
+                    <mat-tab *ngIf="assetData?.isRpmreq || assetData?.isHodreq">
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': (
+                      this.assetData?.status?.trim() === 'Resolved' ||
+                      this.assetData?.status?.trim() === 'Approved' ||
+                      this.assetData?.status?.trim() === 'Seek Clarification' ||
+                      this.assetData?.status?.trim() === 'Open' ||
+                      this.assetData?.status?.trim() === 'In Progress' ||
+                      this.assetData?.status?.trim() === 'On Hold' ||
+                      this.assetData?.status?.trim() === 'Submit Clarification'
+                    )}">
+                                <span>Approval</span>
+                            </div>
+                        </ng-template>
+                        <app-sr-common-approval [srData]="assetData" [isAsset]="true" />
+                    </mat-tab>
+
+                    <mat-tab *ngIf="assetId" [disabled]="disableResolution">
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': assetData?.status?.trim() === 'Resolved'}">
+                                <span>Resolution</span>
+                            </div>
+                        </ng-template>
+                        <app-sr-resolution [srData]="assetData" [isAsset]="true" />
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <div [ngClass]="{'green-tab': true}">
+                                <span>History</span>
+                            </div>
+                        </ng-template>
+                        <app-common-asset-history />
+                    </mat-tab>
+
+                </mat-tab-group>
+            </ng-container>
+
+            <ng-template #elseBlock>
+                <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+            </ng-template>
+
+        </div>
+    </div>
+    <!-- <span *ngIf="showBackIcon" (click)="navigateToBack()" class="backIcon"><i class="fa fa-angle-left"></i>
+    </span> -->
+</div>
+
+<ng-template #formTemplate>
+    <form [formGroup]="ITAssetForm">
+        <div class="card service_card br-top-blue">
+            <div class="card-body">
+                <app-sr-details-self-others-guest [srData]="assetData" (radioBtnValues)="getDatafromRadios($event)" />
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="requestTypeClass">
+                                <div>
+                                    <label class="asteriskrequired">Request Type</label>
+                                    <select formControlName="requestType" name="requestType"
+                                        (change)="changeRequestTypeValue()">
+                                        <option selected disabled hidden value="">Select Request Type</option>
+                                        <option>New</option>
+                                        <option>Replace</option>
+                                        <option>Upgrade</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="ITAssetForm.get('requestType')?.value == 'New'">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="employeeType"
+                                        customLabelAlert="Select Employee Type">Employee Type</label>
+                                    <select formControlName="employeeType" name="employeeType" id="employeeType">
+                                        <option selected disabled hidden value="">Select Employee Type</option>
+                                        <option>Office</option>
+                                        <option>Plant</option>
+                                        <option>Field</option>
+                                        <option>Consultant</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetType"
+                                        customLabelAlert="Select Asset Type">Asset Type</label>
+                                    <select formControlName="assetType" name="assetType" id="assetType">
+                                        <option selected disabled hidden value="">Select Asset Type</option>
+                                        <option>Desktop</option>
+                                        <option>Laptop</option>
+                                        <option>Printer</option>
+                                        <option>Tab</option>
+                                        <option>Scanner</option>
+                                        <option>Projector</option>
+                                        <option>Display</option>
+                                        <option>Thin Client</option>
+                                        <option>Other's</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpImpactValidation"
+                                        customLabelAlert="Is GxP Impact / Validation Required?">Is GxP Impact /
+                                        Validation
+                                        Required?</label>
+                                    <select formControlName="isGxpImpactValidation" name="isGxpImpactValidation"
+                                        id="isGxpImpactValidation">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="existingAsset">Existing Asset</label>
+                                    <select formControlName="existingAsset" name="existingAsset" id="existingAsset">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="suggestedModel">Suggested Model</label>
+                                    <input type="text" formControlName="suggestedModel" name="suggestedModel"
+                                        id="suggestedModel" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="specsRequirements">If Any
+                                        Specs/Requirements</label>
+                                    <input type="text" formControlName="specsRequirements" name="specsRequirements"
+                                        id="specsRequirements" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="approximateValue">Approximate Value
+                                        (INR)</label>
+                                    <input type="number" min="1" formControlName="approximateValue"
+                                        name="approximateValue" id="approximateValue" />
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired"
+                                        for="purposeOrJustification">Purpose/Justification</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification" id="purposeOrJustification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="ITAssetForm.get('requestType')?.value == 'Replace'">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="employeeType"
+                                        customLabelAlert="Select Employee Type">Employee Type</label>
+                                    <select formControlName="employeeType" name="employeeType" id="employeeType">
+                                        <option selected disabled hidden value="">Select Employee Type</option>
+                                        <option>Office</option>
+                                        <option>Plant</option>
+                                        <option>Field</option>
+                                        <option>Consultant</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetType"
+                                        customLabelAlert="Select Asset Type">Asset Type</label>
+                                    <select formControlName="assetType" name="assetType" id="assetType">
+                                        <option selected disabled hidden value="">Select Asset Type</option>
+                                        <option>Desktop</option>
+                                        <option>Laptop</option>
+                                        <option>Printer</option>
+                                        <option>Tab</option>
+                                        <option>Scanner</option>
+                                        <option>Projector</option>
+                                        <option>Display</option>
+                                        <option>Thin Client</option>
+                                        <option>Other's</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpImpactValidation"
+                                        customLabelAlert="Is GxP Impact / Validation Required?">Is GxP Impact /
+                                        Validation
+                                        Required?</label>
+                                    <select formControlName="isGxpImpactValidation" name="isGxpImpactValidation"
+                                        id="isGxpImpactValidation">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="existingAsset">Existing Asset</label>
+                                    <select formControlName="existingAsset" name="existingAsset" id="existingAsset">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <!-- <div>
+                                    <label class="asteriskrequired" for="assetType">Replacement Asset
+                                        Type</label>
+                                    <input type="text" formControlName="assetType" name="assetType" id="assetType" />
+                                </div> -->
+                                <div>
+                                    <label class="asteriskrequired" for="assetModel">Replacement Asset
+                                        Model</label>
+                                    <input type="text" formControlName="assetModel" name="assetModel" id="assetModel" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetSerialNo">Replacement Asset Serial
+                                        No.</label>
+                                    <input type="text" formControlName="assetSerialNo" name="assetSerialNo"
+                                        id="assetSerialNo" />
+                                </div>
+                                <div>
+
+                                    <label class="asteriskrequired" for="assetWarrantyEndDate"
+                                     >Replacement Asset
+                                        Warranty
+                                        End Date</label>
+                                    <input type="date" formControlName="assetWarrantyEndDate" [min]="formValidationService.todaysDate"
+                                        name="assetWarrantyEndDate" id="assetWarrantyEndDate" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="suggestedModel">Suggested Model</label>
+                                    <input type="text" formControlName="suggestedModel" name="suggestedModel"
+                                        id="suggestedModel" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="specsRequirements">If Any
+                                        Specs/Requirements</label>
+                                    <input type="text" formControlName="specsRequirements" name="specsRequirements"
+                                        id="specsRequirements" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="approximateValue">Approximate Value
+                                        (INR)</label>
+                                    <input type="number" min="1" formControlName="approximateValue"
+                                        name="approximateValue" id="approximateValue" />
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired"
+                                        for="purposeOrJustification">Purpose/Justification</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification" id="purposeOrJustification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="ITAssetForm.get('requestType')?.value == 'Upgrade'">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="employeeType"
+                                        customLabelAlert="Select Employee Type">Employee Type</label>
+                                    <select formControlName="employeeType" name="employeeType" id="employeeType">
+                                        <option selected disabled hidden value="">Select Employee Type</option>
+                                        <option>Office</option>
+                                        <option>Plant</option>
+                                        <option>Field</option>
+                                        <option>Consultant</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetType"
+                                        customLabelAlert="Select Asset Type">Asset Type</label>
+                                    <select formControlName="assetType" name="assetType" id="assetType">
+                                        <option selected disabled hidden value="">Select Asset Type</option>
+                                        <option value="Desktop">Desktop</option>
+                                        <option>Laptop</option>
+                                        <option>Printer</option>
+                                        <option>Tab</option>
+                                        <option>Scanner</option>
+                                        <option>Projector</option>
+                                        <option>Display</option>
+                                        <option>Thin Client</option>
+                                        <option>Other's</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpImpactValidation"
+                                        customLabelAlert="Is GxP Impact Validation Required?">Is GxP Impact Validation
+                                        Required?</label>
+                                    <select formControlName="isGxpImpactValidation" name="isGxpImpactValidation"
+                                        id="isGxpImpactValidation">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="existingAsset">Existing Asset</label>
+                                    <select formControlName="existingAsset" name="existingAsset" id="existingAsset">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <!-- <div>
+                                    <label class="asteriskrequired" for="assetType">Upgrade Asset
+                                        Type</label>
+                                    <input type="text" formControlName="assetType" name="assetType" id="assetType" />
+                                </div> -->
+                                <div>
+                                    <label class="asteriskrequired" for="assetModel">Upgrade Asset
+                                        Model</label>
+                                    <input type="text" formControlName="assetModel" name="assetModel" id="assetModel" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetSerialNo">Upgrade Asset
+                                        Serial No.</label>
+                                    <input type="text" formControlName="assetSerialNo" name="assetSerialNo"
+                                        id="assetSerialNo" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="assetWarrantyEndDate">Upgrade Asset Warranty
+                                        End
+                                        Date</label>
+                                    <input type="date" formControlName="assetWarrantyEndDate"
+                                        name="assetWarrantyEndDate" id="assetWarrantyEndDate" [min]="formValidationService.todaysDate" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="suggestedModel">Suggested Model</label>
+                                    <input type="text" formControlName="suggestedModel" name="suggestedModel"
+                                        id="suggestedModel" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="specsRequirements">If Any
+                                        Specs/Requirements</label>
+                                    <input type="text" formControlName="specsRequirements" name="specsRequirements"
+                                        id="specsRequirements" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="approximateValue">Approximate Value
+                                        (INR)</label>
+                                    <input type="number" min="1" formControlName="approximateValue"
+                                        name="approximateValue" id="approximateValue" />
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="purposeOrJustification">Purpose/Justification
+                                        of
+                                        Upgrade</label>
+                                    <textarea class="textAreaClass" formControlName="purposeOrJustification"
+                                        name="purposeOrJustification" id="purposeOrJustification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mainBtnsDiv"
+                            *ngIf="ITAssetForm.value?.requestType && ((assetId==undefined||assetId==null)||this.assetData?.status?.trim() == 'Draft')">
+                            <button class="actionBtn" (click)="Submit('Draft')">Draft</button>
+                            <button class="actionBtn" (click)="Submit('Pending Approval')">Submit</button>
+                            <button class="actionBtn" (click)="clearAll()">Clear</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>

@@ -1,0 +1,435 @@
+<div class="container-implement">
+
+  <div class="container-field-line">
+    <h3>Change Request</h3>
+    <div class="border-rfc-heading">
+      <div class="row mt-3">
+        <div class="col">
+          <label>RFC #<span style="color:red">&nbsp;*</span></label>
+          <input type="text" [(ngModel)]="Value.crcode" disabled />
+        </div>
+        <div class="col">
+          <label>RFC Date<span style="color:red">&nbsp;*</span></label>
+          <input type="datetime-local" [(ngModel)]="Value.crdate" required [disabled]="Value['status']!='draft'" />
+        </div>
+        <div class="col">
+          <label>Change Owner</label>
+          <input type="text" [(ngModel)]="supportpersonname" value="{{supportpersonname}}" placeholder="Change Owner"
+            disabled />
+        </div>
+        <div class="col">
+          <label>Initiator<span style="color:red">&nbsp;*</span></label>
+          <input class="searchinput" type="text" placeholder="Enter Initiator Name" [(ngModel)]="setiniatorname"
+            (input)="filterItems()" disabled />
+          <ul class="dropdowns-list" *ngIf="dropdownItems.length > 0">
+            <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">{{item}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col">
+          <label>Plant<span style="color:red">&nbsp;*</span></label>
+          <select disabled [(ngModel)]="plantvalue">
+            <option *ngFor="let pltdata of plantcode" [value]="pltdata.id"
+              [attr.selected]="pltdata.id === plantvalue ? true : null">
+              {{ pltdata.code }}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Priority<span style="color:red">&nbsp;*</span></label>
+          <select [(ngModel)]="Value.priorityType" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Priority</option>
+            <option *ngFor="let item of this.priorityType" [value]="item.priorityId">{{item.priorityName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Change Requested By<span style="color:red">&nbsp;*</span></label>
+          <input class="searchinput" type="text" [disabled]="Value['status']!='Draft'"
+            placeholder="Enter Change Requestor Name" [(ngModel)]="setcreniatorname" (input)="filterItemscr()"
+            (ngModelChange)="ClearPlant()" *ngIf="!isLoading; else loadingText" />
+          <ng-template #loadingText>
+            <p>Loading...</p>
+          </ng-template>
+          <ul class="dropdowns-list" *ngIf="dropdownItemscr.length > 0">
+            <li class="drop-list" value="" *ngFor="let item of dropdownItemscr | slice:0:30"
+              (click)="selectItemcr(item)">
+              {{ item.employeeId + '-' + item.employeeName }}
+            </li>
+          </ul>
+        </div>
+        <div class="col">
+          <label>Requestor Plant<span style="color:red">&nbsp;*</span></label>
+          <input type="text" [(ngModel)]="RequestorPlant" disabled />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Classifications<span style="color:red">&nbsp;*</span></label>
+          <select (change)="categoryfunctions()" [(ngModel)]="classificationId" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Plant</option>
+            <option *ngFor="let cldata of classifications" [value]="cldata.itclassificationId"
+              [attr.selected]="cldata.itclassificationId === Value.classifcationId ? true : null">
+              {{cldata.classificationName}}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Category<span style="color:red">&nbsp;*</span></label>
+          <select (change)="categoryfunctions()" [(ngModel)]="selectedCategory" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Category</option>
+            <option *ngFor="let value of categorydata " [value]="value.itcategoryId">
+              {{value.categoryName}}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Sub-Category<span style="color:red">&nbsp;*</span></label>
+          <select [(ngModel)]="SubCategory" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Sub-Category</option>
+            <option *ngFor="let valueCtype of categorytype " [value]="valueCtype.categoryTypeId">
+              {{valueCtype.categoryType}}
+            </option>
+          </select>
+        </div>
+       
+        <div class="col">
+          <label>Nature of Change<span style="color:red">&nbsp;*</span></label>
+          <select [(ngModel)]="NatureOfChange" [disabled]="Value['status']!='Draft'">
+            <option value="" disabled>Select Nature of Change</option>
+            <option *ngFor="let valueN of Natureofchange" [value]="valueN.natureofChangeId">
+              {{valueN.natureofChange1}}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col">
+          <label>Reference<span style="color:red">&nbsp;*</span></label>
+          <select [(ngModel)]="Value.referenceId" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Reference</option>
+            <option *ngFor="let refdata of referenceapi " [value]="refdata.referenceId"
+              [attr.selected]="refdata.referenceId === Value.referenceId ? true : null">
+              {{refdata.referenceName}}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Reference Type<span style="color:red">&nbsp;*</span></label>
+          <select [(ngModel)]="Value.referenceTyp" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Reference Type</option>
+            <option *ngFor="let refdata of refer " [value]="refdata.referenceTypeId"
+              [attr.selected]="refdata.referenceTypeId === Value.referenceTyp ? true : null">
+              {{refdata.referenceType}}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Change Requested On<span style="color:red">&nbsp;*</span></label>
+          <input [(ngModel)]="Value.crrequestedDt" type="datetime-local" placeholder=""
+            [disabled]="Value['status']!='Draft'" />
+        </div>
+        <div class="col">
+          <label>Change Triggered By<span style="color:red">&nbsp;*</span></label>
+          <select [(ngModel)]="Value.triggeredBy" [disabled]="Value['status']!='Draft'">
+            <option value="" selected hidden disabled>Select Change Triggered By</option>
+            <option>{{Value['status']!='draft'}}</option>
+            <option>Compliance</option>
+            <option>Commercial</option>
+            <option>Statutory</option>
+            <option>Legal</option>
+            <option>SAP</option>
+            <option>Business Requirements</option>
+            <option>Efficiency/Productivity</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-6" style="display:flex;justify-content:flex-start;">
+          <span><input type="checkbox" [(ngModel)]="EmailNotification" style="height:15px;width:15px;"
+              [disabled]="Value['status'] != 'Draft'"></span>
+          <span>&nbsp;<b class="emailcheckbox">Send Notification to Change Requestor</b></span>
+        </div>
+        <div class="col-md-6">
+        </div>
+
+      </div>
+
+    </div>
+    <div *ngIf="!vflag">
+      <p><br /><b style="font-size:16px;color:brown">{{this.wrkflow}}</b></p>
+    </div>
+  </div>
+</div>
+
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>System Landscape</h3>
+    <div class="row">
+      <div class="col" *ngFor="let item of systemlandscape" style="display: flex; justify-content: flex-start;">
+        <input type="checkbox" style="height:15px;width:15px;" checked id="checkbox" [(ngModel)]="item['isChcked']"
+          [disabled]="Value['status'] != 'Draft'">&nbsp;
+        <label style="margin-right:2%;" for="checkbox"> {{item.sysLandscape1}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>Change Overview</h3>
+    <div class="border-rfc-heading">
+      <div>
+        <label>Change Description<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.changeDesc" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Reason For Change<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.reasonForChange" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Alternate Consideration<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.alternateConsidetation" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Impact of not doing change<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.impactNotDoing" class="textarea-implement" cols="160" rows="4" id="area4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Benefits of doing change<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.benefits" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Business Impact if Change is implemented<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.businessImpact" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Roll Back Plan<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.rollbackPlan" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div>
+        <label>Back out plan<span style="color:red">&nbsp;*</span></label>
+        <textarea [(ngModel)]="Value.backoutPlan" class="textarea-implement" cols="160" rows="4"
+          [disabled]="Value['status'] != 'Draft'"></textarea>
+      </div>
+      <div style="width: fit-content;">
+        <label>Attachement</label>
+        <div *ngIf="!(Value['status']?.trim()=='Draft')&&attachmentsList?.length==0">
+          No Attachments.
+        </div>
+        <div class="d-flex" *ngIf="Value['status']?.trim()=='Draft'">
+
+          <input type="file" [(ngModel)]="attach" (change)="getattach($event)" multiple
+            *ngIf="Value['status']=='Draft'" />
+          <button class="blue-botton ms-4" type="submit" value="Submit" (click)="addFile()">Add File</button>
+        </div>
+        <div class="attachmentList" style="width: fit-content;">
+          <div *ngFor="let attachment of attachmentsList">
+            <div>
+              {{attachment.fileName}}
+              <i class="fa fa-eye ms-3 mt-3 cursor-pointer" aria-hidden="true" (click)="viewFile(attachment)"></i>
+              <i class="fa fa-download cursor-pointer ms-3 mt-3" aria-hidden="true" style="margin-left: 10px;"
+                (click)="downFile(attachment)"></i>
+              <i class="fa fa-times cursor-pointer" aria-hidden="true" (click)="deleteDoc(attachment)"
+                style="margin-left: 10px;" *ngIf="Value['status']?.trim()=='Draft'"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>Effort & Estimate</h3>
+    <div class="border-rfc-heading">
+      <div class="row">
+        <div class="col">
+          <label>Approx Cost</label>
+          <input [(ngModel)]="Value.estimatedCost" type="text" placeholder="" [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col">
+          <label>Currency</label>
+          <input [(ngModel)]="Value.estimatedCostCurr" type="text" placeholder="INR"
+            [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col">
+          <label>Estimated Effort <span style="color:red">*</span></label>
+          <input [(ngModel)]="Value.estimatedEffort" type="number" min="0" [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col">
+          <label>Effort Day(s)/Hour(s) <span style="color:red">*</span></label>
+          <select [(ngModel)]="Value.estimatedEffortUnit" [disabled]="Value['status'] != 'Draft'">
+            <option value="" selected hidden disabled>Select</option>
+            <option value="Days">Days</option>
+            <option value="Hours">Hours</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label>Expected Date of Completion <span style="color:red">*</span></label>
+          <input [(ngModel)]="Value.estimatedDateCompletion" type="date" placeholder="1"
+            [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="notification-confirm" *ngIf="radioconfirmation">
+          <p style="font-size:17px;">Unchecking will clear all your datas. Click 'Yes' to Clear.</p>
+          <div style="text-align:center;">
+            <button class="confirombtn" (click)="Yes()">Yes</button>
+            <button class="confirombtn" (click)="No()">No</button>
+          </div>
+        </div>
+        <div class="col" style="display:flex;justify-content:flex-start;">
+          <span><input type="checkbox" [(ngModel)]="CheckDowntimeReq" style="height:15px;width:15px;"
+              (change)="toggleField($event)" [disabled]="Value['status'] != 'Draft'"></span>
+          <span>&nbsp;&nbsp;<b>Is Downtime Required?</b></span>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col" *ngIf="showRiskQ">
+          <label>From Date <span style="color:red">*</span></label>
+          <input type="datetime-local" [(ngModel)]="Value.downTimeFromDate" placeholder="" (change)="datetimefunction()"
+            [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col" *ngIf="showRiskQ">
+          <label>End Date<span style="color:red;font-size:x-small"> (*End Date Can't be less than start)</span></label>
+          <input type="datetime-local" [(ngModel)]="Value.downTimeToDate" placeholder="" [min]="minEndDate"
+            (change)="validateEndDate()" [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col" *ngIf="showRiskQ">
+        </div>
+        <div class="col" *ngIf="showRiskQ">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col" *ngIf="showRiskQ">
+          <label>Impacted Location <span style="color:red">*</span></label>
+          <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="dropdownList"
+            [(ngModel)]="selectedlocationNames" (ngModelChange)="onSelectedItemsChange()"
+            [disabled]="Value['status'] != 'Draft'">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col" *ngIf="showRiskQ">
+          <label>Impacted Department <span style="color:red">*</span></label>
+          <ng-multiselect-dropdown [settings]="dropdownDepartmentSettings" [data]="dropdownListDepartment"
+            [(ngModel)]="selecteddepartmentNames" (ngModelChange)="onSelecteddepartmentItemsChange()"
+            [disabled]="Value['status'] != 'Draft'">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="col" *ngIf="showRiskQ">
+          <label>Impacted Function <span style="color:red">*</span></label>
+          <input type="text" [(ngModel)]="Value.imactedFunc" placeholder="" [disabled]="Value['status'] != 'Draft'" />
+        </div>
+        <div class="col" *ngIf="showRiskQ">
+        </div>
+      </div>
+      <div class="row downtime_checklist" *ngIf="showRiskQ">
+        <h3>CheckList</h3>
+        <div style="width:75%;" class="container-field-line">
+          <table width="70%">
+            <thead>
+              <tr>
+                <th width="10%">Sl.no</th>
+                <th width="30%">Title</th>
+                <th width="50%">Description</th>
+                <th width="10%">Mandatory</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of checklist; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.checklistTitle }}</td>
+                <td>{{ item.checklistDesc }}</td>
+                <td>{{ item.mandatoryFlag ? 'True' : 'False' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-implement">
+  <div class="container-field-line">
+    <h3>GxP Classification</h3>
+    <div class="notification-confirm" *ngIf="gxpradioconfirmation">
+      <p style="font-size:17px;">Unchecking will clear all your datas. Click 'Yes' to Clear.</p>
+      <div style="text-align:center;">
+        <button class="confirombtn" (click)="gxpYes()">Yes</button>
+        <button class="confirombtn" (click)="gxpNo()">No</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="display:flex;justify-content:flex-start;">
+        <span><input style="height: 15px; width: 15px;" type="checkbox" [(ngModel)]="CheckGxPClassification"
+            (change)="toggleField2($event)" [disabled]="Value['status'] != 'Draft'"></span>
+        <span>&nbsp;&nbsp;<b>Is GxP Classification Available?</b></span>
+      </div>
+    </div>
+    <br />
+    <div *ngIf="showRiskQ1" class="border-inline border-rfc-heading">
+      <div class="container-line">
+        <div class="row g_p_classification">
+          <div class="col">Select-Plant <span style="color:red">*</span></div>
+          <div class="col">Change Control # <span style="color:red">*</span></div>
+          <div class="col">Change Control Date <span style="color:red">*</span></div>
+        </div>
+
+        <div class="row g_p_classification" *ngFor="let data of plantData; let i = index">
+          <div class="col">
+            <select [(ngModel)]="Value.gxpplantId" [disabled]="Value['status'] != 'Draft'">
+              <option value="" selected hidden disabled>Select Plant</option>
+              <option *ngFor="let pltdata of plantcode" [value]="pltdata.id"
+                [attr.selected]="pltdata.id === Value.plantId ? true : null">
+                {{ pltdata.code }}
+              </option>
+            </select>
+          </div>
+          <div class="col">
+            <input [(ngModel)]="Value.changeControlNo" type="text" class="g_p_input"
+              [disabled]="Value['status'] != 'Draft'">
+          </div>
+          <div class="col">
+            <input [(ngModel)]="Value.changeControlDt" type="date" class="g_p_input"
+              [disabled]="Value['status'] != 'Draft'">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="submit_change">
+      <button class="btn-sub" type="submit" value="New" (click)="Updatecr('Draft')"
+        *ngIf="Value.status=='Draft'">Draft</button>
+      <button class="btn-sub" type="submit" value="Submitted" (click)="Updatecr('Submitted')"
+        *ngIf="Value.status=='Draft'">Submit for approval</button>
+      <button class="btn-sub" type="submit" [routerLink]="'/change-request'">Close</button>
+    </div>
+  </div>

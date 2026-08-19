@@ -1,0 +1,70 @@
+
+.panel-content {
+    display: none;
+    overflow: hidden;
+  }
+  
+    .panel-content.open {
+      display: block;
+      padding:10px;
+      animation: slideDown 0.5s ease;   
+      overflow-wrap: anywhere;
+      height: max;
+      overflow-y: auto;
+    }
+  
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 100%;
+      background: white;
+    }
+  
+    .message-user {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    .message-text {
+      font-size: 16px; 
+    }
+  
+    .message-timestamp {
+      font-size: 12px;
+      text-align: right;
+      margin-top: 5px;
+    }
+  
+    .updatesidebar.show {
+      flex: 0 0 25%;
+      height: max-content;
+      max-height: 795px;
+      margin-top: -2rem;
+      margin-left: 20px;
+      border-radius: 5%;
+    }
+  
+    .no-comment{
+      text-align: center; 
+      padding: 15px;
+    }
+
+    .scrollable-element {
+      overflow: scroll;  /* or overflow-y: scroll; for vertical only */
+    }
+    
+    .scrollable-element::-webkit-scrollbar {
+      display: none;  /* Hides the scrollbar */
+    }
+    
+    .scrollable-element {
+      -ms-overflow-style: none;  /* For Internet Explorer */
+      scrollbar-width: none;  /* For Firefox */
+    }
+
+    .scroll-y{
+      
+    overflow-y: auto;
+    height: 500px;
+    }

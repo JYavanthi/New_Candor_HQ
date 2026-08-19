@@ -1,0 +1,23 @@
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>PR Code</th>
+        <th>Project Name</th>
+        <th>Activity</th>
+        <th>Updated Date</th>
+        <th>Updated By</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let h of historyList">
+        <td>{{h.projectCode}}</td>
+        <td>{{h.projectName}}</td>
+        <td>{{h.activity}}</td>
+        <td>{{h.modifiedDt | date:'dd-MM-yyyy HH:mm'}}</td>
+        <td>{{h.modifiedByName}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

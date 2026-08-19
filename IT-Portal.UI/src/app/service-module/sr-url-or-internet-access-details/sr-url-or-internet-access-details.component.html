@@ -1,0 +1,68 @@
+<form [formGroup]="urlAccessForm">
+  <div class="card service_card br-top-blue">
+    <div class="card-body">
+      <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+      <div class="card">
+        <div class="card-body">
+          <div class="software">
+            <div class="row">
+              <div class="requestTypeClass">
+                <div>
+                  <label class="asteriskrequired">Request Type</label>
+                  <select formControlName="requestType" name="requestType" (change)="changeRequestTypeValue()">
+                    <option selected disabled hidden value="">Select Request Type</option>
+                    <option *ngFor="let requestType of requestTypeList" [value]="requestType.supportId">
+                      {{requestType.supportName}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row"
+              *ngIf="this.urlAccessForm.value.requestType == 69 || this.urlAccessForm.value.requestType ==70">
+              <div class="inputFields">
+                <div>
+                  
+                  <label for="hostName" class="asteriskrequired">Hostname</label>
+                  <select id="hostName" formControlName="hostName" required
+                                    (change)="selectDetails($event)">
+                                        <option selected disabled hidden value="">Select Hostname</option>
+                                        <option *ngFor=" let item of assetDetails" [value]="item.assetNo">{{item?.hostName }}</option>
+                                    </select>
+                </div>
+                <div>
+                  <label for="ipAddress" class="asteriskrequired">IP Address</label>
+                  <input type="text" formControlName="ipAddress" name="ipAddress">
+                </div>
+                <div>
+                  <label for="urlRequired" class="asteriskrequired">URL Required</label>
+                  <input type="text" formControlName="urlRequired" name="urlRequired">
+                </div>
+                <div>
+                  <label for="empType" class="asteriskrequired">Employee Type</label>
+                  <select formControlName="empType" name="empType" id="empType">
+                    <option selected hidden disabled value="">Select Employee Type</option>
+                    <option value="Office">Office</option>
+                    <option value="Filed">Field</option>
+                    <option value="Consultant">Consultant</option>
+                  </select>
+                </div>
+                <div class="textAreaDiv">
+                  <label class="asteriskrequired" for="purpose">Purpose/Justification:</label>
+                  <textarea class="textAreaClass" id="purpose" formControlName="purpose" required></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mainBtnsDiv"
+            *ngIf="urlAccessForm.get('requestType')?.value && ((!srId)||this.srData?.status.trim() == 'Draft')">
+            <button class="actionBtn" (click)="submit('Draft')">Draft</button>
+            <button class="actionBtn" (click)="submit('Pending Approval')">Submit</button>
+            <button class="actionBtn" (click)="clearAll()">Clear</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

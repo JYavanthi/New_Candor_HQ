@@ -1,0 +1,114 @@
+::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
+    flex-grow: unset !important;
+  }
+  .releaseTab {
+    width: 100%;
+    display: flex;
+    padding: 0; 
+  }
+
+  .releaseTab mat-tab-group {
+    margin: 0;
+    width: 100% !important;
+    justify-content: start !important;
+  }
+
+  .releaseTab .mat-tab-group .mat-tab-header {
+    justify-content: flex-start; 
+  }
+
+  .executeTab{
+    display: flex;
+    align-items: center;
+   
+  }
+
+  ::ng-deep .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
+    flex-grow: unset !important;
+  }
+
+  mdc-tab mat-mdc-tab mat-mdc-focus-indicator ng-star-inserted mdc-tab--active mdc-tab-indicator--active{
+    width:100% !important;
+    justify-content: start;
+  }
+  
+  .releaseTab {
+    width: 100%;
+    display: flex;
+    padding: 0;
+  }
+  
+  .releaseTab mat-tab-group {
+    margin: 0;
+    width: 100% !important;
+    justify-content: start !important;
+    padding: 0;
+  }
+  
+  .releaseTab .mat-tab-group .mat-tab-header {
+    justify-content: flex-start;
+    padding: 0;
+  }
+  
+  .executeTab {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+.container-field-implement,
+.container-field-approve,
+.execute_container_implement {
+  width: 1200px;
+}
+
+.execute_container_implement {
+  padding: 30px;
+}
+
+.container-field-implement label {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: -3%;
+}
+
+.container-field-implement input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 3%;
+}
+
+.attachmentButton {
+  padding: 1%;
+  border: none;
+  background: none;
+}
+
+.alignSpan {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+::ng-deep .mdc-tab--active {
+  background-color: #3c8dbc !important;
+}
+
+::ng-deep .mdc-tab--active .mdc-tab__text-label{
+  color: white !important;
+}
+
+
+.uncomplete{
+  /* background: grey; */
+    /* width: 250%;
+    padding: 140%;
+    transform: translate(-29px, 0px); */
+}
+.custom-tab {
+  /* background-color: green; */
+}

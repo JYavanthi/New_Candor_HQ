@@ -1,0 +1,112 @@
+
+<div class="container" style="margin-top:15px;margin-bottom:5%">
+    <div class="card" style="border-top: 6px solid #113bf7;">
+      <div class="card-body">
+  
+        <div class="text-center subHeadingparaCss">
+          <p>Resolution </p>
+        </div>
+        <div>
+          
+          <div class="report_resolution" sty>
+            <label class="report_resolution">Resolution Remarks</label>
+            <!--<textarea class="textarea-implement" cols="160" rows="4"
+            id="area7" style="width:97%; margin-left:5px;"> </textarea>-->
+            <div style="width:97%; margin-left:5px;">
+              <angular-editor [config]="editorConfig"></angular-editor>
+            </div>
+          </div>
+          <div class="report_resolution" style="margin-top: 30px;">
+            <label class="report_resolution">User Remarks</label>
+            <!--<textarea class="textarea-implement" cols="160" rows="4"
+            id="area7" style="width:97%; margin-left:5px;"> </textarea>-->
+            <div style="width:97%; margin-left:5px;">
+              <angular-editor [config]="editorConfig"></angular-editor>
+            </div>
+          </div>
+          <div class="report_resolution" style="    margin-top: 30px;">
+            
+            <div style="width:97%; margin-left:5px;" >
+              <label class="report_resolution">Description<span style="color:red">*</span></label>
+              <!-- <angular-editor [config]="editorConfig" readonly></angular-editor> -->
+              <input type="textarea"/>
+            </div>
+          </div>
+          <div class="row" style="    margin-top: 30px;">
+            <div class="col">
+              <label>Proposed Resolution On</label>
+              <input type="date" />
+            </div>
+            <div class="col">
+              <label>Resolution Date</label>
+              <input type="date" />
+            </div>
+            <div class="col">
+              <label>On Hold Reason:</label>
+              <select required>
+                <option value="" selected disabled hidden>Select Reason</option>
+                <option>Waiting for Spare</option>
+                <option>Waiting for Vendor</option>
+              </select>
+            </div>
+            <div class="issuesubmitbtns" style="    margin-top: 30px;">
+              <span class="btn-sub"  [hidden]="ShowAdminButtons">Seek Clarification</span>
+              <span class="btn-sub" [hidden]="ShowAdminButtons">Resolve</span>
+              <span class="btn-sub" [hidden]="!ShowOnHold">On Hold</span>
+            </div>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="subHeadingCss mt-3" (click)="toggleChatPanel()" style="text-align:left;width: 30%;cursor:pointer;">
+      <p class="subHeadingparaCss">
+        Resolution Comments&nbsp;<i style="font-size:20px;" class='bx bx-chevrons-down'></i>
+      </p>
+    </div>
+  
+    <div *ngIf="showChatPanel" class="panel-content open">
+      <div class="chatContainer">
+        <div class="text-center">
+        </div>
+        <!--Admin-->
+        <ng-container>
+          <div class="EnterAdminChat">
+            <div class="adminIcon">
+              <i style="font-size: 25px; color: black;" class='bx bx-user'></i>
+            </div>
+            &nbsp;
+            <div class="adminChat">
+              <p class="adminchatClass">Support Engineer</p>
+              <span>Your issue is fixed!</span>
+            </div>
+          </div>
+          <div class="admintime">
+            <span>11:25 AM</span>
+          </div>
+        </ng-container>
+  
+        <!--Users-->
+        <div>
+          <div class="EnterUserChat">
+            <div class="UserChat">
+              <p class="UserchatClass">User</p>
+              <span>Thank you for your response!</span>
+            </div>
+            &nbsp;
+            <div class="userIcon">
+              <i style="font-size: 25px; color: black;" class='bx bx-user'></i>
+            </div>
+          </div>
+          <div class="usertime">
+            <span>14:54 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  
+    <!--History-->
+  
+    <!--History-->
+  </div>

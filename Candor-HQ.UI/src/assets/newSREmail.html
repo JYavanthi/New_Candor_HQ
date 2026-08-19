@@ -1,0 +1,54 @@
+<style>
+    table, th, td {
+      border: 1px solid;
+    }
+  
+    table {
+      width: 100%;
+    }
+  </style>
+  
+  <div style="border: 1px solid black; margin: 10px; padding: 10px;">
+    <span>Dear @SubmitterName,</span><br />
+    <p>Thank you for submitting the Service Request. Below are the details of the Service Request:</p>
+    <p><b>Service Code</b>: @serviceCode</p>
+    <p><b>Requestor Name</b>: @RequestorName</p>
+    <span style="border-bottom:1.5px solid black;width:100%;display:inline-block;"></span>
+    <p><b>Requested Date and Time</b>: @requestedDateTime</p>
+    <p><b>Status</b>: @Status</p>
+    <!-- <p><b>Justification/Description</b>: @Description</p>
+    <p><b>Maximum Target Resolution Time</b>: @ProposedResolutionDate</p> -->
+
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Approver Level</th>
+          <th>Name of Approver</th>
+          <th>Status</th>
+          <th>Remarks with Dates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Approved Level 1</td>
+          <td>@approver1 </td>
+          <td>@approver1Status</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Approved Level 2</td>
+          <td>@approver2</td>
+          <td>@approver2Status</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Our Support Engineer will get back on your queries to provide the Resolution.</p>
+    <p><a href=@loginUrl target=@loginUrl>Click here</a> to Log into Unnati and view your status.</p>
+    <p>Regards,</p>
+    <p>IT Team</p>
+    <p>Micro Labs Ltd</p>
+    <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+  </div>
+  

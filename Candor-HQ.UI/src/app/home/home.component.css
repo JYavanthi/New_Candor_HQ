@@ -1,0 +1,28 @@
+body {
+  background-color: deepskyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#welcome-text {
+  color: aliceblue;
+  text-align: center;
+  font-weight: bold;
+  animation: typing 1s steps(40) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid transparent; /* creates the typing cursor */
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}

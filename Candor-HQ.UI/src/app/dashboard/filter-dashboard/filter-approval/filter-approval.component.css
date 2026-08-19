@@ -1,0 +1,32 @@
+th,
+td {
+  padding: 3px 14px;
+  text-align: center;
+}
+
+.select_change_report {
+  width: 50%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 7vh;
+  margin-left: 10%;
+}
+
+
+.excel_button {
+  background-color: #3c8dbc;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.excel_div {
+  justify-content: end;
+  display: flex;
+  margin-right: 5%;
+}

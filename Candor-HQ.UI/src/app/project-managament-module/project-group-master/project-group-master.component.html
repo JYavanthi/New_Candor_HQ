@@ -1,0 +1,67 @@
+<div class="projectMastermainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-sidebsr></app-sidebsr>
+  </div>
+
+  <div class="contentSection">
+
+    <div class="topHeader">
+      <div class="title">PROJECT GROUP</div>
+
+      <div class="searchBox">
+        <i class="fa fa-search"></i>
+        <input type="text" [(ngModel)]="searchText" (input)="filterData()" placeholder="Search Group Name">
+      </div>
+
+      <div class="newBtn" (click)="navigateTo()">
+        <i class="fa fa-plus-circle"></i>
+        NEW
+      </div>
+    </div>
+
+    <div class="tableCard">
+      <table>
+        <thead>
+          <tr>
+            <th>SR. NO.</th>
+            <th>Group Name</th>
+            <th>Is Active</th>
+            <th style="text-align:center;">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let data of groupvalue ? groupvalue : groupList; let i = index">
+            <td class="blueText">{{ i + 1 }}</td>
+            <td class="blueText">{{ data.projectGroupName }}</td>
+
+            <td>
+              <span [ngClass]="data.isActive ? 'active' : 'inactive'">
+                {{ data.isActive ? 'True' : 'False' }}
+              </span>
+            </td>
+
+            <td class="actionCell">
+              <span class="editIcon" (click)="navigateTo(data.projectGroupId)">
+                <i class="fa fa-pencil"></i>
+              </span>
+
+              <span class="deleteIcon" (click)="deleteRow(data.projectGroupId)">
+                <i class="fa fa-trash"></i>
+              </span>
+            </td>
+          </tr>
+
+          <tr *ngIf="groupList?.length === 0">
+            <td colspan="4" class="noData">
+              <i class="fa fa-search"></i> No Data Available
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

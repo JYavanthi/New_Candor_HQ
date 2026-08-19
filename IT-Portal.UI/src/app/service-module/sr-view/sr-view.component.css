@@ -1,0 +1,100 @@
+.serviceContainer {
+    position: relative;
+    width: 90%;
+    margin-left: 8%;
+    margin-bottom: 3%;
+}
+
+.serviceHeadingDiv {
+    position: relative;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px 5px 0 0;
+}
+
+.serviceTitle {
+    text-align: center;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.serviceButtonContainer {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.serviceBackBtn {
+    background-color: #3c8dbc;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.serviceMainModuleBox {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: #f2f2f2;
+    padding: 15px;
+    display: flex;
+    border-radius: 0 0 5px 5px;
+}
+
+.serviceModules {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 100%;
+    gap: 20px;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .serviceModules {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .serviceModules {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .serviceModules {
+        grid-template-columns: 1fr;
+    }
+}
+
+.serviceModuleCard {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: white;
+    height: 120px;
+    /* height: calc(10vh + 20px); */
+    width: 100%;
+    cursor: pointer;
+}
+
+.serviceModuleCard:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.serviceIcon {
+    font-size: 25px;
+}
+
+.serviceIconTitle {
+    font-size: 16px;
+}

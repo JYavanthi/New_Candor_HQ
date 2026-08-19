@@ -1,0 +1,588 @@
+<form [formGroup]="emailForm">
+  <div class="card service_card br-top-blue">
+    <div class="card-body">
+      <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="requestTypeClass">
+              <div>
+                <label class="asteriskrequired">Request Type</label>
+                <select (change)="changeRequestTypeValue()" formControlName="requestType" name="requestType"
+                  id="requestType">
+                  <option selected disabled hidden value="">Select Request Type</option>
+                  <option *ngFor="let requesttype of requestTypeList" [value]="requesttype.supportId">
+                    {{requesttype.supportName}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- New Email -->
+          <div class="row" *ngIf="emailForm.value.requestType == 37">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="intercomVoipNo">Intercom/VOIP Number</label>
+                <input type="number" min="0" formControlName="intercomVoipNo" name="intercomVoipNo"
+                  (input)="onVouIpChange($event)" id="intercomVoipNo" />
+              </div>
+
+              <div class="mobile-no">
+                <label class="asteriskrequired" for="mobileNumber">Mobile Number</label>
+                <input formControlName="mobileNumber" name="mobileNumber" id="mobileNumber" type="number"
+                  (input)="onMobileNumberChange($event)" />
+              </div>
+
+              <div
+                *ngIf="radioDataList?.formValues?.userType == 'others' || radioDataList.formValues?.userType == 'self'">
+                <label class="asteriskrequired" for="dateOfJoining">Date Of Joining</label>
+                <input type="date" formControlName="dateOfJoining" name="dateOfJoining" id="dateOfJoining">
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="isCommonId" customLabelAlert="Is this Common/ Individual ID?">Is
+                  this Common/ Individual ID?</label>
+                <select formControlName="isCommonId" name="isCommonId" id="isCommonId" (change)="subimited=false;bindePreferedEmail()">
+                  <option selected hidden disabled value="">Select</option>
+                  <option value="Common">Common</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="employeeType">Employee Category</label>
+                <select formControlName="employeeType" name="employeeType" id="employeeType">
+                  <option selected hidden disabled value="">Select Employee Category</option>
+                  <option value="Office">Office</option>
+                  <option value="Field">Field</option>
+                  <option value="Consultant">Consultant</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="preferredEmailId">Preferred Email ID</label>
+                <input formControlName="preferredEmailId" type="email" name="preferredEmailId" id="preferredEmailId" />
+                <span *ngIf="emailForm.get('preferredEmailId')?.touched && emailForm.get('preferredEmailId')?.invalid">
+                  <span *ngIf="emailForm.get('preferredEmailId')?.hasError('email')" style="color:red">Enter a Valid
+                    Email ID</span>
+                </span>
+                <span style="color:red"
+                  *ngIf="emailList?.includes(emailForm.value.preferredEmailId.toLocaleLowerCase())">Email id already
+                  exists.</span>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="allowOutsideCommunication"
+                  customLabelAlert="Do want to allow outside communication?">Allow Outside Communication</label>
+                <select formControlName="allowOutsideCommunication" name="allowOutsideCommunication"
+                  id="allowOutsideCommunication">
+                  <option selected hidden disabled value="">Select Yes/No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="mailAccessOnMobile">Mail Access on Mobile</label>
+                <select formControlName="mailAccessOnMobile" name="mailAccessOnMobile" id="mailAccessOnMobile">
+                  <option selected hidden disabled value="">Select Yes/No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="addInMailGroups" title="Provide List of Groups for Selection">Add
+                  in Mail Groups</label>
+                <!-- <input type="text" formControlName="addInMailGroups" name="addInMailGroups" id="addInMailGroups"> -->
+                <!-- <select formControlName="addInMailGroups" name="addInMailGroups" id="addInMailGroups">
+                  <option *ngFor="let group of mailGroups" [value]="group">{{ group }}</option>
+                </select> -->
+
+                <select formControlName="addInMailGroups" name="addInMailGroups" id="addInMailGroups">
+                  <option *ngFor="let emailGrp of emailGrpList" [value]="emailGrp.emailGroupId">
+                    {{emailGrp.emailGroupName}}</option>
+                </select>
+
+              </div>
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Access -->
+          <div class="row" *ngIf="emailForm.value.requestType == 43 || emailForm.value.requestType == 44">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="emailId">Email ID</label>
+                <input formControlName="emailId" type="email" name="emailId" id="emailId" />
+                <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div>
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rename Email -->
+          <div class="row" *ngIf="emailForm.value.requestType == 38">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="employeeType">Employee Type</label>
+                <select formControlName="employeeType" name="employeeType" id="employeeType">
+                  <option selected hidden disabled value="">Select Employee type</option>
+                  <option value="Office">Office</option>
+                  <option value="Field">Field</option>
+                  <option value="Consultant">Consultant</option>
+                </select>
+              </div>
+              <div>
+                <label class="asteriskrequired" for="emailId">Existing Email ID</label>
+                <input formControlName="emailId" type="text" name="emailId" id="emailId" />
+                <!-- <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span> -->
+              </div>
+              <div>
+                <label class="asteriskrequired" for="intercomVoipNo">Intercom/VOIP Number</label>
+                <input type="number" min="0" formControlName="intercomVoipNo" name="intercomVoipNo"
+                  (input)="onVouIpChange($event)" id="intercomVoipNo" />
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="mobileNumber">Mobile Number</label>
+                <input formControlName="mobileNumber" name="mobileNumber" id="mobileNumber" type="number"
+                  (input)="onMobileNumberChange($event)" />
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="isCommonId">Rename Common/Individual ID</label>
+                <select formControlName="isCommonId" name="isCommonId" id="isCommonId" (change)="subimited=false;bindePreferedEmail()">
+                  <option selected hidden disabled value="">Select</option>
+                  <option value="Common">Common</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="preferredEmailId">Preferred Email ID</label>
+                <input formControlName="preferredEmailId" type="email" name="preferredEmailId" id="preferredEmailId" />
+                <span *ngIf="emailForm.get('preferredEmailId')?.touched && emailForm.get('preferredEmailId')?.invalid">
+                  <span *ngIf="emailForm.get('preferredEmailId')?.hasError('email')" style="color:red">Enter a Valid
+                    Email ID</span>
+                </span>
+                <span style="color:red"
+                  *ngIf="emailList?.includes(emailForm.value.preferredEmailId.toLocaleLowerCase())">Email id already
+                  exists.</span>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="allowOutsideCommunication"
+                  customLabelAlert="Do want to allow outside communication?">Allow Outside Communication</label>
+                <select formControlName="allowOutsideCommunication" name="allowOutsideCommunication"
+                  id="allowOutsideCommunication">
+                  <option selected hidden disabled value="">Select Yes/No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="mailAccessOnMobile">Mail Access on Mobile</label>
+                <select formControlName="mailAccessOnMobile" name="mailAccessOnMobile" id="mailAccessOnMobile">
+                  <option selected hidden disabled value="">Select Yes/No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="addInMailGroups" title="Provide List of Groups for Selection">Add
+                  in Mail Groups</label>
+                <!-- <input type="text" formControlName="addInMailGroups" name="addInMailGroups" id="addInMailGroups"> -->
+
+                <select formControlName="addInMailGroups" name="addInMailGroups" id="addInMailGroups">
+                  <option selected hidden disabled value="">Select in mail group</option>
+                  <option *ngFor="let emailGrp of emailGrpList" [value]="emailGrp.emailGroupId">
+                    {{emailGrp.emailGroupName}}</option>
+                </select>
+                <!-- <select formControlName="addInMailGroups" name="addInMailGroups" id="addInMailGroups">
+                  <option *ngFor="let group of mailGroups" [value]="group">{{ group }}</option>
+                </select> -->
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add User into Group -->
+          <div class="row" *ngIf="emailForm.value.requestType == 42">
+            <div class="inputFields col-3">
+              <div>
+                <label class="asteriskrequired" for="groupName">Group Name</label>
+                <select formControlName="groupName" name="groupName" id="groupName">
+                  <option selected hidden disabled value="">Select Group Name</option>
+                  <option *ngFor="let emailGrp of emailGrpList" [value]="emailGrp.emailGroupId">
+                    {{emailGrp.emailGroupName}}</option>
+                </select>
+              </div>
+            </div>
+
+
+            <!-- Members to be added Starts-->
+
+            <div cdkDropListGroup class="cdk">
+              <div style="position: relative;"
+                *ngIf="emailForm.value.requestType && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+                <label >Members to be Added to the Group <span style="font-size: 10px;
+    color: red;">( Drag employee from the list to "Members Added" filed )</span></label>
+                <input type="text" formControlName="members" name="members" id="members" (input)="filterItem('Emplist')"
+                  placeholder="Search by Employee ID or Name" />
+                <div class="dropDown" cdkDropList [cdkDropListData]="dropdownItems" (cdkDropListDropped)="drop($event)">
+                  <div class="drop-list" value="" *ngFor="let item of dropdownItems" cdkDrag>
+                    {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                  </div>
+                  <span> Drop Employee
+                    form the list here</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for=""> Members Added <span style="font-size: 10px;color: red;">( Drag
+                    and Drop
+                    employee from the list to be added )</span> </label>
+                <input class="form-control" type="text" name="search" autocomplete="off" [(ngModel)]="searchText"
+                  [ngModelOptions]="{standalone: true}" placeholder="&#61442; Search by Employee ID or Name" />
+                <div cdkDropList [cdkDropListData]="addedMembers" class="dropDown" (cdkDropListDropped)="drop($event)"
+                  style="max-height: 17rem" [cdkDropListDisabled]="isFieldDisabled">
+                  <div class="drop-list" value="" *ngFor="let item of addedMembers | filter:searchText" cdkDrag
+                    [cdkDragDisabled]="isFieldDisabled"> {{ item.employeeId + '
+                    ' + '-' + ' ' + item.employeeName }}</div> <span *ngIf="addedMembers.length == 0"> Drop Employee
+                    form the list here</span>
+                </div>
+              </div>
+            </div>
+            <!-- Members to be added Starts-->
+
+            <div class="textAreaDiv">
+              <label class="asteriskrequired" for="justification">Justification</label>
+              <textarea class="textAreaClass" formControlName="justification" name="justification"
+                id="justification"></textarea>
+            </div>
+
+
+            <!-- <div>
+                <label class="asteriskrequired" for="preferredEmailId">Email ID</label>
+                <input formControlName="preferredEmailId" type="email" name="preferredEmailId" id="preferredEmailId" />
+                <span *ngIf="emailForm.get('preferredEmailId')?.touched && emailForm.get('preferredEmailId')?.invalid">
+                  <span *ngIf="emailForm.get('preferredEmailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div> -->
+
+
+
+
+
+
+          </div>
+
+          <!-- Communicate to external Domains -->
+          <div class="row" *ngIf="emailForm.value.requestType == 45">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="emailId">Email ID</label>
+                <input formControlName="emailId" type="email" name="emailId" id="emailId" />
+                <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="employeeType">Employee Category</label>
+                <select formControlName="employeeType" name="employeeType" id="employeeType">
+                  <option selected hidden disabled value="">Select Employee Category</option>
+                  <option value="Office">Office</option>
+                  <option value="Field">Field</option>
+                  <option value="Consultant">Consultant</option>
+                </select>
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Create New Mail Group -->
+          <div class="row" *ngIf="emailForm.value.requestType == 41">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="groupName">Group Name</label>
+                <input formControlName="groupName" name="groupName" id="groupName" />
+              </div>
+
+
+            </div>
+            <div cdkDropListGroup class="cdk">
+              <div style="position: relative;"
+                *ngIf="emailForm.value.requestType && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+                <label >Members to be Added to the Group <span style="font-size: 10px;
+  color: red;">( Drag employee from the list to "Members Added" filed )</span></label>
+                <input type="text" formControlName="members" name="members" id="members" (input)="filterItem('Emplist')"
+                  placeholder="Search by Employee ID or Name" />
+                <div class="dropDown" cdkDropList [cdkDropListData]="dropdownItems" (cdkDropListDropped)="drop($event)">
+                  <div class="drop-list" value="" *ngFor="let item of dropdownItems" cdkDrag>
+                    {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                  </div>
+                  <span> Drop Employee
+                    form the list here</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for=""> Members Added <span style="    font-size: 10px;
+    color: red;">( Drag and Drop employee from the list to be added )</span> </label>
+                <input class="form-control" type="text" name="search" autocomplete="off" [(ngModel)]="searchText"
+                  [ngModelOptions]="{standalone: true}" placeholder="&#61442; Search by Employee ID or Name" />
+                <div cdkDropList [cdkDropListData]="addedMembers" class="dropDown" (cdkDropListDropped)="drop($event)"
+                  style="max-height: 17rem" [cdkDropListDisabled]="isFieldDisabled">
+                  <div class="drop-list" value="" *ngFor="let item of addedMembers | filter:searchText" cdkDrag
+                    [cdkDragDisabled]="isFieldDisabled"> {{ item.employeeId + '
+                    ' + '-' + ' ' + item.employeeName }}</div> <span *ngIf="addedMembers.length == 0"> Drop Employee
+                    form the list here</span>
+                </div>
+              </div>
+            </div>
+            <div class="textAreaDiv">
+              <label class="asteriskrequired" for="justification">Justification</label>
+              <textarea class="textAreaClass" formControlName="justification" name="justification"
+                id="justification"></textarea>
+            </div>
+          </div>
+
+          <!-- Disable Email ID -->
+          <div class="row" *ngIf="emailForm.value.requestType == 40">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="intercomVoipNo">Intercom/VOIP Number</label>
+                <input type="number" min="0" formControlName="intercomVoipNo" name="intercomVoipNo"
+                  (input)="onVouIpChange($event)" id="intercomVoipNo" />
+              </div>
+
+              <div
+                *ngIf="radioDataList?.formValues?.userType == 'others' || radioDataList.formValues?.userType == 'self'">
+                <label class="asteriskrequired" for="dateOfJoining">Date Of Joining</label>
+                <input type="date" formControlName="dateOfJoining" name="dateOfJoining" id="dateOfJoining">
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="isCommonId" customLabelAlert="Is this Common/Individual ID?">Is
+                  this Common/Individual ID?</label>
+                <select formControlName="isCommonId" name="isCommonId" id="isCommonId" (change)="subimited=false;bindePreferedEmail()">
+                  <option selected hidden disabled value="">Select</option>
+                  <option value="Common">Common</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="emailId">Email ID to be Disabled</label>
+                <input formControlName="emailId" type="email" name="emailId" id="emailId" />
+                <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div>
+
+
+              <div>
+                <label class="asteriskrequired" for="employeeType">Employee Category</label>
+                <select formControlName="employeeType" name="employeeType" id="employeeType">
+                  <option selected hidden disabled value="">Select Employee Category</option>
+                  <option value="Office">Office</option>
+                  <option value="Field">Field</option>
+                  <option value="Consultant">Consultant</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="allowOutsideCommunication"
+                  customLabelAlert="Do want to allow outside communication?">Disable Outside Communication</label>
+                <select formControlName="allowOutsideCommunication" name="allowOutsideCommunication"
+                  id="allowOutsideCommunication">
+                  <option selected hidden disabled value="">Select Yes/No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="mailAccessOnMobile"> Remove Mail Access on Mobile</label>
+                <select formControlName="mailAccessOnMobile" name="mailAccessOnMobile" id="mailAccessOnMobile">
+                  <option selected hidden disabled value="">Select Yes/No</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <!-- <div>
+                <label class="asteriskrequired" for="DOJ">Date of joining</label>
+                <input type="DOJ" formControlName="DOJ" disabeled
+                name="DOJ" id="DOJ" />
+            </div> -->
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- domain/\ -->
+          <div class="row" *ngIf="emailForm.value.requestType == 1000">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="domain">Domain:</label>
+                <input id="domain" formControlName="domain" required>
+              </div>
+
+
+              <div>
+                <label class="asteriskrequired" for="isCommonId">Common/Individual ID</label>
+                <select formControlName="isCommonId" name="isCommonId" id="isCommonId">
+                  <option selected hidden disabled value="" disabled>Select</option>
+                  <option value="Common">Common</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Increase Storage -->
+          <div class="row" *ngIf="emailForm.value.requestType == 39">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="emailId">Email ID</label>
+                <input formControlName="emailId" type="email" name="emailId" id="emailId" />
+                <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="gbIncrease" customLabelAlert="How Many GB to be Increased?">How
+                  Many GB to be
+                  Increased?</label>
+                <input id="gbIncrease" type="number" formControlName="gbIncrease" required
+                  (input)="gbToBeIncreasedInput($event)">
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Training -->
+          <div class="row" *ngIf="emailForm.value.requestType == 46">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="emailId">Email ID</label>
+                <input formControlName="emailId" type="email" name="emailId" id="emailId" />
+                <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Domains -->
+          <div class="row" *ngIf="emailForm.value.requestType == 94">
+            <div class="inputFields">
+              <div>
+                <label class="asteriskrequired" for="isCommonId" customLabelAlert="Is this Common/ Individual ID?">Is
+                  this Common/ Individual ID?</label>
+                <select formControlName="isCommonId" name="isCommonId" id="isCommonId" (change)="subimited=false;bindePreferedEmail()">
+                  <option selected hidden disabled value="">Select</option>
+                  <option value="Common">Common</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+              <div>
+                <label class="asteriskrequired" for="employeeType">Employee Type</label>
+                <select formControlName="employeeType" name="employeeType" id="employeeType">
+                  <option selected hidden disabled value="">Select Employee type</option>
+                  <option value="Office">Office</option>
+                  <option value="Field">Field</option>
+                  <option value="Consultant">Consultant</option>
+                </select>
+              </div>
+              <div>
+                <label class="asteriskrequired" for="emailId">Specify Email ID</label>
+                <input formControlName="emailId" type="email" name="emailId" id="emailId" />
+                <span *ngIf="emailForm.get('emailId')?.touched && emailForm.get('emailId')?.invalid">
+                  <span *ngIf="emailForm.get('emailId')?.hasError('email')" style="color:red">Enter a Valid Email
+                    ID</span>
+                </span>
+              </div>
+
+              <div>
+                <label class="asteriskrequired" for="domain">Domain</label>
+                <input id="domain" formControlName="domain" required>
+              </div>
+
+              <div class="textAreaDiv">
+                <label class="asteriskrequired" for="justification">Purpose/Justification</label>
+                <textarea class="textAreaClass" formControlName="justification" name="justification"
+                  id="justification"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="mainBtnsDiv"
+            *ngIf="emailForm.value.requestType && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+            <button class="actionBtn" (click)="submitEmail('Draft')">Draft</button>
+            <button class="actionBtn" (click)="submitEmail('Pending Approval')">Submit</button>
+            <button class="actionBtn" (click)="clearAll()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

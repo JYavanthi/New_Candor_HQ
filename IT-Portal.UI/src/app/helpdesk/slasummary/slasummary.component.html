@@ -1,0 +1,101 @@
+
+
+<div class="text-center">
+  <div class="text-center pageHeadingCss">
+    <p class="pageHeadingparaCss">SLA Summary</p>
+  </div>
+  <button style="margin-right:80%" class="btn-back" [routerLink]="'/reports'">Back</button>
+</div>
+
+
+
+
+<div class="card card_filter" style="margin-bottom:3%; margin-top:20px;">
+  <div class="card-body card_body_filter">
+    <div class="row filter_cr">
+      <div class="col">
+        <label>Location</label><br />
+        <select class="input-change">
+          <option value="1" disabled selected>Select-plant</option>
+          <option value="1">ML 1</option>
+          <option value="2">ML 2</option>
+          <option value="3">ML 3</option>
+          <option value="4">ML 4</option>
+          <option value="5">ML 5</option>
+          <option value="6">ML 6</option>
+          <option value="6">ML 7</option>
+          <option value="6">ML 8</option>
+          <option value="6">ML 9</option>
+          <option value="6">ML 10</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Department</label><br />
+        <select class="input-change">
+          <option value="1" disabled selected>Select-Department</option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+          <option value="5"></option>
+          <option value="6"></option>
+          <option value="6"></option>
+          <option value="6"></option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Engineer</label><br />
+        <select class="input-change">
+          <option value="1" disabled selected>Engineer</option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Employee</label><br />
+        <select class="input-change">
+          <option value="1" disabled selected>Employee</option>
+          <option value=""></option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Start Date:</label><br />
+        <input class="input-change cr_date" type="date" id="fromDate" name="fromDate" required />
+      </div>
+      <div class="col">
+        <label>End Date:</label><br />
+        <input class="input-change cr_date" type="date" id="toDate" name="toDate" required />
+      </div>
+    </div>
+
+    <button style=" margin-left: 45%" class="btn btn-rounded filter_button">Filter</button>
+  </div>
+</div>
+
+
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead class="table-head">
+      <tr class="border-bottom">
+        <!--<th>Select</th>-->
+        <th>Select</th>
+        <th>Location</th>
+        <th>Department</th>
+        <th>Engineer</th>
+        <th>Employee</th>
+        <!--<th>Delete</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="tr-body">
+        <td><input type="checkbox"></td>
+        <td>ML 04</td>
+        <td>Manufacturing</td>
+        <td>Michael</td>
+        <td>    </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

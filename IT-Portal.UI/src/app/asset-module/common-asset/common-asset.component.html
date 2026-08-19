@@ -1,0 +1,90 @@
+<div class="assetContainer">
+
+  <div class="assetHeadingDiv">
+    <div class="assetTitle">{{getTitle()}}</div>
+    <div class="assetButtonContainer">
+      <button class="assetBackBtn" (click)="navigateToBack()">Back</button>
+    </div>
+  </div>
+
+  <div class="assetMainModuleBox">
+
+    <div class="assetContent">
+      <div *ngIf="assetId" class="assetDetails">
+        <span>Asset Code: {{assetData?.assetCode}} | Status: {{assetData?.status}} | Raised Date: {{assetData?.createdDt
+          |date:'dd/MM/yyyy'}} | Asset Health: <i style="color:green" class='bx bxs-circle'></i></span>
+      </div>
+
+      <ng-container *ngIf="assetId!=undefined && assetData?.status?.trim() != 'Draft'; else elseBlock">
+        <mat-tab-group [selectedIndex]="selectedTabIndex">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <div [ngClass]="{'green-tab': true}">
+                <span>Details</span>
+              </div>
+            </ng-template>
+
+            <div [ngSwitch]="currentUrl">
+              <div *ngSwitchCase="'/assets/itspare'">
+                <app-it-spare/>
+              </div>
+              <div *ngSwitchCase="'/assets/itasset'">
+                <app-it-asset/>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab >
+            <ng-template mat-tab-label>
+              <div [ngClass]="{'green-tab': (
+                    this.assetData?.status?.trim() === 'Allocated' ||
+                    this.assetData?.status?.trim() === 'Approved' ||
+                    this.assetData?.status?.trim() === 'Seek Clarification' ||
+                    this.assetData?.status?.trim() === 'Open' ||
+                    this.assetData?.status?.trim() === 'In Progress' ||
+                    this.assetData?.status?.trim() === 'On Hold' ||
+                    this.assetData?.status?.trim() === 'Submit Clarification'
+                  )}">
+                <span>Approval</span>
+              </div>
+            </ng-template>
+            <app-sr-common-approval [assetData]="assetData" [srData]="assetData" 
+            [isAsset]="true"/>
+          </mat-tab>
+
+          <mat-tab *ngIf="assetId" [disabled]="disableResolution">
+            <ng-template mat-tab-label>
+              <div [ngClass]="{'green-tab': assetData?.status?.trim() === 'Allocated'}">
+                <span>Resolution</span>
+              </div>
+            </ng-template>
+            <app-sr-resolution [srData]="assetData" [isAsset]="isAsset"/>
+          </mat-tab>
+
+          <!-- <mat-tab>
+            <ng-template mat-tab-label>
+              <div [ngClass]="{'green-tab': true}">
+                <span>History</span>
+              </div>
+            </ng-template>
+            <app-common-asset-history />
+          </mat-tab> -->
+
+        </mat-tab-group>
+      </ng-container>
+
+      <ng-template #elseBlock>
+        <div [ngSwitch]="currentUrl">
+          <div *ngSwitchCase="'/assets/itspare'">
+            <app-it-spare />
+          </div>
+          <div *ngSwitchCase="'/assets/itasset'">
+            <app-it-asset />
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <!-- <span *ngIf="showBackIcon" (click)="navigateToBack()" class="backIcon"><i class="fa fa-angle-left"></i>
+  </span> -->
+</div>

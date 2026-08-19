@@ -1,0 +1,48 @@
+<div class="maindiv">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <h3 class="page-heading">NEW CATEGORY</h3>
+
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Category Name</label>
+            <input class="searchinput" type="text" placeholder="Category Name" [(ngModel)]="categoryName" />
+          </div>
+
+          <div class="col form-group">
+            <label>Module Name</label>
+            <select class="searchinput" [(ngModel)]="crsupportID">
+              <option value="">Select Module Name</option>
+              <option *ngFor="let supportdata of itsupportid" [value]="supportdata.supportId">
+                {{supportdata.supportName}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label>Is Active</label>
+            <select class="searchinput" [(ngModel)]="isActive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-section">
+      <button [routerLink]="'/ChageRequest-Masters'" class="btn back-btn">BACK</button>
+      <button (click)="postcategorytyp()" class="btn submit-btn">SUBMIT</button>
+    </div>
+
+  </div>
+</div>

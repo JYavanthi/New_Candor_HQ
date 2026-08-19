@@ -1,0 +1,42 @@
+<div class="createprojectGroupMainDiv">
+
+    <div style="margin-left: 3%;">
+        <app-sidebsr></app-sidebsr>
+    </div>
+
+    <div class="container-implement">
+
+        <h3 class="page-heading">Project Group</h3>
+
+        <div class="container-field-line" [formGroup]="myForm">
+
+            <div class="border-rfc-heading">
+                <div class="row">
+
+                    <div class="col form-group">
+                        <label for="groupName" customLabelAlert="Group Name is Required">
+                            Group Name
+                        </label>
+                        <input class="form-control-custom" formControlName="groupName">
+                    </div>
+
+                    <div class="col checkbox-group">
+                        <label>
+                            <input type="checkbox" formControlName="active" />
+                            Active
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="btn-section">
+                    <button (click)="back()" class="btn back-btn">BACK</button>
+                    <button (click)="saveSoftware()" class="btn submit-btn">SUBMIT</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

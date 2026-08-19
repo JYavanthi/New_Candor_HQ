@@ -1,0 +1,107 @@
+''
+<div style="margin-left: 6%;">
+  <a>
+    <button class="btn-back" [routerLink]="'/change-request'">Back</button>
+  </a>
+</div>
+<!-- error -->
+<!-- <ul class="breadcrumb-top">
+  <li><a href="#">Home</a></li>
+  <li class="deskpoint" [routerLink]="'/helpdesk'">Change Request</li>
+</ul> -->
+
+<app-common [crid]="crData"></app-common>
+<div class="container-home">
+  <!--<button (click)="getdata()" ></button>-->
+  <br />
+  <br />
+  <!--<button (click)="getdata()">check</button>-->
+  <div class="tab-implement">
+   
+   <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li role="presentation">
+        <span [style]="((this.crData?.isSubmitted) ? 'background-color:green;color:white':'background-color:blue;color:white')" id="home-tab" data-bs-toggle="tab" class="nav-link active" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">
+          RFC
+        </span>
+      </li>
+      <li role="presentation" *ngIf="activeflag">
+        <span [style]="((this.crData?.isApproved) ? 'background-color:green;color:white':(this.crData?.isSubmitted)?'background-color:blue;color:white':'background-color:grey;color:white; pointer-events:none') " id="profile-tab" data-bs-toggle="tab" class="nav-link" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">
+          Approval
+        </span>
+      </li>
+      <li role="presentation" *ngIf="activeflag">
+        <span [style]="((this.getstatus=='Completed') ? 'background-color:green;color:white':(this.crData?.isApproved)?'background-color:blue;color:white':'background-color:grey;color:white;pointer-events:none')" id="contact-tab" data-bs-toggle="tab" class="nav-link" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+          Execute
+        </span>
+      </li>
+      <li role="presentation">
+        <span id="history-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#history" type="button"
+                role="tab" aria-controls="history" aria-selected="false">
+          History
+        </span>
+      </li>
+    </ul>
+   <div class="tab-content" id="myTabContent">
+     <!-- Tab One -->
+     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+       <app-updatechangerequest></app-updatechangerequest>
+     </div>
+     <!-- Tab Two -->
+     <div *ngIf="checkstatus !== 'Draft'" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+       <app-approve [crData]="crData" [crData1]="crData1" ></app-approve>
+     </div>
+     <div *ngIf="checkstatus == 'Draft'" class="tab-pane fade not-authorized-message" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+       <h1 class="txt-error">Change Request Is Not Submited For Approver</h1>
+     </div>
+     <div *ngIf="activeflag" class="tab-pane fade not-authorized-message" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+       <h1 class="txt-error">Change Request Is Rejected</h1>
+     </div>
+     <br />
+     <br />
+     <br />
+     <!-- Tab Three -->
+     <!--<app-changetab></app-changetab>-->
+     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+       <div class="nav nav-tabs" id="myTab" role="tablist">
+
+         <ul class="breadcrumb" style="margin-top: 0%">
+           <li class="breadcrumb__item breadcrumb__item-firstChild fade show active" [style]=" ((this.crData?.isImplemented) ? 'background-color:green;color:white':'background-color:blue;color:white') " id="implement-tab" data-bs-target="#implement" aria-selected="true" aria-controls="implement" data-bs-toggle="tab">
+             <span class="txt-style">Implementation</span>
+           </li>
+           <li class="breadcrumb__item breadcrumb__item-firstChild" [style]="((this.crData?.isReleased) ? 'background-color:green;color:white':((this.crData?.isImplemented)?'background-color:blue;color:white':'background-color:grey;color:white;pointer-events:none'))" id="release-tab" data-bs-toggle="tab" data-bs-target="#releaseexecutive" aria-controls="releaseexecutive" aria-selected="false">
+             <span class="txt-style">Release</span>
+           </li>
+
+           <li class="breadcrumb__item breadcrumb__item-firstChild" [style]="((this.getstatus=='Completed') ? 'background-color:green;color:white':(this.crData?.isReleased)?'background-color:blue;color:white':'background-color:grey;color:white;pointer-events:none')" id="closure-tab" data-bs-toggle="tab" data-bs-target="#closureexecutive" aria-controls="closureexecutive" aria-selected="false">
+             <span class="txt-style">Closure</span>
+           </li>
+         </ul>
+       </div>
+
+       <div class="tab-content" id="myTabContent">
+         <div class="tab-pane fade show active" id="implement" role="tabpanel" aria-labelledby="implement-tab">
+           <app-implemet [crid]="crData"></app-implemet>
+         </div>
+         <div class="tab-pane fade" id="releaseexecutive" role="tabpanel" aria-labelledby="release-tab">
+           <app-releaser [crid]="crData" [crData1]="crData1"></app-releaser>
+         </div>
+         <div class="tab-pane fade" id="closureexecutive" role="tabpanel" aria-labelledby="closure-tab">
+           <app-closure [crid]="crData" [crData1]="crData1"></app-closure>
+         </div>
+       </div>
+     </div>
+
+     <!--Access denid-->
+     <div class="tab-pane fade not-authorized-message" id="contact" role="tabpanel" aria-labelledby="contact-tab" *ngIf="!this.crData?.isApproved">
+       <h1 class="txt-error">Change Request Is Not Approved</h1>
+     </div>
+     <!-- tab four -->
+     <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+       <app-history></app-history>
+     </div>
+   </div>
+  </div>
+</div>

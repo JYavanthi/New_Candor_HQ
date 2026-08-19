@@ -1,0 +1,87 @@
+<!-- <div class="referncemainDiv">
+
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+    <div class="container-field-line">
+
+      <h3>New Refrence</h3>
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+          <div class="col">
+            <label>Reference ID</label>
+            <input type="text" placeholder="Reference ID" [(ngModel)]="referenceId" />
+          </div>
+          <div class="col">
+            <label>Reference Name</label>
+            <input type="text" placeholder="Reference Name" [(ngModel)]="referenceName" />
+          </div>
+          <div class="col">
+            <label>Is Active</label>
+
+            <select [(ngModel)]="isActive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+
+        </div>
+        <button (click)="postRefrencePost()" class="btn btn-primary">Submit</button>
+        <button [routerLink]="'/Refrencemaster'" style="margin-left: 2%;" class="btn btn-primary">Back</button>
+
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+<div class="referncemainDiv">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <!-- Heading -->
+    <h3 class="page-heading">NEW REFERENCE</h3>
+
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Reference ID</label>
+            <input class="form-control-custom" type="text" placeholder="Reference ID" [(ngModel)]="referenceId" />
+          </div>
+
+          <div class="col form-group">
+            <label>Reference Name</label>
+            <input class="form-control-custom" type="text" placeholder="Reference Name" [(ngModel)]="referenceName" />
+          </div>
+
+          <div class="col form-group">
+            <label>Is Active</label>
+            <select class="form-control-custom" [(ngModel)]="isActive">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Buttons inside card -->
+        <div class="btn-section">
+          <button (click)="postRefrencePost()" class="btn submit-btn">SUBMIT</button>
+          <button [routerLink]="'/Refrencemaster'" class="btn back-btn">BACK</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

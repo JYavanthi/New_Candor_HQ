@@ -1,0 +1,174 @@
+.main-wrapper {
+  display: flex;
+  width: 95%;
+  margin: 20px auto;
+  background: white;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.sidebar-section {
+  width: 18%;
+}
+
+.content-section {
+  width: 95%;
+  padding-left: 20px;
+  margin-right: 0%;
+}
+
+.top-search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  height: 95px;
+  border-bottom: 3px solid #daecff;
+  width: 100%;
+
+}
+
+.labeCss {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  padding: 8px 35px 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #aaa;
+  outline: none;
+  width: 250px;
+  margin-left: 20%;
+}
+
+.search-box i {
+  position: absolute;
+  right: -25px;
+  top: 30%;
+  color: teal;
+}
+
+.user-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid teal;
+  padding-bottom: 10px;
+  height: 70px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.new-btn {
+  background: #e6f5f4;
+  color: teal;
+  border: 1px solid teal;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plus-icon {
+  background: #ff5b6b;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-icon {
+  font-size: 18px;
+  color: teal;
+  cursor: pointer;
+}
+
+.table-container {
+  margin-top: 15px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  text-align: center;
+}
+
+thead th {
+  color: teal;
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 2px solid teal;
+}
+
+tbody tr {
+  background: #f5f5f5;
+  border-radius: 15px;
+}
+
+tbody tr td {
+  padding: 12px;
+}
+
+tbody tr:nth-child(even) {
+  border-radius: 15px;
+}
+
+.text-success {
+  color: teal;
+}
+
+.text-danger {
+  color: red;
+}
+
+.delete-icon {
+  color: #ff5b6b;
+  cursor: pointer;
+}
+
+.view-icon {
+  color: teal;
+  cursor: pointer;
+}
+
+.paginator {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+tbody tr:hover {
+  background-color: #dce7f7 !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

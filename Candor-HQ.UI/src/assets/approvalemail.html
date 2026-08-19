@@ -1,0 +1,62 @@
+<style>
+  table,th,td {
+    border: 1px solid !important;
+  }
+
+  table {
+    width: 100% !important;
+  }
+  .border {
+    border: 1px solid !important;
+    margin: 10px !important;
+    padding: 10px !important;
+  }
+</style>
+
+<div class="border">
+  <p><b>Dear {{this.Cremailvalue[0].crrequestedBy}}</b></p>
+  <p>Please find the details of the Change Request Submitted by {{Submittedname}} approved by {{approvedby}}.<br />    </p>
+  <p><b>RFC Code </b>: {{crid}}</p>
+  <p><b>Requestor Name:</b> {{Requestorname}}<br /></p>
+  <p><b>Requested Date:</b> {{this.Cremailvalue[0].crdate}}<br /></p>
+  <p><b>Phase:</b> {{phase}}<br /></p>
+  <p><b>Status:</b> {{Approvestatus}}<br /></p>
+  <p><b>Change Description: </b>{{this.Cremailvalue[0].changeDesc}}</p>
+  <br />
+  <table>
+    <thead>
+      <tr>
+        <th>Approver Level</th>
+        <th>Name of Approver</th>
+        <th>Status</th>
+        <!--<th>Remarks with Dates</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Approved Level 1</td>
+        <td>{{crapprover1}} </td>
+        <td>@Approval1Status</td>
+        <!--<td></td>-->
+      </tr>
+      <tr>
+        <td>Approved Level 2</td>
+        <td>{{crapprover2}}</td>
+        <td>@Approval2Status</td>
+        <!--<td></td>-->
+      </tr>
+      <tr>
+        <td>Approved Level 3</td>
+        <td>{{crapprover3}}</td>
+        <td>@Approval3Status</td>
+        <!--<td></td>-->
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <p><a href=${loginUrl} target=${loginUrl}>Click here</a> to Log into Unnati and provide your Approval / Rejection or Seek clarification.</p>
+  <p>Regards,</p>
+  <p>IT Team</p>
+  <p>Micro Labs Ltd</p>
+  <a href="https://unnati.microlabs.co.in/" target="https://unnati.microlabs.co.in/">www.unnati.microlabs.co.in</a>
+</div>

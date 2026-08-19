@@ -1,0 +1,30 @@
+<div style="background: white; width: 95%; margin-left: 2.5%; display: flex; border-radius: 40px;">
+    <div style="margin-left: 3%">
+        <app-asset-sidebar></app-asset-sidebar>
+    </div>
+
+    <div class="assetContainer">
+
+        <div class="viewAssetHeadingDiv">
+            <div class="assetTitle">Assets</div>
+
+        </div>
+
+        <div class="viewAssetMainModuleBox">
+            <div class="viewAssetModules">
+
+                <div class="assetModuleCard" [routerLink]="'/assets/sparemaster'">
+                    <img src="assets/image/IT_spareImg.png" alt="viewImg" class="viewImg">
+                    <span class="assetIconTitle">IT Spare</span>
+                </div>
+
+                <div class="assetModuleCard" [routerLink]="'/assets/assetmaster'">
+                    <img src="assets/image/IT_assetrequest.png" alt="viewImg" class="viewImg">
+                    <span class="assetIconTitle">IT Asset</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

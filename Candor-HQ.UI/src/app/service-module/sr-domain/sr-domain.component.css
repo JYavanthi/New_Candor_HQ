@@ -1,0 +1,22 @@
+.backBtn {
+  margin-left: 7% !important;
+  position: fixed;
+  z-index: 99 !important;
+  margin-top: -2.5% !important;
+}
+
+::ng-deep .mdc-tab--active {
+    background-color: #3c8dbc !important;
+  }
+
+  ::ng-deep .mdc-tab--active .mdc-tab__text-label{
+    color: white !important;
+  }
+
+  /* .service_container {
+    margin-left: 12%;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+} */
+

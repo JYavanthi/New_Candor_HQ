@@ -1,0 +1,490 @@
+<div class="container" style="margin-top: 2%; margin-bottom: 5%;">
+  <div class="row newissue">
+    <div class="text-center col-2">
+      <button class="btn-back" type="button">Back</button>
+    </div>
+    <div class="col-10 pageHeadingCss issuelabel">
+      <p class="pageHeadingparaCss" style="margin:0 auto">New Issue</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row newissueradio">
+        <div class="col-md-2 radioBtns">
+          <span><input type="radio" value="self"></span>
+          <span class="radiolabel">&nbsp;Self</span>
+        </div>
+        <div class="col-md-4 radioBtns">
+          <span><input type="radio" value="others"></span>
+          <span class="radiolabel">&nbsp;Others</span>
+          &nbsp;
+          <span>
+            <input type="text" class="dropdownslistinput" #EnterIssueID placeholder="Enter Issue For" />
+            <ul class="dropdowns-list">
+              <li class="drop-list" value="">
+                <!--{{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}-->
+              </li>
+            </ul>
+          </span>
+        </div>
+        <div class="col-md-2 radioBtns">
+          <span><input type="radio" value="guest"></span>
+          <span class="radiolabel">&nbsp;Guest</span>
+        </div>
+      </div>
+
+      <div class="card inside_card">
+        <div class="card-body inside_newissue">
+
+          <!--Self-->
+          <ng-container>
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Employee ID: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Name: <span class="horinputDatas"></span></label>
+              </div>
+              <div class="col-md-3">
+                <label>Email: <span class="horinputDatas"></span></label>
+              </div>
+              <div class="col-md-3">
+                <label>Contact No: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Reporting Manager: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Staff Category: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Plant: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Paygroup: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Department: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Designation: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Role: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+              </div>
+            </div>
+          </ng-container>
+
+          <!--Others-->
+          <ng-container>
+            <!--Requested By-->
+            <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested by:</span>
+            <div class="row mt-2" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Employee ID: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Name: <span class="horinputDatas"></span></label>
+              </div>
+              <div class="col-md-3">
+                <label>Email: <span class="horinputDatas"></span></label>
+              </div>
+              <div class="col-md-3">
+                <label>Contact No: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Reporting Manager: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Staff Category: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Plant: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Paygroup: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Department: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Designation: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Role: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+              </div>
+            </div>
+            <hr />
+            <!--Requested For-->
+            <div>
+              <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested for:</span>
+              <div class="row mt-2">
+                <div class="col-md-3">
+                  <label>Employee ID: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Name: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Email: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Contact No: <span class="horinputDatas"></span></label>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Reporting Manager: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Staff Category: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Plant: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Paygroup: <span class="horinputDatas"></span></label>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Department: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Designation: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                  <label>Role: <span class="horinputDatas"></span></label>
+                </div>
+
+                <div class="col-md-3">
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <!--Guest-->
+          <ng-container>
+            <!--Requested By-->
+            <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested by:</span>
+            <div class="row mt-2" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Employee ID: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Name: <span class="horinputDatas"></span></label>
+              </div>
+              <div class="col-md-3">
+                <label>Email: <span class="horinputDatas"></span></label>
+              </div>
+              <div class="col-md-3">
+                <label>Contact No: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Reporting Manager: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Staff Category: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Plant: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Paygroup: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+            <div class="row" style="text-align:left;">
+              <div class="col-md-3">
+                <label>Department: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Designation: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Role: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+              </div>
+            </div>
+            <hr />
+
+            <!--Requested for-->
+            <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested for:</span>
+            <div class="row mt-2">
+              <div class="col-md-3">
+                <label>Guest Employee ID:</label><br>
+                <input type="text">
+              </div>
+
+              <div class="col-md-3">
+                <label>Name:<span style="color:red">&nbsp;*</span></label><br>
+                <input type="text">
+              </div>
+
+              <div class="col-md-3">
+                <label>Email:</label><br>
+                <input type="text">
+              </div>
+              <div class="col-md-3">
+                <form>
+                  <label>Contact No:</label><br>
+                  <input id="contactNo"
+                         type="text"
+                         placeholder="Enter 10-digit contact number"
+                         maxlength="10"
+                         required
+                         title="Please enter exactly 10 digits">
+                </form>
+              </div>
+
+            </div>
+
+
+            <div class="row" style="display:flex;align-items:center">
+              <div class="col-md-3">
+                <input type="text" placeholder="Enter Reporting Manager Employee ID" />
+                <ul class="dropdowns-list">
+                  <li class="drop-list" value="">
+                    <!--{{ item.employeeId ? (item.employeeId + ' - ' + item.employeeName) : item.employeeName }}-->
+                  </li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-3">
+                <label>Reporting Manager in ML: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Staff Category of ML: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Plant ML: <span class="horinputDatas"></span></label>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <label>Paygroup ML: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Department ML: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Designation of ML Manager: <span class="horinputDatas"></span></label>
+              </div>
+
+              <div class="col-md-3">
+                <label>Role of ML Manager: <span class="horinputDatas"></span></label>
+              </div>
+            </div>
+
+          </ng-container>
+
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="container-field-line">
+          <div class="text-center subHeadingparaCss" style="margin-top:-3%;">
+            <p>Details</p>
+          </div>
+          <div class="card report_issue_card container-implement" style="margin-left:3%;">
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col">
+                  <label>Raised Date<span style="color:red"> *</span></label>
+                  <input readonly type="date" />
+                </div>
+                <div class="col">
+                  <label>Plant<span style="color:red"> *</span></label>
+                  <select>
+                    <option value="" selected disabled hidden>Select Plant</option>
+                    <option></option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Service-Category<span style="color:red"> *</span></label>
+                  <select>
+                    <option value="" selected disabled hidden>Select Service Category</option>
+                    <option>
+                      <!--{{value.categoryName}}-->
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <label>Sub-Category<span style="color:red"> *</span></label>
+                  <select>
+                    <option value="" selected disabled hidden>Select Sub-Category</option>
+                    <option>
+                      <!--{{valueCtype.categoryType}}-->
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col">
+                  <label>Priority<span style="color:red"> *</span></label>
+                  <select>
+                    <option value="" selected disabled hidden>Select Priority</option>
+                    <option>
+                      <!--{{valueprio.priorityName}}-->
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Type</label><br />
+                  <select>
+                    <option value="" selected disabled hidden>Select Type</option>
+                    <option>Type</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div>
+                    <label>Source</label><br />
+                    <select>
+                      <option value="" selected disabled hidden>Select Source</option>
+                      <option value="E-mail">E-mail</option>
+                      <option value="Phone">Phone</option>
+                      <option value="Website">Website</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label>Impacted Asset</label>
+                  <select>
+                    <option value="" selected disabled hidden>Select Impacted Asset</option>
+                    <option>
+                      <!--{{valueasset.category + ' ' + '-' + ' ' + valueasset.assetNo}}-->
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col">
+                  <label>Assign To</label>
+                  <select>
+                    <option value="" selected disabled hidden>Select Assign to</option>
+                    <option>
+                      <!--{{assgn.empId+' '+'-'+' '+assgn.firstName+' '+assgn.middleName+' '+assgn.lastName }}-->
+                    </option>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div>
+                    <label>Subject<span style="color:red"> *</span></label><br />
+                    <input style="padding:6px;" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="report_description">
+                    <label>Description<span style="color:red">*</span></label>
+                    <!--<angular-editor #editor></angular-editor>-->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="report_attachment">
+                      <label>Attach Document</label>
+                      <input type="file">
+                      <div>
+                        <p>Attachment: <button style="padding: 1%; border: none; background: none;"><i class="fa fa-download" aria-hidden="true"></i></button></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <div>
+                      <label>Proposed Resolution Date<span style="color:red"> *</span></label><br />
+                      <input type="datetime-local" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <span class="btn-sub">Draft</span>
+              <span class="btn-sub">Submit</span>
+              <span class="btn-sub">Back</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="softwaremastermainDiv">
+
+  <div style="margin-left: 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="contentSection">
+
+    <div class="topHeader">
+      <div class="title">Software Master</div>
+
+      <div class="searchBox">
+        <i class="fa fa-search"></i>
+        <input type="text" [(ngModel)]="searchText" (input)="filterData()" placeholder="Search Category Name">
+      </div>
+
+      <div class="newBtn" [routerLink]="'/newsoftwaremaster'">
+        <i class="fa fa-plus-circle"></i>
+        NEW
+      </div>
+    </div>
+
+    <div class="tableCard">
+      <table>
+        <thead>
+          <tr>
+            <th>SR. NO.</th>
+            <th>Software Name</th>
+            <th>Is Active</th>
+            <th style="text-align:center;">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let data of softwareList; let i = index">
+            <td class="blueText">{{ i + 1 }}</td>
+            <td class="blueText">{{ data.softwareName }}</td>
+
+            <td>
+              <span [ngClass]="data.isActive ? 'active' : 'inactive'">
+                {{ data.isActive ? 'True' : 'False' }}
+              </span>
+            </td>
+
+            <td class="actionCell">
+              <span class="editIcon" (click)="navigateTo(data.softwareLibraryId)">
+                <i class="fa fa-pencil"></i>
+              </span>
+
+              <span class="deleteIcon" (click)="deleteRow(data.softwareLibraryId)">
+                <i class="fa fa-trash"></i>
+              </span>
+            </td>
+          </tr>
+
+          <tr *ngIf="softwareList?.length === 0">
+            <td colspan="4" class="noData">
+              <i class="fa fa-search"></i> No Data Available
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,570 @@
+<form [formGroup]="softwareForm">
+    <div class="card service_card br-top-blue">
+        <div class="card-body">
+            <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+            <div class="card">
+                <div class="card-body">
+                    <div class="software">
+                        <div class="row">
+                            <div class="requestTypeClass">
+                                <div>
+                                    <label class="asteriskrequired">Request Type</label>
+                                    <select formControlName="requestType" name="requestType"
+                                        (change)="changeRequestTypeValue()">
+                                        <option selected disabled hidden value="">Select Request Type</option>
+                                        <option *ngFor="let requesttype of requestTypeList"
+                                            [value]="requesttype.supportId">{{requesttype.supportName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Procure/Buy Starts -->
+                        <div class="row" *ngIf="softwareForm.value.requestType == 9">
+                            <div class="inputFields">
+                                <div>
+                                    <label>Vendor Name</label>
+                                    <input type="text" formControlName="procureBuyVendorName"
+                                        name="procureBuyVendorName" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="softwareName">Software Name</label>
+                                    <select formControlName="softwareName" name="softwareName"
+                                        (change)="getVersionList()">
+                                        <option selected disabled hidden value="">Select Software Name</option>
+                                        <option *ngFor="let item of softwareList" [value]="item.softwareLibraryId">
+                                            {{item.softwareName}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired">Software Version</label>
+                                    <select formControlName="softwareVersion" name="softwareVersion">
+                                        <option selected disabled hidden value="">Select Version</option>
+                                        <option *ngFor="let item of versionList" [value]="item.softVersionId">
+                                            {{item.softVersionName}}</option>
+                                        <!-- <option *ngIf="versionList.length==0" disabled >No Data</option> -->
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="procureBuyInstallationType"
+                                        customLabelAlert="Select Installation type">Installation type</label>
+                                    <select formControlName="procureBuyInstallationType"
+                                        name="procureBuyInstallationType">
+                                        <option selected disabled hidden value="">Select Installation type</option>
+                                        <option>Hosted on Cloud</option>
+                                        <option>Installed on Desktop/Laptop</option>
+                                        <option>Installed on Server</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="procureBuyLicenseType"
+                                        customLabelAlert="Select License Type">License Type</label>
+                                    <select formControlName="procureBuyLicenseType" name="procureBuyLicenseType">
+                                        <option selected disabled hidden value="">Select License Type</option>
+                                        <option>Prepatual-One time</option>
+                                        <option>User base</option>
+                                        <option>Subscription</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="location"
+                                        customLabelAlert="Which Location?">Which Location?</label>
+                                    <ng-multiselect-dropdown formControlName="location" name="location"
+                                        [settings]="plantDropdownSettings" [data]="plantList"
+                                        [disabled]="softwareForm.controls['location'].disabled">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="department"
+                                        customLabelAlert="Which Department?">Which Department?</label>
+                                    <ng-multiselect-dropdown formControlName="department" name="department"
+                                        [settings]="departmentDropdownSettings" [data]="departmentList"
+                                        [disabled]="softwareForm.controls['department'].disabled">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="userCount"
+                                        customLabelAlert="How many Users?">How many Users?</label>
+                                    <input type="number" min="0" maxlength="9" formControlName="userCount"
+                                        name="userCount" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="procureBuyLicenses">No. of License</label>
+                                    <input type="number" min="0" maxlength="9" formControlName="procureBuyLicenses"
+                                        (ngModelChange)="totalCost()" name="procureBuyLicenses" />
+                                </div>
+                                <div>
+                                    <label>Cost Per License</label>
+                                    <input type="number" min="0" maxlength="9"
+                                        formControlName="procureBuyCostPerLicense" (ngModelChange)="totalCost()"
+                                        name="procureBuyCostPerLicense" />
+                                </div>
+                                <div>
+                                    <label>Total Cost</label>
+                                    <input type="text" formControlName="procureBuyTotalCost" name="procureBuyTotalCost"
+                                        readonly />
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="procureBuyisImpOrinstallationRequired"
+                                        customLabelAlert="Is Implementation/Installation Required?">Implementation/Installation
+                                        Required?</label>
+                                    <select formControlName="procureBuyisImpOrinstallationRequired"
+                                        name="procureBuyisImpOrinstallationRequired" (change)="formValidationService.clearOpenedInputFields(softwareForm.value.procureBuyisImpOrinstallationRequired,
+                                        softwareForm.get('procureBuyInstallationCharges'),
+                                        softwareForm.get('procureBuyInstallationDetails'))">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="softwareForm.value.procureBuyisImpOrinstallationRequired == 'Yes' ">
+                                    <label class="asteriskrequired" for="procureBuyInstallationCharges">Installation
+                                        Charges</label>
+                                    <input type="number" min="0" maxlength="9"
+                                        formControlName="procureBuyInstallationCharges"
+                                        name="procureBuyInstallationCharges" />
+                                </div>
+                                <div *ngIf="softwareForm.value.procureBuyisImpOrinstallationRequired == 'Yes' ">
+                                    <label class="asteriskrequired" for="procureBuyInstallationDetails">Details of
+                                        Installation</label>
+                                    <input type="text" formControlName="procureBuyInstallationDetails"
+                                        name="procureBuyInstallationDetails" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="procureBuyExpectedDate">Expected Date</label>
+                                    <input type="date" formControlName="procureBuyExpectedDate"
+                                        name="procureBuyExpectedDate" [min]="formValidationService.todaysDate"
+                                        [max]="formValidationService.maxDate" />
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="procureBuyisAMCApplicable"
+                                        customLabelAlert="Is AMC applicable?">AMC is applicable?</label>
+                                    <select formControlName="procureBuyisAMCApplicable" name="procureBuyisAMCApplicable"
+                                        (change)="formValidationService.clearOpenedInputFields(softwareForm.value.procureBuyisAMCApplicable, softwareForm.get('procureBuyAMCCost'), softwareForm.get('procureBuyScopeOfAMC'))">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="softwareForm.value.procureBuyisAMCApplicable == 'Yes' ">
+                                    <label class="asteriskrequired" for="procureBuyAMCCost">AMC Cost Per Annum</label>
+                                    <input type="number" min="0" maxlength="9" formControlName="procureBuyAMCCost"
+                                        name="procureBuyAMCCost" />
+                                </div>
+                                <div *ngIf="softwareForm.value.procureBuyisAMCApplicable == 'Yes' ">
+                                    <label class="asteriskrequired" for="procureBuyScopeOfAMC">Scope of AMC</label>
+                                    <input type="text" formControlName="procureBuyScopeOfAMC"
+                                        name="procureBuyScopeOfAMC" />
+                                </div>
+                                <div *ngIf="softwareForm.value.procureBuyisAMCApplicable == 'Yes' ">
+                                    <label class="asteriskrequired" for="noOfUsersUsingThis"
+                                        customLabelAlert="How many users will use this?">How many users will use
+                                        this?</label>
+                                    <input type="number" min="0" maxlength="9" formControlName="noOfUsersUsingThis"
+                                        name="noOfUsersUsingThis" />
+                                </div>
+                                <!-- <div  class="textAreaDiv">
+                                    <app-sr-attach-ment (attachMentListEvent)="getAttchmentList($event)"></app-sr-attach-ment>
+                                </div> -->
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification">Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Procure/Buy Ends -->
+
+
+                        <!-- Development-Application, Mobile App Starts -->
+                        <div class="row" *ngIf="softwareForm.value.requestType == 19">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="developmentType"
+                                        customLabelAlert="Select type of Development">Type of
+                                        Development</label>
+                                    <select formControlName="developmentType" name="developmentType">
+                                        <option selected disabled hidden value="">Select type of Development</option>
+                                        <option>Application</option>
+                                        <option>Mobile Application</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="location"
+                                        customLabelAlert="Which Location will use this?">Which Location will use
+                                        this?</label>
+                                    <ng-multiselect-dropdown [settings]="plantDropdownSettings" [data]="plantList"
+                                        formControlName="location" name="location"
+                                        [disabled]="softwareForm.controls['location'].disabled">
+                                    </ng-multiselect-dropdown>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="department"
+                                        customLabelAlert="Which Department will use this?">Which Department will use
+                                        this?</label>
+                                    <ng-multiselect-dropdown [settings]="departmentDropdownSettings"
+                                        [disabled]="softwareForm.controls['department'].disabled"
+                                        [data]="departmentList" formControlName="department" name="department">
+                                    </ng-multiselect-dropdown>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpApplication"
+                                        customLabelAlert="Is this a GxP Application?">Is this a GxP Application?</label>
+                                    <select formControlName="isGxpApplication" name="isGxpApplication">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="developmentDetails"
+                                        customLabelAlert="Enter Details of Development">Details of Development
+                                        Required</label>
+                                    <textarea class="textAreaClass" formControlName="developmentDetails"
+                                        name="developmentDetails"></textarea>
+                                </div>
+
+                                <!-- <div>
+                                    <label class="asteriskrequired" for="developmentBRDorSRSAttachment">BRD/SRS</label>
+                                    <input type="file" formControlName="developmentBRDorSRSAttachment"
+                                        name="developmentBRDorSRSAttachment" />
+                                </div> -->
+
+
+                                <div class="textAreaDiv">
+                                    <app-sr-attach-ment (attachMentListEvent)="getAttchmentList($event)"
+                                        (removeAttchment)="removeAttchment($event)"
+                                        [title]="'BRD'+'/'+'SRS'"></app-sr-attach-ment>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="developmentInterfaceIsRequired"
+                                        customLabelAlert="Is it required to interface with any other
+                                    Application?">Is it required to interface with any other Application?</label>
+                                    <select formControlName="developmentInterfaceIsRequired"
+                                        name="developmentInterfaceIsRequired" (change)="formValidationService.clearOpenedInputFields(softwareForm.value.developmentInterfaceIsRequired,
+                                         softwareForm.get('developmentInterfaceRequirements'),
+                                          softwareForm.get('developmentInterfaceDetails'))">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+
+                                <div class="textAreaDiv"
+                                    *ngIf="softwareForm.value.developmentInterfaceIsRequired == 'Yes' ">
+                                    <label class="asteriskrequired" for="developmentInterfaceRequirements"
+                                        customLabelAlert="Enter Interface Requirements">Interface Requirements</label>
+                                    <textarea class="textAreaClass" formControlName="developmentInterfaceRequirements"
+                                        name="developmentInterfaceRequirements"></textarea>
+                                </div>
+
+                                <div class="textAreaDiv"
+                                    *ngIf="softwareForm.value.developmentInterfaceIsRequired == 'Yes' ">
+                                    <label class="asteriskrequired" for="developmentInterfaceDetails">Details of the
+                                        system or Software to be interfaced
+                                        with</label>
+                                    <textarea class="textAreaClass" formControlName="developmentInterfaceDetails"
+                                        name="developmentInterfaceDetails"></textarea>
+                                </div>
+
+                                <div class="textAreaDiv">
+                                    <label>Non-functional requirements</label>
+                                    <textarea
+                                        placeholder="(like Security Requirements, Capacity and future demands Compatibility, Reliability and Availability, Scalability and Extension, Portability and Scalability, Ease of use)"
+                                        class="textAreaClass" formControlName="nonFunctionalRequirements"
+                                        name="nonFunctionalRequirements">
+                                    </textarea>
+                                </div>
+
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification">Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Development-Application, Mobile App Ends -->
+
+
+                        <!-- Website Development Starts -->
+                        <div class="row" *ngIf="softwareForm.value.requestType == 20 ">
+                            <div class="inputFields">
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="websiteDevRequirementDetails">Details of
+                                        Requirement</label>
+                                    <textarea class="textAreaClass" formControlName="websiteDevRequirementDetails"
+                                        name="websiteDevRequirementDetails"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="websiteDevType">Type of Website</label>
+                                    <select formControlName="websiteDevType" name="websiteDevType">
+                                        <option selected disabled hidden value="">Select Type</option>
+                                        <option>Static Website</option>
+                                        <option>Dynamic Website</option>
+                                        <option>Video Streaming Website</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="websiteDevhosting"
+                                        customLabelAlert="Where should this be hosted?">Where should this be
+                                        hosted?</label>
+                                    <select formControlName="websiteDevhosting" name="websiteDevhosting">
+                                        <option selected disabled hidden value="">Select Hosting Location</option>
+                                        <option>Onsite</option>
+                                        <option>Cloud</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="websiteDevUsageBy"
+                                        customLabelAlert="Select Usage By">Usage By</label>
+                                    <select formControlName="websiteDevUsageBy" name="websiteDevUsageBy">
+                                        <option selected disabled hidden value="">Select Usage By</option>
+                                        <option>Internal</option>
+                                        <option>External</option>
+                                        <option>Both</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="websiteDevAccessLocation"
+                                        customLabelAlert="Users will access from?">Users will access from?</label>
+                                    <select formControlName="websiteDevAccessLocation" name="websiteDevAccessLocation">
+                                        <option selected disabled hidden value="">Select Access Location</option>
+                                        <option>Within Micro Labs network</option>
+                                        <option>Outside Micro Labs network</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="location"
+                                        customLabelAlert="Which Location will use this?">Which Location will use
+                                        this?</label>
+                                    <ng-multiselect-dropdown [settings]="plantDropdownSettings" [data]="plantList"
+                                        [disabled]="softwareForm.controls['location'].disabled"
+                                        formControlName="location" name="location">
+                                    </ng-multiselect-dropdown>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="department"
+                                        customLabelAlert="Which Department will use this?">Which Department will use
+                                        this?</label>
+                                    <ng-multiselect-dropdown [settings]="departmentDropdownSettings"
+                                        [data]="departmentList" formControlName="department" name="department"
+                                        [data]="departmentList"
+                                        [disabled]="softwareForm.controls['department'].disabled">
+                                    </ng-multiselect-dropdown>
+                                </div>
+
+                                <div *ngIf="softwareForm">
+                                    <label class="asteriskrequired" for="noOfUsersUsingThis"
+                                        customLabelAlert="How many Users will use this?">How many Users will use
+                                        this?</label>
+                                    <input type="number" min="0" maxlength="9" formControlName="noOfUsersUsingThis"
+                                        name="noOfUsersUsingThis" />
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="isGxpApplication"
+                                        customLabelAlert="Is this a GxP Software?">Is this a GxP Software?</label>
+                                    <select formControlName="isGxpApplication" name="isGxpApplication">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+
+                                <!-- <div>
+                                    <label class="asteriskrequired" for="websiteDevBRDorSRSAttachment">BRD/SRS</label>
+                                    <input type="file" formControlName="websiteDevBRDorSRSAttachment"
+                                        name="websiteDevBRDorSRSAttachment" />
+                                </div> -->
+
+                                <div class="textAreaDiv">
+                                    <app-sr-attach-ment (attachMentListEvent)="getAttchmentList($event)"
+                                        (removeAttchment)="removeAttchment($event)"
+                                        [title]="'BRD'+'/'+'SRS'"></app-sr-attach-ment>
+                                </div>
+
+                                <div>
+                                    <label class="asteriskrequired" for="websiteDevIsInterfaceRequired"
+                                        customLabelAlert="Is it required to interface with any other
+                                    application?">Is it required to interface with any other
+                                        application?</label>
+                                    <select formControlName="websiteDevIsInterfaceRequired"
+                                        name="websiteDevIsInterfaceRequired" (change)="formValidationService.clearOpenedInputFields(softwareForm.value.websiteDevIsInterfaceRequired,
+                                         softwareForm.get('websiteDevInterfaceRequirements'),
+                                          softwareForm.get('websiteDevSystemOrSoftwareInterfaced'))">
+                                        <option selected disabled hidden value="">Select Yes/No</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+
+                                <div *ngIf="softwareForm.value.websiteDevIsInterfaceRequired == 'Yes' "
+                                    class="textAreaDiv">
+                                    <label class="asteriskrequired" for="websiteDevInterfaceRequirements"
+                                        customLabelAlert="Enter Interface Requirements">Interface Requirements</label>
+                                    <textarea class="textAreaClass" formControlName="websiteDevInterfaceRequirements"
+                                        name="websiteDevInterfaceRequirements"></textarea>
+                                </div>
+                                <div *ngIf="softwareForm.value.websiteDevIsInterfaceRequired == 'Yes' "
+                                    class="textAreaDiv">
+                                    <label class="asteriskrequired" for="websiteDevSystemOrSoftwareInterfaced"
+                                        customLabelAlert="Enter Details of systems or software to be interfaced
+                                    with">Details of systems or software to be interfaced
+                                        with</label>
+                                    <textarea class="textAreaClass"
+                                        formControlName="websiteDevSystemOrSoftwareInterfaced"
+                                        name="websiteDevSystemOrSoftwareInterfaced"></textarea>
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label>Non-functional Requirements</label>
+                                    <textarea
+                                        placeholder="(like Security Requirements, Capacity and future demands Compatibility, Reliability and Availability, Scalability and Extension, Portability and Scalability, Ease of use)"
+                                        class="textAreaClass" formControlName="nonFunctionalRequirements"
+                                        name="nonFunctionalRequirements"></textarea>
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification">Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Website Development Ends -->
+
+
+                        <!-- Install Software Starts -->
+                        <div class="row" *ngIf="softwareForm.value.requestType == 21 ">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="softwareName">Software Name</label>
+                                    <select formControlName="softwareName" name="softwareName"
+                                        (change)="getVersionList()">
+                                        <option selected disabled hidden value="">Select Software Name</option>
+                                        <option *ngFor="let item of softwareList" [value]="item.softwareLibraryId">
+                                            {{item.softwareName}}</option>
+                                    </select>
+                                    <!-- <select formControlName="softwareName" name="softwareName">
+                                        <option selected disabled hidden value="">Select Software</option>
+                                    </select> -->
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired">Version Name</label>
+                                    <select formControlName="softwareVersion" name="softwareVersion">
+                                        <option selected disabled hidden value="">Select Version</option>
+                                        <option *ngFor="let item of versionList" [value]="item.softVersionId">
+                                            {{item.softVersionName}}</option>
+                                        <!-- <option *ngIf="versionList.length==0" disabled >No Data</option> -->
+                                    </select>
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification"
+                                        customLabelAlert="Provide a Business Justification">Provide a Business
+                                        Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Install Software Ends -->
+
+
+                        <!-- Upgrade Software Starts -->
+                        <div class="row" *ngIf="softwareForm.value.requestType == 22">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="softwareName">Software Name</label>
+                                    <select formControlName="softwareName" name="softwareName"
+                                        (change)="getVersionList()">
+                                        <option selected disabled hidden value="">Select Software Name</option>
+                                        <option *ngFor="let item of softwareList" [value]="item.softwareLibraryId">
+                                            {{item.softwareName}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="Current Version">Current Version</label>
+                                    <select formControlName="upgradeSoftwareCurrentVersion"
+                                        name="upgradeSoftwareCurrentVersion">
+                                        <option selected disabled hidden value="">Select Version</option>
+                                        <option *ngFor="let item of versionList" [value]="item.softVersionId">
+                                            {{item.softVersionName}}</option>
+                                        <!-- <option *ngIf="versionList.length==0" disabled >No Data</option> -->
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired" for="Target Version">Target Version</label>
+                                    <select formControlName="upgradeSoftwareTargetVersion"
+                                        name="upgradeSoftwareTargetVersion">
+                                        <option selected disabled hidden value="">Select Version</option>
+                                        <option *ngFor="let item of versionList" [value]="item.softVersionId">
+                                            {{item.softVersionName}}</option>
+                                    </select>
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification">Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Upgrade Software Ends -->
+
+
+
+                        <!-- Uninstall Software Starts -->
+                        <div class="row" *ngIf="softwareForm.value.requestType == 23 ">
+                            <div class="inputFields">
+                                <div>
+                                    <label class="asteriskrequired" for="softwareName">Software Name</label>
+                                    <select formControlName="softwareName" name="softwareName"
+                                        (change)="getVersionList()">
+                                        <option selected disabled hidden value="">Select Software Name</option>
+                                        <option *ngFor="let item of softwareList" [value]="item.softwareLibraryId">
+                                            {{item.softwareName}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="asteriskrequired">Current
+                                        Version</label>
+                                    <select formControlName="softwareVersion" name="softwareVersion">
+                                        <option selected disabled hidden value="">Select Version</option>
+                                        <option *ngFor="let item of versionList" [value]="item.softVersionId">
+                                            {{item.softVersionName}}</option>
+                                        <!-- <option *ngIf="versionList.length==0" disabled >No Data</option> -->
+                                    </select>
+                                </div>
+                                <div class="textAreaDiv">
+                                    <label class="asteriskrequired" for="justification">Justification</label>
+                                    <textarea class="textAreaClass" formControlName="justification"
+                                        name="justification"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mainBtnsDiv"
+                        *ngIf="softwareForm.value.requestType && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+                        <button class="actionBtn" (click)="Submit('Draft')">Draft</button>
+                        <button class="actionBtn" (click)="Submit('Pending Approval')">Submit</button>
+                        <button class="actionBtn" (click)="clearAll()">Clear</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

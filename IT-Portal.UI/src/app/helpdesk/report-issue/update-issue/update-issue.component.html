@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="card" style="border-top: 6px solid #113bf7;">
+    <div class="container-field-line">
+      <h3 class="report_header_2">Issue</h3>
+      <div class="card report_issue_card container-implement" style="margin-left:3%;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <label>Issue Raised By</label>
+              <input readonly class="searchinput" type="text" [(ngModel)]="updatevalue[0].issuerisedby" />
+            </div>
+            <div class="col">
+              <label>Issue Rised Date</label>
+              <input readonly [(ngModel)]="updatevalue[0].issueDate" type="date" />
+            </div>
+            <div class="col">
+              <label>Issue Raised For</label>
+              <input readonly class="searchinput" type="text" [(ngModel)]="updatevalue[0].issuerisedby" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" *ngIf="updatevalue[0].guestCompany" >
+              <label>Guest</label>
+              <input readonly [(ngModel)]="updatevalue[0].guestCompany" type="text" />
+            </div>
+            <div class="col" *ngIf="updatevalue[0]?.guestCompany" >
+              <label>Guest Company</label>
+              <input readonly [(ngModel)]="updatevalue[0].guestCompany" type="text" />
+            </div>
+            <div class="col">
+              <div>
+                <label>Plant</label>
+                <input readonly [(ngModel)]="updatevalue[0].plantname" type="text" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div>
+                <label>Service-Category</label>
+                <input readonly type="text" [(ngModel)]="updatevalue[0].categoryName" />
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label>Sub-category</label>
+                <input readonly [(ngModel)]="updatevalue[0].categoryType" />
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label>Priority</label>
+                <input readonly [(ngModel)]="updatevalue[0].priorityName" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div>
+                <label>Source</label>
+                <input readonly [(ngModel)]="updatevalue[0].source" />
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label>Impacted Asset(optional)</label>
+                <input readonly [(ngModel)]="updatevalue[0].assetId"/>
+              </div>
+            </div>
+            <div class="col">
+              <!--<label>Type</label>
+              <select>
+                <option disabled selected>Select-type</option>
+              </select>-->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div>
+                <label>Subject</label>
+                <input readonly [(ngModel)]="updatevalue[0].issueShotDesc" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="report_description">
+                <label>Description</label>
+                <textarea readonly [(ngModel)]="updatevalue[0].issueDesc" class="textarea-implement" cols="160" rows="4" id="area7"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="report_attachment">
+                  <label>Remarks</label>
+                  <textarea readonly [(ngModel)]="updatevalue[0].remarks" type="file" style="width:102%;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="report_attachment">
+                  <label>Attachment</label>
+                  <input readonly [(ngModel)]="attachment" type="file" style="width:102%;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

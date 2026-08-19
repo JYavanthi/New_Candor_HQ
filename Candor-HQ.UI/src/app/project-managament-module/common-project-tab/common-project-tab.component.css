@@ -1,0 +1,83 @@
+.project-header {
+    background: #4ba1b1;
+    border-radius: 8px;
+    padding: 18px 18px;
+    color: white;
+    box-shadow: 0 0 0 5px #cfe9ef inset;
+}
+
+.project-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fffecf;
+}
+
+.project-title span {
+    font-weight: 700;
+    font-size: large;
+}
+
+.project-info-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-pill {
+    background: #fff;
+    border-radius: 22px;
+    padding: 6px 16px;
+    min-width: 150px;
+    text-align: center;
+    color: #2a7f8c;
+    font-weight: 600;
+}
+
+.info-pill.wide {
+    min-width: 190px;
+}
+
+.pill-label {
+    font-size: 13px;
+    color: #2a7f8c;
+}
+
+.pill-value {
+    font-size: 15px;
+}
+
+.pill-value.date {
+    color: #f08a24;
+}
+
+.pill-icons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 2px;
+}
+
+.pending-icon {
+    color: #efa91e;
+    font-size: 15px;
+}
+
+.done-icon {
+    background: #04c150;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 4px;
+    border-radius: 50%;
+}
+
+.proManagementContainer {
+    padding: 30px;
+    background: white;
+    display: flex;
+    border: 0px;
+    border-radius: 40px;
+    gap: 30px;
+}

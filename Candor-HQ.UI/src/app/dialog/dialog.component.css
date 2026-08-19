@@ -1,0 +1,108 @@
+.mainContnt {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.boxes{
+  overflow: auto;
+}
+
+.fa-times-rectangle:before, .fa-window-close:before{
+  font-size:20px;
+  cursor: pointer;
+}
+
+.closeIcon{
+  position: relative;
+  bottom: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveBtn{
+  position: relative;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 2%;
+}
+
+.saveBtnSpan{
+  position: relative;
+  top:20px;
+  bottom:20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bx2 {
+  padding: 60px 32px 25px 32px;
+}
+
+.bx2 h3 {
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.mainContnt.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.box {
+  min-height: 320px;
+  transform: translateY(-50px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  margin: auto;
+  background: #fff;
+}
+
+.mainContnt.active .box {
+  transform: translateY(0);
+  opacity: 1;
+  border-radius: 10px;
+  background-color: #cde9f7;
+  width: 700px;
+  margin-top: 120px;
+}
+
+.radioContent {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  max-height:260px;
+  overflow:auto;
+}
+
+.radioWithLabels {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+
+  input[type=radio] {
+    margin-bottom: 8px;
+  }
+}
+
+.childListClass {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.parentListClass{
+  border:1px solid lightgray;
+}

@@ -1,0 +1,308 @@
+<form [formGroup]="remoteAccessForm">
+    <div class="card service_card br-top-blue">
+        <div class="card-body">
+            <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="requestTypeClass">
+                            <div>
+                                <label class="asteriskrequired">Request Type</label>
+                                <select formControlName="requestType" name="requestType"
+                                    (change)="changeRequestTypeValue()">
+                                    <option selected disabled value="">Select Request Type</option>
+                                    <option *ngFor="let requesttype of requestTypeList" [value]="requesttype.supportId">
+                                        {{requesttype.supportName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provide New Access Starts -->
+                    <div class="row" *ngIf="remoteAccessForm.get('requestType')?.value == 91 ">
+                        <div class="inputFields">
+                            <div>
+                                <label class="asteriskrequired" for="softwareName">Software
+                                    Name</label>
+                                    <select formControlName="softwareName"
+                                    name="softwareName" (change)="getVersionList()">
+                                    <option selected disabled hidden value="">Select Software Name</option>
+                                    <option *ngFor="let item of softwareList" [value]="item.softwareLibraryId">{{item.softwareName}}</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired">Software
+                                    Version</label>
+                                    <select formControlName="softwareVersion" name="softwareVersion" >
+                                      <option selected disabled hidden value="">Select Version</option>
+                                      <option *ngFor="let item of versionList" [value]="item.softVersionId">{{item.softVersionName}}</option>
+                                      <!-- <option *ngIf="versionList.length==0" disabled >No Data</option> -->
+                                  </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="referenceDocument">Reference Document</label>
+                                <input type="text" formControlName="referenceDocument" name="referenceDocument" />
+                            </div>
+                            <!-- <div>
+                                <label class="asteriskrequired" for="dateOfRemoteAccessRemoval">Date
+                                    of Remote Access Removal</label>
+                                <input type="date" [min]="formValidationService.todaysDate"  [max]="formValidationService.maxDate"
+                                formControlName="dateOfRemoteAccessRemoval"
+                                    name="dateOfRemoteAccessRemoval" />
+                            </div> -->
+                            <div>
+                                <label class="asteriskrequired" for="softwareApplicationAccessRemoval"
+                                    customLabelAlert="Is Software Application Access to be Removed?">Is
+                                    Software Application Access to be Added?</label>
+                                <select formControlName="softwareApplicationAccessRemoval"
+                                    name="softwareApplicationAccessRemoval">
+                                    <option selected disabled hidden value="">Select Yes/No</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="isServerAccess" customLabelAlert="Is
+                                        Server Access Required?">Is
+                                    Server Access Required?</label>
+                                <select formControlName="isServerAccess" name="isServerAccess" (change)="formValidationService.clearOpenedInputFields(remoteAccessForm.value.isServerAccess,
+                                        remoteAccessForm.get('kindOfAccess'))">
+                                    <option selected disabled hidden value="">Select Yes/No</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div
+                                *ngIf="remoteAccessForm.get('requestType')?.value == 91 && remoteAccessForm.get('isServerAccess')?.value == 'Yes'">
+                                <label class="asteriskrequired" for="kindOfAccess"
+                                    customLabelAlert="Select Kind of Access">If
+                                    Yes, What Kind of Access?</label>
+                                <select formControlName="kindOfAccess" name="kindOfAccess">
+                                    <option selected disabled hidden value="">Select Kind of Access</option>
+                                    <option>Read-only</option>
+                                    <option>Read and Write</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="isDowntimeRequired"
+                                    customLabelAlert="Is Downtime Required?">Is Downtime Required?</label>
+                                <select formControlName="isDowntimeRequired" name="isDowntimeRequired">
+                                    <option selected disabled hidden value="">Select Below</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                    <option>NA</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="serverAccessType">Type of
+                                    Server Access</label>
+                                <ng-multiselect-dropdown formControlName="serverAccessType" name="serverAccessType"
+                                    [settings]="dropdownAccessTypeSettings" [data]="dropdownAccessTypeList"
+                                    [disabled]="remoteAccessForm.controls['serverAccessType'].disabled"></ng-multiselect-dropdown>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="serverDetailsIPDetails">Server
+                                    Details: IP Details</label>
+                                <input type="text" formControlName="serverDetailsIPDetails"
+                                    name="serverDetailsIPDetails" />
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="vendorName">Name of
+                                    Vendor</label>
+                                <input type="text" formControlName="vendorName" name="vendorName" />
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="vendorFocalName">Vendor Focal
+                                    Name</label>
+                                <input type="text" formControlName="vendorFocalName" name="vendorFocalName" />
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="vendorFocalEmail">Vendor Focal
+                                    Email ID</label>
+                                <input type="text" formControlName="vendorFocalEmail" name="vendorFocalEmail" />
+                                <span
+                                *ngIf="remoteAccessForm.get('vendorFocalEmail')?.touched && remoteAccessForm.get('vendorFocalEmail')?.invalid">
+                                <span *ngIf="remoteAccessForm.get('vendorFocalEmail')?.hasError('email')"
+                                    style="color:red">Enter a Valid Email ID</span>
+                            </span>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="accessStartTime">Proposed Remote Access Start
+                                    Time</label>
+                                <input type="datetime-local" formControlName="accessStartTime" name="accessStartTime" [min]="formValidationService.todaysDateWithTime"
+                                [max]="formValidationService.maxDateandTime1"/>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="accessEndTime">Proposed Remote Access End
+                                    Time</label>
+                                <input type="datetime-local" formControlName="accessEndTime" name="accessEndTime" [min]="remoteAccessForm.value.accessStartTime"
+                                [max]="formValidationService.maxDateandTime1"/>
+                            </div>
+                            <div class="textAreaDiv">
+                                <label class="asteriskrequired" for="justification"
+                                    customLabelAlert="Enter Purpose/Justification/Reason for Remote Access">Purpose/Justification/Reason
+                                    for Remote Access</label>
+                                <textarea class="textAreaClass" formControlName="justification"
+                                    name="justification"></textarea>
+                            </div>
+                            <!-- <div>
+                                <label class="asteriskrequired" for="attachment">Attachment</label>
+                                <input type="file" formControlName="attachment" name="attachment" />
+                                <div *ngIf="attachmentFileName">{{ attachmentFileName }}</div>
+                            </div> -->
+
+                            <div  class="textAreaDiv">
+                                <app-sr-attach-ment (attachMentListEvent)="getAttchmentList($event)"  (removeAttchment)="removeAttchment($event)"
+                                [title]="'Attachment'"></app-sr-attach-ment>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Provide New Access Ends -->
+
+                    <!-- Remote Access Starts -->
+                    <div class="row" *ngIf="remoteAccessForm.get('requestType')?.value == 82 ">
+                        <div class="inputFields">
+                            <div>
+                                <label class="asteriskrequired" for="softwareName">Software
+                                    Name</label>
+                                    <select formControlName="softwareName"
+                                    name="softwareName" (change)="getVersionList()">
+                                    <option selected disabled hidden value="">Select Software Name</option>
+                                    <option *ngFor="let item of softwareList" [value]="item.softwareLibraryId">{{item.softwareName}}</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Software
+                                    Version <span style="color: red;">*</span></label>
+                                    <select formControlName="softwareVersion" name="softwareVersion" >
+                                      <option selected disabled hidden value="">Select Version</option>
+                                      <option *ngFor="let item of versionList" [value]="item.softVersionId">{{item.softwareVersion}}</option>
+                                      <!-- <option *ngIf="versionList.length==0" disabled >No Data</option> -->
+                                  </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="referenceDocument">Reference
+                                    Document</label>
+                                <input type="text" formControlName="referenceDocument" name="referenceDocument" />
+                            </div>
+                            <!-- <div>
+                                <label class="asteriskrequired" for="dateOfRemoteAccess">Date
+                                    of Remote Access</label>
+                                <input type="date" [min]="formValidationService.todaysDate" [max]="formValidationService.maxDate"
+                                formControlName="dateOfRemoteAccess" name="dateOfRemoteAccess" />
+                            </div> -->
+                            <div>
+                                <label class="asteriskrequired" for="softwareApplicationAccessRemoval"
+                                    customLabelAlert="Is Software Application Access to be Removed?">Is
+                                    Software Application Access to be Removed?</label>
+                                <select formControlName="softwareApplicationAccessRemoval"
+                                    name="softwareApplicationAccessRemoval">
+                                    <option selected disabled hidden value="">Select Yes/No</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="isServerAccess"
+                                    customLabelAlert="Is Server Access to be Removed?">Is Server Access to be
+                                    Removed?</label>
+                                <select formControlName="isServerAccess" name="isServerAccess" (change)="formValidationService.clearOpenedInputFields(remoteAccessForm.value.isServerAccess,
+                                        remoteAccessForm.get('kindOfAccess'))">
+                                    <option selected disabled hidden value="">Select Yes/No</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div
+                                *ngIf="remoteAccessForm.get('requestType')?.value == 82 && remoteAccessForm.get('isServerAccess')?.value == 'Yes'">
+                                <label class="asteriskrequired" for="kindOfAccess"
+                                    customLabelAlert="Select Kind of Access">If
+                                    Yes, What Kind of Access?</label>
+                                <select formControlName="kindOfAccess" name="kindOfAccess">
+                                    <option selected disabled hidden value="">Select Kind of Access</option>
+                                    <option>Read-only</option>
+                                    <option>Read and Write</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="serverAccessType">Type of Server
+                                    Access</label>
+                                <ng-multiselect-dropdown formControlName="serverAccessType" name="serverAccessType"
+                                    [settings]="dropdownAccessTypeSettings" [data]="dropdownAccessTypeList"
+                                    [disabled]="remoteAccessForm.controls['serverAccessType'].disabled"></ng-multiselect-dropdown>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="serverDetailsIPDetails">Server
+                                    Details: IP Details</label>
+                                <input type="text" formControlName="serverDetailsIPDetails"
+                                    name="serverDetailsIPDetails" />
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="vendorName">Name of
+                                    Vendor</label>
+                                <input type="text" formControlName="vendorName" name="vendorName" />
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="vendorFocalName">Vendor Focal
+                                    Name</label>
+                                <input type="text" formControlName="vendorFocalName" name="vendorFocalName" />
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="vendorFocalEmail">Vendor Focal
+                                    Email ID</label>
+                                <input type="text" formControlName="vendorFocalEmail" name="vendorFocalEmail" />
+                                <span
+                                *ngIf="remoteAccessForm.get('vendorFocalEmail')?.touched && remoteAccessForm.get('vendorFocalEmail')?.invalid">
+                                <span *ngIf="remoteAccessForm.get('vendorFocalEmail')?.hasError('email')"
+                                    style="color:red">Enter a Valid Email ID</span>
+                            </span>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="accessStartTime">Proposed Remote Access
+                                    Removal Start
+                                    Time</label>
+                                <input type="datetime-local" formControlName="accessStartTime" name="accessStartTime" [min]="formValidationService.todaysDateWithTime"
+                                [max]="formValidationService.maxDateandTime1"/>
+                            </div>
+                            <div>
+                                <label class="asteriskrequired" for="accessEndTime">Proposed Remote Access
+                                    Removal End
+                                    Time</label>
+                                <input type="datetime-local" formControlName="accessEndTime" name="accessEndTime"  [min]="remoteAccessForm.value.accessStartTime"
+                                [max]="formValidationService.maxDateandTime1" />
+                            </div>
+                            <div class="textAreaDiv">
+                                <label class="asteriskrequired" for="justification"
+                                    customLabelAlert="Enter Purpose/Justification/Reason for Remote Access">Purpose/Justification/Reason
+                                    for Remote Access</label>
+                                <textarea class="textAreaClass" formControlName="justification"
+                                    name="justification"></textarea>
+                            </div>
+                            <!-- <div>
+                                <label class="asteriskrequired" for="attachment">Attachment</label>
+                                <input type="file" formControlName="attachment" name="attachment" />
+                                <div *ngIf="attachmentFileName">{{ attachmentFileName }}</div>
+                            </div> -->
+
+                            <div  class="textAreaDiv">
+                                <app-sr-attach-ment (attachMentListEvent)="getAttchmentList($event)" (removeAttchment)="removeAttchment($event)"
+                                [title]="'Attachment'"></app-sr-attach-ment>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Remote Access Ends -->
+
+
+                    <div class="mainBtnsDiv"
+                        *ngIf="remoteAccessForm.get('requestType')?.value && ((srId==undefined||srId==null)||this.srData?.status.trim() == 'Draft')">
+                        <button class="actionBtn" (click)="Submit('Draft')">Draft</button>
+                        <button class="actionBtn" (click)="Submit('Pending Approval')">Submit</button>
+                        <button class="actionBtn" (click)="clearAll()">Clear</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

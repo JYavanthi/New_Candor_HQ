@@ -1,0 +1,296 @@
+<div class="notification-confirm" *ngIf="deleteConfirmation">
+  <p style="font-size:17px;text-align:center">Are you sure you want to delete this</p>
+  <div style="text-align:center;">
+    <button class="confirmbtn" (click)="deleteYes()">Yes</button>
+    <button class="confirmbtn" (click)="deleteNo()">No</button>
+  </div>
+</div>
+
+<div class="notification-success" *ngIf="deleteInProgress">
+  <span>{{deleteInMessage}}</span>
+  <span class="close-btn" (click)="navigateinprogress()">Ok</span>
+</div>
+<div class="notification-success" *ngIf="deleteSuccess">
+  <p>{{deleteMessage}}</p>
+  <span class="close-btn" (click)="navigatesuccess()">Ok</span>
+</div>
+
+<div style="padding:30px;">
+  <div class="execute_container_implement">
+
+    <div class="row">
+      <div class="row-cols-md-5">
+        <div class="PreDefinedTaskDiv">
+          <div class="PreDefinedTask">
+            <span><input type="checkbox" [(ngModel)]="predefindTaskRadio" (change)="togglePredefined()"
+                name="task1"></span>
+            <span>&nbsp;Pre-Defined Task</span>
+          </div>
+
+          <div style="width: 250px;" *ngIf="showPreDefindTaskField">
+            <select [(ngModel)]="templateId">
+              <option selected hidden disabled value="">Select Template</option>
+              <option *ngFor="let templ of predefindTemplateList" value="{{templ.crtemplateId}}">{{templ.templateName}}
+              </option>
+            </select>
+          </div>
+
+          <div *ngIf="showPreDefindTaskField">
+            <button (click)="showPreDefindTask()" [disabled]="DisableSelectTemplate" class="executeTopBtns">Select
+              Template</button>
+          </div>
+
+          <div>
+            <button (click)="viewExecutionPlan()" class="executeTopBtns">View Execution Plan</button>
+          </div>
+
+          <div>
+            <button (click)="assignToMeFunc()" class="executeTopBtns">Assign To me</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <label>System Landscape</label>
+    <select [(ngModel)]="selectoption" (change)="filterData($event)">
+      <option selected hidden disabled value="">Select System Landscape</option>
+      <option *ngFor="let pltdata of systemlandscape" value="{{pltdata.sysLandscapeId}}">{{pltdata.sysLandscape1}}
+      </option>
+    </select>
+
+    <div class="pt-2">
+      <h1 class="h1tag">Implementation Plan</h1>
+      <br />
+      <br />
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <th>Actions</th>
+              <th>Task #</th>
+              <th>Tasks</th>
+              <th>Planned Start Date</th>
+              <th>Planned End Date</th>
+              <th>Status</th>
+              <th>Assigned To</th>
+              <th>Forwarded To</th>
+              <th>Depend SysLandscape</th>
+              <th>Depend Task</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of filteredData let i = index" class="tr-body">
+              <td>
+                <a (click)="navigateToUpdateTask(row.itcrexecId)">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor: pointer;"></i>
+                </a>
+                <i *ngIf="row.status!='Assigned' && row.status!='Completed' " class="fa fa-trash"
+                  style="cursor: pointer;" (click)="deleteRow(row.itcrexecId)" aria-hidden="true"></i>
+              </td>
+              <td>{{row.itcrexecId}}</td>
+              <td>{{row.executionStepName}}</td>
+              <td>{{row.startDt| date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.endDt| date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.status}}</td>
+              <td>{{row.assignedTo}}</td>
+              <td>{{row.forwardedTo}}</td>
+              <td>{{row.dependSyelanscape || 'Landscape not dependent'}}</td>
+              <td>{{row.depndtask || 'No Depend Task'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <button class="implement-button" *ngIf="selectoption && issupportengineer && !isImplemented && addtaskflag"
+        (click)="addNewTask()">
+        <i class="fa fa-plus"></i>Add New Task
+      </button>
+    </div>
+  </div>
+
+  <!-- Predefind tasks -->
+
+  <div class="execute_container_implement" *ngIf="showTaskTable">
+    <div>
+      <h1 class="h1tag">Pre-Defined Task</h1>
+      <br />
+      <br />
+      <div style="overflow-x:auto;" class="table-wrapper">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <th>Template #</th>
+              <th>Template Name</th>
+              <th>Task Name</th>
+              <th>Task Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of showPreDefindTaskList" class="tr-body">
+              <td>{{row.crtemplateId}}</td>
+              <td>{{row.templateName}}</td>
+              <td>{{row.taskName}}</td>
+              <td>{{row.taskDesc}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <button class="viewexeplan-button" (click)="savePreDefinedTask()" *ngIf="isImplemented == false">Save Task</button>
+    </div>
+  </div>
+
+  <div *ngIf="assignToButton" class="execute_container_implement">
+    <div>
+      <h1 class="h1tag">Assign To Me</h1>
+      <br />
+      <br />
+      <div style="overflow-x:auto;" class="table-wrapper">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <th>Actions</th>
+              <th>Task #</th>
+              <th>Tasks</th>
+              <th>Planned Start Date</th>
+              <th>Planned End Date</th>
+              <th>Status</th>
+              <th>Assigned To</th>
+              <th>Forwarded To</th>
+              <th>Depend SysLandscape</th>
+              <th>Depend Task</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of assignedToMeList" class="tr-body">
+              <td>
+                <a style="cursor:pointer" (click)="navigateToUpdateTask(row.itcrexecId)">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+                <i style="cursor:pointer" class="fa fa-trash" (click)="deleteRow(row.itcrexecId)" aria-hidden="true"></i>
+              </td>
+              <td>{{row.itcrexecId}}</td>
+              <td>{{row.executionStepName}}</td>
+              <td>{{row.startDt| date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.endDt| date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.status}}</td>
+              <td>{{row.assignedTo}}</td>
+              <td>{{row.forwardedTo}}</td>
+              <td>{{row.dependSyelanscape || 'No Depend Landscape'}}</td>
+              <td>{{row.depndtask || 'No Depend Task'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <button class="implement-button" *ngIf="selectoption && !isapprover && !isImplemented && addtaskflag"
+        (click)="addNewTask()">
+        <i class="fa fa-plus"></i>Add New Task
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="implementBtn" class="execute_container_implement">
+    <div *ngFor="let landscape of landscapeTasks | keyvalue">
+      <br />
+      <div class="viewall-task">
+        <h6>{{ landscapeNames[landscape.key] }}</h6>
+      </div>
+      <div class="landscapeClass">
+        <table class="fl-table">
+          <thead class="table-head">
+            <tr class="border-bottom">
+              <th>Actions</th>
+              <th>Task #</th>
+              <th>Tasks</th>
+              <th>Planned Start Date</th>
+              <th>Planned End Date</th>
+              <th>Status</th>
+              <th>Assigned To</th>
+              <th>Forwarded To</th>
+              <th>Depend SysLandscape</th>
+              <th>Depend Task</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows for tasks in the current landscape -->
+            <tr *ngFor="let row of landscape.value" class="tr-body">
+              <td>
+                <a (click)="navigateToUpdateTask(row.itcrexecId)">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor: pointer;"></i>
+                </a>
+                <i class="fa fa-trash" (click)="deleteRow(row.itcrexecId)" style="cursor: pointer;"
+                  aria-hidden="true"></i>
+              </td>
+              <td>{{row.itcrexecId}}</td>
+              <td>{{row.executionStepName}}</td>
+              <td>{{row.startDt| date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.endDt| date:'dd-MM-yyyy HH:mm'}}</td>
+              <td>{{row.status}}</td>
+              <td>{{row.assignedTo}}</td>
+              <td>{{row.forwardedTo}}</td>
+              <td>{{row.dependSyelanscape || 'No Depend Landscape'}}</td>
+              <td>
+                <a *ngIf="row.depndtask" [routerLink]="['/changerequest/cr-updateTask']"
+                  [queryParams]="{ id: row.dependTaskId, sysid: selectoption, impid: crData.itcrid }"
+                  style="cursor: pointer;">
+                  {{ row.depndtask }}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="assignAndViewTask">
+    <input [(ngModel)]="templateName" style="width:20%;" type="text" /> &nbsp;
+    <button class="viewexeplan-button" (click)="SaveTemplate()">Save As Template</button>
+  </div>
+
+  <div>
+    <div *ngIf="submitfor">
+      <button class="btn-sub" style="margin-left:83%; margin-top:-4%;" (click)="executeAction('submit', '')">
+        Submit For Release
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <br><br>
+    <p style="font-weight:600">Execution Plan History</p>
+  </div>
+  <div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>CR History Date</th>
+          <th>RFC#</th>
+          <th>Task #</th>
+          <th>Task Name</th>
+          <th>Task Description</th>
+          <th>Remarks</th>
+          <th>Assigned To</th>
+          <th>Forwarded To</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of executionHistoryList">
+          <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+          <td>{{row.itcrid}}</td>
+          <td>{{row.itcrexecId}}</td>
+          <td>{{row.executionStepName}}</td>
+          <td>{{row.executionStepDesc}}</td>
+          <td>{{row.remarks}}</td>
+          <td>
+            {{ row.assignedTo ? (row.assignedTo + ' - ' + (row.assignedToName || '')) : (row.assignedToName || '') }}
+          </td>
+          <td>{{row.forwardedToName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

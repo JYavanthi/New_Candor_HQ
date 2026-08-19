@@ -1,0 +1,337 @@
+<form [formGroup]="radioBtnForm">
+    <div class="card-body insideCardBody">
+        <div class="row radioBG">
+            <div class="col-md-2 radioBtns">
+                <span>
+                    <input type="radio" (change)="onChangingRadiobtn()" formControlName="userType" name="userType"
+                        value="self" />
+                </span>
+                <label class="radioTitle">&nbsp;Self</label>
+            </div>
+            <div class="col-md-4 radioBtns">
+                <span>
+                    <input type="radio" (change)="onChangingRadiobtn()" formControlName="userType" name="userType"
+                        value="others" />
+                </span>
+                <label class="radioTitle" for="inputEmployeeID"
+                    customLabelAlert="Enter Other's Employee ID!">&nbsp;Others</label>
+                &nbsp;
+                <span style="position: relative;">
+                    <input type="text" #EnterIssueID formControlName="inputEmployeeID" id="inputEmployeeID"
+                        name="inputEmployeeID" (input)="filterItem()" style="width:250px;"
+                        (ngModelChange)="clearOtherData()" placeholder="Enter Employee ID" />
+                    <ul class="dropdowns-list"
+                        *ngIf="radioBtnForm.controls['userType'].value == 'others' && dropdownItems.length > 0">
+                        <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">
+                            {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                        </li>
+                    </ul>
+                </span>
+            </div>
+            <div class="col-md-2 radioBtns">
+                <span>
+                    <input type="radio" (change)="onChangingRadiobtn()" formControlName="userType" name="userType"
+                        value="guest" />
+                </span>
+                <label class="radioTitle">&nbsp;Guest</label>
+            </div>
+        </div>
+
+        <!--Self-->
+        <ng-container *ngIf="radioBtnForm.controls['userType'].value == 'self'">
+            <div class="row">
+                <div class="inputFields">
+                    <div>
+                        <label>Employee ID: <span class="horinputDatas">{{selfEmployeeID}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Name: <span class="horinputDatas">{{selfName}}</span></label>
+                    </div>
+                    <div>
+                        <label>Email: <span class="horinputDatas">{{selfEmail}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Contact No: <span class="horinputDatas">{{selfContactNo}}</span></label>
+                    </div>
+                    <div>
+                        <label>Reporting Manager: <span class="horinputDatas">{{selfReportingManager}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Staff Category: <span class="horinputDatas">{{selfStaffCategory}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Plant: <span class="horinputDatas">{{selfPlant}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Paygroup: <span class="horinputDatas">{{selfPaygroup}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Department: <span class="horinputDatas">{{selfDepartment}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Designation: <span class="horinputDatas">{{selfDesignation}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Role: <span class="horinputDatas">{{selfRole}}</span></label>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!--Others-->
+        <ng-container *ngIf="radioBtnForm.controls['userType'].value == 'others'">
+            <!--Requested By-->
+            <span class="requestedClass">Requested by:</span>
+            <div class="row">
+                <div class="inputFields">
+                    <div>
+                        <label>Employee ID: <span class="horinputDatas">{{selfEmployeeID}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Name: <span class="horinputDatas">{{selfName}}</span></label>
+                    </div>
+                    <div>
+                        <label>Email: <span class="horinputDatas">{{selfEmail}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Contact No: <span class="horinputDatas">{{selfContactNo}}</span></label>
+                    </div>
+                    <div>
+                        <label>Reporting Manager: <span class="horinputDatas">{{selfReportingManager}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Staff Category: <span class="horinputDatas">{{selfStaffCategory}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Plant: <span class="horinputDatas">{{selfPlant}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Paygroup: <span class="horinputDatas">{{selfPaygroup}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Department: <span class="horinputDatas">{{selfDepartment}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Designation: <span class="horinputDatas">{{selfDesignation}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Role: <span class="horinputDatas">{{selfRole}}</span></label>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <!--Requested For-->
+            <div>
+                <span class="requestedClass">Requested for:</span>
+                <div class="row">
+                    <div class="inputFields">
+                        <div>
+                            <label>Employee ID: <span class="horinputDatas">{{ othersEmployeeID }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Name: <span class="horinputDatas">{{ othersName }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Email: <span class="horinputDatas">{{ othersEmail }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Contact No: <span class="horinputDatas">{{ othersContactNo }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Reporting Manager: <span class="horinputDatas">{{ othersReportingManager
+                                    }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Staff Category: <span class="horinputDatas">{{ othersStaffCategory }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Plant: <span class="horinputDatas">{{ othersPlant }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Paygroup: <span class="horinputDatas">{{ othersPaygroup }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Department: <span class="horinputDatas">{{ othersDepartment }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Designation: <span class="horinputDatas">{{ othersDesignation }}</span></label>
+                        </div>
+
+                        <div>
+                            <label>Role: <span class="horinputDatas">{{ othersRole }}</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!--Guest-->
+        <ng-container *ngIf="radioBtnForm.controls['userType'].value == 'guest'">
+            <!--Requested By-->
+            <span class="requestedClass">Requested by:</span>
+            <div class="row">
+                <div class="inputFields">
+                    <div>
+                        <label>Employee ID: <span class="horinputDatas">{{selfEmployeeID}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Name: <span class="horinputDatas">{{selfName}}</span></label>
+                    </div>
+                    <div>
+                        <label>Email: <span class="horinputDatas">{{selfEmail}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Contact No: <span class="horinputDatas">{{selfContactNo}}</span></label>
+                    </div>
+                    <div>
+                        <label>Reporting Manager: <span class="horinputDatas">{{selfReportingManager}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Staff Category: <span class="horinputDatas">{{selfStaffCategory}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Plant: <span class="horinputDatas">{{selfPlant}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Paygroup: <span class="horinputDatas">{{selfPaygroup}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Department: <span class="horinputDatas">{{selfDepartment}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Designation: <span class="horinputDatas">{{selfDesignation}}</span></label>
+                    </div>
+
+                    <div>
+                        <label>Role: <span class="horinputDatas">{{selfRole}}</span></label>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <!--Requested for-->
+            <span class="requestedClass">Requested for:</span>
+            <div class="row">
+                <div class="inputFields">
+                    <div>
+                        <label>Guest Employee ID: <span class="horinputDatas" style="font-weight: normal;"
+                                *ngIf="srId && srData?.status?.trim() != 'Draft'">{{
+                                radioBtnForm.get('guestEmployeeID')?.value }}</span></label>
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="number" min="0"
+                            formControlName="guestEmployeeID" name="guestEmployeeID" (blur)="getInputDatas()" />
+                    </div>
+                    <div>
+                        <label class="asteriskrequired" for="guestName" customLabelAlert="Enter Guest Name!">Name: <span
+                                style="font-weight: normal; text-wrap: auto;" *ngIf="srId && srData?.status?.trim() != 'Draft'">{{
+                                radioBtnForm.get('guestName')?.value }}</span></label>
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="text"
+                            formControlName="guestName" id="guestName" name="guestName" (blur)="getInputDatas()" />
+                    </div>
+                    <div>
+                        <label>Email: <span class="horinputDatas" style="font-weight: normal;"
+                                *ngIf="srId && srData?.status?.trim() != 'Draft'">{{
+                                radioBtnForm.get('guestEmail')?.value }}</span></label>
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="email"
+                            formControlName="guestEmail" name="guestEmail" (blur)="getInputDatas()" />
+                    </div>
+                    <div>
+                        <label>Contact No: <span class="horinputDatas" style="font-weight: normal;"
+                                *ngIf="srId && srData?.status?.trim() != 'Draft'">{{
+                                radioBtnForm.get('guestContactNo')?.value }}</span></label>
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="tel" maxlength="10" min="0"
+                            placeholder="Enter 10-digit contact number" title="Please enter exactly 10 digits"
+                            formControlName="guestContactNo" name="guestContactNo" (blur)="getInputDatas()"
+  (keypress)="restrictNonNumeric($event)"  />
+                    </div>
+                    <div style="position:relative">
+                        <label class="asteriskrequired" for="reportingManagerID"
+                            customLabelAlert="Reporting Manager ID is Required!">Reporting Manager ID: <span
+                                class="horinputDatas" style="font-weight: normal;"
+                                *ngIf="srId && srData?.status?.trim() != 'Draft'">{{
+                                radioBtnForm.get('reportingManagerID')?.value }}</span></label>
+                        <input *ngIf="srData?.status?.trim() == 'Draft' || !srId" type="text" (input)="filterItem()"
+                            formControlName="reportingManagerID" name="reportingManagerID"
+                            (ngModelChange)="clearGuestData()" placeholder="Enter Reporting Manager Employee ID" />
+                        <ul class="dropdowns-list"
+                            *ngIf="radioBtnForm.controls['userType'].value == 'guest' && dropdownItems.length > 0">
+                            <li class="drop-list" value="" *ngFor="let item of dropdownItems"
+                                (click)="selectItem(item)">
+                                {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label>Reporting Manager in ML: <span
+                                class="horinputDatas">{{ReportingManagerinML}}</span></label>
+                    </div>
+
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label>Staff Category of ML: <span class="horinputDatas">{{StaffCategoryofML}}</span></label>
+                    </div>
+
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label>Plant ML: <span class="horinputDatas">{{GuestPlant}}</span></label>
+                    </div>
+
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label>Paygroup ML: <span class="horinputDatas">{{PaygroupML}}</span></label>
+                    </div>
+
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label>Department ML: <span class="horinputDatas">{{DepartmentML}}</span></label>
+                    </div>
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label style="    width: 100%;
+    text-wrap: auto;">Designation of ML Manager: <span
+                                class="horinputDatas">{{DesignationofMLManager}}</span></label>
+                    </div>
+
+                    <div
+                        [ngClass]="{guestLabel:srData?.status?.trim() == 'Draft' || !srId, alignGuestLabel:ReportingManagerinML !='' && (srData?.status?.trim() == 'Draft' || !srId)}">
+                        <label>Role of ML Manager: <span class="horinputDatas">{{RoleofMLManager}}</span></label>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</form>

@@ -1,0 +1,27 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>CR Owner Name</th>
+      <th>CR History Date</th>
+      <th>Stage</th>
+      <th>Status</th>
+      <th>Change Description</th>
+      <th>Remarks</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableData">
+      <td>{{row.crOwnerName}}</td>
+      <td>{{row.crhistoryDt | date:'dd-MM-yyyy HH:mm'}}</td>
+      <td>{{row.stage}}</td>
+      <td>{{row.status}}</td>
+      <td>{{row.changeDesc}}</td>
+      <td>{{row.remarks}}</td>
+      <!--<td>{{row.createdBy}}</td>-->
+    <td>
+      {{ row.modifiedBy ? (row.modifiedBy + ' - ' + (row.modifiedName || '')) : (row.modifiedName || '') }}
+    </td>
+    </tr>
+  </tbody>
+</table>

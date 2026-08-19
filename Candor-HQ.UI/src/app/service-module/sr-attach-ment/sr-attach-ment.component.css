@@ -1,0 +1,11 @@
+.input-btn{
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.red-alert{
+    font-size: 10px;
+    color: #e04b4b;
+    font-weight: 600;
+}

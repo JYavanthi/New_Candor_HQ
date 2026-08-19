@@ -1,0 +1,93 @@
+<!-- <div class="loginMainDiv">
+    <div class="login-page"></div>
+</div> -->
+
+
+<div class="loginMainDiv">
+    <div class="login-page">
+
+        <!-- Login Form Card -->
+        <div class="login-card">
+
+            <div>
+                <h2>Log in to CandorHQ</h2>
+
+                <p class="sub-text">
+                    Enter your details to access your account.
+                </p>
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+                <label>Email Address</label>
+
+                <div class="input-field">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email address" />
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="input-group">
+                <label>Password</label>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" />
+
+                    <i class="eye-icon" [ngClass]="showPassword ? 'fa-solid fa-eye-slash' : 'fa-regular fa-eye'"
+                        (click)="togglePassword()"></i>
+                </div>
+            </div>
+
+            <!-- Remember -->
+            <div class="remember-row">
+                <div class="remember-left">
+                    <input type="checkbox" checked />
+                    <span>Remember me</span>
+                </div>
+
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <!-- Button -->
+            <button class="login-btn">
+                Log In
+            </button>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="social-login">
+
+                <button>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" />
+                    Google
+                </button>
+
+                <button>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" />
+                    Microsoft
+                </button>
+
+                <button>
+                    <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" />
+                    Apple
+                </button>
+
+            </div>
+
+            <!-- Signup -->
+            <p class="signup-text">
+                Don’t have an account?
+                <a href="#">Sign up</a>
+            </p>
+
+        </div>
+
+    </div>
+</div>

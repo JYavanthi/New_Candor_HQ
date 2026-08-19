@@ -1,0 +1,51 @@
+<div class="updatepriorityMainDiv">
+
+  <div style="margin-left : 3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+
+  <div class="container-implement">
+    <div class="container-field-line">
+
+      <!-- bootstrap -->
+      <h3>Update Priority </h3>
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+          <div class="col">
+            <label>Priority ID</label>
+            <input class="searchinput" type="text" readonly [(ngModel)]="updatevalue[0].priorityId" />
+          </div>
+          <div class="col">
+            <label>Priority Name</label>
+            <input class="searchinput" type="text" [(ngModel)]="updatevalue[0].priorityName" />
+          </div>
+          <div class="col">
+            <label>Is Active</label>
+
+            <select [(ngModel)]="updatevalue[0].isActive">
+              <option>Select</option>
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <button (click)="postPriority()" class="btn btn-primary">Submit</button>
+      </div>
+      <div class="col">
+        <button [routerLink]="'/Priority'" style="margin-left: -87%;" class="btn btn-primary">Back</button>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

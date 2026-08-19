@@ -1,0 +1,104 @@
+<form [formGroup]="ftpAccessForm">
+  <div class="card service_card br-top-blue">
+    <div class="card-body">
+      <app-sr-details-self-others-guest [srData]="srData" (radioBtnValues)="getDatafromRadios($event)" />
+      <div class="card">
+        <div class="card-body">
+          <div class="software">
+            <div class="row">
+              <div class="requestTypeClass">
+                <div>
+                  <label class="asteriskrequired">Request Type</label>
+                  <select formControlName="requestType" (change)="changeRequestTypeValue()">
+                    <option selected disabled hidden value="">Select  Request Type</option>
+                    <option *ngFor="let requesttype of requestTypeList" [value]="requesttype.supportId">
+                      {{requesttype.supportName}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row"
+              *ngIf="this.ftpAccessForm.value.requestType == 51 || this.ftpAccessForm.value.requestType == 52">
+              <div class="inputFields">
+                <div>
+                  <label for="requiredFolderAccess" class="asteriskrequired"
+                    customLabelAlert="Folder Access/Path field is Required">Required Folder Access/Path:</label>
+                  <input id="requiredFolderAccess" formControlName="requiredFolderAccess" required />
+                </div>
+
+                <div *ngIf="this.ftpAccessForm.value.requestType == 51">
+                  <label class="asteriskrequired" for="accessType">Access Type</label>
+                  <select id="accessType" formControlName="accessType" required>
+                    <option value="" disabled>Select Access Type</option>
+                    <option value="Permanent">Permanent</option>
+                    <option value="Temporary">Temporary</option>
+                  </select>
+                </div>
+                <div *ngIf=" this.ftpAccessForm.value.requestType == 52">
+                  <label class="asteriskrequired" for="accessType">Remove Access Type</label>
+                  <select id="accessType" formControlName="accessType" required>
+                    <option value="" disabled>Select Access Type</option>
+                    <option value="Permanent">Permanent</option>
+                    <option value="Temporary">Temporary</option>
+                  </select>
+                </div>
+
+                <div *ngIf="this.ftpAccessForm.value.accessType == 'Temporary' && (this.ftpAccessForm.value.requestType == 51 || this.ftpAccessForm.value.requestType == 52)">
+                  <label class="asteriskrequired" for="duration" customLabelAlert="Duration field is required">Duration
+                    - Access Required (Days)</label>
+                  <input id="duration" type="number" min="1" formControlName="duration" required />
+                </div>
+
+                <!-- <div *ngIf="this.ftpAccessForm.value.accessType == 'Temporary' && this.ftpAccessForm.value.requestType == 52">
+                  <label class="asteriskrequired" for="duration" customLabelAlert="Duration field is required">Duration
+                    - Remove Access Required (Days)</label>
+                  <input id="duration" type="number" min="1" formControlName="duration" required />
+                </div> -->
+
+                <div style="position: relative;">
+                  <label class="asteriskrequired" for="ownerEmail">Owner Email of Drive(Enter Employee ID)</label>
+                  <input type="text" formControlName="ownerEmail" name="ownerEmail" (input)="filterItem()"
+                    placeholder="Enter Employee ID" />
+                  <ul class="dropdowns-list" *ngIf="dropdownItems.length > 0">
+                    <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">
+                      {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <label class="asteriskrequired" for="ownerPlant">Owner Plant</label>
+                  <input id="ownerPlant" formControlName="ownerPlant" readonly>
+                </div>
+
+                <div>
+                  <label class="asteriskrequired" for="empType">Employee Type</label>
+                  <select id="empType" formControlName="empType" required>
+                    <option value="" selected hidden disabled>Select Employee Type</option>
+                    <option value="Office">Office</option>
+                    <option value="Field">Field</option>
+                    <option value="Consultant">Consultant</option>
+                  </select>
+                </div>
+
+                <div class="textAreaDiv">
+                  <label class="asteriskrequired" for="purpose">Purpose/Justification</label>
+                  <textarea class="textAreaClass" id="purpose" formControlName="purpose" required></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mainBtnsDiv"
+            *ngIf="ftpAccessForm.get('requestType')?.value && (!srId||this.srData?.status.trim() == 'Draft')">
+            <button class="actionBtn" (click)="submit('Draft')">Draft</button>
+            <button class="actionBtn" (click)="submit('Pending Approval')">Submit</button>
+            <button class="actionBtn" (click)="clearAll()">Clear</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,295 @@
+.newDashboardMainDiv {
+    background: white;
+    width: 95%;
+    margin-left: 2.5%;
+    border-radius: 40px;
+    display: flex;
+}
+
+.dashboardSideBar {
+    width: 220px;
+    padding-top: 5%;
+    position: sticky;
+    top: 0;
+    margin-left: 1.5%;
+
+}
+
+.dashboard-wrapper {
+    flex: 1;
+    padding: 20px;
+    margin-left: -10%;
+}
+
+.carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carousel {
+    width: 120px;
+    text-align: center;
+}
+
+.carousel-label {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.carousel-count {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.new {
+    color: #2ecc71;
+}
+
+.pending {
+    color: #f39c12;
+}
+
+.completed {
+    color: #3498db;
+}
+
+.open {
+    color: #3498db;
+}
+
+.pending {
+    color: #f39c12;
+}
+
+.completed {
+    color: #2ecc71;
+}
+
+
+.dashboard-header {
+    background: #c6d6e8;
+    padding: 18px;
+    border-radius: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-header h2 {
+    color: #1b8f98;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.dashboard-summary {
+    display: flex;
+    gap: 20px;
+    background: #dbe7f3;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    flex: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    align-items: center;
+    font-weight: 600;
+    color: #5a6a85;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.count {
+    font-weight: 600;
+}
+
+.progress {
+    height: 8px;
+    background: #e6ecf3;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.green {
+    background: #4CAF50;
+    width: 30%;
+}
+
+.blue {
+    background: #3498db;
+    width: 50%;
+}
+
+.purple {
+    background: #9b59b6;
+    width: 70%;
+}
+
+.orange {
+    background: #f39c12;
+    width: 40%;
+}
+
+.charts-container {
+    background: #c7d9ea;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.charts-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.chart-card {
+    background: #f5f5f5;
+    border-radius: 18px;
+    width: 50%;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.chart-card:hover {
+    transform: translateY(-4px);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.chart-header {
+    background: linear-gradient(to right, #f4e8a3, #f1e38f);
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #1a9a8f;
+}
+
+.chart-body {
+    padding: 20px;
+    height: 320px;
+}
+
+.chart-body canvas {
+    width: 75% !important;
+    height: 95% !important;
+    margin-left: 12%;
+}
+
+.plant-chart {
+    display: flex;
+    justify-content: center;
+    height: 40%;
+    margin-right: 100%;
+}
+
+@media(max-width:1000px) {
+
+    .dashboard-summary {
+        flex-wrap: wrap;
+    }
+
+    .summary-card {
+        width: 45%;
+    }
+
+    .charts-row {
+        flex-direction: column;
+    }
+
+    .chart-card {
+        width: 100%;
+    }
+
+}
+
+.issues-main {
+    width: 95%;
+    margin: auto;
+}
+
+.issues-title {
+    text-align: center;
+    color: #1a9a8f;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.issues-container {
+    background: #bcd0e4;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+.issues-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.issues-card {
+    background: #f2f2f2;
+    border-radius: 18px;
+    width: 50%;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.issues-card-header {
+    background: linear-gradient(to right, #f6e9a6, #efe391);
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #1a9a8f;
+}
+
+.issues-card-body {
+    padding: 20px;
+    height: 320px;
+}
+
+.issues-card-body canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.line-chart {
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width:900px) {
+
+    .issues-row {
+        flex-direction: column;
+    }
+
+    .issues-card {
+        width: 100%;
+    }
+
+}

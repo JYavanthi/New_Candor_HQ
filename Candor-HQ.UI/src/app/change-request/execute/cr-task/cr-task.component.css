@@ -1,0 +1,301 @@
+.crTaskMaindiv {
+  width: 95%;
+  display: flex;
+  background: white;
+  border-radius: 40px;
+  margin-left: 2.5%;
+  margin-top: -2%;
+}
+
+.back-btn {
+  background: linear-gradient(180deg, #ffd76a, #f4b400);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container-home {
+  margin-left: 10%;
+}
+
+.container-field {
+  max-width: 96.7%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: -2%;
+  margin-top: 3%;
+  border-top: 3px solid blue;
+}
+
+.notes-field {
+  max-width: 84.4%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  margin-left: 0%;
+  margin-top: 3%;
+  border-top: 3px solid blue;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: 0%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type="date"] {
+  width: calc(100% - 2px);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.checkbox-margin {
+  margin-left: 40.7%;
+  margin-bottom: -10%;
+}
+
+.btn-task {
+  border-radius: 5px;
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: Background;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  opacity: 0;
+  animation: slideDown 0.5s ease forwards;
+  width: 25%;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.message-txt {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.success {
+  animation: Down 0.5s ease forwards;
+  width: 25%;
+  background-color: green;
+  color: white;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes Down {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.custom-breadcrumb {
+  font-size: 20px;
+  font-weight: 500;
+  color: #2a8c8c;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.crumb {
+  color: #2a8c8c;
+}
+
+.crumb.link {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.crumb.link:hover {
+  opacity: 0.7;
+}
+
+.separator {
+  margin: 0 4px;
+  color: #2a8c8c;
+}
+
+.crumb.active {
+  font-weight: 600;
+}
+
+
+.container-field1 {
+  max-width: 95%;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: white;
+  border: 1px solid #c9c5b8;
+  border-radius: 4px;
+  margin-right: 10%;
+
+}
+
+.row {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: #3b5d6b;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 2px solid #9ec3e6;
+  outline: none;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  color: #333;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: #5aa0d6;
+  background-color: #fff;
+}
+
+input[type="date"] {
+  position: relative;
+  color: #555;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* select.completed {
+  color: #28a745;
+  font-weight: 600;
+}
+
+select.not-forwarded {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+select.picked {
+  color: #28a745;
+  font-weight: 600;
+} */
+
+.searchinput {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 2px solid #9ec3e6;
+  background-color: #f7f7f7;
+}
+
+.dropdowns-list {
+  position: absolute;
+  background: #fff;
+  width: 15%;
+  margin-top: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.drop-list {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.drop-list:hover {
+  background-color: #f0f8ff;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 8px;
+}
+
+.checkbox-label {
+  color: #2c5c6c;
+  font-weight: 500;
+}

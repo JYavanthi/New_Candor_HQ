@@ -1,0 +1,37 @@
+<div class="classficationMainDiv">
+
+  <div style="margin-left:3%;">
+    <app-support-sidebar></app-support-sidebar>
+  </div>
+
+  <div class="container-implement">
+
+    <h3 class="page-heading">NEW CLASSIFICATION</h3>
+
+    <div class="container-field-line">
+      <div class="border-rfc-heading">
+        <div class="row mt-2">
+
+          <div class="col form-group">
+            <label>Classification ID</label>
+            <input class="form-control-custom" type="text" placeholder="ClassificationID"
+              [(ngModel)]="classificationid" />
+          </div>
+
+          <div class="col form-group">
+            <label>Classification Name</label>
+            <input class="form-control-custom" type="text" placeholder="ClassificationName"
+              [(ngModel)]="classificationname" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-section">
+      <button (click)="postClassification()" class="btn submit-btn">SUBMIT</button>
+      <button [routerLink]="'/categorytype'" class="btn back-btn">BACK</button>
+    </div>
+
+  </div>
+</div>

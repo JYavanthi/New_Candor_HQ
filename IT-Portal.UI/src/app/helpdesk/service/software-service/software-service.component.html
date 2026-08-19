@@ -1,0 +1,844 @@
+
+<div class="text-center pageHeadingCss">
+  <p class="pageHeadingparaCss">Software</p>
+</div>
+<div class="issue-btn">
+  <button style="margin-left:12%;" class="btn-back" [routerLink]="'/service'" type="button">Back</button>&nbsp;
+</div>
+
+<div class="service_container">
+
+  
+<mat-tab-group>
+  <mat-tab label="Details">
+    <div class="card service_card br-top-blue" >
+      <div class="card-body">
+        <div class="card-body inside_newissue">
+            <div class="row">
+              <div class="col-md-2 radioBtns">
+                <span><input type="radio" value="self" [(ngModel)]="selectedOption" (change)="OnLabelChange()"></span>
+                <span>&nbsp;Self</span>
+              </div>
+              <div class="col-md-4 radioBtns">
+                <span><input type="radio" value="others" [(ngModel)]="selectedOption" (change)="OnLabelChange()"></span>
+                <span>&nbsp;Others</span>
+                &nbsp;
+                <span>
+                  <input type="text" #EnterIssueID placeholder="Enter Issue For" [disabled]="DisableissueRaiseFor" [(ngModel)]="issueRaiseFor" (input)="filterItems()" (ngModelChange)="ClearOtherInputs()" />
+                  <ul class="dropdowns-list" *ngIf="dropdownItems.length > 0">
+                    <li class="drop-list" value="" *ngFor="let item of dropdownItems" (click)="selectItem(item)">
+                      {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                    </li>
+                  </ul>
+                </span>
+              </div>
+              <div class="col-md-2 radioBtns">
+                <span><input type="radio" value="guest" [(ngModel)]="selectedOption" (change)="OnLabelChange()"></span>
+                <span>&nbsp;Guest</span>
+              </div>
+              <!--<div class="col-md-4 radioBtns">
+                <span>
+                  <select [(ngModel)]="Plant" ngModel required>
+                    <option value="" selected disabled hidden>Select Plant</option>
+                    <option *ngFor="let pltdata of plantcode " value="{{pltdata.id}}">{{pltdata.code}}</option>
+                  </select>
+                </span>
+                <span style="color:red">&nbsp;*</span>
+              </div>-->
+            </div>
+  
+            <!--Self-->
+            <ng-container *ngIf="ShowSelf">
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Name: <span class="horinputDatas">{{Name}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label>Email: <span class="horinputDatas">{{Email}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                </div>
+              </div>
+  
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                </div>
+              </div>
+  
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                </div>
+              </div>
+            </ng-container>
+  
+            <!--Others-->
+            <ng-container *ngIf="ShowOthers">
+              <!--Requested By-->
+              <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested by:</span>
+              <div class="row mt-2" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Name: <span class="horinputDatas">{{Name}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label>Email: <span class="horinputDatas">{{Email}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                </div>
+              </div>
+  
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                </div>
+              </div>
+  
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                </div>
+              </div>
+              <hr />
+              <!--Requested For-->
+              <div>
+                <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested for:</span>
+                <div class="row mt-2">
+                  <div class="col-md-3">
+                    <label>Employee ID: <span class="horinputDatas">{{EmployeeIDOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Name: <span class="horinputDatas">{{OthersName}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Email: <span class="horinputDatas">{{EmailOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Contact No: <span class="horinputDatas">{{ContactNoOthers}}</span></label>
+                  </div>
+  
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Reporting Manager: <span class="horinputDatas">{{ReportingManagerOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Staff Category: <span class="horinputDatas">{{StaffCategoryOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Plant: <span class="horinputDatas">{{PlantOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Paygroup: <span class="horinputDatas">{{PaygroupOthers}}</span></label>
+                  </div>
+  
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Department: <span class="horinputDatas">{{DepartmentOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Designation: <span class="horinputDatas">{{DesignationOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <label>Role: <span class="horinputDatas">{{RoleOthers}}</span></label>
+                  </div>
+  
+                  <div class="col-md-3">
+                  </div>
+                </div>
+              </div>
+  
+            </ng-container>
+  
+            <!--Guest-->
+            <ng-container *ngIf="ShowGuest">
+              <!--Requested By-->
+              <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested by:</span>
+              <div class="row mt-2" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Employee ID: <span class="horinputDatas">{{EmployeeID}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Name: <span class="horinputDatas">{{Name}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label>Email: <span class="horinputDatas">{{Email}}</span></label>
+                </div>
+                <div class="col-md-3">
+                  <label>Contact No: <span class="horinputDatas">{{ContactNo}}</span></label>
+                </div>
+              </div>
+  
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Reporting Manager: <span class="horinputDatas">{{ReportingManager}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Staff Category: <span class="horinputDatas">{{StaffCategory}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Plant: <span class="horinputDatas">{{Plant}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Paygroup: <span class="horinputDatas">{{Paygroup}}</span></label>
+                </div>
+              </div>
+  
+              <div class="row" style="text-align:left;">
+                <div class="col-md-3">
+                  <label>Department: <span class="horinputDatas">{{Department}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Designation: <span class="horinputDatas">{{Designation}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Role: <span class="horinputDatas">{{Role}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                </div>
+              </div>
+              <hr />
+  
+              <!--Requested for-->
+              <span style="font-weight:bold;text-align:left;color:white;background:black;padding:3px;">Requested for:</span>
+              <div class="row mt-2">
+                <div class="col-md-3">
+                  <label>Guest Employee ID:</label><br>
+                  <input type="text" [(ngModel)]="GuestEmployeeID">
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Name:<span style="color:red">&nbsp;*</span></label><br>
+                  <input type="text" [(ngModel)]="GuestName">
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Email:<span style="color:red">&nbsp;*</span></label><br>
+                  <input type="text" [(ngModel)]="Guestemail">
+                </div>
+                <div class="col-md-3">
+                  <label>Contact No:<span style="color:red">&nbsp;*</span></label><br>
+                  <input type="number" [(ngModel)]="GuestContactNo">
+                </div>
+              </div>
+  
+              <div class="row" style="display:flex;align-items:center">
+                <div class="col-md-3">
+                  <!--<label>Reporting Manager Employee ID:</label><br>-->
+                  <input type="text" placeholder="Enter Reporting Manager Employee ID" [(ngModel)]="ReportingManagerEmpID" (input)="filterItemsforGuest()" (ngModelChange)="ClearGuestOtherInputs()" />
+                  <ul class="dropdowns-list" *ngIf="dropdownItems2.length > 0">
+                    <li class="drop-list" value="" *ngFor="let item of dropdownItems2" (click)="selectItem(item)">
+                      {{ item.employeeId + ' ' + '-' + ' ' + item.employeeName }}
+                    </li>
+                  </ul>
+  
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Reporting Manager in ML: <span class="horinputDatas">{{ReportingManagerinML}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Staff Category of ML: <span class="horinputDatas">{{StaffCategoryofML}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Plant ML: <span class="horinputDatas">{{GuestPlant}}</span></label>
+                </div>
+                
+              </div>
+  
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Paygroup ML: <span class="horinputDatas">{{PaygroupML}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Department ML: <span class="horinputDatas">{{DepartmentML}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Designation of ML Manager: <span class="horinputDatas">{{DesignationofMLManager}}</span></label>
+                </div>
+  
+                <div class="col-md-3">
+                  <label>Role of ML Manager: <span class="horinputDatas">{{RoleofMLManager}}</span></label>
+                </div>
+              </div>
+  
+            </ng-container>
+  
+          </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="software">
+              <div class="row">
+                <!--<div class="col">
+                  <label>Choose Asset</label>
+                  <select>
+                    <option disabled selected>Choose-Asset</option>
+                    <option>Server</option>
+                    <option>Network</option>
+                    <option>Security</option>
+                    <option>Inhouse Development</option>
+                    <option>SAP</option>
+                    <option>Software</option>
+                    <option>Desktop/Laptop</option>
+                    <option>Printers</option>
+                  </select>
+                </div>-->
+                <div class="col">
+                  <label>Request Type </label>
+                  <select [(ngModel)]="RequestFor" (ngModelChange)="RequestForFunc()">
+                    <option selected disabled hidden value="">Select Request Type</option>
+                    <option>Procure/Buy</option>
+                    <option>Development-Application,mobile app</option>
+                    <option>Website Development</option>
+                    <option>Install Software</option>
+                    <option>Upgrade Software</option>
+                    <option>Uninstall Software</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Type of Development<span style="color:red"> *</span></label>
+                  <select value="Select type of Development">
+                    <option>Application</option>
+                    <option>Mobile Application</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div [hidden]="!showProcureBuy">
+                <div class="row">
+                  <div class="col">
+                    <label>Vendor Name</label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Software Name<span style="color:red"> *</span></label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Software Version if any</label>
+                    <input type="text" style="width: 98%; margin-left: 1%;" />
+                  </div>
+  
+                  <div class="col">
+                    <label>Installation type<<span style="color:red"> *</span></label>
+                    <select value="Select Installation type" [(ngModel)]="Installationtype">
+                      <option>Hosted on Cloud</option>
+                      <option>Installed on Desktop/Laptop</option>
+                      <option>Installed on Server</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row" [hidden]="!showProcureBuy">
+                <div class="col required">
+                  <label>Licence Type</label>
+                  <select value="Licence Type">
+                    <option>Prepatual-One time</option>
+                    <option>User base</option>
+                    <option>Subscription</option>
+                  </select>
+                </div>
+                <div class="col required">
+                  <label>Which Location</label>
+                  <ng-multiselect-dropdown style="width:30%;" [settings]="dropdownDepartmentSettings"
+                                           [data]="dropdownListDepartment" [(ngModel)]="selecteddepartmentNames"
+                                           (ngModelChange)="onSelecteddepartmentItemsChange()">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div class="col required">
+                  <label>Department</label>
+                  <select value="Select Department">
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                  </select>
+  
+                </div>
+  
+                <div class="col required">
+                  <label>How many Users</label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+              </div>
+              <div class="row" [hidden]="!showProcureBuy">
+                <div class="col required">
+                  <label>No of License</label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col required">
+                  <label>Cost Per License</label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col required">
+                  <label>Total Cost</label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col required">
+                  <label>AMC is applicable</label>
+                  <select value="Select Type" [(ngModel)]="selectAMC" (ngModelChange)="amcOption()">
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+  
+              </div>
+  
+              <div class="row" [hidden]="!showProcureBuy">
+                <div class="col" [hidden]="!showAMC">
+                  <label>AMC Cost per Annum<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col" [hidden]="!showAMC">
+                  <label>Scope of AMC<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="height: 38%;width: 100%; margin-left: 1%;"></textarea>
+                </div>
+                <div class="col">
+                  <label>Date<span style="color:red"> *</span></label>
+                  <input [(ngModel)]="today" type="date" style="width: 98%; margin-left: 1%;" />
+                </div>
+  
+                <div class="col">
+                  <label>Implementation/Installation Required<span style="color:red"> *</span></label>
+                  <select value="Type" [(ngModel)]="selectImplementationRequired" (ngModelChange)="ImplementationRequiredOption()">
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+  
+              </div>
+              <div class="row" [hidden]="!showProcureBuy">
+                <div class="col" [hidden]="!showImplementationRequired">
+                  <label>Installation Charges<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col" [hidden]="!showImplementationRequired">
+                  <label>Details of Installation<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+  
+              </div>
+              <div class="row" [hidden]="!showProcureBuy">
+  
+              </div>
+  
+              <div class="row" [hidden]="!showDevelopmentApplicationmobileapp">
+                <div class="col">
+                  <label>Details of Development Required</label>
+                  <textarea class="textarea-implement" style=" height: 38%;width: 100%;"></textarea>
+                </div>
+                <div class="row">
+  
+                  <div class="col radioBtns">
+                    <input type="checkbox"[(ngModel)]="GxpApp" style="width: 4%;"/>
+                    <label>Is this a GXP Application<span style="color:red;width: 96%;"> *</span></label>
+                    <!-- <select value="Select Yes/No">
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select> -->
+                  </div>
+  
+                </div>
+                
+                <div class="row" [hidden]="!GxpApp">
+                  <div class="col">
+                    <label>Which Location<span style="color:red"> *</span></label>
+                    <ng-multiselect-dropdown style="width:30%;" [settings]="dropdownDepartmentSettings"
+                                             [data]="dropdownListDepartment" [(ngModel)]="selecteddepartmentNames"
+                                             (ngModelChange)="onSelecteddepartmentItemsChange()">
+                    </ng-multiselect-dropdown>
+                  </div>
+                  <div class="col">
+                    <label>Which Department<span style="color:red">*</span></label>
+                    <select value="Select Department">
+                      <option></option>
+                      <option></option>
+                      <option></option>
+                      <option></option>
+                    </select>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  
+                  <div class="col radioBtns">
+                      <input type="checkbox" style="width: 4%;" [(ngModel)]="selectInterface" (ngModelChange)="interfaceOption()"/>
+                    <label style="width: 96%;">
+                      Is it required to interface with any other Application?<span style="color:red">
+                        *
+                      </span>
+                    </label>
+                    <!-- <select value="Select Yes/No" [(ngModel)]="selectInterface" (ngModelChange)="interfaceOption()">
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select> -->
+                  </div>
+                </div>
+  
+                <div class="row">
+                  
+                  <div class="col" [hidden]="!showInterfaceRequirements">
+                    <label>Details of the system or Software to be interfaced with</label>
+                    <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                  </div>
+                </div>
+                <div class="row">
+  
+                  <div class="col" [hidden]="!showInterfaceRequirements">
+                    <label>Interface Requirements</label>
+                    <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                  </div>
+  
+                </div>
+  
+                <div clas="row">
+                  <div class="col">
+                    <label>Non functional requirements</label>
+                    <textarea placeholder="(like Security Requirements,Capacity and future demands Compatibility,Releiability,Availability,Scalibility,Enstension and Portability Ease of use)"
+                              class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="row" [hidden]="!showWebsiteDevelopment">
+                <div class="col">
+                  <label>Type of Website<span style="color:red"> *</span></label>
+                  <select value="Select Type">
+                    <option>Static Website</option>
+                    <option>Dynamic Website</option>
+                    <option>Video Streaming Website</option>
+                  </select>
+                </div>
+  
+                <div class="col">
+                  <label>Where should this be hosted<span style="color:red"> *</span></label>
+                  <select value="Select Type">
+                    <option>Onsite</option>
+                    <option>Cloud</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Usage by<span style="color:red"> *</span></label>
+                  <select value="Select Type">
+                    <option>Internal</option>
+                    <option>External</option>
+                    <option>Both</option>
+                  </select>
+                </div>
+  
+                <div class="col">
+                  <label>Users will access from? by<span style="color:red"> *</span></label>
+                  <select value="Select Type">
+                    <option>With Micro Labs network</option>
+                    <option>Outside Micro Labs network</option>
+                  </select>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <label>Which Location<span style="color:red"> *</span></label>
+                    <ng-multiselect-dropdown style="width:30%;" [settings]="dropdownDepartmentSettings"
+                                             [data]="dropdownListDepartment" [(ngModel)]="selecteddepartmentNames"
+                                             (ngModelChange)="onSelecteddepartmentItemsChange()">
+                    </ng-multiselect-dropdown>
+                  </div>
+  
+                  <div class="col">
+                    <label>How many Users will use this?<span style="color:red"> *</span></label>
+                    <input type="number" style="width: 98%; margin-left: 1%;" />
+                  </div>
+                  <div class="col">
+                    <label>Is this a GXP Software?<span style="color:red"> *</span></label>
+                    <select value="Select Yes/No">
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                  </div>
+  
+                  <div class="col">
+                    <label>
+                      Is it required to interface with any other application?<span style="color:red">
+                        *
+                      </span>
+                    </label>
+                    <select value="Select Yes/No">
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                  </div>
+  
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label>Interface requirement</label>
+                    <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                  </div>
+  
+                  <div class="col">
+                    <label>Details of systems or software to be interfaced with</label>
+                    <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="row" [hidden]="!showInstallSoftware">
+                <div class="col">
+                  <label>Software name<span style="color:red"> *</span></label>
+                  <select>
+                    <option></option>
+                    <option></option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Version Name<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="row">
+                  <label>Provide a Business Justification<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                </div>
+  
+              </div>
+  
+              <div class="row" [hidden]="!showupgradeSoftware">
+                <div class="col">
+                  <label>Software name<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>Current version<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+  
+                <div class="col">
+                  <label>Target version<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="row">
+                  <label>Justification<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                </div>
+  
+              </div>
+  
+              <div class="row" [hidden]="!showUnInstallSoftware">
+  
+                <div class="col">
+                  <label>Software name<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+                <div class="col">
+                  <label>Current version<span style="color:red"> *</span></label>
+                  <input type="text" style="width: 98%; margin-left: 1%;" />
+                </div>
+  
+                <div class="row">
+                  <label>Justification<span style="color:red"> *</span></label>
+                  <textarea class="textarea-implement" style="width: 100%; margin-left: 1%;"></textarea>
+                </div>
+  
+              </div>
+  
+              <div class="row">
+                <label>Attachment</label>
+                <input type="file" style="width: 98%; margin-left: 1%;" />
+              </div>
+              <div class="row">
+                <label>Justification</label>
+                <textarea class="textarea-implement" style="width: 98%; margin-left: 1%;"></textarea>
+              </div>
+            </div>
+            <div class="row" style="display: flex;justify-content: flex-start;">
+              <div class="col">
+                <span class="btn-sub">Draft</span>
+                <span class="btn-sub" [routerLink]="'/service'">Submit</span>
+                <span class="btn-sub" [routerLink]="'/service'">Cancel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </mat-tab>
+  <mat-tab label="Approval">
+    <div class="br-top-blue card service_card">
+      <ul class="breadcrumbs" id="myTab" role="tablist">
+  
+        <li class="breadcrumbs__item" style="background-color: blue;color:white ;">
+          <button class="approverbtns">Approver 1</button>
+        </li>
+        <li class="breadcrumbs__item" style="background-color: blue;color:white ;">
+          <button class="approverbtns">Approver 2</button>
+        </li>
+        <li class="breadcrumbs__item" style="background-color: blue;color:white ;">
+          <button class="approverbtns">Approver 3</button>
+        </li>
+      </ul>
+  
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="approver1" role="tabpanel" aria-labelledby="approver1-tab">
+          <div>
+            <div class="container-field-approve">
+              <b> Service Initiate </b>l
+              <div class="border-rfc-heading">
+                <div class="row">
+                  <div class="col-3">
+                    <label>Approver Name</label>
+                  </div>
+  
+                  <div>
+                    <p>Senthil</p>
+                    <p>Rakesh</p>
+                    <p>Manthan</p>
+                  </div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                </div>
+                <br />
+                <div class="row mt-3">
+                  <div class="col ate">
+                    <label>Date</label>
+                    <input type="date" [(ngModel)]="today" />
+                  </div>
+                  <div class="">
+                    <label>Remarks</label>
+                    <textarea class="textarea-implement"></textarea>
+                  </div>
+                  <div class="col">
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="container-field-implement">
+  
+                <div>
+                  <label class="label-approve">Attach Document</label>
+                  <input class="input-approve" type="File" placeholder="" />
+                </div>
+              </div>
+              <div class="btn-sub-reset">
+                <button class="btn-sub-approve">
+                  Approve
+                </button>
+                <button class="btn-sub-reject" type="submit">Reject</button>
+                <button class="btn-sub" type="submit">Seek Clarification</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Resolution">
+    <app-soft-ser-resolution></app-soft-ser-resolution>
+  </mat-tab>
+  <mat-tab label="History">
+    <div class="container br-top-blue">
+      <table class="table" style="width:100%; margin-top: 20px;">
+        <thead class="thead-dark">
+          <tr>
+            <th>Sr. No.</th>
+            <th>Resolution Remark</th>
+            <th>Date</th>
+            <th>User Comment</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>This is Resolution Remark</td>
+            <td>22-06-2024</td>
+            <td>This is User Comment</td>
+            <td>25-06-2024</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+  </div>
